@@ -13,13 +13,15 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: nla-blacklight
-  host: localhost
+  database: <%= ENV.fetch('NB_DB_SCHEMA' || 'set NB_DB_SCHEMA environment variable') %>
+  username: <%= ENV.fetch('NB_DB_USER' || 'set NB_DB_USER environment variable') %>
+  password: <%= ENV.fetch('NB_DB_PASS' || 'set NB_DB_PASS environment variable') %>
+  host: <%= ENV.fetch('NB_DB_HOST' || 'set NB_DB_HOST environment variable') %>
+  port: <%= ENV.fetch('NB_DB_PORT' || 'set NB_DB_PORT environment variable') %>
 
 development:
   <<: *default
-  database: nla_blacklight_development
+  database: nla_blacklight
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
