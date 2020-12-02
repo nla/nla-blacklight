@@ -32,6 +32,9 @@ gem 'solr_wrapper', '>=0.3'
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
+# fix security issue in default blacklight version
+gem "bibtex-ruby", ">= 5.1.0"
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -65,4 +68,4 @@ gem 'twitter-typeahead-rails', '0.11.1.pre.corejavascript'
 gem 'jquery-rails'
 gem 'devise'
 gem 'devise-guests', '~> 0.6'
-gem 'ebsco-eds'
+gem 'ebsco-eds', ">= 1.1.0b"
