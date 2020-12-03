@@ -18,7 +18,9 @@ else
 fi
 
 gem install bundler -v 2.1.4
-bundle _2.1.4_ install --path $GEM_HOME
+bundle config set path $GEM_HOME
+bundle update ebsco-eds
+bundle _2.1.4_ install
 bundle _2.1.4_ exec rake db:migrate RAILS_ENV=$RAILS_ENV
 RAILS_ENV=$RAILS_ENV bundle _2.1.4_ exec rake assets:precompile
 
