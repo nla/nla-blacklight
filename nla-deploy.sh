@@ -19,6 +19,10 @@ fi
 
 gem install bundler -v 2.1.4
 bundle config set path $GEM_HOME
+
+# run yarn check
+yarn install --check-files
+
 bundle _2.1.4_ install
 bundle _2.1.4_ exec rake db:migrate RAILS_ENV=$RAILS_ENV
 RAILS_ENV=$RAILS_ENV bundle _2.1.4_ exec rake assets:precompile
