@@ -1,6 +1,6 @@
 Spring.watch(
   ".ruby-version",
   ".rbenv-vars",
-  "/tmp/nla-blacklight/restart.txt",
-  "/tmp/nla-blacklight/caching-dev.txt"
+  File.join(bl_tmp_dir,"restart.txt"),
+  File.join(bl_tmp_dir,"caching-dev.txt")
 )
