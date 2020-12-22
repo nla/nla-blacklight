@@ -1,9 +1,9 @@
 development:
   adapter: solr
-  url: <%= ENV['NB_SOLR_URL'] || 'set NB_SOLR_URL environment variable' %>
+  url: <%= ENV['BLACKLIGHT_SOLR_URL'] || 'set BLACKLIGHT_SOLR_URL environment variable' %>
 test: &test
   adapter: solr
-  url: <%= ENV['NB_SOLR_URL'] || 'set NB_SOLR_URL environment variable' %>
+  url: <%= ENV['BLACKLIGHT_SOLR_URL'] || 'set BLACKLIGHT_SOLR_URL environment variable' %>
 production:
   adapter: solr
-  url: <%= ENV['NB_SOLR_URL'] || 'set NB_SOLR_URL environment variable' %>
+  url: <%= ENV['BLACKLIGHT_SOLR_URL'] || 'set BLACKLIGHT_SOLR_URL environment variable' %>
