@@ -12,23 +12,22 @@ application up and running.
   - Mysql 5.7
 
 
-* Configuration
- 
-  * environment variables:
-  
-    User Database
-    - BLACKLIGHT_DB_HOST
-    - BLACKLIGHT_DB_HOST
-    - BLACKLIGHT_DB_SCHEMA
-    - BLACKLIGHT_DB_USER
-    - BLACKLIGHT_DB_PASS
+# Configuration
+
+  ## environment variables
+   ### User Database
+    BLACKLIGHT_DB_HOST
+    BLACKLIGHT_DB_HOST
+    BLACKLIGHT_DB_SCHEMA
+    BLACKLIGHT_DB_USER
+    BLACKLIGHT_DB_PASS
+
+   ### Solr  
+    BLACKLIGHT_SOLR_URL
       
-    Solr  
-    - BLACKLIGHT_SOLR_URL
-      
-    Temp and caching directories
-    - BLACKLIGHT_TMP_PATH
-    - BLACKLIGHT_STORAGE_PATH
+  ### Temp and caching directories
+    BLACKLIGHT_TMP_PATH
+    BLACKLIGHT_STORAGE_PATH
 
 
 * Database creation
