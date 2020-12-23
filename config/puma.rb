@@ -18,7 +18,7 @@ environment ENV.fetch("RAILS_ENV") { "development" }
 
 # Specifies the `pidfile` that Puma will use.
 pidfile ENV.fetch("PIDFILE") { File.join(
-  ENV.fetch(BLACKLIGHT_TMP_PATH) { '** set BLACKLIGHT_TMP_PATH environment variable **'},
+  ENV.fetch('BLACKLIGHT_TMP_PATH') { '** set BLACKLIGHT_TMP_PATH environment variable **'},
   "pids/server.pid")
 }
 
