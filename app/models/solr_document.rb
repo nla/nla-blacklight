@@ -1,3 +1,4 @@
+require 'traject'
 # frozen_string_literal: true
 class SolrDocument
   include Blacklight::Solr::Document
@@ -31,4 +32,12 @@ class SolrDocument
   # and Blacklight::Document::SemanticFields#to_semantic_values
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
+
+  ##
+  # Get data from the full marc record contained in the solr document using a Traject spec.
+  def get_marc_derived_field(spec)
+    @marc_rec ||= to_marc
+    extractor = Traject::MarcExtractor.cached(spec)
+    extractor.extract(@marc_rec)
+  end
 end
