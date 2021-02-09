@@ -3,9 +3,9 @@ require 'bundler/setup' # Set up gems listed in the Gemfile.
 
 ##
 # Missing environment variable error handler
-env_message = 'Startup aborted: Need to set #{env_var_name} environment variable'
+ENV_MISSING_MESSAGE = 'Startup aborted: Need to set #{env_var_name} environment variable'
 def set_environment_variable(env_var_name)
-  abort(env_message) unless ENV[env_var_name]
+  abort(ENV_MISSING_MESSAGE) unless ENV[env_var_name]
   ENV[env_var_name]
 end
 
