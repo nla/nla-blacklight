@@ -1,15 +1,25 @@
 ENV['BUNDLE_GEMFILE'] ||= File.expand_path('../Gemfile', __dir__)
-
 require 'bundler/setup' # Set up gems listed in the Gemfile.
 
+##
+# Missing environment variable error handler
+env_message = 'Startup aborted: Need to set #{env_var_name} environment variable'
+def set_environment_variable(env_var_name)
+  abort(env_message) unless ENV[env_var_name]
+  ENV[env_var_name]
+end
+
 # Enable moving writable tmp directory outside of deploy dirs
-BL_TMP_PATH = ENV['BLACKLIGHT_TMP_PATH'] || '** set BLACKLIGHT_TMP_PATH environment variable **'
+BL_TMP_PATH = set_environment_variable('BLACKLIGHT_TMP_PATH')
 
 # Enable setting active storage path
-BL_STORAGE_PATH = ENV['BLACKLIGHT_STORAGE_PATH'] || '** set BLACKLIGHT_STORAGE_PATH environment variable **'
+BL_STORAGE_PATH = set_environment_variable('BLACKLIGHT_STORAGE_PATH')
 
 # Solr url
-BL_SOLR_URL = ENV['BLACKLIGHT_SOLR_URL'] || '** set BLACKLIGHT_SOLR_URL environment variable **'
+BL_SOLR_URL = set_environment_variable('BLACKLIGHT_SOLR_URL')
+
+# Image and thumbnail service url
+BL_IMAGE_SERVICE_URL = set_environment_variable('BLACKLIGHT_IMAGE_SERVICE_URL')
 
 require 'bootsnap' # Speed up boot time by caching expensive operations.
 env = ENV['RAILS_ENV'] || 'development'
