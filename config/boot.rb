@@ -9,17 +9,10 @@ def set_environment_variable(env_var_name)
   ENV[env_var_name]
 end
 
-# Enable moving writable tmp directory outside of deploy dirs
-BL_TMP_PATH = set_environment_variable('BLACKLIGHT_TMP_PATH')
-
-# Enable setting active storage path
-BL_STORAGE_PATH = set_environment_variable('BLACKLIGHT_STORAGE_PATH')
-
-# Solr url
-BL_SOLR_URL = set_environment_variable('BLACKLIGHT_SOLR_URL')
-
-# Image and thumbnail service url
-BL_IMAGE_SERVICE_URL = set_environment_variable('BLACKLIGHT_IMAGE_SERVICE_URL')
+BL_TMP_PATH          = set_environment_variable('BLACKLIGHT_TMP_PATH')          # Enable moving writable tmp directory outside of deploy dirs
+BL_STORAGE_PATH      = set_environment_variable('BLACKLIGHT_STORAGE_PATH')      # Enable setting active storage path
+BL_SOLR_URL          = set_environment_variable('BLACKLIGHT_SOLR_URL')          # Solr url
+BL_IMAGE_SERVICE_URL = set_environment_variable('BLACKLIGHT_IMAGE_SERVICE_URL') # Image and thumbnail service url
 
 require 'bootsnap' # Speed up boot time by caching expensive operations.
 env = ENV['RAILS_ENV'] || 'development'
