@@ -32,9 +32,10 @@ class CatalogController < ApplicationController
 
     # solr field configuration for search results/index views
     config.index.title_field = 'title_tsim'
-    #config.index.display_type_field = 'format'
+    config.index.display_type_field = 'format'
     #config.index.thumbnail_field = 'thumbnail_path_ss'
 
+    config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
     config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
 
     config.add_results_collection_tool(:sort_widget)
@@ -53,6 +54,11 @@ class CatalogController < ApplicationController
     #config.show.title_field = 'title_tsim'
     #config.show.display_type_field = 'format'
     #config.show.thumbnail_field = 'thumbnail_path_ss'
+
+    # scxxx Thumbnails
+    config.show.partials.insert(1, :thumbnail) # thumbnail after show_header
+    config.show.thumbnail_method = :get_thumbnail
+    config.index.thumbnail_method = :get_thumbnail
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -115,6 +121,9 @@ class CatalogController < ApplicationController
     # scxxx
     # test display addition
     config.add_index_field 'subject-nla_tsim', label: 'NLA Subject on results'
+    config.add_index_field '650ayzv', label: 'Subjectus', field: 'id', helper_method: :from_marc
+    #config.add_index_field 'availability', label: 'Availability', helper_method: :available?
+
 
 
     # solr fields to be displayed in the show (single result) view
@@ -135,9 +144,13 @@ class CatalogController < ApplicationController
     config.add_show_field 'isbn_ssim', label: 'ISBN'
 
     # scxxx
-    # test display addition
-    config.add_show_field 'subject-nla_tsim', label: 'NLA Subject on single'
-
+    # test display addition - TODO pull into extension module
+    #config.add_show_field 'subject-nla_tsim', label: 'NLA Subject on single'
+    config.add_show_field '245abnps', label: 'Full title', field: 'id', helper_method: :from_marc
+    config.add_show_field '650ayzv', label: 'Subjectus', field: 'id', helper_method: :from_marc
+    config.add_show_field '020aq', label: 'ISBN', field: 'id', helper_method: :from_marc
+    config.add_show_field '880aq', label: 'ISBN (880)', field: 'id', helper_method: :from_marc
+    config.add_show_field '856u', label: 'Link', field: 'id', helper_method: :from_marc
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
