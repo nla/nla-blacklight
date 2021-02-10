@@ -28,6 +28,6 @@ bundle _2.1.4_ install
 bundle _2.1.4_ exec rake db:migrate RAILS_ENV=$RAILS_ENV
 RAILS_ENV=$RAILS_ENV BL_TMP_PATH=$BLACKLIGHT_TMP_PATH bundle _2.1.4_ exec rake assets:precompile
 
-mkdir $BLACKLIGHT_TMP_PATH/pids
+mkdir -p $BLACKLIGHT_TMP_PATH/pids
 
 cp -R .bundle .ruby-version * $1
