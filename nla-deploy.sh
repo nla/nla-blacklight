@@ -25,8 +25,8 @@ bundle config --local path "gems"
 yarn install --check-files
 
 bundle _2.1.4_ install
-bundle _2.1.4_ exec rake db:migrate RAILS_ENV=$RAILS_ENV
-RAILS_ENV=$RAILS_ENV BL_TMP_PATH=$BLACKLIGHT_TMP_PATH bundle _2.1.4_ exec rake assets:precompile
+bundle _2.1.4_ exec rails db:migrate RAILS_ENV=$RAILS_ENV
+RAILS_ENV=$RAILS_ENV BL_TMP_PATH=$BLACKLIGHT_TMP_PATH bundle _2.1.4_ exec rails assets:precompile
 
 mkdir -p $BLACKLIGHT_TMP_PATH/pids
 
