@@ -37,7 +37,7 @@ module EBSCO
             :max_results_per_page => 100,
             :ebook_preferred_format => 'ebook-pdf',
             :use_cache => true,
-            :eds_cache_dir => ENV['TMPDIR'] || '/tmp',
+            :eds_cache_dir => ENV['TMPDIR'] || '/tmp/nla-blacklight',
             :auth_cache_expires_in => 1500,
             :info_cache_expires_in => 86400,
             :retrieve_cache_expires_in => 1800,

@@ -13,11 +13,11 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: <%= ENV.fetch('NB_DB_SCHEMA' || 'set NB_DB_SCHEMA environment variable') %>
-  username: <%= ENV.fetch('NB_DB_USER' || 'set NB_DB_USER environment variable') %>
-  password: <%= ENV.fetch('NB_DB_PASS' || 'set NB_DB_PASS environment variable') %>
-  host: <%= ENV.fetch('NB_DB_HOST' || 'set NB_DB_HOST environment variable') %>
-  port: <%= ENV.fetch('NB_DB_PORT' || 'set NB_DB_PORT environment variable') %>
+  database: <%= ENV.fetch('BLACKLIGHT_DB_SCHEMA' || 'set BLACKLIGHT_DB_SCHEMA environment variable') %>
+  username: <%= ENV.fetch('BLACKLIGHT_DB_USER' || 'set BLACKLIGHT_DB_USER environment variable') %>
+  password: <%= ENV.fetch('BLACKLIGHT_DB_PASS' || 'set BLACKLIGHT_DB_PASS environment variable') %>
+  host: <%= ENV.fetch('BLACKLIGHT_DB_HOST' || 'set BLACKLIGHT_DB_HOST environment variable') %>
+  port: <%= ENV.fetch('BLACKLIGHT_DB_PORT' || 'set BLACKLIGHT_DB_PORT environment variable') %>
 
 development:
   <<: *default

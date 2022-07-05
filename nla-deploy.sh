@@ -4,7 +4,8 @@ export ORIGDIR=`pwd`
 
 echo "Build env $RAILS_ENV, unzip into $WEBROOT.. PWD $ORIGDIR"
 export PATH=$GEM_PATH/bin:$PATH
-
+export http_proxy=admin.nla.gov.au:3128
+export https_proxy=admin.nla.gov.au:3128
 cd $ORIGDIR
 
 RUBY_VERSION=`cat .ruby-version`
@@ -18,9 +19,15 @@ else
 fi
 
 gem install bundler -v 2.1.4
-bundle config set path $GEM_HOME
-bundle _2.1.4_ install
-bundle _2.1.4_ exec rake db:migrate RAILS_ENV=$RAILS_ENV
-RAILS_ENV=$RAILS_ENV bundle _2.1.4_ exec rake assets:precompile
+bundle config --local path "gems"
 
-cp -R .bundle .ruby-version .ruby-gemset * $1
+# run yarn check
+yarn install --check-files
+
+bundle _2.1.4_ install
+bundle _2.1.4_ exec rails db:migrate RAILS_ENV=$RAILS_ENV
+RAILS_ENV=$RAILS_ENV BL_TMP_PATH=$BLACKLIGHT_TMP_PATH bundle _2.1.4_ exec rails assets:precompile
+
+mkdir -p $BLACKLIGHT_TMP_PATH/pids
+
+cp -R .bundle .ruby-version * $1

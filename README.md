@@ -3,13 +3,32 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
-Things you may want to cover:
+* Ruby version 2.7.0
 
-* Ruby version
 
 * System dependencies
+  
+  - Solr 8
+  - Mysql 5.7
 
-* Configuration
+
+# Configuration
+
+  ## environment variables
+   ### User Database
+    BLACKLIGHT_DB_HOST
+    BLACKLIGHT_DB_HOST
+    BLACKLIGHT_DB_SCHEMA
+    BLACKLIGHT_DB_USER
+    BLACKLIGHT_DB_PASS
+
+   ### Solr  
+    BLACKLIGHT_SOLR_URL
+      
+  ### Temp and caching directories
+    BLACKLIGHT_TMP_PATH
+    BLACKLIGHT_STORAGE_PATH
+
 
 * Database creation
 
