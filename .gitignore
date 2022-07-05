@@ -38,5 +38,7 @@ yarn-debug.log*
 # Ignore .idea files
 /.idea
 
+Gemfile.lock
+
 # Ignore installed gems
 /vendor/bundle
