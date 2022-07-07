@@ -7,10 +7,10 @@ x-app: &app
   environment: &env
     NODE_ENV: ${NODE_ENV:-development}
     RAILS_ENV: ${RAILS_ENV:-development}
-    DATABASE_URL: mysql2://root:blight@mysql:3306/blight_development?pool=5
+    PIDFILE: /tmp/pids/server.pid
   tmpfs:
     - /tmp
-    - /opt/app-root/src/tmp/pids
+    - /tmp/pids
 
 x-backend: &backend
   <<: *app
@@ -28,7 +28,6 @@ x-backend: &backend
     <<: *env
     REDIS_URL: redis://redis:6379/
     MALLOC_ARENA_MAX: 2
-    MAX_RAILS_THREAD: 1
     WEB_CONCURRENCY: ${WEB_CONCURRENCY:-1}
     BOOTSNAP_CACHE_DIR: /usr/local/bundle/_bootsnap
     XDG_DATA_HOME: /opt/app-root/src/tmp/caches
