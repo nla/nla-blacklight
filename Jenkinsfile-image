@@ -1,0 +1,2 @@
+nlaDockerBuildAndDeploy steps: this,
+    applicationName: "blacklight"
