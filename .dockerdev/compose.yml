@@ -7,6 +7,7 @@ x-app: &app
   environment: &env
     NODE_ENV: ${NODE_ENV:-development}
     RAILS_ENV: ${RAILS_ENV:-development}
+    DATABASE_URL: mysql2://root:blight@mysql:3306/blight_development?pool=5
     PIDFILE: /tmp/pids/server.pid
   tmpfs:
     - /tmp
