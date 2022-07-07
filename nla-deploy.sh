@@ -25,10 +25,12 @@ bundle config --local path "gems"
 yarn install --check-files
 
 bundle _2.2.22_ install
-bundle _2.2.22_ exec rails db:migrate RAILS_ENV=$RAILS_ENV
+RAILS_ENV=$RAILS_ENV bundle _2.2.22_ exec rails db:migrate
 RAILS_ENV=$RAILS_ENV bundle _2.2.22_ exec rails assets:precompile
 
 mkdir -p $BLACKLIGHT_TMP_PATH/pids
+
+RAILS_ENV=$RAILS_ENV bundle _2.2.22_ exec rails log:clear tmp:clear
 
 # Remove a potentially pre-existing server.pid for Rails.
 rm -f $PIDFILE
