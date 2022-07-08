@@ -56,7 +56,11 @@ Rails.application.configure do
   config.log_tags = [ :request_id ]
 
   # Use a different cache store in production.
-  config.cache_store = :file_store, ENV["$BLACKLIGHT_TMP_PATH"]
+  if ENV['BLACKLIGHT_TMP_PATH'].present?
+    config.cache_store = :file_store, ENV["$BLACKLIGHT_TMP_PATH"]
+  else
+    abort('BLACKLIGHT_TMP_PATH must be defined')
+  end
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
