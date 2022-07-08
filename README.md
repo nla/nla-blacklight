@@ -4,9 +4,9 @@ Custom implementation of [Blacklight](http://projectblacklight.org/) for The Nat
 
 🚨 The versions below should match the versions available in the UBI Ruby base container image.
 
-* Base container image: ubi8/ruby-27
-* Ruby: 2.7.4
-* Bundler: 2.1.4
+* Base container image: ubi8/ruby-30
+* Ruby: 3.0.2
+* Bundler: 2.2.22
 
 
 * System dependencies
