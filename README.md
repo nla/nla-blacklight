@@ -29,7 +29,7 @@ control.
     DATABASE_URL
 
 #### Solr
-    BLACKLIGHT_SOLR_URL
+    SOLR_URL
 
 #### Temp and caching directories
     BLACKLIGHT_TMP_PATH
@@ -44,7 +44,7 @@ control.
 ## Running the app
 
 1. `bin/run` runs the Rails server at 0.0.0.0:3000.
-2. `bin/dev` runs the JavaScript and CSS processors in "watch" mode, with the Rails server in parallel.
+2. `bin/dev` runs the SASS compiler in "watch" mode, in parallel with the Rails server.
 
 ## Tests and CI
 
@@ -53,7 +53,7 @@ control.
 
 ## Production
 
-* All runtime configuration should be supplied in the UNIX environment.
+* All runtime configuration should be supplied in the UNIX environment as environment variables.
 * Rails logging uses [lograge](https://github.com/roidrage/lograge). `bin/setup help` can tell you how to see this locally.
 
 ## Security / Vulnerability Checking
