@@ -18,16 +18,21 @@ else
   echo "Ruby $RUBY_VERSION found; continuing deployment..."
 fi
 
-gem install bundler -v 2.1.4
+gem install bundler -v 2.2.22
 bundle config --local path "gems"
 
 # run yarn check
 yarn install --check-files
 
-bundle _2.1.4_ install
-bundle _2.1.4_ exec rails db:migrate RAILS_ENV=$RAILS_ENV
-RAILS_ENV=$RAILS_ENV BL_TMP_PATH=$BLACKLIGHT_TMP_PATH bundle _2.1.4_ exec rails assets:precompile
+bundle _2.2.22_ install
+RAILS_ENV=$RAILS_ENV bundle _2.2.22_ exec rails db:migrate
+RAILS_ENV=$RAILS_ENV bundle _2.2.22_ exec rails assets:precompile
 
 mkdir -p $BLACKLIGHT_TMP_PATH/pids
+
+RAILS_ENV=$RAILS_ENV bundle _2.2.22_ exec rails log:clear tmp:clear
+
+# Remove a potentially pre-existing server.pid for Rails.
+rm -f $PIDFILE
 
 cp -R .bundle .ruby-version * $1

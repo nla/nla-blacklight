@@ -36,7 +36,6 @@ class CatalogController < ApplicationController
     #config.index.thumbnail_field = 'thumbnail_path_ss'
 
     config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
-    config.add_results_document_tool(:bookmark, partial: 'bookmark_control', if: :render_bookmarks_control?)
 
     config.add_results_collection_tool(:sort_widget)
     config.add_results_collection_tool(:per_page_widget)
@@ -216,9 +215,10 @@ class CatalogController < ApplicationController
     end
 
     # "sort results by" select (pulldown)
-    # label in pulldown is followed by the name of the SOLR field to sort by and
+    # label in pulldown is followed by the name of the Solr field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
-    # except in the relevancy case).
+    # except in the relevancy case). Add the sort: option to configure a
+    # custom Blacklight url parameter value separate from the Solr sort fields.
     config.add_sort_field 'score desc, pub_date_si desc, title_si asc', label: 'relevance'
     config.add_sort_field 'pub_date_si desc, title_si asc', label: 'year'
     config.add_sort_field 'author_si asc, title_si asc', label: 'author'
@@ -228,10 +228,10 @@ class CatalogController < ApplicationController
     # mean") suggestion is offered.
     config.spell_max = 5
 
-    # Configuration for autocomplete suggestor
+    # Configuration for autocomplete suggester
     config.autocomplete_enabled = true
     config.autocomplete_path = 'suggest'
-    # if the name of the solr.SuggestComponent provided in your solrcongig.xml is not the
+    # if the name of the solr.SuggestComponent provided in your solrconfig.xml is not the
     # default 'mySuggester', uncomment and provide it below
     # config.autocomplete_suggester = 'mySuggester'
   end

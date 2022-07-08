@@ -1,0 +1,35 @@
+# This workflow runs the unit and system tests, as well as static code analysis
+# and dependecy vulnerability checks.
+#
+# It uses the default MySQL database included in the runner (usually ubuntu-latest).
+name: "Tests and code quality"
+on:
+  push:
+    branches: [ "build/ci" ]
+  pull_request:
+    branches: [ "build/ci" ]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    env:
+      RUBY_VERSION: '3.0.2'
+      DB_DATABASE: blacklight_test
+      DB_USER: root
+      DB_PASSWORD: root
+      RAILS_ENV: test
+      DATABASE_URL: "mysql2://root:root@localhost:3306/blacklight_test"
+    steps:
+      - name: Set up MySQL
+        run: |
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@8f312efe1262fb463d906e9bf040319394c18d3e # v1.92
+        with:
+          ruby-version: ${{ env.RUBY_VERSION }}
+          bundler-cache: true
+      - name: Run tests
+        run: bin/ci
+        shell: bash

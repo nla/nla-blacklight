@@ -12,7 +12,7 @@ module ApplicationHelper
   end
 
   def get_thumbnail(document, options = {})
-    image_tag(BL_IMAGE_SERVICE_URL % [document.id])
+    image_tag(ENV["IMAGE_SERVICE_URL"] % [document.id])
   end
 
 end

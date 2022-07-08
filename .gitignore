@@ -4,8 +4,11 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+.DS_Store
+
 # Ignore bundler config.
 /.bundle
+/vendor/bundle
 
 # Ignore all logfiles and tempfiles.
 /log/*
@@ -36,9 +39,16 @@ yarn-debug.log*
 .yarn-integrity
 
 # Ignore .idea files
-/.idea
+.idea/*
 
-Gemfile.lock
+# The .env file is used for both dev and test
+# and creates more problems than it solves
+.env
 
-# Ignore installed gems
-/vendor/bundle
+# .env.*.local files are where we put actual secrets we need for dev and test,
+# so we really don't wnat them in version control
+.env.*.local
+
+# Ignore compiled assets
+/app/assets/builds/*
+!/app/assets/builds/.keep
