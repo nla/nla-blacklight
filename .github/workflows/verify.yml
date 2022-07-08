@@ -1,4 +1,8 @@
-name: "Ruby on Rails CI"
+# This workflow runs the unit and system tests, as well as static code analysis
+# and dependecy vulnerability checks.
+#
+# It uses the default MySQL database included in the runner (usually ubuntu-latest).
+name: "Tests and code quality"
 on:
   push:
     branches: [ "build/ci" ]
