@@ -1,8 +1,8 @@
 Rails.application.configure do
-  if !Rails.env.development? ||
+  config.lograge.enabled = if !Rails.env.development? ||
       ENV["LOGRAGE_IN_DEVELOPMENT"] == "true"
-    config.lograge.enabled = true
+    true
   else
-    config.lograge.enabled = false
+    false
   end
 end

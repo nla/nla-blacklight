@@ -30,10 +30,10 @@ Rails.application.configure do
   else
     config.action_controller.perform_caching = false
 
-    if ENV['BLACKLIGHT_TMP_PATH'].present?
-      config.cache_store = :file_store, ENV["BLACKLIGHT_TMP_PATH"]
+    config.cache_store = if ENV["BLACKLIGHT_TMP_PATH"].present?
+      [:file_store, ENV["BLACKLIGHT_TMP_PATH"]]
     else
-      config.cache_store = :null_store
+      :null_store
     end
   end
 

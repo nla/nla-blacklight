@@ -6,6 +6,9 @@
 
 .DS_Store
 
+# Ignore Rubocop cache
+/.cache
+
 # Ignore Ruby Advisory DB
 /.local
 
