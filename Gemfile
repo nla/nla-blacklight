@@ -85,7 +85,7 @@ group :test do
   gem "webdrivers"
 end
 
-# gem 'ebsco-eds', '~> 1.1', '>= 1.1.4'
+gem 'ebsco-eds', '~> 1.1', '>= 1.1.4'
 # gem 'ebsco-eds', '1.1.0.1', :path=> 'vendor/gems/ebsco-eds-1.1.0.1'
 
 gem 'blacklight', '~> 7.27'
@@ -94,5 +94,4 @@ gem "bootstrap", "~> 4.0"
 gem "twitter-typeahead-rails", "0.11.1.pre.corejavascript"
 gem "jquery-rails"
 gem "devise"
-gem "devise-guests", "~> 0.8"
 gem "blacklight-marc", ">= 7.0.0.rc1", "< 8"
