@@ -6,6 +6,9 @@
 
 .DS_Store
 
+# Ignore Ruby Advisory DB
+/.local
+
 # Ignore bundler config.
 /.bundle
 /vendor/bundle
@@ -39,7 +42,7 @@ yarn-debug.log*
 .yarn-integrity
 
 # Ignore .idea files
-.idea/*
+/.idea
 
 # The .env file is used for both dev and test
 # and creates more problems than it solves
