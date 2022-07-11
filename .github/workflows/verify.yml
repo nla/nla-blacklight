@@ -7,13 +7,6 @@ on:
   push:
     branches:
       - "**"
-  pull_request:
-    types:
-      - opened
-      - reopened
-    branches:
-      - "master"
-      - "release/**"
 jobs:
   linters:
     name: Linters
