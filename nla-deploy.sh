@@ -20,7 +20,7 @@ else
 fi
 
 gem install bundler -v 2.2.22
-bundle config --local job 4
+bundle config --local job $(nproc)
 bundle config --local path "vendor/bundle"
 bundle config --local force_ruby_platform true
 
