@@ -23,12 +23,12 @@ Rails.application.configure do
   }
 
   # Show full error reports and disable caching.
-  config.consider_all_requests_local       = true
+  config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
-  if ENV['BLACKLIGHT_TMP_PATH'].present?
-    config.cache_store = :file_store, ENV["BLACKLIGHT_TMP_PATH"]
+  config.cache_store = if ENV["BLACKLIGHT_TMP_PATH"].present?
+    [:file_store, ENV["BLACKLIGHT_TMP_PATH"]]
   else
-    config.cache_store = :null_store
+    :null_store
   end
 
   # Raise exceptions instead of rendering exception templates.

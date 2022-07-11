@@ -41,10 +41,16 @@ jobs:
         run: |
           yarn install --pure-lockfile
 
+      - name: RuboCop
+        run: bundle exec rubocop --parallel
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Brakeman code scanning with reviewdog
         uses: reviewdog/action-brakeman@v2
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Bundler audit with reviewdog
         uses: tomferreira/action-bundler-audit@v1
         env:

@@ -68,13 +68,14 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ast (2.4.2)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
     bcrypt (3.1.18)
     bibtex-ruby (6.0.0)
       latex-decode (~> 0.0)
     bindex (0.8.1)
-    blacklight (7.27.0)
+    blacklight (7.27.1)
       deprecation
       globalid
       hashdiff
@@ -261,10 +262,11 @@ GEM
     nokogiri (1.13.6)
       mini_portile2 (~> 2.8.0)
       racc (~> 1.4)
-    nokogiri (1.13.6-x86_64-linux)
-      racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.5.5)
+    parallel (1.22.1)
+    parser (3.1.2.0)
+      ast (~> 2.4.1)
     popper_js (1.16.0)
     public_suffix (4.0.7)
     puma (5.6.4)
@@ -299,6 +301,7 @@ GEM
       rake (>= 12.2)
       thor (~> 1.0)
       zeitwerk (~> 2.5)
+    rainbow (3.1.1)
     rake (13.0.6)
     redis (4.7.1)
     regexp_parser (2.5.0)
@@ -314,6 +317,27 @@ GEM
     rsolr (2.5.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
+    rubocop (1.29.1)
+      parallel (~> 1.10)
+      parser (>= 3.1.0.0)
+      rainbow (>= 2.2.2, < 4.0)
+      regexp_parser (>= 1.8, < 3.0)
+      rexml (>= 3.2.5, < 4.0)
+      rubocop-ast (>= 1.17.0, < 2.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 3.0)
+    rubocop-ast (1.18.0)
+      parser (>= 3.1.1.0)
+    rubocop-minitest (0.20.1)
+      rubocop (>= 0.90, < 2.0)
+    rubocop-performance (1.13.3)
+      rubocop (>= 1.7.0, < 2.0)
+      rubocop-ast (>= 0.4.0)
+    rubocop-rails (2.15.2)
+      activesupport (>= 4.2.0)
+      rack (>= 1.1)
+      rubocop (>= 1.7.0, < 2.0)
+    ruby-progressbar (1.11.0)
     rubyzip (2.3.2)
     sassc (2.4.0)
       ffi (~> 1.9)
@@ -337,6 +361,9 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    standard (1.12.1)
+      rubocop (= 1.29.1)
+      rubocop-performance (= 1.13.3)
     stimulus-rails (1.0.4)
       railties (>= 6.0.0)
     strscan (3.0.3)
@@ -367,6 +394,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
+    unicode-display_width (2.2.0)
     view_component (2.57.1)
       activesupport (>= 5.0.0, < 8.0)
       method_source (~> 1.0)
@@ -392,7 +420,6 @@ GEM
 
 PLATFORMS
   ruby
-  x86_64-linux
 
 DEPENDENCIES
   blacklight (~> 7.27)
@@ -415,8 +442,11 @@ DEPENDENCIES
   rails (~> 7.0.3)
   redis (~> 4.0)
   rsolr (>= 1.0, < 3)
+  rubocop-minitest
+  rubocop-rails
   selenium-webdriver
   sprockets-rails
+  standard
   stimulus-rails
   turbo-rails
   twitter-typeahead-rails (= 0.11.1.pre.corejavascript)

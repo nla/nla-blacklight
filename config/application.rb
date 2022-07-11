@@ -7,7 +7,7 @@ require "rails/all"
 Bundler.require(*Rails.groups)
 
 # Load dotenv only in development or test environment
-if ['development', 'test'].include? ENV['RAILS_ENV']
+if ["development", "test"].include? ENV["RAILS_ENV"]
   Dotenv::Railtie.load
 end
 
@@ -17,7 +17,7 @@ module NlaBlacklight
     config.load_defaults 7.0
 
     config.assets.configure do |env|
-      env.cache = ActiveSupport::Cache.lookup_store(:file_store, File.join(ENV["BLACKLIGHT_TMP_PATH"], 'asset/cache'))
+      env.cache = ActiveSupport::Cache.lookup_store(:file_store, File.join(ENV["BLACKLIGHT_TMP_PATH"], "asset/cache"))
     end
 
     # Configuration for the application, engines, and railties goes here.

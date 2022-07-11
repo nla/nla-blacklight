@@ -54,7 +54,7 @@ gem "redis", "~> 4.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Use Sass to process CSS
 # gem "sassc-rails"
@@ -64,7 +64,10 @@ gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
+  gem "standard", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-minitest", require: false
 end
 
 group :development do
@@ -85,10 +88,10 @@ group :test do
   gem "webdrivers"
 end
 
-gem 'ebsco-eds', '~> 1.1', '>= 1.1.4'
+gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
 # gem 'ebsco-eds', '1.1.0.1', :path=> 'vendor/gems/ebsco-eds-1.1.0.1'
 
-gem 'blacklight', '~> 7.27'
+gem "blacklight", "~> 7.27"
 gem "rsolr", ">= 1.0", "< 3"
 gem "bootstrap", "~> 4.0"
 gem "twitter-typeahead-rails", "0.11.1.pre.corejavascript"
