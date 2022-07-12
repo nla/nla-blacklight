@@ -68,7 +68,7 @@ group :development, :test do
   gem "standard", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-minitest", require: false
-  gem 'solr_wrapper', '>= 0.3'
+  gem "solr_wrapper", ">= 0.3"
 end
 
 group :development do
