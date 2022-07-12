@@ -94,7 +94,7 @@ gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
 
 gem "blacklight", "~> 7.27"
 gem "rsolr", ">= 1.0", "< 3"
-gem "bootstrap", "~> 4.0"
+gem "bootstrap", "~> 5.1"
 gem "twitter-typeahead-rails", "0.11.1.pre.corejavascript"
 gem "jquery-rails"
 gem "devise"
