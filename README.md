@@ -8,20 +8,24 @@ Custom implementation of [Blacklight](http://projectblacklight.org/) for The Nat
 * Ruby: 3.0.2
 * Bundler: 2.2.22
 
-
 * System dependencies
     - Solr: 8
-    - MySQL: 8
+    - MySQL: 8 (If you have an older version, you will get SSL connection errors.)
+
+The [GoRails guide](https://gorails.com/setup) has great instructions for setting up Ruby, Rails and MySQL for your operating system.
 
 ## Configuration
 
-All configurable values should be defined via environment variables and `dotenv` is used to load these values
-into the application.
+All configurable values should be defined via environment variables. `dotenv` is used to load predefined values
+from the `.env*` config files into the environment automatically when the application is started.
 
 Non-sensitive values for development/test environments should be defined in the `.env.development`/`.env.test` files.
 
-Sensitive values should be defined in `.env.development.local`/`.env.test.local` files and not committed to source
-control.
+Sensitive values can be defined in `.env.development.local` or `.env.test.local` files for local development 
+and *SHOULD NOT* be committed to source control. Git is configured to ignore these files.
+
+⚠️ If `dotenv` fails to load the configuration values into the environment, you can always manually export these
+values in the terminal before running the application.
 
 ### Environment Variables
 
@@ -33,30 +37,36 @@ control.
 
 #### Temp and caching directories
     BLACKLIGHT_TMP_PATH
-    BLACKLIGHT_STORAGE_PATH
+
+#### External services
+    IMAGE_SERVICE_URL
 
 ## Setup
 
 1. Pull down the app from version control.
-2. Make sure you have MySQL running.
-3. `bin/setup` installs gems, npm packages, and database migrations for development/test environments.
+2. Make sure you have MySQL running locally and/or configured in the `.env.development.local` config file.
+3. Make sure you have Solr running locally and/or configured in the `.env.development.local` config file.
+4. `bin/setup` installs gems, npm packages, and database migrations for development/test environments.
 
 ## Running the app
 
-1. `bin/run` runs the Rails server at 0.0.0.0:3000.
-2. `bin/dev` runs the SASS compiler in "watch" mode, in parallel with the Rails server.
+1. `RAILS_ENV=<env> bin/run` runs the Rails server at 0.0.0.0:3000. Best for production.
+2. `RAILS_ENV=development bin/dev` runs the SASS compiler in "watch" mode, in parallel with the Rails server.
 
 ## Tests and CI
 
 1. `bin/ci` contains all the tests and security vulnerability checks for the app.
 2. `tmp/test.log` will use the production logging format *NOT* the development one.
 
-## Production
+## Deployment
 
 * All runtime configuration should be supplied in the UNIX environment as environment variables.
 * Rails logging uses [lograge](https://github.com/roidrage/lograge). `bin/setup help` can tell you how to see this locally.
+* The temporary file directory configured by the `BLACKLIGHT_TMP_PATH` must be writable by the user that runs the application.
 
 ## Security / Vulnerability Checking
+
+The following tools provide security and vulnerability checking of the code.
 
 * [brakeman](https://github.com/presidentbeef/brakeman) is a static analysis vulnerability checker.
     * Reports are written to `tmp/brakeman.html`
@@ -76,6 +86,16 @@ docker run -p 8983:8983 blacklight-solr
 
 You should now be able to load the Solr Dashboard at: http://localhost:8983/solr/#/
 
+### Populating Solr Index
+
+There is a sample of Voyager MARC records in `./solr/voy-sample` that can be used for local development.
+
+Ensure you're connected to Solr, then execute the command below in a terminal:
+
+```bash
+bin/rails solr:marc:index MARC_FILE=./solr/voy-sample
+```
+
 ## .dockerdev
 
 This directory contains a `Dockerfile` that generates an application image based on RedHat's UBI Ruby image
@@ -88,6 +108,8 @@ container image are the same version.
 
 It is recommended to maintain as much parity with production as possible by upgrading the versions of these
 supporting services at the same time they are upgraded by Tech Ops.
+<details>
+<summary>Setup details</summary>
 
 ### Install Dip
 
@@ -115,14 +137,4 @@ dip stop # stop all the containers
 # if you need to run commands in a terminal
 dip runner
 ```
-
-### Populating Solr Index
-
-There is a sample of Voyager MARC records in `./solr/voy-sample`.
-
-Load a terminal in a container with all the system dependencies available, then index the sample MARC records:
-
-```bash
-dip runner
-bin/rails solr:marc:index MARC_FILE=./solr/voy-sample
-```
+</details>
