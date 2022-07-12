@@ -51,8 +51,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Bundler audit with reviewdog
-        uses: tomferreira/action-bundler-audit@v1
+      - name: Bundler Audit Action
+        uses: andrewmcodes/bundler-audit-action@v0.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
