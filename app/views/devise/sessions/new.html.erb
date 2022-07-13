@@ -1,0 +1,19 @@
+<h2>Log in</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="field">
+    <%= f.label :user_id, "User ID" %><br />
+    <%= f.text_field :user_id, autofocus: true, autocomplete: "user_id" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :family_name %><br />
+    <%= f.password_field :family_name, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+No user ID? <%= link_to "Register", ENV["GETALIBRARYCARD_URL"] %>.<br />
