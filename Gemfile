@@ -100,4 +100,4 @@ gem "twitter-typeahead-rails", "0.11.1.pre.corejavascript"
 gem "jquery-rails"
 gem "devise"
 gem "blacklight-marc", ">= 7.0.0.rc1", "< 8"
-gem 'multi_xml', '~> 0.6.0'
+gem "multi_xml", "~> 0.6.0"

@@ -29,7 +29,7 @@ module Devise
       protected
 
       module ClassMethods
-        Devise::Models.config(self, :stretches,)
+        Devise::Models.config(self, :stretches)
 
         # We assume this method already gets the sanitized values from the
         # GetalibrarycardAuthenticatable strategy. If you are using this method on
