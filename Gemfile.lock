@@ -240,6 +240,7 @@ GEM
     mini_portile2 (2.8.0)
     minitar (0.9)
     minitest (5.16.2)
+    multi_xml (0.6.0)
     multipart-post (2.2.3)
     mysql2 (0.5.4)
     namae (1.1.1)
@@ -444,6 +445,7 @@ DEPENDENCIES
   jbuilder
   jquery-rails
   lograge
+  multi_xml (~> 0.6.0)
   mysql2 (~> 0.5)
   puma (~> 5.0)
   rails (~> 7.0.3)
