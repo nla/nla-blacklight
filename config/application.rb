@@ -20,6 +20,10 @@ module NlaBlacklight
       env.cache = ActiveSupport::Cache.lookup_store(:file_store, File.join(ENV["BLACKLIGHT_TMP_PATH"], "asset/cache"))
     end
 
+    # [CVE-2022-32224] Possible RCE escalation bug with Serialized Columns in Active Record
+    # https://discuss.rubyonrails.org/t/cve-2022-32224-possible-rce-escalation-bug-with-serialized-columns-in-active-record/81017
+    config.active_record.yaml_column_permitted_classes = [ActiveSupport::HashWithIndifferentAccess]
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
