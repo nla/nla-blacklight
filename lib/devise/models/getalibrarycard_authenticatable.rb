@@ -18,7 +18,7 @@ module Devise
       end
 
       def self.required_fields(klass)
-        [:barcode, :family_name]
+        [:user_id, :family_name]
       end
 
       # Verifies whether a password (ie from sign in) is the user password.
@@ -40,7 +40,7 @@ module Devise
             f.response :xml, content_type: /\bxml$/
             f.adapter :net_http
           end
-          response = conn.post("#{ENV["GETALIBRARYCARD_AUTH_PATH"]}/#{conditions[:barcode]}/#{conditions[:family_name]}")
+          response = conn.post("#{ENV["GETALIBRARYCARD_AUTH_PATH"]}/#{conditions[:user_id]}/#{conditions[:family_name]}")
 
           if response.present? && response.status == 200
             patron_id = response.body["response"]["itemList"]["item"][0]["id"]
@@ -49,14 +49,11 @@ module Devise
             user = User.where(patron_id: patron_id).first
             if user.blank?
               user = new
-              user[:barcode] = conditions[:barcode]
               user[:patron_id] = patron_id
               user[:voyager_id] = voyager_id
-            else
-              user[:barcode] = conditions[:barcode]
+              user.save!
             end
 
-            user.save!
             User.where(patron_id: patron_id).first
           end
         end

@@ -7,12 +7,12 @@ module Devise
   module Strategies
     class GetalibrarycardAuthenticatable < Authenticatable
       def authenticate!
-        resource = mapping.to.find_for_getalibrarycard_authentication(authentication_hash)
+        resource = authentication_hash[:user_id].present? && mapping.to.find_for_getalibrarycard_authentication(authentication_hash)
 
         if resource.present?
           success!(resource)
         else
-          fail!("Invalid User ID or Family Name")
+          fail!(I18n.t("devise.failure.invalid"))
         end
       end
     end

@@ -11,10 +11,10 @@ class AddPatronFieldsToUser < ActiveRecord::Migration[7.0]
 
     # new columns
 
-    rename_column :users, :email, :barcode
-    rename_column :users, :encrypted_password, :family_name
-    add_column :users, :patron_id, :bigint
-    add_column :users, :voyager_id, :bigint
+    remove_column :users, :email
+    remove_column :users, :encrypted_password
+    add_column :users, :patron_id, :bigint, :after => :id
+    add_column :users, :voyager_id, :bigint, :after => :patron_id
 
     add_index :users, :patron_id, unique: true
     add_index :users, :voyager_id, unique: true

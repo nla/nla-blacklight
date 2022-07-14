@@ -71,6 +71,7 @@ GEM
     ast (2.4.2)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
+    awesome_print (1.9.2)
     bcrypt (3.1.18)
     bibtex-ruby (6.0.0)
       latex-decode (~> 0.0)
@@ -430,6 +431,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  awesome_print
   blacklight (~> 7.27)
   blacklight-marc (>= 7.0.0.rc1, < 8)
   bootstrap (~> 4.0)
