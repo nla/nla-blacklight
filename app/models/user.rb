@@ -10,7 +10,5 @@ class User < ApplicationRecord
   # Method added by Blacklight; Blacklight uses #to_s on your
   # user class to get a user-displayable login/identifier for
   # the account.
-  def to_s
-    patron_id
-  end
+  delegate :to_s, to: :patron_id
 end
