@@ -46,38 +46,12 @@ module Devise
             patron_id = response.body["response"]["itemList"]["item"][0]["id"]
             voyager_id = response.body["response"]["itemList"]["item"][0]["voyid"]
 
-            user = User.where(patron_id: patron_id).first
-            if user.blank?
-              user = new
-              user[:patron_id] = patron_id
-              user[:voyager_id] = voyager_id
-              user.save!
+            user = find_for_authentication({patron_id: patron_id})
+            user.presence || User.create!({patron_id: patron_id.to_i, voyager_id: voyager_id.to_i}) do |u|
+              u[:patron_id] = patron_id.to_i
+              u[:voyager_id] = voyager_id.to_i
             end
-
-            User.where(patron_id: patron_id).first
           end
-        end
-
-        ####################################
-        # Overriden methods from Devise::Models::Authenticatable
-        ####################################
-
-        # This method takes as many arguments as there are elements in `serialize_into_session`
-        #
-        # It recreates a resource from session data
-        #
-        def serialize_from_session(id, patron_id, voyager_id)
-          find(id)
-        end
-
-        # Serialize any data you want into the Session.  The Resources Primary Key or other Unique Identifier
-        # is recommended.
-        #
-        # The items placed into this array must be Serializable, e.g. numbers, strings, symbols, and Hashes.
-        # Do not place entire Ruby Objects or Arrays of Objects into the Session.
-        #
-        def serialize_into_session(resource)
-          [resource.id, resource.patron_id, resource.voyager_id]
         end
       end
     end
