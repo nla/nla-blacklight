@@ -3,9 +3,10 @@ class User < ApplicationRecord
   include Blacklight::User
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :getalibrarycard_authenticatable, :timeoutable
+  devise :getalibrarycard_authenticatable, :registerable,
+         :timeoutable
 
-  attr_accessor :user_id, :family_name
+  attr_accessor :barcode, :family_name
 
   # Method added by Blacklight; Blacklight uses #to_s on your
   # user class to get a user-displayable login/identifier for

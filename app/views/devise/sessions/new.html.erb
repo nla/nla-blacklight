@@ -1,9 +1,9 @@
 <h2>Log in</h2>
 
-<%= form_with(model: resource, as: resource_name, url: session_path(resource_name), method: :post) do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :user_id, "User ID" %><br />
-    <%= f.text_field :user_id, autofocus: true, autocomplete: "user_id" %>
+    <%= f.label :barcode, "User ID" %><br />
+    <%= f.text_field :barcode, autofocus: true, autocomplete: "barcode" %>
   </div>
 
   <div class="field">
@@ -16,4 +16,4 @@
   </div>
 <% end %>
 
-No user ID? <%= link_to "Register", ENV["GETALIBRARYCARD_URL"] %>.<br />
+<%= render "devise/shared/links" %>

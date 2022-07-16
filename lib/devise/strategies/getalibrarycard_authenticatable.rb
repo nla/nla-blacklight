@@ -7,7 +7,7 @@ module Devise
   module Strategies
     class GetalibrarycardAuthenticatable < Authenticatable
       def authenticate!
-        resource = authentication_hash[:user_id].present? && mapping.to.find_for_getalibrarycard_authentication(authentication_hash)
+        resource = authentication_hash[:barcode].present? && mapping.to.find_for_getalibrarycard_authentication(authentication_hash)
 
         if resource.present?
           success!(resource)

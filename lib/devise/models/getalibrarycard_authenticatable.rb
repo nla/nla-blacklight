@@ -8,17 +8,8 @@ module Devise
     module GetalibrarycardAuthenticatable
       extend ActiveSupport::Concern
 
-      included do
-        attr_reader :patron_id, :voyager_id
-        attr_accessor :patron_id, :voyager_id
-      end
-
-      def initialize(*args, &block)
-        super
-      end
-
       def self.required_fields(klass)
-        [:user_id, :family_name]
+        [:barcode, :family_name]
       end
 
       # Verifies whether a password (ie from sign in) is the user password.
@@ -29,8 +20,6 @@ module Devise
       protected
 
       module ClassMethods
-        Devise::Models.config(self, :stretches)
-
         # We assume this method already gets the sanitized values from the
         # GetalibrarycardAuthenticatable strategy. If you are using this method on
         # your own, be sure to sanitize the conditions hash to only include
@@ -40,17 +29,14 @@ module Devise
             f.response :xml, content_type: /\bxml$/
             f.adapter :net_http
           end
-          response = conn.post("#{ENV["GETALIBRARYCARD_AUTH_PATH"]}/#{conditions[:user_id]}/#{conditions[:family_name]}")
+          response = conn.post("#{ENV["GETALIBRARYCARD_AUTH_PATH"]}/#{conditions[:barcode]}/#{conditions[:family_name]}")
 
           if response.present? && response.status == 200
             patron_id = response.body["response"]["itemList"]["item"][0]["id"]
             voyager_id = response.body["response"]["itemList"]["item"][0]["voyid"]
 
             user = find_for_authentication({patron_id: patron_id})
-            user.presence || User.create!({patron_id: patron_id.to_i, voyager_id: voyager_id.to_i}) do |u|
-              u[:patron_id] = patron_id.to_i
-              u[:voyager_id] = voyager_id.to_i
-            end
+            user.presence || User.create!({patron_id: patron_id.to_i, voyager_id: voyager_id.to_i})
           end
         end
       end

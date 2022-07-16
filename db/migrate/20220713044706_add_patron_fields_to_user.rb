@@ -10,9 +10,6 @@ class AddPatronFieldsToUser < ActiveRecord::Migration[7.0]
     remove_column :users, :remember_created_at
 
     # new columns
-
-    remove_column :users, :email
-    remove_column :users, :encrypted_password
     add_column :users, :patron_id, :bigint, :after => :id, null: false
     add_column :users, :voyager_id, :bigint, :after => :patron_id, null: false
 

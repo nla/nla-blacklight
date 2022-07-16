@@ -1,8 +1,9 @@
 # frozen_string_literal: true
-
 class CatalogController < ApplicationController
+
   include Blacklight::Catalog
   include Blacklight::Marc::Catalog
+
 
   configure_blacklight do |config|
     ## Class for sending and receiving requests from a search index
@@ -98,6 +99,7 @@ class CatalogController < ApplicationController
       years_25: {label: "within 25 Years", fq: "pub_date_ssim:[#{Time.zone.now.year - 25} TO *]"}
     }
 
+
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
@@ -165,7 +167,8 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field "all_fields", label: "All Fields"
+    config.add_search_field 'all_fields', label: 'All Fields'
+
 
     # Now we see how to over-ride Solr request handler defaults, in this
     # case for a BL "search field", which is really a dismax aggregate

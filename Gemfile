@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.0.2"
+ruby "3.1.2"
 
 # All runtime config comes from the UNIX environment
 # but we use dotenv to store that in files for development and testing
@@ -18,7 +18,7 @@ gem "bundler-audit"
 gem "lograge"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.3"
+gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -37,9 +37,6 @@ gem "turbo-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-
-# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -93,11 +90,11 @@ end
 gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
 # gem 'ebsco-eds', '1.1.0.1', :path=> 'vendor/gems/ebsco-eds-1.1.0.1'
 
-gem "blacklight", "~> 7.27"
+gem 'blacklight', '~> 7.28'
 gem "rsolr", ">= 1.0", "< 3"
 gem "bootstrap", "~> 4.0"
 gem "twitter-typeahead-rails", "0.11.1.pre.corejavascript"
 gem "jquery-rails"
 gem "devise"
 gem "blacklight-marc", ">= 7.0.0.rc1", "< 8"
-gem "multi_xml", "~> 0.6.0"
+gem "multi_xml"
