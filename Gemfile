@@ -89,7 +89,7 @@ group :test do
   gem "webdrivers"
 end
 
-gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
+gem "ebsco-eds", "~> 1.1"
 # gem 'ebsco-eds', '1.1.0.1', :path=> 'vendor/gems/ebsco-eds-1.1.0.1'
 
 gem "blacklight", "~> 7.27"
