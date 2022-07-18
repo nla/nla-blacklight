@@ -8,6 +8,6 @@ class Users::SessionsController < Devise::SessionsController
   protected
 
   def configure_sign_in_params
-    devise_parameter_sanitizer.permit(:sign_in, keys: [user: [:barcode, :family_name]])
+    devise_parameter_sanitizer.permit(:sign_in, keys: [user: [:username, :password]])
   end
 end

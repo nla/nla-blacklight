@@ -35,6 +35,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_07_13_044706) do
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "patron_id", null: false
     t.bigint "voyager_id", null: false
+    t.string "name_given"
+    t.string "name_family"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "created_at", null: false

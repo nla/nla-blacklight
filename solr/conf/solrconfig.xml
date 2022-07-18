@@ -17,7 +17,6 @@
   </updateHandler>
 
   <!-- solr lib dirs -->
-  <lib dir="${solr.install.dir:../../../..}/contrib/modules/lib" />
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
 
@@ -71,9 +70,18 @@
        <str name="title_pf">
        </str>
        <str name="subject_qf">
-          subject_tsim
+         subject_tsim
        </str>
        <str name="subject_pf">
+       </str>
+
+       <!--
+       scxxx
+       -->
+       <str name="subject-nla_qf">
+         subject-nla_tsim
+       </str>
+       <str name="subject-nla_pf">
        </str>
 
        <str name="fl">
