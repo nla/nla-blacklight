@@ -1,0 +1,47 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  name_family: MyString
+  name_given: MyString
+  address_line1: MyString
+  address_line2: MyString
+  address_locality: MyString
+  address_postcode: MyString
+  address_state: MyString
+  address_country: MyString
+  email: MyString
+  phone: MyString
+  mobile: MyString
+  barcode: MyString
+  reg_status: MyString
+  catalogue_group_code: MyString
+  expiry_date: 2022-07-18
+  idproof: MyString
+  photocopy_card_id: MyString
+  comments: MyText
+  rejection_reason: MyText
+  research_interests: MyText
+
+two:
+  user: two
+  name_family: MyString
+  name_given: MyString
+  address_line1: MyString
+  address_line2: MyString
+  address_locality: MyString
+  address_postcode: MyString
+  address_state: MyString
+  address_country: MyString
+  email: MyString
+  phone: MyString
+  mobile: MyString
+  barcode: MyString
+  reg_status: MyString
+  catalogue_group_code: MyString
+  expiry_date: 2022-07-18
+  idproof: MyString
+  photocopy_card_id: MyString
+  comments: MyText
+  rejection_reason: MyText
+  research_interests: MyText
