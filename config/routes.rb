@@ -7,7 +7,13 @@ Rails.application.routes.draw do
   resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable
   end
-  devise_for :users, controllers: {sessions: "users/sessions"}
+  devise_for :users, controllers: {
+               sessions: "users/sessions"
+             }
+
+  # namespace :users do
+  get '/users/preferences/edit', controller: "users/preferences"
+  # end
 
   concern :exportable, Blacklight::Routes::Exportable.new
 

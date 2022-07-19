@@ -2,13 +2,13 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
-    <%= f.label :barcode, "User ID" %><br />
-    <%= f.text_field :barcode, autofocus: true, autocomplete: "barcode" %>
+    <%= f.label :username, "User ID" %><br />
+    <%= f.text_field :username, autofocus: true, autocomplete: "username" %>
   </div>
 
   <div class="field">
-    <%= f.label :family_name %><br />
-    <%= f.password_field :family_name, autocomplete: "off" %>
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "off" %>
   </div>
 
   <div class="actions">
