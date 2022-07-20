@@ -68,7 +68,6 @@ group :development, :test do
   gem "solr_wrapper", ">= 0.3"
 
   gem "rspec-rails", "~> 5.1", ">= 5.1.2"
-  gem "cucumber-rails", "~> 2.5", ">= 2.5.1"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
 end
@@ -90,6 +89,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "cucumber-rails", "~> 2.5", ">= 2.5.1", require: false
   gem "database_cleaner-active_record"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
 end
