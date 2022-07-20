@@ -18,6 +18,12 @@ AllCops:
 
 Rails:
   Enabled: true
+Rails/UnknownEnv:
+  Environments:
+    - development
+    - test
+    - staging
+    - production
 Minitest:
   Enabled: true
 Bundler/DuplicatedGem:
