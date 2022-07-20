@@ -8,11 +8,11 @@ Rails.application.routes.draw do
     concerns :searchable
   end
   devise_for :users, controllers: {
-               sessions: "users/sessions"
-             }
+    sessions: "users/sessions"
+  }
 
   # namespace :users do
-  get '/users/preferences/edit', controller: "users/preferences"
+  get "/users/preferences/edit", controller: "users/preferences"
   # end
 
   concern :exportable, Blacklight::Routes::Exportable.new
