@@ -48,18 +48,9 @@ jobs:
       DB_PASSWORD: root
       RAILS_ENV: test
       DATABASE_URL: "mysql2://root:root@localhost:3306/blacklight_test"
-      SOLR_URL: "http://127.0.0.1:8983/solr/blacklight-core"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-
-      - name: Docker Check
-        uses: Firehed/docker-check-action@v1.0.2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          image: "solr:8.7.0"
-          options: "-v ${{ github.workspace }}/solr:/blacklight_config -d -p 8983:8983"
-          command: "solr-precreate blacklight-core /blacklight_config"
 
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@08245253a76fa4d1e459b7809579c62bd9eb718a # v1.92
