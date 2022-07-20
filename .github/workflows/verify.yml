@@ -63,10 +63,10 @@ jobs:
           sudo /etc/init.d/mysql start
           mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
-      - name: Unit tests
+      - name: RSpec tests
         run: |
-          bin/rails test
+          bundle exec rspec
 
-      - name: System tests
+      - name: Cucumber tests
         run: |
-          bin/rails test:system
+          bundle exec cucumber

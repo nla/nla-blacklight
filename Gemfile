@@ -64,8 +64,13 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "standard", require: false
   gem "rubocop-rails", require: false
-  gem "rubocop-minitest", require: false
+  gem "rubocop-rspec", require: false
   gem "solr_wrapper", ">= 0.3"
+
+  gem "rspec-rails", "~> 5.1", ">= 5.1.2"
+  gem "cucumber-rails", "~> 2.5", ">= 2.5.1"
+  gem "shoulda-matchers"
+  gem "factory_bot_rails"
 end
 
 group :development do
@@ -85,6 +90,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "database_cleaner-active_record"
+  gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
 end
 
 gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
