@@ -3,6 +3,7 @@ Feature: Authentication
   As a user
   I should be able to log in and log out
 
+  @vcr
   Scenario: User Logs In
     Given I am a registered user
     And I visit the homepage
@@ -11,6 +12,7 @@ Feature: Authentication
     When I fill in the login form
     Then I should be logged in
 
+  @vcr
   Scenario: User Logs Out
     Given I am a registered user
     And I am logged in
