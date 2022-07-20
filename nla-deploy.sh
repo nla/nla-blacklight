@@ -2,17 +2,13 @@
 
 ORIGDIR=$(pwd)
 export ORIGDIR
+source ~/.bashrc
 
 echo "Build env $RAILS_ENV, unzip into $WEBROOT.. PWD $ORIGDIR"
 export PATH=$GEM_PATH/bin:$PATH
 export http_proxy=admin.nla.gov.au:3128
 export https_proxy=admin.nla.gov.au:3128
 cd "$ORIGDIR" || return
-
-echo "debug..  path[$PATH]"
-rbenv versions
-which ruby
-which gem
 
 RUBY_VERSION=$(cat .ruby-version)
 echo "Checking rbenv Ruby version $RUBY_VERSION is installed."
