@@ -11,10 +11,6 @@ Rails.application.routes.draw do
     sessions: "users/sessions"
   }
 
-  # namespace :users do
-  get "/users/preferences/edit", controller: "users/preferences"
-  # end
-
   concern :exportable, Blacklight::Routes::Exportable.new
 
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
