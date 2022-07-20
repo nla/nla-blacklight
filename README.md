@@ -74,17 +74,15 @@ The following tools provide security and vulnerability checking of the code.
 
 ## Containers
 
-There is a `Dockerfile` in the `./solr` directory that can be used to spin up a local Solr instance. This instance
+There is a `compose.yml` in the `./solr` directory that can be used to spin up a local Solr instance. This instance
 is configured to pre-create a core named `blacklight-core`.
 
-First, build the container, then run the new image:
-
 ```bash
-docker build -t blacklight-solr ./solr
-docker run -p 8983:8983 blacklight-solr
+cd ./solr
+docker compose up -d
 ```
 
-You should now be able to load the Solr Dashboard at: http://localhost:8983/solr/#/
+You should now be able to load the Solr Dashboard at: http://127.0.0.1:8983/solr/#/
 
 ### Populating Solr Index
 
