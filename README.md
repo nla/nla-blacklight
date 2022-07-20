@@ -2,30 +2,29 @@
 
 Custom implementation of [Blacklight](http://projectblacklight.org/) for The National Library of Australia.
 
-🚨 The versions below should match the versions available in the UBI Ruby base container image.
+## Requirements
 
-* Base container image: ubi8/ruby-30
 * Ruby: 3.0.2
 * Bundler: 2.2.22
 
 * System dependencies
     - Solr: 8
-    - MySQL: 8 (If you have an older version, you will get SSL connection errors.)
+    - MySQL: 8
 
 The [GoRails guide](https://gorails.com/setup) has great instructions for setting up Ruby, Rails and MySQL for your operating system.
 
 ## Configuration
 
-All configurable values should be defined via environment variables. `dotenv` is used to load predefined values
-from the `.env*` config files into the environment automatically when the application is started.
+All configurable values should be defined via environment variables. `dotenv` will automatically load values
+from the `.env*` config in development and test environments.
 
-Non-sensitive values for development/test environments should be defined in the `.env.development`/`.env.test` files.
+Non-sensitive values for development and test environments should be defined in the `.env.development`/`.env.test` files.
 
 Sensitive values can be defined in `.env.development.local` or `.env.test.local` files for local development 
 and *SHOULD NOT* be committed to source control. Git is configured to ignore these files.
 
-⚠️ If `dotenv` fails to load the configuration values into the environment, you can always manually export these
-values in the terminal before running the application.
+⚠️ If `dotenv` fails to load the configuration values into the environment, you can manually export these
+values in your terminal before running the application.
 
 ### Environment Variables
 
@@ -36,41 +35,55 @@ values in the terminal before running the application.
     SOLR_URL
 
 #### Temp and caching directories
-    BLACKLIGHT_TMP_PATH
+    PIDFILE - relocates the server pid file outside of the application directory
+    BLACKLIGHT_TMP_PATH - relocates the caching directory outside of the application directory
 
 #### External services
     IMAGE_SERVICE_URL
 
+    GETALIBRARYCARD_BASE_URL - base URL for Get a Library Card
+    GETALIBRARYCARD_AUTH_PATH - path to the authentication endpoint of Get a Library Card
+    GETALIBRARYCARD_PATRON_DETAILS_PATH - path to the user details endpoint of Get a Library Card
+
 ## Setup
 
 1. Pull down the app from version control.
-2. Make sure you have MySQL running locally and/or configured in the `.env.development.local` config file.
-3. Make sure you have Solr running locally and/or configured in the `.env.development.local` config file.
+2. Make sure you have MySQL running locally and configured in the `.env.development.local` config file.
+3. Make sure you have Solr running locally and configured in the `.env.development.local` config file.
 4. `bin/setup` installs gems, npm packages, and database migrations for development/test environments.
 
 ## Running the app
 
-1. `RAILS_ENV=<env> bin/run` runs the Rails server at 0.0.0.0:3000. Best for production.
-2. `RAILS_ENV=development bin/dev` runs the SASS compiler in "watch" mode, in parallel with the Rails server.
+* `RAILS_ENV=<env> bin/run` runs the Rails server at 0.0.0.0:3000.
 
 ## Tests and CI
 
-1. `bin/ci` contains all the tests and security vulnerability checks for the app.
-2. `tmp/test.log` will use the production logging format *NOT* the development one.
+* `bin/ci` contains all the tests and security vulnerability checks for the app.
+* `tmp/test.log` will use the production logging format *NOT* the development one.
+* The following test frameworks are used:
+    * RSpec - for BDD testing
+    * Cucumber - for acceptance testing
+    * Capybara - simulates web application interaction
+    * Webmock - HTTP request mocking and stubbing
+    * VCR - Mock HTTP responses with canned data
 
 ## Deployment
 
-* All runtime configuration should be supplied in the UNIX environment as environment variables.
+* All runtime configuration should be supplied as environment variables.
 * Rails logging uses [lograge](https://github.com/roidrage/lograge). `bin/setup help` can tell you how to see this locally.
 * The temporary file directory configured by the `BLACKLIGHT_TMP_PATH` must be writable by the user that runs the application.
+* Gems declared in the Gemfile are installed in the `vendor/bundle` directory.
+* Rails assets must be precompiled before deployment and `RAILS_SERVE_STATIC_FILES` set to `true` in order for files in the `public` directory to be accessible.
+* `RAILS_LOG_TO_STDOUT` must be set to `true` for logs to be sent to the console.
 
-## Security / Vulnerability Checking
+## Linting, Static Analysis & Supply Chain Vulnerability Checking
 
-The following tools provide security and vulnerability checking of the code.
+The following tools provide linting, security and vulnerability checking of the code.
 
-* [brakeman](https://github.com/presidentbeef/brakeman) is a static analysis vulnerability checker.
+* [rubocop](https://rubocop.org/) and [standardrb](https://github.com/testdouble/standard) ensure standardised code formatting and best practices.
+* [brakeman](https://github.com/presidentbeef/brakeman) provides static analysis checking.
     * Reports are written to `tmp/brakeman.html`
-* [bundler-audit](https://github.com/rubysec/bundler-audit) checks for vulnerabilities in application dependencies.
+* [bundler-audit](https://github.com/rubysec/bundler-audit) checks application dependencies for security vulnerabilities.
 
 ## Containers
 
@@ -93,46 +106,3 @@ Ensure you're connected to Solr, then execute the command below in a terminal:
 ```bash
 bin/rails solr:marc:index MARC_FILE=./solr/voy-sample
 ```
-
-## .dockerdev
-
-This directory contains a `Dockerfile` that generates an application image based on RedHat's UBI Ruby image
-(see version above).
-It also includes a `compose.yml` file that defines supporting services (MySQL, Solr).
-
-Together, [Dip](https://github.com/bibendi/dip) and the `dip.yml` configuration file provide a convenient way to
-interact with a containerised local development environment. This local development image and the production
-container image are the same version.
-
-It is recommended to maintain as much parity with production as possible by upgrading the versions of these
-supporting services at the same time they are upgraded by Tech Ops.
-<details>
-<summary>Setup details</summary>
-
-### Install Dip
-
-```bash
-gem install dip
-```
-
-#### Common Commands
-
-- `dip provision` pulls down container images and create containers, volumes and networks.
-- `dip down --volumes` removes all containers, volumes and networks.
-- `dip up` is the same as `docker-compose up`.
-- `dip stop` is the same as `docker-compose stop`.
-- `dip rails s` runs the Rails server at http://localhost:3000.
-- `dip runner` opens a terminal in the Rails container with all supporting services.
-- `dip bash` opens a terminal in the Rails container without supporting services.
-
-### Development Workflow
-
-```bash
-dip provision # pull container images and build application image (if needed)
-dip up # start all the containers
-dip stop # stop all the containers
-
-# if you need to run commands in a terminal
-dip runner
-```
-</details>
