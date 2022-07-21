@@ -1,7 +1,7 @@
 require:
   - standard
   - rubocop-rails
-  - rubocop-minitest
+  - rubocop-rspec
 
 inherit_gem:
   standard: config/base.yml
@@ -24,7 +24,7 @@ Rails/UnknownEnv:
     - test
     - staging
     - production
-Minitest:
+RSpec:
   Enabled: true
 Bundler/DuplicatedGem:
   Enabled: false

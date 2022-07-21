@@ -15,13 +15,12 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password:
-  host: localhost
+  host: 127.0.0.1
+  port: 3306
 
 development:
   <<: *default
   database: nla_blacklight_development
-  ssl_mode: :disabled
-  sslverify: false
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".

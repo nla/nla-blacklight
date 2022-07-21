@@ -18,7 +18,7 @@ gem "bundler-audit"
 gem "lograge"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.3"
+gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -37,9 +37,6 @@ gem "turbo-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
-
-# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
-gem "cssbundling-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -67,13 +64,19 @@ group :development, :test do
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "standard", require: false
   gem "rubocop-rails", require: false
-  gem "rubocop-minitest", require: false
+  gem "rubocop-rspec", require: false
   gem "solr_wrapper", ">= 0.3"
+
+  gem "rspec-rails", "~> 5.1", ">= 5.1.2"
+  gem "shoulda-matchers"
+  gem "factory_bot_rails"
+  gem "vcr"
 end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem "awesome_print"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -87,12 +90,16 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
+  gem "cucumber-rails", "~> 2.5", ">= 2.5.1", require: false
+  gem "database_cleaner-active_record"
+  gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
+  gem "webmock"
 end
 
 gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
 # gem 'ebsco-eds', '1.1.0.1', :path=> 'vendor/gems/ebsco-eds-1.1.0.1'
 
-gem "blacklight", "~> 7.27"
+gem "blacklight", "~> 7.28"
 gem "rsolr", ">= 1.0", "< 3"
 gem "bootstrap", "~> 4.0"
 gem "twitter-typeahead-rails", "0.11.1.pre.corejavascript"
