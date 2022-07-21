@@ -5,11 +5,14 @@ set -e
 echo "[ bin/ci ] Preparing database"
 bin/rails db:reset || bin/rails db:migrate
 
-echo "[ bin/ci ] Running unit tests"
-bin/rails test
+echo "[ bin/ci ] Linting source"
+bundle exec rubocop -A
 
-echo "[ bin/ci ] Running system tests"
-bin/rails test:system
+echo "[ bin/ci ] Running RSpec tests"
+bundle exec rspec
+
+echo "[ bin/ci ] Running Cucumber tests"
+bundle exec cucumber
 
 echo "[ bin/ci ] Analysing code for security vulnerabilities."
 echo "[ bin/ci ] Output will be in tmp/brakeman.html, which"
