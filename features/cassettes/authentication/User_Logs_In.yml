@@ -1,6 +1,506 @@
 ---
 http_interactions:
 - request:
+    method: get
+    uri: http://delong.nla.gov.au:10001/solr/blacklight/select?f.language_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v1.10.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Security-Policy:
+      - default-src 'none'; base-uri 'none'; connect-src 'self'; form-action 'self';
+        font-src 'self'; frame-ancestors 'none'; img-src 'self'; media-src 'self';
+        style-src 'self' 'unsafe-inline'; script-src 'self'; worker-src 'self';
+      X-Content-Type-Options:
+      - nosniff
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      Last-Modified:
+      - Wed, 20 Jul 2022 05:05:36 GMT
+      Etag:
+      - '"MTQwMDAwMDAwMDAwMDAwMFNvbHI="'
+      Content-Type:
+      - application/json;charset=utf-8
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "responseHeader":{
+            "status":0,
+            "QTime":12,
+            "params":{
+              "f.subject_ssim.facet.limit":"21",
+              "facet.query":["pub_date_ssim:[2017 TO *]",
+                "pub_date_ssim:[2012 TO *]",
+                "pub_date_ssim:[1997 TO *]"],
+              "f.language_ssim.facet.limit":"11",
+              "facet.field":["format",
+                "{!ex=pub_date_ssim_single}pub_date_ssim",
+                "subject_ssim",
+                "language_ssim",
+                "lc_1letter_ssim",
+                "subject_geo_ssim",
+                "subject_era_ssim"],
+              "facet.pivot":"format,language_ssim",
+              "sort":"score desc, pub_date_si desc, title_si asc",
+              "rows":"10",
+              "facet":"true",
+              "wt":"json"}},
+          "response":{"numFound":91,"start":0,"maxScore":1.0,"numFoundExact":true,"docs":[
+              {
+                "id":"64",
+                "marc_ss":"<record><leader>00901cam a2200265 a 4500</leader><controlfield tag=\"001\">64</controlfield><controlfield tag=\"005\">20180908165111.0</controlfield><controlfield tag=\"008\">020123s2001    weaa     b    100 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23312139</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">1863080899</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187785</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">64</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">363.20994</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"111\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">International School-Based Police Officers Conference,</subfield><subfield code=\"d\">(2001 :</subfield><subfield code=\"c\">Fremantle, W.A.)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Early intervention :</subfield><subfield code=\"b\">does it work? : conference proceedings.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Canning Bridge W.A. :</subfield><subfield code=\"b\">Promaco Conventions,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">229 p. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Fremantle, Western Australia 21-23 February 2001 Fremantle Esplanade Hotel.</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes bibliographical references.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Community policing</subfield><subfield code=\"z\">Australia</subfield><subfield code=\"v\">Congresses.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Police</subfield><subfield code=\"z\">Australia</subfield><subfield code=\"v\">Congresses.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">NLq 363.20994 I61</subfield></datafield></record>",
+                "language_ssim":["English"],
+                "format":["Book"],
+                "isbn_tsim":["9781863080897",
+                  "1863080899"],
+                "material_type_ssm":["229 p."],
+                "title_tsim":["Early intervention :"],
+                "title_ssm":["Early intervention"],
+                "subtitle_tsim":["does it work? : conference proceedings."],
+                "subtitle_ssm":["does it work? : conference proceedings"],
+                "title_addl_tsim":["Early intervention : does it work? : conference proceedings."],
+                "author_tsim":["International School-Based Police Officers Conference, (2001 : Fremantle, W.A.)"],
+                "author_ssm":["International School-Based Police Officers Conference, (2001 : Fremantle, W.A.)"],
+                "subject_tsim":["Community policing",
+                  "Police"],
+                "subject_addl_tsim":["Australia Congresses."],
+                "subject_ssim":["Community policing",
+                  "Police"],
+                "subject_geo_ssim":["Australia"],
+                "published_ssm":["Canning Bridge W.A."],
+                "pub_date_ssim":["2001"],
+                "_version_":1738735003764785152,
+                "timestamp":"2022-07-18T23:28:36.054Z",
+                "score":1.0},
+              {
+                "id":"83",
+                "marc_ss":"<record><leader>01343cam a2200349 a 4500</leader><controlfield tag=\"001\">83</controlfield><controlfield tag=\"005\">20180908165111.0</controlfield><controlfield tag=\"008\">020122s2001    xnaa          000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23311074</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0858713675</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187791</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">83</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"245\" ind1=\"0\" ind2=\"0\"><subfield code=\"a\">Generating jobs :</subfield><subfield code=\"b\">fifteen strategies for reducing unemployment in Australia.</subfield></datafield><datafield tag=\"246\" ind1=\"3\" ind2=\"0\"><subfield code=\"a\">Fifteen strategies for reducing unemployment in Australia</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Strawberry Hills, N.S.W. :</subfield><subfield code=\"b\">Australian Council of Social Service,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">31 p. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">ACOSS paper,</subfield><subfield code=\"x\">1326-7124 ;</subfield><subfield code=\"v\">118</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">ACOSS work wages welfare series ;</subfield><subfield code=\"v\">2nd</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">\"Second paper in the ACOSS work wages welfare series\"--Cover.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">\"October 2001\"</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes bibliography (p. 31).</subfield></datafield><datafield tag=\"505\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Summary -- Part A. Converting economic growth into more jobs -- Part B. Avoiding recessions &amp; easing their effects -- Part C. Reducing unemployment in jobs-poor regions.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Unemployment</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Labor supply</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Job creation</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">Australian Council of Social Service.</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">ACOSS paper ;</subfield><subfield code=\"v\">118.</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">ACOSS work wages welfare series ;</subfield><subfield code=\"v\">2nd.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 361.994 ACO</subfield></datafield></record>",
+                "language_ssim":["English"],
+                "format":["Book"],
+                "isbn_tsim":["9780858713673",
+                  "0858713675"],
+                "material_type_ssm":["31 p."],
+                "title_tsim":["Generating jobs :"],
+                "title_ssm":["Generating jobs"],
+                "subtitle_tsim":["fifteen strategies for reducing unemployment in Australia."],
+                "subtitle_ssm":["fifteen strategies for reducing unemployment in Australia"],
+                "title_addl_tsim":["Generating jobs : fifteen strategies for reducing unemployment in Australia.",
+                  "Fifteen strategies for reducing unemployment in Australia"],
+                "title_series_tsim":["ACOSS paper, 118",
+                  "ACOSS work wages welfare series ; 2nd"],
+                "author_addl_tsim":["Australian Council of Social Service."],
+                "subject_tsim":["Unemployment",
+                  "Labor supply",
+                  "Job creation"],
+                "subject_addl_tsim":["Australia."],
+                "subject_ssim":["Unemployment",
+                  "Labor supply",
+                  "Job creation"],
+                "subject_geo_ssim":["Australia"],
+                "published_ssm":["Strawberry Hills, N.S.W."],
+                "pub_date_ssim":["2001"],
+                "_version_":1738735003773173760,
+                "timestamp":"2022-07-18T23:28:36.054Z",
+                "score":1.0},
+              {
+                "id":"55",
+                "marc_ss":"<record><leader>00753cam a2200229 a 4500</leader><controlfield tag=\"001\">55</controlfield><controlfield tag=\"005\">20180919165117.0</controlfield><controlfield tag=\"008\">020117s2001    weab     b    000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23302860</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187783</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">55</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">333.880994</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"100\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Pyke, L.H.</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Geothermal energy augmentation /</subfield><subfield code=\"c\">L. H. Pyke.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Perth, W.A. :</subfield><subfield code=\"b\">The Author,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[14] leaves :</subfield><subfield code=\"b\">2 maps ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Paper presented to Geoenvironment 2001, second Australian and New Zealand conference Envrironmental geotechnics,  in Newcastle N.S.W. Australia, November 2001.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Geothermal resources</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 333.880994 P995</subfield></datafield></record>",
+                "language_ssim":["English"],
+                "format":["Book"],
+                "material_type_ssm":["[14] leaves"],
+                "title_tsim":["Geothermal energy augmentation /"],
+                "title_ssm":["Geothermal energy augmentation"],
+                "title_addl_tsim":["Geothermal energy augmentation /"],
+                "author_tsim":["Pyke, L.H."],
+                "author_ssm":["Pyke, L.H."],
+                "subject_tsim":["Geothermal resources"],
+                "subject_addl_tsim":["Australia."],
+                "subject_ssim":["Geothermal resources"],
+                "subject_geo_ssim":["Australia"],
+                "published_ssm":["Perth, W.A."],
+                "pub_date_ssim":["2001"],
+                "_version_":1738735003760590849,
+                "timestamp":"2022-07-18T23:28:36.054Z",
+                "score":1.0},
+              {
+                "id":"47",
+                "marc_ss":"<record><leader>01185cam a2200349 a 4500</leader><controlfield tag=\"001\">47</controlfield><controlfield tag=\"005\">20180908165110.0</controlfield><controlfield tag=\"008\">020123s2001    xnaa     b   s001 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23312174</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0734712871</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187781</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">47</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield><subfield code=\"d\">NSL</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at-ne</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">581.99449</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">633.2/02</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"245\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">The glove box guide to growth, flowering and seeding of plants of the NSW rangelands /</subfield><subfield code=\"c\">collated and edited by P.L Milthorpe and M. J Wynne.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Orange, N.S.W. :</subfield><subfield code=\"b\">NSW Agriculture,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ix, 138 p. :</subfield><subfield code=\"b\">col. ill. ;</subfield><subfield code=\"c\">16 x 21 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Cover title.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes index.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Spiral binding.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Logos for Natural Heritage Trust and West 2000 on back cover.</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Bibliography: p. 132.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Botany</subfield><subfield code=\"z\">New South Wales</subfield><subfield code=\"z\">Western Division.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Range plants</subfield><subfield code=\"z\">New South Wales</subfield><subfield code=\"z\">Western Division.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Rangelands</subfield><subfield code=\"z\">New South Wales</subfield><subfield code=\"z\">Western Division.</subfield></datafield><datafield tag=\"700\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Wynne, Michael J.</subfield><subfield code=\"q\">(Michael James)</subfield></datafield><datafield tag=\"700\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Milthorpe, Peter L.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">NSW Agriculture.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">N 581.99449 G565</subfield></datafield></record>",
+                "language_ssim":["English"],
+                "format":["Book"],
+                "isbn_tsim":["9780734712875",
+                  "0734712871"],
+                "material_type_ssm":["ix, 138 p."],
+                "title_tsim":["The glove box guide to growth, flowering and seeding of plants of the NSW rangelands /"],
+                "title_ssm":["The glove box guide to growth, flowering and seeding of plants of the NSW rangelands"],
+                "title_addl_tsim":["The glove box guide to growth, flowering and seeding of plants of the NSW rangelands /"],
+                "author_addl_tsim":["Wynne, Michael J. (Michael James)",
+                  "Milthorpe, Peter L.",
+                  "NSW Agriculture."],
+                "subject_tsim":["Botany",
+                  "Range plants",
+                  "Rangelands"],
+                "subject_addl_tsim":["New South Wales Western Division."],
+                "subject_ssim":["Botany",
+                  "Range plants",
+                  "Rangelands"],
+                "subject_geo_ssim":["New South Wales",
+                  "Western Division"],
+                "published_ssm":["Orange, N.S.W."],
+                "pub_date_ssim":["2001"],
+                "_version_":1738735003756396544,
+                "timestamp":"2022-07-18T23:28:36.054Z",
+                "score":1.0},
+              {
+                "id":"23",
+                "marc_ss":"<record><leader>00991cam a2200313 a 4500</leader><controlfield tag=\"001\">23</controlfield><controlfield tag=\"005\">20180908165110.0</controlfield><controlfield tag=\"008\">011227s2001    ph a          001 0 tgl  </controlfield><datafield tag=\"010\" ind1=\" \" ind2=\" \"><subfield code=\"a\">2001307719</subfield></datafield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23293552</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">971916705X</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187775</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">23</subfield></datafield><datafield tag=\"037\" ind1=\" \" ind2=\" \"><subfield code=\"b\">Library of Congress -- Jakarta Overseas Office</subfield><subfield code=\"c\">P200.00</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">DLC</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">DLC</subfield><subfield code=\"d\">ANL</subfield></datafield><datafield tag=\"041\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">tgl</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">lcode</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">a-ph---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">959.9046</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"245\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">Ang makasaysayang People Power Part 2 sa mga pahina ng:</subfield><subfield code=\"b\">Pinoy times special edition issues 1-16.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[Manila] :</subfield><subfield code=\"b\">Sulong Pinoy Times,</subfield><subfield code=\"c\">c2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">244 p. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">28 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes index.</subfield></datafield><datafield tag=\"520\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Philippines People Power to topple Joseph Estrada from his presidency.</subfield></datafield><datafield tag=\"546\" ind1=\" \" ind2=\" \"><subfield code=\"a\">In Tagalog.</subfield></datafield><datafield tag=\"651\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Philippines</subfield><subfield code=\"x\">History</subfield><subfield code=\"y\">Revolution, 1986.</subfield></datafield><datafield tag=\"651\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Philippines</subfield><subfield code=\"x\">Politics and government.</subfield></datafield><datafield tag=\"730\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Pinoy times.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">YY 959.9046 M235</subfield></datafield></record>",
+                "language_ssim":["Tagalog"],
+                "format":["Book"],
+                "isbn_tsim":["9789719167051",
+                  "971916705X"],
+                "material_type_ssm":["244 p."],
+                "title_tsim":["Ang makasaysayang People Power Part 2 sa mga pahina ng:"],
+                "title_ssm":["Ang makasaysayang People Power Part 2 sa mga pahina ng"],
+                "subtitle_tsim":["Pinoy times special edition issues 1-16."],
+                "subtitle_ssm":["Pinoy times special edition issues 1-16."],
+                "title_addl_tsim":["Ang makasaysayang People Power Part 2 sa mga pahina ng: Pinoy times special edition issues 1-16."],
+                "title_added_entry_tsim":["Pinoy times."],
+                "subject_tsim":["Philippines"],
+                "subject_addl_tsim":["History Revolution, 1986.",
+                  "Politics and government."],
+                "subject_era_ssim":["Revolution, 1986"],
+                "subject_geo_ssim":["Philippines"],
+                "published_ssm":["Manila"],
+                "pub_date_ssim":["2001"],
+                "_version_":1738735003714453504,
+                "timestamp":"2022-07-18T23:28:36.054Z",
+                "score":1.0},
+              {
+                "id":"14",
+                "marc_ss":"<record><leader>00807cam a2200253 a 4500</leader><controlfield tag=\"001\">14</controlfield><controlfield tag=\"005\">20180908165110.0</controlfield><controlfield tag=\"008\">010827s2000    vra           000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">22932583</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187773</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">14</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">XDHM</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">XDHM</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">613.70994</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Public health practice in Australia today :</subfield><subfield code=\"b\">a statement of core functions.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Melbourne :</subfield><subfield code=\"b\">National Public Health Partnership,</subfield><subfield code=\"c\">2000.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[7] p. ;</subfield><subfield code=\"c\">22 cm.</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Public health planning and practice improvement</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Cover title.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Public health</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">National Public Health Partnership (Australia)</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Public health planning and practice improvement.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">NLq 613.70994 P976</subfield></datafield></record>",
+                "language_ssim":["English"],
+                "format":["Book"],
+                "material_type_ssm":["[7] p."],
+                "title_tsim":["Public health practice in Australia today :"],
+                "title_ssm":["Public health practice in Australia today"],
+                "subtitle_tsim":["a statement of core functions."],
+                "subtitle_ssm":["a statement of core functions"],
+                "title_addl_tsim":["Public health practice in Australia today : a statement of core functions."],
+                "title_series_tsim":["Public health planning and practice improvement"],
+                "author_addl_tsim":["National Public Health Partnership (Australia)"],
+                "subject_tsim":["Public health"],
+                "subject_addl_tsim":["Australia."],
+                "subject_ssim":["Public health"],
+                "subject_geo_ssim":["Australia"],
+                "published_ssm":["Melbourne"],
+                "pub_date_ssim":["2000"],
+                "_version_":1738735003690336256,
+                "timestamp":"2022-07-18T23:28:36.054Z",
+                "score":1.0},
+              {
+                "id":"38",
+                "marc_ss":"<record><leader>00842cas a2200253 a 4500</leader><controlfield tag=\"001\">38</controlfield><controlfield tag=\"005\">20180808155431.0</controlfield><controlfield tag=\"008\">970908c19979999vra x         0   a0eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">13292028</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2467765</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">38</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL-S</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANL-S</subfield><subfield code=\"d\">ANL-S</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">624.1821</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"130\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Technical note (BHP Steel. Structural Steel Development Group)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Technical note /</subfield><subfield code=\"c\">BHP Structural Steel Development Group.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[Melbourne] :</subfield><subfield code=\"b\">the Group,</subfield><subfield code=\"c\">1997-</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">v. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"362\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Issue 1 (Feb. 1997)-</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Caption title.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Steel, Structural</subfield><subfield code=\"v\">Periodicals.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Structural engineering</subfield><subfield code=\"x\">Periodicals.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">BHP Steel International Group.</subfield><subfield code=\"b\">Structural Steel Development Group.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 624.1821 TEC</subfield><subfield code=\"d\">Issue 1</subfield><subfield code=\"e\">(Feb. 1997)</subfield></datafield></record>",
+                "language_ssim":["English"],
+                "format":["Serial"],
+                "material_type_ssm":["v."],
+                "title_tsim":["Technical note /"],
+                "title_ssm":["Technical note"],
+                "title_addl_tsim":["Technical note (BHP Steel. Structural Steel Development Group)",
+                  "Technical note /"],
+                "author_addl_tsim":["BHP Steel International Group. Structural Steel Development Group."],
+                "subject_tsim":["Steel, Structural",
+                  "Structural engineering"],
+                "subject_addl_tsim":["Periodicals."],
+                "subject_ssim":["Steel, Structural",
+                  "Structural engineering"],
+                "published_ssm":["Melbourne"],
+                "pub_date_ssim":["1997"],
+                "_version_":1738735003727036418,
+                "timestamp":"2022-07-18T23:28:36.054Z",
+                "score":1.0},
+              {
+                "id":"46",
+                "marc_ss":"<record><leader>00854cam a2200289 a 4500</leader><controlfield tag=\"001\">46</controlfield><controlfield tag=\"005\">20180905072305.0</controlfield><controlfield tag=\"008\">970320s1997    xna           001 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">13101327</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0455214905</subfield><subfield code=\"q\">paperback</subfield><subfield code=\"c\">$70.00</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0455214891</subfield><subfield code=\"c\">$100.00</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2467767</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">46</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANB:REV</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANB:REV</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at-ne</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">346.944052</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"084\" ind1=\" \" ind2=\" \"><subfield code=\"a\">KN120.K2 N44 C47 1997</subfield></datafield><datafield tag=\"100\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Certoma, G. L.</subfield><subfield code=\"q\">(Giuseppe Leroy)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"4\"><subfield code=\"a\">The law of succession in New South Wales /</subfield><subfield code=\"c\">by G.L. Certoma.</subfield></datafield><datafield tag=\"250\" ind1=\" \" ind2=\" \"><subfield code=\"a\">3rd ed.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Sydney :</subfield><subfield code=\"b\">LBC Information Services,</subfield><subfield code=\"c\">1997.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">lviii, 329 p. ;</subfield><subfield code=\"c\">25 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes index.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Previous ed.: 1992.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Inheritance and succession</subfield><subfield code=\"z\">New South Wales.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">NL 346.944052 C418-3</subfield></datafield></record>",
+                "language_ssim":["English"],
+                "format":["Book"],
+                "isbn_tsim":["9780455214900",
+                  "0455214905",
+                  "9780455214894",
+                  "0455214891"],
+                "material_type_ssm":["lviii, 329 p."],
+                "title_tsim":["The law of succession in New South Wales /"],
+                "title_ssm":["The law of succession in New South Wales"],
+                "title_addl_tsim":["The law of succession in New South Wales /"],
+                "author_tsim":["Certoma, G. L. (Giuseppe Leroy)"],
+                "author_ssm":["Certoma, G. L. (Giuseppe Leroy)"],
+                "subject_tsim":["Inheritance and succession"],
+                "subject_addl_tsim":["New South Wales."],
+                "subject_ssim":["Inheritance and succession"],
+                "subject_geo_ssim":["New South Wales"],
+                "published_ssm":["Sydney"],
+                "pub_date_ssim":["1997"],
+                "_version_":1738735003753250816,
+                "timestamp":"2022-07-18T23:28:36.054Z",
+                "score":1.0},
+              {
+                "id":"54",
+                "marc_ss":"<record><leader>00983cas a2200289 a 4500</leader><controlfield tag=\"001\">54</controlfield><controlfield tag=\"005\">20180808155449.0</controlfield><controlfield tag=\"008\">970710d19962001tmaqr p       0   a0eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">13203552</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2467769</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">54</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL-S</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANL-S</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at-tm</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">004.0711946</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"130\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Info (Hobart, Tas.)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Info :</subfield><subfield code=\"b\">Division of Information Services magazine.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Hobart :</subfield><subfield code=\"b\">Division of Information Services, University of Tasmania,</subfield><subfield code=\"c\">1996-</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">v. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"362\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Issue no. 90 (Mar. 1996)-</subfield></datafield><datafield tag=\"362\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Ceased with no. 105 (Apr. 2001) issue.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Cover title.</subfield></datafield><datafield tag=\"610\" ind1=\"2\" ind2=\"0\"><subfield code=\"a\">University of Tasmania.</subfield><subfield code=\"b\">Division of Information Services</subfield><subfield code=\"x\">Periodicals.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Computers</subfield><subfield code=\"z\">Tasmania</subfield><subfield code=\"x\">Periodicals.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">University of Tasmania.</subfield><subfield code=\"b\">Division of Information Services.</subfield></datafield><datafield tag=\"780\" ind1=\"0\" ind2=\"0\"><subfield code=\"t\">UTAS</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 001.605 TAS</subfield><subfield code=\"d\">Issue no. 90-no. 104</subfield><subfield code=\"e\">(Mar. 1996-Oct. 2000)</subfield></datafield></record>",
+                "language_ssim":["English"],
+                "format":["Journal"],
+                "material_type_ssm":["v."],
+                "title_tsim":["Info :"],
+                "title_ssm":["Info"],
+                "subtitle_tsim":["Division of Information Services magazine."],
+                "subtitle_ssm":["Division of Information Services magazine"],
+                "title_addl_tsim":["Info (Hobart, Tas.)",
+                  "Info : Division of Information Services magazine."],
+                "author_addl_tsim":["University of Tasmania. Division of Information Services."],
+                "subject_tsim":["University of Tasmania. Division of Information Services",
+                  "Computers"],
+                "subject_addl_tsim":["Periodicals.",
+                  "Tasmania Periodicals."],
+                "subject_ssim":["University of Tasmania. Division of Information Services",
+                  "Computers"],
+                "subject_geo_ssim":["Tasmania"],
+                "published_ssm":["Hobart"],
+                "pub_date_ssim":["1996"],
+                "_version_":1738735003760590848,
+                "timestamp":"2022-07-18T23:28:36.054Z",
+                "score":1.0},
+              {
+                "id":"78",
+                "marc_ss":"<record><leader>01186cam a2200313 a 4500</leader><controlfield tag=\"001\">78</controlfield><controlfield tag=\"005\">20180904183603.0</controlfield><controlfield tag=\"008\">940113s1993    dcu           000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">10637958</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2107769</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">78</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANL</subfield><subfield code=\"d\">ANL:NR</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ee-----</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">339.5220947</subfield><subfield code=\"2\">20</subfield></datafield><datafield tag=\"100\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Milanovic, Branko.</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Cash social transfers, direct taxes, and income distribution in late socialism /</subfield><subfield code=\"c\">Branko Milanovic.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Washington, D.C. :</subfield><subfield code=\"b\">Policy Research Dept., World Bank,</subfield><subfield code=\"c\">1993.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">33 p. ;</subfield><subfield code=\"c\">28 cm.</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Policy research working papers ;</subfield><subfield code=\"v\">WPS 1176.</subfield><subfield code=\"a\">Transition and macro-adjustment</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">\"September 1993.\"</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Include bibliographical references (p. 31-33)</subfield></datafield><datafield tag=\"540\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Copyright restrictions apply.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Income distribution</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Transfer payments</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Taxation</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Social service</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">World Bank.</subfield><subfield code=\"b\">Policy Research Department</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Policy research working papers ;</subfield><subfield code=\"v\">WPS 1176.</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Policy research working papers.</subfield><subfield code=\"p\">Transition and macro-adjustment.</subfield></datafield></record>",
+                "language_ssim":["English"],
+                "format":["Book"],
+                "material_type_ssm":["33 p."],
+                "title_tsim":["Cash social transfers, direct taxes, and income distribution in late socialism /"],
+                "title_ssm":["Cash social transfers, direct taxes, and income distribution in late socialism"],
+                "title_addl_tsim":["Cash social transfers, direct taxes, and income distribution in late socialism /"],
+                "title_series_tsim":["Policy research working papers ; WPS 1176. Transition and macro-adjustment"],
+                "author_tsim":["Milanovic, Branko."],
+                "author_addl_tsim":["World Bank. Policy Research Department"],
+                "author_ssm":["Milanovic, Branko."],
+                "subject_tsim":["Income distribution",
+                  "Transfer payments",
+                  "Taxation",
+                  "Social service"],
+                "subject_addl_tsim":["Europe, Eastern."],
+                "subject_ssim":["Income distribution",
+                  "Transfer payments",
+                  "Taxation",
+                  "Social service"],
+                "subject_geo_ssim":["Europe, Eastern"],
+                "published_ssm":["Washington, D.C."],
+                "pub_date_ssim":["1993"],
+                "_version_":1738735003771076608,
+                "timestamp":"2022-07-18T23:28:36.054Z",
+                "score":1.0}]
+          },
+          "facet_counts":{
+            "facet_queries":{
+              "pub_date_ssim:[2017 TO *]":0,
+              "pub_date_ssim:[2012 TO *]":0,
+              "pub_date_ssim:[1997 TO *]":8},
+            "facet_fields":{
+              "format":[
+                "Book",67,
+                "Microfilm",8,
+                "Journal",7,
+                "Serial",7,
+                "MusicalScore",1,
+                "Photo",1],
+              "pub_date_ssim":[
+                "1977",7,
+                "1986",6,
+                "1980",5,
+                "2001",5,
+                "1935",3,
+                "1936",3,
+                "1976",3,
+                "1979",3,
+                "1981",3,
+                "1984",3],
+              "subject_ssim":[
+                "Geography",2,
+                "Tiwi language (Melville and Bathurst Islands)",2,
+                "Voyages and travels",2,
+                "Achard, Marcel, 1899-",1,
+                "Adelaide. Town planning",1,
+                "African languages",1,
+                "Agricultural industries. Policies. Australia",1,
+                "Agriculture and state",1,
+                "Almanacs, American",1,
+                "Amateur theater",1,
+                "Antisemitism",1,
+                "Archaeology",1,
+                "Astronomy",1,
+                "Australia. Department of Community Services. Victorian Office. Disability Services Section",1,
+                "Australian",1,
+                "Bai, Chongxi, 1893-1966",1,
+                "Banks and banking",1,
+                "Bible",1,
+                "Bible stories, English",1,
+                "Bible stories, Pitjantjatjara",1,
+                "Botany",1],
+              "language_ssim":[
+                "English",49,
+                "French",15,
+                "Chinese",13,
+                "Russian",5,
+                "Australian languages",3,
+                "German",2,
+                "Indonesian",2,
+                "Spanish",2,
+                "Czech",1,
+                "Italian",1,
+                "Latin",1],
+              "lc_1letter_ssim":[
+                "P - Language & Literature",7,
+                "D - World History",5,
+                "H - Social Sciences",3,
+                "Q - Science",3,
+                "C - Historical Sciences (Archaeology, Genealogy)",2,
+                "B - Philosophy, Psychology, Religion",1,
+                "J - Political Science",1,
+                "K - Law",1],
+              "subject_geo_ssim":[
+                "Australia",9,
+                "New South Wales",4,
+                "United States",3,
+                "Africa",2,
+                "China",2,
+                "Europe, Eastern",2,
+                "Oceania",2,
+                "South America",2,
+                "Tasmania",2,
+                "Victoria",2],
+              "subject_era_ssim":[
+                "1769",1,
+                "1809-1812",1,
+                "20th century",1,
+                "Revolution, 1954-1962",1,
+                "Revolution, 1986",1]},
+            "facet_ranges":{},
+            "facet_intervals":{},
+            "facet_heatmaps":{},
+            "facet_pivot":{
+              "format,language_ssim":[{
+                  "field":"format",
+                  "value":"Book",
+                  "count":67,
+                  "pivot":[{
+                      "field":"language_ssim",
+                      "value":"English",
+                      "count":28},
+                    {
+                      "field":"language_ssim",
+                      "value":"French",
+                      "count":15},
+                    {
+                      "field":"language_ssim",
+                      "value":"Chinese",
+                      "count":12},
+                    {
+                      "field":"language_ssim",
+                      "value":"Russian",
+                      "count":4},
+                    {
+                      "field":"language_ssim",
+                      "value":"Australian languages",
+                      "count":3},
+                    {
+                      "field":"language_ssim",
+                      "value":"German",
+                      "count":2},
+                    {
+                      "field":"language_ssim",
+                      "value":"Indonesian",
+                      "count":2},
+                    {
+                      "field":"language_ssim",
+                      "value":"Spanish",
+                      "count":2},
+                    {
+                      "field":"language_ssim",
+                      "value":"Czech",
+                      "count":1},
+                    {
+                      "field":"language_ssim",
+                      "value":"Latin",
+                      "count":1},
+                    {
+                      "field":"language_ssim",
+                      "value":"Tagalog",
+                      "count":1}]},
+                {
+                  "field":"format",
+                  "value":"Microfilm",
+                  "count":8,
+                  "pivot":[{
+                      "field":"language_ssim",
+                      "value":"English",
+                      "count":8}]},
+                {
+                  "field":"format",
+                  "value":"Journal",
+                  "count":7,
+                  "pivot":[{
+                      "field":"language_ssim",
+                      "value":"English",
+                      "count":4},
+                    {
+                      "field":"language_ssim",
+                      "value":"Chinese",
+                      "count":1},
+                    {
+                      "field":"language_ssim",
+                      "value":"Italian",
+                      "count":1},
+                    {
+                      "field":"language_ssim",
+                      "value":"Russian",
+                      "count":1}]},
+                {
+                  "field":"format",
+                  "value":"Serial",
+                  "count":7,
+                  "pivot":[{
+                      "field":"language_ssim",
+                      "value":"English",
+                      "count":7}]},
+                {
+                  "field":"format",
+                  "value":"MusicalScore",
+                  "count":1,
+                  "pivot":[{
+                      "field":"language_ssim",
+                      "value":"English",
+                      "count":1}]},
+                {
+                  "field":"format",
+                  "value":"Photo",
+                  "count":1,
+                  "pivot":[{
+                      "field":"language_ssim",
+                      "value":"English",
+                      "count":1}]}]}}}
+  recorded_at: Thu, 21 Jul 2022 00:36:31 GMT
+- request:
     method: post
     uri: https://www-test.nla.gov.au/getalibrarycard/authenticate.xml/bltest/test
     body:
@@ -23,7 +523,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 20 Jul 2022 22:21:28 GMT
+      - Thu, 21 Jul 2022 00:36:32 GMT
       Content-Type:
       - application/xml; charset=utf-8
       Content-Length:
@@ -31,7 +531,7 @@ http_interactions:
       Connection:
       - keep-alive
       X-Runtime:
-      - '8'
+      - '9'
       Etag:
       - '"83fb2f07ac39d870bd3b6d7482cd666d"'
       Cache-Control:
@@ -43,7 +543,7 @@ http_interactions:
         \   <item name=\"LOON-USER-AUTHENTICATED\" id=\"507706\" voyid=\"378393\"
         message=\"voyager authentication\">true</item>\r\n    <item name=\"LOON-USER-CATALOGUE-GROUP\">MRR</item>
         \   \r\n    <report name=\"count\" value=\"2\"/>\r\n  </itemList>\r\n</response>"
-  recorded_at: Wed, 20 Jul 2022 22:21:28 GMT
+  recorded_at: Thu, 21 Jul 2022 00:36:32 GMT
 - request:
     method: get
     uri: https://www-test.nla.gov.au/getalibrarycard/patrons/details/507706.xml
@@ -65,7 +565,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Wed, 20 Jul 2022 22:21:28 GMT
+      - Thu, 21 Jul 2022 00:36:32 GMT
       Content-Type:
       - application/xml; charset=utf-8
       Content-Length:
@@ -73,7 +573,7 @@ http_interactions:
       Connection:
       - keep-alive
       X-Runtime:
-      - '10'
+      - '14'
       Etag:
       - '"44c4ef449395c529f057ef364151541f"'
       Cache-Control:
@@ -96,1007 +596,7 @@ http_interactions:
         \   <item name=\"comments\">have some comments...</item>\r\n    <item name=\"rejectionReason\"></item>\r\n
         \   <item name=\"researchInterests\">software development</item>\r\n  </itemList>\r\n</response>\r\n
         \ "
-  recorded_at: Wed, 20 Jul 2022 22:21:28 GMT
-- request:
-    method: get
-    uri: http://delong.nla.gov.au:10001/solr/blacklight/select?f.language_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.10.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Security-Policy:
-      - default-src 'none'; base-uri 'none'; connect-src 'self'; form-action 'self';
-        font-src 'self'; frame-ancestors 'none'; img-src 'self'; media-src 'self';
-        style-src 'self' 'unsafe-inline'; script-src 'self'; worker-src 'self';
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Last-Modified:
-      - Wed, 20 Jul 2022 05:05:36 GMT
-      Etag:
-      - '"MTQwMDAwMDAwMDAwMDAwMFNvbHI="'
-      Content-Type:
-      - application/json;charset=utf-8
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: |
-        {
-          "responseHeader":{
-            "status":0,
-            "QTime":4,
-            "params":{
-              "f.subject_ssim.facet.limit":"21",
-              "facet.query":["pub_date_ssim:[2017 TO *]",
-                "pub_date_ssim:[2012 TO *]",
-                "pub_date_ssim:[1997 TO *]"],
-              "f.language_ssim.facet.limit":"11",
-              "facet.field":["format",
-                "{!ex=pub_date_ssim_single}pub_date_ssim",
-                "subject_ssim",
-                "language_ssim",
-                "lc_1letter_ssim",
-                "subject_geo_ssim",
-                "subject_era_ssim"],
-              "facet.pivot":"format,language_ssim",
-              "sort":"score desc, pub_date_si desc, title_si asc",
-              "rows":"10",
-              "facet":"true",
-              "wt":"json"}},
-          "response":{"numFound":91,"start":0,"maxScore":1.0,"numFoundExact":true,"docs":[
-              {
-                "id":"64",
-                "marc_ss":"<record><leader>00901cam a2200265 a 4500</leader><controlfield tag=\"001\">64</controlfield><controlfield tag=\"005\">20180908165111.0</controlfield><controlfield tag=\"008\">020123s2001    weaa     b    100 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23312139</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">1863080899</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187785</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">64</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">363.20994</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"111\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">International School-Based Police Officers Conference,</subfield><subfield code=\"d\">(2001 :</subfield><subfield code=\"c\">Fremantle, W.A.)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Early intervention :</subfield><subfield code=\"b\">does it work? : conference proceedings.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Canning Bridge W.A. :</subfield><subfield code=\"b\">Promaco Conventions,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">229 p. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Fremantle, Western Australia 21-23 February 2001 Fremantle Esplanade Hotel.</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes bibliographical references.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Community policing</subfield><subfield code=\"z\">Australia</subfield><subfield code=\"v\">Congresses.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Police</subfield><subfield code=\"z\">Australia</subfield><subfield code=\"v\">Congresses.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">NLq 363.20994 I61</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "isbn_tsim":["9781863080897",
-                  "1863080899"],
-                "material_type_ssm":["229 p."],
-                "title_tsim":["Early intervention :"],
-                "title_ssm":["Early intervention"],
-                "subtitle_tsim":["does it work? : conference proceedings."],
-                "subtitle_ssm":["does it work? : conference proceedings"],
-                "title_addl_tsim":["Early intervention : does it work? : conference proceedings."],
-                "author_tsim":["International School-Based Police Officers Conference, (2001 : Fremantle, W.A.)"],
-                "author_ssm":["International School-Based Police Officers Conference, (2001 : Fremantle, W.A.)"],
-                "subject_tsim":["Community policing",
-                  "Police"],
-                "subject_addl_tsim":["Australia Congresses."],
-                "subject_ssim":["Community policing",
-                  "Police"],
-                "subject_geo_ssim":["Australia"],
-                "published_ssm":["Canning Bridge W.A."],
-                "pub_date_ssim":["2001"],
-                "_version_":1738735003764785152,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"83",
-                "marc_ss":"<record><leader>01343cam a2200349 a 4500</leader><controlfield tag=\"001\">83</controlfield><controlfield tag=\"005\">20180908165111.0</controlfield><controlfield tag=\"008\">020122s2001    xnaa          000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23311074</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0858713675</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187791</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">83</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"245\" ind1=\"0\" ind2=\"0\"><subfield code=\"a\">Generating jobs :</subfield><subfield code=\"b\">fifteen strategies for reducing unemployment in Australia.</subfield></datafield><datafield tag=\"246\" ind1=\"3\" ind2=\"0\"><subfield code=\"a\">Fifteen strategies for reducing unemployment in Australia</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Strawberry Hills, N.S.W. :</subfield><subfield code=\"b\">Australian Council of Social Service,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">31 p. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">ACOSS paper,</subfield><subfield code=\"x\">1326-7124 ;</subfield><subfield code=\"v\">118</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">ACOSS work wages welfare series ;</subfield><subfield code=\"v\">2nd</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">\"Second paper in the ACOSS work wages welfare series\"--Cover.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">\"October 2001\"</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes bibliography (p. 31).</subfield></datafield><datafield tag=\"505\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Summary -- Part A. Converting economic growth into more jobs -- Part B. Avoiding recessions &amp; easing their effects -- Part C. Reducing unemployment in jobs-poor regions.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Unemployment</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Labor supply</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Job creation</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">Australian Council of Social Service.</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">ACOSS paper ;</subfield><subfield code=\"v\">118.</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">ACOSS work wages welfare series ;</subfield><subfield code=\"v\">2nd.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 361.994 ACO</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "isbn_tsim":["9780858713673",
-                  "0858713675"],
-                "material_type_ssm":["31 p."],
-                "title_tsim":["Generating jobs :"],
-                "title_ssm":["Generating jobs"],
-                "subtitle_tsim":["fifteen strategies for reducing unemployment in Australia."],
-                "subtitle_ssm":["fifteen strategies for reducing unemployment in Australia"],
-                "title_addl_tsim":["Generating jobs : fifteen strategies for reducing unemployment in Australia.",
-                  "Fifteen strategies for reducing unemployment in Australia"],
-                "title_series_tsim":["ACOSS paper, 118",
-                  "ACOSS work wages welfare series ; 2nd"],
-                "author_addl_tsim":["Australian Council of Social Service."],
-                "subject_tsim":["Unemployment",
-                  "Labor supply",
-                  "Job creation"],
-                "subject_addl_tsim":["Australia."],
-                "subject_ssim":["Unemployment",
-                  "Labor supply",
-                  "Job creation"],
-                "subject_geo_ssim":["Australia"],
-                "published_ssm":["Strawberry Hills, N.S.W."],
-                "pub_date_ssim":["2001"],
-                "_version_":1738735003773173760,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"55",
-                "marc_ss":"<record><leader>00753cam a2200229 a 4500</leader><controlfield tag=\"001\">55</controlfield><controlfield tag=\"005\">20180919165117.0</controlfield><controlfield tag=\"008\">020117s2001    weab     b    000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23302860</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187783</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">55</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">333.880994</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"100\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Pyke, L.H.</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Geothermal energy augmentation /</subfield><subfield code=\"c\">L. H. Pyke.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Perth, W.A. :</subfield><subfield code=\"b\">The Author,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[14] leaves :</subfield><subfield code=\"b\">2 maps ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Paper presented to Geoenvironment 2001, second Australian and New Zealand conference Envrironmental geotechnics,  in Newcastle N.S.W. Australia, November 2001.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Geothermal resources</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 333.880994 P995</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "material_type_ssm":["[14] leaves"],
-                "title_tsim":["Geothermal energy augmentation /"],
-                "title_ssm":["Geothermal energy augmentation"],
-                "title_addl_tsim":["Geothermal energy augmentation /"],
-                "author_tsim":["Pyke, L.H."],
-                "author_ssm":["Pyke, L.H."],
-                "subject_tsim":["Geothermal resources"],
-                "subject_addl_tsim":["Australia."],
-                "subject_ssim":["Geothermal resources"],
-                "subject_geo_ssim":["Australia"],
-                "published_ssm":["Perth, W.A."],
-                "pub_date_ssim":["2001"],
-                "_version_":1738735003760590849,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"47",
-                "marc_ss":"<record><leader>01185cam a2200349 a 4500</leader><controlfield tag=\"001\">47</controlfield><controlfield tag=\"005\">20180908165110.0</controlfield><controlfield tag=\"008\">020123s2001    xnaa     b   s001 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23312174</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0734712871</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187781</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">47</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield><subfield code=\"d\">NSL</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at-ne</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">581.99449</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">633.2/02</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"245\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">The glove box guide to growth, flowering and seeding of plants of the NSW rangelands /</subfield><subfield code=\"c\">collated and edited by P.L Milthorpe and M. J Wynne.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Orange, N.S.W. :</subfield><subfield code=\"b\">NSW Agriculture,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ix, 138 p. :</subfield><subfield code=\"b\">col. ill. ;</subfield><subfield code=\"c\">16 x 21 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Cover title.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes index.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Spiral binding.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Logos for Natural Heritage Trust and West 2000 on back cover.</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Bibliography: p. 132.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Botany</subfield><subfield code=\"z\">New South Wales</subfield><subfield code=\"z\">Western Division.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Range plants</subfield><subfield code=\"z\">New South Wales</subfield><subfield code=\"z\">Western Division.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Rangelands</subfield><subfield code=\"z\">New South Wales</subfield><subfield code=\"z\">Western Division.</subfield></datafield><datafield tag=\"700\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Wynne, Michael J.</subfield><subfield code=\"q\">(Michael James)</subfield></datafield><datafield tag=\"700\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Milthorpe, Peter L.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">NSW Agriculture.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">N 581.99449 G565</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "isbn_tsim":["9780734712875",
-                  "0734712871"],
-                "material_type_ssm":["ix, 138 p."],
-                "title_tsim":["The glove box guide to growth, flowering and seeding of plants of the NSW rangelands /"],
-                "title_ssm":["The glove box guide to growth, flowering and seeding of plants of the NSW rangelands"],
-                "title_addl_tsim":["The glove box guide to growth, flowering and seeding of plants of the NSW rangelands /"],
-                "author_addl_tsim":["Wynne, Michael J. (Michael James)",
-                  "Milthorpe, Peter L.",
-                  "NSW Agriculture."],
-                "subject_tsim":["Botany",
-                  "Range plants",
-                  "Rangelands"],
-                "subject_addl_tsim":["New South Wales Western Division."],
-                "subject_ssim":["Botany",
-                  "Range plants",
-                  "Rangelands"],
-                "subject_geo_ssim":["New South Wales",
-                  "Western Division"],
-                "published_ssm":["Orange, N.S.W."],
-                "pub_date_ssim":["2001"],
-                "_version_":1738735003756396544,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"23",
-                "marc_ss":"<record><leader>00991cam a2200313 a 4500</leader><controlfield tag=\"001\">23</controlfield><controlfield tag=\"005\">20180908165110.0</controlfield><controlfield tag=\"008\">011227s2001    ph a          001 0 tgl  </controlfield><datafield tag=\"010\" ind1=\" \" ind2=\" \"><subfield code=\"a\">2001307719</subfield></datafield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23293552</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">971916705X</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187775</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">23</subfield></datafield><datafield tag=\"037\" ind1=\" \" ind2=\" \"><subfield code=\"b\">Library of Congress -- Jakarta Overseas Office</subfield><subfield code=\"c\">P200.00</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">DLC</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">DLC</subfield><subfield code=\"d\">ANL</subfield></datafield><datafield tag=\"041\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">tgl</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">lcode</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">a-ph---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">959.9046</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"245\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">Ang makasaysayang People Power Part 2 sa mga pahina ng:</subfield><subfield code=\"b\">Pinoy times special edition issues 1-16.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[Manila] :</subfield><subfield code=\"b\">Sulong Pinoy Times,</subfield><subfield code=\"c\">c2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">244 p. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">28 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes index.</subfield></datafield><datafield tag=\"520\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Philippines People Power to topple Joseph Estrada from his presidency.</subfield></datafield><datafield tag=\"546\" ind1=\" \" ind2=\" \"><subfield code=\"a\">In Tagalog.</subfield></datafield><datafield tag=\"651\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Philippines</subfield><subfield code=\"x\">History</subfield><subfield code=\"y\">Revolution, 1986.</subfield></datafield><datafield tag=\"651\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Philippines</subfield><subfield code=\"x\">Politics and government.</subfield></datafield><datafield tag=\"730\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Pinoy times.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">YY 959.9046 M235</subfield></datafield></record>",
-                "language_ssim":["Tagalog"],
-                "format":["Book"],
-                "isbn_tsim":["9789719167051",
-                  "971916705X"],
-                "material_type_ssm":["244 p."],
-                "title_tsim":["Ang makasaysayang People Power Part 2 sa mga pahina ng:"],
-                "title_ssm":["Ang makasaysayang People Power Part 2 sa mga pahina ng"],
-                "subtitle_tsim":["Pinoy times special edition issues 1-16."],
-                "subtitle_ssm":["Pinoy times special edition issues 1-16."],
-                "title_addl_tsim":["Ang makasaysayang People Power Part 2 sa mga pahina ng: Pinoy times special edition issues 1-16."],
-                "title_added_entry_tsim":["Pinoy times."],
-                "subject_tsim":["Philippines"],
-                "subject_addl_tsim":["History Revolution, 1986.",
-                  "Politics and government."],
-                "subject_era_ssim":["Revolution, 1986"],
-                "subject_geo_ssim":["Philippines"],
-                "published_ssm":["Manila"],
-                "pub_date_ssim":["2001"],
-                "_version_":1738735003714453504,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"14",
-                "marc_ss":"<record><leader>00807cam a2200253 a 4500</leader><controlfield tag=\"001\">14</controlfield><controlfield tag=\"005\">20180908165110.0</controlfield><controlfield tag=\"008\">010827s2000    vra           000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">22932583</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187773</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">14</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">XDHM</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">XDHM</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">613.70994</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Public health practice in Australia today :</subfield><subfield code=\"b\">a statement of core functions.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Melbourne :</subfield><subfield code=\"b\">National Public Health Partnership,</subfield><subfield code=\"c\">2000.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[7] p. ;</subfield><subfield code=\"c\">22 cm.</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Public health planning and practice improvement</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Cover title.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Public health</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">National Public Health Partnership (Australia)</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Public health planning and practice improvement.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">NLq 613.70994 P976</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "material_type_ssm":["[7] p."],
-                "title_tsim":["Public health practice in Australia today :"],
-                "title_ssm":["Public health practice in Australia today"],
-                "subtitle_tsim":["a statement of core functions."],
-                "subtitle_ssm":["a statement of core functions"],
-                "title_addl_tsim":["Public health practice in Australia today : a statement of core functions."],
-                "title_series_tsim":["Public health planning and practice improvement"],
-                "author_addl_tsim":["National Public Health Partnership (Australia)"],
-                "subject_tsim":["Public health"],
-                "subject_addl_tsim":["Australia."],
-                "subject_ssim":["Public health"],
-                "subject_geo_ssim":["Australia"],
-                "published_ssm":["Melbourne"],
-                "pub_date_ssim":["2000"],
-                "_version_":1738735003690336256,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"38",
-                "marc_ss":"<record><leader>00842cas a2200253 a 4500</leader><controlfield tag=\"001\">38</controlfield><controlfield tag=\"005\">20180808155431.0</controlfield><controlfield tag=\"008\">970908c19979999vra x         0   a0eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">13292028</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2467765</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">38</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL-S</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANL-S</subfield><subfield code=\"d\">ANL-S</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">624.1821</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"130\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Technical note (BHP Steel. Structural Steel Development Group)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Technical note /</subfield><subfield code=\"c\">BHP Structural Steel Development Group.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[Melbourne] :</subfield><subfield code=\"b\">the Group,</subfield><subfield code=\"c\">1997-</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">v. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"362\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Issue 1 (Feb. 1997)-</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Caption title.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Steel, Structural</subfield><subfield code=\"v\">Periodicals.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Structural engineering</subfield><subfield code=\"x\">Periodicals.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">BHP Steel International Group.</subfield><subfield code=\"b\">Structural Steel Development Group.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 624.1821 TEC</subfield><subfield code=\"d\">Issue 1</subfield><subfield code=\"e\">(Feb. 1997)</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Serial"],
-                "material_type_ssm":["v."],
-                "title_tsim":["Technical note /"],
-                "title_ssm":["Technical note"],
-                "title_addl_tsim":["Technical note (BHP Steel. Structural Steel Development Group)",
-                  "Technical note /"],
-                "author_addl_tsim":["BHP Steel International Group. Structural Steel Development Group."],
-                "subject_tsim":["Steel, Structural",
-                  "Structural engineering"],
-                "subject_addl_tsim":["Periodicals."],
-                "subject_ssim":["Steel, Structural",
-                  "Structural engineering"],
-                "published_ssm":["Melbourne"],
-                "pub_date_ssim":["1997"],
-                "_version_":1738735003727036418,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"46",
-                "marc_ss":"<record><leader>00854cam a2200289 a 4500</leader><controlfield tag=\"001\">46</controlfield><controlfield tag=\"005\">20180905072305.0</controlfield><controlfield tag=\"008\">970320s1997    xna           001 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">13101327</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0455214905</subfield><subfield code=\"q\">paperback</subfield><subfield code=\"c\">$70.00</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0455214891</subfield><subfield code=\"c\">$100.00</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2467767</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">46</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANB:REV</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANB:REV</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at-ne</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">346.944052</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"084\" ind1=\" \" ind2=\" \"><subfield code=\"a\">KN120.K2 N44 C47 1997</subfield></datafield><datafield tag=\"100\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Certoma, G. L.</subfield><subfield code=\"q\">(Giuseppe Leroy)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"4\"><subfield code=\"a\">The law of succession in New South Wales /</subfield><subfield code=\"c\">by G.L. Certoma.</subfield></datafield><datafield tag=\"250\" ind1=\" \" ind2=\" \"><subfield code=\"a\">3rd ed.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Sydney :</subfield><subfield code=\"b\">LBC Information Services,</subfield><subfield code=\"c\">1997.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">lviii, 329 p. ;</subfield><subfield code=\"c\">25 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes index.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Previous ed.: 1992.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Inheritance and succession</subfield><subfield code=\"z\">New South Wales.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">NL 346.944052 C418-3</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "isbn_tsim":["9780455214900",
-                  "0455214905",
-                  "9780455214894",
-                  "0455214891"],
-                "material_type_ssm":["lviii, 329 p."],
-                "title_tsim":["The law of succession in New South Wales /"],
-                "title_ssm":["The law of succession in New South Wales"],
-                "title_addl_tsim":["The law of succession in New South Wales /"],
-                "author_tsim":["Certoma, G. L. (Giuseppe Leroy)"],
-                "author_ssm":["Certoma, G. L. (Giuseppe Leroy)"],
-                "subject_tsim":["Inheritance and succession"],
-                "subject_addl_tsim":["New South Wales."],
-                "subject_ssim":["Inheritance and succession"],
-                "subject_geo_ssim":["New South Wales"],
-                "published_ssm":["Sydney"],
-                "pub_date_ssim":["1997"],
-                "_version_":1738735003753250816,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"54",
-                "marc_ss":"<record><leader>00983cas a2200289 a 4500</leader><controlfield tag=\"001\">54</controlfield><controlfield tag=\"005\">20180808155449.0</controlfield><controlfield tag=\"008\">970710d19962001tmaqr p       0   a0eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">13203552</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2467769</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">54</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL-S</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANL-S</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at-tm</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">004.0711946</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"130\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Info (Hobart, Tas.)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Info :</subfield><subfield code=\"b\">Division of Information Services magazine.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Hobart :</subfield><subfield code=\"b\">Division of Information Services, University of Tasmania,</subfield><subfield code=\"c\">1996-</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">v. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"362\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Issue no. 90 (Mar. 1996)-</subfield></datafield><datafield tag=\"362\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Ceased with no. 105 (Apr. 2001) issue.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Cover title.</subfield></datafield><datafield tag=\"610\" ind1=\"2\" ind2=\"0\"><subfield code=\"a\">University of Tasmania.</subfield><subfield code=\"b\">Division of Information Services</subfield><subfield code=\"x\">Periodicals.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Computers</subfield><subfield code=\"z\">Tasmania</subfield><subfield code=\"x\">Periodicals.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">University of Tasmania.</subfield><subfield code=\"b\">Division of Information Services.</subfield></datafield><datafield tag=\"780\" ind1=\"0\" ind2=\"0\"><subfield code=\"t\">UTAS</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 001.605 TAS</subfield><subfield code=\"d\">Issue no. 90-no. 104</subfield><subfield code=\"e\">(Mar. 1996-Oct. 2000)</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Journal"],
-                "material_type_ssm":["v."],
-                "title_tsim":["Info :"],
-                "title_ssm":["Info"],
-                "subtitle_tsim":["Division of Information Services magazine."],
-                "subtitle_ssm":["Division of Information Services magazine"],
-                "title_addl_tsim":["Info (Hobart, Tas.)",
-                  "Info : Division of Information Services magazine."],
-                "author_addl_tsim":["University of Tasmania. Division of Information Services."],
-                "subject_tsim":["University of Tasmania. Division of Information Services",
-                  "Computers"],
-                "subject_addl_tsim":["Periodicals.",
-                  "Tasmania Periodicals."],
-                "subject_ssim":["University of Tasmania. Division of Information Services",
-                  "Computers"],
-                "subject_geo_ssim":["Tasmania"],
-                "published_ssm":["Hobart"],
-                "pub_date_ssim":["1996"],
-                "_version_":1738735003760590848,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"78",
-                "marc_ss":"<record><leader>01186cam a2200313 a 4500</leader><controlfield tag=\"001\">78</controlfield><controlfield tag=\"005\">20180904183603.0</controlfield><controlfield tag=\"008\">940113s1993    dcu           000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">10637958</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2107769</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">78</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANL</subfield><subfield code=\"d\">ANL:NR</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ee-----</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">339.5220947</subfield><subfield code=\"2\">20</subfield></datafield><datafield tag=\"100\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Milanovic, Branko.</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Cash social transfers, direct taxes, and income distribution in late socialism /</subfield><subfield code=\"c\">Branko Milanovic.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Washington, D.C. :</subfield><subfield code=\"b\">Policy Research Dept., World Bank,</subfield><subfield code=\"c\">1993.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">33 p. ;</subfield><subfield code=\"c\">28 cm.</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Policy research working papers ;</subfield><subfield code=\"v\">WPS 1176.</subfield><subfield code=\"a\">Transition and macro-adjustment</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">\"September 1993.\"</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Include bibliographical references (p. 31-33)</subfield></datafield><datafield tag=\"540\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Copyright restrictions apply.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Income distribution</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Transfer payments</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Taxation</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Social service</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">World Bank.</subfield><subfield code=\"b\">Policy Research Department</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Policy research working papers ;</subfield><subfield code=\"v\">WPS 1176.</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Policy research working papers.</subfield><subfield code=\"p\">Transition and macro-adjustment.</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "material_type_ssm":["33 p."],
-                "title_tsim":["Cash social transfers, direct taxes, and income distribution in late socialism /"],
-                "title_ssm":["Cash social transfers, direct taxes, and income distribution in late socialism"],
-                "title_addl_tsim":["Cash social transfers, direct taxes, and income distribution in late socialism /"],
-                "title_series_tsim":["Policy research working papers ; WPS 1176. Transition and macro-adjustment"],
-                "author_tsim":["Milanovic, Branko."],
-                "author_addl_tsim":["World Bank. Policy Research Department"],
-                "author_ssm":["Milanovic, Branko."],
-                "subject_tsim":["Income distribution",
-                  "Transfer payments",
-                  "Taxation",
-                  "Social service"],
-                "subject_addl_tsim":["Europe, Eastern."],
-                "subject_ssim":["Income distribution",
-                  "Transfer payments",
-                  "Taxation",
-                  "Social service"],
-                "subject_geo_ssim":["Europe, Eastern"],
-                "published_ssm":["Washington, D.C."],
-                "pub_date_ssim":["1993"],
-                "_version_":1738735003771076608,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0}]
-          },
-          "facet_counts":{
-            "facet_queries":{
-              "pub_date_ssim:[2017 TO *]":0,
-              "pub_date_ssim:[2012 TO *]":0,
-              "pub_date_ssim:[1997 TO *]":8},
-            "facet_fields":{
-              "format":[
-                "Book",67,
-                "Microfilm",8,
-                "Journal",7,
-                "Serial",7,
-                "MusicalScore",1,
-                "Photo",1],
-              "pub_date_ssim":[
-                "1977",7,
-                "1986",6,
-                "1980",5,
-                "2001",5,
-                "1935",3,
-                "1936",3,
-                "1976",3,
-                "1979",3,
-                "1981",3,
-                "1984",3],
-              "subject_ssim":[
-                "Geography",2,
-                "Tiwi language (Melville and Bathurst Islands)",2,
-                "Voyages and travels",2,
-                "Achard, Marcel, 1899-",1,
-                "Adelaide. Town planning",1,
-                "African languages",1,
-                "Agricultural industries. Policies. Australia",1,
-                "Agriculture and state",1,
-                "Almanacs, American",1,
-                "Amateur theater",1,
-                "Antisemitism",1,
-                "Archaeology",1,
-                "Astronomy",1,
-                "Australia. Department of Community Services. Victorian Office. Disability Services Section",1,
-                "Australian",1,
-                "Bai, Chongxi, 1893-1966",1,
-                "Banks and banking",1,
-                "Bible",1,
-                "Bible stories, English",1,
-                "Bible stories, Pitjantjatjara",1,
-                "Botany",1],
-              "language_ssim":[
-                "English",49,
-                "French",15,
-                "Chinese",13,
-                "Russian",5,
-                "Australian languages",3,
-                "German",2,
-                "Indonesian",2,
-                "Spanish",2,
-                "Czech",1,
-                "Italian",1,
-                "Latin",1],
-              "lc_1letter_ssim":[
-                "P - Language & Literature",7,
-                "D - World History",5,
-                "H - Social Sciences",3,
-                "Q - Science",3,
-                "C - Historical Sciences (Archaeology, Genealogy)",2,
-                "B - Philosophy, Psychology, Religion",1,
-                "J - Political Science",1,
-                "K - Law",1],
-              "subject_geo_ssim":[
-                "Australia",9,
-                "New South Wales",4,
-                "United States",3,
-                "Africa",2,
-                "China",2,
-                "Europe, Eastern",2,
-                "Oceania",2,
-                "South America",2,
-                "Tasmania",2,
-                "Victoria",2],
-              "subject_era_ssim":[
-                "1769",1,
-                "1809-1812",1,
-                "20th century",1,
-                "Revolution, 1954-1962",1,
-                "Revolution, 1986",1]},
-            "facet_ranges":{},
-            "facet_intervals":{},
-            "facet_heatmaps":{},
-            "facet_pivot":{
-              "format,language_ssim":[{
-                  "field":"format",
-                  "value":"Book",
-                  "count":67,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":28},
-                    {
-                      "field":"language_ssim",
-                      "value":"French",
-                      "count":15},
-                    {
-                      "field":"language_ssim",
-                      "value":"Chinese",
-                      "count":12},
-                    {
-                      "field":"language_ssim",
-                      "value":"Russian",
-                      "count":4},
-                    {
-                      "field":"language_ssim",
-                      "value":"Australian languages",
-                      "count":3},
-                    {
-                      "field":"language_ssim",
-                      "value":"German",
-                      "count":2},
-                    {
-                      "field":"language_ssim",
-                      "value":"Indonesian",
-                      "count":2},
-                    {
-                      "field":"language_ssim",
-                      "value":"Spanish",
-                      "count":2},
-                    {
-                      "field":"language_ssim",
-                      "value":"Czech",
-                      "count":1},
-                    {
-                      "field":"language_ssim",
-                      "value":"Latin",
-                      "count":1},
-                    {
-                      "field":"language_ssim",
-                      "value":"Tagalog",
-                      "count":1}]},
-                {
-                  "field":"format",
-                  "value":"Microfilm",
-                  "count":8,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":8}]},
-                {
-                  "field":"format",
-                  "value":"Journal",
-                  "count":7,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":4},
-                    {
-                      "field":"language_ssim",
-                      "value":"Chinese",
-                      "count":1},
-                    {
-                      "field":"language_ssim",
-                      "value":"Italian",
-                      "count":1},
-                    {
-                      "field":"language_ssim",
-                      "value":"Russian",
-                      "count":1}]},
-                {
-                  "field":"format",
-                  "value":"Serial",
-                  "count":7,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":7}]},
-                {
-                  "field":"format",
-                  "value":"MusicalScore",
-                  "count":1,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":1}]},
-                {
-                  "field":"format",
-                  "value":"Photo",
-                  "count":1,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":1}]}]}}}
-  recorded_at: Wed, 20 Jul 2022 22:21:28 GMT
-- request:
-    method: get
-    uri: http://delong.nla.gov.au:10001/solr/blacklight/select?f.language_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v1.10.0
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      Content-Security-Policy:
-      - default-src 'none'; base-uri 'none'; connect-src 'self'; form-action 'self';
-        font-src 'self'; frame-ancestors 'none'; img-src 'self'; media-src 'self';
-        style-src 'self' 'unsafe-inline'; script-src 'self'; worker-src 'self';
-      X-Content-Type-Options:
-      - nosniff
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      Last-Modified:
-      - Wed, 20 Jul 2022 05:05:36 GMT
-      Etag:
-      - '"MTQwMDAwMDAwMDAwMDAwMFNvbHI="'
-      Content-Type:
-      - application/json;charset=utf-8
-      Transfer-Encoding:
-      - chunked
-    body:
-      encoding: UTF-8
-      string: |
-        {
-          "responseHeader":{
-            "status":0,
-            "QTime":4,
-            "params":{
-              "f.subject_ssim.facet.limit":"21",
-              "facet.query":["pub_date_ssim:[2017 TO *]",
-                "pub_date_ssim:[2012 TO *]",
-                "pub_date_ssim:[1997 TO *]"],
-              "f.language_ssim.facet.limit":"11",
-              "facet.field":["format",
-                "{!ex=pub_date_ssim_single}pub_date_ssim",
-                "subject_ssim",
-                "language_ssim",
-                "lc_1letter_ssim",
-                "subject_geo_ssim",
-                "subject_era_ssim"],
-              "facet.pivot":"format,language_ssim",
-              "sort":"score desc, pub_date_si desc, title_si asc",
-              "rows":"10",
-              "facet":"true",
-              "wt":"json"}},
-          "response":{"numFound":91,"start":0,"maxScore":1.0,"numFoundExact":true,"docs":[
-              {
-                "id":"64",
-                "marc_ss":"<record><leader>00901cam a2200265 a 4500</leader><controlfield tag=\"001\">64</controlfield><controlfield tag=\"005\">20180908165111.0</controlfield><controlfield tag=\"008\">020123s2001    weaa     b    100 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23312139</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">1863080899</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187785</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">64</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">363.20994</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"111\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">International School-Based Police Officers Conference,</subfield><subfield code=\"d\">(2001 :</subfield><subfield code=\"c\">Fremantle, W.A.)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Early intervention :</subfield><subfield code=\"b\">does it work? : conference proceedings.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Canning Bridge W.A. :</subfield><subfield code=\"b\">Promaco Conventions,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">229 p. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Fremantle, Western Australia 21-23 February 2001 Fremantle Esplanade Hotel.</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes bibliographical references.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Community policing</subfield><subfield code=\"z\">Australia</subfield><subfield code=\"v\">Congresses.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Police</subfield><subfield code=\"z\">Australia</subfield><subfield code=\"v\">Congresses.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">NLq 363.20994 I61</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "isbn_tsim":["9781863080897",
-                  "1863080899"],
-                "material_type_ssm":["229 p."],
-                "title_tsim":["Early intervention :"],
-                "title_ssm":["Early intervention"],
-                "subtitle_tsim":["does it work? : conference proceedings."],
-                "subtitle_ssm":["does it work? : conference proceedings"],
-                "title_addl_tsim":["Early intervention : does it work? : conference proceedings."],
-                "author_tsim":["International School-Based Police Officers Conference, (2001 : Fremantle, W.A.)"],
-                "author_ssm":["International School-Based Police Officers Conference, (2001 : Fremantle, W.A.)"],
-                "subject_tsim":["Community policing",
-                  "Police"],
-                "subject_addl_tsim":["Australia Congresses."],
-                "subject_ssim":["Community policing",
-                  "Police"],
-                "subject_geo_ssim":["Australia"],
-                "published_ssm":["Canning Bridge W.A."],
-                "pub_date_ssim":["2001"],
-                "_version_":1738735003764785152,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"83",
-                "marc_ss":"<record><leader>01343cam a2200349 a 4500</leader><controlfield tag=\"001\">83</controlfield><controlfield tag=\"005\">20180908165111.0</controlfield><controlfield tag=\"008\">020122s2001    xnaa          000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23311074</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0858713675</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187791</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">83</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"245\" ind1=\"0\" ind2=\"0\"><subfield code=\"a\">Generating jobs :</subfield><subfield code=\"b\">fifteen strategies for reducing unemployment in Australia.</subfield></datafield><datafield tag=\"246\" ind1=\"3\" ind2=\"0\"><subfield code=\"a\">Fifteen strategies for reducing unemployment in Australia</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Strawberry Hills, N.S.W. :</subfield><subfield code=\"b\">Australian Council of Social Service,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">31 p. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">ACOSS paper,</subfield><subfield code=\"x\">1326-7124 ;</subfield><subfield code=\"v\">118</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">ACOSS work wages welfare series ;</subfield><subfield code=\"v\">2nd</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">\"Second paper in the ACOSS work wages welfare series\"--Cover.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">\"October 2001\"</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes bibliography (p. 31).</subfield></datafield><datafield tag=\"505\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Summary -- Part A. Converting economic growth into more jobs -- Part B. Avoiding recessions &amp; easing their effects -- Part C. Reducing unemployment in jobs-poor regions.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Unemployment</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Labor supply</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Job creation</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">Australian Council of Social Service.</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">ACOSS paper ;</subfield><subfield code=\"v\">118.</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">ACOSS work wages welfare series ;</subfield><subfield code=\"v\">2nd.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 361.994 ACO</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "isbn_tsim":["9780858713673",
-                  "0858713675"],
-                "material_type_ssm":["31 p."],
-                "title_tsim":["Generating jobs :"],
-                "title_ssm":["Generating jobs"],
-                "subtitle_tsim":["fifteen strategies for reducing unemployment in Australia."],
-                "subtitle_ssm":["fifteen strategies for reducing unemployment in Australia"],
-                "title_addl_tsim":["Generating jobs : fifteen strategies for reducing unemployment in Australia.",
-                  "Fifteen strategies for reducing unemployment in Australia"],
-                "title_series_tsim":["ACOSS paper, 118",
-                  "ACOSS work wages welfare series ; 2nd"],
-                "author_addl_tsim":["Australian Council of Social Service."],
-                "subject_tsim":["Unemployment",
-                  "Labor supply",
-                  "Job creation"],
-                "subject_addl_tsim":["Australia."],
-                "subject_ssim":["Unemployment",
-                  "Labor supply",
-                  "Job creation"],
-                "subject_geo_ssim":["Australia"],
-                "published_ssm":["Strawberry Hills, N.S.W."],
-                "pub_date_ssim":["2001"],
-                "_version_":1738735003773173760,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"55",
-                "marc_ss":"<record><leader>00753cam a2200229 a 4500</leader><controlfield tag=\"001\">55</controlfield><controlfield tag=\"005\">20180919165117.0</controlfield><controlfield tag=\"008\">020117s2001    weab     b    000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23302860</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187783</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">55</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">333.880994</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"100\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Pyke, L.H.</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Geothermal energy augmentation /</subfield><subfield code=\"c\">L. H. Pyke.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Perth, W.A. :</subfield><subfield code=\"b\">The Author,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[14] leaves :</subfield><subfield code=\"b\">2 maps ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Paper presented to Geoenvironment 2001, second Australian and New Zealand conference Envrironmental geotechnics,  in Newcastle N.S.W. Australia, November 2001.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Geothermal resources</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 333.880994 P995</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "material_type_ssm":["[14] leaves"],
-                "title_tsim":["Geothermal energy augmentation /"],
-                "title_ssm":["Geothermal energy augmentation"],
-                "title_addl_tsim":["Geothermal energy augmentation /"],
-                "author_tsim":["Pyke, L.H."],
-                "author_ssm":["Pyke, L.H."],
-                "subject_tsim":["Geothermal resources"],
-                "subject_addl_tsim":["Australia."],
-                "subject_ssim":["Geothermal resources"],
-                "subject_geo_ssim":["Australia"],
-                "published_ssm":["Perth, W.A."],
-                "pub_date_ssim":["2001"],
-                "_version_":1738735003760590849,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"47",
-                "marc_ss":"<record><leader>01185cam a2200349 a 4500</leader><controlfield tag=\"001\">47</controlfield><controlfield tag=\"005\">20180908165110.0</controlfield><controlfield tag=\"008\">020123s2001    xnaa     b   s001 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23312174</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0734712871</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187781</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">47</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield><subfield code=\"d\">NSL</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at-ne</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">581.99449</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">633.2/02</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"245\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">The glove box guide to growth, flowering and seeding of plants of the NSW rangelands /</subfield><subfield code=\"c\">collated and edited by P.L Milthorpe and M. J Wynne.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Orange, N.S.W. :</subfield><subfield code=\"b\">NSW Agriculture,</subfield><subfield code=\"c\">2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ix, 138 p. :</subfield><subfield code=\"b\">col. ill. ;</subfield><subfield code=\"c\">16 x 21 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Cover title.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes index.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Spiral binding.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Logos for Natural Heritage Trust and West 2000 on back cover.</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Bibliography: p. 132.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Botany</subfield><subfield code=\"z\">New South Wales</subfield><subfield code=\"z\">Western Division.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Range plants</subfield><subfield code=\"z\">New South Wales</subfield><subfield code=\"z\">Western Division.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Rangelands</subfield><subfield code=\"z\">New South Wales</subfield><subfield code=\"z\">Western Division.</subfield></datafield><datafield tag=\"700\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Wynne, Michael J.</subfield><subfield code=\"q\">(Michael James)</subfield></datafield><datafield tag=\"700\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Milthorpe, Peter L.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">NSW Agriculture.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">N 581.99449 G565</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "isbn_tsim":["9780734712875",
-                  "0734712871"],
-                "material_type_ssm":["ix, 138 p."],
-                "title_tsim":["The glove box guide to growth, flowering and seeding of plants of the NSW rangelands /"],
-                "title_ssm":["The glove box guide to growth, flowering and seeding of plants of the NSW rangelands"],
-                "title_addl_tsim":["The glove box guide to growth, flowering and seeding of plants of the NSW rangelands /"],
-                "author_addl_tsim":["Wynne, Michael J. (Michael James)",
-                  "Milthorpe, Peter L.",
-                  "NSW Agriculture."],
-                "subject_tsim":["Botany",
-                  "Range plants",
-                  "Rangelands"],
-                "subject_addl_tsim":["New South Wales Western Division."],
-                "subject_ssim":["Botany",
-                  "Range plants",
-                  "Rangelands"],
-                "subject_geo_ssim":["New South Wales",
-                  "Western Division"],
-                "published_ssm":["Orange, N.S.W."],
-                "pub_date_ssim":["2001"],
-                "_version_":1738735003756396544,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"23",
-                "marc_ss":"<record><leader>00991cam a2200313 a 4500</leader><controlfield tag=\"001\">23</controlfield><controlfield tag=\"005\">20180908165110.0</controlfield><controlfield tag=\"008\">011227s2001    ph a          001 0 tgl  </controlfield><datafield tag=\"010\" ind1=\" \" ind2=\" \"><subfield code=\"a\">2001307719</subfield></datafield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">23293552</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">971916705X</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187775</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">23</subfield></datafield><datafield tag=\"037\" ind1=\" \" ind2=\" \"><subfield code=\"b\">Library of Congress -- Jakarta Overseas Office</subfield><subfield code=\"c\">P200.00</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">DLC</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">DLC</subfield><subfield code=\"d\">ANL</subfield></datafield><datafield tag=\"041\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">tgl</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">lcode</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">a-ph---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">959.9046</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"245\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">Ang makasaysayang People Power Part 2 sa mga pahina ng:</subfield><subfield code=\"b\">Pinoy times special edition issues 1-16.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[Manila] :</subfield><subfield code=\"b\">Sulong Pinoy Times,</subfield><subfield code=\"c\">c2001.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">244 p. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">28 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes index.</subfield></datafield><datafield tag=\"520\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Philippines People Power to topple Joseph Estrada from his presidency.</subfield></datafield><datafield tag=\"546\" ind1=\" \" ind2=\" \"><subfield code=\"a\">In Tagalog.</subfield></datafield><datafield tag=\"651\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Philippines</subfield><subfield code=\"x\">History</subfield><subfield code=\"y\">Revolution, 1986.</subfield></datafield><datafield tag=\"651\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Philippines</subfield><subfield code=\"x\">Politics and government.</subfield></datafield><datafield tag=\"730\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Pinoy times.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">YY 959.9046 M235</subfield></datafield></record>",
-                "language_ssim":["Tagalog"],
-                "format":["Book"],
-                "isbn_tsim":["9789719167051",
-                  "971916705X"],
-                "material_type_ssm":["244 p."],
-                "title_tsim":["Ang makasaysayang People Power Part 2 sa mga pahina ng:"],
-                "title_ssm":["Ang makasaysayang People Power Part 2 sa mga pahina ng"],
-                "subtitle_tsim":["Pinoy times special edition issues 1-16."],
-                "subtitle_ssm":["Pinoy times special edition issues 1-16."],
-                "title_addl_tsim":["Ang makasaysayang People Power Part 2 sa mga pahina ng: Pinoy times special edition issues 1-16."],
-                "title_added_entry_tsim":["Pinoy times."],
-                "subject_tsim":["Philippines"],
-                "subject_addl_tsim":["History Revolution, 1986.",
-                  "Politics and government."],
-                "subject_era_ssim":["Revolution, 1986"],
-                "subject_geo_ssim":["Philippines"],
-                "published_ssm":["Manila"],
-                "pub_date_ssim":["2001"],
-                "_version_":1738735003714453504,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"14",
-                "marc_ss":"<record><leader>00807cam a2200253 a 4500</leader><controlfield tag=\"001\">14</controlfield><controlfield tag=\"005\">20180908165110.0</controlfield><controlfield tag=\"008\">010827s2000    vra           000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">22932583</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)3187773</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">14</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">XDHM</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">XDHM</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at---</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">613.70994</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Public health practice in Australia today :</subfield><subfield code=\"b\">a statement of core functions.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Melbourne :</subfield><subfield code=\"b\">National Public Health Partnership,</subfield><subfield code=\"c\">2000.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[7] p. ;</subfield><subfield code=\"c\">22 cm.</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Public health planning and practice improvement</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Cover title.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Public health</subfield><subfield code=\"z\">Australia.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">National Public Health Partnership (Australia)</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Public health planning and practice improvement.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">NLq 613.70994 P976</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "material_type_ssm":["[7] p."],
-                "title_tsim":["Public health practice in Australia today :"],
-                "title_ssm":["Public health practice in Australia today"],
-                "subtitle_tsim":["a statement of core functions."],
-                "subtitle_ssm":["a statement of core functions"],
-                "title_addl_tsim":["Public health practice in Australia today : a statement of core functions."],
-                "title_series_tsim":["Public health planning and practice improvement"],
-                "author_addl_tsim":["National Public Health Partnership (Australia)"],
-                "subject_tsim":["Public health"],
-                "subject_addl_tsim":["Australia."],
-                "subject_ssim":["Public health"],
-                "subject_geo_ssim":["Australia"],
-                "published_ssm":["Melbourne"],
-                "pub_date_ssim":["2000"],
-                "_version_":1738735003690336256,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"38",
-                "marc_ss":"<record><leader>00842cas a2200253 a 4500</leader><controlfield tag=\"001\">38</controlfield><controlfield tag=\"005\">20180808155431.0</controlfield><controlfield tag=\"008\">970908c19979999vra x         0   a0eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">13292028</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2467765</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">38</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL-S</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANL-S</subfield><subfield code=\"d\">ANL-S</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">624.1821</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"130\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Technical note (BHP Steel. Structural Steel Development Group)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Technical note /</subfield><subfield code=\"c\">BHP Structural Steel Development Group.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">[Melbourne] :</subfield><subfield code=\"b\">the Group,</subfield><subfield code=\"c\">1997-</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">v. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"362\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Issue 1 (Feb. 1997)-</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Caption title.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Steel, Structural</subfield><subfield code=\"v\">Periodicals.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Structural engineering</subfield><subfield code=\"x\">Periodicals.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">BHP Steel International Group.</subfield><subfield code=\"b\">Structural Steel Development Group.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 624.1821 TEC</subfield><subfield code=\"d\">Issue 1</subfield><subfield code=\"e\">(Feb. 1997)</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Serial"],
-                "material_type_ssm":["v."],
-                "title_tsim":["Technical note /"],
-                "title_ssm":["Technical note"],
-                "title_addl_tsim":["Technical note (BHP Steel. Structural Steel Development Group)",
-                  "Technical note /"],
-                "author_addl_tsim":["BHP Steel International Group. Structural Steel Development Group."],
-                "subject_tsim":["Steel, Structural",
-                  "Structural engineering"],
-                "subject_addl_tsim":["Periodicals."],
-                "subject_ssim":["Steel, Structural",
-                  "Structural engineering"],
-                "published_ssm":["Melbourne"],
-                "pub_date_ssim":["1997"],
-                "_version_":1738735003727036418,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"46",
-                "marc_ss":"<record><leader>00854cam a2200289 a 4500</leader><controlfield tag=\"001\">46</controlfield><controlfield tag=\"005\">20180905072305.0</controlfield><controlfield tag=\"008\">970320s1997    xna           001 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">13101327</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0455214905</subfield><subfield code=\"q\">paperback</subfield><subfield code=\"c\">$70.00</subfield></datafield><datafield tag=\"020\" ind1=\" \" ind2=\" \"><subfield code=\"a\">0455214891</subfield><subfield code=\"c\">$100.00</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2467767</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">46</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANB:REV</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANB:REV</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at-ne</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">346.944052</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"084\" ind1=\" \" ind2=\" \"><subfield code=\"a\">KN120.K2 N44 C47 1997</subfield></datafield><datafield tag=\"100\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Certoma, G. L.</subfield><subfield code=\"q\">(Giuseppe Leroy)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"4\"><subfield code=\"a\">The law of succession in New South Wales /</subfield><subfield code=\"c\">by G.L. Certoma.</subfield></datafield><datafield tag=\"250\" ind1=\" \" ind2=\" \"><subfield code=\"a\">3rd ed.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Sydney :</subfield><subfield code=\"b\">LBC Information Services,</subfield><subfield code=\"c\">1997.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">lviii, 329 p. ;</subfield><subfield code=\"c\">25 cm.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Includes index.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Previous ed.: 1992.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Inheritance and succession</subfield><subfield code=\"z\">New South Wales.</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">NL 346.944052 C418-3</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "isbn_tsim":["9780455214900",
-                  "0455214905",
-                  "9780455214894",
-                  "0455214891"],
-                "material_type_ssm":["lviii, 329 p."],
-                "title_tsim":["The law of succession in New South Wales /"],
-                "title_ssm":["The law of succession in New South Wales"],
-                "title_addl_tsim":["The law of succession in New South Wales /"],
-                "author_tsim":["Certoma, G. L. (Giuseppe Leroy)"],
-                "author_ssm":["Certoma, G. L. (Giuseppe Leroy)"],
-                "subject_tsim":["Inheritance and succession"],
-                "subject_addl_tsim":["New South Wales."],
-                "subject_ssim":["Inheritance and succession"],
-                "subject_geo_ssim":["New South Wales"],
-                "published_ssm":["Sydney"],
-                "pub_date_ssim":["1997"],
-                "_version_":1738735003753250816,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"54",
-                "marc_ss":"<record><leader>00983cas a2200289 a 4500</leader><controlfield tag=\"001\">54</controlfield><controlfield tag=\"005\">20180808155449.0</controlfield><controlfield tag=\"008\">970710d19962001tmaqr p       0   a0eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">13203552</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2467769</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">54</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL-S</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANL-S</subfield></datafield><datafield tag=\"042\" ind1=\" \" ind2=\" \"><subfield code=\"a\">anuc</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">u-at-tm</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">004.0711946</subfield><subfield code=\"2\">21</subfield></datafield><datafield tag=\"130\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Info (Hobart, Tas.)</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Info :</subfield><subfield code=\"b\">Division of Information Services magazine.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Hobart :</subfield><subfield code=\"b\">Division of Information Services, University of Tasmania,</subfield><subfield code=\"c\">1996-</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">v. :</subfield><subfield code=\"b\">ill. ;</subfield><subfield code=\"c\">30 cm.</subfield></datafield><datafield tag=\"362\" ind1=\"0\" ind2=\" \"><subfield code=\"a\">Issue no. 90 (Mar. 1996)-</subfield></datafield><datafield tag=\"362\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Ceased with no. 105 (Apr. 2001) issue.</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Cover title.</subfield></datafield><datafield tag=\"610\" ind1=\"2\" ind2=\"0\"><subfield code=\"a\">University of Tasmania.</subfield><subfield code=\"b\">Division of Information Services</subfield><subfield code=\"x\">Periodicals.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Computers</subfield><subfield code=\"z\">Tasmania</subfield><subfield code=\"x\">Periodicals.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">University of Tasmania.</subfield><subfield code=\"b\">Division of Information Services.</subfield></datafield><datafield tag=\"780\" ind1=\"0\" ind2=\"0\"><subfield code=\"t\">UTAS</subfield></datafield><datafield tag=\"984\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"c\">Nq 001.605 TAS</subfield><subfield code=\"d\">Issue no. 90-no. 104</subfield><subfield code=\"e\">(Mar. 1996-Oct. 2000)</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Journal"],
-                "material_type_ssm":["v."],
-                "title_tsim":["Info :"],
-                "title_ssm":["Info"],
-                "subtitle_tsim":["Division of Information Services magazine."],
-                "subtitle_ssm":["Division of Information Services magazine"],
-                "title_addl_tsim":["Info (Hobart, Tas.)",
-                  "Info : Division of Information Services magazine."],
-                "author_addl_tsim":["University of Tasmania. Division of Information Services."],
-                "subject_tsim":["University of Tasmania. Division of Information Services",
-                  "Computers"],
-                "subject_addl_tsim":["Periodicals.",
-                  "Tasmania Periodicals."],
-                "subject_ssim":["University of Tasmania. Division of Information Services",
-                  "Computers"],
-                "subject_geo_ssim":["Tasmania"],
-                "published_ssm":["Hobart"],
-                "pub_date_ssim":["1996"],
-                "_version_":1738735003760590848,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0},
-              {
-                "id":"78",
-                "marc_ss":"<record><leader>01186cam a2200313 a 4500</leader><controlfield tag=\"001\">78</controlfield><controlfield tag=\"005\">20180904183603.0</controlfield><controlfield tag=\"008\">940113s1993    dcu           000 0 eng d</controlfield><datafield tag=\"019\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">10637958</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"9\">(AuCNLDY)2107769</subfield></datafield><datafield tag=\"035\" ind1=\" \" ind2=\" \"><subfield code=\"a\">78</subfield></datafield><datafield tag=\"040\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ANL</subfield><subfield code=\"b\">eng</subfield><subfield code=\"c\">ANL</subfield><subfield code=\"d\">ANL:NR</subfield></datafield><datafield tag=\"043\" ind1=\" \" ind2=\" \"><subfield code=\"a\">ee-----</subfield></datafield><datafield tag=\"082\" ind1=\"0\" ind2=\"4\"><subfield code=\"a\">339.5220947</subfield><subfield code=\"2\">20</subfield></datafield><datafield tag=\"100\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Milanovic, Branko.</subfield></datafield><datafield tag=\"245\" ind1=\"1\" ind2=\"0\"><subfield code=\"a\">Cash social transfers, direct taxes, and income distribution in late socialism /</subfield><subfield code=\"c\">Branko Milanovic.</subfield></datafield><datafield tag=\"260\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Washington, D.C. :</subfield><subfield code=\"b\">Policy Research Dept., World Bank,</subfield><subfield code=\"c\">1993.</subfield></datafield><datafield tag=\"300\" ind1=\" \" ind2=\" \"><subfield code=\"a\">33 p. ;</subfield><subfield code=\"c\">28 cm.</subfield></datafield><datafield tag=\"490\" ind1=\"1\" ind2=\" \"><subfield code=\"a\">Policy research working papers ;</subfield><subfield code=\"v\">WPS 1176.</subfield><subfield code=\"a\">Transition and macro-adjustment</subfield></datafield><datafield tag=\"500\" ind1=\" \" ind2=\" \"><subfield code=\"a\">\"September 1993.\"</subfield></datafield><datafield tag=\"504\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Include bibliographical references (p. 31-33)</subfield></datafield><datafield tag=\"540\" ind1=\" \" ind2=\" \"><subfield code=\"a\">Copyright restrictions apply.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Income distribution</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Transfer payments</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Taxation</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"650\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Social service</subfield><subfield code=\"z\">Europe, Eastern.</subfield></datafield><datafield tag=\"710\" ind1=\"2\" ind2=\" \"><subfield code=\"a\">World Bank.</subfield><subfield code=\"b\">Policy Research Department</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Policy research working papers ;</subfield><subfield code=\"v\">WPS 1176.</subfield></datafield><datafield tag=\"830\" ind1=\" \" ind2=\"0\"><subfield code=\"a\">Policy research working papers.</subfield><subfield code=\"p\">Transition and macro-adjustment.</subfield></datafield></record>",
-                "language_ssim":["English"],
-                "format":["Book"],
-                "material_type_ssm":["33 p."],
-                "title_tsim":["Cash social transfers, direct taxes, and income distribution in late socialism /"],
-                "title_ssm":["Cash social transfers, direct taxes, and income distribution in late socialism"],
-                "title_addl_tsim":["Cash social transfers, direct taxes, and income distribution in late socialism /"],
-                "title_series_tsim":["Policy research working papers ; WPS 1176. Transition and macro-adjustment"],
-                "author_tsim":["Milanovic, Branko."],
-                "author_addl_tsim":["World Bank. Policy Research Department"],
-                "author_ssm":["Milanovic, Branko."],
-                "subject_tsim":["Income distribution",
-                  "Transfer payments",
-                  "Taxation",
-                  "Social service"],
-                "subject_addl_tsim":["Europe, Eastern."],
-                "subject_ssim":["Income distribution",
-                  "Transfer payments",
-                  "Taxation",
-                  "Social service"],
-                "subject_geo_ssim":["Europe, Eastern"],
-                "published_ssm":["Washington, D.C."],
-                "pub_date_ssim":["1993"],
-                "_version_":1738735003771076608,
-                "timestamp":"2022-07-18T23:28:36.054Z",
-                "score":1.0}]
-          },
-          "facet_counts":{
-            "facet_queries":{
-              "pub_date_ssim:[2017 TO *]":0,
-              "pub_date_ssim:[2012 TO *]":0,
-              "pub_date_ssim:[1997 TO *]":8},
-            "facet_fields":{
-              "format":[
-                "Book",67,
-                "Microfilm",8,
-                "Journal",7,
-                "Serial",7,
-                "MusicalScore",1,
-                "Photo",1],
-              "pub_date_ssim":[
-                "1977",7,
-                "1986",6,
-                "1980",5,
-                "2001",5,
-                "1935",3,
-                "1936",3,
-                "1976",3,
-                "1979",3,
-                "1981",3,
-                "1984",3],
-              "subject_ssim":[
-                "Geography",2,
-                "Tiwi language (Melville and Bathurst Islands)",2,
-                "Voyages and travels",2,
-                "Achard, Marcel, 1899-",1,
-                "Adelaide. Town planning",1,
-                "African languages",1,
-                "Agricultural industries. Policies. Australia",1,
-                "Agriculture and state",1,
-                "Almanacs, American",1,
-                "Amateur theater",1,
-                "Antisemitism",1,
-                "Archaeology",1,
-                "Astronomy",1,
-                "Australia. Department of Community Services. Victorian Office. Disability Services Section",1,
-                "Australian",1,
-                "Bai, Chongxi, 1893-1966",1,
-                "Banks and banking",1,
-                "Bible",1,
-                "Bible stories, English",1,
-                "Bible stories, Pitjantjatjara",1,
-                "Botany",1],
-              "language_ssim":[
-                "English",49,
-                "French",15,
-                "Chinese",13,
-                "Russian",5,
-                "Australian languages",3,
-                "German",2,
-                "Indonesian",2,
-                "Spanish",2,
-                "Czech",1,
-                "Italian",1,
-                "Latin",1],
-              "lc_1letter_ssim":[
-                "P - Language & Literature",7,
-                "D - World History",5,
-                "H - Social Sciences",3,
-                "Q - Science",3,
-                "C - Historical Sciences (Archaeology, Genealogy)",2,
-                "B - Philosophy, Psychology, Religion",1,
-                "J - Political Science",1,
-                "K - Law",1],
-              "subject_geo_ssim":[
-                "Australia",9,
-                "New South Wales",4,
-                "United States",3,
-                "Africa",2,
-                "China",2,
-                "Europe, Eastern",2,
-                "Oceania",2,
-                "South America",2,
-                "Tasmania",2,
-                "Victoria",2],
-              "subject_era_ssim":[
-                "1769",1,
-                "1809-1812",1,
-                "20th century",1,
-                "Revolution, 1954-1962",1,
-                "Revolution, 1986",1]},
-            "facet_ranges":{},
-            "facet_intervals":{},
-            "facet_heatmaps":{},
-            "facet_pivot":{
-              "format,language_ssim":[{
-                  "field":"format",
-                  "value":"Book",
-                  "count":67,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":28},
-                    {
-                      "field":"language_ssim",
-                      "value":"French",
-                      "count":15},
-                    {
-                      "field":"language_ssim",
-                      "value":"Chinese",
-                      "count":12},
-                    {
-                      "field":"language_ssim",
-                      "value":"Russian",
-                      "count":4},
-                    {
-                      "field":"language_ssim",
-                      "value":"Australian languages",
-                      "count":3},
-                    {
-                      "field":"language_ssim",
-                      "value":"German",
-                      "count":2},
-                    {
-                      "field":"language_ssim",
-                      "value":"Indonesian",
-                      "count":2},
-                    {
-                      "field":"language_ssim",
-                      "value":"Spanish",
-                      "count":2},
-                    {
-                      "field":"language_ssim",
-                      "value":"Czech",
-                      "count":1},
-                    {
-                      "field":"language_ssim",
-                      "value":"Latin",
-                      "count":1},
-                    {
-                      "field":"language_ssim",
-                      "value":"Tagalog",
-                      "count":1}]},
-                {
-                  "field":"format",
-                  "value":"Microfilm",
-                  "count":8,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":8}]},
-                {
-                  "field":"format",
-                  "value":"Journal",
-                  "count":7,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":4},
-                    {
-                      "field":"language_ssim",
-                      "value":"Chinese",
-                      "count":1},
-                    {
-                      "field":"language_ssim",
-                      "value":"Italian",
-                      "count":1},
-                    {
-                      "field":"language_ssim",
-                      "value":"Russian",
-                      "count":1}]},
-                {
-                  "field":"format",
-                  "value":"Serial",
-                  "count":7,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":7}]},
-                {
-                  "field":"format",
-                  "value":"MusicalScore",
-                  "count":1,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":1}]},
-                {
-                  "field":"format",
-                  "value":"Photo",
-                  "count":1,
-                  "pivot":[{
-                      "field":"language_ssim",
-                      "value":"English",
-                      "count":1}]}]}}}
-  recorded_at: Wed, 20 Jul 2022 22:21:29 GMT
+  recorded_at: Thu, 21 Jul 2022 00:36:32 GMT
 - request:
     method: get
     uri: http://delong.nla.gov.au:10001/solr/blacklight/select?f.language_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json
@@ -1596,5 +1096,5 @@ http_interactions:
                       "field":"language_ssim",
                       "value":"English",
                       "count":1}]}]}}}
-  recorded_at: Wed, 20 Jul 2022 22:21:29 GMT
+  recorded_at: Thu, 21 Jul 2022 00:36:32 GMT
 recorded_with: VCR 6.1.0
