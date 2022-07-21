@@ -25,9 +25,6 @@ bundle config --local job $(nproc)
 bundle config --local path "vendor/bundle"
 bundle config --local force_ruby_platform true
 
-# run yarn check
-yarn install --check-files
-
 bundle _2.2.22_ install
 RAILS_ENV=$RAILS_ENV bundle _2.2.22_ exec rails db:migrate
 RAILS_ENV=$RAILS_ENV bundle _2.2.22_ exec rails assets:precompile
