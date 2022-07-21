@@ -93,9 +93,9 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
-    bootstrap (4.6.1)
+    bootstrap (5.2.0)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.14.3, < 2)
+      popper_js (>= 2.11.5, < 3)
       sassc-rails (>= 2.0.0)
     brakeman (5.2.3)
     builder (3.2.4)
@@ -338,7 +338,7 @@ GEM
     parallel (1.22.1)
     parser (3.1.2.0)
       ast (~> 2.4.1)
-    popper_js (1.16.0)
+    popper_js (2.11.5)
     public_suffix (4.0.7)
     puma (5.6.4)
       nio4r (~> 2.0)
@@ -533,7 +533,7 @@ DEPENDENCIES
   awesome_print
   blacklight (~> 7.28)
   blacklight-marc (>= 7.0.0.rc1, < 8)
-  bootstrap (~> 4.0)
+  bootstrap (~> 5.2)
   brakeman
   bundler-audit
   capybara
