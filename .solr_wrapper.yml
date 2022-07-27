@@ -1,6 +1,11 @@
 # Place any default configuration for solr_wrapper here
 # port: 8983
 version: "8.7.0"
+cloud: true
 collection:
   dir: solr/conf/
-  name: blacklight-core
+  name: blacklight
+  persist: false
+configsets:
+  - dir: solr/conf/
+    name: blacklight-configset

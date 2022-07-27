@@ -1,12 +1,14 @@
 # frozen_string_literal: true
 
+require "#{::Rails.root}/lib/blacklight/solr/cloud/repository"
+
 class CatalogController < ApplicationController
   include Blacklight::Catalog
   include Blacklight::Marc::Catalog
 
   configure_blacklight do |config|
     ## Class for sending and receiving requests from a search index
-    # config.repository_class = Blacklight::Solr::Repository
+    config.repository_class = Blacklight::Solr::Cloud::Repository
     #
     ## Class for converting Blacklight's url parameters to into request parameters for the search index
     # config.search_builder_class = ::SearchBuilder
