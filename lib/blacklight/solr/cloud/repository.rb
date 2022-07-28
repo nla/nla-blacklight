@@ -12,9 +12,6 @@ module Blacklight
         def initialize(blacklight_config)
           super(blacklight_config)
           setup_zk
-          init_collection_state_watcher
-          init_live_nodes_watcher
-          update_urls
         end
 
         private def build_connection
@@ -24,51 +21,55 @@ module Blacklight
         private
 
         def setup_zk
-          @zk = ZK.new connection_config[:url]
-          @collection = connection_config[:collection]
+          @zk = ZK.new ENV["ZK_HOSTS"]
+          collection = ENV["SOLR_COLLECTION"]
+
+          init_collection_state_watcher collection
+          init_live_nodes_watcher collection
+          update_urls collection
         end
 
-        def init_collection_state_watcher
-          @zk.register(collection_state_znode_path) do |_event|
-            update_collection_state
-            update_urls
+        def init_collection_state_watcher(collection)
+          @zk.register(collection_state_znode_path(collection)) do |_event|
+            update_collection_state collection
+            update_urls collection
           end
 
-          update_collection_state
+          update_collection_state collection
         end
 
-        def collection_state_znode_path
-          "/collections/#{@collection}/state.json"
+        def collection_state_znode_path(collection)
+          "/collections/#{collection}/state.json"
         end
 
-        def update_collection_state
+        def update_collection_state(collection)
           synchronize do
-            collection_state_json, _stat = @zk.get(collection_state_znode_path, watch: true)
-            @collection_state = JSON.parse(collection_state_json)[@collection]
+            collection_state_json, _stat = @zk.get(collection_state_znode_path(collection), watch: true)
+            @collection_state = JSON.parse(collection_state_json)[collection]
           end
         end
 
-        def init_live_nodes_watcher
+        def init_live_nodes_watcher(collection)
           @zk.register(ZNODE_LIVE_NODES) do |_event|
             update_live_nodes
-            update_urls
+            update_urls collection
           end
 
           update_live_nodes
         end
 
-        def update_urls
+        def update_urls(collection)
           synchronize do
-            @all_urls, @leader_urls = available_urls
+            @all_urls, @leader_urls = available_urls collection
           end
         end
 
-        def available_urls
+        def available_urls(collection)
           leader_urls = []
           all_urls = []
           all_nodes.each do |node|
             next unless active_node?(node)
-            url = "#{node['base_url']}/#{@collection}"
+            url = "#{node['base_url']}/#{collection}"
             leader_urls << url if leader_node? node
             all_urls << url
           end
