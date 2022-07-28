@@ -29,7 +29,7 @@ bundle config --local job $(nproc)
 bundle config --local path "gems"
 bundle config --local build.nokogiri --use-system-libraries
 
-if [ "$RAILS_ENV" == "staging" || "$RAILS_ENV" == "production" ]; then
+if [[ "$RAILS_ENV" == "staging" || "$RAILS_ENV" == "production" ]]; then
  bundle config --local without "development:test"
 fi
 
