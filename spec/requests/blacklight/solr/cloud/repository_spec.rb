@@ -1,7 +1,7 @@
 require "rails_helper"
 require "blacklight/solr/cloud/repository"
 
-RSpec.describe Blacklight::Solr::Cloud::Repository, api: true do
+RSpec.describe Blacklight::Solr::Cloud::Repository do
   subject(:repository) { described_class.new blacklight_config }
 
   before do
@@ -20,13 +20,11 @@ RSpec.describe Blacklight::Solr::Cloud::Repository, api: true do
       zk_in_solr.create("/live_nodes/#{node}", "", mode: :ephemeral)
     end
 
-    %w[collection1 collection2].each do |collection|
-      zk_in_solr.create("/collections/#{collection}")
-      json = File.read("spec/files/#{collection}_all_nodes_alive.json")
-      zk_in_solr.create("/collections/#{collection}/state.json",
-        json,
-        mode: :ephemeral)
-    end
+    zk_in_solr.create("/collections/collection1")
+    json = File.read("spec/files/collection1_all_nodes_alive.json")
+    zk_in_solr.create("/collections/collection1/state.json",
+      json,
+      mode: :ephemeral)
 
     ENV["ZK_HOST"] = "localhost:2181"
     ENV["SOLR_COLLECTION"] = "collection1"
