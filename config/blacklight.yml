@@ -2,12 +2,12 @@ load_defaults: 7.28.0
 development:
   adapter: solr
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
-  collection: blacklight
 test: &test
   adapter: solr
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
-  collection: blacklight
+staging:
+  adapter: solr
+  url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
 production:
   adapter: solr
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
-  collection: blacklight

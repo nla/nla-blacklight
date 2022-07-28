@@ -13,4 +13,5 @@ SolrWrapper.default_instance_options = {
   instance_dir: 'solr',
   download_dir: 'tmp'
 }
-require "solr_wrapper/rake_task" unless Rails.env.production?
+
+require "solr_wrapper/rake_task" unless Rails.env.production? || Rails.env.staging?

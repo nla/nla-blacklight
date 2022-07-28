@@ -33,3 +33,19 @@ module NlaBlacklight
     # config.eager_load_paths << Rails.root.join("extras")
   end
 end
+
+def isDev
+  ENV["RAILS_ENV"] == "development"
+end
+
+def isTest
+  ENV["RAILS_ENV"] == "test"
+end
+
+def isStaging
+  ENV["RAILS_ENV"] == "staging"
+end
+
+def isProd
+  ENV["RAILS_ENV"] == "production"
+end

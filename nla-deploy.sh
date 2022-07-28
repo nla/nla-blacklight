@@ -2,6 +2,10 @@
 
 ORIGDIR=$(pwd)
 export ORIGDIR
+source ~/.bashrc
+
+export GEM_HOME=$ORIGDIR/gems
+export GEM_PATH=$ORIGDIR/gems
 
 echo "Build env $RAILS_ENV, unzip into $WEBROOT.. PWD $ORIGDIR"
 export PATH=$GEM_PATH/bin:$PATH
@@ -20,17 +24,21 @@ else
 fi
 
 gem install bundler -v 2.2.22
-bundle config --local job $(nproc)
-bundle config --local path "vendor/bundle"
-bundle config --local force_ruby_platform true
+bundle config --local jobs $(nproc)
+bundle config --local path "gems"
+bundle config --local build.nokogiri --use-system-libraries
 
-bundle _2.2.22_ install
-RAILS_ENV=$RAILS_ENV bundle _2.2.22_ exec rails db:migrate
-RAILS_ENV=$RAILS_ENV bundle _2.2.22_ exec rails assets:precompile
+if [[ "$RAILS_ENV" == "staging" || "$RAILS_ENV" == "production" ]]; then
+ bundle config --local without "development:test"
+fi
+
+bundle install
+RAILS_ENV=$RAILS_ENV bundle exec rails db:migrate
+RAILS_ENV=$RAILS_ENV bundle exec rails assets:precompile
 
 mkdir -p "$BLACKLIGHT_TMP_PATH"/pids
 
-RAILS_ENV=$RAILS_ENV bundle _2.2.22_ exec rails log:clear tmp:clear
+RAILS_ENV=$RAILS_ENV bundle exec rails log:clear tmp:clear
 
 # Remove a potentially pre-existing server.pid for Rails.
 rm -f "$PIDFILE"
