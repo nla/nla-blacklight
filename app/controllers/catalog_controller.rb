@@ -8,7 +8,9 @@ class CatalogController < ApplicationController
 
   configure_blacklight do |config|
     ## Class for sending and receiving requests from a search index
-    config.repository_class = Blacklight::Solr::Cloud::Repository
+    if ENV["ZK_HOST"].present? && ENV["SOLR_COLLECTION"].present?
+      config.repository_class = Blacklight::Solr::Cloud::Repository
+    end
     #
     ## Class for converting Blacklight's url parameters to into request parameters for the search index
     # config.search_builder_class = ::SearchBuilder

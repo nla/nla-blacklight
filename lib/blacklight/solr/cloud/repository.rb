@@ -21,8 +21,8 @@ module Blacklight
         private
 
         def setup_zk
-          @zk = ZK.new ENV["ZK_HOSTS"]
-          collection = ENV["SOLR_COLLECTION"]
+          @zk = ZK.new ENV["ZK_HOST"] || "localhost:2181"
+          collection = ENV["SOLR_COLLECTION"] || "blacklight"
 
           init_collection_state_watcher collection
           init_live_nodes_watcher collection
@@ -45,7 +45,7 @@ module Blacklight
         def update_collection_state(collection)
           synchronize do
             collection_state_json, _stat = @zk.get(collection_state_znode_path(collection), watch: true)
-            @collection_state = JSON.parse(collection_state_json)[collection]
+            @collection_state = ::JSON.parse(collection_state_json)[collection]
           end
         end
 
@@ -69,7 +69,7 @@ module Blacklight
           all_urls = []
           all_nodes.each do |node|
             next unless active_node?(node)
-            url = "#{node['base_url']}/#{collection}"
+            url = "#{node["base_url"]}/#{collection}"
             leader_urls << url if leader_node? node
             all_urls << url
           end
@@ -109,7 +109,7 @@ module Blacklight
         end
 
         def leader_node?(node)
-          node["leader"] == true
+          node["leader"] == "true"
         end
       end
     end
