@@ -45,6 +45,7 @@ jobs:
     name: Tests
     runs-on: ubuntu-latest
     env:
+      CI: true
       RUBY_VERSION: '3.0.2'
       DB_DATABASE: blacklight_test
       DB_USER: root

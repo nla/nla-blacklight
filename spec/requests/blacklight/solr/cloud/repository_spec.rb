@@ -1,7 +1,7 @@
 require "rails_helper"
 require "blacklight/solr/cloud/repository"
 
-RSpec.describe Blacklight::Solr::Cloud::Repository do
+RSpec.describe Blacklight::Solr::Cloud::Repository, :ci_ignore do
   subject(:repository) { described_class.new blacklight_config }
 
   before do
