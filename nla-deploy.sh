@@ -24,8 +24,7 @@ else
 fi
 
 gem install bundler -v 2.2.22
-bundle config --local job $(nproc)
-#bundle config --local force_ruby_platform true
+bundle config --local jobs $(nproc)
 bundle config --local path "gems"
 bundle config --local build.nokogiri --use-system-libraries
 

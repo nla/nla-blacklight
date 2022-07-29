@@ -26,5 +26,9 @@ Rails/UnknownEnv:
     - production
 RSpec:
   Enabled: true
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/MultipleExpectations:
+  Enabled: false
 Bundler/DuplicatedGem:
   Enabled: false
