@@ -21,7 +21,7 @@ module Blacklight
         private
 
         def setup_zk
-          @zk = ZK.new ENV["ZK_HOST"] || "localhost:2181"
+          @zk = ZK.new(ENV["ZK_HOST"] || "localhost:2181", {chroot: :do_nothing})
           collection = ENV["SOLR_COLLECTION"] || "blacklight"
 
           init_collection_state_watcher collection
