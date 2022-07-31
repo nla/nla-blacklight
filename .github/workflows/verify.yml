@@ -67,6 +67,13 @@ jobs:
           sudo /etc/init.d/mysql start
           mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
+      - name: Spin up SolrCloud
+        uses: isbang/compose-action@v1.1.0
+        with:
+          compose-file: "../solr/docker-compose.yml"
+          up-flags: "-d"
+          down-flags: "--volumes"
+
       - name: RSpec tests
         run: |
           bundle exec rspec

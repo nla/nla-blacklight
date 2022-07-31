@@ -84,7 +84,7 @@ module Blacklight
         end
 
         def select_node(leader_only = false)
-          if leader_only
+          url = if leader_only
             synchronize do
               @leader_urls.sample
             end
@@ -93,6 +93,8 @@ module Blacklight
               @all_urls.sample
             end
           end
+          raise Blacklight::Solr::Cloud::NotEnoughNodes unless url
+          url
         end
 
         def update_live_nodes
