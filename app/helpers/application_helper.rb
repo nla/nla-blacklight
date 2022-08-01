@@ -11,6 +11,9 @@ module ApplicationHelper
   end
 
   def get_thumbnail(document, options = {})
-    image_tag(ENV["IMAGE_SERVICE_URL"] % [document.id])
+    url = from_marc({document: document, config: {key: "856u"}}).first
+    unless url.blank? || url.include?("nla.arc")
+      image_tag(url + "-t", options.merge(alt: presenter(document).heading))
+    end
   end
 end
