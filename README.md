@@ -51,6 +51,7 @@ values in your terminal before running the application.
 2. Make sure you have MySQL running locally and configured in the `.env.development.local` config file.
 3. Make sure you have Solr running locally and configured in the `.env.development.local` config file.
 4. `bin/setup` installs gems, npm packages, and database migrations for development/test environments.
+5. Install [Podman](https://podman.io/), [Podman Desktop](https://podman-desktop.io/) and [podman-compose](https://github.com/containers/podman-compose).
 
 ## Running the app
 
@@ -66,6 +67,7 @@ values in your terminal before running the application.
     * Capybara - simulates web application interaction
     * Webmock - HTTP request mocking and stubbing
     * VCR - Mock HTTP responses with canned data
+* 🚨 Some tests require a Zookeeper cluster with SolrCloud running locally. See [Containers](#containers) section below.
 
 ## Deployment
 
@@ -87,17 +89,33 @@ The following tools provide linting, security and vulnerability checking of the 
 
 ## Containers
 
-There is a `compose.yml` in the `./solr` directory that can be used to spin up a local Solr instance. This instance
-is configured to pre-create a core named `blacklight-core`.
+### Single-node Solr
+
+`./solr/docker-compose.yml` can be used to spin up a local Solr instance. This instance is configured to pre-create a core named `blacklight`.
 
 ```bash
-cd ./solr
-docker compose up -d
+podman-compose -f ./solr/docker-compose.yml up -d
 ```
 
 You should now be able to load the Solr Dashboard at: http://127.0.0.1:8983/solr/#/
 
-### Populating Solr Index
+### Zookeeper + SolrCloud cluster
+
+`./solr/cloud/docker-compose.yml` can be used to spin up a local Zookeeper + SolrCloud cluster.
+This cluster is required by the RSpec tests for `Blacklight::Solr::Cloud::Repository`.
+
+In order to run this cluster successfully, you'll need a Podman machine with at least 4GB of memory and 6GB of disk space.
+
+The Podman machine created below will be initialised with 6GB of memory and disk space and 2 CPUs.
+
+```bash
+podman machine init--cpus 2 --disk-size 6144 --memory 6144 
+podman-compose -f ./solr/cloud/docker-compose.yml up -d
+```
+
+The cluster Solr Dashboard is located at: http://127.0.0.1:8983/solr/#/
+
+### Populating a local Solr index
 
 There is a sample of Voyager MARC records in `./solr/voy-sample` that can be used for local development.
 
