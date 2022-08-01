@@ -2,6 +2,9 @@
 
 set -e
 
+echo "[ bin/ci ] Setting RAILS_ENV to test"
+export RAILS_ENV=test
+
 echo "[ bin/ci ] Preparing database"
 bin/rails db:reset || bin/rails db:migrate
 
@@ -24,3 +27,6 @@ echo "[ bin/ci ] security vulnerabilities"
 bundle exec bundle audit check --update
 
 echo "[ bin/ci ] Done"
+
+echo "[ bin/ci ] Unsetting RAILS_ENV"
+unset RAILS_ENV
