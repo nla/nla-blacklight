@@ -1,4 +1,5 @@
 require "zk"
+require "blacklight/solr/cloud/error"
 
 module Blacklight
   module Solr
