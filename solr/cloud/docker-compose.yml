@@ -1,10 +1,10 @@
-# a docker-docker-compose.yml to start a simple cluster with three ZooKeeper nodes and three Solr nodes.
+# a docker-docker-docker-compose.yml to start a simple cluster with three ZooKeeper nodes and three Solr nodes.
 #
 # To use:
 #
 # mkdir mycluster
 # cd mycluster
-# curl --output docker-docker-compose.yml https://raw.githubusercontent.com/docker-solr/docker-solr-examples/master/docker-compose/docker-compose.yml
+# curl --output docker-docker-docker-compose.yml https://raw.githubusercontent.com/docker-solr/docker-solr-examples/master/docker-compose/docker-compose.yml
 # docker-compose up
 #
 version: '3.7'

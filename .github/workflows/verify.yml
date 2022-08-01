@@ -71,7 +71,7 @@ jobs:
       - name: Spin up SolrCloud + Zookeeper cluster
         uses: isbang/compose-action@v1.1.0
         with:
-          compose-file: "./solr/cloud/docker-compose.yml"
+          compose-file: "./solr/cloud/docker-docker-compose.yml"
           down-flags: "--volumes"
 
       - name: Check Zookeeper status
