@@ -8,4 +8,4 @@ services:
       - "8983:8983"
     volumes:
       - .:/blacklight_config
-    command: solr-precreate blacklight-core /blacklight_config
+    command: solr-precreate blacklight /blacklight_config

@@ -1,7 +1,7 @@
 require "rails_helper"
 require "blacklight/solr/cloud/repository"
 
-RSpec.describe Blacklight::Solr::Cloud::Repository, :ci_ignore do
+RSpec.describe Blacklight::Solr::Cloud::Repository do
   subject(:repository) { described_class.new blacklight_config }
 
   before do
@@ -47,11 +47,16 @@ RSpec.describe Blacklight::Solr::Cloud::Repository, :ci_ignore do
     )
   end
 
-  it "configures the RSolr client with one of the active nodes in the select request." do
+  it "configures the RSolr client with one of the active nodes in the select request" do
     client = repository.connection
     uri = client.instance_variable_get(:@uri)
     expect(uri.host).to be_one_of(%w[192.168.1.21 192.168.1.22 192.168.1.23 192.168.1.24])
     expect(uri.path).to eq("/solr/collection1/")
+  end
+
+  it "raises an exception when no nodes are available" do
+    zk_in_solr.set("/collections/collection1/state.json", File.read("spec/files/collection1_all_nodes_down.json"))
+    expect { repository.connection }.to raise_error(Blacklight::Solr::Cloud::NotEnoughNodes)
   end
 
   it "removes downed replica node and adds recovered node" do
