@@ -67,7 +67,7 @@ values in your terminal before running the application.
     * Capybara - simulates web application interaction
     * Webmock - HTTP request mocking and stubbing
     * VCR - Mock HTTP responses with canned data
-* 🚨 Some tests require a Zookeeper cluster with SolrCloud running locally. See [Containers](#containers) section below.
+* 🚨 Some tests require a Zookeeper + SolrCloud cluster running locally. See [Containers](#containers) section below.
 
 ## Deployment
 
@@ -106,11 +106,12 @@ This cluster is required by the RSpec tests for `Blacklight::Solr::Cloud::Reposi
 
 In order to run this cluster successfully, you'll need a Podman machine with at least 4GB of memory and 6GB of disk space.
 
-The Podman machine created below will be initialised with 6GB of memory and disk space and 2 CPUs.
+The Podman machine created below will be initialised with 2 CPUs and 6GB of memory and disk space.
 
 ```bash
-podman machine init--cpus 2 --disk-size 6144 --memory 6144 
-podman-compose -f ./solr/cloud/docker-compose.yml up -d
+podman machine init--cpus 2 --disk-size 6144 --memory 6144       # initialise a Podman machine
+podman-compose -f ./solr/cloud/docker-compose.yml up -d          # spin up a ZK + SolrCloud cluster
+podman-compose -f ./solr/cloud/docker-compose.yml down --volumes # pull down the ZK + SolrCloud cluster
 ```
 
 The cluster Solr Dashboard is located at: http://127.0.0.1:8983/solr/#/
