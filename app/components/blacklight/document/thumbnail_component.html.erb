@@ -6,7 +6,11 @@
       <% warn_about_deprecated_behavior %>
       <%= value %>
     <% else %>
-      <%= link_to value, presenter.thumbnail.link_value, {"aria-hidden": true, tabindex: -1, counter: @counter} %>
+      <% if presenter.view_config[:top_level_config] == :index %>
+        <%= helpers.link_to_document(presenter.document, value, 'aria-hidden': true, tabindex: -1, counter: @counter) %>
+      <% else %>
+        <%= link_to value, presenter.thumbnail.link_value, {"aria-hidden": true, tabindex: -1, counter: @counter} %>
+      <% end %>
     <% end %>
   </div>
 <% end %>
