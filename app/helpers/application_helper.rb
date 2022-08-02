@@ -9,11 +9,4 @@ module ApplicationHelper
   def from_marc(options = {})
     options[:document].get_marc_derived_field(options[:config][:key])
   end
-
-  def get_thumbnail(document, options = {})
-    url = from_marc({document: document, config: {key: "856u"}}).first
-    unless url.blank? || url.include?("nla.arc")
-      image_tag(url + "/image?wid=123", options.merge(alt: presenter(document).heading))
-    end
-  end
 end
