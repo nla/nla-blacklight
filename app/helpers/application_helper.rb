@@ -13,7 +13,7 @@ module ApplicationHelper
   def get_thumbnail(document, options = {})
     url = from_marc({document: document, config: {key: "856u"}}).first
     unless url.blank? || url.include?("nla.arc")
-      image_tag(url + "-t", options.merge(alt: presenter(document).heading))
+      image_tag(url + "/image?wid=123", options.merge(alt: presenter(document).heading))
     end
   end
 end
