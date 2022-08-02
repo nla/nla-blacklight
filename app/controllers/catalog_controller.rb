@@ -36,7 +36,8 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = "title_tsim"
     config.index.display_type_field = "format"
-    # config.index.thumbnail_field = 'thumbnail_path_ss'
+    config.index.thumbnail_field = "thumbnail_path_ss"
+    config.index.thumbnail_presenter = NlaThumbnailPresenter
 
     config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
 
@@ -55,12 +56,11 @@ class CatalogController < ApplicationController
     # solr field configuration for document/show views
     # config.show.title_field = 'title_tsim'
     # config.show.display_type_field = 'format'
-    # config.show.thumbnail_field = 'thumbnail_path_ss'
 
     # scxxx Thumbnails
+    config.show.thumbnail_field = "thumbnail_path_ss"
+    config.show.thumbnail_presenter = NlaThumbnailPresenter
     config.show.partials.insert(1, :thumbnail) # thumbnail after show_header
-    config.show.thumbnail_method = :get_thumbnail
-    config.index.thumbnail_method = :get_thumbnail
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
