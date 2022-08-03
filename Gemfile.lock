@@ -578,6 +578,7 @@ DEPENDENCIES
   twitter-typeahead-rails (= 0.11.1)
   tzinfo-data
   vcr
+  view_component (~> 2.61)
   web-console
   webdrivers
   webmock
