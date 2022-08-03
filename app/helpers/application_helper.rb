@@ -9,8 +9,4 @@ module ApplicationHelper
   def from_marc(options = {})
     options[:document].get_marc_derived_field(options[:config][:key])
   end
-
-  def get_thumbnail(document, options = {})
-    image_tag(ENV["IMAGE_SERVICE_URL"] % [document.id])
-  end
 end
