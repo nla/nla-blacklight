@@ -23,9 +23,9 @@ else
   echo "Ruby $RUBY_VERSION found; continuing deployment..."
 fi
 
-gem install bundler -v 2.2.22
+gem install bundler
 bundle config --local jobs $(nproc)
-bundle config --local path "gems"
+bundle config --local path "vendor/bundle"
 bundle config --local build.nokogiri --use-system-libraries
 
 if [[ "$RAILS_ENV" == "staging" || "$RAILS_ENV" == "production" ]]; then

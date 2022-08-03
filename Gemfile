@@ -111,3 +111,5 @@ gem "devise"
 gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
 
 gem "zk", "~> 1.10"
+
+gem "omniauth-keycloak", "~> 1.4"
