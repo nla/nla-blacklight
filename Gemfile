@@ -111,3 +111,5 @@ gem "devise"
 gem "blacklight-marc", ">= 7.0.0.rc1", "< 8"
 
 gem "zk", "~> 1.10"
+
+gem "view_component", "~> 2.61"
