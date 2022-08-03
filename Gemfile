@@ -102,13 +102,13 @@ end
 gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
 # gem 'ebsco-eds', '1.1.0.1', :path=> 'vendor/gems/ebsco-eds-1.1.0.1'
 
-gem "blacklight", "~> 7.28"
+gem "blacklight", "~> 7.29"
 gem "rsolr", ">= 1.0", "< 3"
 gem "bootstrap", "~> 4.0"
 gem "twitter-typeahead-rails", "0.11.1"
 gem "jquery-rails"
 gem "devise"
-gem "blacklight-marc", ">= 7.0.0.rc1", "< 8"
+gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
 
 gem "zk", "~> 1.10"
 
