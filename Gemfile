@@ -108,6 +108,6 @@ gem "bootstrap", "~> 4.0"
 gem "twitter-typeahead-rails", "0.11.1"
 gem "jquery-rails"
 gem "devise"
-gem "blacklight-marc", ">= 7.0.0.rc1", "< 8"
+gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
 
 gem "zk", "~> 1.10"
