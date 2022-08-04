@@ -17,6 +17,7 @@
   </updateHandler>
 
   <!-- solr lib dirs -->
+  <lib dir="${solr.install.dir:../../../..}/modules/analysis-extras/lib" />
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lib" />
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
 
@@ -192,6 +193,10 @@
     <arr name="components">
       <str>suggest</str>
     </arr>
+  </requestHandler>
+
+  <requestHandler name="/mlt" class="solr.MoreLikeThisHandler">
+    <str name="mlt.fl">subject_tsimv</str>
   </requestHandler>
 
   <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />

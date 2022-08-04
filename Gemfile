@@ -112,4 +112,5 @@ gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
 
 gem "zk", "~> 1.10"
 
+gem "view_component", "~> 2.61"
 gem "omniauth-keycloak", "~> 1.4"
