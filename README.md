@@ -90,6 +90,7 @@ The following tools provide linting, security and vulnerability checking of the 
 ## Containers
 
 ### Single-node Solr
+Prior to deploying a standalone Solr server (e.g. for local testing), copy any required Blacklight Solr config files from the [solr-trove](https://github.com/nla/solr-trove/tree/master/solr-config/src/main/resources/blacklight) repo.
 
 `./solr/docker-compose.yml` can be used to spin up a local Solr instance. This instance is configured to pre-create a core named `blacklight`.
 
