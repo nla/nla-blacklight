@@ -28,6 +28,8 @@ module Devise
           doc = Nokogiri::XML(response.body)
           self.name_given = doc.xpath("//item[@name='nameGiven']").text
           self.name_family = doc.xpath("//item[@name='nameFamily']").text
+          self.email = doc.xpath("//item[@name='email']").text
+          self.encrypted_password = Devise::Encryptor.digest(self.class, Devise.friendly_token(20))
           save!
         end
       end
@@ -35,6 +37,8 @@ module Devise
       protected
 
       module ClassMethods
+        Devise::Models.config(self, :pepper, :stretches)
+
         # We assume this method already gets the sanitized values from the
         # GetalibrarycardAuthenticatable strategy. If you are using this method on
         # your own, be sure to sanitize the conditions hash to only include

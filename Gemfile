@@ -114,3 +114,5 @@ gem "zk", "~> 1.10"
 
 gem "view_component", "~> 2.61"
 gem "omniauth-keycloak", "~> 1.4"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "repost", "~> 0.4.0"
