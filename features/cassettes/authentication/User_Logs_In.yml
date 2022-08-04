@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://solr:8983/solr/blacklight/select?f.language_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json
+    uri: "<SOLR_URL>/select?f.language_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json"
     body:
       encoding: US-ASCII
       string: ''
@@ -29,9 +29,9 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Last-Modified:
-      - Wed, 20 Jul 2022 05:05:36 GMT
+      - Thu, 04 Aug 2022 20:40:48 GMT
       Etag:
-      - '"MTQwMDAwMDAwMDAwMDAwMFNvbHI="'
+      - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -42,7 +42,7 @@ http_interactions:
         {
           "responseHeader":{
             "status":0,
-            "QTime":12,
+            "QTime":13,
             "params":{
               "f.subject_ssim.facet.limit":"21",
               "facet.query":["pub_date_ssim:[2017 TO *]",
@@ -85,8 +85,8 @@ http_interactions:
                 "subject_geo_ssim":["Australia"],
                 "published_ssm":["Canning Bridge W.A."],
                 "pub_date_ssim":["2001"],
-                "_version_":1738735003764785152,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595428212736,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"83",
@@ -115,8 +115,8 @@ http_interactions:
                 "subject_geo_ssim":["Australia"],
                 "published_ssm":["Strawberry Hills, N.S.W."],
                 "pub_date_ssim":["2001"],
-                "_version_":1738735003773173760,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595437649920,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"55",
@@ -135,8 +135,8 @@ http_interactions:
                 "subject_geo_ssim":["Australia"],
                 "published_ssm":["Perth, W.A."],
                 "pub_date_ssim":["2001"],
-                "_version_":1738735003760590849,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595417726976,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"47",
@@ -163,8 +163,8 @@ http_interactions:
                   "Western Division"],
                 "published_ssm":["Orange, N.S.W."],
                 "pub_date_ssim":["2001"],
-                "_version_":1738735003756396544,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595410386944,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"23",
@@ -187,8 +187,8 @@ http_interactions:
                 "subject_geo_ssim":["Philippines"],
                 "published_ssm":["Manila"],
                 "pub_date_ssim":["2001"],
-                "_version_":1738735003714453504,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595385221120,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"14",
@@ -209,8 +209,8 @@ http_interactions:
                 "subject_geo_ssim":["Australia"],
                 "published_ssm":["Melbourne"],
                 "pub_date_ssim":["2000"],
-                "_version_":1738735003690336256,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595383123968,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"38",
@@ -230,8 +230,8 @@ http_interactions:
                   "Structural engineering"],
                 "published_ssm":["Melbourne"],
                 "pub_date_ssim":["1997"],
-                "_version_":1738735003727036418,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595399901185,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"46",
@@ -254,8 +254,8 @@ http_interactions:
                 "subject_geo_ssim":["New South Wales"],
                 "published_ssm":["Sydney"],
                 "pub_date_ssim":["1997"],
-                "_version_":1738735003753250816,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595409338369,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"54",
@@ -279,8 +279,8 @@ http_interactions:
                 "subject_geo_ssim":["Tasmania"],
                 "published_ssm":["Hobart"],
                 "pub_date_ssim":["1996"],
-                "_version_":1738735003760590848,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595414581248,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"78",
@@ -307,8 +307,8 @@ http_interactions:
                 "subject_geo_ssim":["Europe, Eastern"],
                 "published_ssm":["Washington, D.C."],
                 "pub_date_ssim":["1993"],
-                "_version_":1738735003771076608,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595434504193,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0}]
           },
           "facet_counts":{
@@ -499,10 +499,10 @@ http_interactions:
                       "field":"language_ssim",
                       "value":"English",
                       "count":1}]}]}}}
-  recorded_at: Thu, 21 Jul 2022 00:36:31 GMT
+  recorded_at: Thu, 04 Aug 2022 22:32:15 GMT
 - request:
     method: post
-    uri: https://www-test.nla.gov.au/getalibrarycard/authenticate.xml/bltest/test
+    uri: "<GETALIBRARYCARD_BASE_URL>/getalibrarycard/authenticate.xml/bltest/test"
     body:
       encoding: UTF-8
       string: ''
@@ -523,7 +523,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 21 Jul 2022 00:36:32 GMT
+      - Thu, 04 Aug 2022 22:32:20 GMT
       Content-Type:
       - application/xml; charset=utf-8
       Content-Length:
@@ -531,7 +531,7 @@ http_interactions:
       Connection:
       - keep-alive
       X-Runtime:
-      - '9'
+      - '7'
       Etag:
       - '"83fb2f07ac39d870bd3b6d7482cd666d"'
       Cache-Control:
@@ -543,10 +543,10 @@ http_interactions:
         \   <item name=\"LOON-USER-AUTHENTICATED\" id=\"507706\" voyid=\"378393\"
         message=\"voyager authentication\">true</item>\r\n    <item name=\"LOON-USER-CATALOGUE-GROUP\">MRR</item>
         \   \r\n    <report name=\"count\" value=\"2\"/>\r\n  </itemList>\r\n</response>"
-  recorded_at: Thu, 21 Jul 2022 00:36:32 GMT
+  recorded_at: Thu, 04 Aug 2022 22:32:20 GMT
 - request:
     method: get
-    uri: https://www-test.nla.gov.au/getalibrarycard/patrons/details/507706.xml
+    uri: "<GETALIBRARYCARD_BASE_URL>/getalibrarycard/patrons/details/507706.xml"
     body:
       encoding: US-ASCII
       string: ''
@@ -565,7 +565,7 @@ http_interactions:
       Server:
       - nginx
       Date:
-      - Thu, 21 Jul 2022 00:36:32 GMT
+      - Thu, 04 Aug 2022 22:32:20 GMT
       Content-Type:
       - application/xml; charset=utf-8
       Content-Length:
@@ -573,9 +573,9 @@ http_interactions:
       Connection:
       - keep-alive
       X-Runtime:
-      - '14'
+      - '8'
       Etag:
-      - '"44c4ef449395c529f057ef364151541f"'
+      - '"94ee4be8c4677c4a0c1e2e74a93abf9c"'
       Cache-Control:
       - private, max-age=0, must-revalidate
     body:
@@ -584,7 +584,7 @@ http_interactions:
         \ <itemList type=\"LOON-USER-PATRON\" owner=\"user/507706\" repository=\"LOON-USER-DB-CBD\">\r\n
         \   <item name=\"id\">507706</item>\r\n\r\n    <item name=\"nameFamily\">test</item>\r\n
         \   <item name=\"nameGiven\">blacklight</item>\r\n\r\n    <item name=\"auditCreateDate\">15-07-2022</item>\r\n
-        \   <item name=\"auditModifyDate\">18-07-2022</item>\r\n\r\n  \r\n    \r\n
+        \   <item name=\"auditModifyDate\">05-08-2022</item>\r\n\r\n  \r\n    \r\n
         \   <item name=\"addressLine1\">test</item>\r\n    <item name=\"addressLine2\"></item>\r\n
         \   <item name=\"addressLocality\">test</item>\r\n    <item name=\"addressPostcode\">2600</item>\r\n
         \   <item name=\"addressState\">ACT</item>\r\n    <item name=\"addressCountry\">Australia</item>\r\n
@@ -596,10 +596,10 @@ http_interactions:
         \   <item name=\"comments\">have some comments...</item>\r\n    <item name=\"rejectionReason\"></item>\r\n
         \   <item name=\"researchInterests\">software development</item>\r\n  </itemList>\r\n</response>\r\n
         \ "
-  recorded_at: Thu, 21 Jul 2022 00:36:32 GMT
+  recorded_at: Thu, 04 Aug 2022 22:32:20 GMT
 - request:
     method: get
-    uri: http://solr:8983/solr/blacklight/select?f.language_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json
+    uri: "<SOLR_URL>/select?f.language_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json"
     body:
       encoding: US-ASCII
       string: ''
@@ -626,9 +626,9 @@ http_interactions:
       X-Xss-Protection:
       - 1; mode=block
       Last-Modified:
-      - Wed, 20 Jul 2022 05:05:36 GMT
+      - Thu, 04 Aug 2022 20:40:48 GMT
       Etag:
-      - '"MTQwMDAwMDAwMDAwMDAwMFNvbHI="'
+      - '"NjAwMDAwMDAwMDAwMDAwMFNvbHI="'
       Content-Type:
       - application/json;charset=utf-8
       Transfer-Encoding:
@@ -639,7 +639,7 @@ http_interactions:
         {
           "responseHeader":{
             "status":0,
-            "QTime":3,
+            "QTime":2,
             "params":{
               "f.subject_ssim.facet.limit":"21",
               "facet.query":["pub_date_ssim:[2017 TO *]",
@@ -682,8 +682,8 @@ http_interactions:
                 "subject_geo_ssim":["Australia"],
                 "published_ssm":["Canning Bridge W.A."],
                 "pub_date_ssim":["2001"],
-                "_version_":1738735003764785152,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595428212736,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"83",
@@ -712,8 +712,8 @@ http_interactions:
                 "subject_geo_ssim":["Australia"],
                 "published_ssm":["Strawberry Hills, N.S.W."],
                 "pub_date_ssim":["2001"],
-                "_version_":1738735003773173760,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595437649920,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"55",
@@ -732,8 +732,8 @@ http_interactions:
                 "subject_geo_ssim":["Australia"],
                 "published_ssm":["Perth, W.A."],
                 "pub_date_ssim":["2001"],
-                "_version_":1738735003760590849,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595417726976,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"47",
@@ -760,8 +760,8 @@ http_interactions:
                   "Western Division"],
                 "published_ssm":["Orange, N.S.W."],
                 "pub_date_ssim":["2001"],
-                "_version_":1738735003756396544,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595410386944,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"23",
@@ -784,8 +784,8 @@ http_interactions:
                 "subject_geo_ssim":["Philippines"],
                 "published_ssm":["Manila"],
                 "pub_date_ssim":["2001"],
-                "_version_":1738735003714453504,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595385221120,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"14",
@@ -806,8 +806,8 @@ http_interactions:
                 "subject_geo_ssim":["Australia"],
                 "published_ssm":["Melbourne"],
                 "pub_date_ssim":["2000"],
-                "_version_":1738735003690336256,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595383123968,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"38",
@@ -827,8 +827,8 @@ http_interactions:
                   "Structural engineering"],
                 "published_ssm":["Melbourne"],
                 "pub_date_ssim":["1997"],
-                "_version_":1738735003727036418,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595399901185,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"46",
@@ -851,8 +851,8 @@ http_interactions:
                 "subject_geo_ssim":["New South Wales"],
                 "published_ssm":["Sydney"],
                 "pub_date_ssim":["1997"],
-                "_version_":1738735003753250816,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595409338369,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"54",
@@ -876,8 +876,8 @@ http_interactions:
                 "subject_geo_ssim":["Tasmania"],
                 "published_ssm":["Hobart"],
                 "pub_date_ssim":["1996"],
-                "_version_":1738735003760590848,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595414581248,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0},
               {
                 "id":"78",
@@ -904,8 +904,8 @@ http_interactions:
                 "subject_geo_ssim":["Europe, Eastern"],
                 "published_ssm":["Washington, D.C."],
                 "pub_date_ssim":["1993"],
-                "_version_":1738735003771076608,
-                "timestamp":"2022-07-18T23:28:36.054Z",
+                "_version_":1740264595434504193,
+                "timestamp":"2022-08-04T20:40:48.365Z",
                 "score":1.0}]
           },
           "facet_counts":{
@@ -1096,5 +1096,5 @@ http_interactions:
                       "field":"language_ssim",
                       "value":"English",
                       "count":1}]}]}}}
-  recorded_at: Thu, 21 Jul 2022 00:36:32 GMT
+  recorded_at: Thu, 04 Aug 2022 22:32:20 GMT
 recorded_with: VCR 6.1.0

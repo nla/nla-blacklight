@@ -7,8 +7,12 @@ Rails.application.routes.draw do
   resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable
   end
+  # devise_scope :user do
+  #   delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session
+  # end
   devise_for :users, controllers: {
-    sessions: "users/sessions"
+    sessions: "users/sessions",
+    omniauth_callbacks: "users/omniauth_callbacks"
   }
 
   concern :exportable, Blacklight::Routes::Exportable.new
@@ -16,6 +20,8 @@ Rails.application.routes.draw do
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
     concerns [:exportable, :marc_viewable]
   end
+
+  get "/staff", to: "application#staff_login"
 
   resources :bookmarks do
     concerns :exportable

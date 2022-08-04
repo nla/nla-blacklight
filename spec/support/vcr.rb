@@ -1,21 +1,25 @@
 require "vcr"
 
 VCR.configure do |c|
+  vcr_mode = /rec/i.match?(ENV["VCR_MODE"]) ? :all : :once
+
+  c.default_cassette_options = {
+    record: vcr_mode,
+    match_requests_on: %i[method uri body]
+  }
+
   c.cassette_library_dir = "spec/cassettes"
   c.hook_into :webmock
   c.ignore_localhost = true
   c.configure_rspec_metadata!
 
-  c.filter_sensitive_data("<SOLR_URL>") do
-    ENV["SOLR_URL"]
-  end
-  c.filter_sensitive_data("<DATABASE_URL>") do
-    ENV["DATABASE_URL"]
-  end
-  c.filter_sensitive_data("<GALC_AUTH_PATH>") do
-    ENV["GETALIBRARYCARD_AUTH_PATH"]
-  end
-  c.filter_sensitive_data("<GALC_PATRON_PATH>") do
-    ENV["GETALIBRARYCARD_PATRON_DETAILS_PATH"]
+  %w[
+    DATABASE_URL
+    SOLR_URL
+    GETALIBRARYCARD_BASE_URL
+    ZK_HOST
+    SOLR_COLLECTION
+  ].each do |key|
+    c.filter_sensitive_data("<#{key}>") { ENV[key] }
   end
 end
