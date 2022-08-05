@@ -33,9 +33,13 @@ class SolrDocument
 
   ##
   # Get data from the full marc record contained in the solr document using a Traject spec.
-  def get_marc_derived_field(spec)
+  def get_marc_derived_field(spec, delimiter = ",")
     @marc_rec ||= to_marc
     extractor = Traject::MarcExtractor.cached(spec)
-    extractor.extract(@marc_rec)
+    extractor.extract(@marc_rec) * delimiter
+  end
+
+  def bib_id
+    get_marc_derived_field("001")
   end
 end
