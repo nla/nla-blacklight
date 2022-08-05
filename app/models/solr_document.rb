@@ -38,8 +38,4 @@ class SolrDocument
     extractor = Traject::MarcExtractor.cached(spec)
     extractor.extract(@marc_rec) * delimiter
   end
-
-  def bib_id
-    get_marc_derived_field("001")
-  end
 end
