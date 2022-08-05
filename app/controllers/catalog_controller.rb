@@ -205,6 +205,11 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field("id") do |field|
+      field.label = "Bib Id"
+      field.qt = "search"
+    end
+
     # scxxx
     config.add_search_field("subject-nla") do |field|
       field.solr_parameters = {
