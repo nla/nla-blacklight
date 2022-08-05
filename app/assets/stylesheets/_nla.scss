@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+html { font-size: 10px }
+
+// Colors
+:root {
+  --orange: #E03100;
+  --black: #000;
+  --white: #FFF;
+  --light-purple: #703996;
+  --light-yellow: #61B7F9;
+  --very-light-grey: rgb(244,245,246);
+  --grey-text: #46474A;
+  --dark-purple: rgb(5,7,91);
+  --blue: #1E4486;
+  --light-blue: #23AEFF;
+}
+
+$logo-image: image_url('nla_logo.svg') !default;
+
+$body-bg: var(--very-light-grey);
+$body-color: var(--grey-text);
+
+  // Typography
+$font-size-base: 1.8rem;
+$font-family-sans-serif: "Roboto condensed", sans-serif;
+
+// Headings
+$h1-font-size: 6.6rem;
+$h2-font-size: 4rem;
+$h3-font-size: 2.4rem;
+$h4-font-size: 2.2rem;
+$h5-font-size: 2.2rem;
+$h6-font-size: 1.6rem;
+$headings-font-family: "Frank Rhule Libre";
+$headings-font-weight: 900;
+$headings-line-height: 1.2;
+$headings-color: var(--dark-purple);
+
+// Links
+$link-color: #1E4486;
+$link-decoration: underline;
+$link-hover-color: var(--blue);
+$link-hover-decoration: none;
+
+body a:active {
+  color: var(--light-blue);
+  text-decoration: underline;
+}

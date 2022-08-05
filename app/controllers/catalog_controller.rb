@@ -127,8 +127,8 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
-    config.add_show_field "title_tsim", label: "Title"
-    config.add_show_field "title_vern_ssim", label: "Title"
+    # config.add_show_field "title_tsim", label: "Title"
+    # config.add_show_field "title_vern_ssim", label: "Title"
     config.add_show_field "subtitle_tsim", label: "Subtitle"
     config.add_show_field "subtitle_vern_ssim", label: "Subtitle"
     config.add_show_field "author_tsim", label: "Author"
@@ -145,7 +145,7 @@ class CatalogController < ApplicationController
     # scxxx
     # test display addition - TODO pull into extension module
     # config.add_show_field 'subject-nla_tsim', label: 'NLA Subject on single'
-    config.add_show_field "245abnps", label: "Full title", field: "id", helper_method: :from_marc
+    # config.add_show_field "245abnps", label: "Full title", field: "id", helper_method: :from_marc
     config.add_show_field "650ayzv", label: "Subjectus", field: "id", helper_method: :from_marc
     config.add_show_field "020aq", label: "ISBN", field: "id", helper_method: :from_marc
     config.add_show_field "880aq", label: "ISBN (880)", field: "id", helper_method: :from_marc
