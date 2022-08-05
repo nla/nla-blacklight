@@ -1,6 +1,5 @@
+@import 'nla';
 @import 'bootstrap';
-
-$logo-image: image_url('nla_logo.svg') !default;
 
 @import 'blacklight/blacklight';
 @import 'blacklight_marc';
