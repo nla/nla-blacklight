@@ -130,10 +130,10 @@ class CatalogController < ApplicationController
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"
     config.add_show_field label: "Bib ID", field: "id", accessor: :bib_id
-    config.add_show_field "subtitle_tsim", label: "Subtitle"
-    config.add_show_field "subtitle_vern_ssim", label: "Subtitle"
+    # config.add_show_field "subtitle_tsim", label: "Subtitle"
+    # config.add_show_field "subtitle_vern_ssim", label: "Subtitle"
     config.add_show_field "author_tsim", label: "Author"
-    config.add_show_field "author_vern_ssim", label: "Author"
+    # config.add_show_field "author_vern_ssim", label: "Author"
     config.add_show_field "format", label: "Format"
     config.add_show_field "url_fulltext_ssim", label: "URL"
     config.add_show_field "url_suppl_ssim", label: "More Information"
