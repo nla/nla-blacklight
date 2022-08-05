@@ -1,5 +1,11 @@
-require "traject"
 # frozen_string_literal: true
+
+require "traject"
+require "rexml/document"
+require "rexml/xpath"
+
+include REXML
+
 class SolrDocument
   include Blacklight::Solr::Document
   # The following shows how to setup this blacklight document to display marc documents
@@ -33,9 +39,68 @@ class SolrDocument
 
   ##
   # Get data from the full marc record contained in the solr document using a Traject spec.
-  def get_marc_derived_field(spec, delimiter = ",")
+  def get_marc_derived_field(spec, options: {separator: " "})
     @marc_rec ||= to_marc
-    extractor = Traject::MarcExtractor.cached(spec)
-    extractor.extract(@marc_rec) * delimiter
+    extractor = Traject::MarcExtractor.cached(spec, options)
+    extractor.extract(@marc_rec)
+  end
+
+  def marc_xml
+    @marc_xml ||= to_marc_xml
+  end
+
+  def online_access
+    get_online_access_urls
+  end
+
+  def copy_access
+    get_copy_urls
+  end
+
+  def related_access
+    get_related_urls
+  end
+
+  private
+
+  def get_online_access_urls
+    elements = get_marc_datafields_from_xml(marc_xml, "//datafield[@tag='856' and @ind2='0']")
+    make_url(elements)
+  end
+
+  def get_copy_urls
+    elements = get_marc_datafields_from_xml(marc_xml, "//datafield[@tag='856' and (@ind2='1' or (@ind2!='0' and @ind2!='2'))]")
+    make_url(elements)
+  end
+
+  def get_related_urls
+    elements = get_marc_datafields_from_xml(marc_xml, "//datafield[@tag='856' and @ind2='2']")
+    make_url(elements)
+  end
+
+  def to_marc_xml
+    @marc_rec ||= to_marc
+    @marc_rec.to_xml
+  end
+
+  def get_marc_datafields_from_xml(doc, xpath)
+    REXML::XPath.match(doc, xpath)
+  end
+
+  def make_url(elements)
+    urls = []
+    elements.each do |el|
+      url_hash = {text: "", href: ""}
+      el.children.each do |subfield|
+        subfield_code = subfield.attribute("code").value
+        if subfield_code == "3" || subfield_code == "z"
+          url_hash[:text] = subfield.text
+        elsif subfield_code == "u"
+          url_hash[:href] = subfield.text
+        end
+      end
+      urls << url_hash
+    end
+    urls
   end
 end
