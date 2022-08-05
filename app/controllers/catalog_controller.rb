@@ -129,6 +129,9 @@ class CatalogController < ApplicationController
     config.add_show_field "id", label: "Bib ID", field: "id"
     config.add_show_field "author_tsim", label: "Author"
     config.add_show_field "format", label: "Format"
+    config.add_show_field "online_access", label: "Online Access", field: "id", presenter: LinkedValuePresenter
+    config.add_show_field "copy_access", label: "Online Version", field: "id", presenter: LinkedValuePresenter
+    config.add_show_field "related_access", label: "Related Online Resources", field: "id", presenter: LinkedValuePresenter
     #   The ordering of the field names is the order of the display
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"
