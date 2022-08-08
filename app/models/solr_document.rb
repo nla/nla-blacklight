@@ -39,7 +39,21 @@ class SolrDocument
     extractor.extract(@marc_rec) * delimiter
   end
 
+  def get_marc_derived_field_as_array(spec)
+    @marc_rec ||= to_marc
+    extractor = Traject::MarcExtractor.cached(spec)
+    extractor.extract(@marc_rec)
+  end
+
   def bib_id
     get_marc_derived_field("001")
+  end
+
+  def description
+    array = get_marc_derived_field_as_array("2603abc:264|*0|3abc:264|*1|3abc:264|*2|3abc:264|*4|3abc:300abcefg:507ab:753abc:755axyz")
+    array.each do |s|
+      s.gsub!(/[, .\\;]*$|^[, .\/;]*/, "")
+    end
+    array * ", "
   end
 end
