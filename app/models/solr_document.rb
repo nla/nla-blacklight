@@ -111,7 +111,7 @@ class SolrDocument
       if url_hash[:text].empty?
         url_hash[:text] = url_hash[:href]
       end
-      urls << url_hash
+      urls << url_hash unless url_hash[:href].empty?
     end
     urls
   end
