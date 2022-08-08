@@ -11,7 +11,7 @@ class LinkedValuePresenter < Blacklight::FieldPresenter
     elements = []
 
     if values.size > 1
-      elements << view_context.content_tag(:ul) do
+      elements << view_context.content_tag(:ul, class: "pl-0") do
         safe_join(values.map do |value|
           view_context.content_tag(:li) do
             view_context.link_to value[:text], value[:href]
