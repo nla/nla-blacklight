@@ -108,6 +108,9 @@ class SolrDocument
           url_hash[:href] = subfield.text
         end
       end
+      if url_hash[:text].empty?
+        url_hash[:text] = url_hash[:href]
+      end
       urls << url_hash
     end
     urls
