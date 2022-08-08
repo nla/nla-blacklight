@@ -9,4 +9,9 @@ module ApplicationHelper
   def from_marc(options = {})
     options[:document].get_marc_derived_field(options[:config][:key])
   end
+
+  def build_link(options = {})
+    link_data = options[:document].get_marc_derived_field(options[:config][:key])
+    link_to link_data[0], link_data[1] unless link_data.size > 2
+  end
 end

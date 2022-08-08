@@ -127,31 +127,34 @@ class CatalogController < ApplicationController
 
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
+    config.add_show_field "id", label: "Bib ID", field: "id"
+    config.add_show_field "author_tsim", label: "Author"
+    config.add_show_field "format", label: "Format"
+    config.add_show_field "online_access", label: "Online Access", field: "id", presenter: LinkedValuePresenter
+    config.add_show_field "copy_access", label: "Online Version", field: "id", presenter: LinkedValuePresenter
+    config.add_show_field "related_access", label: "Related Online Resources", field: "id", presenter: LinkedValuePresenter
+    config.add_show_field label: "Description", field: "description", accessor: :description
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"
-    config.add_show_field label: "Bib ID", field: "id", accessor: :bib_id
     # config.add_show_field "subtitle_tsim", label: "Subtitle"
     # config.add_show_field "subtitle_vern_ssim", label: "Subtitle"
-    config.add_show_field "author_tsim", label: "Author"
     # config.add_show_field "author_vern_ssim", label: "Author"
-    config.add_show_field "format", label: "Format"
-    config.add_show_field label: "Description", field: "description", accessor: :description
-    config.add_show_field "url_fulltext_ssim", label: "URL"
-    config.add_show_field "url_suppl_ssim", label: "More Information"
-    config.add_show_field "language_ssim", label: "Language"
-    config.add_show_field "published_ssim", label: "Published"
-    config.add_show_field "published_vern_ssim", label: "Published"
-    config.add_show_field "lc_callnum_ssim", label: "Call number"
-    config.add_show_field "isbn_ssim", label: "ISBN"
+    # config.add_show_field "url_fulltext_ssim", label: "URL"
+    # config.add_show_field "url_suppl_ssim", label: "More Information"
+    # config.add_show_field "language_ssim", label: "Language"
+    # config.add_show_field "published_ssim", label: "Published"
+    # config.add_show_field "published_vern_ssim", label: "Published"
+    # config.add_show_field "lc_callnum_ssim", label: "Call number"
+    # config.add_show_field "isbn_ssim", label: "ISBN"
 
     # scxxx
     # test display addition - TODO pull into extension module
     # config.add_show_field 'subject-nla_tsim', label: 'NLA Subject on single'
     # config.add_show_field "245abnps", label: "Full title", field: "id", helper_method: :from_marc
-    config.add_show_field "650ayzv", label: "Subjectus", field: "id", helper_method: :from_marc
-    config.add_show_field "020aq", label: "ISBN", field: "id", helper_method: :from_marc
-    config.add_show_field "880aq", label: "ISBN (880)", field: "id", helper_method: :from_marc
-    config.add_show_field "856u", label: "Link", field: "id", helper_method: :from_marc
+    # config.add_show_field "650ayzv", label: "Subjectus", field: "id", helper_method: :from_marc
+    # config.add_show_field "020aq", label: "ISBN", field: "id", helper_method: :from_marc
+    # config.add_show_field "880aq", label: "ISBN (880)", field: "id", helper_method: :from_marc
+    # config.add_show_field "856u", label: "Link", field: "id", helper_method: :from_marc
 
     # "fielded" search configuration. Used by pulldown among other places.
     # For supported keys in hash, see rdoc for Blacklight::SearchFields
