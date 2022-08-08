@@ -49,6 +49,15 @@ class SolrDocument
     @marc_xml ||= to_marc_xml
   end
 
+  def description
+    date_fields_array = get_marc_derived_field_as_array("2603abc:264|*0|3abc:264|*1|3abc:264|*2|3abc:264|*4|3abc")
+    description_fields_array = get_marc_derived_field_as_array("300abcefg:507ab:753abc:755axyz")
+    date_fields_array.each do |s|
+      s.gsub!(/[, .\\;]*$|^[, .\/;]*/, "")
+    end
+    date_fields_array.push(*description_fields_array) * ", "
+  end
+
   def online_access
     get_online_access_urls
   end
