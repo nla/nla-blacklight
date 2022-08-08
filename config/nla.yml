@@ -1,0 +1,7 @@
+subnet:
+  local: ***REMOVED***
+  staff: ***REMOVED***
+
+mapsearch:
+  url: "https://georekt-test.nla.gov.au/mapsearch/?type=map&mapClassifications=all&geolocation=all&text="
+  search_url: "https://georekt-test.nla.gov.au/mapsearch/search/search?type=map&text="
