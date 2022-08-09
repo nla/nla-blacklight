@@ -14,7 +14,14 @@ class LinkedValuePresenter < Blacklight::FieldPresenter
       elements << view_context.content_tag(:ul, class: "pl-0") do
         safe_join(values.map do |value|
           view_context.content_tag(:li) do
-            view_context.link_to value[:text], value[:href]
+            list_content = []
+            list_content << view_context.link_to(value[:text], value[:href])
+            if document.has_broken_links?
+              list_content << view_context.content_tag(:p, class: "small") do
+                build_broken_link(value[:href])
+              end
+            end
+            safe_join(list_content, "\n")
           end
         end, "\n")
       end
