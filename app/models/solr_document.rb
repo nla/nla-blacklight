@@ -59,41 +59,49 @@ class SolrDocument
   end
 
   def online_access
-    get_online_access_urls
+    @online_access ||= get_online_access_urls
   end
 
   def copy_access
-    get_copy_urls
+    @copy_access ||= get_copy_urls
   end
 
   def related_access
-    get_related_urls
+    @related_access ||= get_related_urls
+  end
+
+  def broken_links
+    @broken_links ||= get_search_links
+  end
+
+  def has_broken_links?
+    broken_links.present?
+  end
+
+  def get_marc_datafields_from_xml(xpath, xml_doc = marc_xml)
+    REXML::XPath.match(xml_doc, xpath)
   end
 
   private
 
   def get_online_access_urls
-    elements = get_marc_datafields_from_xml(marc_xml, "//datafield[@tag='856' and @ind2='0']")
+    elements = get_marc_datafields_from_xml("//datafield[@tag='856' and @ind2='0']")
     make_url(elements)
   end
 
   def get_copy_urls
-    elements = get_marc_datafields_from_xml(marc_xml, "//datafield[@tag='856' and (@ind2='1' or (@ind2!='0' and @ind2!='2'))]")
+    elements = get_marc_datafields_from_xml("//datafield[@tag='856' and (@ind2='1' or (@ind2!='0' and @ind2!='2'))]")
     make_url(elements)
   end
 
   def get_related_urls
-    elements = get_marc_datafields_from_xml(marc_xml, "//datafield[@tag='856' and @ind2='2']")
+    elements = get_marc_datafields_from_xml("//datafield[@tag='856' and @ind2='2']")
     make_url(elements)
   end
 
   def to_marc_xml
     @marc_rec ||= to_marc
     @marc_rec.to_xml
-  end
-
-  def get_marc_datafields_from_xml(doc, xpath)
-    REXML::XPath.match(doc, xpath)
   end
 
   def make_url(elements)
@@ -114,5 +122,9 @@ class SolrDocument
       urls << url_hash unless url_hash[:href].empty?
     end
     urls
+  end
+
+  def get_search_links
+    SearchLink.new(self).links
   end
 end
