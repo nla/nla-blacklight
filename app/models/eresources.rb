@@ -17,17 +17,20 @@ class Eresources
   end
 
   def known_url(url, user_type = false)
+    result = {}
     @entries.each do |entry|
       entry["urlstem"].each do |stem|
-        stem = stem.delete("/")
+        stem = stem.gsub(/\/+$/, "")
         if url.start_with?(stem)
-          if entry["remoteurl"].empty?
+          result = if entry["remoteurl"].empty?
             {type: "ezproxy", url: url, entry: entry}
           else
             {type: "remoteurl", url: url_append(entry["remoteurl"], "NLAOriginalUrl=#{url}"), entry: entry}
           end
+          break
         end
       end
     end
+    result
   end
 end
