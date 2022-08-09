@@ -110,7 +110,7 @@ In order to run this cluster successfully, you'll need a Podman machine with at 
 The Podman machine created below will be initialised with 2 CPUs and 6GB of memory and disk space.
 
 ```bash
-podman machine init--cpus 2 --disk-size 6144 --memory 6144       # initialise a Podman machine
+podman machine init --cpus 2 --disk-size 6144 --memory 6144       # initialise a Podman machine
 podman-compose -f ./solr/cloud/docker-compose.yml up -d          # spin up a ZK + SolrCloud cluster
 podman-compose -f ./solr/cloud/docker-compose.yml down --volumes # pull down the ZK + SolrCloud cluster
 ```

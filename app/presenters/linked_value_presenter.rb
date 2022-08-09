@@ -21,6 +21,13 @@ class LinkedValuePresenter < Blacklight::FieldPresenter
     else
       link_data = values.first
       elements << @view_context.link_to(link_data[:text], link_data[:href])
+
+      # broken links
+      if document.has_broken_links?
+        elements << view_context.content_tag(:p, class: "small") do
+          build_broken_link(link_data[:href])
+        end
+      end
     end
 
     safe_join(elements, "\n")
@@ -41,5 +48,18 @@ class LinkedValuePresenter < Blacklight::FieldPresenter
     elsif key == "related_access"
       document.related_access
     end
+  end
+
+  def build_broken_link(url)
+    broken_link = document.broken_links[url]
+    broken_el = []
+    broken_el << "Broken link? let us search "
+    broken_el << view_context.link_to("Trove", broken_link[:trove])
+    broken_el << ", the "
+    broken_el << view_context.link_to("Wayback Machine", broken_link[:wayback])
+    broken_el << ", or "
+    broken_el << view_context.link_to("Google", broken_link[:google])
+    broken_el << " for you."
+    safe_join(broken_el, "\n")
   end
 end
