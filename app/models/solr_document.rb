@@ -78,6 +78,10 @@ class SolrDocument
     broken_links.present?
   end
 
+  def get_marc_datafields_from_xml(xpath, xml_doc = marc_xml)
+    REXML::XPath.match(xml_doc, xpath)
+  end
+
   private
 
   def get_online_access_urls
@@ -98,10 +102,6 @@ class SolrDocument
   def to_marc_xml
     @marc_rec ||= to_marc
     @marc_rec.to_xml
-  end
-
-  def get_marc_datafields_from_xml(xpath, xml_doc = marc_xml)
-    REXML::XPath.match(xml_doc, xpath)
   end
 
   def make_url(elements)
@@ -125,7 +125,6 @@ class SolrDocument
   end
 
   def get_search_links
-    @search_link ||= SearchLink.new(self)
-    @search_link.links
+    SearchLink.new(self).links
   end
 end
