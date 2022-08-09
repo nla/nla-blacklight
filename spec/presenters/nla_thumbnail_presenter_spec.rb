@@ -3,7 +3,7 @@
 require "rails_helper"
 
 # rubocop:disable RSpec/NestedGroups
-RSpec.describe NlaThumbnailPresenter do
+RSpec.describe NLAThumbnailPresenter do
   let(:document) { SolrDocument.new }
   let(:view_context) { instance_double(ActionView::Base) }
   let(:config) { Blacklight::Configuration.new.view_config(:index) }

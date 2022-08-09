@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
+class NLAThumbnailPresenter < Blacklight::ThumbnailPresenter
   def link_value
     thumbnail_value_from_document
   end
