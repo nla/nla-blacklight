@@ -23,6 +23,13 @@ class LinkedValuePresenter < Blacklight::FieldPresenter
       elements << @view_context.link_to(link_data[:text], link_data[:href])
     end
 
+    # broken links
+    if document.has_broken_links?
+      # elements << view_context.content_tag(:p, class: "small") do
+      #
+      # end
+    end
+
     safe_join(elements, "\n")
   end
 
