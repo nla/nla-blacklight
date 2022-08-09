@@ -577,6 +577,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  addressable (~> 2.8)
   awesome_print
   blacklight (~> 7.29)
   blacklight-marc (>= 7.0.0.rc1, < 9)

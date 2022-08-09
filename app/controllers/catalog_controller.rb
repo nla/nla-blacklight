@@ -37,7 +37,7 @@ class CatalogController < ApplicationController
     config.index.title_field = "title_tsim"
     config.index.display_type_field = "format"
     config.index.thumbnail_field = "thumbnail_path_ss"
-    config.index.thumbnail_presenter = NlaThumbnailPresenter
+    config.index.thumbnail_presenter = NLAThumbnailPresenter
 
     config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
 
@@ -59,7 +59,7 @@ class CatalogController < ApplicationController
 
     # scxxx Thumbnails
     config.show.thumbnail_field = "thumbnail_path_ss"
-    config.show.thumbnail_presenter = NlaThumbnailPresenter
+    config.show.thumbnail_presenter = NLAThumbnailPresenter
     config.show.partials.insert(1, :thumbnail) # thumbnail after show_header
 
     # solr fields that will be treated as facets by the blacklight application
