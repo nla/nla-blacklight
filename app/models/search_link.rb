@@ -43,12 +43,12 @@ class SearchLink
     result = []
 
     urls.each do |url|
-      unless eresources.known_url url
+      if eresources.known_url(url).empty?
         result << url
       end
 
       if is_nla_url?(url)
-        break
+        return []
       end
     end
 
