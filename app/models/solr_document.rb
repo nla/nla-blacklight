@@ -106,7 +106,7 @@ class SolrDocument
   end
 
   def get_map_search_url
-    [MapSearch.new.determine_url(id: id, format: self.fetch("format"))]
+    [MapSearch.new.determine_url(id: id, format: fetch("format"))]
   end
 
   def to_marc_xml
