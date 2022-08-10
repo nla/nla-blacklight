@@ -4,6 +4,8 @@ require "traject"
 require "rexml/document"
 require "rexml/xpath"
 
+require "#{::Rails.root}/lib/mapsearch/map_search"
+
 class SolrDocument
   include Blacklight::Solr::Document
   include REXML
@@ -78,6 +80,10 @@ class SolrDocument
     broken_links.present?
   end
 
+  def map_search
+    @map_search ||= get_map_search_url
+  end
+
   def get_marc_datafields_from_xml(xpath, xml_doc = marc_xml)
     REXML::XPath.match(xml_doc, xpath)
   end
@@ -97,6 +103,10 @@ class SolrDocument
   def get_related_urls
     elements = get_marc_datafields_from_xml("//datafield[@tag='856' and @ind2='2']")
     make_url(elements)
+  end
+
+  def get_map_search_url
+    [MapSearch.new.determine_url(id: id, format: self.fetch("format"))]
   end
 
   def to_marc_xml

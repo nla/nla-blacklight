@@ -1,7 +1,0 @@
-subnet:
-  local: "203.15.226.0,192.102.239.0"
-  staff: "203.4.200.0,203.4.201.0,203.4.202.0,203.4.203.0"
-
-mapsearch:
-  url: "https://georekt-test.nla.gov.au/mapsearch/?type=map&mapClassifications=all&geolocation=all&text="
-  search_url: "https://georekt-test.nla.gov.au/mapsearch/search/search?type=map&text="

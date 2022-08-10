@@ -131,6 +131,7 @@ class CatalogController < ApplicationController
     config.add_show_field "author_tsim", label: "Author"
     config.add_show_field "format", label: "Format"
     config.add_show_field "online_access", label: "Online Access", field: "id", presenter: LinkedValuePresenter
+    config.add_show_field "map_search", label: "Online Version", field: "id", presenter: MapSearchPresenter
     config.add_show_field "copy_access", label: "Online Version", field: "id", presenter: LinkedValuePresenter
     config.add_show_field "related_access", label: "Related Online Resources", field: "id", presenter: LinkedValuePresenter
     config.add_show_field label: "Description", field: "description", accessor: :description
