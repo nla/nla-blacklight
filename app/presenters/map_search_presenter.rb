@@ -19,6 +19,10 @@ class MapSearchPresenter < Blacklight::FieldPresenter
     @values ||= retrieve_values
   end
 
+  def render_field?
+    values.first.present? unless values.empty?
+  end
+
   private
 
   def retrieve_values
