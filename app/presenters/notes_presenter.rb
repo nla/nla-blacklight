@@ -21,7 +21,12 @@ class NotesPresenter < Blacklight::FieldPresenter
     # more_notes
     elements << build_list(notes_hash[:more_notes])
 
-    safe_join(elements, "\n")
+    safe_join(elements.compact_blank, "\n")
+  end
+
+  def render_field?
+    notes_hash = values.first
+    notes_hash.present? ? (notes_hash[:notes].present? && notes_hash[:more_notes].present?) : false
   end
 
   private
