@@ -11,7 +11,7 @@ class LinkedValuePresenter < Blacklight::FieldPresenter
     elements = []
 
     if values.size > 1
-      elements << view_context.content_tag(:ul, class: "pl-0") do
+      elements << view_context.content_tag(:ul) do
         safe_join(values.map do |value|
           view_context.content_tag(:li) do
             list_content = []
@@ -40,22 +40,7 @@ class LinkedValuePresenter < Blacklight::FieldPresenter
     safe_join(elements, "\n")
   end
 
-  def values
-    @values ||= retrieve_values
-  end
-
   private
-
-  def retrieve_values
-    key = @field_config[:key]
-    if key == "online_access"
-      document.online_access
-    elsif key == "copy_access"
-      document.copy_access
-    elsif key == "related_access"
-      document.related_access
-    end
-  end
 
   def build_broken_link(url)
     broken_link = document.broken_links[url]
