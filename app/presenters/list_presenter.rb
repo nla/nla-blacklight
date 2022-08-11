@@ -11,7 +11,7 @@ class ListPresenter < Blacklight::FieldPresenter
     elements = []
 
     elements << if values.size > 1
-      view_context.content_tag(:ul, class: "pl-0") do
+      view_context.content_tag(:ul) do
         safe_join(values.map do |value|
           view_context.content_tag(:li) do
             value

@@ -15,17 +15,7 @@ class MapSearchPresenter < Blacklight::FieldPresenter
     safe_join(elements, "\n")
   end
 
-  def values
-    @values ||= retrieve_values
-  end
-
   def render_field?
     values.first.present? unless values.empty?
-  end
-
-  private
-
-  def retrieve_values
-    document.map_search
   end
 end
