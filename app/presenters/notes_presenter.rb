@@ -8,7 +8,7 @@ class NotesPresenter < Blacklight::FieldPresenter
   delegate :key, :component, to: :field_config
 
   # Original RegEx used by VuFind
-  # URL_REGEX = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%\/.[A-Za-z0-9_]-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[\w\/.]*))?)/
+  URL_REGEX = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%\/.[A-Za-z0-9_]-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[\w\/.]*))?)/
 
   def render
     elements = []
@@ -49,7 +49,7 @@ class NotesPresenter < Blacklight::FieldPresenter
 
     unless value.empty?
       # rubocop:disable Rails/OutputSafety
-      result = value.gsub(URI::DEFAULT_PARSER.make_regexp, '<a href="\0">\0</a>').html_safe
+      result = value.gsub(URI::DEFAULT_PARSER.make_regexp(%w[http https]), '<a href="\0">\0</a>').html_safe
       # rubocop:enable Rails/OutputSafety
     end
 
