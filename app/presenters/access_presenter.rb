@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class LinkedValuePresenter < Blacklight::FieldPresenter
+class AccessPresenter < Blacklight::FieldPresenter
   include ActionView::Helpers::OutputSafetyHelper
   include ActionView::Helpers::TagHelper
 
