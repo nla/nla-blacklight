@@ -19,7 +19,7 @@ class CatalogController < ApplicationController
     # config.response_model = Blacklight::Solr::Response
     #
     ## Should the raw solr document endpoint (e.g. /catalog/:id/raw) be enabled
-    # config.raw_endpoint.enabled = false
+    config.raw_endpoint.enabled = true
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
@@ -128,12 +128,12 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field "id", label: "Bib ID", field: "id"
-    config.add_show_field "author_tsim", label: "Author"
-    config.add_show_field "format", label: "Format"
-    config.add_show_field "online_access", label: "Online Access", accessor: :online_access, presenter: LinkedValuePresenter
+    config.add_show_field "author", field: "author_tsim", label: "Author"
+    config.add_show_field field: "format", label: "Format"
+    config.add_show_field "online_access", label: "Online Access", accessor: :online_access, presenter: AccessPresenter
     config.add_show_field "map_search", label: "Online Version", accessor: :map_search, presenter: MapSearchPresenter
-    config.add_show_field "copy_access", label: "Online Version", accessor: :copy_access, presenter: LinkedValuePresenter
-    config.add_show_field "related_access", label: "Related Online Resources", accessor: :related_access, presenter: LinkedValuePresenter
+    config.add_show_field "copy_access", label: "Online Version", accessor: :copy_access, presenter: AccessPresenter
+    config.add_show_field "related_access", label: "Related Online Resources", accessor: :related_access, presenter: AccessPresenter
     config.add_show_field label: "Description", field: "description", accessor: :description
     config.add_show_field "series", label: "Series", accessor: :series, presenter: ListPresenter
     config.add_show_field "notes", label: "Notes", accessor: :notes, presenter: NotesPresenter
