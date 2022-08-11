@@ -136,6 +136,7 @@ class CatalogController < ApplicationController
     config.add_show_field "related_access", label: "Related Online Resources", accessor: :related_access, presenter: LinkedValuePresenter
     config.add_show_field label: "Description", field: "description", accessor: :description
     config.add_show_field "series", label: "Series", accessor: :series, presenter: ListPresenter
+    config.add_show_field "notes", label: "Notes", accessor: :notes, presenter: NotesPresenter
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"
     # config.add_show_field "subtitle_tsim", label: "Subtitle"

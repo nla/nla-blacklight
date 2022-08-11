@@ -47,6 +47,25 @@ class SolrDocument
     extractor.extract(@marc_rec)
   end
 
+  def get_marc_derived_field_with_conditions(datafield, subfields, match_sub, match_regexp, options: {separator: " "})
+    @marc_rec ||= to_marc
+    result = []
+
+    if can_process_marc_field?(datafield, match_sub, match_regexp)
+      extractor = Traject::MarcExtractor.cached(datafield + subfields, options)
+      result = extractor.extract(@marc_rec)
+    end
+
+    result
+  end
+
+  def can_process_marc_field?(datafield, match_sub, match_regexp)
+    @marc_rec ||= to_marc
+    extractor = Traject::MarcExtractor.cached(datafield + match_sub)
+    subfield_value = extractor.extract(@marc_rec).compact_blank.flatten
+    subfield_value.blank? ? false : subfield_value.match(match_regexp).present?
+  end
+
   def marc_xml
     @marc_xml ||= to_marc_xml
   end
@@ -103,6 +122,10 @@ class SolrDocument
     series << get_marc_derived_field("830anpvx").flatten
 
     series.flatten.compact_blank
+  end
+
+  def notes
+    Notes.new(self).notes
   end
 
   private
