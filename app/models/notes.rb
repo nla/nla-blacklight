@@ -23,17 +23,17 @@ class Notes
   def get_notes
     notes = []
 
-    notes << document.get_marc_derived_field("500a:501a:502a:504a").flatten
-    notes << document.get_marc_derived_field("513ab:516a:518a").flatten
-    notes << document.get_marc_derived_field("521a:522a:524a:525a:526iabcdz").flatten
-    notes << document.get_marc_derived_field("530abc3u:535abcdg:536abcdefgh").flatten
-    notes << document.get_marc_derived_field("5463ab:547a").flatten
-    notes << document.get_marc_derived_field("550a:552abcdefghijklmnopuz:556az").flatten
-    notes << document.get_marc_derived_field("562abcde:565abcde:567a").flatten
-    notes << document.get_marc_derived_field("580a:581a").flatten
-    notes << document.get_marc_derived_field("583abcdefhijklnouz23", options: {separator: ", "})
-    notes << document.get_marc_derived_field("5843ab:588a").flatten
-    notes << document.get_marc_derived_field("900a:995abdpy").flatten
+    notes << document.get_marc_derived_field("500a:501a:502a:504a", options: {alternate_script: false}).flatten
+    notes << document.get_marc_derived_field("513ab:516a:518a", options: {alternate_script: false}).flatten
+    notes << document.get_marc_derived_field("521a:522a:524a:525a:526iabcdz", options: {alternate_script: false}).flatten
+    notes << document.get_marc_derived_field("530abc3u:535abcdg:536abcdefgh", options: {alternate_script: false}).flatten
+    notes << document.get_marc_derived_field("5463ab:547a", options: {alternate_script: false}).flatten
+    notes << document.get_marc_derived_field("550a:552abcdefghijklmnopuz:556az", options: {alternate_script: false}).flatten
+    notes << document.get_marc_derived_field("562abcde:565abcde:567a", options: {alternate_script: false}).flatten
+    notes << document.get_marc_derived_field("580a:581a", options: {alternate_script: false}).flatten
+    notes << document.get_marc_derived_field("583abcdefhijklnouz23", options: {separator: ", ", alternate_script: false})
+    notes << document.get_marc_derived_field("5843ab:588a", options: {alternate_script: false}).flatten
+    notes << document.get_marc_derived_field("900a:995abdpy", options: {alternate_script: false}).flatten
 
     notes.compact_blank.flatten
   end
