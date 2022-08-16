@@ -218,13 +218,13 @@ class CatalogController < ApplicationController
     end
 
     # scxxx
-    config.add_search_field("subject-nla") do |field|
-      field.solr_parameters = {
-        # 'spellcheck.dictionary': 'subject',
-        qf: "${subject-nla_qf}",
-        pf: "${subject-nla_pf}"
-      }
-    end
+    # config.add_search_field("subject-nla") do |field|
+    #   field.solr_parameters = {
+    #     # 'spellcheck.dictionary': 'subject',
+    #     qf: "${subject-nla_qf}",
+    #     pf: "${subject-nla_pf}"
+    #   }
+    # end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the Solr field to sort by and
