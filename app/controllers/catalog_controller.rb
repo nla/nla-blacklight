@@ -94,7 +94,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "subject_geo_ssim", label: "Region"
     config.add_facet_field "subject_era_ssim", label: "Era"
 
-    config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: ["format", "language_ssim"], collapsing: true
+    config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: %w[format language_ssim], collapsing: true
 
     config.add_facet_field "example_query_facet_field", label: "Publish Date", query: {
       years_5: {label: "within 5 Years", fq: "pub_date_ssim:[#{Time.zone.now.year - 5} TO *]"},
@@ -128,15 +128,15 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the show (single result) view
     #   The ordering of the field names is the order of the display
     config.add_show_field "id", label: "Bib ID", field: "id"
-    config.add_show_field "author", field: "author_tsim", label: "Author"
     config.add_show_field field: "format", label: "Format"
-    config.add_show_field "online_access", label: "Online Access", accessor: :online_access, presenter: AccessPresenter
-    config.add_show_field "map_search", label: "Online Version", accessor: :map_search, presenter: MapSearchPresenter
-    config.add_show_field "copy_access", label: "Online Version", accessor: :copy_access, presenter: AccessPresenter
-    config.add_show_field "related_access", label: "Related Online Resources", accessor: :related_access, presenter: AccessPresenter
+    config.add_show_field "author", field: "author_tsim", label: "Author"
+    config.add_show_field "online_access", label: "Online Access", accessor: :online_access, helper_method: :url_list
+    config.add_show_field "map_search", label: "Online Version", accessor: :map_search, helper_method: :map_search
+    config.add_show_field "copy_access", label: "Online Version", accessor: :copy_access, helper_method: :url_list
+    config.add_show_field "related_access", label: "Related Online Resources", accessor: :related_access, helper_method: :url_list
     config.add_show_field label: "Description", field: "description", accessor: :description
-    config.add_show_field "series", label: "Series", accessor: :series, presenter: ListPresenter
-    config.add_show_field "notes", label: "Notes", accessor: :notes, presenter: NotesPresenter
+    config.add_show_field "series", label: "Series", accessor: :series, helper_method: :list
+    config.add_show_field "notes", label: "Notes", accessor: :notes, helper_method: :notes
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"
     # config.add_show_field "subtitle_tsim", label: "Subtitle"
@@ -218,13 +218,13 @@ class CatalogController < ApplicationController
     end
 
     # scxxx
-    config.add_search_field("subject-nla") do |field|
-      field.solr_parameters = {
-        # 'spellcheck.dictionary': 'subject',
-        qf: "${subject-nla_qf}",
-        pf: "${subject-nla_pf}"
-      }
-    end
+    # config.add_search_field("subject-nla") do |field|
+    #   field.solr_parameters = {
+    #     # 'spellcheck.dictionary': 'subject',
+    #     qf: "${subject-nla_qf}",
+    #     pf: "${subject-nla_pf}"
+    #   }
+    # end
 
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the Solr field to sort by and

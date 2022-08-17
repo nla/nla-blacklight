@@ -9,13 +9,15 @@ class Notes
     @document = document
   end
 
-  def notes
+  def values
     notes = get_notes
 
     # 880 notes
     more_notes = get_more_notes
 
-    {notes: notes, more_notes: more_notes}
+    if notes.compact_blank.present? || more_notes.compact_blank.present?
+      {notes: notes, more_notes: more_notes}
+    end
   end
 
   private
