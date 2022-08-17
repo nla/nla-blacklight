@@ -421,7 +421,7 @@ GEM
     regexp_parser (2.5.0)
     reline (0.3.1)
       io-console (~> 0.5)
-    repost (0.4.0)
+    repost (0.4.1)
     request_store (1.5.1)
       rack (>= 1.4)
     responders (3.0.1)
@@ -604,7 +604,7 @@ DEPENDENCIES
   rails (~> 7.0.3, >= 7.0.3.1)
   rails-controller-testing (~> 1.0, >= 1.0.5)
   redis (~> 4.0)
-  repost (~> 0.4.0)
+  repost (~> 0.4.1)
   rsolr (>= 1.0, < 3)
   rspec-rails (~> 5.1, >= 5.1.2)
   rubocop-rails
