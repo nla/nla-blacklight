@@ -1,0 +1,44 @@
+# This workflow generates and updates the contents of the CHANGELOG.md file
+# when a pull request is merged against the main branch.
+name: "Changelog generation"
+on:
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  changelog:
+    if: ${{ github.event.pull_request.merged }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repository: ${{ github.event.pull_request.head.repo.full_name }}
+          ref: ${{ github.event.pull_request.head.ref }}
+          fetch-depth: 0
+
+      - name: Generate a changelog
+        uses: orhun/git-cliff-action@v1.1.7
+        id: git-cliff
+        with:
+          config: git-cliff.toml
+          args: --verbose
+        env:
+          OUTPUT: CHANGELOG.md
+
+      - name: Add & Commit
+        uses: EndBug/add-and-commit@v9.0.1
+        with:
+          add: CHANGELOG.md
+          default_author: github_actions
+          message: "docs: update CHANGELOG.md for ${{ github.ref_name }}"
+          push: true
+
+      - name: Print the changelog
+        run: |
+          cat "${{ steps.git-cliff.outputs.changelog }}"
