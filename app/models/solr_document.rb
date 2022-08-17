@@ -108,24 +108,11 @@ class SolrDocument
   end
 
   def series
-    series = []
-
-    non_800_series_exists = get_marc_derived_field("490|1*|").empty?
-    if non_800_series_exists
-      series << get_marc_derived_field("490avx").flatten
-    end
-
-    series << get_marc_derived_field("440anpvx").flatten
-    series << get_marc_derived_field("800abcdknpqtvx").flatten
-    series << get_marc_derived_field("810abcdknptvx").flatten
-    series << get_marc_derived_field("811acdefklnpqtvx").flatten
-    series << get_marc_derived_field("830anpvx").flatten
-
-    series.flatten.compact_blank
+    Series.new(self).values
   end
 
   def notes
-    Notes.new(self).notes
+    Notes.new(self).values
   end
 
   private
@@ -146,7 +133,10 @@ class SolrDocument
   end
 
   def get_map_search_url
-    [MapSearch.new.determine_url(id: id, format: fetch("format"))]
+    url = MapSearch.new.determine_url(id: id, format: fetch("format"))
+    if url.present?
+      [url]
+    end
   end
 
   def to_marc_xml

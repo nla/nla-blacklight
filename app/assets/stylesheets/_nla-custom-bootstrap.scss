@@ -1,0 +1,76 @@
+
+// Colours to override in Bootstrap
+$white: #FFF;
+$orange: #E03100;
+$purple: #34075B;
+$blue: #1E4486;
+$light-blue: #23AEFF;
+$light-purple: #703996;
+$light-yellow: #FFF3CD;
+$cyan: #00afc4;
+$yellow: #f2e95c;
+
+
+$theme-colors: (
+  "info": $cyan,
+  "primary": $orange,
+  "secondary": $purple,
+  "warning": $yellow,
+  "dark": $purple,
+  "nla-light-purple": $light-purple,
+  "nla-light-blue": $light-blue,
+  "nla-purple": $purple,
+);
+
+$logo-image: image_url('nla_logo.svg');
+
+$body-bg: #f4f5f6;
+$body-color: #46474A;
+
+  // Typography
+$font-family-sans-serif: "Roboto condensed", sans-serif;
+
+
+$font-weight-semi-bold: 500;
+
+// Headings
+$h1-font-size: 4.125rem;
+$h2-font-size: 2.5rem;
+$h3-font-size: 1.5rem;
+$h4-font-size: 1.375rem;
+$h5-font-size: 1.25rem;
+$h6-font-size: 1.125rem;
+$headings-font-family: "Frank Rhule Libre", serif;
+$headings-font-weight: 900;
+$headings-line-height: 1.2;
+$headings-color: $purple;
+
+// Links
+$link-color: $blue;
+$link-decoration: underline;
+$link-hover-color: $light-blue;
+$link-hover-decoration: none;
+
+
+// Buttons
+$btn-padding-x: 2rem;
+$btn-padding-x-sm: 1.5rem;
+$btn-padding-x-lg: 2rem;
+$btn-font-weight: 700;
+$btn-border-radius: 0;
+$btn-border-radius-lg: 0;
+$btn-border-radius-sm: 0;
+
+
+// Form inputs
+$input-border-radius: 0;
+$input-border-radius-lg: 0;
+$input-border-radius-sm: 0;
+$component-active-bg: $purple;
+
+
+
+$navbar-dark-color: $white;
+$navbar-dark-hover-color: $orange;
+$navbar-dark-active-color: $orange;
+

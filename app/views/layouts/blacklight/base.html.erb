@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<%= content_tag :html, class: 'no-js', **html_tag_attributes do %>
+<%= content_tag :html, class: 'no-js h-100', **html_tag_attributes do %>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -13,11 +13,11 @@
     <%= favicon_link_tag %>
     <%= stylesheet_link_tag "application", media: "all" %>
     <%= javascript_include_tag "application" %>
-
+    <script src="https://kit.fontawesome.com/26bddccc03.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
   </head>
-  <body class="<%= render_body_class %>">
+  <body class="<%= render_body_class %> d-flex flex-column h-100">
     <% if isDev || isStaging %>
       <div class="sticky-top bg-danger text-white text-center p-2">
         [ <% if isDev %>
