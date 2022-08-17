@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+//Colours not defined in core Bootstrap
+$white: #FFF;
+$orange: #E03100;
+$purple: #34075B;
+$blue: #1E4486;
+$light-blue: #23AEFF;
+$light-purple: #703996;
+$light-yellow: #FFF3CD;
+
+
+// Typography
+$font-family-serif: "Frank Rhule Libre", serif;
+$font-family-sans-serif: "Roboto condensed";
+
+
+// Bootstrap overrides
+a:active {
+  color: $light-blue;
+  text-decoration: underline;
+}
+
+.btn {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:active {
+  background: $light-purple;
+  border-color: $light-purple;
+}
+
+
+
+
+.navbar-dark {
+  .navbar-nav {
+    .nav-link {
+      border-bottom-width: 3px;
+      border-bottom-style: solid;
+      border-bottom-color: transparent;
+      
+      &:hover,
+      &:focus {
+        border-bottom-width: 3px;
+        border-bottom-style: solid;
+        border-bottom-color: var(--orange);
+      }
+    }
+  }
+}
+
+
+
+
+
+
+.footer {
+  color: var(--white);
+  
+  a {
+    color: $white;
+    text-decoration: none;
+    
+    &:focus,
+    &:hover {
+      color: $white;
+      text-decoration: underline;
+    }
+  }
+  .connect .list-inline-item a {
+    &:focus,
+    &:hover {
+      color: $orange;
+    }
+  }
+  
+  h2 {
+    &.h4 {
+      color: $white;
+    }
+    
+    &.h6 {
+      font-family: $font-family-sans-serif;
+      color: $white;
+    }
+  }
+  
+  hr {
+    border-top-color: $white;
+  }
+}
