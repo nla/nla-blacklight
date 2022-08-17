@@ -9,6 +9,18 @@ class NLAThumbnailPresenter < Blacklight::ThumbnailPresenter
     retrieve_values(field_config(@view_config[:title_field])).compact_blank.first
   end
 
+  def thumbnail_tag(image_options = {}, url_options = {})
+    value = thumbnail_value(image_options)
+    return value if value.nil? || url_options[:suppress_link]
+
+    context = view_config[:key]
+    if context == :show
+      view_context.link_to value, link_value, {"aria-hidden": true, tabindex: -1, counter: @counter}
+    else
+      view_context.link_to_document document, value, url_options
+    end
+  end
+
   private
 
   # @param [Hash] image_options to pass to the image tag
