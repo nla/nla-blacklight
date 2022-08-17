@@ -1,7 +1,5 @@
 module FieldHelper
-
-  ##
-  # Display linked field data. If there is more than one item in the list
+  # Display linked items. If there is more than one item in the list
   # show the values in an unordered list.
   def url_list(document:, field:, config:, value:, context:)
     elements = []
@@ -35,6 +33,7 @@ module FieldHelper
     safe_join(elements, "\n")
   end
 
+  # Displays values in an unordered list if there is more than one
   def list(document:, field:, config:, value:, context:)
     elements = []
 
@@ -53,22 +52,24 @@ module FieldHelper
     safe_join(elements, "\n")
   end
 
+  # Display combined notes (i.e. notes and linked 880 notes). Shown as
+  # an unordered list if there are multiple notes. URLs in notes will
+  # be turned into links.
   def notes(document:, field:, config:, value:, context:)
     elements = []
 
     notes_hash = value.first
-    elements << build_notes_list(notes_hash[:notes]) if notes_hash[:notes].present?
-    elements << build_notes_list(notes_hash[:more_notes]) if notes_hash[:more_notes].present?
+    combined_notes = [*notes_hash[:notes], *notes_hash[:more_notes]]
+    elements = [*build_notes_list(combined_notes)] if combined_notes.present?
 
     safe_join(elements.compact_blank, "\n")
   end
 
+  # Create a link to Map Search
   def map_search(document:, field:, config:, value:, context:)
-    elements = []
-
-    elements << link_to("View this map in Map Search", value.first)
-
-    safe_join(elements, "\n")
+    # rubocop:disable Rails/OutputSafety
+    link_to("View this map in Map Search", value.first.html_safe) if value.present?
+    # rubocop:enable Rails/OutputSafety
   end
 
   private
@@ -97,10 +98,10 @@ module FieldHelper
           content_tag(:li) do
             link_urls(value)
           end
-        end, "\n")
+        end, "")
       end
     else
-      values.first
+      link_urls(values.first)
     end
 
     safe_join(elements, "\n")
