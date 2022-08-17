@@ -2,7 +2,7 @@
 # when a pull request is merged against the main branch.
 name: "Changelog generation"
 on:
-  pull_request:
+  pull_request_target:
     types:
       - closed
     branches:
@@ -12,15 +12,17 @@ concurrency:
   cancel-in-progress: true
 jobs:
   changelog:
-    if: ${{ github.event.pull_request.merged }}
+    if: ${{ github.event.pull_request.merged == true }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          repository: ${{ github.event.pull_request.head.repo.full_name }}
-          ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
+#        with:
+#          repository: ${{ github.event.pull_request.head.repo.full_name }}
+#          ref: ${{ github.event.pull_request.head.ref }}
+#          fetch-depth: 0
 
       - name: Generate a changelog
         uses: orhun/git-cliff-action@v1.1.7
