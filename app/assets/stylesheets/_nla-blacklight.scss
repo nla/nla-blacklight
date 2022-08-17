@@ -17,7 +17,7 @@ $font-family-sans-serif: "Roboto condensed";
 
 // Bootstrap overrides
 a:active {
-  color: $light-blue;
+  //color: $light-blue;
   text-decoration: underline;
 }
 
@@ -33,15 +33,22 @@ a:active {
   border-color: $light-purple;
 }
 
-
-
+.navbar-brand.navbar-logo {
+  height: 80px;
+  background-size: contain;
+  margin-top: 0;
+}
 
 .navbar-dark {
   .navbar-nav {
     .nav-link {
+      font-size: 1.1875rem;
+      font-weight: 700;
       border-bottom-width: 3px;
       border-bottom-style: solid;
       border-bottom-color: transparent;
+      padding-left: 1rem;
+      padding-right: 1rem;
       
       &:hover,
       &:focus {
