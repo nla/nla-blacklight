@@ -17,6 +17,10 @@ VCR.configure do |c|
     GETALIBRARYCARD_BASE_URL
     ZK_HOST
     SOLR_COLLECTION
+    KEYCLOAK_CLIENT
+    KEYCLOAK_SECRET
+    KEYCLOAK_URL
+    KEYCLOAK_REALM
   ].each do |key|
     c.filter_sensitive_data("<#{key}>") { ENV[key] }
   end
