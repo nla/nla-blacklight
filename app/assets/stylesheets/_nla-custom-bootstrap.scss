@@ -24,8 +24,19 @@ $theme-colors: (
 
 $logo-image: image_url('nla_logo.svg');
 
+
+
+// Body
 $body-bg: #f4f5f6;
 $body-color: #46474A;
+
+
+// Components
+
+$border-radius: 0;
+$border-radius-lg: 0;
+$border-radius-sm: 0;
+
 
   // Typography
 $font-family-sans-serif: "Roboto condensed", sans-serif;
@@ -57,15 +68,11 @@ $btn-padding-x: 2rem;
 $btn-padding-x-sm: 1.5rem;
 $btn-padding-x-lg: 2rem;
 $btn-font-weight: 700;
-$btn-border-radius: 0;
-$btn-border-radius-lg: 0;
-$btn-border-radius-sm: 0;
+
 
 
 // Form inputs
-$input-border-radius: 0;
-$input-border-radius-lg: 0;
-$input-border-radius-sm: 0;
+
 $component-active-bg: $purple;
 
 
@@ -74,4 +81,17 @@ $navbar-dark-color: $white;
 $navbar-dark-hover-color: $orange;
 $navbar-dark-active-color: $orange;
 $navbar-dark-toggler-border-color: $white;
+
+
+// Pagination
+$pagination-color:                  $purple;
+$pagination-bg:                     transparent;
+$pagination-border-width:           1px;
+$pagination-border-color:           transparent;
+
+$pagination-hover-color:            $white;
+$pagination-hover-bg:               $purple;
+$pagination-hover-border-color:     $purple;
+
+
 
