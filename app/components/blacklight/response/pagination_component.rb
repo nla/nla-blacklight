@@ -8,7 +8,7 @@ module Blacklight
       # @param [Hash] html html options for the pagination container
       def initialize(response:, html: {}, **pagination_args)
         @response = response
-        @html_attr = { aria: { label: t('views.pagination.aria.container_label') } }.merge(html)
+        @html_attr = {aria: {label: t("views.pagination.aria.container_label")}}.merge(html)
         @pagination_args = pagination_args
       end
 
