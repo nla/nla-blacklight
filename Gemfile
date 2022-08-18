@@ -97,6 +97,9 @@ group :test do
   gem "database_cleaner-active_record"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
+
+  gem "simplecov", "~> 0.21.2"
+  gem "simplecov-lcov", "~> 0.8.0"
 end
 
 gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
