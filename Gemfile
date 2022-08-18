@@ -73,6 +73,7 @@ group :development, :test do
   gem "rspec-rails", "~> 5.1", ">= 5.1.2"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
+  gem "faker"
   gem "vcr"
 end
 
