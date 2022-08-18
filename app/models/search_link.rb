@@ -90,7 +90,7 @@ class SearchLink
   def extract_domain(url)
     result = ""
     unless url.empty?
-      host = URI.parse(url).host || ""
+      host = Addressable::URI.parse(url).host || ""
 
       if host.present?
         segments = host.split(".").reverse
