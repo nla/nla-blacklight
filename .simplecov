@@ -8,7 +8,6 @@ SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
 
 SimpleCov.start "rails" do
   enable_coverage :branch
-  minimum_coverage_by_file line: 0, branch: 0
 
   add_filter do |source_file|
     source_file.lines.count < 10
@@ -16,6 +15,9 @@ SimpleCov.start "rails" do
 
   # Filter out Blacklight files that are being overridden, but not modified
   add_filter "app/components/blacklight/response/pagination_component.rb"
+
+  # Filter out hack around Turbo + Devise issue
+  add_filter "app/controllers/turbo_devise_controller.rb"
 
   add_group "Components", "app/components"
   add_group "Presenters", "app/presenters"
