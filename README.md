@@ -2,10 +2,31 @@
 
 Custom implementation of [Blacklight](http://projectblacklight.org/) for The National Library of Australia.
 
+## Table of Contents
+
+* [Requirements](#requirements)
+* [Configuration](#configuration)
+  + [Environment Variables](#environment-variables)
+    - [Blacklight database](#blacklight-database)
+    - [Solr](#solr)
+    - [Temp and caching directories](#temp-and-caching-directories)
+    - [External services](#external-services)
+    - [Rails settings](#rails-settings)
+* [Setup](#setup)
+* [Running the app](#running-the-app)
+* [Tests](#tests)
+* [Continuous Integration](#continuous-integration)
+* [Deployment](#deployment)
+* [Linting, Static Analysis & Supply Chain Vulnerability Checking](#linting--static-analysis---supply-chain-vulnerability-checking)
+* [Containers](#containers)
+  + [Single-node Solr](#single-node-solr)
+  + [Zookeeper + SolrCloud cluster](#zookeeper---solrcloud-cluster)
+  + [Populating a local Solr index](#populating-a-local-solr-index)
+
 ## Requirements
 
 * Ruby: 3.0.2
-* Bundler: 2.2.22
+* Bundler: 2.3.19
 
 * System dependencies
     - Solr: 8
@@ -32,42 +53,70 @@ values in your terminal before running the application.
     DATABASE_URL
 
 #### Solr
-    SOLR_URL
+    SOLR_URL - single node Solr
+    
+    ZK_HOST - Zookeeper connection string for the Solr Cloud cluster
+    SOLR_COLLECTION - Solr Cloud collection for the catalogue index
 
 #### Temp and caching directories
+These variables are mainly used in the `staging` or `production` environment. 
+
     PIDFILE - relocates the server pid file outside of the application directory
     BLACKLIGHT_TMP_PATH - relocates the caching directory outside of the application directory
 
 #### External services
-    IMAGE_SERVICE_URL
-
     GETALIBRARYCARD_BASE_URL - base URL for Get a Library Card
     GETALIBRARYCARD_AUTH_PATH - path to the authentication endpoint of Get a Library Card
     GETALIBRARYCARD_PATRON_DETAILS_PATH - path to the user details endpoint of Get a Library Card
 
+    KEYCLOAK_CLIENT - name of the client
+    KEYCLOAK_SECRET - secret defined in the client credentials
+    KEYCLOAK_URL - base URL of the Keycloak server e.g. https://login-devel.nla.gov.au
+    KEYCLOAK_REALM - name of the Keycloak realm
+
+#### Rails settings
+These variables are mainly used in the `staging` or `production` environment.
+
+    SECRET_KEY_BASE - used by Devise for encrypting session values
+    RAILS_LOG_TO_STDOUT - makes Rails logs print to the console
+    RAILS_SERVE_STATIC_FILES - tells Rails to serve static assets from the /public directory
+
 ## Setup
 
-1. Pull down the app from version control.
+1. Clone the app from GitHub.
 2. Make sure you have MySQL running locally and configured in the `.env.development.local` config file.
-3. Make sure you have Solr running locally and configured in the `.env.development.local` config file.
-4. `bin/setup` installs gems, npm packages, and database migrations for development/test environments.
-5. Install [Podman](https://podman.io/), [Podman Desktop](https://podman-desktop.io/) and [podman-compose](https://github.com/containers/podman-compose).
+3. Make sure you have Solr running locally and configured in the `.env.development.local` config file.<br />⚠️  If you are not planning on modifying the index, you can point this at the  devel or test environment Solr cluster.
+4. `bin/setup` installs gems and performs database migrations for the `development` environment.<br /> ⚠️ Gems are installed in `vendor/bundle`.
+5. _(Optional)_ If you'd like to develop locally using containerised services, install 
+[Podman](https://podman.io/), [Podman Desktop](https://podman-desktop.io/) and [podman-compose](https://github.com/containers/podman-compose),
+then read the [Containers](#containers) section.
 
 ## Running the app
 
-* `RAILS_ENV=<env> bin/run` runs the Rails server at 0.0.0.0:3000.
+* `bin/run` runs the Rails server at http://localhost:3000.
+  * By default Rails will load the `development` environment.
+  * The runtime environment can be changed by defining `RAILS_ENV` before executing a command/script. e.g.
+  
+```bash
+RAILS_ENV=test bin/ci
+```
 
-## Tests and CI
+## Tests
 
 * `bin/ci` contains all the tests and security vulnerability checks for the app.
 * `tmp/test.log` will use the production logging format *NOT* the development one.
 * The following test frameworks are used:
-    * RSpec - for BDD testing
-    * Cucumber - for acceptance testing
-    * Capybara - simulates web application interaction
-    * Webmock - HTTP request mocking and stubbing
-    * VCR - Mock HTTP responses with canned data
+    * [RSpec](https://rspec.info/) - for BDD testing
+    * [Cucumber](https://github.com/cucumber/cucumber-rails) - for acceptance testing
+    * [Capybara](http://teamcapybara.github.io/capybara/) - simulates web application interaction
+    * [Webmock](https://github.com/bblimke/webmock) - HTTP request mocking and stubbing
+    * [VCR](https://relishapp.com/vcr/vcr/docs) - Mock HTTP responses with canned data
 * 🚨 Some tests require a Zookeeper + SolrCloud cluster running locally. See [Containers](#containers) section below.
+
+## Continuous Integration
+
+* CI is performed by [GitHub Actions](https://docs.github.com/en/actions).
+* Workflows are defined in `.github/workflows`.
 
 ## Deployment
 
@@ -110,12 +159,13 @@ In order to run this cluster successfully, you'll need a Podman machine with at 
 The Podman machine created below will be initialised with 2 CPUs and 6GB of memory and disk space.
 
 ```bash
-podman machine init --cpus 2 --disk-size 6144 --memory 6144       # initialise a Podman machine
+podman machine init --cpus 2 --disk-size 6144 --memory 6144      # initialise a Podman machine
+podman machine start                                             # start the Podman machine
 podman-compose -f ./solr/cloud/docker-compose.yml up -d          # spin up a ZK + SolrCloud cluster
 podman-compose -f ./solr/cloud/docker-compose.yml down --volumes # pull down the ZK + SolrCloud cluster
 ```
 
-The cluster Solr Dashboard is located at: http://127.0.0.1:8983/solr/#/
+The Solr Cloud Dashboard is located at: http://127.0.0.1:8983/solr/#/
 
 ### Populating a local Solr index
 
