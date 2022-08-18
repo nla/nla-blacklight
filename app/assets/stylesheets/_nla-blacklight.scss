@@ -33,6 +33,11 @@ a:active {
   border-color: $light-purple;
 }
 
+.btn-outline-primary,
+.btn-outline-secondary {
+  background: $white;
+}
+
 .navbar-brand.navbar-logo {
   height: 80px;
   background-size: contain;
@@ -44,7 +49,7 @@ a:active {
     .nav-link {
       font-size: 1.1875rem;
       font-weight: 700;
-      border-bottom-width: 3px;
+      border-bottom-width: 0.375rem;
       border-bottom-style: solid;
       border-bottom-color: transparent;
       padding-left: 1rem;
@@ -52,8 +57,6 @@ a:active {
       
       &:hover,
       &:focus {
-        border-bottom-width: 3px;
-        border-bottom-style: solid;
         border-bottom-color: var(--orange);
       }
     }
@@ -63,7 +66,48 @@ a:active {
 
 
 
+// Facets
+.facets {
 
+  .card-header {
+    background: #FFF;
+  }
+  
+  h3 {
+    font-family: $font-family-sans-serif;
+  }
+  
+  .facet-limit-active {
+    border-color: rgba(0,0,0,0.125) !important;
+    
+    .card-header {
+      background: $white !important;
+    }
+    
+    .selected {
+      color: #46474A !important;
+    }
+    
+    .remove {
+      .remove-icon {
+        font-weight: normal;
+        color: rgba(70,71,74,0.3);
+        
+        &:hover {
+          color: $orange;
+        }
+  
+      }
+  
+    }
+    
+  }
+  
+
+}
+
+
+// Footer
 
 .footer {
   color: var(--white);
