@@ -10,7 +10,7 @@ module Blacklight
         ZNODE_LIVE_NODES = "/live_nodes".freeze
 
         def initialize(blacklight_config)
-          Rails.logger.info "initializing Blacklight::Solr::Cloud::Repository"
+          Rails.logger.debug "initializing Blacklight::Solr::Cloud::Repository"
           super(blacklight_config)
           setup_zk
         end
@@ -22,8 +22,8 @@ module Blacklight
         private
 
         def setup_zk
-          Rails.logger.info "initializing Zookeeper"
-          zk ||= ZK.new(ENV["ZK_HOST"] || "localhost:2181", {chroot: :do_nothing})
+          Rails.logger.debug "determining availability of Solr nodes"
+          zk = ZK.new(ENV["ZK_HOST"] || "localhost:2181", {chroot: :do_nothing})
           collection = ENV["SOLR_COLLECTION"] || "blacklight"
 
           collection_state = get_collection_state(collection, zk)
