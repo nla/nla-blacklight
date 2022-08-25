@@ -1,0 +1,21 @@
+@charset "UTF-8";
+@import "variables";
+
+.btn {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:active {
+  background: color("light-purple");
+  border-color: color("light-purple");
+  background: color("black");
+}
+
+.btn-outline-primary,
+.btn-outline-secondary {
+  background: color("white");
+  background: color("black");
+}

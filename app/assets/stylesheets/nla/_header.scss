@@ -1,0 +1,27 @@
+@charset "UTF-8";
+@import "variables";
+
+.navbar-brand.navbar-logo {
+  height: 80px;
+  background-size: contain;
+  margin-top: 0;
+}
+
+.navbar-dark {
+  .navbar-nav {
+    .nav-link {
+      font-size: 1.1875rem;
+      font-weight: 700;
+      border-bottom-width: 0.375rem;
+      border-bottom-style: solid;
+      border-bottom-color: transparent;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      
+      &:hover,
+      &:focus {
+        border-bottom-color: color("orange");
+      }
+    }
+  }
+}

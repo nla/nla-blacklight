@@ -1,0 +1,15 @@
+@charset "UTF-8";
+@import "variables";
+
+.documents-list {
+  .document {
+    margin-top: 0;
+    padding: 1rem;
+    
+    &:focus,
+    &:hover {
+      background: color("white");
+      box-shadow: 3px 3px 6px 0 rgba(112,57,150,0.1);
+    }
+  }
+}
