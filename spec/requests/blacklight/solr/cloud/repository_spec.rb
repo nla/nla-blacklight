@@ -39,9 +39,6 @@ RSpec.describe Blacklight::Solr::Cloud::Repository do
   end
 
   it "retrieves all the urls and leader node urls from zookeeper" do
-    expect(repository.instance_variable_get(:@leader_urls).sort).to eq(
-      %w[http://192.168.1.22:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
     expect(repository.instance_variable_get(:@all_urls).sort).to eq(
       %w[http://192.168.1.21:8983/solr/collection1 http://192.168.1.22:8983/solr/collection1 http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
     )

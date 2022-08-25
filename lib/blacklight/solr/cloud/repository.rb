@@ -57,11 +57,9 @@ module Blacklight
         def update_urls(collection, all_nodes, live_nodes)
           synchronize do
             @all_urls = []
-            @leader_urls = []
             all_nodes.each do |node|
               next unless active_node?(node, live_nodes)
               url = "#{node["base_url"]}/#{collection}"
-              @leader_urls << url if leader_node? node
               @all_urls << url
             end
           end
@@ -74,15 +72,9 @@ module Blacklight
           nodes.flatten
         end
 
-        def select_node(leader_only = false)
-          url = if leader_only
-            synchronize do
-              @leader_urls.sample
-            end
-          else
-            synchronize do
-              @all_urls.sample
-            end
+        def select_node
+          url = synchronize do
+            @all_urls.sample
           end
           raise Blacklight::Solr::Cloud::NotEnoughNodes unless url
           url
@@ -90,10 +82,6 @@ module Blacklight
 
         def active_node?(node, live_nodes)
           live_nodes[node["node_name"]] && node["state"] == "active"
-        end
-
-        def leader_node?(node)
-          node["leader"] == "true"
         end
       end
     end
