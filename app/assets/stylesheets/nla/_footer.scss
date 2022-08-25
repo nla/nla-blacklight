@@ -1,0 +1,38 @@
+@charset "UTF-8";
+@import "variables";
+
+.footer {
+  color: color("white");
+  
+  a {
+    color: color("white");
+    text-decoration: none;
+    
+    &:focus,
+    &:hover {
+      color: color("white");
+      text-decoration: underline;
+    }
+  }
+  .connect .list-inline-item a {
+    &:focus,
+    &:hover {
+      color: color("orange");
+    }
+  }
+  
+  h2 {
+    &.h4 {
+      color: color("white");
+    }
+    
+    &.h6 {
+      font-family: $font-family-sans-serif;
+      color: color("white");
+    }
+  }
+  
+  hr {
+    border-top-color: color("white");
+  }
+}
