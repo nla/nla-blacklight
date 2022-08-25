@@ -1,0 +1,42 @@
+@charset "UTF-8";
+@import "variables";
+
+// Facets
+.facets {
+  .card-header {
+    background: color("white");
+  }
+  
+  h3 {
+    font-family: $font-family-sans-serif;
+  }
+  
+  .facet-field-heading {
+    .btn:after {
+      float: none;
+    }
+  }
+  
+  .facet-limit-active {
+    border-color: rgba(0,0,0,0.125) !important;
+    
+    .card-header {
+      background: color("white") !important;
+    }
+    
+    .selected {
+      color: #46474A !important;
+    }
+    
+    .remove {
+      .remove-icon {
+        font-weight: normal;
+        color: rgba(70,71,74,0.3);
+        
+        &:hover {
+          color: color("orange");
+        }
+      }
+    }
+  }
+}
