@@ -39,9 +39,6 @@ RSpec.describe Blacklight::Solr::Cloud::Repository do
   end
 
   it "retrieves all the urls and leader node urls from zookeeper" do
-    expect(repository.instance_variable_get(:@leader_urls).sort).to eq(
-      %w[http://192.168.1.22:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
     expect(repository.instance_variable_get(:@all_urls).sort).to eq(
       %w[http://192.168.1.21:8983/solr/collection1 http://192.168.1.22:8983/solr/collection1 http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
     )
@@ -57,63 +54,5 @@ RSpec.describe Blacklight::Solr::Cloud::Repository do
   it "raises an exception when no nodes are available" do
     zk_in_solr.set("/collections/collection1/state.json", File.read("spec/files/collection1_all_nodes_down.json"))
     expect { repository.connection }.to raise_error(Blacklight::Solr::Cloud::NotEnoughNodes)
-  end
-
-  it "removes downed replica node and adds recovered node" do
-    zk_in_solr.delete("/live_nodes/192.168.1.21:8983_solr")
-    zk_in_solr.set("/collections/collection1/state.json", File.read("spec/files/collection1_replica_down.json"))
-    expect { repository.instance_variable_get(:@leader_urls).sort }.to become_soon(
-      %w[http://192.168.1.22:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
-    expect { repository.instance_variable_get(:@all_urls).sort }.to become_soon(
-      %w[http://192.168.1.22:8983/solr/collection1 http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
-
-    zk_in_solr.create("/live_nodes/192.168.1.21:8983_solr", mode: :ephemeral)
-    zk_in_solr.set("/collections/collection1/state.json", File.read("spec/files/collection1_all_nodes_alive.json"))
-    expect { repository.instance_variable_get(:@leader_urls).sort }.to become_soon(
-      %w[http://192.168.1.22:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
-    expect { repository.instance_variable_get(:@all_urls).sort }.to become_soon(
-      %w[http://192.168.1.21:8983/solr/collection1 http://192.168.1.22:8983/solr/collection1 http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
-  end
-
-  it "removes a downed leader and adds recovered node" do
-    zk_in_solr.delete("/live_nodes/192.168.1.22:8983_solr")
-    zk_in_solr.set("/collections/collection1/state.json", File.read("spec/files/collection1_leader_down.json"))
-    expect { repository.instance_variable_get(:@leader_urls).sort }.to become_soon(
-      %w[http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
-    expect { repository.instance_variable_get(:@all_urls).sort }.to become_soon(
-      %w[http://192.168.1.21:8983/solr/collection1 http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
-
-    zk_in_solr.create("/live_nodes/192.168.1.22:8983_solr", mode: :ephemeral)
-    zk_in_solr.set("/collections/collection1/state.json", File.read("spec/files/collection1_all_nodes_alive.json"))
-    expect { repository.instance_variable_get(:@leader_urls).sort }.to become_soon(
-      %w[http://192.168.1.22:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
-    expect { repository.instance_variable_get(:@all_urls).sort }.to become_soon(
-      %w[http://192.168.1.21:8983/solr/collection1 http://192.168.1.22:8983/solr/collection1 http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
-  end
-
-  it "removes recovering leader node and adds recovered node" do
-    zk_in_solr.set("/collections/collection1/state.json", File.read("spec/files/collection1_leader_recovering.json"))
-    expect { repository.instance_variable_get(:@leader_urls).sort }.to become_soon(
-      %w[http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
-    expect { repository.instance_variable_get(:@all_urls).sort }.to become_soon(
-      %w[http://192.168.1.21:8983/solr/collection1 http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
-
-    zk_in_solr.set("/collections/collection1/state.json", File.read("spec/files/collection1_all_nodes_alive.json"))
-    expect { repository.instance_variable_get(:@leader_urls).sort }.to become_soon(
-      %w[http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
-    expect { repository.instance_variable_get(:@all_urls).sort }.to become_soon(
-      %w[http://192.168.1.21:8983/solr/collection1 http://192.168.1.22:8983/solr/collection1 http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
-    )
   end
 end

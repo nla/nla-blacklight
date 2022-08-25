@@ -8,9 +8,9 @@ module Blacklight
         include MonitorMixin
 
         ZNODE_LIVE_NODES = "/live_nodes".freeze
-        ZNODE_COLLECTIONS = "/collections".freeze
 
         def initialize(blacklight_config)
+          Rails.logger.debug "initializing Blacklight::Solr::Cloud::Repository"
           super(blacklight_config)
           setup_zk
         end
@@ -22,97 +22,66 @@ module Blacklight
         private
 
         def setup_zk
-          @zk = ZK.new(ENV["ZK_HOST"] || "localhost:2181", {chroot: :do_nothing})
+          Rails.logger.debug "determining availability of Solr nodes"
+          zk = ZK.new(ENV["ZK_HOST"] || "localhost:2181", {chroot: :do_nothing})
           collection = ENV["SOLR_COLLECTION"] || "blacklight"
 
-          init_collection_state_watcher collection
-          init_live_nodes_watcher collection
-          update_urls collection
-        end
-
-        def init_collection_state_watcher(collection)
-          @zk.register(collection_state_znode_path(collection)) do |_event|
-            update_collection_state collection
-            update_urls collection
-          end
-
-          update_collection_state collection
+          collection_state = get_collection_state(collection, zk)
+          all_nodes = get_all_nodes(collection_state)
+          live_nodes = get_live_nodes zk
+          update_urls(collection, all_nodes, live_nodes)
         end
 
         def collection_state_znode_path(collection)
           "/collections/#{collection}/state.json"
         end
 
-        def update_collection_state(collection)
+        def get_collection_state(collection, zk)
           synchronize do
-            collection_state_json, _stat = @zk.get(collection_state_znode_path(collection), watch: true)
-            @collection_state = ::JSON.parse(collection_state_json)[collection]
+            collection_state_json, _stat = zk.get(collection_state_znode_path(collection), watch: false)
+            ::JSON.parse(collection_state_json)[collection]
           end
         end
 
-        def init_live_nodes_watcher(collection)
-          @zk.register(ZNODE_LIVE_NODES) do |_event|
-            update_live_nodes
-            update_urls collection
-          end
-
-          update_live_nodes
-        end
-
-        def update_urls(collection)
+        def get_live_nodes(zk)
           synchronize do
-            @all_urls, @leader_urls = available_urls collection
+            live_nodes = {}
+            zk.children(ZNODE_LIVE_NODES, watch: false).each do |node|
+              live_nodes[node] = true
+            end
+
+            live_nodes
           end
         end
 
-        def available_urls(collection)
-          leader_urls = []
-          all_urls = []
-          all_nodes.each do |node|
-            next unless active_node?(node)
-            url = "#{node["base_url"]}/#{collection}"
-            leader_urls << url if leader_node? node
-            all_urls << url
+        def update_urls(collection, all_nodes, live_nodes)
+          synchronize do
+            @all_urls = []
+            all_nodes.each do |node|
+              next unless active_node?(node, live_nodes)
+              url = "#{node["base_url"]}/#{collection}"
+              @all_urls << url
+            end
           end
-          [all_urls, leader_urls]
         end
 
-        def all_nodes
-          nodes = @collection_state["shards"].values.map do |shard|
+        def get_all_nodes(collection_state)
+          nodes = collection_state["shards"].values.map do |shard|
             shard["replicas"].values
           end
           nodes.flatten
         end
 
-        def select_node(leader_only = false)
-          url = if leader_only
-            synchronize do
-              @leader_urls.sample
-            end
-          else
-            synchronize do
-              @all_urls.sample
-            end
+        def select_node
+          url = synchronize do
+            @all_urls.sample
           end
           raise Blacklight::Solr::Cloud::NotEnoughNodes unless url
           url
         end
 
-        def update_live_nodes
-          synchronize do
-            @live_nodes = {}
-            @zk.children(ZNODE_LIVE_NODES, watch: true).each do |node|
-              @live_nodes[node] = true
-            end
-          end
-        end
-
-        def active_node?(node)
-          @live_nodes[node["node_name"]] && node["state"] == "active"
-        end
-
-        def leader_node?(node)
-          node["leader"] == "true"
+        def active_node?(node, live_nodes)
+          live_nodes[node["node_name"]] && node["state"] == "active"
         end
       end
     end
