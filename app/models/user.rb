@@ -30,8 +30,4 @@ class User < ApplicationRecord
   def to_s
     "#{name_given} #{name_family}"
   end
-
-  def pepper
-    "au.gov.nla.blacklight"
-  end
 end
