@@ -21,6 +21,22 @@ RSpec.describe Users::OmniauthCallbacksController do
 
       it { is_expected.to redirect_to root_path }
     end
+
+    context "when staff user exists in the database" do
+      before do
+        User.create(patron_id: 1, voyager_id: 1, name_given: "Test", name_family: "User", email: "staff_user@nla.gov.au", provider: "keycloakopenid", uid: "b8d0e04c-5a33-458f-b917-bc258861ebc0")
+
+        setup_keycloak_env
+
+        get :keycloakopenid
+      end
+
+      # rubocop:disable RSpec/NamedSubject
+      it { expect(subject.current_user.to_s).to eq "Staff User" }
+      # rubocop:enable RSpec/NamedSubject
+
+      it { is_expected.to redirect_to root_path }
+    end
   end
 
   def setup_keycloak_env

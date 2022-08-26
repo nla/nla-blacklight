@@ -20,7 +20,7 @@ class User < ApplicationRecord
     user.name_given = auth.info.first_name
     user.name_family = auth.info.last_name
 
-    user.save
+    # user.save
     user
   end
 

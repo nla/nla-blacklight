@@ -108,6 +108,8 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
 end
