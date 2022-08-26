@@ -166,3 +166,13 @@ podman-compose -f ./solr/cloud/docker-compose.yml down --volumes # pull down the
 ```
 
 The Solr Cloud Dashboard is located at: http://127.0.0.1:8983/solr/#/
+
+### Populating a local Solr index
+
+There is a sample of Voyager MARC records in `./solr/voy-sample` that can be used for local development.
+
+Ensure you're connected to Solr, then execute the command below in a terminal:
+
+```bash
+bin/rails solr:marc:index MARC_FILE=./solr/voy-sample
+```
