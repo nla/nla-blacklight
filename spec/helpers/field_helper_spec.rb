@@ -11,20 +11,40 @@ RSpec.describe FieldHelper do
     subject { helper.url_list(document: document, field: "online_access", config: config, value: value, context: "show") }
 
     context "when there is only a single item" do
-      let(:value) { [{text: "Example link", href: "https://example.com"}] }
+      let(:value) { [{text: "Text version:", href: "http://purl.access.gpo.gov/GPO/LPS9877"}] }
 
-      it { is_expected.to eq '<a href="https://example.com">Example link</a>' }
+      it { is_expected.to include '<a href="http://purl.access.gpo.gov/GPO/LPS9877">Text version:</a>' }
     end
 
     context "when there are multiple items" do
       let(:value) do
         [
-          {text: "Example A", href: "https://examplea.com"},
-          {text: "Example B", href: "https://exampleb.com"}
+          {text: "Text version:", href: "http://purl.access.gpo.gov/GPO/LPS9877"},
+          {text: "PDF version:", href: "http://purl.access.gpo.gov/GPO/LPS9878"}
         ]
       end
 
-      it { is_expected.to eq "<ul><li><a href=\"https://examplea.com\">Example A</a></li>\n<li><a href=\"https://exampleb.com\">Example B</a></li></ul>" }
+      it { is_expected.to include "<a href=\"http://purl.access.gpo.gov/GPO/LPS9877\">Text version:</a>" }
+
+      it { is_expected.to include "<a href=\"http://purl.access.gpo.gov/GPO/LPS9878\">PDF version:</a>" }
+    end
+
+    context "when there are broken links" do
+      let(:value) do
+        [
+          {text: "PDF version:", href: "http://purl.access.gpo.gov/GPO/LPS9878"}
+        ]
+      end
+
+      it { expect(document).to have_broken_links }
+
+      it { is_expected.to include "Broken link?" }
+
+      it { is_expected.to include "<a href=\"https://webarchive.nla.gov.au/awa/*/http://purl.access.gpo.gov/GPO/LPS9878\">Trove</a>" }
+
+      it { is_expected.to include "<a href=\"https://web.archive.org/web/*/http://purl.access.gpo.gov/GPO/LPS9878\">Wayback Machine</a>" }
+
+      it { is_expected.to include "<a href=\"https://www.google.com.au/search?q=&quot;Protocol amending 1949 Convention of Inter-American Tropical Tuna Commission&quot; gpo.gov united states united states united states\">Google</a>" }
     end
   end
 
@@ -169,33 +189,128 @@ RSpec.describe FieldHelper do
   end
 
   # Need to set the MARC source field to actual MARC XML in order to allow
-  # the "#to_marc" method to be included in the SolrDocument model. This is not actually
-  # used in any of the tests above.
+  # the "#to_marc" method to be included in the SolrDocument model.
   def sample_marc
-    "<record>
-      <leader>01182pam a22003014a 4500</leader>
-      <controlfield tag=\"001\">a4802615</controlfield>
-      <controlfield tag=\"003\">SIRSI</controlfield>
-      <controlfield tag=\"008\">020828s2003    enkaf    b    001 0 eng  </controlfield>
-      <datafield tag=\"245\" ind1=\"0\" ind2=\"0\">
-        <subfield code=\"a\">Apples :</subfield>
-        <subfield code=\"b\">botany, production, and uses /</subfield>
-        <subfield code=\"c\">edited by D.C. Ferree and I.J. Warrington.</subfield>
+    "<record xmlns='http://www.loc.gov/MARC21/slim'>
+      <leader>02507cam a2200433 a 4500</leader>
+      <controlfield tag='001'>4157458</controlfield>
+      <controlfield tag='005'>20171214151243.0</controlfield>
+      <controlfield tag='007'>he bmb---bbca</controlfield>
+      <controlfield tag='008'>010305s2001    dcu     b    f000 0 eng c</controlfield>
+      <datafield ind1=' ' ind2=' ' tag='035'>
+        <subfield code='a'>(OCoLC)46368408</subfield>
       </datafield>
-      <datafield tag=\"260\" ind1=\" \" ind2=\" \">
-        <subfield code=\"a\">Oxon, U.K. ;</subfield>
-        <subfield code=\"a\">Cambridge, MA :</subfield>
-        <subfield code=\"b\">CABI Pub.,</subfield>
-        <subfield code=\"c\">c2003.</subfield>
+      <datafield ind1=' ' ind2=' ' tag='035'>
+        <subfield code='a'>4157458</subfield>
       </datafield>
-      <datafield tag=\"700\" ind1=\"1\" ind2=\" \">
-        <subfield code=\"a\">Ferree, David C.</subfield>
-        <subfield code=\"q\">(David Curtis),</subfield>
-        <subfield code=\"d\">1943-</subfield>
+      <datafield ind1=' ' ind2=' ' tag='040'>
+        <subfield code='a'>GPO</subfield>
+        <subfield code='b'>eng</subfield>
       </datafield>
-      <datafield tag=\"700\" ind1=\"1\" ind2=\" \">
-        <subfield code=\"a\">Warrington, I. J.</subfield>
-        <subfield code=\"q\">(Ian J.)</subfield>
+      <datafield ind1=' ' ind2=' ' tag='042'>
+        <subfield code='a'>pcc</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='074'>
+        <subfield code='a'>0996-A</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='074'>
+        <subfield code='a'>0996-A (online)</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='074'>
+        <subfield code='a'>0996-B (MF)</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='074'>
+        <subfield code='a'>0996-B (online)</subfield>
+      </datafield>
+      <datafield ind1='0' ind2=' ' tag='086'>
+        <subfield code='a'>Y 1.1/4:107-2</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='091'>
+        <subfield code='a'>mfm</subfield>
+      </datafield>
+      <datafield ind1='0' ind2=' ' tag='130'>
+        <subfield code='a'>Convention on the Establishment of an Inter-American Tropical Tuna Commission</subfield>
+        <subfield code='d'>(1949).</subfield>
+        <subfield code='k'>Protocols, etc.,</subfield>
+        <subfield code='d'>1999 June 11.</subfield>
+      </datafield>
+      <datafield ind1='1' ind2='0' tag='245'>
+        <subfield code='a'>Protocol amending 1949 Convention of Inter-American Tropical Tuna Commission</subfield>
+        <subfield code='h'>[microform] :</subfield>
+        <subfield code='b'>message from the President of the United States transmitting protocol to amend the 1949 Convention on the Establishment of an Inter-American Tropical Tuna Commission, done at Guayaquil, June 11, 1999, and signed by the United States, subject to ratification, in Guayaquil, Ecuador, on the same date.</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='260'>
+        <subfield code='a'>Washington :</subfield>
+        <subfield code='b'>U.S. G.P.O.,</subfield>
+        <subfield code='c'>2001.</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='300'>
+        <subfield code='a'>vii, 10 p. ;</subfield>
+        <subfield code='c'>23 cm.</subfield>
+      </datafield>
+      <datafield ind1='1' ind2=' ' tag='490'>
+        <subfield code='a'>Treaty doc. ;</subfield>
+        <subfield code='v'>107-2</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='500'>
+        <subfield code='a'>At head of title: 107th Congress, 1st session. Senate.</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='500'>
+        <subfield code='a'>&quot;Referred to the Committee on Foreign Relations.&quot;</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='500'>
+        <subfield code='a'>Distributed to some depository libraries in microfiche.</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='500'>
+        <subfield code='a'>Shipping list no.: 2001-0113-P.</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='500'>
+        <subfield code='a'>&quot;January 8, 2001.&quot;</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='530'>
+        <subfield code='a'>Also available via Internet from the GPO Access web site. Addresses as of 3/1/01: http://frwebgate.access.gpo.gov/cgi-bin/useftp.cgi?IPaddress=162.140.64.21&amp;filename=td002.107&amp;directory=/diskb/wais/data/107c̲ongd̲ocuments (text version), http://frwebgate.access.gpo.gov/cgi-bin/useftp.cgi?IPaddress=162.140.64.21&amp;filename=td002.pdf&amp;directory=/diskb/wais/data/107c̲ongd̲ocuments (PDF version); current access is available via PURLs.</subfield>
+      </datafield>
+      <datafield ind1='2' ind2='0' tag='610'>
+        <subfield code='a'>Inter-American Tropical Tuna Commission</subfield>
+        <subfield code='x'>Membership.</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2='0' tag='650'>
+        <subfield code='a'>Tuna fisheries</subfield>
+        <subfield code='x'>Law and legislation.</subfield>
+      </datafield>
+      <datafield ind1='1' ind2=' ' tag='710'>
+        <subfield code='a'>United States.</subfield>
+        <subfield code='b'>President (1993-2001 : Clinton)</subfield>
+      </datafield>
+      <datafield ind1='1' ind2=' ' tag='710'>
+        <subfield code='a'>United States.</subfield>
+        <subfield code='b'>Congress.</subfield>
+        <subfield code='b'>Senate.</subfield>
+        <subfield code='b'>Committee on Foreign Relations.</subfield>
+      </datafield>
+      <datafield ind1='1' ind2=' ' tag='710'>
+        <subfield code='a'>United States.</subfield>
+        <subfield code='t'>Convention on the Establishment of an Inter-American Tropical Tuna Commission</subfield>
+        <subfield code='d'>(1949).</subfield>
+        <subfield code='k'>Protocols, etc.,</subfield>
+        <subfield code='d'>1999 June 11.</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2='0' tag='830'>
+        <subfield code='a'>Treaty doc. ;</subfield>
+        <subfield code='v'>107-2.</subfield>
+      </datafield>
+      <datafield ind1='4' ind2='1' tag='856'>
+        <subfield code='3'>Text version:</subfield>
+        <subfield code='u'>http://purl.access.gpo.gov/GPO/LPS9877</subfield>
+      </datafield>
+      <datafield ind1='4' ind2='1' tag='856'>
+        <subfield code='3'>PDF version:</subfield>
+        <subfield code='u'>http://purl.access.gpo.gov/GPO/LPS9878</subfield>
+        <subfield code='z'>Adobe Acrobat Reader required</subfield>
+      </datafield>
+      <datafield ind1=' ' ind2=' ' tag='984'>
+        <subfield code='a'>ANL</subfield>
+        <subfield code='c'>mc SUDOC Y 1.1/4:107-2</subfield>
       </datafield>
     </record>"
   end
