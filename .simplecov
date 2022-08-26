@@ -15,6 +15,7 @@ SimpleCov.start "rails" do
 
   # Filter out Blacklight files that are being overridden, but not modified
   add_filter "app/components/blacklight/response/pagination_component.rb"
+  add_filter "app/models/marc_indexer.rb"
 
   # Filter out hack around Turbo + Devise issue
   add_filter "app/controllers/turbo_devise_controller.rb"
