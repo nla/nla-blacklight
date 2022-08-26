@@ -225,6 +225,10 @@
   <copyField source="subject_ssim" dest="subject_spell"/>
   <copyField source="title_tsim" dest="title_spell"/>
 
+  <copyField source="subject_ssim" dest="all_subjects_ssim"/>
+  <copyField source="genre_ssim" dest="all_subjects_ssim"/>
+  <copyField source="occupation_ssim" dest="all_subjects_ssim"/>
+
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" />
     <fieldType name="boolean" class="solr.BoolField" sortMissingLast="true"/>
