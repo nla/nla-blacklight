@@ -112,7 +112,7 @@ gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
 
 gem "zk", "~> 1.10"
 
-gem "view_component", "~> 2.68"
+gem "view_component", "~> 2.69"
 gem "omniauth-keycloak", "~> 1.4"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "repost", "~> 0.4.1"
