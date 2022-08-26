@@ -53,6 +53,6 @@ RSpec.describe Blacklight::Solr::Cloud::Repository do
 
   it "raises an exception when no nodes are available" do
     zk_in_solr.set("/collections/collection1/state.json", File.read("spec/files/collection1_all_nodes_down.json"))
-    expect { repository.connection }.to raise_error(Blacklight::Solr::Cloud::NotEnoughNodes)
+    expect { repository.connection }.to raise_error(Blacklight::Solr::Cloud::NotEnoughNodes, /There are not enough nodes to handle the request./)
   end
 end
