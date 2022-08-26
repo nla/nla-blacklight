@@ -9,14 +9,15 @@ class Eresources
 
   def initialize
     file = File.open "#{::Rails.root}/config/eresources.cfg"
-    @entries = JSON.load_file file
+    @entries ||= JSON.load_file file
+    file.close
   end
 
   def url_append(url, param)
-    url + (url.contains?("?") ? "&#{param}" : "?#{param}")
+    url + (url.include?("?") ? "&#{param}" : "?#{param}")
   end
 
-  def known_url(url, user_type = false)
+  def known_url(url)
     result = {}
     @entries.each do |entry|
       entry["urlstem"].each do |stem|
