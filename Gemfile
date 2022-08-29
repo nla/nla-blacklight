@@ -100,7 +100,6 @@ group :test do
   gem "webmock"
 
   gem "simplecov", "~> 0.21.2"
-  gem "simplecov-lcov", "~> 0.8.0"
   gem "simplecov-json", "~> 0.2.3"
 end
 

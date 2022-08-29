@@ -500,7 +500,6 @@ GEM
     simplecov-json (0.2.3)
       json
       simplecov
-    simplecov-lcov (0.8.0)
     simplecov_json_formatter (0.1.4)
     slop (4.9.2)
     solr_wrapper (4.0.2)
@@ -627,7 +626,6 @@ DEPENDENCIES
   shoulda-matchers
   simplecov (~> 0.21.2)
   simplecov-json (~> 0.2.3)
-  simplecov-lcov (~> 0.8.0)
   solr_wrapper (>= 0.3)
   sprockets-rails
   standard

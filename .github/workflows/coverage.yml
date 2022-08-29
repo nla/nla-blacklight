@@ -1,51 +1,19 @@
-# This workflow runs the unit and system tests, as well as static code analysis
-# and dependecy vulnerability checks.
+# This workflow runs the unit and system tests and generates a code coverage report in the
+# pull request comment.
 #
 # It uses the default MySQL database included in the runner (usually ubuntu-latest).
-name: "Tests and code quality"
+name: "Code test coverage"
 on:
-  push:
+  pull_request:
     branches:
-      - "**"
+      - main
+      - release/**
 jobs:
-  linters:
+  coverage:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
       cancel-in-progress: true
-    name: Linters
-    runs-on: ubuntu-latest
-    env:
-      RUBY_VERSION: '3.0.2'
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
-
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@0a29871fe2b0200a17a4497bae54fe5df0d973aa # v1.92
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
-
-      - name: RuboCop
-        run: bundle exec rubocop --parallel
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Brakeman code scanning with reviewdog
-        uses: reviewdog/action-brakeman@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Bundler Audit Action
-        uses: andrewmcodes/bundler-audit-action@v0.1.0
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-  tests:
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
-      cancel-in-progress: true
-    name: Tests
+    name: coverage
     runs-on: ubuntu-latest
     env:
       CI: true
@@ -88,3 +56,9 @@ jobs:
       - name: Cucumber tests
         run: |
           bundle exec cucumber
+
+      - name: Simplecov Report
+        uses: aki77/simplecov-report-action@v1
+        with:
+          failedThreshold: 80
+          token: ${{ secrets.GITHUB_TOKEN }}
