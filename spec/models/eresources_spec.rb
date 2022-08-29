@@ -7,16 +7,18 @@ RSpec.describe Eresources do
 
   describe "#known_url" do
     context "when it is a known eResource with no remote URL" do
-      subject { described_class.new.known_url("http://m.worldbk.com/") }
+      subject(:eresources_link) { described_class.new.known_url("http://m.worldbk.com/") }
 
       let(:entry) { {"remoteaccess" => "yes", "remoteurl" => "", "title" => "World Book Online", "urlstem" => %w[http://www.worldbookonline.com http://m.worldbk.com/]} }
 
-      it { is_expected.to eq({type: "ezproxy", url: "http://m.worldbk.com/", entry: entry}) }
+      it "generates an EZProxy link" do
+        expect(eresources_link).to eq({type: "ezproxy", url: "http://m.worldbk.com/", entry: entry})
+      end
     end
 
     # There currently aren't any entries with a "remoteurl"
     context "when it is a known eResource with a remote URL" do
-      subject do
+      subject(:eresources_link) do
         eresources = described_class.new
         entries = eresources.instance_variable_get(:@entries)
         entries << {"remoteaccess" => "yes", "remoteurl" => "https://example.com", "title" => "Example Remote URL", "urlstem" => %w[http://example.com]}
@@ -27,7 +29,9 @@ RSpec.describe Eresources do
 
       let(:entry) { {"remoteaccess" => "yes", "remoteurl" => "https://example.com", "title" => "Example Remote URL", "urlstem" => %w[http://example.com]} }
 
-      it { is_expected.to eq({type: "remoteurl", url: "https://example.com?NLAOriginalUrl=http://example.com/test", entry: entry}) }
+      it "generates a remote URL link" do
+        expect(eresources_link).to eq({type: "remoteurl", url: "https://example.com?NLAOriginalUrl=http://example.com/test", entry: entry})
+      end
     end
   end
 
