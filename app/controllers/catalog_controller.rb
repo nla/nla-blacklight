@@ -137,6 +137,7 @@ class CatalogController < ApplicationController
     config.add_show_field label: "Description", field: "description", accessor: :description
     config.add_show_field "series", label: "Series", accessor: :series, helper_method: :list
     config.add_show_field "notes", label: "Notes", accessor: :notes, helper_method: :notes
+    config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :build_subject_search_list
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"
     # config.add_show_field "subtitle_tsim", label: "Subtitle"
@@ -200,20 +201,13 @@ class CatalogController < ApplicationController
       }
     end
 
-    # Specifying a :qt only to show it's possible, and so our internal automated
-    # tests can test it. In this case it's the same as
-    # config[:default_solr_parameters][:qt], so isn't actually neccesary.
-    config.add_search_field("subject") do |field|
-      field.qt = "search"
-      field.solr_parameters = {
-        "spellcheck.dictionary": "subject",
-        qf: "${subject_qf}",
-        pf: "${subject_pf}"
-      }
-    end
-
     config.add_search_field("id") do |field|
       field.label = "Bib Id"
+      field.qt = "search"
+    end
+
+    config.add_search_field("subject_ssim") do |field|
+      field.label = "Subject"
       field.qt = "search"
     end
 
