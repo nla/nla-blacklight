@@ -23,7 +23,7 @@ class Eresources
       entry["urlstem"].each do |stem|
         stem = stem.gsub(/\/+$/, "")
         if url.start_with?(stem)
-          result = if entry["remoteurl"].empty?
+          result = if entry["remoteurl"].blank?
             {type: "ezproxy", url: url, entry: entry}
           else
             {type: "remoteurl", url: url_append(entry["remoteurl"], "NLAOriginalUrl=#{url}"), entry: entry}
