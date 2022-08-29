@@ -118,4 +118,15 @@ module FieldHelper
 
     result
   end
+
+  def build_subject_search_list(document:, field:, config:, value:, context:)
+    elements = []
+    document.fetch(field).each do |subject|
+      encodedSubject = CGI::escape("\"#{subject}\"")
+      content_tag(:a) do
+        elements << link_to(subject, "/?search_field=#{field}&q=#{encodedSubject}")
+      end
+    end
+    safe_join(elements, " | ")
+  end
 end
