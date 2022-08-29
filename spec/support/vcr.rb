@@ -26,4 +26,7 @@ VCR.configure do |c|
   ].each do |key|
     c.filter_sensitive_data("<#{key}>") { ENV[key] }
   end
+
+  config = Rails.application.config_for(:catalogue)
+  c.filter_sensitive_data("<MAPSEARCH_SEARCH_URL>") { config.mapsearch[:search_url] }
 end
