@@ -7,6 +7,10 @@ on:
   push:
     branches:
       - "**"
+  pull_request:
+    branches:
+      - "main"
+      - "release/**"
 jobs:
   linters:
     concurrency:
@@ -88,3 +92,15 @@ jobs:
       - name: Cucumber tests
         run: |
           bundle exec cucumber
+
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v3
+        with:
+          name: simplecov-report
+          path: coverage
+
+      - name: Simplecov Report
+        uses: aki77/simplecov-report-action@v1
+        with:
+          failedThreshold: 80
+          token: ${{ secrets.GITHUB_TOKEN }}
