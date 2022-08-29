@@ -6,9 +6,11 @@ RSpec.describe ApplicationHelper do
   let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
   describe "#from_marc" do
-    subject { helper.from_marc({document: document, config: {key: "003"}}) }
+    subject(:value) { helper.from_marc({document: document, config: {key: "003"}}) }
 
-    it { is_expected.to eq ["SIRSI"] }
+    it "retrieves the value from the MARC record" do
+      expect(value).to eq ["SIRSI"]
+    end
   end
 
   def sample_marc

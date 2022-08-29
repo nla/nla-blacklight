@@ -2,6 +2,7 @@ require "rails_helper"
 
 # frozen_string_literal: true
 
+# rubocop:disable RSpec/NamedSubject
 RSpec.describe Users::OmniauthCallbacksController do
   include Devise::Test::ControllerHelpers
 
@@ -15,11 +16,17 @@ RSpec.describe Users::OmniauthCallbacksController do
 
       let(:user) { User.where(uid: "b8d0e04c-5a33-458f-b917-bc258861ebc0") }
 
-      it { expect(is_logged_in?).to be_truthy }
+      it "authenticates the user" do
+        expect(is_logged_in?).to be_truthy
+      end
 
-      it { expect(user).not_to be_nil }
+      it "creates a user in the database" do
+        expect(user).not_to be_nil
+      end
 
-      it { is_expected.to redirect_to root_path }
+      it "redirects to the home page" do
+        expect(subject).to redirect_to root_path
+      end
     end
 
     context "when staff user exists in the database" do
@@ -31,11 +38,13 @@ RSpec.describe Users::OmniauthCallbacksController do
         get :keycloakopenid
       end
 
-      # rubocop:disable RSpec/NamedSubject
-      it { expect(subject.current_user.to_s).to eq "Staff User" }
-      # rubocop:enable RSpec/NamedSubject
+      it "sets the staff member as the current_user" do
+        expect(subject.current_user.to_s).to eq "Staff User"
+      end
 
-      it { is_expected.to redirect_to root_path }
+      it "redirects to the home page" do
+        expect(subject).to redirect_to root_path
+      end
     end
   end
 
@@ -64,3 +73,4 @@ RSpec.describe Users::OmniauthCallbacksController do
     request.env["warden"].authenticated?(:user)
   end
 end
+# rubocop:enable RSpec/NamedSubject
