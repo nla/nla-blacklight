@@ -85,3 +85,18 @@ jobs:
       - name: Cucumber tests
         run: |
           bundle exec cucumber
+
+#      - name: Simplecov Report
+#        uses: aki77/simplecov-report-action@v1
+#        with:
+#          failedThreshold: 80
+#          token: ${{ secrets.GITHUB_TOKEN }}
+
+
+      # Using the current repo to perform coverage analysis
+      - name: SimpleCov
+        uses: joshmfrankel/simplecov-check-action@1.0.0
+        with:
+          minimum_suite_coverage: 80
+          minimum_file_coverage: 80
+          github_token: ${{ secrets.GITHUB_TOKEN }}
