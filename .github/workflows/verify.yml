@@ -7,6 +7,9 @@ on:
   push:
     branches:
       - "**"
+  pull_request:
+    branches:
+      - '**'
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
@@ -86,11 +89,11 @@ jobs:
         run: |
           bundle exec cucumber
 
-#      - name: Simplecov Report
-#        uses: aki77/simplecov-report-action@v1
-#        with:
-#          failedThreshold: 80
-#          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Simplecov Report
+        uses: aki77/simplecov-report-action@v1
+        with:
+          failedThreshold: 80
+          token: ${{ secrets.GITHUB_TOKEN }}
 
 
       # Using the current repo to perform coverage analysis
