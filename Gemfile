@@ -73,6 +73,7 @@ group :development, :test do
   gem "rspec-rails", "~> 5.1", ">= 5.1.2"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
+  gem "faker"
   gem "vcr"
 end
 
@@ -97,6 +98,9 @@ group :test do
   gem "database_cleaner-active_record"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
+
+  gem "simplecov", "~> 0.21.2"
+  gem "simplecov-json", "~> 0.2.3"
 end
 
 gem "ebsco-eds", "~> 1.1", ">= 1.1.4"

@@ -8,6 +8,7 @@ require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
 require "view_component/test_helpers"
 require "capybara/rspec"
+require "simplecov"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -107,6 +108,8 @@ RSpec.configure do |config|
     DatabaseCleaner.clean
   end
 
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include Devise::Test::IntegrationHelpers, type: :request
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
 end

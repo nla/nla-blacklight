@@ -4,14 +4,15 @@
 # It uses the default MySQL database included in the runner (usually ubuntu-latest).
 name: "Tests and code quality"
 on:
-  push:
+  pull_request:
     branches:
-      - "**"
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+      - "main"
+      - "release/**"
 jobs:
   linters:
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     name: Linters
     runs-on: ubuntu-latest
     env:
@@ -42,6 +43,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   tests:
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
+      cancel-in-progress: true
     name: Tests
     runs-on: ubuntu-latest
     env:
@@ -85,3 +89,9 @@ jobs:
       - name: Cucumber tests
         run: |
           bundle exec cucumber
+
+      - name: Simplecov Report
+        uses: aki77/simplecov-report-action@v1
+        with:
+          failedThreshold: 80
+          token: ${{ secrets.GITHUB_TOKEN }}
