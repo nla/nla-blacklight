@@ -4,8 +4,8 @@
 # It uses the default MySQL database included in the runner (usually ubuntu-latest).
 name: "Tests and code quality"
 on:
-  push:
-    branches-ignore:
+  pull_request:
+    branches:
       - "main"
       - "release/**"
 jobs:
