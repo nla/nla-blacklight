@@ -4,11 +4,13 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-/.git
 .DS_Store
 
-# library licenses
-/.licenses
+# Ignore Rubocop cache
+/.cache
+
+# Ignore Ruby Advisory DB
+/.local
 
 # Ignore bundler config.
 /.bundle
@@ -43,7 +45,7 @@ yarn-debug.log*
 .yarn-integrity
 
 # Ignore .idea files
-.idea/*
+/.idea
 
 # The .env file is used for both dev and test
 # and creates more problems than it solves
@@ -56,3 +58,6 @@ yarn-debug.log*
 # Ignore compiled assets
 /app/assets/builds/*
 !/app/assets/builds/.keep
+
+# Ignore SimpleCov coverage reports
+/coverage

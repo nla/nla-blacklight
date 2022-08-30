@@ -2,6 +2,8 @@ require "faraday"
 require "faraday/net_http"
 
 class MapSearch
+  FORMAT = "Map"
+
   def determine_url(id:, format:)
     url = ""
 
@@ -9,7 +11,7 @@ class MapSearch
       config = Rails.application.config_for(:catalogue)
 
       mapsearch_url = config.mapsearch[:search_url]
-      if mapsearch_url.present? && format.include?("Map")
+      if mapsearch_url.present? && format.include?(FORMAT)
         response = Faraday.get("#{mapsearch_url}#{id}")
         unless response.status != 200
           body = JSON.parse(response.body)

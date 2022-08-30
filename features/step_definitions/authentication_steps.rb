@@ -27,6 +27,7 @@ end
 
 Then("I should be logged in") do
   expect(page).to have_content("Signed in successfully.")
+  expect(page).to have_content("blacklight test")
 end
 
 Given("I am logged in") do
