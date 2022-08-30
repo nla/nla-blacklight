@@ -90,12 +90,6 @@ jobs:
         run: |
           bundle exec cucumber
 
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v3
-        with:
-          name: simplecov-report
-          path: coverage
-
       - name: Simplecov Report
         uses: aki77/simplecov-report-action@v1
         with:
