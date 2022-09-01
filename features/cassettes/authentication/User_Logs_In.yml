@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: "<SOLR_URL>/select?f.format.facet.limit=21&f.language_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json"
+    uri: "<SOLR_URL>/select?f.format.facet.limit=21&f.language_ssim.facet.limit=11&f.austlang_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json"
     body:
       encoding: US-ASCII
       string: ''
@@ -599,7 +599,7 @@ http_interactions:
   recorded_at: Thu, 04 Aug 2022 22:32:20 GMT
 - request:
     method: get
-    uri: "<SOLR_URL>/select?f.format.facet.limit=21&f.language_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json"
+    uri: "<SOLR_URL>/select?f.format.facet.limit=21&f.language_ssim.facet.limit=11&f.austlang_ssim.facet.limit=11&f.subject_ssim.facet.limit=21&facet=true&facet.field=subject_era_ssim&facet.pivot=format,language_ssim&facet.query=pub_date_ssim:%5B1997%20TO%20*%5D&rows=10&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json"
     body:
       encoding: US-ASCII
       string: ''
