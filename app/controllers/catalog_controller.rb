@@ -93,6 +93,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "lc_1letter_ssim", label: "Call Number"
     config.add_facet_field "subject_geo_ssim", label: "Region"
     config.add_facet_field "subject_era_ssim", label: "Era"
+    config.add_facet_field "austlang_ssim", label: "Aboriginal and Torres Strait Islander Language"
 
     config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: %w[format language_ssim], collapsing: true
 
