@@ -110,7 +110,6 @@ RAILS_ENV=test bin/ci
     * [Cucumber](https://github.com/cucumber/cucumber-rails) - for acceptance testing
     * [Capybara](http://teamcapybara.github.io/capybara/) - simulates web application interaction
     * [Webmock](https://github.com/bblimke/webmock) - HTTP request mocking and stubbing
-    * [VCR](https://relishapp.com/vcr/vcr/docs) - Mock HTTP responses with canned data
 * 🚨 Some tests require a Zookeeper + SolrCloud cluster running locally. See [Containers](#containers) section below.
 
 ## Continuous Integration
