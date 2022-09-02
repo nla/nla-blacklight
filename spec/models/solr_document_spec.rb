@@ -61,7 +61,19 @@ RSpec.describe SolrDocument do
         document.map_search
       end
 
+      let(:mock_response) { IO.read("spec/files/map_search/113030.json") }
+
       it "generates a link to Map Search" do
+        stub_request(:get, "https://georekt-test.nla.gov.au/mapsearch/search/search?text=113030&type=map")
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+              "User-Agent" => "Faraday v1.10.0"
+            }
+          )
+          .to_return(status: 200, body: mock_response, headers: {})
+
         expect(map_search_value).to eq ["https://georekt-test.nla.gov.au/mapsearch/?type=map&mapClassifications=all&geolocation=all&text=113030"]
       end
     end
@@ -72,7 +84,19 @@ RSpec.describe SolrDocument do
         document.map_search
       end
 
+      let(:mock_response) { IO.read("spec/files/map_search/3647081.json") }
+
       it "does not generate a link to Map Search" do
+        stub_request(:get, "https://georekt-test.nla.gov.au/mapsearch/search/search?text=3647081&type=map")
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+              "User-Agent" => "Faraday v1.10.0"
+            }
+          )
+          .to_return(status: 200, body: mock_response, headers: {})
+
         expect(map_search_value).to be_nil
       end
     end
