@@ -62,6 +62,25 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
+# gem 'ebsco-eds', '1.1.0.1', :path=> 'vendor/gems/ebsco-eds-1.1.0.1'
+
+gem "blacklight", "~> 7.29"
+gem "rsolr", ">= 1.0", "< 3"
+gem "bootstrap", "~> 4.0"
+gem "twitter-typeahead-rails", "0.11.1"
+gem "jquery-rails"
+gem "devise"
+gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
+
+gem "zk", "~> 1.10"
+
+gem "view_component", "~> 2.69"
+gem "omniauth-keycloak", "~> 1.4"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "repost", "~> 0.4.1"
+gem "addressable", "~> 2.8"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
@@ -74,7 +93,6 @@ group :development, :test do
   gem "shoulda-matchers"
   gem "factory_bot_rails"
   gem "faker"
-  gem "vcr"
 end
 
 group :development do
@@ -102,22 +120,3 @@ group :test do
   gem "simplecov", "~> 0.21.2"
   gem "simplecov-json", "~> 0.2.3"
 end
-
-gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
-# gem 'ebsco-eds', '1.1.0.1', :path=> 'vendor/gems/ebsco-eds-1.1.0.1'
-
-gem "blacklight", "~> 7.29"
-gem "rsolr", ">= 1.0", "< 3"
-gem "bootstrap", "~> 4.0"
-gem "twitter-typeahead-rails", "0.11.1"
-gem "jquery-rails"
-gem "devise"
-gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
-
-gem "zk", "~> 1.10"
-
-gem "view_component", "~> 2.69"
-gem "omniauth-keycloak", "~> 1.4"
-gem "omniauth-rails_csrf_protection", "~> 1.0"
-gem "repost", "~> 0.4.1"
-gem "addressable", "~> 2.8"
