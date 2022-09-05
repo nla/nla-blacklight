@@ -95,6 +95,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "subject_geo_ssim", label: "Region"
     config.add_facet_field "subject_era_ssim", label: "Era"
 
+    config.add_facet_field "rights_pivot_field", label: "Rights", pivot: %w[rights_category_ssim rights_full_name_ssim], collapsing: true
     config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: %w[format language_ssim], collapsing: true
 
     config.add_facet_field "example_query_facet_field", label: "Publish Date", query: {
