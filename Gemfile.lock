@@ -420,9 +420,9 @@ GEM
     rake (13.0.6)
     rash_alt (0.4.12)
       hashie (>= 3.4)
-    redis (5.0.1)
+    redis (5.0.2)
       redis-client (~> 0.7)
-    redis-client (0.7.1)
+    redis-client (0.7.3)
       connection_pool
     regexp_parser (2.5.0)
     reline (0.3.1)
