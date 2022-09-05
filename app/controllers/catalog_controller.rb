@@ -90,6 +90,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "pub_date_ssim", label: "Publication Year", single: true
     config.add_facet_field "subject_ssim", label: "Topic", limit: 20, index_range: "A".."Z"
     config.add_facet_field "language_ssim", label: "Language", limit: true
+    config.add_facet_field "austlang_ssim", label: "Aboriginal and Torres Strait Islander Language", limit: 10
     config.add_facet_field "lc_1letter_ssim", label: "Call Number"
     config.add_facet_field "subject_geo_ssim", label: "Region"
     config.add_facet_field "subject_era_ssim", label: "Era"
