@@ -203,13 +203,28 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field("subject_ssim") do |field|
+      field.label = "Subject"
+      field.qt = "search"
+    end
+
+    config.add_search_field("call_number_ssim") do |field|
+      field.label = "Call Number"
+      field.qt = "search"
+    end
+
+    config.add_search_field("isbn_ssim") do |field|
+      field.label = "ISBN/ISSN"
+      field.qt = "search"
+    end
+
     config.add_search_field("id") do |field|
       field.label = "Bib Id"
       field.qt = "search"
     end
 
-    config.add_search_field("subject_ssim") do |field|
-      field.label = "Subject"
+    config.add_search_field("occupation_ssim") do |field|
+      field.label = "Occupation"
       field.qt = "search"
     end
 
