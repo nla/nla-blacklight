@@ -208,14 +208,18 @@ class CatalogController < ApplicationController
       field.qt = "search"
     end
 
-    config.add_search_field("call_number_ssim") do |field|
+    config.add_search_field("call_number") do |field|
       field.label = "Call Number"
-      field.qt = "search"
+      field.solr_parameters = {
+        qf: "call_number_tsim"
+      }
     end
 
-    config.add_search_field("isbn_ssim") do |field|
+    config.add_search_field("isbn") do |field|
       field.label = "ISBN/ISSN"
-      field.qt = "search"
+      field.solr_parameters = {
+        qf: "isbn_tsim"
+      }
     end
 
     config.add_search_field("id") do |field|
@@ -223,9 +227,11 @@ class CatalogController < ApplicationController
       field.qt = "search"
     end
 
-    config.add_search_field("occupation_ssim") do |field|
+    config.add_search_field("occupation") do |field|
       field.label = "Occupation"
-      field.qt = "search"
+      field.solr_parameters = {
+        qf: "occupation_tesim"
+      }
     end
 
     # scxxx
