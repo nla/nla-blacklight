@@ -225,9 +225,9 @@
   <copyField source="subject_ssim" dest="subject_spell"/>
   <copyField source="title_tsim" dest="title_spell"/>
 
-  <copyField source="subject_ssim" dest="all_subjects_ssim"/>
-  <copyField source="genre_ssim" dest="all_subjects_ssim"/>
-  <copyField source="occupation_ssim" dest="all_subjects_ssim"/>
+  <copyField source="subject_ssim" dest="all_subjects_tesim"/>
+  <copyField source="genre_tesim" dest="all_subjects_tesim"/>
+  <copyField source="occupation_tesim" dest="all_subjects_tesim"/>
 
   <types>
     <fieldType name="string" class="solr.StrField" sortMissingLast="true" />
