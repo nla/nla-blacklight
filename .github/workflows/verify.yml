@@ -95,9 +95,3 @@ jobs:
         with:
           failedThreshold: 80
           token: ${{ secrets.GITHUB_TOKEN }}
-#
-#      - name: Simplecov Report
-#        uses: joshmfrankel/simplecov-check-action@main
-#        with:
-#          minimum_suite_coverage: 80
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
