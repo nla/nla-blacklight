@@ -15,7 +15,9 @@ class Notes
     # 880 notes
     more_notes = get_more_notes
 
-    {notes: notes, more_notes: more_notes}
+    unless notes.empty? && more_notes.empty?
+      {notes: notes, more_notes: more_notes}
+    end
   end
 
   private
