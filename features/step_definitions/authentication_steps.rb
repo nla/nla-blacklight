@@ -40,7 +40,7 @@ Given("I am logged in") do
 end
 
 When("I click the log out link") do
-  click_link "(Logout)"
+  click_link "Log Out"
 end
 
 Then("I should be redirected to the home page") do
