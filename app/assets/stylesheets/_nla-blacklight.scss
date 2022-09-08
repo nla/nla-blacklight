@@ -60,6 +60,13 @@ a:active {
         border-bottom-color: var(--orange);
       }
     }
+    .navbar-text {
+      font-size: 1.1875rem;
+      font-weight: 300;
+      border-bottom-width: 0.375rem;
+      border-bottom-style: solid;
+      border-bottom-color: transparent;
+    }
   }
 }
 
