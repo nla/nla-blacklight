@@ -101,6 +101,10 @@ group :development do
   gem "web-console"
   gem "awesome_print"
 
+  # improve the Rails error console in development
+  gem "better_errors"
+  gem "binding_of_caller"
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
