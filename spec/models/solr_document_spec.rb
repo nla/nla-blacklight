@@ -158,6 +158,17 @@ RSpec.describe SolrDocument do
         })
       end
     end
+
+    context "when there are no notes" do
+      subject(:notes_value) do
+        document = described_class.new(marc_ss: no_notes)
+        document.notes
+      end
+
+      it "will return nil" do
+        expect(notes_value).to be_nil
+      end
+    end
   end
 
   def single_series
@@ -174,6 +185,10 @@ RSpec.describe SolrDocument do
 
   def multiple_notes
     IO.read("spec/files/marc/8174421.marcxml")
+  end
+
+  def no_notes
+    IO.read("spec/files/marc/3079596.marcxml")
   end
 
   def online_access
