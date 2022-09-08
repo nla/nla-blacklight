@@ -17,6 +17,9 @@ gem "bundler-audit"
 # traditional one-line-per-event format
 gem "lograge"
 
+# stores user session in the database rather than the browser cookie
+gem "activerecord-session_store", "~> 2.0"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
