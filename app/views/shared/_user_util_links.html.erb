@@ -10,7 +10,6 @@
       </li>
       <% unless current_user.to_s.blank? %>
         <li class="nav-item">
-<!--          <span class="navbar-text"><%#= current_user %></span>-->
           <%= link_to current_user, root_path, class: 'nav-link' %>
         </li>
       <% end %>
