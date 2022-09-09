@@ -102,6 +102,8 @@ class CatalogController < ApplicationController
     config.add_facet_field "lc_1letter_ssim", label: "Call Number"
     config.add_facet_field "subject_geo_ssim", label: "Region"
     config.add_facet_field "subject_era_ssim", label: "Era"
+    config.add_facet_field "rights_category_ssim", label: "Rights Category", show: false
+    config.add_facet_field "rights_full_name_ssim", label: "Rights Description", show: false
 
     config.add_facet_field "rights_pivot_field", label: "Rights", pivot: %w[rights_category_ssim rights_full_name_ssim], collapsing: true
     config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: %w[format language_ssim], collapsing: true
