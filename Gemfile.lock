@@ -54,6 +54,12 @@ GEM
     activerecord (7.0.3.1)
       activemodel (= 7.0.3.1)
       activesupport (= 7.0.3.1)
+    activerecord-session_store (2.0.0)
+      actionpack (>= 5.2.4.1)
+      activerecord (>= 5.2.4.1)
+      multi_json (~> 1.11, >= 1.11.2)
+      rack (>= 2.0.8, < 3)
+      railties (>= 5.2.4.1)
     activestorage (7.0.3.1)
       actionpack (= 7.0.3.1)
       activejob (= 7.0.3.1)
@@ -334,6 +340,7 @@ GEM
     minitar (0.9)
     minitest (5.16.3)
     msgpack (1.5.4)
+    multi_json (1.15.0)
     multi_test (0.1.2)
     multi_xml (0.6.0)
     multipart-post (2.2.3)
@@ -603,6 +610,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  activerecord-session_store (~> 2.0)
   addressable (~> 2.8)
   awesome_print
   better_errors
