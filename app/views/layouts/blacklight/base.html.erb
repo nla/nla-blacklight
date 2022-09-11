@@ -18,13 +18,13 @@
     <%= content_for(:head) %>
   </head>
   <body class="<%= render_body_class %> d-flex flex-column h-100">
-    <% if isDev || isStaging %>
+    <% if Rails.env.development? || Rails.env.staging? %>
       <div class="sticky-top bg-danger text-white text-center p-2">
-        [ <% if isDev %>
+        [ <% if Rails.env.development? %>
           DEVELOPMENT
-        <% elsif isStaging %>
+        <% elsif Rails.env.staging? %>
           TEST
-          <% end %> ]
+        <% end %> ]
       </div>
     <% end %>
 
