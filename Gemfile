@@ -128,3 +128,5 @@ group :test do
   gem "simplecov", "~> 0.21.2"
   gem "simplecov-json", "~> 0.2.3"
 end
+
+gem "rufus-scheduler", "~> 3.8"
