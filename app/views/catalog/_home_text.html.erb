@@ -30,10 +30,12 @@
 </div>
 
 <%# This is the same panel shown in the Rails welcome template %>
+<% if Rails.env.development? || Rails.env.test? %>
 <div id="about" class="card">
   <h2 class='card-header collapsed collapse-toggle' data-toggle="collapse" data-target="#about-content"><a href="/rails/info/properties">About this application environment</a></h2>
   <div id="about-content" class="card-body collapse"></div>
 </div>
+<% end %>
 
 <script>
   Blacklight.onLoad(function() {
