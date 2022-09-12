@@ -8,7 +8,7 @@ class Eresources
   attr_accessor :entries
 
   def initialize
-    file = File.open "#{::Rails.root}/config/eresources.cfg"
+    file = File.open Rails.root.join("config", "eresources.cfg")
     @entries ||= JSON.load_file file
     file.close
   end
