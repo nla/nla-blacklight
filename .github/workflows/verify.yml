@@ -95,3 +95,4 @@ jobs:
         with:
           failedThreshold: 80
           token: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ github.actor != 'dependabot[bot]' }}
