@@ -18,6 +18,8 @@ AllCops:
 
 Rails:
   Enabled: true
+Rails/FilePath:
+  Enabled: false
 Rails/UnknownEnv:
   Environments:
     - development
