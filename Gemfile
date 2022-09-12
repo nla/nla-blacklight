@@ -20,6 +20,9 @@ gem "lograge"
 # stores user session in the database rather than the browser cookie
 gem "activerecord-session_store", "~> 2.0"
 
+# in Rails scheduler
+gem "rufus-scheduler", "~> 3.8"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.3", ">= 7.0.3.1"
 
@@ -128,5 +131,3 @@ group :test do
   gem "simplecov", "~> 0.21.2"
   gem "simplecov-json", "~> 0.2.3"
 end
-
-gem "rufus-scheduler", "~> 3.8"

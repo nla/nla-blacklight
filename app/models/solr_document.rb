@@ -4,7 +4,7 @@ require "traject"
 require "rexml/document"
 require "rexml/xpath"
 
-require "#{::Rails.root}/lib/mapsearch/map_search"
+require Rails.root.join("lib", "mapsearch", "map_search")
 
 class SolrDocument
   include Blacklight::Solr::Document
