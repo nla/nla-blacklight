@@ -68,25 +68,29 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# Blacklight dependencies
+gem "blacklight", "~> 7.29"
+gem "blacklight_advanced_search", "~> 7.0"
+gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
+gem "bootstrap", "~> 4.0"
+gem "devise"
+gem "jquery-rails"
+gem "rsolr", ">= 1.0", "< 3"
+gem "twitter-typeahead-rails", "0.11.1"
+
+# authentication
+gem "omniauth-keycloak", "~> 1.4"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+
+# EBSCO EDS
 gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
 # gem 'ebsco-eds', '1.1.0.1', :path=> 'vendor/gems/ebsco-eds-1.1.0.1'
 
-gem "blacklight", "~> 7.29"
-gem "rsolr", ">= 1.0", "< 3"
-gem "bootstrap", "~> 4.0"
-gem "twitter-typeahead-rails", "0.11.1"
-gem "jquery-rails"
-gem "devise"
-gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
-gem "blacklight_advanced_search", "~> 7.0"
-
-gem "zk", "~> 1.10"
-
-gem "view_component", "~> 2.71"
-gem "omniauth-keycloak", "~> 1.4"
-gem "omniauth-rails_csrf_protection", "~> 1.0"
-gem "repost", "~> 0.4.1"
 gem "addressable", "~> 2.8"
+gem "repost", "~> 0.4.1"
+gem "strong_migrations", "~> 1.3"
+gem "view_component", "~> 2.71"
+gem "zk", "~> 1.10"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
