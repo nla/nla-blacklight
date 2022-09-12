@@ -1,4 +1,4 @@
-require Rails.root.join("lib/devise/strategies/getalibrarycard_authenticatable.rb")
+require Rails.root.join("lib", "devise", "strategies", "getalibrarycard_authenticatable.rb")
 require "faraday"
 require "faraday/middleware"
 require "faraday/adapter/net_http"
