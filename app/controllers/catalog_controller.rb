@@ -102,7 +102,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "lc_1letter_ssim", label: "Call Number"
     config.add_facet_field "subject_geo_ssim", label: "Region"
     config.add_facet_field "subject_era_ssim", label: "Era"
-    config.add_facet_field "access_ssim", label: "Access", limit: true
+    config.add_facet_field "access_ssim", label: "Access"
     config.add_facet_field "rights_category_ssim", label: "Rights Category", show: false
     config.add_facet_field "rights_full_name_ssim", label: "Rights Description", show: false
 
