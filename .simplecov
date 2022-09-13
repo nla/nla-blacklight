@@ -13,6 +13,9 @@ SimpleCov.start "rails" do
     source_file.lines.count < 10
   end
 
+  # Filter out Cucumber Rake task since it's generated at install
+  add_filter "lib/tasks/cucumber.rake"
+
   # Filter out Blacklight files that are being overridden, but not modified
   add_filter "app/components/blacklight/response/pagination_component.rb"
   add_filter "app/models/marc_indexer.rb"
