@@ -77,6 +77,7 @@ gem "devise"
 gem "jquery-rails"
 gem "rsolr", ">= 1.0", "< 3"
 gem "twitter-typeahead-rails", "0.11.1"
+gem "blacklight_range_limit"
 
 # authentication
 gem "omniauth-keycloak", "~> 1.4"
