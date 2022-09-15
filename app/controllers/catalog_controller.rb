@@ -98,7 +98,7 @@ class CatalogController < ApplicationController
 
     config.add_facet_field "format", label: "Format", limit: 20
     config.add_facet_field "pub_date_ssim", label: "Publication Year", single: true
-    config.add_facet_field "subject_ssim", label: "Topic", limit: 20, index_range: "A".."Z"
+    config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
     config.add_facet_field "language_ssim", label: "Language", limit: true
     config.add_facet_field "austlang_ssim", label: "Aboriginal and Torres Strait Islander Language", limit: 10
     config.add_facet_field "lc_1letter_ssim", label: "Call Number"
@@ -115,7 +115,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "rights_full_name_ssim", label: "Rights Description", show: false
 
     config.add_facet_field "rights_pivot_field", label: "Rights", pivot: %w[rights_category_ssim rights_full_name_ssim], collapsing: true
-    config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: %w[format language_ssim], collapsing: true
+    # config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: %w[format language_ssim], collapsing: true
 
     config.add_facet_field "example_query_facet_field", label: "Publish Date", query: {
       years_5: {label: "within 5 Years", fq: "pub_date_ssim:[#{Time.zone.now.year - 5} TO *]"},
