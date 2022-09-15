@@ -110,6 +110,8 @@ GEM
     blacklight_advanced_search (7.0.0)
       blacklight (~> 7.0)
       parslet
+    blacklight_range_limit (8.2.3)
+      blacklight (>= 7.25.2, < 9)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
     bootstrap (4.6.1)
@@ -370,6 +372,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.8-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-darwin)
+      racc (~> 1.4)
     nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.6)
@@ -617,6 +621,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
@@ -628,6 +633,7 @@ DEPENDENCIES
   blacklight (~> 7.29)
   blacklight-marc (>= 7.0.0.rc1, < 9)
   blacklight_advanced_search (~> 7.0)
+  blacklight_range_limit
   bootsnap
   bootstrap (~> 4.0)
   brakeman
