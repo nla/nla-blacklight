@@ -57,7 +57,7 @@ class CatalogController < ApplicationController
 
     config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
     config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
-    config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
+    # config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
     config.add_show_tools_partial(:citation)
 
     config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: :render_bookmarks_control?)
@@ -105,12 +105,13 @@ class CatalogController < ApplicationController
     config.add_facet_field "subject_geo_ssim", label: "Region"
     config.add_facet_field "subject_era_ssim", label: "Era"
     config.add_facet_field "access_ssim", label: "Access"
-    config.add_facet_field "decade_isim", label: "Decade", range: {
-      num_segments: 6,
-      assumed_boundaries: nil,
-      segments: true,
-      maxlength: 4
-    }
+    # config.add_facet_field "decade_isim", label: "Decade", range: {
+    #   num_segments: 6,
+    #   assumed_boundaries: nil,
+    #   segments: true,
+    #   maxlength: 4
+    # }
+    config.add_facet_field "decade_isim", label: "Decade", component: DecadeFacetComponent
     config.add_facet_field "rights_category_ssim", label: "Rights Category", show: false
     config.add_facet_field "rights_full_name_ssim", label: "Rights Description", show: false
 
