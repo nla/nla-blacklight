@@ -43,7 +43,7 @@ class CatalogController < ApplicationController
     # items to show per page, each number in the array represent another option to choose from.
     # config.per_page = [10,20,50,100]
 
-    # set max pages to make available for search results, any pages byond this limit are unavailable
+    # set max pages to make available for search results, any pages beyond this limit are unavailable
     Kaminari.configure do |config|
       config.max_pages = 1000
     end
