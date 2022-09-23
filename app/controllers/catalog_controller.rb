@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require Rails.root.join("lib", "blacklight", "solr", "cloud", "repository")
+require Rails.root.join("lib", "blacklight", "solr_cloud", "repository")
 
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
@@ -19,7 +19,7 @@ class CatalogController < ApplicationController
 
     ## Class for sending and receiving requests from a search index
     if ENV["ZK_HOST"].present? && ENV["SOLR_COLLECTION"].present?
-      config.repository_class = Blacklight::Solr::Cloud::Repository
+      config.repository_class = Blacklight::SolrCloud::Repository
     end
     #
     ## Class for converting Blacklight's url parameters to into request parameters for the search index

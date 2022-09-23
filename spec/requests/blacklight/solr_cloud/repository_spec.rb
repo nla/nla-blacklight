@@ -1,7 +1,7 @@
 require "rails_helper"
-require "blacklight/solr/cloud/repository"
+require "blacklight/solr_cloud/repository"
 
-RSpec.describe Blacklight::Solr::Cloud::Repository do
+RSpec.describe Blacklight::SolrCloud::Repository do
   subject(:repository) { described_class.new blacklight_config }
 
   before do
@@ -53,6 +53,6 @@ RSpec.describe Blacklight::Solr::Cloud::Repository do
 
   it "raises an exception when no nodes are available" do
     zk_in_solr.set("/collections/collection1/state.json", IO.read("spec/files/solr_repository/collection1_all_nodes_down.json"))
-    expect { repository.connection }.to raise_error(Blacklight::Solr::Cloud::NotEnoughNodes, /There are not enough nodes to handle the request./)
+    expect { repository.connection }.to raise_error(Blacklight::SolrCloud::NotEnoughNodes, /There are not enough nodes to handle the request./)
   end
 end
