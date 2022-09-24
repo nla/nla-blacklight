@@ -9,40 +9,56 @@ module Blacklight
       ZNODE_LIVE_NODES = "/live_nodes".freeze
 
       def initialize(blacklight_config)
-        Rails.logger.debug "initializing Blacklight::Solr::Cloud::Repository"
+        Rails.logger.debug "Initializing Blacklight::Solr::Cloud::Repository"
         super(blacklight_config)
-        setup_zk
-      end
-
-      private def build_connection
-        RSolr.connect(connection_config.merge(adapter: connection_config[:http_adapter], url: select_node))
       end
 
       private
 
-      def setup_zk
-        Rails.logger.debug "determining availability of Solr nodes"
-        zk = ZK.new(ENV["ZK_HOST"] || "localhost:2181", {chroot: :do_nothing})
-        collection = ENV["SOLR_COLLECTION"] || "blacklight"
+      def zk
+        ZK.new(ENV.fetch("ZK_HOST", "localhost:2181"), {chroot: :do_nothing})
+      end
 
-        collection_state = get_collection_state(collection, zk)
-        all_nodes = get_all_nodes(collection_state)
-        live_nodes = get_live_nodes zk
-        update_urls(collection, all_nodes, live_nodes)
+      def collection
+        ENV.fetch("SOLR_COLLECTION", "blacklight")
+      end
+
+      def collection_state
+        get_collection_state
+      end
+
+      def all_nodes
+        get_all_nodes
+      end
+
+      def live_nodes
+        get_live_nodes
+      end
+
+      def build_connection
+        Rails.logger.debug "Determining availability of Solr nodes"
+        all_urls = update_urls
+
+        # Close the Zookeeper connection since we don't need it anymore
+        Rails.logger.debug "Closing Zookeeper connection"
+        zk&.close
+
+        Rails.logger.debug "Building SolrClient connection"
+        RSolr.connect(connection_config.merge(adapter: connection_config[:http_adapter], url: select_node(all_urls)))
       end
 
       def collection_state_znode_path(collection)
         "/collections/#{collection}/state.json"
       end
 
-      def get_collection_state(collection, zk)
+      def get_collection_state
         synchronize do
           collection_state_json, _stat = zk.get(collection_state_znode_path(collection), watch: false)
           ::JSON.parse(collection_state_json)[collection]
         end
       end
 
-      def get_live_nodes(zk)
+      def get_live_nodes
         synchronize do
           live_nodes = {}
           zk.children(ZNODE_LIVE_NODES, watch: false).each do |node|
@@ -53,27 +69,28 @@ module Blacklight
         end
       end
 
-      def update_urls(collection, all_nodes, live_nodes)
+      def update_urls
         synchronize do
-          @all_urls = []
+          all_urls = []
           all_nodes.each do |node|
             next unless active_node?(node, live_nodes)
             url = "#{node["base_url"]}/#{collection}"
-            @all_urls << url
+            all_urls << url
           end
+          all_urls
         end
       end
 
-      def get_all_nodes(collection_state)
+      def get_all_nodes
         nodes = collection_state["shards"].values.map do |shard|
           shard["replicas"].values
         end
         nodes.flatten
       end
 
-      def select_node
+      def select_node(all_urls)
         url = synchronize do
-          @all_urls.sample
+          all_urls.sample
         end
         raise Blacklight::SolrCloud::NotEnoughNodes unless url
         url

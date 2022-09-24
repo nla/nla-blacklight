@@ -34,19 +34,21 @@ RSpec.describe Blacklight::SolrCloud::Repository do
 
   let(:zk_in_solr) { ZK.new }
 
+  let(:client) { repository.connection }
+
+  let(:uri) { client.instance_variable_get(:@uri) }
+
   after do
     zk_in_solr&.close
   end
 
   it "retrieves all the urls and leader node urls from zookeeper" do
-    expect(repository.instance_variable_get(:@all_urls).sort).to eq(
+    expect(repository.send(:update_urls).sort).to eq(
       %w[http://192.168.1.21:8983/solr/collection1 http://192.168.1.22:8983/solr/collection1 http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
     )
   end
 
   it "configures the RSolr client with one of the active nodes in the select request" do
-    client = repository.connection
-    uri = client.instance_variable_get(:@uri)
     expect(uri.host).to be_one_of(%w[192.168.1.21 192.168.1.22 192.168.1.23 192.168.1.24])
     expect(uri.path).to eq("/solr/collection1/")
   end
