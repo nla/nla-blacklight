@@ -1,7 +1,7 @@
 require "rails_helper"
-require "blacklight/solr/cloud/repository"
+require "blacklight/solr_cloud/repository"
 
-RSpec.describe Blacklight::Solr::Cloud::Repository do
+RSpec.describe Blacklight::SolrCloud::Repository do
   subject(:repository) { described_class.new blacklight_config }
 
   before do
@@ -34,25 +34,27 @@ RSpec.describe Blacklight::Solr::Cloud::Repository do
 
   let(:zk_in_solr) { ZK.new }
 
+  let(:client) { repository.connection }
+
+  let(:uri) { client.instance_variable_get(:@uri) }
+
   after do
     zk_in_solr&.close
   end
 
   it "retrieves all the urls and leader node urls from zookeeper" do
-    expect(repository.instance_variable_get(:@all_urls).sort).to eq(
+    expect(repository.send(:update_urls).sort).to eq(
       %w[http://192.168.1.21:8983/solr/collection1 http://192.168.1.22:8983/solr/collection1 http://192.168.1.23:8983/solr/collection1 http://192.168.1.24:8983/solr/collection1].sort
     )
   end
 
   it "configures the RSolr client with one of the active nodes in the select request" do
-    client = repository.connection
-    uri = client.instance_variable_get(:@uri)
     expect(uri.host).to be_one_of(%w[192.168.1.21 192.168.1.22 192.168.1.23 192.168.1.24])
     expect(uri.path).to eq("/solr/collection1/")
   end
 
   it "raises an exception when no nodes are available" do
     zk_in_solr.set("/collections/collection1/state.json", IO.read("spec/files/solr_repository/collection1_all_nodes_down.json"))
-    expect { repository.connection }.to raise_error(Blacklight::Solr::Cloud::NotEnoughNodes, /There are not enough nodes to handle the request./)
+    expect { repository.connection }.to raise_error(Blacklight::SolrCloud::NotEnoughNodes, /There are not enough nodes to handle the request./)
   end
 end
