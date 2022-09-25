@@ -9,7 +9,7 @@ module Blacklight
       ZNODE_LIVE_NODES = "/live_nodes".freeze
 
       def initialize(blacklight_config)
-        Rails.logger.debug "Initializing Blacklight::Solr::Cloud::Repository"
+        Rails.logger.debug "Initializing Blacklight::SolrCloud::Repository"
         super(blacklight_config)
       end
 
