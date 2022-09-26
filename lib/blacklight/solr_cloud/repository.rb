@@ -16,7 +16,7 @@ module Blacklight
       private
 
       def zk
-        ZK.new(ENV.fetch("ZK_HOST", "localhost:2181"), {chroot: :do_nothing})
+        @zk ||= ZK.new(ENV.fetch("ZK_HOST", "localhost:2181"), {chroot: :do_nothing})
       end
 
       def collection
@@ -37,14 +37,27 @@ module Blacklight
 
       def build_connection
         Rails.logger.debug "Determining availability of Solr nodes"
-        all_urls = update_urls
-
-        # Close the Zookeeper connection since we don't need it anymore
-        Rails.logger.debug "Closing Zookeeper connection"
-        zk&.close
+        all_urls = determine_node_urls
 
         Rails.logger.debug "Building SolrClient connection"
         RSolr.connect(connection_config.merge(adapter: connection_config[:http_adapter], url: select_node(all_urls)))
+      end
+
+      def determine_node_urls
+        synchronize do
+          all_urls = []
+          all_nodes.each do |node|
+            next unless active_node?(node, live_nodes)
+            url = "#{node["base_url"]}/#{collection}"
+            all_urls << url
+          end
+
+          # Close the Zookeeper connection since we don't need it anymore
+          Rails.logger.debug "Closing Zookeeper connection"
+          zk.close! unless zk.closed?
+
+          all_urls
+        end
       end
 
       def collection_state_znode_path(collection)
@@ -69,23 +82,13 @@ module Blacklight
         end
       end
 
-      def update_urls
-        synchronize do
-          all_urls = []
-          all_nodes.each do |node|
-            next unless active_node?(node, live_nodes)
-            url = "#{node["base_url"]}/#{collection}"
-            all_urls << url
-          end
-          all_urls
-        end
-      end
-
       def get_all_nodes
-        nodes = collection_state["shards"].values.map do |shard|
-          shard["replicas"].values
+        synchronize do
+          nodes = collection_state["shards"].values.map do |shard|
+            shard["replicas"].values
+          end
+          nodes.flatten
         end
-        nodes.flatten
       end
 
       def select_node(all_urls)
