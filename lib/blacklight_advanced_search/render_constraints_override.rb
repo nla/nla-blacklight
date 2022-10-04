@@ -39,20 +39,8 @@ module BlacklightAdvancedSearch::RenderConstraintsOverride
   # Over-ride of Blacklight method, provide advanced constraints if needed,
   # otherwise call super.
   def render_constraints_filters(my_params = params)
-    content = "".html_safe
-
-    if advanced_query
-      advanced_query.filters.each_pair do |field, value_list|
-        label = facet_field_label(field)
-        content << render_constraint_element(label,
-          safe_join(Array(value_list), " <strong class='text-muted constraint-connector'>OR</strong> ".html_safe),
-          remove: search_action_path(remove_advanced_filter_group(field, my_params).except(:controller, :action)))
-      end
-    else
-      content = super(my_params)
-    end
-
-    content
+    # Let Blacklight's default render handle the "inclusive" facet rendering also.
+    super(my_params)
   end
 
   # override of BL method, so our inclusive facet selections
