@@ -90,7 +90,7 @@ gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
 gem "addressable", "~> 2.8"
 gem "repost", "~> 0.4.1"
 gem "strong_migrations", "~> 1.3"
-gem "view_component", "~> 2.72"
+gem "view_component", "~> 2.74"
 gem "zk", "~> 1.10"
 
 group :development, :test do
