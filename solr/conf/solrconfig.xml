@@ -179,7 +179,6 @@
       <str name="name">mySuggester</str>
       <str name="lookupImpl">FuzzyLookupFactory</str>
       <str name="suggestAnalyzerFieldType">textSuggest</str>
-      <str name="buildOnCommit">true</str>
       <str name="field">suggest</str>
     </lst>
   </searchComponent>
