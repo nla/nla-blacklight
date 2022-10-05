@@ -9,9 +9,23 @@ class CopyrightInfo
 
   attr_accessor :document, :info
 
+  FORMAT_TO_CATEGORY = [
+    Audio: "OH",
+    Manuscript: "MAN",
+    Map: "MAPS",
+    Music: "MUS",
+    Picture: "PIC"
+  ]
+
+  DEFAULT_CATEGORY = "IS"
+
   def initialize(document)
     @document = document
     @info ||= fetch
+  end
+
+  def category
+    FORMAT_TO_CATEGORY[document.format.last] || DEFAULT_CATEGORY
   end
 
   private
