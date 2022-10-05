@@ -72,6 +72,10 @@ module FieldHelper
     # rubocop:enable Rails/OutputSafety
   end
 
+  def copyright(document:, field:, config:, value:, context:)
+    value.first.to_s if value.present?
+  end
+
   private
 
   # Original RegEx used by VuFind
