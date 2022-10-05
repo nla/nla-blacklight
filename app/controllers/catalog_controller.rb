@@ -24,10 +24,10 @@ class CatalogController < ApplicationController
     #
     ## Class for converting Blacklight's url parameters to into request parameters for the search index
     # config.search_builder_class = ::SearchBuilder
-    #
+
     ## Model that maps search index responses to the blacklight response model
-    # config.response_model = Blacklight::Solr::Response
-    #
+    config.response_model = NLA::Solr::Response
+
     ## Should the raw solr document endpoint (e.g. /catalog/:id/raw) be enabled
     config.raw_endpoint.enabled = true
 
