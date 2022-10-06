@@ -8,6 +8,6 @@ module CopyrightHelper
   end
 
   def copies_direct_link
-    link_to "Copies Direct", "javascript:;", onclick: "document.getElementById('copiesdirect_addcart').submit();"
+    link_to "Copies Direct", "javascript:;", onclick: "document.getElementById('copiesdirect_addcart').submit();".html_safe
   end
 end
