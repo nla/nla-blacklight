@@ -1,0 +1,53 @@
+<form action="<%= ENV["COPIES_DIRECT_URL"] %>/items/import" class="sr-only" id="copiesdirect_addcart" method="post">
+  <input id="source" name="source" type="hidden" value="cat">
+  <input id="sourcevalue" name="sourcevalue" type="hidden" value="<%= document.id %>">
+</form>
+<div id="copyright-info">
+  <%= render "/copyright_info/message#{info["contextMsg"].tr(".","_")}", copyright_info: info, id: document.id %>
+  <% if info["copyrightStatusReason"].present? %>
+    <dl class="d-flex flex-row justify-content-start">
+      <dt class="pr-2">Reason for copyright status:</dt>
+      <dd><%= info["copyrightStatusReason"] %></dd>
+    </dl>
+  <% end %>
+  <p class="mb-0">Copyright status was determined using the following information:</p>
+  <dl id="determination">
+    <% if info["materialType"].present? %>
+      <div class="d-flex flex-row justify-content-start">
+        <dt class="pr-2 mb-0">Material type:</dt>
+        <dd><%= info["materialType"] %></dd>
+      </div>
+    <% end %>
+
+    <% if info["creatorDateOfDeath"].present? %>
+      <div class="d-flex flex-row justify-content-start">
+        <dt class="pr-2">Presumed date of death of creator (latest date):</dt>
+        <dd><%= info["creatorDateOfDeath"] %></dd>
+      </div>
+    <% end %>
+
+    <% if info["publishedStatus"].present? %>
+      <div class="d-flex flex-row justify-content-start">
+        <dt class="pr-2">Published status:</dt>
+        <dd><%= info["publishedStatus"] %></dd>
+      </div>
+    <% end %>
+
+    <% if info["creationDate"].present? %>
+      <div class="d-flex flex-row justify-content-start">
+        <dt class="pr-2">Creation date:</dt>
+        <dd><%= info["creationDate"] %></dd>
+      </div>
+    <% end %>
+
+    <% if info["publicationDate"].present? %>
+      <div class="d-flex flex-row justify-content-start">
+        <dt class="pr-2">Publication date:</dt>
+        <dd><%= info["publicationDate"] %></dd>
+      </div>
+    <% end %>
+  </dl>
+  <p>Copyright status may not be correct if data in the record is incomplete or inaccurate.
+    Other access conditions may also apply. For more information please see:
+    <a href="https://www.nla.gov.au/using-library/copies-and-interlibrary-loans/copyright-library-collections">Copyright in library collections</a>.</p>
+</div>

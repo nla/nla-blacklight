@@ -28,6 +28,14 @@ class CopyrightInfo
     FORMAT_TO_CATEGORY[document.format.last] || DEFAULT_CATEGORY
   end
 
+  def fair_dealing_url
+    ENV["COPYRIGHT_FAIR_DEALING_URL"]
+  end
+
+  def contact_url
+    ENV["COPYRIGHT_CONTACT_URL"]
+  end
+
   private
 
   def fetch
