@@ -9,11 +9,6 @@ class CatalogController < ApplicationController
 
   include Blacklight::Marc::Catalog
 
-  # Tell Rails to look for templates in the view components directory
-  # Make sure to use an absolute path when rendering the partial because
-  # view context is based on the executing controller.
-  append_view_path "#{Rails.root}/app/components/"
-
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new

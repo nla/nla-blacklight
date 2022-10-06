@@ -11,9 +11,9 @@ RSpec.describe CopyrightHelper do
     subject(:link) { helper.fair_dealing_link }
 
     it "generates a link using the environment variable value" do
-      stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_FAIR_DEALING_URL" => "https://fairdealing.example.com"))
+      stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_FAIR_DEALING_URL" => "https://example.com/fair_dealing"))
 
-      expect(link).to include '<a href="https://fairdealing.example.com">fair dealing</a>'
+      expect(link).to include '<a href="https://example.com/fair_dealing">fair dealing</a>'
     end
   end
 
