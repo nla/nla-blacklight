@@ -96,8 +96,8 @@ class SolrDocument
     Notes.new(self).values
   end
 
-  def copyright
-    @copyright ||= get_copyright
+  def copyright_info
+    @copyright_info ||= get_copyright_info
   end
 
   private
@@ -153,7 +153,7 @@ class SolrDocument
     SearchLink.new(self).links
   end
 
-  def get_copyright
-    CopyrightInfo.new(self).info
+  def get_copyright_info
+    CopyrightInfo.new(self)
   end
 end
