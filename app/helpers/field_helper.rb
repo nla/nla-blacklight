@@ -72,7 +72,7 @@ module FieldHelper
     # rubocop:enable Rails/OutputSafety
   end
 
-  def render_copyright(document:, field:, config:, value:, context:)
+  def render_copyright_component(document:, field:, config:, value:, context:)
     render CopyrightInfoComponent.new(copyright: value.first) if value.present?
   end
 
