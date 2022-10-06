@@ -1,19 +1,15 @@
 # frozen_string_literal: true
 
 module NLA::Solr::Response::Spelling
+  extend Blacklight::Solr::Response::Spelling
+
   EXCLUDED_TERMS = %w[dismax edismax lucene]
 
   def spelling
     @spelling ||= Base.new(self)
   end
 
-  class Base
-    attr_reader :response
-
-    def initialize(response)
-      @response = response
-    end
-
+  class Base < Blacklight::Solr::Response::Spelling::Base
     # returns an array of spelling suggestion for specific query words,
     # as provided in the solr response.  Only includes words with higher
     # frequency of occurrence than word in original query.
@@ -66,22 +62,6 @@ module NLA::Solr::Response::Spelling
           end
         end
         word_suggestions.flatten.compact.uniq
-      end
-    end
-
-    def collation
-      # FIXME: DRY up with words
-      spellcheck = response[:spellcheck]
-      return unless spellcheck && spellcheck[:suggestions]
-
-      suggestions = spellcheck[:suggestions]
-
-      if suggestions.is_a?(Array) && suggestions.index("collation")
-        # solr < 5 response
-        suggestions[suggestions.index("collation") + 1]
-      elsif spellcheck.key?("collations")
-        # solr 5+ response
-        spellcheck["collations"].last if spellcheck.key?("collations")
       end
     end
   end
