@@ -23,6 +23,9 @@ SimpleCov.start "rails" do
   # Filter out hack around Turbo + Devise issue
   add_filter "app/controllers/turbo_devise_controller.rb"
 
+  # Filter out override of Blacklight Advanced Search Plugin override
+  add_filter "lib/blacklight_advanced_search/render_constraints_override.rb"
+
   add_group "Components", "app/components"
   add_group "Presenters", "app/presenters"
 end
