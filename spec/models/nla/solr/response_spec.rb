@@ -25,11 +25,23 @@ RSpec.describe NLA::Solr::Response do
     end
   end
 
+  context "when there are no spelling suggestions" do
+    subject(:r) { described_class.new(no_suggestions_response, {}) }
+
+    it "returns an empty array of suggestions" do
+      expect(r.spelling.words).to eq([])
+    end
+  end
+
   def advanced_response
     JSON.parse(IO.read("spec/files/spellcheck/advanced_response.json"))
   end
 
   def standard_response
     JSON.parse(IO.read("spec/files/spellcheck/standard_response.json"))
+  end
+
+  def no_suggestions_response
+    JSON.parse(IO.read("spec/files/spellcheck/no_suggestions.json"))
   end
 end

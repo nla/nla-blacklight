@@ -96,6 +96,10 @@ class SolrDocument
     Notes.new(self).values
   end
 
+  def copyright_info
+    @copyright_info ||= get_copyright_info
+  end
+
   private
 
   def get_online_access_urls
@@ -147,5 +151,9 @@ class SolrDocument
 
   def get_search_links
     SearchLink.new(self).links
+  end
+
+  def get_copyright_info
+    CopyrightInfo.new(self)
   end
 end
