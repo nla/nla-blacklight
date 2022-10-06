@@ -28,14 +28,6 @@ class CopyrightInfo
     FORMAT_TO_CATEGORY[document.format.last] || DEFAULT_CATEGORY
   end
 
-  def fair_dealing_url
-    ENV["COPYRIGHT_FAIR_DEALING_URL"]
-  end
-
-  def contact_url
-    ENV["COPYRIGHT_CONTACT_URL"]
-  end
-
   private
 
   def fetch
@@ -43,7 +35,7 @@ class CopyrightInfo
     unless res.status != 200
       doc = Nokogiri::XML(res.body)
       item = doc.xpath("//response/itemList/item")
-      Hash.from_xml(item.to_s)["item"]
+      Hash.from_xml(item.to_s)["item"] if item.present?
     end
   end
 end

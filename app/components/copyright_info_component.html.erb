@@ -3,7 +3,7 @@
   <input id="sourcevalue" name="sourcevalue" type="hidden" value="<%= document.id %>">
 </form>
 <div id="copyright-info">
-  <%= render "/copyright_info/message#{info["contextMsg"].tr(".","_")}", copyright_info: info, id: document.id %>
+  <%= render "/copyright_info/message#{info["contextMsg"].tr(".","_")}" %>
   <% if info["copyrightStatusReason"].present? %>
     <dl class="d-flex flex-row justify-content-start">
       <dt class="pr-2">Reason for copyright status:</dt>
