@@ -16,4 +16,8 @@ class CopyrightInfoComponent < ViewComponent::Base
   def render?
     @copyright.present?
   end
+
+  def renderCopiesDirectForm?
+    info["contextMsg"] != "3" && info["contextMsg"] != "4" && info["contextMsg"] != "6" && info["contextMsg"] != "7"
+  end
 end

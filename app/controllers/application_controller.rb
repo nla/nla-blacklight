@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
   # view context is based on the executing controller.
   append_view_path "#{Rails.root}/app/components/"
 
+  # :nocov:
   def staff_login
     redirect_post(user_keycloakopenid_omniauth_authorize_path, options: {authenticity_token: "auto"})
   end
+  # :nocov:
 end

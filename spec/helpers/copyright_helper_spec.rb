@@ -23,7 +23,7 @@ RSpec.describe CopyrightHelper do
     it "generates a link using the environment variable value" do
       stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_CONTACT_URL" => "https://example.com/contact-us"))
 
-      expect(link).to include '<a href="https://example.com/contact-us">contact us</a>'
+      expect(link).to include '<a href="https://example.com/contact-us">Contact us</a>'
     end
   end
 
