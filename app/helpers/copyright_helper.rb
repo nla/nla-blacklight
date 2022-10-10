@@ -4,7 +4,7 @@ module CopyrightHelper
   end
 
   def rights_contact_us_link
-    link_to "contact us", ENV["COPYRIGHT_CONTACT_URL"]
+    link_to "Contact us", ENV["COPYRIGHT_CONTACT_URL"]
   end
 
   def copies_direct_link
