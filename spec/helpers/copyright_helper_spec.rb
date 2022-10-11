@@ -8,12 +8,8 @@ RSpec.describe CopyrightHelper do
   let(:config) { Blacklight::Configuration.new.view_config(:show) }
 
   describe "#fair_dealing_link" do
-    subject(:link) { helper.fair_dealing_link }
-
-    it "generates a link using the environment variable value" do
-      stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_FAIR_DEALING_URL" => "https://example.com/fair_dealing"))
-
-      expect(link).to include '<a href="https://example.com/fair_dealing">fair dealing</a>'
+    it "raises an error" do
+      expect { helper.fair_dealing_link }.to raise_error(NoMethodError)
     end
   end
 

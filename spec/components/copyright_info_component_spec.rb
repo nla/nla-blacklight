@@ -9,7 +9,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
 
   before do
     stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
-    stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_FAIR_DEALING_URL" => "https://example.com/fair_dealing"))
     stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_CONTACT_URL" => "https://example.com/contact-us"))
 
     stub_request(:get, "https://example.com/copyright/")
@@ -30,6 +29,7 @@ RSpec.describe CopyrightInfoComponent, type: :component do
     render_inline(described_class.new(copyright: copyright))
 
     expect(page.text).to include "Contact us"
+    expect(page).to have_xpath("//a[@href='https://example.com/contact-us']")
   end
 
   context "when status context message is 1.1" do
@@ -55,12 +55,14 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).to include "Copies Direct"
+      expect(page).to have_xpath("//a[@href='javascript:;']")
     end
 
-    it "renders the 'fair dealing' link" do
+    it "renders the 'fair dealing' as text" do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).to include "fair dealing"
+      expect(page).not_to have_xpath("//a[text()='fair dealing']")
     end
   end
 
@@ -87,6 +89,7 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).to include "Copies Direct"
+      expect(page).to have_xpath("//a[@href='javascript:;']")
     end
   end
 
@@ -113,12 +116,14 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).to include "Copies Direct"
+      expect(page).to have_xpath("//a[@href='javascript:;']")
     end
 
-    it "renders the 'fair dealing' link" do
+    it "renders the 'fair dealing' as text" do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).to include "fair dealing"
+      expect(page).not_to have_xpath("//a[text()='fair dealing']")
     end
   end
 
@@ -145,6 +150,7 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).to include "Copies Direct"
+      expect(page).to have_xpath("//a[@href='javascript:;']")
     end
   end
 
@@ -171,12 +177,14 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).to include "Copies Direct"
+      expect(page).to have_xpath("//a[@href='javascript:;']")
     end
 
-    it "renders the 'fair dealing' link" do
+    it "renders the 'fair dealing' as text" do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).to include "fair dealing"
+      expect(page).not_to have_xpath("//a[text()='fair dealing']")
     end
   end
 
@@ -203,6 +211,7 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).not_to include "Copies Direct"
+      expect(page).not_to have_xpath("//a[@href='javascript:;']")
     end
   end
 
@@ -229,6 +238,7 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).not_to include "Copies Direct"
+      expect(page).not_to have_xpath("//a[@href='javascript:;']")
     end
   end
 
@@ -255,6 +265,7 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).to include "Copies Direct"
+      expect(page).to have_xpath("//a[@href='javascript:;']")
     end
   end
 
@@ -281,6 +292,7 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).not_to include "Copies Direct"
+      expect(page).not_to have_xpath("//a[@href='javascript:;']")
     end
   end
 
@@ -307,6 +319,7 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).not_to include "Copies Direct"
+      expect(page).not_to have_xpath("//a[@href='javascript:;']")
     end
   end
 
@@ -333,6 +346,7 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       render_inline(described_class.new(copyright: copyright))
 
       expect(page.text).to include "Copies Direct"
+      expect(page).to have_xpath("//a[@href='javascript:;']")
     end
   end
 
