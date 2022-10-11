@@ -58,6 +58,16 @@ RSpec.describe FieldHelper do
         expect(list).to include "<a href=\"https://www.google.com.au/search?q=&quot;Protocol amending 1949 Convention of Inter-American Tropical Tuna Commission&quot; gpo.gov united states united states united states\">Google</a>"
       end
     end
+
+    context "when there are no broken links" do
+      let(:value) { nil }
+
+      let(:document) { SolrDocument.new(marc_ss: no_broken_links_marc) }
+
+      it "does not generate broken links text" do
+        expect(document).not_to have_broken_links
+      end
+    end
   end
 
   describe "#list" do
@@ -228,11 +238,90 @@ RSpec.describe FieldHelper do
     it "generates a link to Map Search" do
       expect(map_search_value).to eq "<a href=\"https://mapsearch.nla.gov.au/?type=map&mapClassifications=all&geolocation=all&text=113030\">View this map in Map Search</a>"
     end
+
+    context "when there is no value" do
+      subject(:map_search_value) { helper.map_search(document: document, field: "map_search", config: config, value: value, context: "show") }
+
+      let(:value) { nil }
+
+      it "does not display the map search link" do
+        expect(map_search_value).to be_nil
+      end
+    end
+  end
+
+  describe "#render_copyright_component" do
+    subject(:copyright_component) { helper.render_copyright_component(document: document, field: "", config: config, value: value, context: "show") }
+
+    before do
+      view.lookup_context.view_paths.push "#{Rails.root}/app/components/"
+    end
+
+    let(:copyright) { object_double(CopyrightInfo.new(document), info: copyright_response_hash) }
+    let(:value) { [copyright] }
+
+    it "renders the copyright component" do
+      stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
+      stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_FAIR_DEALING_URL" => "https://example.com/fair_dealing"))
+      stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_CONTACT_URL" => "https://example.com/contact-us"))
+
+      stub_request(:get, "https://example.com/copyright/")
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "User-Agent" => "Faraday v1.10.0"
+          }
+        )
+        .to_return(status: 200, body: "", headers: {})
+
+      allow(copyright).to receive(:document).and_return(document)
+      allow(copyright).to receive(:info).and_return(copyright_response_hash)
+
+      expect(copyright_component).to include "In copyright"
+    end
+
+    context "when there is no value" do
+      let(:value) { nil }
+
+      it "does not render the copyright component" do
+        stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
+        stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_FAIR_DEALING_URL" => "https://example.com/fair_dealing"))
+        stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_CONTACT_URL" => "https://example.com/contact-us"))
+
+        stub_request(:get, "https://example.com/copyright/")
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+              "User-Agent" => "Faraday v1.10.0"
+            }
+          )
+          .to_return(status: 200, body: "", headers: {})
+
+        allow(copyright).to receive(:document).and_return(document)
+        allow(copyright).to receive(:info).and_return(copyright_response_hash)
+
+        expect(copyright_component).to be_nil
+      end
+    end
   end
 
   # Need to set the MARC source field to actual MARC XML in order to allow
   # the "#to_marc" method to be included in the SolrDocument model.
   def sample_marc
     IO.read("spec/files/marc/4157458.marcxml")
+  end
+
+  def no_broken_links_marc
+    IO.read("spec/files/marc/113030.marcxml")
+  end
+
+  def copyright_response
+    IO.read("spec/files/copyright/service_response.xml")
+  end
+
+  def copyright_response_hash
+    Hash.from_xml(copyright_response.to_s)["response"]["itemList"]["item"]
   end
 end
