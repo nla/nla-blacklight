@@ -1,8 +1,4 @@
 module CopyrightHelper
-  def fair_dealing_link
-    link_to "fair dealing", ENV["COPYRIGHT_FAIR_DEALING_URL"]
-  end
-
   def rights_contact_us_link
     link_to "Contact us", ENV["COPYRIGHT_CONTACT_URL"]
   end
