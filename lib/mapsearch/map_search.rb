@@ -7,7 +7,7 @@ class MapSearch
   def determine_url(id:, format:)
     url = ""
 
-    unless id.nil?
+    unless id.nil? || format.nil?
       config = Rails.application.config_for(:catalogue)
 
       mapsearch_url = config.mapsearch[:search_url]

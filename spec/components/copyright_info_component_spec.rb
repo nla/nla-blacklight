@@ -33,11 +33,11 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   context "when status context message is 1.1" do
-    before {
+    before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "1.1"
       allow(copyright).to receive(:info).and_return(rights_response)
-    }
+    end
 
     it "renders 'In copyright'" do
       render_inline(described_class.new(copyright: copyright))
@@ -65,11 +65,11 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   context "when status context message is 1.2" do
-    before {
+    before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "1.2"
       allow(copyright).to receive(:info).and_return(rights_response)
-    }
+    end
 
     it "renders 'Out of copyright'" do
       render_inline(described_class.new(copyright: copyright))
@@ -91,11 +91,11 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   context "when status context message is 1.3" do
-    before {
+    before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "1.3"
       allow(copyright).to receive(:info).and_return(rights_response)
-    }
+    end
 
     it "renders 'Copyright uncertain or copyright undetermined'" do
       render_inline(described_class.new(copyright: copyright))
@@ -123,11 +123,11 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   context "when status context message is 2.1" do
-    before {
+    before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "2.1"
       allow(copyright).to receive(:info).and_return(rights_response)
-    }
+    end
 
     it "renders 'Out of copyright'" do
       render_inline(described_class.new(copyright: copyright))
@@ -149,11 +149,11 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   context "when status context message is 2.2" do
-    before {
+    before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "2.2"
       allow(copyright).to receive(:info).and_return(rights_response)
-    }
+    end
 
     it "renders 'In copyright, uncertain or undetermined'" do
       render_inline(described_class.new(copyright: copyright))
@@ -181,11 +181,11 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   context "when status context message is 3" do
-    before {
+    before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "3"
       allow(copyright).to receive(:info).and_return(rights_response)
-    }
+    end
 
     it "does not render the copyright status" do
       render_inline(described_class.new(copyright: copyright))
@@ -207,11 +207,11 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   context "when status context message is 4" do
-    before {
+    before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "4"
       allow(copyright).to receive(:info).and_return(rights_response)
-    }
+    end
 
     it "does not render the copyright status" do
       render_inline(described_class.new(copyright: copyright))
@@ -233,11 +233,11 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   context "when status context message is 5" do
-    before {
+    before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "5"
       allow(copyright).to receive(:info).and_return(rights_response)
-    }
+    end
 
     it "renders 'In copyright, out of copyright, uncertain, undetermined'" do
       render_inline(described_class.new(copyright: copyright))
@@ -259,11 +259,11 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   context "when status context message is 6" do
-    before {
+    before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "6"
       allow(copyright).to receive(:info).and_return(rights_response)
-    }
+    end
 
     it "renders 'In copyright, out of copyright, uncertain or undetermined'" do
       render_inline(described_class.new(copyright: copyright))
@@ -285,11 +285,11 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   context "when status context message is 7" do
-    before {
+    before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "7"
       allow(copyright).to receive(:info).and_return(rights_response)
-    }
+    end
 
     it "renders 'In copyright, out of copyright, uncertain or undetermined'" do
       render_inline(described_class.new(copyright: copyright))
@@ -311,11 +311,11 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   context "when status context message is 8" do
-    before {
+    before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "8"
       allow(copyright).to receive(:info).and_return(rights_response)
-    }
+    end
 
     it "renders 'In copyright, out of copyright, uncertain or undetermined'" do
       render_inline(described_class.new(copyright: copyright))

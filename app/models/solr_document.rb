@@ -122,6 +122,9 @@ class SolrDocument
     if url.present?
       [url]
     end
+  rescue KeyError
+    Rails.logger.info "Record #{id} has no 'format'"
+    []
   end
 
   def to_marc_xml

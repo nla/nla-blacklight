@@ -100,6 +100,17 @@ RSpec.describe SolrDocument do
         expect(map_search_value).to be_nil
       end
     end
+
+    context "when there is no 'format'" do
+      subject(:map_search_value) do
+        document = described_class.new(marc_ss: no_map_search, id: 3647081, format: nil)
+        document.map_search
+      end
+
+      it "does not generate a link to Map Search" do
+        expect(map_search_value).to be_nil
+      end
+    end
   end
 
   describe "#series" do
@@ -170,6 +181,8 @@ RSpec.describe SolrDocument do
       end
     end
   end
+
+  describe "#"
 
   def single_series
     IO.read("spec/files/marc/109692.marcxml")
