@@ -56,24 +56,27 @@ module FieldHelper
   # an unordered list if there are multiple notes. URLs in notes will
   # be turned into links.
   def notes(document:, field:, config:, value:, context:)
-    elements = []
-
     notes_hash = value.first
     combined_notes = [*notes_hash[:notes], *notes_hash[:more_notes]]
-    elements = [*build_notes_list(combined_notes)] if combined_notes.present?
-
-    safe_join(elements.compact_blank, "\n")
+    if combined_notes.present?
+      elements = [*build_notes_list(combined_notes)]
+      safe_join(elements.compact_blank, "\n")
+    end
   end
 
   # Create a link to Map Search
   def map_search(document:, field:, config:, value:, context:)
-    # rubocop:disable Rails/OutputSafety
-    link_to("View this map in Map Search", value.first.html_safe) if value.present?
-    # rubocop:enable Rails/OutputSafety
+    if value.present?
+      # rubocop:disable Rails/OutputSafety
+      link_to("View this map in Map Search", value.first.html_safe)
+      # rubocop:enable Rails/OutputSafety
+    end
   end
 
   def render_copyright_component(document:, field:, config:, value:, context:)
-    render CopyrightInfoComponent.new(copyright: value.first) if value.present?
+    if value.present?
+      render CopyrightInfoComponent.new(copyright: value.first)
+    end
   end
 
   private
