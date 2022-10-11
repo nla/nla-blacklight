@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CopyrightInfoComponent < ViewComponent::Base
+  include CopyrightHelper
+
   def initialize(copyright:)
     @copyright = copyright
   end
