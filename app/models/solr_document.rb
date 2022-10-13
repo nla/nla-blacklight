@@ -108,6 +108,10 @@ class SolrDocument
     @translated_title ||= get_marc_derived_field("242abchnp")
   end
 
+  def uniform_title
+    @uniform_title = get_uniform_title
+  end
+
   private
 
   def get_online_access_urls
@@ -166,5 +170,11 @@ class SolrDocument
 
   def get_copyright_info
     CopyrightInfo.new(self)
+  end
+
+  def get_uniform_title
+    title = get_marc_derived_field("130aplskfmnor")
+    title = get_marc_derived_field("240adfghklmnoprs") if title.empty?
+    title
   end
 end

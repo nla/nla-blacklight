@@ -103,12 +103,12 @@ RSpec.describe SolrDocument do
 
     context "when there is no 'format'" do
       subject(:map_search_value) do
-        document = described_class.new(marc_ss: no_map_search, id: 3647081, format: nil)
+        document = described_class.new(marc_ss: no_format)
         document.map_search
       end
 
       it "does not generate a link to Map Search" do
-        expect(map_search_value).to be_nil
+        expect(map_search_value).to eq []
       end
     end
   end
@@ -182,6 +182,31 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#copyright_info" do
+    subject(:copyright_info_value) do
+      document.copyright_info
+    end
+
+    let(:document) { described_class.new(marc_ss: form_of_work, id: 7291584) }
+
+    it "will return the copyright information for the work" do
+      stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
+
+      WebMock.stub_request(:get, "https://example.com/copyright/")
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+            "User-Agent" => "Faraday v1.10.0"
+          }
+        )
+        .to_return(status: 200, body: IO.read("spec/files/copyright/service_response.xml").to_s, headers: {})
+
+      expect(copyright_info_value.info).not_to be_nil
+      expect(copyright_info_value.info["contextMsg"]).to eq "1.1"
+    end
+  end
+
   describe "#form_of_work" do
     context "when there is a form of work" do
       subject(:form_of_work_value) do
@@ -190,7 +215,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will return the form of work" do
-        expect(form_of_work_value).to include "Interviews"
+        expect(form_of_work_value).not_to be_nil
       end
     end
 
@@ -235,43 +260,90 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#uniform_title" do
+    context "when there is a uniform title in subfield 130" do
+      subject(:uniform_title_value) do
+        document = described_class.new(marc_ss: uniform_title_130)
+        document.uniform_title
+      end
+
+      it "will display the uniform title" do
+        expect(uniform_title_value).to eq ["Wort Hesed. English."]
+      end
+    end
+
+    context "when there is no uniform title in subfield 130" do
+      subject(:uniform_title_value) do
+        document = described_class.new(marc_ss: uniform_title_240)
+        document.uniform_title
+      end
+
+      it "will look in subfield 240 and display the uniform title" do
+        expect(uniform_title_value).to eq ["De foto's van Jongensjaren. Spanish"]
+      end
+    end
+
+    context "when there is no uniform title in subfield 130 or subfield 240" do
+      subject(:uniform_title_value) do
+        document = described_class.new(marc_ss: single_series)
+        document.uniform_title
+      end
+
+      it "will return an empty array" do
+        expect(uniform_title_value).to eq []
+      end
+    end
+  end
+
   def single_series
-    IO.read("spec/files/marc/109692.marcxml")
+    load_marc_from_file 109692
   end
 
   def multiple_series
-    IO.read("spec/files/marc/8126677.marcxml")
+    load_marc_from_file 8126677
   end
 
   def single_note
-    IO.read("spec/files/marc/1068705.marcxml")
+    load_marc_from_file 1068705
   end
 
   def multiple_notes
-    IO.read("spec/files/marc/8174421.marcxml")
+    load_marc_from_file 8174421
   end
 
   def no_notes
-    IO.read("spec/files/marc/3079596.marcxml")
+    load_marc_from_file 3079596
   end
 
   def online_access
-    IO.read("spec/files/marc/4806783.marcxml")
+    load_marc_from_file 4806783
   end
 
   def map_search
-    IO.read("spec/files/marc/113030.marcxml")
+    load_marc_from_file 113030
   end
 
   def no_map_search
-    IO.read("spec/files/marc/3647081.marcxml")
+    load_marc_from_file 3647081
+  end
+
+  def no_format
+    load_marc_from_file 7251259
   end
 
   def form_of_work
-    IO.read("spec/files/marc/7291584.marcxml")
+    load_marc_from_file 7291584
   end
 
   def translated_title
-    IO.read("spec/files/marc/5673402.marcxml")
+    load_marc_from_file 5673402
+  end
+
+  def uniform_title_130
+    load_marc_from_file 561972
+  end
+
+  def uniform_title_240
+    load_marc_from_file 8662981
   end
 end

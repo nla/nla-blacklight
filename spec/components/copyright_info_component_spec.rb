@@ -11,7 +11,7 @@ RSpec.describe CopyrightInfoComponent, type: :component do
     stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
     stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_CONTACT_URL" => "https://example.com/contact-us"))
 
-    stub_request(:get, "https://example.com/copyright/")
+    WebMock.stub_request(:get, "https://example.com/copyright/")
       .with(
         headers: {
           "Accept" => "*/*",
