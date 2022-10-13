@@ -1,0 +1,23 @@
+<%= render(@layout.new(field: @field)) do |component| %>
+  <% component.label do %>
+    <%= label %>
+  <% end %>
+  <% component.value do %>
+    <p><%= value.collection_name_label %></p>
+    <% if value.parent? && value.child? %>
+      <p><%= t("collection.parent_child") %></p>
+    <% elsif value.parent? %>
+      <p><%= t("collection.parent")%></p>
+    <% else %>
+      <p><%= t("collection.child") %></p>
+    <% end %>
+    <% if value.parent? %>
+      <%= link_to "See collection record (go up)", root_path %>
+    <% end %>
+    <% if value.child? %>
+      <%= link_to "See records in related collections (go sideways)", root_path %>
+    <% end %>
+    <p>Parent: <%= value.parent? %></p>
+    <p>Child: <%= value.child? %></p>
+  <% end %>
+<% end %>

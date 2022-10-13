@@ -132,6 +132,10 @@ class SolrDocument
     @issn ||= get_issn
   end
 
+  def related_records
+    @related_records ||= get_related_records
+  end
+
   private
 
   def get_online_access_urls
@@ -277,5 +281,10 @@ class SolrDocument
     end
 
     issn.compact_blank
+  end
+
+  def get_related_records
+    related = RelatedRecords.new(self)
+    related.in_collection? ? related : []
   end
 end
