@@ -182,7 +182,29 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe "#"
+  describe "#form_of_work" do
+    context "when there is a form of work" do
+      subject(:form_of_work_value) do
+        document = described_class.new(marc_ss: form_of_work)
+        document.form_of_work
+      end
+
+      it "will return the form of work" do
+        expect(form_of_work_value).to include "Interviews"
+      end
+    end
+
+    context "when there is no form of work" do
+      subject(:form_of_work_value) do
+        document = described_class.new(marc_ss: single_series)
+        document.form_of_work
+      end
+
+      it "will return nil" do
+        expect(form_of_work_value).to eq []
+      end
+    end
+  end
 
   def single_series
     IO.read("spec/files/marc/109692.marcxml")
@@ -214,5 +236,9 @@ RSpec.describe SolrDocument do
 
   def no_map_search
     IO.read("spec/files/marc/3647081.marcxml")
+  end
+
+  def form_of_work
+    IO.read("spec/files/marc/7291584.marcxml")
   end
 end
