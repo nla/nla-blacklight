@@ -100,6 +100,10 @@ class SolrDocument
     @copyright_info ||= get_copyright_info
   end
 
+  def form_of_work
+    @form_of_work ||= get_form_of_work
+  end
+
   private
 
   def get_online_access_urls
@@ -158,5 +162,9 @@ class SolrDocument
 
   def get_copyright_info
     CopyrightInfo.new(self)
+  end
+
+  def get_form_of_work
+    get_marc_derived_field("380a")
   end
 end
