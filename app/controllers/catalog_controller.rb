@@ -157,6 +157,7 @@ class CatalogController < ApplicationController
     config.add_show_field field: "format", label: "Format"
     config.add_show_field "form_of_work", label: "Form of work", accessor: :form_of_work
     config.add_show_field "author", field: "author_tsim", label: "Author"
+    config.add_show_field "translated_title", label: "Translated title", accessor: :translated_title
     config.add_show_field "online_access", label: "Online Access", accessor: :online_access, helper_method: :url_list
     config.add_show_field "map_search", label: "Online Version", accessor: :map_search, helper_method: :map_search
     config.add_show_field "copy_access", label: "Online Version", accessor: :copy_access, helper_method: :url_list

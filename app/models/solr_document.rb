@@ -101,7 +101,11 @@ class SolrDocument
   end
 
   def form_of_work
-    @form_of_work ||= get_form_of_work
+    @form_of_work ||= get_marc_derived_field("380a")
+  end
+
+  def translated_title
+    @translated_title ||= get_marc_derived_field("242abchnp")
   end
 
   private
@@ -162,9 +166,5 @@ class SolrDocument
 
   def get_copyright_info
     CopyrightInfo.new(self)
-  end
-
-  def get_form_of_work
-    get_marc_derived_field("380a")
   end
 end
