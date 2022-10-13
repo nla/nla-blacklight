@@ -206,6 +206,35 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#translated_title" do
+    context "when there are translated titles" do
+      subject(:translated_title_value) do
+        document = described_class.new(marc_ss: translated_title)
+        document.translated_title
+      end
+
+      it "will return the concatenated title" do
+        expect(translated_title_value).to eq [<<~STRING.squish
+          Promoting a Healthy Future [microform] : Training Manual for Health 
+          Educators and Instructors Who Work with Young Health Promoters, Young Counselors or Educators and
+          Volunteers / Carmen Duran and Paloma Cuchi.
+        STRING
+        ]
+      end
+    end
+
+    context "when there are no translated titles" do
+      subject(:translated_title_value) do
+        document = described_class.new(marc_ss: single_series)
+        document.translated_title
+      end
+
+      it "will return an empty array" do
+        expect(translated_title_value).to eq []
+      end
+    end
+  end
+
   def single_series
     IO.read("spec/files/marc/109692.marcxml")
   end
@@ -240,5 +269,9 @@ RSpec.describe SolrDocument do
 
   def form_of_work
     IO.read("spec/files/marc/7291584.marcxml")
+  end
+
+  def translated_title
+    IO.read("spec/files/marc/5673402.marcxml")
   end
 end
