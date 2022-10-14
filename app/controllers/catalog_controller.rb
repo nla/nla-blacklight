@@ -155,7 +155,7 @@ class CatalogController < ApplicationController
     #   The ordering of the field names is the order of the display
     config.add_show_field "id", label: "Bib ID", field: "id"
     config.add_show_field field: "format", label: "Format"
-    config.add_show_field "form_of_work", label: "Form of work", accessor: :form_of_work
+    config.add_show_field "form_of_work", label: "Form of work", accessor: :form_of_work, helper_method: :list
     config.add_show_field "author", field: "author_tsim", label: "Author"
     config.add_show_field "translated_title", label: "Translated Title", accessor: :translated_title
     config.add_show_field "uniform_title", label: "Uniform Title", accessor: :uniform_title
