@@ -165,6 +165,7 @@ class CatalogController < ApplicationController
     config.add_show_field "related_access", label: "Related Online Resources", accessor: :related_access, helper_method: :url_list
     config.add_show_field "edition", label: "Edition", accessor: :edition, helper_method: :list
     config.add_show_field "access_conditions", label: "Access Conditions", accessor: :access_conditions, helper_method: :emphasized_list
+    config.add_show_field "scale", label: "Scale", accessor: :scale
     config.add_show_field label: "Description", field: "description", accessor: :description
     config.add_show_field "series", label: "Series", accessor: :series, helper_method: :list
     config.add_show_field "notes", label: "Notes", accessor: :notes, helper_method: :notes
