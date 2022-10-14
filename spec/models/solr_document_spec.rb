@@ -339,6 +339,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#scale" do
+    context "when there is scale" do
+      subject(:scale_value) do
+        document = described_class.new(marc_ss: scale)
+        document.scale
+      end
+
+      it "will return the scale" do
+        expect(scale_value).to eq ["Scale [1:31,680]. Two inches to a mile (E 145°20'--E 145°45'/S 38°15'--S 38°30')"]
+      end
+    end
+
+    context "when there is no scale" do
+      subject(:scale_value) do
+        document = described_class.new(marc_ss: access_condition)
+        document.scale
+      end
+
+      it "will return an empty array" do
+        expect(scale_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -403,5 +427,9 @@ RSpec.describe SolrDocument do
 
   def access_condition
     load_marc_from_file 3926789
+  end
+
+  def scale
+    load_marc_from_file 4315761
   end
 end

@@ -5,7 +5,7 @@ development:
 
   mapsearch:
     url: "https://georekt-test.nla.gov.au/mapsearch/?type=map&mapClassifications=all&geolocation=all&text="
-    search_url: "https://georekt-test.nla.gov.au/mapsearch/search/search?type=map&text="
+    search_url: "http://georekt-test.nla.gov.au/mapsearch/search/search?type=map&text="
 
 test:
   subnet:

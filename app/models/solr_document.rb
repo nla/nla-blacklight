@@ -120,6 +120,10 @@ class SolrDocument
     @access_conditions ||= get_marc_derived_field("506a3bcde", options: {include: false})
   end
 
+  def scale
+    @scale ||= get_marc_derived_field("255abcdefg", options: {include: false})
+  end
+
   private
 
   def get_online_access_urls
