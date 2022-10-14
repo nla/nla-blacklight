@@ -371,7 +371,18 @@ RSpec.describe SolrDocument do
       end
 
       it "will return the ISBN" do
-        expect(isbn_value).to eq ["9781921503214"]
+        expect(isbn_value).to eq %w[9781921503214 11111]
+      end
+    end
+
+    context "when there is a linked 880" do
+      subject(:isbn_value) do
+        document = described_class.new(marc_ss: isbn)
+        document.isbn
+      end
+
+      it "will return the ISBN" do
+        expect(isbn_value).to include "11111"
       end
     end
 

@@ -214,7 +214,7 @@ class SolrDocument
   def get_isbn
     isbn = []
     elements = get_marc_datafields_from_xml("//datafield[@tag='020']")
-    elements.map do |el|
+    elements.each do |el|
       text = []
       qualifiers = []
       el.children.each do |subfield|
@@ -231,6 +231,16 @@ class SolrDocument
       isbn << text.join
     end
 
-    isbn
+    elements = get_marc_datafields_from_xml("//datafield[@tag='880']")
+    elements.each do |el|
+      el.children.each do |subfield|
+        subfield_code = subfield.attribute("code").value
+        if subfield_code == "6"
+          isbn << subfield.text
+        end
+      end
+    end
+
+    isbn.compact_blank
   end
 end
