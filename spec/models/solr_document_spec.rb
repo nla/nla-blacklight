@@ -363,6 +363,41 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#isbn" do
+    context "when there is an ISBN" do
+      subject(:isbn_value) do
+        document = described_class.new(marc_ss: isbn)
+        document.isbn
+      end
+
+      it "will return the ISBN" do
+        expect(isbn_value).to eq ["9781921503214"]
+      end
+    end
+
+    context "when there are more than one ISBN" do
+      subject(:isbn_value) do
+        document = described_class.new(marc_ss: multiple_isbn)
+        document.isbn
+      end
+
+      it "will return all the ISBN" do
+        expect(isbn_value).to eq ["0394502884", "0394170660 (paperback)"]
+      end
+    end
+
+    context "when there is a qualifier" do
+      subject(:isbn_value) do
+        document = described_class.new(marc_ss: multiple_isbn)
+        document.isbn
+      end
+
+      it "will append it after the ISBN" do
+        expect(isbn_value[1]).to include " (paperback)"
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -431,5 +466,13 @@ RSpec.describe SolrDocument do
 
   def scale
     load_marc_from_file 4315761
+  end
+
+  def isbn
+    load_marc_from_file 5055353
+  end
+
+  def multiple_isbn
+    load_marc_from_file 941801
   end
 end
