@@ -112,6 +112,10 @@ class SolrDocument
     @uniform_title = get_uniform_title
   end
 
+  def edition
+    @edition ||= get_edition
+  end
+
   private
 
   def get_online_access_urls
@@ -176,5 +180,22 @@ class SolrDocument
     title = get_marc_derived_field("130aplskfmnor")
     title = get_marc_derived_field("240adfghklmnoprs") if title.empty?
     title
+  end
+
+  def get_edition
+    editions = get_marc_derived_field("250")
+    editions_250 = editions.select { |ed| ed.start_with? "250" }
+    editions_880 = editions.select { |ed| ed.start_with? "880" }
+
+    ordered_editions = []
+    if editions_250.present? || editions_880.present?
+      ordered_editions = [*editions_880, *editions_250]
+      ordered_editions = ordered_editions.map do |ed|
+        ed[ed.index(" ")...-1].strip
+      end
+    else
+      ordered_editions = [*editions]
+    end
+    ordered_editions
   end
 end
