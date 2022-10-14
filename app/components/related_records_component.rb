@@ -9,6 +9,6 @@ class RelatedRecordsComponent < Blacklight::MetadataFieldComponent
   end
 
   def render?
-    value.present? && value.has_children?
+    value.present? && value.in_collection?
   end
 end

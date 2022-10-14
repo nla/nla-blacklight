@@ -3,21 +3,27 @@
     <%= label %>
   <% end %>
   <% component.value do %>
-    <p><%= value.collection_name_label %></p>
-    <% if value.parent? && value.child? %>
-      <p><%= t("collection.parent_child") %></p>
-    <% elsif value.parent? %>
-      <p><%= t("collection.parent")%></p>
-    <% else %>
-      <p><%= t("collection.child") %></p>
+    <% if value.collection_name_label.present? %>
+      <p><%= value.collection_name_label %></p>
     <% end %>
-    <% if value.parent? %>
-      <%= link_to "See collection record (go up)", root_path %>
+    <p class="mb-0">
+    <% if value.child? && value.has_children? %>
+      <%= t("collection.parent_child") %>
+    <% elsif value.parent? %>
+      <%= t("collection.parent")%>
+    <% else %>
+      <%= t("collection.child") %>
+    <% end %>
+    </p>
+
+    <% if value.child? %>
+      <p class="mb-0"><%= link_to t("collection.nav.up"), search_catalog_path(:'f[collection_id_ssi][]' => value.parent_id) %></p>
     <% end %>
     <% if value.child? %>
-      <%= link_to "See records in related collections (go sideways)", root_path %>
+      <p class="mb-0"><%= link_to t("collection.nav.sideways"), search_catalog_path(:'f[parent_id_ssi][]' => value.parent_id) %></p>
     <% end %>
-    <p>Parent: <%= value.parent? %></p>
-    <p>Child: <%= value.child? %></p>
+    <% if value.parent? && value.has_children? %>
+      <p class="mb-0"><%= link_to t("collection.nav.down"), search_catalog_path(:'f[parent_id_ssi][]' => value.collection_id) %></p>
+    <% end %>
   <% end %>
 <% end %>

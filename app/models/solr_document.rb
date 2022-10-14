@@ -61,19 +61,19 @@ class SolrDocument
   end
 
   def online_access
-    @online_access ||= get_online_access_urls
+    get_online_access_urls
   end
 
   def copy_access
-    @copy_access ||= get_copy_urls
+    get_copy_urls
   end
 
   def related_access
-    @related_access ||= get_related_urls
+    get_related_urls
   end
 
   def broken_links
-    @broken_links ||= get_search_links
+    get_search_links
   end
 
   def has_broken_links?
@@ -81,7 +81,7 @@ class SolrDocument
   end
 
   def map_search
-    @map_search ||= get_map_search_url
+    get_map_search_url
   end
 
   def get_marc_datafields_from_xml(xpath, xml_doc = marc_xml)
@@ -97,43 +97,43 @@ class SolrDocument
   end
 
   def copyright_info
-    @copyright_info ||= get_copyright_info
+    get_copyright_info
   end
 
   def form_of_work
-    @form_of_work ||= get_marc_derived_field("380a")
+    get_marc_derived_field("380a")
   end
 
   def translated_title
-    @translated_title ||= get_marc_derived_field("242abchnp")
+    get_marc_derived_field("242abchnp")
   end
 
   def uniform_title
-    @uniform_title = get_uniform_title
+    get_uniform_title
   end
 
   def edition
-    @edition ||= get_edition
+    get_edition
   end
 
   def access_conditions
-    @access_conditions ||= get_marc_derived_field("506a3bcde", options: {include: false})
+    get_marc_derived_field("506a3bcde", options: {include: false})
   end
 
   def scale
-    @scale ||= get_marc_derived_field("255abcdefg", options: {include: false})
+    get_marc_derived_field("255abcdefg", options: {include: false})
   end
 
   def isbn
-    @isbn ||= get_isbn
+    get_isbn
   end
 
   def issn
-    @issn ||= get_issn
+    get_issn
   end
 
   def related_records
-    @related_records ||= get_related_records
+    get_related_records
   end
 
   private
