@@ -124,6 +124,10 @@ class SolrDocument
     @scale ||= get_marc_derived_field("255abcdefg", options: {include: false})
   end
 
+  def isbn
+    @isbn ||= get_isbn
+  end
+
   private
 
   def get_online_access_urls
@@ -205,5 +209,28 @@ class SolrDocument
       ordered_editions = [*editions]
     end
     ordered_editions
+  end
+
+  def get_isbn
+    isbn = []
+    elements = get_marc_datafields_from_xml("//datafield[@tag='020']")
+    elements.map do |el|
+      text = []
+      qualifiers = []
+      el.children.each do |subfield|
+        subfield_code = subfield.attribute("code").value
+        if subfield_code == "a"
+          text << subfield.text
+        elsif subfield_code == "q"
+          qualifiers << subfield.text
+        end
+      end
+      unless qualifiers.empty?
+        text << " (#{qualifiers.join})"
+      end
+      isbn << text.join
+    end
+
+    isbn
   end
 end
