@@ -116,6 +116,10 @@ class SolrDocument
     @edition ||= get_edition
   end
 
+  def access_conditions
+    @access_conditions ||= get_marc_derived_field("506a3bcde", options: {include: false})
+  end
+
   private
 
   def get_online_access_urls
