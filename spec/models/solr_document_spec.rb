@@ -295,6 +295,34 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#edition" do
+    context "when there is an edition in subfield 250" do
+      subject(:edition_value) do
+        document = described_class.new(marc_ss: edition)
+        document.edition
+      end
+
+      it "will return the edition" do
+        expect(edition_value).to eq ["3d ed."]
+      end
+    end
+
+    context "when there is an edition in subfield 880 and subfield 250" do
+      subject(:edition_value) do
+        document = described_class.new(marc_ss: edition_880)
+        document.edition
+      end
+
+      it "will return both editions" do
+        expect(edition_value).to eq ["Chu ban", "初版"]
+      end
+
+      it "will return the 880 value first" do
+        expect(edition_value.first).to eq "Chu ban"
+      end
+    end
+  end
+
   def single_series
     load_marc_from_file 109692
   end
@@ -345,5 +373,13 @@ RSpec.describe SolrDocument do
 
   def uniform_title_240
     load_marc_from_file 8662981
+  end
+
+  def edition
+    load_marc_from_file 1336868
+  end
+
+  def edition_880
+    load_marc_from_file 6290058
   end
 end

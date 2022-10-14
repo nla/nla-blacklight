@@ -163,6 +163,7 @@ class CatalogController < ApplicationController
     config.add_show_field "map_search", label: "Online Version", accessor: :map_search, helper_method: :map_search
     config.add_show_field "copy_access", label: "Online Version", accessor: :copy_access, helper_method: :url_list
     config.add_show_field "related_access", label: "Related Online Resources", accessor: :related_access, helper_method: :url_list
+    config.add_show_field "edition", label: "Edition", accessor: :edition, helper_method: :list
     config.add_show_field label: "Description", field: "description", accessor: :description
     config.add_show_field "series", label: "Series", accessor: :series, helper_method: :list
     config.add_show_field "notes", label: "Notes", accessor: :notes, helper_method: :notes
