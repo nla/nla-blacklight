@@ -128,6 +128,10 @@ class SolrDocument
     @isbn ||= get_isbn
   end
 
+  def issn
+    @issn ||= get_issn
+  end
+
   private
 
   def get_online_access_urls
@@ -242,5 +246,36 @@ class SolrDocument
     end
 
     isbn.compact_blank
+  end
+
+  def get_issn
+    issn = []
+    elements = get_marc_datafields_from_xml("//datafield[@tag='022']")
+    elements.each do |el|
+      text = []
+      qualifiers = []
+      el.children.each do |subfield|
+        subfield_code = subfield.attribute("code").value
+        if subfield_code == "a"
+          text << subfield.text
+        end
+      end
+      unless qualifiers.empty?
+        text << " (#{qualifiers.join})"
+      end
+      issn << text.join
+    end
+
+    elements = get_marc_datafields_from_xml("//datafield[@tag='880']")
+    elements.each do |el|
+      el.children.each do |subfield|
+        subfield_code = subfield.attribute("code").value
+        if subfield_code == "6"
+          issn << subfield.text
+        end
+      end
+    end
+
+    issn.compact_blank
   end
 end
