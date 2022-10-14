@@ -409,6 +409,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#issn" do
+    context "when there is an ISSN" do
+      subject(:issn_value) do
+        document = described_class.new(marc_ss: issn)
+        document.issn
+      end
+
+      it "will return the ISSN" do
+        expect(issn_value).to eq %w[0000-0442 2434-561X]
+      end
+    end
+
+    context "when there is a linked 880" do
+      subject(:issn_value) do
+        document = described_class.new(marc_ss: issn)
+        document.issn
+      end
+
+      it "will return the ISSN" do
+        expect(issn_value).to include "2434-561X"
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -485,5 +509,9 @@ RSpec.describe SolrDocument do
 
   def multiple_isbn
     load_marc_from_file 941801
+  end
+
+  def issn
+    load_marc_from_file 28336
   end
 end
