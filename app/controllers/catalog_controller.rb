@@ -128,8 +128,8 @@ class CatalogController < ApplicationController
       years_25: {label: "within 25 Years", fq: "pub_date_ssim:[#{Time.zone.now.year - 25} TO *]"}
     }
 
-    config.add_facet_field "parent_id_ssi", label: "Collection: Parent", include_in_advanced_search: false, limit: true
-    config.add_facet_field "collection_id_ssi", label: "Collection", include_in_advanced_search: false, limit: true
+    config.add_facet_field "parent_id_ssi", label: "In Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
+    config.add_facet_field "collection_id_ssi", label: "Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
 
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
