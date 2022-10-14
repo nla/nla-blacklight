@@ -52,6 +52,28 @@ module FieldHelper
     safe_join(elements, "\n")
   end
 
+  def emphasized_list(document:, field:, config:, value:, context:)
+    elements = []
+
+    elements << if value.size > 1
+      content_tag(:ul) do
+        safe_join(value.map do |val|
+          content_tag(:li) do
+            content_tag(:strong) do
+              val
+            end
+          end
+        end, "\n")
+      end
+    else
+      content_tag(:strong) do
+        value.first
+      end
+    end
+
+    safe_join(elements, "\n")
+  end
+
   # Display combined notes (i.e. notes and linked 880 notes). Shown as
   # an unordered list if there are multiple notes. URLs in notes will
   # be turned into links.

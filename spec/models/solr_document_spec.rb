@@ -323,6 +323,24 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#access_conditions" do
+    context "when there is an access condition" do
+      subject(:access_condition_value) do
+        document = described_class.new(marc_ss: access_condition)
+        document.access_conditions
+      end
+
+      it "will return the access condition" do
+        expect(access_condition_value).to eq [<<~STRING.squish
+          "This document has been distributed to a limited audience for a limited purpose. It is not published"--P. [2] of cover.
+        STRING
+        ]
+      end
+    end
+  end
+
+  private
+
   def single_series
     load_marc_from_file 109692
   end
@@ -381,5 +399,9 @@ RSpec.describe SolrDocument do
 
   def edition_880
     load_marc_from_file 6290058
+  end
+
+  def access_condition
+    load_marc_from_file 3926789
   end
 end

@@ -92,6 +92,28 @@ RSpec.describe FieldHelper do
     end
   end
 
+  describe "#emphasized_list" do
+    subject(:value_list) { helper.emphasized_list(document: document, field: "access_conditions", config: config, value: value, context: "show") }
+
+    context "when there is only a single item" do
+      let(:value) { ["Access condition A"] }
+
+      it "generates emphasized plain text" do
+        expect(value_list).to eq "<strong>Access condition A</strong>"
+      end
+    end
+
+    context "when there are multiple items" do
+      let(:value) do
+        ["Access condition A", "Access condition B"]
+      end
+
+      it "generates a list of emphasized text" do
+        expect(value_list).to eq "<ul><li><strong>Access condition A</strong></li>\n<li><strong>Access condition B</strong></li></ul>"
+      end
+    end
+  end
+
   # rubocop:disable RSpec/NestedGroups
   describe "#notes" do
     subject(:notes_values) { helper.notes(document: document, field: "notes", config: config, value: value, context: "show") }
