@@ -1,5 +1,4 @@
 class RelatedRecordsComponent < Blacklight::MetadataFieldComponent
-
   def initialize(field:, layout: nil, show: false)
     super
   end

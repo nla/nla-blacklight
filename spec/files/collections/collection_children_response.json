@@ -1,0 +1,80 @@
+{
+  "responseHeader": {
+    "zkConnected": true,
+    "status": 0,
+    "QTime": 542,
+    "params": {
+      "q": "parent_id_ssi:\"(AKIN)23783872\"",
+      "rows": "0",
+      "wt": "json"
+    }
+  },
+  "response": {
+    "numFound": 8,
+    "start": 0,
+    "maxScore": 9.217183,
+    "numFoundExact": true,
+    "docs": [
+
+    ]
+  },
+  "facet_counts": {
+    "facet_queries": {
+
+    },
+    "facet_fields": {
+      "active_fedora_model_ssi": [
+
+      ],
+      "subject_ssim": [
+        "Aboriginal Australians -- Land tenure -- Western Australia -- Photographs",
+        8,
+        "Aboriginal Australians -- Politics and government -- Photographs",
+        8,
+        "Protest movements -- Australia -- Photographs",
+        8,
+        "Children, Aboriginal Australian -- Western Australia -- Heirisson Island -- Portraits",
+        4,
+        "Heirisson Island (W.A.) -- Photographs",
+        4,
+        "Youth, Aboriginal Australian -- Western Australia -- Portraits",
+        2,
+        "Aboriginal Australians -- Western Australia -- Heirisson Island -- Photographs",
+        1,
+        "Bropho, Robert -- Portraits",
+        1,
+        "Journalists -- Australia -- Photographs",
+        1,
+        "Political activists -- Western Australia -- Heirisson Island -- Photographs",
+        1
+      ]
+    },
+    "facet_ranges": {
+
+    },
+    "facet_intervals": {
+
+    },
+    "facet_heatmaps": {
+
+    }
+  },
+  "spellcheck": {
+    "suggestions": [
+      "akin",
+      {
+        "numFound": 1,
+        "startOffset": 16,
+        "endOffset": 20,
+        "origFreq": 5163,
+        "suggestion": [
+          {
+            "word": "king",
+            "freq": 5020
+          }
+        ]
+      }
+    ],
+    "correctlySpelled": true
+  }
+}

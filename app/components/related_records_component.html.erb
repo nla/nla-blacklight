@@ -7,7 +7,7 @@
       <p><%= value.collection_name_label %></p>
     <% end %>
     <p class="mb-0">
-    <% if value.child? && value.has_children? %>
+    <% if value.child? && value.parent? %>
       <%= t("collection.parent_child") %>
     <% elsif value.parent? %>
       <%= t("collection.parent")%>
