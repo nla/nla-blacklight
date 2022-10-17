@@ -30,4 +30,11 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  collection:
+    parent: "This is a collection-level record."
+    child: "This record belongs in a collection."
+    parent_child: "This record belongs in a collection and is also a collection-level record."
+    nav:
+      up: "See collection record (go up)"
+      down: "See records in this collection (go down)"
+      sideways: "See records in related collections (go sideways)"
