@@ -128,6 +128,9 @@ class CatalogController < ApplicationController
       years_25: {label: "within 25 Years", fq: "pub_date_ssim:[#{Time.zone.now.year - 25} TO *]"}
     }
 
+    config.add_facet_field "parent_id_ssi", label: "In Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
+    config.add_facet_field "collection_id_ssi", label: "Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
+
     # Have BL send all facet field names to Solr, which has been the default
     # previously. Simply remove these lines if you'd rather use Solr request
     # handler defaults, or have no facets.
@@ -173,6 +176,7 @@ class CatalogController < ApplicationController
     config.add_show_field "notes", label: "Notes", accessor: :notes, helper_method: :notes
     config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :build_subject_search_list
     config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_info, helper_method: :render_copyright_component
+    config.add_show_field "related_records", label: "Related records", accessor: :related_records, component: RelatedRecordsComponent
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"
     # config.add_show_field "subtitle_tsim", label: "Subtitle"
