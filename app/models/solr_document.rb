@@ -129,11 +129,15 @@ class SolrDocument
   end
 
   def isbn
-    get_isbn
+    get_isbn(tag: "020", sfield: "a", qfield: "q")
+  end
+
+  def invalid_isbn
+    get_isbn(tag: "020", sfield: "z", qfield: "q")
   end
 
   def issn
-    get_issn
+    get_isbn(tag: "022", sfield: "a", qfield: "q")
   end
 
   def related_records
@@ -219,68 +223,50 @@ class SolrDocument
     merge_880 editions
   end
 
-  def get_isbn
-    isbn = []
-    elements = get_marc_datafields_from_xml("//datafield[@tag='020']")
-    elements.each do |el|
-      text = []
-      qualifiers = []
-      el.children.each do |subfield|
-        subfield_code = subfield.attribute("code").value
-        if subfield_code == "a"
-          text << subfield.text
-        elsif subfield_code == "q"
-          qualifiers << subfield.text
-        end
-      end
-      unless qualifiers.empty?
-        text << " (#{qualifiers.join})"
-      end
-      isbn << text.join
-    end
-
-    elements = get_marc_datafields_from_xml("//datafield[@tag='880']")
-    elements.each do |el|
-      el.children.each do |subfield|
-        subfield_code = subfield.attribute("code").value
-        if subfield_code == "6"
-          isbn << subfield.text
-        end
-      end
-    end
+  def get_isbn(tag:, sfield:, qfield:)
+    elements = get_marc_datafields_from_xml("//datafield[@tag='#{tag}' and subfield[@code='#{sfield}']]")
+    elements_880 = get_marc_datafields_from_xml("//datafield[@tag='880' and subfield[@code='#{sfield}']]")
+    isbn = [
+      *extract_isbn(elements: elements, tag: tag, sfield: sfield, qfield: qfield),
+      *extract_isbn(elements: elements_880, tag: tag, sfield: sfield, qfield: qfield)
+    ]
 
     isbn.compact_blank
   end
 
-  def get_issn
-    issn = []
-    elements = get_marc_datafields_from_xml("//datafield[@tag='022']")
-    elements.each do |el|
-      text = []
-      qualifiers = []
-      el.children.each do |subfield|
-        subfield_code = subfield.attribute("code").value
-        if subfield_code == "a"
-          text << subfield.text
+  # Extracts ISBNs from MARC. The MARCXML must be read sequentially, where a single 020 tag may contain subfields like:
+  # [$a, $q, $q, $z, $q] and only the first sequence of [$a, $q, $q] should be extracted.
+  # The `sfield` parameter is the primary subfield and the `qfield` provides a qualifier field.
+  def extract_isbn(elements:, tag: "020", sfield: "a", qfield: "q")
+    if elements.present?
+      isbn = []
+      elements.each do |el|
+        text = []
+        qualifiers = []
+        primary_found = false
+        el.children.each do |subfield|
+          subfield_code = subfield.attribute("code").value
+          if subfield_code != sfield && subfield_code != qfield
+            primary_found = false
+            next
+          elsif subfield_code == sfield
+            text << subfield.text
+            primary_found = true
+          elsif primary_found && qfield.present? && subfield_code == qfield
+            qualifiers << subfield.text
+          end
         end
-      end
-      unless qualifiers.empty?
-        text << " (#{qualifiers.join})"
-      end
-      issn << text.join
-    end
-
-    elements = get_marc_datafields_from_xml("//datafield[@tag='880']")
-    elements.each do |el|
-      el.children.each do |subfield|
-        subfield_code = subfield.attribute("code").value
-        if subfield_code == "6"
-          issn << subfield.text
+        unless qualifiers.empty?
+          qualifiers.each do |qual|
+            text << "(#{qual})"
+          end
         end
+        isbn << text.join(" ")
       end
+      isbn
+    else
+      []
     end
-
-    issn.compact_blank
   end
 
   def get_related_records
@@ -314,6 +300,13 @@ class SolrDocument
     eresource_urls.present?
   end
 
+  # `get_marc_derived_fields` when finding linked 880 fields, will prefix the
+  # results array with the tag name and subfields.
+  # We don't want to display the tag and subfields in the UI, so this will look for the first
+  # space in the string after the prefix and strip these form all the elements in the
+  # results array.
+  # Results which don't have linked 880 fields will not have the prefix, so we
+  # return the datafields as a single dimensional array.
   def merge_880(datafields)
     if datafields.find { |d| d.start_with? "880" }.present?
       datafields.map do |d|
