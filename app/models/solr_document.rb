@@ -117,7 +117,11 @@ class SolrDocument
   end
 
   def access_conditions
-    get_marc_derived_field("506a3bcde", options: {include: false})
+    if has_eresources?
+      []
+    else
+      get_marc_derived_field("506a3bcde", options: {include: false})
+    end
   end
 
   def scale
@@ -134,6 +138,12 @@ class SolrDocument
 
   def related_records
     get_related_records
+  end
+
+  def printer
+    printer = get_marc_derived_field("260efg")
+    printer = get_marc_derived_field("2643abc") if printer.empty?
+    merge_880 printer
   end
 
   private
@@ -157,6 +167,8 @@ class SolrDocument
     url = MapSearch.new.determine_url(id: id, format: fetch("format"))
     if url.present?
       [url]
+    else
+      []
     end
   rescue KeyError
     Rails.logger.info "Record #{id} has no 'format'"
@@ -199,24 +211,12 @@ class SolrDocument
   def get_uniform_title
     title = get_marc_derived_field("130aplskfmnor")
     title = get_marc_derived_field("240adfghklmnoprs") if title.empty?
-    title
+    merge_880 title
   end
 
   def get_edition
     editions = get_marc_derived_field("250")
-    editions_250 = editions.select { |ed| ed.start_with? "250" }
-    editions_880 = editions.select { |ed| ed.start_with? "880" }
-
-    ordered_editions = []
-    if editions_250.present? || editions_880.present?
-      ordered_editions = [*editions_880, *editions_250]
-      ordered_editions = ordered_editions.map do |ed|
-        ed[ed.index(" ")...-1].strip
-      end
-    else
-      ordered_editions = [*editions]
-    end
-    ordered_editions
+    merge_880 editions
   end
 
   def get_isbn
@@ -286,5 +286,41 @@ class SolrDocument
   def get_related_records
     related = RelatedRecords.new(self)
     related.in_collection? ? related : []
+  end
+
+  def has_eresources?
+    eresource_urls = []
+
+    online_access_urls = get_online_access_urls
+    online_access_urls.each do |url|
+      eresource_urls << url if Eresources.new.known_url(url[:href]).present?
+    end
+
+    map_url = get_map_search_url
+    if map_url.present?
+      eresource_urls << map_url if Eresources.new.known_url(map_url[:href]).present?
+    end
+
+    copy_urls = get_copy_urls
+    copy_urls.each do |url|
+      eresource_urls << url if Eresources.new.known_url(url[:href]).present?
+    end
+
+    related_urls = get_related_urls
+    related_urls.each do |url|
+      eresource_urls << url if Eresources.new.known_url(url[:href]).present?
+    end
+
+    eresource_urls.present?
+  end
+
+  def merge_880(datafields)
+    if datafields.find { |d| d.start_with? "880" }.present?
+      datafields.map do |d|
+        d[d.index(" ")...-1].strip
+      end
+    else
+      [*datafields]
+    end
   end
 end

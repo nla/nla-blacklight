@@ -97,7 +97,7 @@ RSpec.describe SolrDocument do
           )
           .to_return(status: 200, body: mock_response, headers: {})
 
-        expect(map_search_value).to be_nil
+        expect(map_search_value).to eq []
       end
     end
 
@@ -337,6 +337,17 @@ RSpec.describe SolrDocument do
         ]
       end
     end
+
+    context "when there is an eResources copy" do
+      subject(:access_condition_value) do
+        document = described_class.new(marc_ss: access_condition_with_eresources)
+        document.access_conditions
+      end
+
+      it "will not return an access condition" do
+        expect(access_condition_value).to eq []
+      end
+    end
   end
 
   describe "#scale" do
@@ -433,6 +444,19 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#printer" do
+    context "when there is a printer" do
+      subject(:printer_value) do
+        document = described_class.new(marc_ss: access_condition_with_eresources)
+        document.printer
+      end
+
+      it "will return the printer text" do
+        expect(printer_value).to include "([New Brunswick, N.J.] : L. Deane)"
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -497,6 +521,10 @@ RSpec.describe SolrDocument do
 
   def access_condition
     load_marc_from_file 3926789
+  end
+
+  def access_condition_with_eresources
+    load_marc_from_file 3755597
   end
 
   def scale
