@@ -20,16 +20,16 @@ class RelatedRecords
     nil
   end
 
-  def in_collection?
-    child? || (parent? && has_children?)
-  end
-
   def parent?
     collection_id.present?
   end
 
   def child?
     parent_id.present?
+  end
+
+  def in_collection?
+    child? || (parent? && has_children?)
   end
 
   def has_children?
@@ -50,7 +50,7 @@ class RelatedRecords
       q: "parent_id_ssi:\"#{collection_id}\"",
       rows: 0
     )
-    if response.present?
+    if response.present? && response["response"].present?
       response["response"]["numFound"]
     else
       0
