@@ -382,7 +382,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will return the ISBN" do
-        expect(isbn_value).to eq %w[9781921503214 11111]
+        expect(isbn_value).to eq ["0855507322 (corrected)", "0855507403", "1111 (dummy)"]
       end
     end
 
@@ -393,7 +393,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will return the ISBN" do
-        expect(isbn_value).to include "11111"
+        expect(isbn_value).to include "1111 (dummy)"
       end
     end
 
@@ -404,7 +404,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will return all the ISBN" do
-        expect(isbn_value).to eq ["0394502884", "0394170660 (paperback)"]
+        expect(isbn_value).to eq ["0855507322 (corrected)", "0855507403", "1111 (dummy)"]
       end
     end
 
@@ -415,7 +415,42 @@ RSpec.describe SolrDocument do
       end
 
       it "will append it after the ISBN" do
-        expect(isbn_value[1]).to include " (paperback)"
+        expect(isbn_value.first).to include " (corrected)"
+      end
+    end
+  end
+
+  describe "#invalid_isbn" do
+    context "when there is an ISBN" do
+      subject(:invalid_isbn_value) do
+        document = described_class.new(marc_ss: invalid_isbn)
+        document.invalid_isbn
+      end
+
+      it "will return the ISBN" do
+        expect(invalid_isbn_value).to eq ["0855504404 085550448X (corrected) (soft)"]
+      end
+    end
+
+    context "when there are more than one ISBN" do
+      subject(:invalid_isbn_value) do
+        document = described_class.new(marc_ss: invalid_isbn)
+        document.invalid_isbn
+      end
+
+      it "will return all the ISBN" do
+        expect(invalid_isbn_value).to eq ["0855504404 085550448X (corrected) (soft)"]
+      end
+    end
+
+    context "when there is a qualifier" do
+      subject(:invalid_isbn_value) do
+        document = described_class.new(marc_ss: invalid_isbn)
+        document.invalid_isbn
+      end
+
+      it "will append it after the ISBN" do
+        expect(invalid_isbn_value.first).to include " (corrected) (soft)"
       end
     end
   end
@@ -532,11 +567,15 @@ RSpec.describe SolrDocument do
   end
 
   def isbn
-    load_marc_from_file 5055353
+    load_marc_from_file 1868021
   end
 
   def multiple_isbn
-    load_marc_from_file 941801
+    load_marc_from_file 1868021
+  end
+
+  def invalid_isbn
+    load_marc_from_file 1868021
   end
 
   def issn
