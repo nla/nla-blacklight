@@ -114,9 +114,9 @@ GEM
       blacklight (>= 7.25.2, < 9)
     bootsnap (1.13.0)
       msgpack (~> 1.2)
-    bootstrap (4.6.1)
+    bootstrap (5.2.2)
       autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.14.3, < 2)
+      popper_js (>= 2.11.6, < 3)
       sassc-rails (>= 2.0.0)
     brakeman (5.3.1)
     builder (3.2.4)
@@ -391,7 +391,7 @@ GEM
     parser (3.1.2.1)
       ast (~> 2.4.1)
     parslet (2.0.0)
-    popper_js (1.16.0)
+    popper_js (2.11.6)
     public_suffix (4.0.7)
     puma (6.0.0)
       nio4r (~> 2.0)
@@ -621,7 +621,7 @@ DEPENDENCIES
   blacklight_advanced_search (~> 7.0)
   blacklight_range_limit
   bootsnap
-  bootstrap (~> 4.0)
+  bootstrap (~> 5.2)
   brakeman
   bundler-audit
   capybara

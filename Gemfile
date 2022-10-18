@@ -72,7 +72,7 @@ gem "bootsnap", require: false
 gem "blacklight", "~> 7.30"
 gem "blacklight_advanced_search", "~> 7.0"
 gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
-gem "bootstrap", "~> 4.0"
+gem "bootstrap", "~> 5.2"
 gem "devise"
 gem "jquery-rails"
 gem "rsolr", ">= 1.0", "< 3"
