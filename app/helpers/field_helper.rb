@@ -52,6 +52,25 @@ module FieldHelper
     safe_join(elements, "\n")
   end
 
+  # display lists without bullets
+  def unstyled_list(document:, field:, config:, value:, context:)
+    elements = []
+
+    elements << if value.size > 1
+      content_tag(:ul, class: "list-unstyled") do
+        safe_join(value.map do |val|
+          content_tag(:li) do
+            val
+          end
+        end, "\n")
+      end
+    else
+      value.first
+    end
+
+    safe_join(elements, "\n")
+  end
+
   def emphasized_list(document:, field:, config:, value:, context:)
     elements = []
 

@@ -92,6 +92,28 @@ RSpec.describe FieldHelper do
     end
   end
 
+  describe "#unstyled_list" do
+    subject(:value_list) { helper.unstyled_list(document: document, field: "series", config: config, value: value, context: "show") }
+
+    context "when there is only a single item" do
+      let(:value) { ["Example A"] }
+
+      it "generates plain text" do
+        expect(value_list).to eq "Example A"
+      end
+    end
+
+    context "when there are multiple items" do
+      let(:value) do
+        ["Example A", "Example B"]
+      end
+
+      it "generates an unordered list" do
+        expect(value_list).to eq "<ul class=\"list-unstyled\"><li>Example A</li>\n<li>Example B</li></ul>"
+      end
+    end
+  end
+
   describe "#emphasized_list" do
     subject(:value_list) { helper.emphasized_list(document: document, field: "access_conditions", config: config, value: value, context: "show") }
 
