@@ -133,11 +133,22 @@ class SolrDocument
   end
 
   def invalid_isbn
-    get_isbn(tag: "020", sfield: "z", qfield: "q")
+    invalid_isbn = get_isbn(tag: "020", sfield: "z", qfield: "q")
+    if invalid_isbn.present?
+      [invalid_isbn.join(" ")]
+    else
+      []
+    end
   end
 
   def issn
     get_isbn(tag: "022", sfield: "a", qfield: "q")
+  end
+
+  def invalid_issn
+    invalid_issn = get_isbn(tag: "022", sfield: "y", qfield: "q")
+    invalid_issn = get_isbn(tag: "022", sfield: "z", qfield: "q") if invalid_issn.empty?
+    invalid_issn.compact_blank
   end
 
   def related_records
@@ -242,25 +253,30 @@ class SolrDocument
       isbn = []
       elements.each do |el|
         text = []
-        qualifiers = []
         primary_found = false
+        prev_subfield_code = ""
         el.children.each do |subfield|
           subfield_code = subfield.attribute("code").value
           if subfield_code != sfield && subfield_code != qfield
             primary_found = false
             next
           elsif subfield_code == sfield
+            if prev_subfield_code == subfield_code
+              isbn << text.join(" ")
+              text = []
+            end
             text << subfield.text
             primary_found = true
           elsif primary_found && qfield.present? && subfield_code == qfield
-            qualifiers << subfield.text
+            text << "(#{subfield.text})"
           end
+          prev_subfield_code = subfield_code
         end
-        unless qualifiers.empty?
-          qualifiers.each do |qual|
-            text << "(#{qual})"
-          end
-        end
+        # unless qualifiers.empty?
+        #   qualifiers.each do |qual|
+        #     text << "(#{qual})"
+        #   end
+        # end
         isbn << text.join(" ")
       end
       isbn
