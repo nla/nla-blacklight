@@ -67,6 +67,9 @@ class RelatedRecords
     end
   end
 
+  # Fetches the first 3 children records of a collection. Filters out the
+  # currently viewed record, to avoid redundantly displaying/linking
+  # to the current record.
   def fetch_children
     search_service = Blacklight.repository_class.new(blacklight_config)
     response = search_service.search(
