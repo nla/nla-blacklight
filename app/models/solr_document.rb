@@ -120,12 +120,12 @@ class SolrDocument
     if has_eresources?
       []
     else
-      get_marc_derived_field("506a3bcde", options: {include: false})
+      get_marc_derived_field("506a3bcde", options: {alternate_script: false})
     end
   end
 
   def scale
-    get_marc_derived_field("255abcdefg", options: {include: false})
+    get_marc_derived_field("255abcdefg", options: {alternate_script: false})
   end
 
   def isbn
@@ -149,6 +149,10 @@ class SolrDocument
     invalid_issn = get_isbn(tag: "022", sfield: "y", qfield: "q")
     invalid_issn = get_isbn(tag: "022", sfield: "z", qfield: "q") if invalid_issn.empty?
     invalid_issn.compact_blank
+  end
+
+  def ismn
+    get_marc_derived_field("024|2*|a", options: {alternate_script: false})
   end
 
   def related_records
