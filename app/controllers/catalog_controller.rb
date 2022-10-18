@@ -276,6 +276,24 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field("in_collection") do |field|
+      field.label = "In Collection"
+      field.solr_parameters = {
+        qf: "parent_id_ssi"
+      }
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = false
+    end
+
+    config.add_search_field("collection") do |field|
+      field.label = "Collection"
+      field.solr_parameters = {
+        qf: "collection_id_ssi"
+      }
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = false
+    end
+
     # scxxx
     # config.add_search_field("subject-nla") do |field|
     #   field.solr_parameters = {
