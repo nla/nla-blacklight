@@ -367,9 +367,7 @@ RSpec.describe FieldHelper do
       end
 
       it "creates a single string with links to subject searches" do
-        expect(subject_list_value).to eq [
-          '<a href="/?search_field=subject_ssim&amp;q=%22Band+music%2C+Arranged+--+Scores+and+parts%22">Band music, Arranged -- Scores and parts</a> | <a href="/?search_field=subject_ssim&amp;q=%22Marches+%28Band%29%2C+Arranged+--+Scores+and+parts%22">Marches (Band), Arranged -- Scores and parts</a>'
-        ]
+        expect(subject_list_value).to eq '<a href="/?search_field=subject_ssim&amp;q=%22Band+music%2C+Arranged+--+Scores+and+parts%22">Band music, Arranged -- Scores and parts</a> | <a href="/?search_field=subject_ssim&amp;q=%22Marches+%28Band%29%2C+Arranged+--+Scores+and+parts%22">Marches (Band), Arranged -- Scores and parts</a>'
       end
     end
 
@@ -377,7 +375,7 @@ RSpec.describe FieldHelper do
       let(:value) { [] }
 
       it "returns an empty array" do
-        expect(subject_list_value).to eq []
+        expect(subject_list_value).to be_nil
       end
     end
   end
