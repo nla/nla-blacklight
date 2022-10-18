@@ -146,6 +146,6 @@ RSpec.describe RelatedRecords, type: :model do
   end
 
   def children_response_query
-    IO.read("spec/files/collections/collection_children_response.json")
+    IO.read("spec/files/related_records/collection_count_response.json")
   end
 end
