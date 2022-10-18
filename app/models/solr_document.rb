@@ -272,11 +272,6 @@ class SolrDocument
           end
           prev_subfield_code = subfield_code
         end
-        # unless qualifiers.empty?
-        #   qualifiers.each do |qual|
-        #     text << "(#{qual})"
-        #   end
-        # end
         isbn << text.join(" ")
       end
       isbn
