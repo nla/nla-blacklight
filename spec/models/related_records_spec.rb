@@ -94,20 +94,20 @@ RSpec.describe RelatedRecords, type: :model do
   end
   # rubocop:enable RSpec/RepeatedExampleGroupBody
 
-  describe "#collection_name_label" do
+  describe "#collection_name" do
     subject(:record) { described_class.new(document) }
 
     context "when the MARCXML contains the collection name" do
       let(:document) { SolrDocument.new(marc_ss: child_marc) }
 
       it "returns the value as a single string" do
-        expect(record.collection_name_label).to eq "In collection: Land Rights camp at Heirisson Island, Western Australia, 1978"
+        expect(record.collection_name).to eq "Land Rights camp at Heirisson Island, Western Australia, 1978"
       end
     end
 
     context "when the MARCXML does not contain the collection name" do
       it "returns an empty string" do
-        expect(record.collection_name_label).to eq ""
+        expect(record.collection_name).to eq ""
       end
     end
   end
