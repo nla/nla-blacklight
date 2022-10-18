@@ -155,6 +155,10 @@ class SolrDocument
     get_marc_derived_field("024|2*|a", options: {alternate_script: false})
   end
 
+  def invalid_ismn
+    get_marc_derived_field("024|2*|z", options: {alternate_script: false})
+  end
+
   def related_records
     get_related_records
   end
