@@ -351,6 +351,37 @@ RSpec.describe FieldHelper do
     end
   end
 
+  describe "#build_subject_search_list" do
+    subject(:subject_list_value) do
+      helper.build_subject_search_list(document: document, field: "subject_ssim", config: config, value: value, context: "show")
+    end
+
+    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, subject_ssim: value) }
+
+    context "when there are subjects" do
+      let(:value) do
+        [
+          "Band music, Arranged -- Scores and parts",
+          "Marches (Band), Arranged -- Scores and parts"
+        ]
+      end
+
+      it "creates a single string with links to subject searches" do
+        expect(subject_list_value).to eq [
+          '<a href="/?search_field=subject_ssim&amp;q=%22Band+music%2C+Arranged+--+Scores+and+parts%22">Band music, Arranged -- Scores and parts</a> | <a href="/?search_field=subject_ssim&amp;q=%22Marches+%28Band%29%2C+Arranged+--+Scores+and+parts%22">Marches (Band), Arranged -- Scores and parts</a>'
+        ]
+      end
+    end
+
+    context "when there are no subjects" do
+      let(:value) { [] }
+
+      it "returns an empty array" do
+        expect(subject_list_value).to eq []
+      end
+    end
+  end
+
   # Need to set the MARC source field to actual MARC XML in order to allow
   # the "#to_marc" method to be included in the SolrDocument model.
   def sample_marc

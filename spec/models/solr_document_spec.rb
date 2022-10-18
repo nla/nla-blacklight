@@ -132,11 +132,13 @@ RSpec.describe SolrDocument do
       end
 
       it "retrieves all the series entries from the MARC record" do
-        expect(series_value).to eq ["Australian National Audit Office. Audit report ; 2005-2006, no. 16",
+        expect(series_value).to eq [
+          "Australian National Audit Office. Audit report ; 2005-2006, no. 16",
           "Australian National Audit Office. Performance report",
           "Auditor-General audit report ; no. 16, 2005-2006",
           "Performance audit / Australian National Audit Office",
-          "Parliamentary paper (Australia. Parliament) ; 2005, no. 434."]
+          "Parliamentary paper (Australia. Parliament) ; 2005, no. 434."
+        ]
       end
     end
   end
@@ -536,6 +538,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#ismn" do
+    context "when there is an ISMN" do
+      subject(:ismn_value) do
+        document = described_class.new(marc_ss: ismn)
+        document.ismn
+      end
+
+      it "will return the ISMN" do
+        expect(ismn_value).to eq ["9790720160313"]
+      end
+    end
+
+    context "when there is no ISMN" do
+      subject(:ismn_value) do
+        document = described_class.new(marc_ss: issn)
+        document.ismn
+      end
+
+      it "will return an empty array" do
+        expect(ismn_value).to eq []
+      end
+    end
+  end
+
   describe "#printer" do
     context "when there is a printer" do
       subject(:printer_value) do
@@ -641,5 +667,9 @@ RSpec.describe SolrDocument do
 
   def invalid_issn
     load_marc_from_file 3022824
+  end
+
+  def ismn
+    load_marc_from_file 8665709
   end
 end
