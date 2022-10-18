@@ -101,7 +101,7 @@ group :development, :test do
   gem "rubocop-rspec", require: false
   gem "solr_wrapper", ">= 0.3"
 
-  gem "rspec-rails", "~> 5.1", ">= 5.1.2"
+  gem "rspec-rails", "~> 6.0"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
   gem "faker"
