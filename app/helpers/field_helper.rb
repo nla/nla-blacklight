@@ -120,6 +120,22 @@ module FieldHelper
     end
   end
 
+  def build_subject_search_list(document:, field:, config:, value:, context:)
+    subjects = []
+    if value.present?
+      elements = []
+      document.fetch(field).each do |subject|
+        encoded_subject = CGI.escape("\"#{subject}\"")
+        elements << link_to(subject, "/?search_field=#{field}&q=#{encoded_subject}")
+      end
+      subjects << safe_join(elements, " | ")
+    end
+    subjects
+  rescue KeyError
+    Rails.logger.info "Record #{document.id} has no '#{field}'"
+    []
+  end
+
   private
 
   # Original RegEx used by VuFind
@@ -165,16 +181,5 @@ module FieldHelper
     end
 
     result
-  end
-
-  def build_subject_search_list(document:, field:, config:, value:, context:)
-    elements = []
-    document.fetch(field).each do |subject|
-      encoded_subject = CGI.escape("\"#{subject}\"")
-      content_tag(:a) do
-        elements << link_to(subject, "/?search_field=#{field}&q=#{encoded_subject}")
-      end
-    end
-    safe_join(elements, " | ")
   end
 end
