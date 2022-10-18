@@ -562,6 +562,41 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#invalid_ismn" do
+    context "when there is an ISMN" do
+      subject(:invalid_ismn_value) do
+        document = described_class.new(marc_ss: invalid_ismn)
+        document.invalid_ismn
+      end
+
+      it "will return the invalid ISMN" do
+        expect(invalid_ismn_value).not_to eq []
+      end
+    end
+
+    context "when there are multiple ISMNs" do
+      subject(:invalid_ismn_value) do
+        document = described_class.new(marc_ss: invalid_ismn)
+        document.invalid_ismn
+      end
+
+      it "will return all the invalid ISMNs" do
+        expect(invalid_ismn_value).to eq %w[M720067568 M72005967568]
+      end
+    end
+
+    context "when there is no IMSN" do
+      subject(:invalid_ismn_value) do
+        document = described_class.new(marc_ss: issn)
+        document.invalid_ismn
+      end
+
+      it "will return an empty array" do
+        expect(invalid_ismn_value).to eq []
+      end
+    end
+  end
+
   describe "#printer" do
     context "when there is a printer" do
       subject(:printer_value) do
@@ -671,5 +706,9 @@ RSpec.describe SolrDocument do
 
   def ismn
     load_marc_from_file 8665709
+  end
+
+  def invalid_ismn
+    load_marc_from_file 4773335
   end
 end

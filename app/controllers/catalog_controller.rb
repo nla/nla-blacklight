@@ -176,6 +176,7 @@ class CatalogController < ApplicationController
     config.add_show_field "issn", label: "ISSN", accessor: :issn
     config.add_show_field "invalid_issn", label: "Invalid ISSN", accessor: :invalid_issn, helper_method: :unstyled_list
     config.add_show_field "ismn", label: "ISMN", accessor: :ismn
+    config.add_show_field "invalid_ismn", label: "Invalid ISMN", accessor: :invalid_ismn, helper_method: :unstyled_list
     config.add_show_field "series", label: "Series", accessor: :series, helper_method: :list
     config.add_show_field "notes", label: "Notes", accessor: :notes, helper_method: :notes
     config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :build_subject_search_list
