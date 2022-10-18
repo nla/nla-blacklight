@@ -418,16 +418,27 @@ RSpec.describe SolrDocument do
         expect(isbn_value.first).to include " (corrected)"
       end
     end
+
+    context "when there is no ISBN" do
+      subject(:isbn_value) do
+        document = described_class.new(marc_ss: invalid_issn)
+        document.isbn
+      end
+
+      it "will return an empty array" do
+        expect(isbn_value).to eq []
+      end
+    end
   end
 
   describe "#invalid_isbn" do
-    context "when there is an ISBN" do
+    context "when there is an invalid ISBN" do
       subject(:invalid_isbn_value) do
         document = described_class.new(marc_ss: invalid_isbn)
         document.invalid_isbn
       end
 
-      it "will return the ISBN" do
+      it "will return the invalid ISBN" do
         expect(invalid_isbn_value).to eq ["0855504404 085550448X (corrected) (soft)"]
       end
     end
@@ -438,7 +449,7 @@ RSpec.describe SolrDocument do
         document.invalid_isbn
       end
 
-      it "will return all the ISBN" do
+      it "will return all the invalid ISBNs in a single string" do
         expect(invalid_isbn_value).to eq ["0855504404 085550448X (corrected) (soft)"]
       end
     end
@@ -449,8 +460,19 @@ RSpec.describe SolrDocument do
         document.invalid_isbn
       end
 
-      it "will append it after the ISBN" do
+      it "will append it after the invalid ISBN" do
         expect(invalid_isbn_value.first).to include " (corrected) (soft)"
+      end
+    end
+
+    context "when there is no invalid ISBN" do
+      subject(:invalid_isbn_value) do
+        document = described_class.new(marc_ss: issn)
+        document.invalid_isbn
+      end
+
+      it "will return an empty array" do
+        expect(invalid_isbn_value).to eq []
       end
     end
   end
@@ -475,6 +497,41 @@ RSpec.describe SolrDocument do
 
       it "will return the ISSN" do
         expect(issn_value).to include "2434-561X"
+      end
+    end
+
+    context "when there is no ISSN" do
+      subject(:invalid_issn_value) do
+        document = described_class.new(marc_ss: invalid_isbn)
+        document.invalid_issn
+      end
+
+      it "will return an empty array" do
+        expect(invalid_issn_value).to eq []
+      end
+    end
+  end
+
+  describe "#invalid_iissn" do
+    context "when there is an invalid ISSN" do
+      subject(:invalid_issn_value) do
+        document = described_class.new(marc_ss: invalid_issn)
+        document.invalid_issn
+      end
+
+      it "will return the ISSN" do
+        expect(invalid_issn_value).to eq %w[0318-2606 0844-837X]
+      end
+    end
+
+    context "when there is no invalid ISSN" do
+      subject(:invalid_issn_value) do
+        document = described_class.new(marc_ss: isbn)
+        document.invalid_issn
+      end
+
+      it "will return an empty array" do
+        expect(invalid_issn_value).to eq []
       end
     end
   end
@@ -580,5 +637,9 @@ RSpec.describe SolrDocument do
 
   def issn
     load_marc_from_file 28336
+  end
+
+  def invalid_issn
+    load_marc_from_file 3022824
   end
 end
