@@ -19,7 +19,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
       )
       .to_return(status: 200, body: child_count_query_response, headers: {})
 
-    WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&fq=-filter\(id:.*\)&q=parent_id_ssi:%22.*%22&qf=parent_id_ssi&rows=3&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+    WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&fq=-filter\(id:.*\)&q=parent_id_ssi:%22.*%22&rows=3&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
       .with(
         headers: {
           "Accept" => "*/*",
@@ -29,7 +29,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
       )
       .to_return(status: 200, body: children_query_response, headers: {})
 
-    WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&fq=-filter\(id:554321\)&q=parent_id_ssi:%22(AKIN)23783872%22&qf=parent_id_ssi&rows=3&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+    WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&fq=-filter\(id:554321\)&q=parent_id_ssi:%22(AKIN)23783872%22&rows=3&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
       .with(
         headers: {
           "Accept" => "*/*",
@@ -38,6 +38,16 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         }
       )
       .to_return(status: 200, body: filtered_query_response, headers: {})
+
+    WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22.*%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "User-Agent" => "Faraday v1.10.0"
+        }
+      )
+      .to_return(status: 200, body: parent_query_response, headers: {})
   end
 
   context "when record is part of a collection" do
@@ -84,6 +94,12 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         render_inline(described_class.new(field: field, show: true))
 
         expect(page.text).to include "This record belongs to the Land Rights camp at Heirisson Island, Western Australia, 1978 collection"
+      end
+
+      it "links to the collection record" do
+        render_inline(described_class.new(field: field, show: true))
+
+        expect(page).to have_selector(:css, 'a[href="/catalog/3044380"]')
       end
     end
 
@@ -161,5 +177,9 @@ RSpec.describe RelatedRecordsComponent, type: :component do
 
   def filtered_query_response
     IO.read("spec/files/related_records/filter_current_record_response.json")
+  end
+
+  def parent_query_response
+    IO.read("spec/files/related_records/parent_record_response.json")
   end
 end
