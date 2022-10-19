@@ -11,7 +11,7 @@ class RelatedRecordsComponent < Blacklight::MetadataFieldComponent
     value.present? && value.in_collection?
   end
 
-  delegate :collection_count, :collection_name, :collection_id, to: :value
+  delegate :collection_count, :collection_name, :collection_id, :child_records, :parent_record, to: :value
 
   def formatted_collection_count
     count = collection_count
@@ -19,7 +19,7 @@ class RelatedRecordsComponent < Blacklight::MetadataFieldComponent
   end
 
   def collection_url
-    search_catalog_path(search_field: "collection", q: "\"#{collection_id}\"")
+    solr_document_path(id: parent_record.first[:id])
   end
 
   def collection_records_url

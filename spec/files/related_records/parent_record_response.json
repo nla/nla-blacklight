@@ -1,0 +1,28 @@
+{
+  "responseHeader": {
+    "zkConnected": true,
+    "status": 0,
+    "QTime": 124,
+    "params": {
+      "q": "collection_id_ssi:\"(AKIN)23783872\"",
+      "fl": "id,title_tsim",
+      "sort": "score desc, pub_date_si desc, title_si asc",
+      "rows": "1",
+      "wt": "json"
+    }
+  },
+  "response": {
+    "numFound": 1,
+    "start": 0,
+    "maxScore": 11.214123,
+    "numFoundExact": true,
+    "docs": [
+      {
+        "id": "3044380",
+        "title_tsim": [
+          "Land Rights camp at Heirisson Island, Western Australia, 1978 [picture] / Stephen Smith"
+        ]
+      }
+    ]
+  }
+}
