@@ -87,6 +87,7 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
 # gem 'ebsco-eds', '1.1.0.1', :path=> 'vendor/gems/ebsco-eds-1.1.0.1'
 
+gem "nokogiri", ">= 1.13.9"
 gem "addressable", "~> 2.8"
 gem "repost", "~> 0.4.1"
 gem "strong_migrations", "~> 1.3"

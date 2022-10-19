@@ -8,24 +8,26 @@ class RelatedRecords
     @document = document
   end
 
-  def parent_id
-    document.fetch("parent_id_ssi")
-  rescue KeyError
-    nil
-  end
-
   def collection_id
-    document.fetch("collection_id_ssi")
+    if child?
+      document.fetch("parent_id_ssi")
+    else
+      document.fetch("collection_id_ssi")
+    end
   rescue KeyError
     nil
   end
 
   def parent?
-    collection_id.present?
+    document.fetch("collection_id_ssi").present?
+  rescue KeyError
+    false
   end
 
   def child?
-    parent_id.present?
+    document.fetch("parent_id_ssi").present?
+  rescue KeyError
+    false
   end
 
   def in_collection?
@@ -33,18 +35,26 @@ class RelatedRecords
   end
 
   def has_children?
-    @child_count ||= fetch_child_count > 0
+    parent? && collection_count > 0
   end
 
-  def collection_name_label
-    title = document.get_marc_derived_field("773iabdghkmnopqrstuxyz34678")
-    title = document.get_marc_derived_field("973iabdghkmnopqrstuxyz34678") if title.blank?
+  def collection_name
+    title = document.get_marc_derived_field("773abdghkmnopqrstuxyz34678")
+    title = document.get_marc_derived_field("973abdghkmnopqrstuxyz34678") if title.blank?
     title.join
+  end
+
+  def collection_records
+    @children ||= fetch_children
+  end
+
+  def collection_count
+    @count ||= fetch_count
   end
 
   private
 
-  def fetch_child_count
+  def fetch_count
     search_service = Blacklight.repository_class.new(blacklight_config)
     response = search_service.search(
       q: "parent_id_ssi:\"#{collection_id}\"",
@@ -54,6 +64,28 @@ class RelatedRecords
       response["response"]["numFound"]
     else
       0
+    end
+  end
+
+  # Fetches the first 3 children records of a collection. Filters out the
+  # currently viewed record, to avoid redundantly displaying/linking
+  # to the current record.
+  def fetch_children
+    search_service = Blacklight.repository_class.new(blacklight_config)
+    response = search_service.search(
+      q: "parent_id_ssi:\"#{collection_id}\"",
+      qf: "parent_id_ssi",
+      fq: ["-filter(id:#{document.id})"],
+      fl: "id,title_tsim",
+      sort: "score desc, pub_date_si desc, title_si asc",
+      rows: 3
+    )
+    if response.present? && response["response"].present?
+      response["response"]["docs"].map do |doc|
+        {id: doc["id"], title: doc["title_tsim"]}
+      end
+    else
+      []
     end
   end
 end
