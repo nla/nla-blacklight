@@ -3,27 +3,15 @@
     <%= label %>
   <% end %>
   <% component.value do %>
-    <% if value.collection_name_label.present? %>
-      <p><%= value.collection_name_label %></p>
+    <% if collection_name.present? %>
+      <p>This record belongs to the <%= link_to "#{collection_name} collection.", collection_url %></p>
     <% end %>
-    <p class="mb-0">
-    <% if value.child? && value.parent? %>
-      <%= t("collection.parent_child") %>
-    <% elsif value.parent? %>
-      <%= t("collection.parent")%>
-    <% else %>
-      <%= t("collection.child") %>
-    <% end %>
-    </p>
-
-    <% if value.child? %>
-      <p class="mb-0"><%= link_to t("collection.nav.up"), search_catalog_path(:'f[collection_id_ssi][]' => value.parent_id) %></p>
-    <% end %>
-    <% if value.child? %>
-      <p class="mb-0"><%= link_to t("collection.nav.sideways"), search_catalog_path(:'f[parent_id_ssi][]' => value.parent_id) %></p>
-    <% end %>
-    <% if value.parent? && value.has_children? %>
-      <p class="mb-0"><%= link_to t("collection.nav.down"), search_catalog_path(:'f[parent_id_ssi][]' => value.collection_id) %></p>
-    <% end %>
+    <p class="mb-0">This collection is made up of <%= "#{formatted_collection_count} #{'record'.pluralize(collection_count)}" %>:</p>
+    <ul class="list-unstyled">
+      <% value.collection_records.each do |record| %>
+        <li><%= link_to record[:title].first, solr_document_path(id: record[:id]) %></li>
+      <% end %>
+    </ul>
+    <%= link_to "View all #{formatted_collection_count} #{'record'.pluralize(collection_count)}", collection_records_url, class: "btn btn-outline-secondary" %>
   <% end %>
 <% end %>
