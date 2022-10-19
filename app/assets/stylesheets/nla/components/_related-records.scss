@@ -1,4 +1,8 @@
-dd.blacklight-related_records {
+dd[class*="blacklight-related_records"] {
+  ul {
+    margin-bottom: 1rem;
+  }
+
   .list-unstyled {
     li:before {
       content: "- ";
