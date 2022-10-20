@@ -322,7 +322,7 @@ RSpec.describe FieldHelper do
       allow(copyright).to receive(:document).and_return(document)
       allow(copyright).to receive(:info).and_return(copyright_response_hash)
 
-      expect(copyright_component).to include "In copyright"
+      expect(copyright_component).to include "In Copyright"
     end
 
     context "when there is no value" do

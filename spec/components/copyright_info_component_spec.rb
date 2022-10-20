@@ -32,17 +32,32 @@ RSpec.describe CopyrightInfoComponent, type: :component do
     expect(page).to have_xpath("//a[@href='https://example.com/contact-us']")
   end
 
+  context "when there is a copyright status" do
+    it "renders the copyright status" do
+      render_inline(described_class.new(copyright: copyright))
+
+      expect(page.text).to include "In Copyright"
+    end
+  end
+
+  context "when there is no copyright status" do
+    before do
+      rights_response = no_copyright_status_response_hash
+      allow(copyright).to receive(:info).and_return(rights_response)
+    end
+
+    it "renders the copyright status" do
+      render_inline(described_class.new(copyright: copyright))
+
+      expect(page.text).not_to include "In Copyright"
+    end
+  end
+
   context "when status context message is 1.1" do
     before do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "1.1"
       allow(copyright).to receive(:info).and_return(rights_response)
-    end
-
-    it "renders 'In copyright'" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page.text).to include "In copyright"
     end
 
     it "renders the Copies Direct form" do
@@ -73,12 +88,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "renders 'Out of copyright'" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page.text).to include "Out of copyright"
-    end
-
     it "renders the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
@@ -98,12 +107,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "1.3"
       allow(copyright).to receive(:info).and_return(rights_response)
-    end
-
-    it "renders 'Copyright uncertain or copyright undetermined'" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page.text).to include "Copyright uncertain or copyright undetermined"
     end
 
     it "renders the Copies Direct form" do
@@ -134,12 +137,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "renders 'Out of copyright'" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page.text).to include "Out of copyright"
-    end
-
     it "renders the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
@@ -159,12 +156,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "2.2"
       allow(copyright).to receive(:info).and_return(rights_response)
-    end
-
-    it "renders 'In copyright, uncertain or undetermined'" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page.text).to include "In copyright, uncertain or undetermined"
     end
 
     it "renders the Copies Direct form" do
@@ -195,12 +186,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "does not render the copyright status" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page).not_to have_css "strong"
-    end
-
     it "does not render the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
@@ -220,12 +205,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "4"
       allow(copyright).to receive(:info).and_return(rights_response)
-    end
-
-    it "does not render the copyright status" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page).not_to have_css "strong"
     end
 
     it "does not render the Copies Direct form" do
@@ -249,12 +228,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "renders 'In copyright, out of copyright, uncertain, undetermined'" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page.text).to include "In copyright, out of copyright, uncertain, undetermined"
-    end
-
     it "renders the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
@@ -274,12 +247,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "6"
       allow(copyright).to receive(:info).and_return(rights_response)
-    end
-
-    it "renders 'In copyright, out of copyright, uncertain or undetermined'" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page.text).to include "In copyright, out of copyright, uncertain or undetermined"
     end
 
     it "does not render the Copies Direct form" do
@@ -303,12 +270,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "renders 'In copyright, out of copyright, uncertain or undetermined'" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page.text).to include "In copyright, out of copyright, uncertain or undetermined"
-    end
-
     it "does not render the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
@@ -328,12 +289,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "8"
       allow(copyright).to receive(:info).and_return(rights_response)
-    end
-
-    it "renders 'In copyright, out of copyright, uncertain or undetermined'" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page.text).to include "In copyright, out of copyright, uncertain or undetermined"
     end
 
     it "renders the Copies Direct form" do
@@ -356,6 +311,12 @@ RSpec.describe CopyrightInfoComponent, type: :component do
 
   def service_response
     IO.read("spec/files/copyright/service_response.xml")
+  end
+
+  def no_copyright_status_response_hash
+    service_response = service_response_hash
+    service_response["copyrightStatus"] = nil
+    service_response
   end
 
   def service_response_hash

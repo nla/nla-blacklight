@@ -5,6 +5,9 @@
   </form>
 <% end %>
 <div id="copyright-info">
+  <% if info["copyrightStatus"].present? %>
+    <p><strong><%= info["copyrightStatus"] %></strong></p>
+  <% end %>
   <%= render "/copyright_info/message#{info["contextMsg"].tr(".","_")}" %>
   <% if info["copyrightStatusReason"].present? %>
     <dl class="d-flex flex-row justify-content-start">
