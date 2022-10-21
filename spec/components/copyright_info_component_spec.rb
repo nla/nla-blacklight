@@ -170,13 +170,6 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       expect(page.text).to include "Copies Direct"
       expect(page).to have_xpath("//a[@href='javascript:;']")
     end
-
-    it "renders the 'fair dealing' as text" do
-      render_inline(described_class.new(copyright: copyright))
-
-      expect(page.text).to include "fair dealing"
-      expect(page).not_to have_xpath("//a[text()='fair dealing']")
-    end
   end
 
   context "when status context message is 3" do
@@ -198,6 +191,13 @@ RSpec.describe CopyrightInfoComponent, type: :component do
       expect(page.text).not_to include "Copies Direct"
       expect(page).not_to have_xpath("//a[@href='javascript:;']")
     end
+
+    it "renders a lowercase contact us link" do
+      render_inline(described_class.new(copyright: copyright))
+
+      expect(page.text).to include "contact us"
+      expect(page).to have_xpath("//a[@href='https://example.com/contact-us']")
+    end
   end
 
   context "when status context message is 4" do
@@ -218,6 +218,13 @@ RSpec.describe CopyrightInfoComponent, type: :component do
 
       expect(page.text).not_to include "Copies Direct"
       expect(page).not_to have_xpath("//a[@href='javascript:;']")
+    end
+
+    it "renders a lowercase contact us link" do
+      render_inline(described_class.new(copyright: copyright))
+
+      expect(page.text).to include "contact us"
+      expect(page).to have_xpath("//a[@href='https://example.com/contact-us']")
     end
   end
 
