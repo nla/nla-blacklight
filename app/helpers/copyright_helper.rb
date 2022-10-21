@@ -1,6 +1,7 @@
 module CopyrightHelper
-  def rights_contact_us_link
-    link_to "Contact us", ENV["COPYRIGHT_CONTACT_URL"]
+  def rights_contact_us_link(lower: false)
+    link_text = lower ? "contact us" : "Contact us"
+    link_to link_text, ENV["COPYRIGHT_CONTACT_URL"]
   end
 
   def copies_direct_link
