@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe RelatedRecords, type: :model do
+RSpec.describe RelatedRecords do
   let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
   describe "#collection_id" do
