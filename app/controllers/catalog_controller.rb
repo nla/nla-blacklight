@@ -116,10 +116,7 @@ class CatalogController < ApplicationController
         segments: true,
         maxlength: 4
       }
-    config.add_facet_field "rights_category_ssim", label: "Rights Category", show: false
-    config.add_facet_field "rights_full_name_ssim", label: "Rights Description", show: false
 
-    config.add_facet_field "rights_pivot_field", label: "Rights", pivot: %w[rights_category_ssim rights_full_name_ssim], collapsing: true
     # config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: %w[format language_ssim], collapsing: true
 
     config.add_facet_field "example_query_facet_field", label: "Publish Date", query: {
