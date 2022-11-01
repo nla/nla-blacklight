@@ -142,13 +142,14 @@ class SolrDocument
   end
 
   def issn
-    get_isbn(tag: "022", sfield: "a", qfield: "q", use_880: true)
+    issn = get_marc_derived_field("022a")
+    merge_880 issn
   end
 
   def invalid_issn
-    invalid_issn = get_isbn(tag: "022", sfield: "y", qfield: "q")
-    invalid_issn = get_isbn(tag: "022", sfield: "z", qfield: "q") if invalid_issn.empty?
-    invalid_issn.compact_blank
+    invalid_issn = get_marc_derived_field("022y", options: {alternate_script: false})
+    invalid_issn = get_marc_derived_field("022z", options: {alternate_script: false}) if invalid_issn.empty?
+    invalid_issn
   end
 
   def ismn
