@@ -129,11 +129,11 @@ class SolrDocument
   end
 
   def isbn
-    get_isbn(tag: "020", sfield: "a", qfield: "q")
+    get_isbn(tag: "020", sfield: "a", qfield: "q", use_880: true)
   end
 
   def invalid_isbn
-    invalid_isbn = get_isbn(tag: "020", sfield: "z", qfield: "q")
+    invalid_isbn = get_isbn(tag: "020", sfield: "z", qfield: "q", use_880: true)
     if invalid_isbn.present?
       [invalid_isbn.join(" ")]
     else
@@ -142,13 +142,14 @@ class SolrDocument
   end
 
   def issn
-    get_isbn(tag: "022", sfield: "a", qfield: "q")
+    issn = get_marc_derived_field("022a")
+    merge_880 issn
   end
 
   def invalid_issn
-    invalid_issn = get_isbn(tag: "022", sfield: "y", qfield: "q")
-    invalid_issn = get_isbn(tag: "022", sfield: "z", qfield: "q") if invalid_issn.empty?
-    invalid_issn.compact_blank
+    invalid_issn = get_marc_derived_field("022y", options: {alternate_script: false})
+    invalid_issn = get_marc_derived_field("022z", options: {alternate_script: false}) if invalid_issn.empty?
+    invalid_issn
   end
 
   def ismn
@@ -242,14 +243,13 @@ class SolrDocument
     merge_880 editions
   end
 
-  def get_isbn(tag:, sfield:, qfield:)
+  def get_isbn(tag:, sfield:, qfield:, use_880: false)
     elements = get_marc_datafields_from_xml("//datafield[@tag='#{tag}' and subfield[@code='#{sfield}']]")
-    elements_880 = get_marc_datafields_from_xml("//datafield[@tag='880' and subfield[@code='#{sfield}']]")
-    isbn = [
-      *extract_isbn(elements: elements, tag: tag, sfield: sfield, qfield: qfield),
-      *extract_isbn(elements: elements_880, tag: tag, sfield: sfield, qfield: qfield)
-    ]
-
+    isbn = [*extract_isbn(elements: elements, tag: tag, sfield: sfield, qfield: qfield)]
+    if use_880
+      elements_880 = get_marc_datafields_from_xml("//datafield[@tag='880' and subfield[@code='6' and starts-with(.,'#{tag}-')]]")
+      isbn += [*extract_isbn(elements: elements_880, tag: tag, sfield: sfield, qfield: qfield)]
+    end
     isbn.compact_blank
   end
 
