@@ -168,7 +168,7 @@ class CatalogController < ApplicationController
     config.add_show_field "scale", label: "Scale", accessor: :scale
     config.add_show_field "printer", label: "Printer", accessor: :printer
     config.add_show_field label: "Description", field: "description", accessor: :description
-    config.add_show_field "isbn", label: "ISBN", accessor: :isbn, helper_method: :list
+    config.add_show_field "isbn", label: "ISBN", accessor: :isbn, helper_method: :unstyled_list
     config.add_show_field "invalid_isbn", label: "Invalid ISBN", accessor: :invalid_isbn
     config.add_show_field "issn", label: "ISSN", accessor: :issn
     config.add_show_field "invalid_issn", label: "Invalid ISSN", accessor: :invalid_issn, helper_method: :unstyled_list
