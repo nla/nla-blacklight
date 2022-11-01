@@ -244,7 +244,7 @@ class SolrDocument
 
   def get_isbn(tag:, sfield:, qfield:)
     elements = get_marc_datafields_from_xml("//datafield[@tag='#{tag}' and subfield[@code='#{sfield}']]")
-    elements_880 = get_marc_datafields_from_xml("//datafield[@tag='880' and subfield[@code='#{sfield}']]")
+    elements_880 = get_marc_datafields_from_xml("//datafield[@tag='880' and subfield[@code='#{sfield}'] and subfield[@code='6']/starts-with(.,'#{sfield}-')]")
     isbn = [
       *extract_isbn(elements: elements, tag: tag, sfield: sfield, qfield: qfield),
       *extract_isbn(elements: elements_880, tag: tag, sfield: sfield, qfield: qfield)
