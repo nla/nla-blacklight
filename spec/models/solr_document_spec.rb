@@ -431,6 +431,17 @@ RSpec.describe SolrDocument do
         expect(isbn_value).to eq []
       end
     end
+
+    context "when there is extra punctuation around the ISBN" do
+      subject(:isbn_value) do
+        document = described_class.new(marc_ss: isbn_format)
+        document.isbn
+      end
+
+      it "will strip extra punctuation around the ISBN" do
+        expect(isbn_value).to eq %w[9787561554999 7561554990]
+      end
+    end
   end
 
   describe "#invalid_isbn" do
@@ -694,6 +705,10 @@ RSpec.describe SolrDocument do
 
   def invalid_isbn
     load_marc_from_file 1868021
+  end
+
+  def isbn_format
+    load_marc_from_file 7092515
   end
 
   def issn

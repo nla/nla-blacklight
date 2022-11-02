@@ -273,10 +273,12 @@ class SolrDocument
               isbn << text.join(" ")
               text = []
             end
-            text << subfield.text
+            # strip extra punctuation and spaces
+            text << subfield.text[/^.*?([0-9X]+).*?$/, 1]
             primary_found = true
           elsif primary_found && qfield.present? && subfield_code == qfield
-            text << "(#{subfield.text})"
+            # strip extra punctuation and spaces, then wrap with parentheses
+            text << "(#{subfield.text[/^\s*(\w*)\s*:*\s*$/, 1]})"
           end
           prev_subfield_code = subfield_code
         end
