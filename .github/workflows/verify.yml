@@ -77,7 +77,7 @@ jobs:
           mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
       - name: Spin up SolrCloud + Zookeeper cluster
-        uses: isbang/compose-action@v1.3.2
+        uses: isbang/compose-action@v1.4.0
         with:
           compose-file: "./solr/cloud/docker-compose.yml"
           down-flags: "--volumes"
