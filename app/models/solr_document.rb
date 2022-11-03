@@ -147,9 +147,7 @@ class SolrDocument
   end
 
   def invalid_issn
-    invalid_issn = get_marc_derived_field("022y", options: {alternate_script: false})
-    invalid_issn = get_marc_derived_field("022z", options: {alternate_script: false}) if invalid_issn.empty?
-    invalid_issn
+    get_marc_derived_field("022z", options: {alternate_script: false})
   end
 
   def ismn
