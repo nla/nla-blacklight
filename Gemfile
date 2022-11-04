@@ -83,16 +83,14 @@ gem "blacklight_range_limit"
 gem "omniauth-keycloak", "~> 1.4"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
-# EBSCO EDS
-gem "ebsco-eds", "~> 1.1", ">= 1.1.4"
-# gem 'ebsco-eds', '1.1.0.1', :path=> 'vendor/gems/ebsco-eds-1.1.0.1'
-
 gem "nokogiri", ">= 1.13.9"
 gem "addressable", "~> 2.8"
 gem "repost", "~> 0.4.1"
 gem "strong_migrations", "~> 1.3"
 gem "view_component", "~> 2.74"
 gem "zk", "~> 1.10"
+
+gem "down", "~> 5.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
