@@ -4,6 +4,90 @@ require "rails_helper"
 
 RSpec.describe Eresources do
   let(:document) { SolrDocument.new(marc_ss: sample_marc) }
+  let(:file_cache) { ActiveSupport::Cache.lookup_store(:file_store, file_caching_path) }
+  let(:cache) { Rails.cache }
+
+  describe "#initialize" do
+    before do
+      allow(Rails).to receive(:cache).and_return(file_cache)
+    end
+
+    context "when the eResources manager returns a non-200 status" do
+      let(:current_config) { [{current_config: true}] }
+
+      it "keeps the current config" do
+        stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com/service-fail"))
+
+        expect(cache.exist?("eresources_config")).to be(false)
+
+        # setup the current_config
+        File.write("#{ENV["BLACKLIGHT_TMP_PATH"]}/cache/eresources.cfg", current_config.to_json)
+
+        described_class.new
+        expect(cache.read("eresources_config")).to eq JSON.parse current_config.to_json
+      end
+
+      # rubocop:disable RSpec/NestedGroups
+      context "when there is no previous config" do
+        it "returns an empty array" do
+          stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com/service-fail"))
+
+          expect(cache.exist?("eresources_config")).to be(false)
+
+          described_class.new
+          expect(cache.read("eresources_config")).to eq []
+        end
+      end
+      # rubocop:enable RSpec/NestedGroups
+    end
+
+    context "when the latest config is the same as the current config" do
+      # setup the current_config
+      let(:current_config) { File.read("spec/files/eresources/config.txt") }
+
+      it "keeps the current config" do
+        expect(cache.exist?("eresources_config")).to be(false)
+
+        # setup the current_config
+        File.write("#{ENV["BLACKLIGHT_TMP_PATH"]}/cache/eresources.cfg", current_config)
+
+        described_class.new
+        expect(cache.read("eresources_config")).to eq JSON.parse current_config
+      end
+    end
+
+    context "when file size difference is too great" do
+      let(:current_config) { [{current_config: true}] }
+
+      it "keeps the current config" do
+        expect(cache.exist?("eresources_config")).to be(false)
+
+        # setup the current_config
+        File.write("#{ENV["BLACKLIGHT_TMP_PATH"]}/cache/eresources.cfg", current_config.to_json)
+
+        described_class.new
+        expect(cache.read("eresources_config")).to eq JSON.parse current_config.to_json
+      end
+    end
+  end
+
+  describe "#url_append" do
+    context "when there is a '?' in the URL" do
+      subject(:url) { described_class.new.url_append("https://example.com?param=test", "NLAOriginalUrl=http://original-url.com") }
+
+      it "prepends '&' to the param" do
+        expect(url).to eq "https://example.com?param=test&NLAOriginalUrl=http://original-url.com"
+      end
+    end
+
+    context "when there is no '?' in the URL" do
+      subject(:url) { described_class.new.url_append("https://example.com", "param=test") }
+
+      it "prepends '?' to the param" do
+        expect(url).to eq "https://example.com?param=test"
+      end
+    end
+  end
 
   describe "#known_url" do
     context "when it is a known eResource with no remote URL" do
@@ -12,6 +96,8 @@ RSpec.describe Eresources do
       let(:entry) { {"remoteaccess" => "yes", "remoteurl" => "", "title" => "World Book Online", "urlstem" => %w[http://www.worldbookonline.com http://m.worldbk.com/]} }
 
       it "generates an EZProxy link" do
+        stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com"))
+
         expect(eresources_link).to eq({type: "ezproxy", url: "http://m.worldbk.com/", entry: entry})
       end
     end
@@ -30,6 +116,8 @@ RSpec.describe Eresources do
       let(:entry) { {"remoteaccess" => "yes", "remoteurl" => "https://example.com", "title" => "Example Remote URL", "urlstem" => %w[http://example.com]} }
 
       it "generates a remote URL link" do
+        stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com"))
+
         expect(eresources_link).to eq({type: "remoteurl", url: "https://example.com?NLAOriginalUrl=http://example.com/test", entry: entry})
       end
     end

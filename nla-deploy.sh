@@ -38,6 +38,7 @@ RAILS_ENV=$RAILS_ENV bundle exec rails assets:precompile
 
 mkdir -p "$BLACKLIGHT_TMP_PATH"/pids
 
+# Using file cache, so tmp:clear will also clear the cache
 RAILS_ENV=$RAILS_ENV bundle exec rails log:clear tmp:clear
 
 # Remove a potentially pre-existing server.pid for Rails.
