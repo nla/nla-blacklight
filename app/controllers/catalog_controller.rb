@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require Rails.root.join("lib", "blacklight", "solr_cloud", "repository")
+require "blacklight/solr_cloud/repository"
 
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
