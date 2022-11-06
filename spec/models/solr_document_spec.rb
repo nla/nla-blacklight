@@ -439,7 +439,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will strip extra punctuation around the ISBN" do
-        expect(isbn_value).to eq %w[9787561554999 7561554990]
+        expect(isbn_value).to eq ["9781478007364 (electronic book)", "1478007362 (electronic book)"]
       end
     end
   end
@@ -452,7 +452,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will return the invalid ISBN" do
-        expect(invalid_isbn_value).to eq ["0855504404 085550448X (corrected) (soft)"]
+        expect(invalid_isbn_value).to eq ["0855504404", "085550448X (corrected) (soft)"]
       end
     end
 
@@ -463,7 +463,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will return all the invalid ISBNs in a single string" do
-        expect(invalid_isbn_value).to eq ["0855504404 085550448X (corrected) (soft)"]
+        expect(invalid_isbn_value).to eq ["0855504404", "085550448X (corrected) (soft)"]
       end
     end
 
@@ -474,7 +474,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will append it after the invalid ISBN" do
-        expect(invalid_isbn_value.first).to include " (corrected) (soft)"
+        expect(invalid_isbn_value[1]).to include " (corrected) (soft)"
       end
     end
 
@@ -486,6 +486,22 @@ RSpec.describe SolrDocument do
 
       it "will return an empty array" do
         expect(invalid_isbn_value).to eq []
+      end
+    end
+
+    context "when there is extra punctuation around the invalid ISBN" do
+      subject(:isbn_value) do
+        document = described_class.new(marc_ss: isbn_format)
+        document.invalid_isbn
+      end
+
+      it "will strip extra punctuation around the ISBN" do
+        expect(isbn_value).to eq [
+          "9781478005773 (hardcover) (alkaline paper)",
+          "1478006676 (hardcover) (alkaline paper)",
+          "9781478006671 (paperback) (alkaline paper)",
+          "1478005777 (hardcover ;) (alkaline paper)"
+        ]
       end
     end
   end
@@ -708,7 +724,7 @@ RSpec.describe SolrDocument do
   end
 
   def isbn_format
-    load_marc_from_file 7092515
+    load_marc_from_file 8420291
   end
 
   def issn
