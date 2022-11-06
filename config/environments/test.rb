@@ -30,7 +30,7 @@ Rails.application.configure do
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
   config.cache_store = if ENV["BLACKLIGHT_TMP_PATH"].present?
-    [:file_store, ENV["BLACKLIGHT_TMP_PATH"]]
+    [:file_store, "#{ENV["BLACKLIGHT_TMP_PATH"]}/cache"]
   else
     :null_store
   end
