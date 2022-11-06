@@ -89,8 +89,9 @@ gem "repost", "~> 0.4.1"
 gem "strong_migrations", "~> 1.3"
 gem "view_component", "~> 2.74"
 gem "zk", "~> 1.10"
-
 gem "down", "~> 5.0"
+
+gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository", tag: "0.1.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
