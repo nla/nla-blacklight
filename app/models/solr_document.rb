@@ -133,12 +133,7 @@ class SolrDocument
   end
 
   def invalid_isbn
-    invalid_isbn = get_isbn(tag: "020", sfield: "z", qfield: "q", use_880: true)
-    if invalid_isbn.present?
-      [invalid_isbn.join(" ")]
-    else
-      []
-    end
+    get_isbn(tag: "020", sfield: "z", qfield: "q", use_880: true)
   end
 
   def issn
@@ -272,11 +267,17 @@ class SolrDocument
               text = []
             end
             # strip extra punctuation and spaces
-            text << subfield.text[/^.*?([0-9X]+).*?$/, 1]
+            clean_text = subfield.text[/^.*?([0-9X]+).*?$/, 1]
+            text << (clean_text.presence || subfield.text)
             primary_found = true
           elsif primary_found && qfield.present? && subfield_code == qfield
             # strip extra punctuation and spaces, then wrap with parentheses
-            text << "(#{subfield.text[/^\s*(\w*)\s*:*\s*$/, 1]})"
+            clean_text = subfield.text[/^\s*(\w*)\s*:*\s*$/, 1]
+            text << if clean_text.present?
+              "(#{clean_text})"
+            else
+              "(#{subfield.text})"
+            end
           end
           prev_subfield_code = subfield_code
         end
