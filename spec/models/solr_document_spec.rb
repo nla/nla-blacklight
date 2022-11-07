@@ -514,18 +514,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will return the ISSN" do
-        expect(issn_value).to eq %w[0000-0442 2434-561X]
-      end
-    end
-
-    context "when there is a linked 880" do
-      subject(:issn_value) do
-        document = described_class.new(marc_ss: issn)
-        document.issn
-      end
-
-      it "will return the ISSN" do
-        expect(issn_value).to include "2434-561X"
+        expect(issn_value).to eq %w[0000-0442]
       end
     end
 
