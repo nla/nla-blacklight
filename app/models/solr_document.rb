@@ -137,8 +137,7 @@ class SolrDocument
   end
 
   def issn
-    issn = get_marc_derived_field("022a")
-    merge_880 issn
+    get_marc_derived_field("022a", options: {alternate_script: false})
   end
 
   def invalid_issn
