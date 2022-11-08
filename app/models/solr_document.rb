@@ -176,6 +176,13 @@ class SolrDocument
     format_contents data
   end
 
+  def incomplete_contents
+    data = get_marc_derived_field("505|1*|agrtu")
+    data = merge_880 data
+
+    format_contents data
+  end
+
   private
 
   def get_online_access_urls
