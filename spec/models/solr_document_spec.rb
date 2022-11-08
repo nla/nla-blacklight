@@ -722,6 +722,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#incomplete_contents" do
+    context "when there are incomplete contents" do
+      subject(:incomplete_contents_value) do
+        document = described_class.new(marc_ss: incomplete_contents)
+        document.incomplete_contents
+      end
+
+      it "will return all the incomplete contents" do
+        expect(incomplete_contents_value.size).to eq 4
+      end
+    end
+
+    context "when there are no incomplete contents" do
+      subject(:incomplete_contents_value) do
+        document = described_class.new(marc_ss: full_contents)
+        document.incomplete_contents
+      end
+
+      it "will return an empty array" do
+        expect(incomplete_contents_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -846,5 +870,9 @@ RSpec.describe SolrDocument do
 
   def partial_contents
     load_marc_from_file 4838379
+  end
+
+  def incomplete_contents
+    load_marc_from_file 4864988
   end
 end
