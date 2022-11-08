@@ -639,6 +639,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#partial_contents" do
+    context "when there are partial contents" do
+      subject(:partial_contents_value) do
+        document = described_class.new(marc_ss: partial_contents)
+        document.partial_contents
+      end
+
+      it "will render the full list of contents" do
+        expect(partial_contents_value.size).to eq 9
+      end
+    end
+
+    context "when there are no partial contents" do
+      subject(:partial_contents_value) do
+        document = described_class.new(marc_ss: full_contents)
+        document.partial_contents
+      end
+
+      it "will return an empty array" do
+        expect(partial_contents_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -747,5 +771,9 @@ RSpec.describe SolrDocument do
 
   def full_contents
     load_marc_from_file 1455669
+  end
+
+  def partial_contents
+    load_marc_from_file 4838379
   end
 end
