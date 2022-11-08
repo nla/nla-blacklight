@@ -663,6 +663,41 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#summary" do
+    context "when there are summaries" do
+      subject(:summary_value) do
+        document = described_class.new(marc_ss: summary)
+        document.summary
+      end
+
+      it "will return an array of summaries" do
+        expect(summary_value.size).to eq 2
+      end
+    end
+
+    context "when there are summaries in linked 880 fields" do
+      subject(:summary_value) do
+        document = described_class.new(marc_ss: summary_880)
+        document.summary
+      end
+
+      it "will return the summary in the 880 field" do
+        expect(summary_value.size).to eq 2
+      end
+    end
+
+    context "when there are no summaries" do
+      subject(:summary_value) do
+        document = described_class.new(marc_ss: issn)
+        document.summary
+      end
+
+      it "will return an empty array" do
+        expect(summary_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -775,5 +810,13 @@ RSpec.describe SolrDocument do
 
   def technical_details
     load_marc_from_file 6154492
+  end
+
+  def summary
+    load_marc_from_file 156059
+  end
+
+  def summary_880
+    load_marc_from_file 6022968
   end
 end
