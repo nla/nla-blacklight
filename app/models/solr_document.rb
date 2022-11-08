@@ -162,6 +162,10 @@ class SolrDocument
     merge_880 printer
   end
 
+  def full_contents
+    get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
+  end
+
   private
 
   def get_online_access_urls
