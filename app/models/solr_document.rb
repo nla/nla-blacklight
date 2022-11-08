@@ -13,7 +13,7 @@ class SolrDocument
   # The following shows how to setup this blacklight document to display marc documents
   extension_parameters[:marc_source_field] = :marc_ss
   extension_parameters[:marc_format_type] = :marcxml
-  use_extension(Blacklight::Marc::DocumentExtension) do |document|
+  use_extension(NLA::Marc::DocumentExtension) do |document|
     document.key?(SolrDocument.extension_parameters[:marc_source_field])
   end
 
@@ -25,12 +25,6 @@ class SolrDocument
   )
 
   # self.unique_key = 'id'
-
-  # Email uses the semantic field mappings below to generate the body of an email.
-  SolrDocument.use_extension(Blacklight::Document::Email)
-
-  # SMS uses the semantic field mappings below to generate the body of an SMS email.
-  SolrDocument.use_extension(Blacklight::Document::Sms)
 
   # DublinCore uses the semantic field mappings below to assemble an OAI-compliant Dublin Core document
   # Semantic mappings of solr stored fields. Fields may be multi or
@@ -164,6 +158,29 @@ class SolrDocument
 
   def full_contents
     get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
+  end
+
+  def technical_details
+    get_marc_derived_field("538au", options: {alternate_script: false})
+  end
+
+  def summary
+    summary = get_marc_derived_field("520ab")
+    merge_880 summary
+  end
+
+  def partial_contents
+    data = get_marc_derived_field("505|2*|agrtu")
+    data = merge_880 data
+
+    format_contents data
+  end
+
+  def incomplete_contents
+    data = get_marc_derived_field("505|1*|agrtu")
+    data = merge_880 data
+
+    format_contents data
   end
 
   def credits
@@ -342,5 +359,15 @@ class SolrDocument
     else
       [*datafields]
     end
+  end
+
+  def format_contents(data)
+    contents = []
+
+    data&.each do |content|
+      contents += content.split(" -- ")
+    end
+
+    contents
   end
 end
