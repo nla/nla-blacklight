@@ -166,6 +166,10 @@ class SolrDocument
     get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
   end
 
+  def credits
+    get_marc_derived_field("508a", options: {alternate_script: false})
+  end
+
   private
 
   def get_online_access_urls
