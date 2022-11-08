@@ -1,4 +1,18 @@
 module FieldHelper
+  def paragraphs(document:, field:, config:, value:, context:)
+    elements = []
+
+    if value.present?
+      elements << safe_join(value.map do |para|
+        content_tag(:p) do
+          para
+        end
+      end, "")
+    end
+
+    safe_join(elements, "")
+  end
+
   # Display linked items. If there is more than one item in the list
   # show the values in an unordered list.
   def url_list(document:, field:, config:, value:, context:)
