@@ -164,6 +164,11 @@ class SolrDocument
     get_marc_derived_field("538au", options: {alternate_script: false})
   end
 
+  def summary
+    summary = get_marc_derived_field("520ab")
+    merge_880 summary
+  end
+
   private
 
   def get_online_access_urls

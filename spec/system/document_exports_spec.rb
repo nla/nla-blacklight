@@ -31,8 +31,6 @@ RSpec.describe "Document exports" do
   end
 
   it "does not show the 'Export to Refworks' link" do
-    puts copyright.to_json
-
     visit solr_document_path(id: 1414519)
 
     expect(page).not_to have_text("Export to Refworks")
