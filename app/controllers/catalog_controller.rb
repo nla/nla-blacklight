@@ -56,8 +56,6 @@ class CatalogController < ApplicationController
     config.add_results_collection_tool(:view_type_group)
 
     config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
-    config.add_show_tools_partial(:email, callback: :email_action, validator: :validate_email_params)
-    config.add_show_tools_partial(:sms, if: :render_sms_action?, callback: :sms_action, validator: :validate_sms_params)
     config.add_show_tools_partial(:citation)
 
     config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: :render_bookmarks_control?)
@@ -174,7 +172,10 @@ class CatalogController < ApplicationController
     config.add_show_field "ismn", label: "ISMN", accessor: :ismn
     config.add_show_field "invalid_ismn", label: "Invalid ISMN", accessor: :invalid_ismn, helper_method: :unstyled_list
     config.add_show_field "series", label: "Series", accessor: :series, helper_method: :list
+    config.add_show_field "technical_details", label: "Technical Details", accessor: :technical_details, helper_method: :unstyled_list
+    config.add_show_field "summary", label: "Summary", accessor: :summary, helper_method: :paragraphs
     config.add_show_field "full_contents", label: "Full contents", accessor: :full_contents, helper_method: :build_full_contents_list
+    config.add_show_field "partial_contents", label: "Partial contents", accessor: :partial_contents, helper_method: :list
     config.add_show_field "incomplete_contents", label: "Incomplete contents", accessor: :incomplete_contents, helper_method: :list
     config.add_show_field "notes", label: "Notes", accessor: :notes, helper_method: :notes
     config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :build_subject_search_list
