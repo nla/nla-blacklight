@@ -626,6 +626,19 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#full_contents" do
+    context "when there is a contents list" do
+      subject(:full_contents_value) do
+        document = described_class.new(marc_ss: full_contents)
+        document.full_contents
+      end
+
+      it "will return the list of contents" do
+        expect(full_contents_value.size).to(eq(2))
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -730,5 +743,9 @@ RSpec.describe SolrDocument do
 
   def invalid_ismn
     load_marc_from_file 4773335
+  end
+
+  def full_contents
+    load_marc_from_file 1455669
   end
 end
