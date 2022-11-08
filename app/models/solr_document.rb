@@ -167,7 +167,7 @@ class SolrDocument
   end
 
   def technical_details
-    get_marc_derived_field("538au")
+    get_marc_derived_field("538au", options: {alternate_script: false})
   end
 
   private
