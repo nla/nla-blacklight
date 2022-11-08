@@ -170,7 +170,7 @@ class SolrDocument
     data = get_marc_derived_field("505|2*|agrtu")
     data = merge_880 data
 
-    format_partial_contents data
+    format_contents data
   end
 
   private
@@ -347,13 +347,13 @@ class SolrDocument
     end
   end
 
-  def format_partial_contents(data)
-    partial_contents = []
+  def format_contents(data)
+    contents = []
 
     data&.each do |content|
-      partial_contents += content.split(" -- ")
+      contents += content.split(" -- ")
     end
 
-    partial_contents
+    contents
   end
 end
