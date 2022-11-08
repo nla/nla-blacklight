@@ -166,6 +166,10 @@ class SolrDocument
     get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
   end
 
+  def performers
+    get_marc_derived_field("511a", options: {alternate_script: false})
+  end
+
   private
 
   def get_online_access_urls
