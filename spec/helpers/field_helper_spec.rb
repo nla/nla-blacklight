@@ -392,6 +392,37 @@ RSpec.describe FieldHelper do
     end
   end
 
+  describe "#paragraphs" do
+    subject(:summary_value) do
+      helper.paragraphs(document: document, field: "summary", config: config, value: value, context: "show")
+    end
+
+    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, summary: value) }
+
+    context "when there are summaries" do
+      let(:value) do
+        [
+          "Summary A",
+          "Summary B"
+        ]
+      end
+
+      it "renders multiple paragraphs" do
+        expect(summary_value).to eq "<p>Summary A</p><p>Summary B</p>"
+      end
+    end
+
+    context "when there are no summaries" do
+      let(:value) do
+        []
+      end
+
+      it "does not render any paragraphs" do
+        expect(summary_value).to eq ""
+      end
+    end
+  end
+
   # Need to set the MARC source field to actual MARC XML in order to allow
   # the "#to_marc" method to be included in the SolrDocument model.
   def sample_marc
