@@ -166,6 +166,10 @@ class SolrDocument
     get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
   end
 
+  def technical_details
+    get_marc_derived_field("538au")
+  end
+
   private
 
   def get_online_access_urls

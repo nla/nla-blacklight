@@ -639,6 +639,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#technical_details" do
+    context "when there are technical details" do
+      subject(:technical_details_value) do
+        document = described_class.new(marc_ss: technical_details)
+        document.technical_details
+      end
+
+      it "will return the technical details in a single string" do
+        expect(technical_details_value).to eq ["Mode of access: Available online. Address as at 25/08/14: http://www.coagreformcouncil.gov.au/reports/housing.html"]
+      end
+    end
+
+    context "when there are no technical details" do
+      subject(:technical_details_value) do
+        document = described_class.new(marc_ss: access_condition_with_eresources)
+        document.technical_details
+      end
+
+      it "will return an empty array" do
+        expect(technical_details_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -747,5 +771,9 @@ RSpec.describe SolrDocument do
 
   def full_contents
     load_marc_from_file 1455669
+  end
+
+  def technical_details
+    load_marc_from_file 6154492
   end
 end
