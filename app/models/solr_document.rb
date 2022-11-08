@@ -166,6 +166,13 @@ class SolrDocument
     get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
   end
 
+  def incomplete_contents
+    data = get_marc_derived_field("505|1*|agrtu")
+    data = merge_880 data
+
+    format_contents data
+  end
+
   private
 
   def get_online_access_urls
@@ -338,5 +345,15 @@ class SolrDocument
     else
       [*datafields]
     end
+  end
+
+  def format_contents(data)
+    contents = []
+
+    data&.each do |content|
+      contents += content.split(" -- ")
+    end
+
+    contents
   end
 end
