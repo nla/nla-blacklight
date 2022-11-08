@@ -639,6 +639,65 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#technical_details" do
+    context "when there are technical details" do
+      subject(:technical_details_value) do
+        document = described_class.new(marc_ss: technical_details)
+        document.technical_details
+      end
+
+      it "will return the technical details in a single string" do
+        expect(technical_details_value).to eq ["Mode of access: Available online. Address as at 25/08/14: http://www.coagreformcouncil.gov.au/reports/housing.html"]
+      end
+    end
+
+    context "when there are no technical details" do
+      subject(:technical_details_value) do
+        document = described_class.new(marc_ss: access_condition_with_eresources)
+        document.technical_details
+      end
+
+      it "will return an empty array" do
+        expect(technical_details_value).to eq []
+      end
+    end
+  end
+
+  describe "#summary" do
+    context "when there are summaries" do
+      subject(:summary_value) do
+        document = described_class.new(marc_ss: summary)
+        document.summary
+      end
+
+      it "will return an array of summaries" do
+        expect(summary_value.size).to eq 2
+      end
+    end
+
+    context "when there are summaries in linked 880 fields" do
+      subject(:summary_value) do
+        document = described_class.new(marc_ss: summary_880)
+        document.summary
+      end
+
+      it "will return the summary in the 880 field" do
+        expect(summary_value.size).to eq 2
+      end
+    end
+
+    context "when there are no summaries" do
+      subject(:summary_value) do
+        document = described_class.new(marc_ss: issn)
+        document.summary
+      end
+
+      it "will return an empty array" do
+        expect(summary_value).to eq []
+      end
+    end
+  end
+
   describe "#partial_contents" do
     context "when there are partial contents" do
       subject(:partial_contents_value) do
@@ -771,6 +830,18 @@ RSpec.describe SolrDocument do
 
   def full_contents
     load_marc_from_file 1455669
+  end
+
+  def technical_details
+    load_marc_from_file 6154492
+  end
+
+  def summary
+    load_marc_from_file 156059
+  end
+
+  def summary_880
+    load_marc_from_file 6022968
   end
 
   def partial_contents

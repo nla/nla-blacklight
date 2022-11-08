@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe "Navigation Actions" do
+RSpec.describe "Navigation actions" do
   before do
     driven_by(:rack_test)
   end
