@@ -166,6 +166,13 @@ class SolrDocument
     get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
   end
 
+  def partial_contents
+    data = get_marc_derived_field("505|2*|agrtu")
+    data = merge_880 data
+
+    format_partial_contents data
+  end
+
   private
 
   def get_online_access_urls
@@ -338,5 +345,15 @@ class SolrDocument
     else
       [*datafields]
     end
+  end
+
+  def format_partial_contents(data)
+    partial_contents = []
+
+    data&.each do |content|
+      partial_contents += content.split(" -- ")
+    end
+
+    partial_contents
   end
 end
