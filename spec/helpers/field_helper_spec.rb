@@ -122,7 +122,6 @@ RSpec.describe FieldHelper do
     let(:document) { SolrDocument.new(marc_ss: full_contents_marc) }
 
     it "generates a list of elements" do
-      puts "size= #{content_values_array}"
       expect(content_values_array).to start_with "<ul><li>Foreword / Bill Maher</li>"
     end
   end
