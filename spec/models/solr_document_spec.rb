@@ -818,6 +818,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#numbering_note" do
+    context "when there are numbering notes" do
+      subject(:numbering_note_value) do
+        document = described_class.new(marc_ss: numbering_note)
+        document.numbering_note
+      end
+
+      it "will return all numbering notes" do
+        expect(numbering_note_value.size).to eq 3
+      end
+    end
+
+    context "when there are no numbering notes" do
+      subject(:numbering_note_value) do
+        document = described_class.new(marc_ss: performers)
+        document.numbering_note
+      end
+
+      it "will return an empty array" do
+        expect(numbering_note_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -958,5 +982,9 @@ RSpec.describe SolrDocument do
 
   def biography_history
     load_marc_from_file 5497731
+  end
+
+  def numbering_note
+    load_marc_from_file 2208462
   end
 end
