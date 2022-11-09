@@ -794,6 +794,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#biography_history" do
+    context "when there are biographies or histories" do
+      subject(:biography_history_value) do
+        document = described_class.new(marc_ss: biography_history)
+        document.biography_history
+      end
+
+      it "will return all biographies/histories" do
+        expect(biography_history_value.size).to eq 3
+      end
+    end
+
+    context "when there is no biography or history" do
+      subject(:biography_history_value) do
+        document = described_class.new(marc_ss: performers)
+        document.biography_history
+      end
+
+      it "will return an empty array" do
+        expect(biography_history_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -930,5 +954,9 @@ RSpec.describe SolrDocument do
 
   def performers
     load_marc_from_file 363909
+  end
+
+  def biography_history
+    load_marc_from_file 5497731
   end
 end

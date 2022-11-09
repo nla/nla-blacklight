@@ -179,6 +179,7 @@ class CatalogController < ApplicationController
     config.add_show_field "incomplete_contents", label: "Incomplete contents", accessor: :incomplete_contents, helper_method: :list
     config.add_show_field "credits", label: "Credits", accessor: :credits, helper_method: :unstyled_list
     config.add_show_field "performers", label: "Performer", accessor: :performers, helper_method: :unstyled_list
+    config.add_show_field "biography_history", label: "Biography/History", accessor: :biography_history, helper_method: :paragraphs
     config.add_show_field "notes", label: "Notes", accessor: :notes, helper_method: :notes
     config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :build_subject_search_list
     config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_info, helper_method: :render_copyright_component
