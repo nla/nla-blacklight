@@ -12,5 +12,5 @@ end
 
 Given("I visit the advanced search page") do
   visit blacklight_advanced_search_engine.advanced_search_path
-  expect(page).to have_content("More Search Options")
+  expect(page).to have_content("Advanced Search")
 end
