@@ -842,6 +842,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#data_quality" do
+    context "when there are data quality information" do
+      subject(:data_quality_value) do
+        document = described_class.new(marc_ss: data_quality)
+        document.data_quality
+      end
+
+      it "will return all data quality information" do
+        expect(data_quality_value).to eq ["Last copy of this item within Australia."]
+      end
+    end
+
+    context "when there is no data quality information" do
+      subject(:data_quality_value) do
+        document = described_class.new(marc_ss: performers)
+        document.data_quality
+      end
+
+      it "will return an empty array" do
+        expect(data_quality_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -986,5 +1010,9 @@ RSpec.describe SolrDocument do
 
   def numbering_note
     load_marc_from_file 2208462
+  end
+
+  def data_quality
+    load_marc_from_file 8539536
   end
 end
