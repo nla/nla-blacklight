@@ -634,7 +634,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will return the list of contents" do
-        expect(full_contents_value.size).to(eq(2))
+        expect(full_contents_value.size).to(eq(25))
       end
     end
   end

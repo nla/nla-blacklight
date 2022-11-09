@@ -114,18 +114,6 @@ RSpec.describe FieldHelper do
     end
   end
 
-  describe "#full_contents_list" do
-    subject(:content_values_array) do
-      helper.build_full_contents_list(document: document, field: "full_contents", config: config, value: document.full_contents, context: "show")
-    end
-
-    let(:document) { SolrDocument.new(marc_ss: full_contents_marc) }
-
-    it "generates a list of elements" do
-      expect(content_values_array).to start_with "<ul><li>Foreword / Bill Maher</li>"
-    end
-  end
-
   describe "#emphasized_list" do
     subject(:value_list) { helper.emphasized_list(document: document, field: "access_conditions", config: config, value: value, context: "show") }
 

@@ -174,7 +174,7 @@ class CatalogController < ApplicationController
     config.add_show_field "series", label: "Series", accessor: :series, helper_method: :list
     config.add_show_field "technical_details", label: "Technical Details", accessor: :technical_details, helper_method: :unstyled_list
     config.add_show_field "summary", label: "Summary", accessor: :summary, helper_method: :paragraphs
-    config.add_show_field "full_contents", label: "Full contents", accessor: :full_contents, helper_method: :build_full_contents_list
+    config.add_show_field "full_contents", label: "Full contents", accessor: :full_contents, helper_method: :list
     config.add_show_field "partial_contents", label: "Partial contents", accessor: :partial_contents, helper_method: :list
     config.add_show_field "incomplete_contents", label: "Incomplete contents", accessor: :incomplete_contents, helper_method: :list
     config.add_show_field "credits", label: "Credits", accessor: :credits, helper_method: :unstyled_list
