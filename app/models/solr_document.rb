@@ -157,7 +157,10 @@ class SolrDocument
   end
 
   def full_contents
-    get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
+    data = get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
+    data = merge_880 data
+
+    format_contents data
   end
 
   def technical_details
