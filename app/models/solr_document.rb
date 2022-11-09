@@ -191,6 +191,10 @@ class SolrDocument
     get_marc_derived_field("511a", options: {alternate_script: false})
   end
 
+  def biography_history
+    get_marc_derived_field("545ab", options: {alternate_script: false})
+  end
+
   private
 
   def get_online_access_urls
