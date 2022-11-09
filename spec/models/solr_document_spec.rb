@@ -746,6 +746,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#credits" do
+    context "when there are credits" do
+      subject(:credits_value) do
+        document = described_class.new(marc_ss: credits)
+        document.credits
+      end
+
+      it "will return all the credits" do
+        expect(credits_value.size).to eq 2
+      end
+    end
+
+    context "when there are no credits" do
+      subject(:credits_value) do
+        document = described_class.new(marc_ss: full_contents)
+        document.credits
+      end
+
+      it "will return an empty array" do
+        expect(credits_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -874,5 +898,9 @@ RSpec.describe SolrDocument do
 
   def incomplete_contents
     load_marc_from_file 4864988
+  end
+
+  def credits
+    load_marc_from_file 778088
   end
 end
