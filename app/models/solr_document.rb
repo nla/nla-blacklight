@@ -199,6 +199,10 @@ class SolrDocument
     get_marc_derived_field("515a", options: {alternate_script: false})
   end
 
+  def data_quality
+    get_marc_derived_field("514abcdefghijkmuz", options: {alternate_script: false})
+  end
+
   private
 
   def get_online_access_urls
