@@ -770,6 +770,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#performers" do
+    context "when there are performers" do
+      subject(:performers_value) do
+        document = described_class.new(marc_ss: performers)
+        document.performers
+      end
+
+      it "will return all performers" do
+        expect(performers_value).to eq ["Keith Bowen.", "Jeremy Ashton.", "Carol Shelbourn."]
+      end
+    end
+
+    context "when there are no performers" do
+      subject(:performers_value) do
+        document = described_class.new(marc_ss: full_contents)
+        document.performers
+      end
+
+      it "will return an empty array" do
+        expect(performers_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -902,5 +926,9 @@ RSpec.describe SolrDocument do
 
   def credits
     load_marc_from_file 778088
+  end
+
+  def performers
+    load_marc_from_file 363909
   end
 end
