@@ -370,7 +370,19 @@ RSpec.describe FieldHelper do
 
     let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, subject_ssim: value) }
 
-    context "when there are subjects" do
+    context "when there is a single subject" do
+      let(:value) do
+        [
+          "Band music, Arranged -- Scores and parts"
+        ]
+      end
+
+      it "does not render a list" do
+        expect(subject_list_value).to eq '<a href="/?search_field=subject_ssim&amp;q=%22Band+music%2C+Arranged+--+Scores+and+parts%22">Band music, Arranged -- Scores and parts</a>'
+      end
+    end
+
+    context "when there are multiple subjects" do
       let(:value) do
         [
           "Band music, Arranged -- Scores and parts",
@@ -378,8 +390,8 @@ RSpec.describe FieldHelper do
         ]
       end
 
-      it "creates a single string with links to subject searches" do
-        expect(subject_list_value).to eq '<a href="/?search_field=subject_ssim&amp;q=%22Band+music%2C+Arranged+--+Scores+and+parts%22">Band music, Arranged -- Scores and parts</a> | <a href="/?search_field=subject_ssim&amp;q=%22Marches+%28Band%29%2C+Arranged+--+Scores+and+parts%22">Marches (Band), Arranged -- Scores and parts</a>'
+      it "renders an unstyled list" do
+        expect(subject_list_value).to eq '<ul class="list-unstyled"><li><a href="/?search_field=subject_ssim&amp;q=%22Band+music%2C+Arranged+--+Scores+and+parts%22">Band music, Arranged -- Scores and parts</a></li><li><a href="/?search_field=subject_ssim&amp;q=%22Marches+%28Band%29%2C+Arranged+--+Scores+and+parts%22">Marches (Band), Arranged -- Scores and parts</a></li></ul>'
       end
     end
 

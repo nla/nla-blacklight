@@ -137,11 +137,23 @@ module FieldHelper
   def build_subject_search_list(document:, field:, config:, value:, context:)
     if value.present?
       elements = []
-      document.fetch(field).each do |subject|
-        encoded_subject = CGI.escape("\"#{subject}\"")
-        elements << link_to(subject, "/?search_field=#{field}&q=#{encoded_subject}")
+
+      subjects = document.fetch(field)
+      elements << if subjects.size > 1
+        content_tag(:ul, class: "list-unstyled") do
+          safe_join(subjects.map do |subject|
+            content_tag(:li) do
+              encoded_subject = CGI.escape("\"#{subject}\"")
+              link_to(subject, "/?search_field=#{field}&q=#{encoded_subject}")
+            end
+          end, "")
+        end
+      else
+        encoded_subject = CGI.escape("\"#{subjects.first}\"")
+        link_to(subjects.first, "/?search_field=#{field}&q=#{encoded_subject}")
       end
-      safe_join(elements, " | ")
+
+      safe_join(elements, "\n")
     end
   rescue KeyError
     Rails.logger.info "Record #{document.id} has no '#{field}'"
