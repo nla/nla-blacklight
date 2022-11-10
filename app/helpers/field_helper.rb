@@ -159,14 +159,6 @@ module FieldHelper
     Rails.logger.info "Record #{document.id} has no '#{field}'"
   end
 
-  def build_full_contents_list(document:, field:, config:, value:, context:)
-    full_contents_array = []
-    value.each do |content_list|
-      full_contents_array << content_list.split("--").map(&:strip)
-    end
-    list(document: document, field: field, config: config, value: full_contents_array.flatten!, context: context)
-  end
-
   private
 
   # Original RegEx used by VuFind
