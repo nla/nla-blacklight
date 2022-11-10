@@ -1,17 +1,10 @@
-<%= render(@layout.new(field: @field)) do |component| %>
-  <% component.label do %>
-    <%= label %>
-  <% end %>
-  <% component.value do %>
-    <% if collection_name.present? %>
-      <p>This record belongs to the <%= link_to "#{collection_name} collection.", collection_url %></p>
-    <% end %>
-    <p class="mb-0">This collection is made up of <%= "#{formatted_collection_count} #{'record'.pluralize(collection_count)}" %>:</p>
-    <ul class="list-unstyled">
-      <% child_records.each do |record| %>
-        <li><%= link_to record[:title].first, solr_document_path(id: record[:id]) %></li>
-      <% end %>
-    </ul>
-    <%= link_to "View all #{formatted_collection_count} #{'record'.pluralize(collection_count)}", collection_records_url, class: "btn btn-outline-secondary" %>
-  <% end %>
+<% if collection_name.present? %>
+  <p>This record belongs to the <%= link_to "#{collection_name} collection.", collection_url %></p>
 <% end %>
+<p class="mb-0">This collection is made up of <%= "#{formatted_collection_count} #{'record'.pluralize(collection_count)}" %>:</p>
+<ul class="list-unstyled">
+  <% child_records.each do |record| %>
+    <li><%= link_to record[:title].first, solr_document_path(id: record[:id]) %></li>
+  <% end %>
+</ul>
+<%= link_to "View all #{formatted_collection_count} #{'record'.pluralize(collection_count)}", collection_records_url, class: "btn btn-outline-secondary" %>
