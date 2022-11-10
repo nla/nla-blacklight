@@ -270,7 +270,9 @@ class CatalogController < ApplicationController
 
     config.add_search_field("id") do |field|
       field.label = "Bib Id"
-      field.qt = "search"
+      field.solr_parameters = {
+        qf: "id"
+      }
     end
 
     config.add_search_field("occupation") do |field|
