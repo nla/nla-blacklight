@@ -26,6 +26,9 @@ SimpleCov.start "rails" do
   # Filter out override of Blacklight Advanced Search Plugin override
   add_filter "lib/blacklight_advanced_search/render_constraints_override.rb"
 
+  # Filter out error handler
+  add_filter "app/controllers/error_controller.rb"
+
   add_group "Components", "app/components"
   add_group "Presenters", "app/presenters"
 end

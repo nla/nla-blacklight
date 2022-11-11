@@ -159,6 +159,12 @@ module FieldHelper
     Rails.logger.info "Record #{document.id} has no '#{field}'"
   end
 
+  def render_related_records_component(document:, field:, config:, value:, context:)
+    if value.present?
+      render RelatedRecordsComponent.new(records: value.first)
+    end
+  end
+
   private
 
   # Original RegEx used by VuFind

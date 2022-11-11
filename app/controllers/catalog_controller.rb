@@ -185,7 +185,7 @@ class CatalogController < ApplicationController
     config.add_show_field "notes", label: "Notes", accessor: :notes, helper_method: :notes
     config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :build_subject_search_list
     config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_info, helper_method: :render_copyright_component
-    config.add_show_field "related_records", label: "Related Records", accessor: :related_records, component: RelatedRecordsComponent
+    config.add_show_field "related_records", label: "Related Records", accessor: :related_records, helper_method: :render_related_records_component
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"
     # config.add_show_field "subtitle_tsim", label: "Subtitle"
@@ -270,7 +270,9 @@ class CatalogController < ApplicationController
 
     config.add_search_field("id") do |field|
       field.label = "Bib Id"
-      field.qt = "search"
+      field.solr_parameters = {
+        qf: "id"
+      }
     end
 
     config.add_search_field("occupation") do |field|
