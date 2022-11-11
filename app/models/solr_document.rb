@@ -384,7 +384,7 @@ class SolrDocument
     contents = []
 
     data&.each do |content|
-      contents += content.split(" -- ")
+      contents += content.split("--").map(&:strip)
     end
 
     contents
