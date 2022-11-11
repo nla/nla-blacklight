@@ -1,10 +1,10 @@
-class RelatedRecordsComponent < Blacklight::MetadataFieldComponent
-  def initialize(field:, layout: nil, show: false)
-    super
+class RelatedRecordsComponent < ViewComponent::Base
+  def initialize(records:)
+    @related_records = records
   end
 
   def value
-    @field.values.first
+    @related_records
   end
 
   def render?

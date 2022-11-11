@@ -34,8 +34,10 @@ Rails.application.routes.draw do
       delete "clear"
     end
   end
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # error handlers
+  get "/404", to: "errors#not_found"
+  get "/422", to: "errors#unprocessable"
+  get "/500", to: "errors#internal_server"
+  get "/503", to: "errors#unavailable"
 end
