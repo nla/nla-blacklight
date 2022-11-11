@@ -158,7 +158,6 @@ class SolrDocument
 
   def full_contents
     data = get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
-    puts data
     data = merge_880 data
 
     format_contents data
