@@ -12,7 +12,7 @@ RSpec.describe "Document exports" do
         headers: {
           "Accept" => "*/*",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "Faraday v1.10.0"
+          "User-Agent" => "Faraday v2.6.0"
         }
       )
       .to_return(status: 200, body: copyright_response, headers: {})
@@ -21,7 +21,7 @@ RSpec.describe "Document exports" do
         headers: {
           "Accept" => "*/*",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "Faraday v1.10.0"
+          "User-Agent" => "Faraday v2.6.0"
         }
       )
       .to_return(status: 200, body: solr_response, headers: {})

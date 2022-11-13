@@ -13,6 +13,58 @@ RSpec.describe ApplicationHelper do
     end
   end
 
+  # rubocop:disable RSpec/NestedGroups
+  describe "#client_in_subnets" do
+    context "with staff subnet" do
+      subject(:found) { helper.client_in_subnets(helper.staff_subnets) }
+
+      context "when request from onsite" do
+        before do
+          request.env["REMOTE_ADDR"] = "203.4.202.232"
+        end
+
+        it "is false when it does not match a staff IP defined in the config" do
+          expect(found).to be true
+        end
+      end
+
+      context "when request from external" do
+        before do
+          request.env["REMOTE_ADDR"] = "127.0.0.1"
+        end
+
+        it "is true when it matches a staff IP defined in the config" do
+          expect(found).to be false
+        end
+      end
+    end
+
+    context "with local subnet" do
+      subject(:found) { helper.client_in_subnets(helper.local_subnets) }
+
+      context "when request from local" do
+        before do
+          request.env["REMOTE_ADDR"] = "192.102.239.232"
+        end
+
+        it "is false when it does not match a local IP defined in the config" do
+          expect(found).to be true
+        end
+      end
+
+      context "when request from external" do
+        before do
+          request.env["REMOTE_ADDR"] = "127.0.0.1"
+        end
+
+        it "is true when it matches a local IP defined in the config" do
+          expect(found).to be false
+        end
+      end
+    end
+  end
+  # rubocop:enable RSpec/NestedGroups
+
   def sample_marc
     "<record>
       <leader>01182pam a22003014a 4500</leader>

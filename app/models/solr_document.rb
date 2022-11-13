@@ -206,6 +206,10 @@ class SolrDocument
     get_marc_derived_field("514abcdefghijkmuz", options: {alternate_script: false})
   end
 
+  def binding
+    get_binding_url
+  end
+
   private
 
   def get_online_access_urls
@@ -388,5 +392,8 @@ class SolrDocument
     end
 
     contents
+  end
+
+  def get_binding_url
   end
 end
