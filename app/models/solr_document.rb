@@ -33,12 +33,32 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
 
-  ##
   # Get data from the full marc record contained in the solr document using a Traject spec.
-  def get_marc_derived_field(spec, options: {separator: " "})
+  def get_marc_derived_field(spec, options: {separator: " "}, merge_880: true)
     @marc_rec ||= to_marc
     extractor = Traject::MarcExtractor.cached(spec, options)
-    extractor.extract(@marc_rec)
+    data = extractor.extract(@marc_rec)
+    if merge_880
+      data = merge_880 data
+    end
+    data
+  end
+
+  # `get_marc_derived_fields` when finding linked 880 fields, will prefix the
+  # results array with the tag name and subfields.
+  # We don't want to display the tag and subfields in the UI, so this will look for the first
+  # space in the string after the prefix and strip the prefixes from all the elements in the
+  # results array.
+  # Results which don't have linked 880 fields will not have the prefix, so we
+  # return the datafields as a single dimensional array.
+  def merge_880(datafields)
+    if datafields.find { |d| d.start_with? "880" }.present?
+      datafields.map do |d|
+        d[d.index(" ")...-1].strip
+      end
+    else
+      [*datafields]
+    end
   end
 
   def marc_xml
@@ -151,14 +171,11 @@ class SolrDocument
   end
 
   def printer
-    printer = get_marc_derived_field("260efg")
-    printer = get_marc_derived_field("2643abc") if printer.empty?
-    merge_880 printer
+    get_marc_derived_field("260efg:2643abc")
   end
 
   def full_contents
     data = get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
-    data = merge_880 data
 
     format_contents data
   end
@@ -168,20 +185,17 @@ class SolrDocument
   end
 
   def summary
-    summary = get_marc_derived_field("520ab")
-    merge_880 summary
+    get_marc_derived_field("520ab")
   end
 
   def partial_contents
     data = get_marc_derived_field("505|2*|agrtu")
-    data = merge_880 data
 
     format_contents data
   end
 
   def incomplete_contents
     data = get_marc_derived_field("505|1*|agrtu")
-    data = merge_880 data
 
     format_contents data
   end
@@ -211,12 +225,15 @@ class SolrDocument
   end
 
   def binding_information
-    binding = get_marc_derived_field("563a")
-    merge_880 binding
+    get_marc_derived_field("563a")
   end
 
   def related_material
     get_marc_derived_field("544", options: {alternate_script: false})
+  end
+
+  def provenance
+    get_marc_derived_field("541abcdefhno368:5613au", options: {alternate_script: false})
   end
 
   private
@@ -282,14 +299,11 @@ class SolrDocument
   end
 
   def get_uniform_title
-    title = get_marc_derived_field("130aplskfmnor")
-    title = get_marc_derived_field("240adfghklmnoprs") if title.empty?
-    merge_880 title
+    get_marc_derived_field("130aplskfmnor:240adfghklmnoprs")
   end
 
   def get_edition
-    editions = get_marc_derived_field("250")
-    merge_880 editions
+    get_marc_derived_field("250")
   end
 
   def get_isbn(tag:, sfield:, qfield:, use_880: false)
@@ -374,23 +388,6 @@ class SolrDocument
     end
 
     eresource_urls.present?
-  end
-
-  # `get_marc_derived_fields` when finding linked 880 fields, will prefix the
-  # results array with the tag name and subfields.
-  # We don't want to display the tag and subfields in the UI, so this will look for the first
-  # space in the string after the prefix and strip these form all the elements in the
-  # results array.
-  # Results which don't have linked 880 fields will not have the prefix, so we
-  # return the datafields as a single dimensional array.
-  def merge_880(datafields)
-    if datafields.find { |d| d.start_with? "880" }.present?
-      datafields.map do |d|
-        d[d.index(" ")...-1].strip
-      end
-    else
-      [*datafields]
-    end
   end
 
   def format_contents(data)

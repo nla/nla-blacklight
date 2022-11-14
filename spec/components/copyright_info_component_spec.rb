@@ -313,7 +313,7 @@ RSpec.describe CopyrightInfoComponent, type: :component do
   end
 
   def sample_marc
-    IO.read("spec/files/marc/4157458.marcxml")
+    load_marc_from_file 4157458
   end
 
   def service_response
