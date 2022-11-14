@@ -34,6 +34,6 @@ RSpec.describe CopyrightHelper do
   # Need to set the MARC source field to actual MARC XML in order to allow
   # the "#to_marc" method to be included in the SolrDocument model.
   def sample_marc
-    IO.read("spec/files/marc/4157458.marcxml")
+    load_marc_from_file 4157458
   end
 end
