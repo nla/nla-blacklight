@@ -925,6 +925,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#provenance" do
+    context "when there is provenance" do
+      subject(:provenance_value) do
+        document = described_class.new(marc_ss: provenance)
+        document.provenance
+      end
+
+      it "will return all the provenance information" do
+        expect(provenance_value.size).to eq 2
+      end
+    end
+
+    context "when there is no provenance" do
+      subject(:provenance_value) do
+        document = described_class.new(marc_ss: binding_information)
+        document.provenance
+      end
+
+      it "will return an empty array" do
+        expect(provenance_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1081,5 +1105,9 @@ RSpec.describe SolrDocument do
 
   def related_material
     load_marc_from_file 8548630
+  end
+
+  def provenance
+    load_marc_from_file 8065222
   end
 end
