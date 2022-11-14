@@ -901,6 +901,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#related_material" do
+    context "when there is related material" do
+      subject(:related_material_value) do
+        document = described_class.new(marc_ss: related_material)
+        document.related_material
+      end
+
+      it "will return all the related material" do
+        expect(related_material_value.size).to eq 5
+      end
+    end
+
+    context "when there is no related material" do
+      subject(:related_material_value) do
+        document = described_class.new(marc_ss: binding_information)
+        document.related_material
+      end
+
+      it "will return an empty array" do
+        expect(related_material_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1053,5 +1077,9 @@ RSpec.describe SolrDocument do
 
   def binding_information
     load_marc_from_file 5744995
+  end
+
+  def related_material
+    load_marc_from_file 8548630
   end
 end
