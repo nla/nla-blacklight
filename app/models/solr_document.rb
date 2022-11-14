@@ -215,6 +215,10 @@ class SolrDocument
     merge_880 binding
   end
 
+  def related_material
+    get_marc_derived_field("544", options: {alternate_script: false})
+  end
+
   private
 
   def get_online_access_urls
