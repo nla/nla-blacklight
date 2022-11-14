@@ -162,7 +162,7 @@ en:
           post_label: 'for'
         search:
           label: 'search for'
-          placeholder: 'Find books, maps, audio, databases &amp; more...'
+          placeholder: 'Find books, maps, audio, databases & more...'
         submit: 'Search'
       pagination:
         title: 'Results navigation'
