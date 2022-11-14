@@ -183,6 +183,7 @@ class CatalogController < ApplicationController
     config.add_show_field "numbering_note", label: "Numbering Note", accessor: :numbering_note, helper_method: :list
     config.add_show_field "data_quality", label: "Data Quality", accessor: :data_quality, helper_method: :unstyled_list
     config.add_show_field "notes", label: "Notes", accessor: :notes, helper_method: :notes
+    config.add_show_field "binding", label: "Binding", accessor: :binding_information, helper_method: :unstyled_list
     config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :build_subject_search_list
     config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_info, helper_method: :render_copyright_component
     config.add_show_field "related_records", label: "Related Records", accessor: :related_records, helper_method: :render_related_records_component
