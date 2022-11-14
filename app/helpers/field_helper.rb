@@ -4,8 +4,8 @@ module FieldHelper
 
     if value.present?
       elements << safe_join(value.map do |para|
-        content_tag(:p) do
-          para
+        content_tag(:p, class: "mb-0") do
+          link_urls para
         end
       end, "")
     end
@@ -55,12 +55,12 @@ module FieldHelper
       content_tag(:ul) do
         safe_join(value.map do |val|
           content_tag(:li) do
-            val
+            link_urls val
           end
         end, "\n")
       end
     else
-      value.first
+      link_urls value.first
     end
 
     safe_join(elements, "\n")
@@ -74,12 +74,12 @@ module FieldHelper
       content_tag(:ul, class: "list-unstyled") do
         safe_join(value.map do |val|
           content_tag(:li) do
-            val
+            link_urls val
           end
         end, "\n")
       end
     else
-      value.first
+      link_urls value.first
     end
 
     safe_join(elements, "\n")
@@ -93,14 +93,14 @@ module FieldHelper
         safe_join(value.map do |val|
           content_tag(:li) do
             content_tag(:strong) do
-              val
+              link_urls val
             end
           end
         end, "\n")
       end
     else
       content_tag(:strong) do
-        value.first
+        link_urls value.first
       end
     end
 
