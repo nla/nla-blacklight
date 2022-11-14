@@ -207,7 +207,16 @@ class SolrDocument
   end
 
   def rights_information
-    get_sprightly_url
+    [{text: "View in Sprightly", href: "https://sprightly.nla.gov.au/works/#{id}?source=catalogue"}]
+  end
+
+  def binding_information
+    binding = get_marc_derived_field("563a")
+    merge_880 binding
+  end
+
+  def related_material
+    get_marc_derived_field("544", options: {alternate_script: false})
   end
 
   private
@@ -392,9 +401,5 @@ class SolrDocument
     end
 
     contents
-  end
-
-  def get_sprightly_url
-    [{text: "View in Sprightly", href: "https://sprightly.nla.gov.au/works/#{id}?source=catalogue"}]
   end
 end

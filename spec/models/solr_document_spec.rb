@@ -866,6 +866,65 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#binding_information" do
+    context "when there is binding information" do
+      subject(:binding_information_value) do
+        document = described_class.new(marc_ss: binding_information)
+        document.binding_information
+      end
+
+      it "will return all binding information" do
+        expect(binding_information_value.size).to eq 2
+      end
+    end
+
+    context "when there is no binding information" do
+      subject(:binding_information_value) do
+        document = described_class.new(marc_ss: performers)
+        document.binding_information
+      end
+
+      it "will return an empty array" do
+        expect(binding_information_value).to eq []
+      end
+    end
+
+    context "when there is linked 880 field" do
+      subject(:binding_information_value) do
+        document = described_class.new(marc_ss: binding_information)
+        document.binding_information
+      end
+
+      it "will return the linked 880 value" do
+        expect(binding_information_value[1]).to eq "平裝"
+      end
+    end
+  end
+
+  describe "#related_material" do
+    context "when there is related material" do
+      subject(:related_material_value) do
+        document = described_class.new(marc_ss: related_material)
+        document.related_material
+      end
+
+      it "will return all the related material" do
+        expect(related_material_value.size).to eq 5
+      end
+    end
+
+    context "when there is no related material" do
+      subject(:related_material_value) do
+        document = described_class.new(marc_ss: binding_information)
+        document.related_material
+      end
+
+      it "will return an empty array" do
+        expect(related_material_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1014,5 +1073,13 @@ RSpec.describe SolrDocument do
 
   def data_quality
     load_marc_from_file 8539536
+  end
+
+  def binding_information
+    load_marc_from_file 5744995
+  end
+
+  def related_material
+    load_marc_from_file 8548630
   end
 end
