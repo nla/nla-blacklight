@@ -32,7 +32,7 @@ module ApplicationHelper
 
   private
 
-  def get_client_ip(request)
+  def get_client_ip
     client_ip = request.remote_ip
 
     if client_ip.include? ","
@@ -44,7 +44,7 @@ module ApplicationHelper
   end
 
   def client_in_subnet(subnet)
-    client_ip = get_client_ip(request)
+    client_ip = get_client_ip
 
     client_ranges = client_ip.split(".")
     subnet_ranges = subnet.split(".")
