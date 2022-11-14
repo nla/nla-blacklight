@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RelatedRecordsComponent < ViewComponent::Base
   def initialize(records:)
     @related_records = records

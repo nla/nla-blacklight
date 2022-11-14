@@ -15,7 +15,7 @@ module FieldHelper
 
   # Display linked items. If there is more than one item in the list
   # show the values in an unordered list.
-  def url_list(document:, field:, config:, value:, context:)
+  def url_list(document:, field:, config:, value:, context: "show")
     elements = []
 
     if value.size > 1
