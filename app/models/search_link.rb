@@ -102,7 +102,7 @@ class SearchLink
         # This might be a bit extreme for something like www.library.act.gov.au
         # (truncating to act.gov.au), but probably best for search recall to
         # over-truncate than to under-truncate.
-        slice_len = segments[0].length == 2 ? 3 : 2
+        slice_len = (segments[0].length == 2) ? 3 : 2
 
         result = segments[0, slice_len].reverse.join(".").downcase
       end

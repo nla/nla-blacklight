@@ -314,7 +314,7 @@ RSpec.describe FieldHelper do
           headers: {
             "Accept" => "*/*",
             "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-            "User-Agent" => "Faraday v1.10.0"
+            "User-Agent" => "Faraday v2.6.0"
           }
         )
         .to_return(status: 200, body: "", headers: {})
@@ -338,7 +338,7 @@ RSpec.describe FieldHelper do
             headers: {
               "Accept" => "*/*",
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-              "User-Agent" => "Faraday v1.10.0"
+              "User-Agent" => "Faraday v2.6.0"
             }
           )
           .to_return(status: 200, body: "", headers: {})
@@ -426,15 +426,15 @@ RSpec.describe FieldHelper do
   # Need to set the MARC source field to actual MARC XML in order to allow
   # the "#to_marc" method to be included in the SolrDocument model.
   def sample_marc
-    IO.read("spec/files/marc/4157458.marcxml")
+    load_marc_from_file 4157458
   end
 
   def no_broken_links_marc
-    IO.read("spec/files/marc/113030.marcxml")
+    load_marc_from_file 113030
   end
 
   def full_contents_marc
-    IO.read("spec/files/marc/1455669.marcxml")
+    load_marc_from_file 1455669
   end
 
   def copyright_response

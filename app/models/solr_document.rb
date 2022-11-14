@@ -206,6 +206,10 @@ class SolrDocument
     get_marc_derived_field("514abcdefghijkmuz", options: {alternate_script: false})
   end
 
+  def rights_information
+    get_sprightly_url
+  end
+
   private
 
   def get_online_access_urls
@@ -388,5 +392,9 @@ class SolrDocument
     end
 
     contents
+  end
+
+  def get_sprightly_url
+    [{text: "View in Sprightly", href: "https://sprightly.nla.gov.au/works/#{id}?source=catalogue"}]
   end
 end
