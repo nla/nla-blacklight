@@ -972,7 +972,7 @@ RSpec.describe SolrDocument do
       end
     end
   end
-  
+
   describe "#music_publisher_number" do
     context "when there are music publisher numbers" do
       subject(:music_publisher_number_value) do
@@ -1162,7 +1162,7 @@ RSpec.describe SolrDocument do
   def govt_doc_number
     load_marc_from_file 3823089
   end
-  
+
   def music_publisher_number
     load_marc_from_file 3356244
   end
