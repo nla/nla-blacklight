@@ -949,6 +949,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#govt_doc_number" do
+    context "when there are government document numbers" do
+      subject(:govt_doc_number_value) do
+        document = described_class.new(marc_ss: govt_doc_number)
+        document.govt_doc_number
+      end
+
+      it "will return all the government document numbers" do
+        expect(govt_doc_number_value.size).to eq 2
+      end
+    end
+
+    context "when there are no government document numbers" do
+      subject(:govt_doc_number_value) do
+        document = described_class.new(marc_ss: provenance)
+        document.govt_doc_number
+      end
+
+      it "will return an empty array" do
+        expect(govt_doc_number_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1109,5 +1133,9 @@ RSpec.describe SolrDocument do
 
   def provenance
     load_marc_from_file 8065222
+  end
+
+  def govt_doc_number
+    load_marc_from_file 3823089
   end
 end

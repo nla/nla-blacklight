@@ -236,6 +236,10 @@ class SolrDocument
     get_marc_derived_field("541abcdefhno368:5613au", options: {alternate_script: false})
   end
 
+  def govt_doc_number
+    get_marc_derived_field("086ab", options: {alternate_script: false})
+  end
+
   private
 
   def get_online_access_urls
