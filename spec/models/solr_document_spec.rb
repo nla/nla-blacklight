@@ -949,6 +949,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#music_publisher_number" do
+    context "when there are music publisher numbers" do
+      subject(:music_publisher_number_value) do
+        document = described_class.new(marc_ss: music_publisher_number)
+        document.music_publisher_number
+      end
+
+      it "will return all the music publisher numbers" do
+        expect(music_publisher_number_value.size).to eq 3
+      end
+    end
+
+    context "when there are no music publisher numbers" do
+      subject(:music_publisher_number_value) do
+        document = described_class.new(marc_ss: provenance)
+        document.music_publisher_number
+      end
+
+      it "will return an empty array" do
+        expect(music_publisher_number_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1109,5 +1133,9 @@ RSpec.describe SolrDocument do
 
   def provenance
     load_marc_from_file 8065222
+  end
+
+  def music_publisher_number
+    load_marc_from_file 3356244
   end
 end
