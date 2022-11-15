@@ -82,12 +82,18 @@ RSpec.describe FieldHelper do
     end
 
     context "when there are multiple items" do
-      let(:value) do
-        ["Example A", "Example B"]
-      end
+      let(:value) { ["Example A", "Example B"] }
 
       it "generates an unordered list" do
         expect(value_list).to eq "<ul><li>Example A</li>\n<li>Example B</li></ul>"
+      end
+    end
+
+    context "when there is a URL in the text" do
+      let(:value) { ["Example: https://google.com/test.pdf"] }
+
+      it "generates a link around the URL" do
+        expect(value_list).to eq "Example: <a href=\"https://google.com/test.pdf\">https://google.com/test.pdf</a>"
       end
     end
   end
@@ -112,6 +118,14 @@ RSpec.describe FieldHelper do
         expect(value_list).to eq "<ul class=\"list-unstyled\"><li>Example A</li>\n<li>Example B</li></ul>"
       end
     end
+
+    context "when there is a URL in the text" do
+      let(:value) { ["Example: https://google.com/test.pdf"] }
+
+      it "generates a link around the URL" do
+        expect(value_list).to eq "Example: <a href=\"https://google.com/test.pdf\">https://google.com/test.pdf</a>"
+      end
+    end
   end
 
   describe "#emphasized_list" do
@@ -132,6 +146,14 @@ RSpec.describe FieldHelper do
 
       it "generates a list of emphasized text" do
         expect(value_list).to eq "<ul><li><strong>Access condition A</strong></li>\n<li><strong>Access condition B</strong></li></ul>"
+      end
+    end
+
+    context "when there is a URL in the text" do
+      let(:value) { ["Example: https://google.com/test.pdf"] }
+
+      it "generates a link around the URL" do
+        expect(value_list).to eq "<strong>Example: <a href=\"https://google.com/test.pdf\">https://google.com/test.pdf</a></strong>"
       end
     end
   end
@@ -400,25 +422,26 @@ RSpec.describe FieldHelper do
     let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, summary: value) }
 
     context "when there are summaries" do
-      let(:value) do
-        [
-          "Summary A",
-          "Summary B"
-        ]
-      end
+      let(:value) { ["Summary A", "Summary B"] }
 
       it "renders multiple paragraphs" do
-        expect(summary_value).to eq "<p>Summary A</p><p>Summary B</p>"
+        expect(summary_value).to eq "<p class=\"mb-0\">Summary A</p><p class=\"mb-0\">Summary B</p>"
       end
     end
 
     context "when there are no summaries" do
-      let(:value) do
-        []
-      end
+      let(:value) { [] }
 
       it "does not render any paragraphs" do
         expect(summary_value).to eq ""
+      end
+    end
+
+    context "when there is a URL in the text" do
+      let(:value) { ["Example: https://google.com/test.pdf"] }
+
+      it "generates a link around the URL" do
+        expect(summary_value).to eq "<p class=\"mb-0\">Example: <a href=\"https://google.com/test.pdf\">https://google.com/test.pdf</a></p>"
       end
     end
   end
