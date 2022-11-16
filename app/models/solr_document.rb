@@ -244,6 +244,10 @@ class SolrDocument
     get_marc_derived_field("028a", options: {alternate_script: false})
   end
 
+  def exhibited
+    get_marc_derived_field("5853ab", options: {alternate_script: false})
+  end
+
   private
 
   def get_online_access_urls
