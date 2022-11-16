@@ -1045,6 +1045,34 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#cited_in" do
+    context "when there are citations" do
+      subject(:cited_in_value) do
+        document = described_class.new(marc_ss: cited_in)
+        document.cited_in
+      end
+
+      it "will return all citations" do
+        expect(cited_in_value.size).to eq 2
+      end
+
+      it "will return linked 880" do
+        expect(cited_in_value).to include "For contents see \"中國叢書綜錄\", 1:307."
+      end
+    end
+
+    context "when there are no citations" do
+      subject(:cited_in_value) do
+        document = described_class.new(marc_ss: provenance)
+        document.cited_in
+      end
+
+      it "will return an empty array" do
+        expect(cited_in_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1221,5 +1249,9 @@ RSpec.describe SolrDocument do
 
   def acknowledgements
     load_marc_from_file 4464657
+  end
+
+  def cited_in
+    load_marc_from_file 5784759
   end
 end
