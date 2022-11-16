@@ -256,6 +256,10 @@ class SolrDocument
     get_marc_derived_field("510abc")
   end
 
+  def reproduction
+    get_marc_derived_field("533abcdefmn")
+  end
+
   private
 
   def get_online_access_urls
