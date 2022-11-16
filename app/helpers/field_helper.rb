@@ -24,7 +24,7 @@ module FieldHelper
           content_tag(:li) do
             list_content = []
             list_content << link_to(link[:text], link[:href])
-            if document.has_broken_links?
+            if document.has_broken_links? && document.broken_links[link[:href]]
               list_content << content_tag(:p, class: "small") do
                 build_broken_link(document.broken_links[link[:href]])
               end
@@ -37,7 +37,7 @@ module FieldHelper
       link = value.first
       elements << link_to(link[:text], link[:href])
 
-      if document.has_broken_links?
+      if document.has_broken_links? && document.broken_links[link[:href]]
         elements << content_tag(:p, class: "small") do
           build_broken_link(document.broken_links[link[:href]])
         end
