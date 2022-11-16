@@ -997,6 +997,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#exhibited" do
+    context "when there are exhibitions" do
+      subject(:exhibited_value) do
+        document = described_class.new(marc_ss: exhibition_info)
+        document.exhibited
+      end
+
+      it "will return all exibitions" do
+        expect(exhibited_value.size).to eq 3
+      end
+    end
+
+    context "when there are no exhibitions" do
+      subject(:exhibited_value) do
+        document = described_class.new(marc_ss: provenance)
+        document.exhibited
+      end
+
+      it "will return an empty array" do
+        expect(exhibited_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1165,5 +1189,9 @@ RSpec.describe SolrDocument do
 
   def music_publisher_number
     load_marc_from_file 3356244
+  end
+
+  def exhibition_info
+    load_marc_from_file 6453708
   end
 end
