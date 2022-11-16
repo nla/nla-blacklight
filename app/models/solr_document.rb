@@ -252,6 +252,10 @@ class SolrDocument
     get_marc_derived_field("936a", options: {alternate_script: false})
   end
 
+  def cited_in
+    get_marc_derived_field("510abc")
+  end
+
   private
 
   def get_online_access_urls
