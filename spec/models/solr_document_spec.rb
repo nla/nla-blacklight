@@ -1021,6 +1021,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#acknowledgement" do
+    context "when there are acknowledgements" do
+      subject(:acknowledgement_value) do
+        document = described_class.new(marc_ss: acknowledgements)
+        document.acknowledgement
+      end
+
+      it "will return all acknowledgements" do
+        expect(acknowledgement_value).to eq ["Microfilmed with the generous support of Dr Diana Carroll."]
+      end
+    end
+
+    context "when there are no exhibitions" do
+      subject(:acknowledgement_value) do
+        document = described_class.new(marc_ss: music_publisher_number)
+        document.acknowledgement
+      end
+
+      it "will return an empty array" do
+        expect(acknowledgement_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1193,5 +1217,9 @@ RSpec.describe SolrDocument do
 
   def exhibition_info
     load_marc_from_file 6453708
+  end
+
+  def acknowledgements
+    load_marc_from_file 4464657
   end
 end
