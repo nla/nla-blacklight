@@ -1073,6 +1073,34 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#reproduction" do
+    context "when there are reproductions" do
+      subject(:reproduction_value) do
+        document = described_class.new(marc_ss: reproductions)
+        document.reproduction
+      end
+
+      it "will return all reproductions" do
+        expect(reproduction_value.size).to eq 2
+      end
+
+      it "will return linked 880" do
+        expect(reproduction_value).to include "Photo-offset. 香港?, 1970?. 19 cm."
+      end
+    end
+
+    context "when there are no reproductions" do
+      subject(:reproduction_value) do
+        document = described_class.new(marc_ss: cited_in)
+        document.reproduction
+      end
+
+      it "will return an empty array" do
+        expect(reproduction_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1253,5 +1281,9 @@ RSpec.describe SolrDocument do
 
   def cited_in
     load_marc_from_file 5784759
+  end
+
+  def reproductions
+    load_marc_from_file 2904384
   end
 end
