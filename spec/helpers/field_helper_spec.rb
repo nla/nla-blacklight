@@ -68,6 +68,21 @@ RSpec.describe FieldHelper do
         expect(document).not_to have_broken_links
       end
     end
+
+    context "when there aren't broken links for url" do
+      let(:value) {
+        [{
+          text: "Online version. Click on provided links to display issues available; then click on index of city codes to view particular issues.",
+          href: "https://purl.access.gpo.gov/GPO/LPS1384"
+        }]
+      }
+
+      let(:document) { SolrDocument.new(marc_ss: some_broken_links_marc) }
+
+      it "does not generate broken links text" do
+        expect(document.broken_links[value.first[:href]]).to be_nil
+      end
+    end
   end
 
   describe "#list" do
@@ -454,6 +469,10 @@ RSpec.describe FieldHelper do
 
   def no_broken_links_marc
     load_marc_from_file 113030
+  end
+
+  def some_broken_links_marc
+    load_marc_from_file 3823089
   end
 
   def full_contents_marc
