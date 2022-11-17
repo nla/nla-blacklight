@@ -237,7 +237,7 @@ class SolrDocument
   end
 
   def govt_doc_number
-    get_marc_derived_field("086ab", options: {alternate_script: false})
+    get_marc_derived_field("086a", options: {alternate_script: false})
   end
 
   def music_publisher_number
