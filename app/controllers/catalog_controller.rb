@@ -189,6 +189,7 @@ class CatalogController < ApplicationController
     config.add_show_field "cited_in", label: "Cited In", accessor: :cited_in, helper_method: :unstyled_list
     config.add_show_field "reproduction", label: "Reproduction", accessor: :reproduction, helper_method: :unstyled_list
     config.add_show_field "has_subseries", label: "Has Sub-series", accessor: :has_subseries, helper_method: :unstyled_list
+    config.add_show_field "subseries_of", label: "Sub-series Of", accessor: :subseries_of, helper_method: :unstyled_list
     config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :build_subject_search_list
     config.add_show_field "acknowledgement", label: "Acknowledgement", accessor: :acknowledgement, helper_method: :unstyled_list
     config.add_show_field "exhibited", label: "Exhibited", accessor: :exhibited, helper_method: :list
