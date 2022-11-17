@@ -286,6 +286,10 @@ class SolrDocument
     get_marc_derived_field("533abcdefmn")
   end
 
+  def has_subseries
+    get_marc_derived_field("762abistx", options: {alternate_script: false})
+  end
+
   private
 
   def get_online_access_urls
