@@ -1125,6 +1125,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#subseries_of" do
+    context "when there are series" do
+      subject(:subseries_of_value) do
+        document = described_class.new(marc_ss: subseries_of_info)
+        document.subseries_of
+      end
+
+      it "will return all series" do
+        expect(subseries_of_value.size).to eq 2
+      end
+    end
+
+    context "when there are no series" do
+      subject(:subseries_of_value) do
+        document = described_class.new(marc_ss: reproductions)
+        document.subseries_of
+      end
+
+      it "will return an empty array" do
+        expect(subseries_of_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1313,5 +1337,9 @@ RSpec.describe SolrDocument do
 
   def has_subseries_info
     load_marc_from_file 2036712
+  end
+
+  def subseries_of_info
+    load_marc_from_file 2647507
   end
 end

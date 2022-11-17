@@ -290,6 +290,10 @@ class SolrDocument
     get_marc_derived_field("762abistx", options: {alternate_script: false})
   end
 
+  def subseries_of
+    get_marc_derived_field("760abistx", options: {alternate_script: false})
+  end
+
   private
 
   def get_online_access_urls
