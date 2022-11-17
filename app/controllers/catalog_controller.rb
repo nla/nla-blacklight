@@ -61,8 +61,8 @@ class CatalogController < ApplicationController
     config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: :render_bookmarks_control?)
 
     # solr field configuration for document/show views
-    # config.show.title_field = 'title_tsim'
-    # config.show.display_type_field = 'format'
+    config.show.title_field = "title_tsim"
+    config.show.display_type_field = "format"
 
     # scxxx Thumbnails
     config.show.thumbnail_field = "thumbnail_path_ss"
