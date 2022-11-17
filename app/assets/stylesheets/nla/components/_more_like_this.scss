@@ -1,0 +1,16 @@
+.list-unstyled {
+  margin-bottom: 0;
+
+  .more_like_this_document {
+    margin-bottom: 0.5em;
+  }
+
+  .more_like_this_document:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .mlt_title a {
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
+  }
+}

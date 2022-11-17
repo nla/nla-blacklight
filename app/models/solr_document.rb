@@ -9,6 +9,7 @@ require Rails.root.join("lib", "mapsearch", "map_search")
 class SolrDocument
   include Blacklight::Solr::Document
   include REXML
+  include Blacklight::Configurable
 
   # The following shows how to setup this blacklight document to display marc documents
   extension_parameters[:marc_source_field] = :marc_ss
@@ -32,6 +33,31 @@ class SolrDocument
   # and Blacklight::Document::SemanticFields#to_semantic_values
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
+
+  # Overrides Blacklight::Document#more_like_this. Uses the MLT query parser because the request
+  # handler doesn't search across shards in Solr 8.7.
+  # TODO: In Solr 8.8 the request handler searches across shards and this logic should be updated when Solr is upgraded.
+  def more_like_this
+    params = {
+      q: "{!mlt qf=lc_callnum_ssim,title_tsim,author_tsim,subject_tsimv,published_ssim,language_ssim boost=true}#{id}",
+      fl: "id,title_tsim,format",
+      indent: "off",
+      rows: 5
+    }
+    search_repository = Blacklight.repository_class.new(blacklight_config)
+    search_response = search_repository.search(params)
+
+    result = []
+    response = search_response["response"]
+    if response.present?
+      if response["numFound"] > 0
+        response["docs"].each do |doc|
+          result << SolrDocument.new(doc)
+        end
+      end
+    end
+    result
+  end
 
   # Get data from the full marc record contained in the solr document using a Traject spec.
   def get_marc_derived_field(spec, options: {separator: " "}, merge_880: true)
