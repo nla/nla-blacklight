@@ -314,6 +314,32 @@ class SolrDocument
     get_marc_derived_field("310ab")
   end
 
+  def has_eresources?
+    eresource_urls = []
+
+    online_access_urls = get_online_access_urls
+    online_access_urls.each do |url|
+      eresource_urls << url if Eresources.new.known_url(url[:href]).present?
+    end
+
+    map_url = get_map_search_url
+    if map_url.present?
+      eresource_urls << map_url if Eresources.new.known_url(map_url[:href]).present?
+    end
+
+    copy_urls = get_copy_urls
+    copy_urls.each do |url|
+      eresource_urls << url if Eresources.new.known_url(url[:href]).present?
+    end
+
+    related_urls = get_related_urls
+    related_urls.each do |url|
+      eresource_urls << url if Eresources.new.known_url(url[:href]).present?
+    end
+
+    eresource_urls.present?
+  end
+
   private
 
   def get_online_access_urls
@@ -440,32 +466,6 @@ class SolrDocument
   def get_related_records
     related = RelatedRecords.new(self)
     related.in_collection? ? related : []
-  end
-
-  def has_eresources?
-    eresource_urls = []
-
-    online_access_urls = get_online_access_urls
-    online_access_urls.each do |url|
-      eresource_urls << url if Eresources.new.known_url(url[:href]).present?
-    end
-
-    map_url = get_map_search_url
-    if map_url.present?
-      eresource_urls << map_url if Eresources.new.known_url(map_url[:href]).present?
-    end
-
-    copy_urls = get_copy_urls
-    copy_urls.each do |url|
-      eresource_urls << url if Eresources.new.known_url(url[:href]).present?
-    end
-
-    related_urls = get_related_urls
-    related_urls.each do |url|
-      eresource_urls << url if Eresources.new.known_url(url[:href]).present?
-    end
-
-    eresource_urls.present?
   end
 
   def format_contents(data)
