@@ -30,6 +30,82 @@ module ApplicationHelper
     false
   end
 
+  def in_local_subnet?
+    client_in_subnets(local_subnets)
+  end
+
+  def in_staff_subnet?
+    client_in_subnets(staff_subnets)
+  end
+
+  def user_location
+    if in_local_subnet?
+      :onsite
+    elsif in_staff_subnet?
+      :staff
+    else
+      :offsite
+    end
+  end
+
+  def user_type
+    if in_local_subnet?
+      :local
+    elsif in_staff_subnet?
+      :staff
+    else
+      :external
+    end
+  end
+
+  def makelink(document:, href:, text:, classes: "", extended_info: false, longtext: "")
+    caption = ""
+    entry = nil
+
+    if document.has_eresources?
+      if href.present?
+        entry = Eresources.new.known_url(href)
+      end
+
+      if entry.present?
+        caption = if entry["remoteaccess"] == "yes"
+          if user_location == :offsite
+            if current_user
+              "You are logged in and can access this resource"
+            else
+              "Log in with your Library card to access this resource"
+            end
+          else
+            "You can access this resource because you are inside the National Library building"
+          end
+        elsif user_location == :offsite
+          "You can access this resource if you visit the National Library building"
+        else
+          "You can access this resource because you are inside the National Library building"
+        end
+      end
+    end
+
+    result = []
+
+    if text.present? && href.present?
+      # if an eResources link, route to offsite handler
+      result << if entry.present?
+        link_to(text, offsite_catalog_path(id: document.id, url: href))
+      else
+        link_to(text, href)
+      end
+    end
+
+    if extended_info
+      result << content_tag(:div, class: "linkCaption") do
+        content_tag(:small, caption)
+      end
+    end
+
+    result
+  end
+
   private
 
   def get_client_ip

@@ -23,7 +23,8 @@ module FieldHelper
         safe_join(value.map do |link|
           content_tag(:li) do
             list_content = []
-            list_content << link_to(link[:text], link[:href])
+            # list_content << link_to(link[:text], link[:href])
+            list_content += makelink(document: document, href: link[:href], text: link[:text], extended_info: true)
             if document.has_broken_links? && document.broken_links[link[:href]]
               list_content << content_tag(:p, class: "small") do
                 build_broken_link(document.broken_links[link[:href]])
@@ -35,7 +36,8 @@ module FieldHelper
       end
     else
       link = value.first
-      elements << link_to(link[:text], link[:href])
+      # elements << link_to(link[:text], link[:href])
+      elements += makelink(document: document, href: link[:href], text: link[:text], longtext: link[:text], extended_info: true)
 
       if document.has_broken_links? && document.broken_links[link[:href]]
         elements << content_tag(:p, class: "small") do

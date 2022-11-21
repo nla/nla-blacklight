@@ -6,8 +6,8 @@ class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
   include BlacklightRangeLimit::ControllerOverride
-
   include Blacklight::Marc::Catalog
+  include NLA::Offsite
 
   configure_blacklight do |config|
     # default advanced config values
