@@ -44,5 +44,5 @@ When("I click the log out link") do
 end
 
 Then("I should be redirected to the home page") do
-  expect(page).to have_content("Welcome LSP Board!")
+  expect(page).to have_content("Your National Library card")
 end

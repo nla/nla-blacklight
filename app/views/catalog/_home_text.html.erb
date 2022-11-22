@@ -1,49 +1,21 @@
-<div class="jumbotron text-center">
-  <h1 class="jumbotron-heading"><%= t('blacklight.welcome') %></h1>
-
-  <p class="lead">Blacklight is a multi-institutional open-source collaboration building a better discovery platform framework.</p>
-
-<!--  <p>-->
-    <%#= link_to 'Read the Documentation', 'https://github.com/projectblacklight/blacklight/wiki', class: 'btn btn-primary' %>
-    <%#= link_to 'See Examples', 'http://projectblacklight.org', class: 'btn btn-outline-secondary' %>
-<!--  </p>-->
-</div>
 <section class="library-card">
   <h2><%= t('blacklight.library_card.title') %></h2>
-  <p><img src="/assets/library-cards.jpg" alt="Library cards" class="w-100"></p>
+  <p><%= image_tag "library-cards.jpg", class: "w-100", alt: "Library cards" %></p>
   <p><%= t('blacklight.library_card.intro') %></p>
-  <p><a class="btn btn-outline-secondary" href="https://www.nla.gov.au/getalibrarycard/registration"><%= t('blacklight.library_card.button') %></a></p>
-  <p>With your Library card, you can:</p>
+  <p><%= link_to t("blacklight.library_card.button"), "https://www.nla.gov.au/getalibrarycard/registration", class: "btn btn-outline-secondary" %></p>
+  <p><%= t("blacklight.library_card.actions_header") %></p>
+  <% actions = t("blacklight.library_card.actions").split("|") %>
   <ul>
-    <li>Use books and other collection items in our <a href="https://www.nla.gov.au/reading-rooms">reading rooms</a></li>
-    <li>Access online databases through our <a href="https://www.nla.gov.au/eresources">eResources</a> portal, from anywhere in Australia</li>
-    <li>Top up your balance to <a href="https://www.nla.gov.au/using-library/individuals/copying-reading-rooms">print, photocopy and scan</a> in our reading rooms</li>
+    <% actions.each do |action| %>
+      <li><%= action.html_safe %></li>
+    <% end %>
   </ul>
 </section>
-<div id="getting-started">
-  <h2>This is just the beginning...</h2>
-
-<!--  <p>There are many ways to override specific behaviors and views in Blacklight. Because Blacklight is distributed as a Rails engine-based gem, all customization of Blacklight behavior should be done within your application by overriding Blacklight-provided behaviors with your own.</p>-->
-
-<!--  <p>-->
-<!--    <ol>-->
-<!--      <li>To modify this text, you need to <a href="http://guides.rubyonrails.org/engines.html#improving-engine-functionality">override the Blacklight-provided view</a>.-->
-<!--  You can copy this file, located in the blacklight gem: <br />-->
-<!--  <%#= Blacklight.root %>/app/views/catalog/_home_text.html.erb <br />-->
-<!--  to your own application: <br />-->
-<!--   <%#= Rails.root %>/app/views/catalog/_home_text.html.erb-->
-<!--      </li>-->
-<!--      <li><a href="https://github.com/projectblacklight/blacklight/wiki/Indexing-your-data-into-solr">Index your own data</a> into Solr</li>-->
-<!--      <li><a href="https://github.com/projectblacklight/blacklight/wiki#blacklight-configuration">Configure Blacklight</a> to match your data and user-experience needs</li>-->
-<!--      <li><a href="https://github.com/projectblacklight/blacklight/wiki#support">Get in touch</a> with your comments, questions, and ideas</li>-->
-<!--    </ol>-->
-<!--  </p>-->
-</div>
 
 <%# This is the same panel shown in the Rails welcome template %>
 <% if Rails.env.development? || Rails.env.test? %>
 <div id="about" class="card">
-  <h2 class='card-header collapsed collapse-toggle' data-toggle="collapse" data-target="#about-content"><a href="/rails/info/properties">About this application environment</a></h2>
+  <h6 class="card-header collapsed collapse-toggle" data-toggle="collapse" data-target="#about-content"><a href="/rails/info/properties">About this application environment</a></h6>
   <div id="about-content" class="card-body collapse"></div>
 </div>
 <% end %>
