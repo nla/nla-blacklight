@@ -61,6 +61,7 @@ module ApplicationHelper
   def makelink(document:, href:, text:, classes: "", extended_info: false, longtext: "")
     caption = ""
     entry = nil
+    icon = ""
 
     if document.has_eresources?
       if href.present?
@@ -69,6 +70,11 @@ module ApplicationHelper
 
       if entry.present?
         caption = if entry["remoteaccess"] == "yes"
+          icon = <<~ICON
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-key-fill" viewBox="0 0 16 16">
+              <path d="M3.5 11.5a3.5 3.5 0 1 1 3.163-5H14L15.5 8 14 9.5l-1-1-1 1-1-1-1 1-1-1-1 1H6.663a3.5 3.5 0 0 1-3.163 2zM2.5 9a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+            </svg>
+          ICON
           if user_location == :offsite
             if current_user
               "You are logged in and can access this resource"
@@ -78,10 +84,17 @@ module ApplicationHelper
           else
             "You can access this resource because you are inside the National Library building"
           end
-        elsif user_location == :offsite
-          "You can access this resource if you visit the National Library building"
         else
-          "You can access this resource because you are inside the National Library building"
+          icon = <<~ICON
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-building-fill" viewBox="0 0 16 16">
+              <path d="M3 0a1 1 0 0 0-1 1v14a1 1 0 0 0 1 1h3v-3.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 .5.5V16h3a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1H3Zm1 2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5ZM4 5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM7.5 5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1ZM4.5 8h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Zm2.5.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1Zm3.5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5Z"/>
+            </svg>
+          ICON
+          if user_location == :offsite
+            "You can access this resource if you visit the National Library building"
+          else
+            "You can access this resource because you are inside the National Library building"
+          end
         end
       end
     end
@@ -97,9 +110,9 @@ module ApplicationHelper
       end
     end
 
-    if extended_info
+    if extended_info && caption.present?
       result << content_tag(:div, class: "linkCaption") do
-        content_tag(:small, caption)
+        content_tag(:small, "#{icon}#{caption}".html_safe)
       end
     end
 
