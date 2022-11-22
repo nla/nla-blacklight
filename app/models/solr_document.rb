@@ -271,7 +271,7 @@ class SolrDocument
   end
 
   def exhibited
-    get_marc_derived_field("5853ab", options: {alternate_script: false})
+    get_marc_derived_field("5853a", options: {alternate_script: false})
   end
 
   def acknowledgement
