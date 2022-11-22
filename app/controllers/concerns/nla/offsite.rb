@@ -35,7 +35,7 @@ module NLA::Offsite
             t("offsite.other", title: @eresource[:entry]["title"])
           end
 
-          return redirect_to new_user_session_url, flash: {info: info_msg}
+          return redirect_to new_user_session_url, flash: {alert: info_msg}
         end
       else
         @requested_url = url
