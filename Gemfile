@@ -69,7 +69,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Blacklight dependencies
-gem "blacklight", "~> 7.31"
+gem "blacklight", "~> 7.32"
 gem "blacklight_advanced_search", "~> 7.0"
 gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
 gem "bootstrap", "~> 4.0"
