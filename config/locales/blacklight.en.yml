@@ -33,6 +33,11 @@ en:
     welcome: 'Welcome LSP Board!'
     and: 'and'
     or: 'or'
+    library_card:
+      title: 'Your National Library card'
+      intro: 'A National Library card is your ticket to access millions of items from our collections, onsite or online, wherever you are. Getting a Library card is free to all Australian residents and signing up is simple.'
+      button: 'Get a library card'
+      
 
     modal:
       close: "Close"
