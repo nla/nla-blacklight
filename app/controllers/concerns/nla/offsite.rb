@@ -10,7 +10,7 @@ module NLA::Offsite
     url = params[:url]
 
     unless url.match?(/^https?:\/\/.*/)
-      raise "#{url} is not a valid URL"
+      raise t("offsite.invalid_url", url: url)
     end
 
     @eresource = Eresources.new.known_url(url)
@@ -30,9 +30,9 @@ module NLA::Offsite
           return redirect_to generate_ezproxy_url(@eresource[:url]), allow_other_host: true
         else
           info_msg = if @eresource[:entry]["title"].strip == "ebsco"
-            "Log into eResources with your National Library card"
+            t("offsite.ebsco")
           else
-            "To access #{@eresource[:entry]["title"]}, log in with your National Library card details."
+            t("offsite.other", title: @eresource[:entry]["title"])
           end
 
           return redirect_to new_user_session_url, flash: {info: info_msg}

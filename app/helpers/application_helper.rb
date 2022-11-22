@@ -77,12 +77,12 @@ module ApplicationHelper
           ICON
           if user_location == :offsite
             if current_user
-              "You are logged in and can access this resource"
+              t("eresource.remote_access.logged_in")
             else
-              "Log in with your Library card to access this resource"
+              t("eresource.remote_access.logged_out")
             end
           else
-            "You can access this resource because you are inside the National Library building"
+            t("eresource.onsite")
           end
         else
           icon = <<~ICON
@@ -91,9 +91,9 @@ module ApplicationHelper
             </svg>
           ICON
           if user_location == :offsite
-            "You can access this resource if you visit the National Library building"
+            t("eresource.offsite")
           else
-            "You can access this resource because you are inside the National Library building"
+            t("eresource.onsite")
           end
         end
       end
