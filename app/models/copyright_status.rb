@@ -4,7 +4,7 @@ require "faraday"
 require "faraday/middleware"
 require "faraday/adapter/net_http"
 
-class CopyrightInfo
+class CopyrightStatus
   include ActiveModel::Model
 
   attr_accessor :document, :info
