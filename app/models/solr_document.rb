@@ -136,8 +136,8 @@ class SolrDocument
     Notes.new(self).values
   end
 
-  def copyright_info
-    get_copyright_info
+  def copyright_status
+    get_copyright_status
   end
 
   def form_of_work
@@ -294,6 +294,10 @@ class SolrDocument
     get_marc_derived_field("760abistx", options: {alternate_script: false})
   end
 
+  def available_from
+    get_marc_derived_field("037b", options: {alternate_script: false})
+  end
+
   private
 
   def get_online_access_urls
@@ -352,8 +356,8 @@ class SolrDocument
     SearchLink.new(self).links
   end
 
-  def get_copyright_info
-    CopyrightInfo.new(self)
+  def get_copyright_status
+    CopyrightStatus.new(self)
   end
 
   def get_uniform_title
