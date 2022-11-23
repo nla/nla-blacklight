@@ -186,7 +186,7 @@ RSpec.describe SolrDocument do
 
   describe "#copyright_info" do
     subject(:copyright_info_value) do
-      document.copyright_info
+      document.copyright_status
     end
 
     let(:document) { described_class.new(marc_ss: form_of_work, id: 7291584) }
@@ -1149,6 +1149,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#available_from" do
+    context "when there are sources" do
+      subject(:available_from_value) do
+        document = described_class.new(marc_ss: available_from)
+        document.available_from
+      end
+
+      it "will return all sources" do
+        expect(available_from_value.size).to eq 2
+      end
+    end
+
+    context "when there are no sources" do
+      subject(:available_from_value) do
+        document = described_class.new(marc_ss: subseries_of_info)
+        document.available_from
+      end
+
+      it "will return an empty array" do
+        expect(available_from_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1341,5 +1365,9 @@ RSpec.describe SolrDocument do
 
   def subseries_of_info
     load_marc_from_file 2647507
+  end
+
+  def available_from
+    load_marc_from_file 23706
   end
 end

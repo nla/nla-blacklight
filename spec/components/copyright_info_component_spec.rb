@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe CopyrightInfoComponent, type: :component do
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485) }
 
-  let(:copyright) { object_double(CopyrightInfo.new(document), info: {}) }
+  let(:copyright) { object_double(CopyrightStatus.new(document), info: {}) }
 
   before do
     stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
