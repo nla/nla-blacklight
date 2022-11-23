@@ -1,0 +1,37 @@
+@charset "UTF-8";
+@import "variables";
+
+.collection-search {
+  .h5 {
+    color: color("gray-medium");
+  }
+  
+  .collection-search-box {
+    background-color: color("purple");
+    
+    h2 {
+      color: color("white");
+    }
+    
+    .search-q {
+      background-color: color("white") !important;
+    }
+  }
+}
+
+.eresources-search,
+.finding-aids-search {
+  .image-container {
+    overflow: hidden;
+  }
+  
+  .card-img-top {
+    transition: transform .1s ease-in-out;
+  }
+  
+  &:hover {
+    .card-img-top {
+      transform: scale(1.1);
+    }
+  }
+}
