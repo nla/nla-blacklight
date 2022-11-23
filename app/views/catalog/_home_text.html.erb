@@ -1,4 +1,27 @@
-<section class="library-card">
+<div class="collection-search mb-5">
+  <p class="h5"><%= t('blacklight.collection_search.description') %></p>
+  <div class="collection-search-box px-4 py-5">
+    <h2><%= t('blacklight.collection_search.title') %></h2>
+    <%= render_search_bar  %>
+  </div>
+</div>
+<div class="card-deck">
+  <section class="card eresources-search">
+    <div class="image-container"><%= image_tag "eresources.jpg", class: "card-img-top", alt: "Lady using computer" %></div>
+    <div class="card-body">
+      <h2 class="card-title"><%= link_to t("blacklight.eresources.title"), "https://www.nla.gov.au/eresources", class: "stretched-link" %></h2>
+      <p class="card-text"><%= t('blacklight.eresources.description') %></p>
+    </div>
+  </section>
+  <section class="card finding-aids-search">
+    <div class="image-container"><%= image_tag "finding-aids.jpg", class: "card-img-top", alt: "Trolley with manuscript boxes" %></div>
+    <div class="card-body">
+      <h2 class="card-title"><%= link_to t("blacklight.finding_aids.title"), "/finding-aids", class: "stretched-link" %></h2>
+      <p class="card-text"><%= t('blacklight.finding_aids.description') %></p>
+    </div>
+  </section>
+</div>
+<section class="library-card mt-5">
   <h2><%= t('blacklight.library_card.title') %></h2>
   <p><%= image_tag "library-cards.jpg", class: "w-100", alt: "Library cards" %></p>
   <p><%= t('blacklight.library_card.intro') %></p>
