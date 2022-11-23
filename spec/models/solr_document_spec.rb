@@ -1173,6 +1173,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#awards" do
+    context "when there are awards" do
+      subject(:awards_value) do
+        document = described_class.new(marc_ss: awards)
+        document.awards
+      end
+
+      it "will return all awards" do
+        expect(awards_value.size).to eq 2
+      end
+    end
+
+    context "when there are no awards" do
+      subject(:awards_value) do
+        document = described_class.new(marc_ss: reproductions)
+        document.awards
+      end
+
+      it "will return an empty array" do
+        expect(awards_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1369,5 +1393,9 @@ RSpec.describe SolrDocument do
 
   def available_from
     load_marc_from_file 23706
+  end
+
+  def awards
+    load_marc_from_file 7328922
   end
 end
