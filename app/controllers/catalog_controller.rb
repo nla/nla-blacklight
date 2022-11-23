@@ -191,13 +191,14 @@ class CatalogController < ApplicationController
     config.add_show_field "has_subseries", label: "Has Sub-series", accessor: :has_subseries, helper_method: :list
     config.add_show_field "subseries_of", label: "Sub-series Of", accessor: :subseries_of, helper_method: :unstyled_list
     config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :build_subject_search_list
+    config.add_show_field "available_from", label: "Available From", accessor: :available_from, helper_method: :unstyled_list
     config.add_show_field "acknowledgement", label: "Acknowledgement", accessor: :acknowledgement, helper_method: :unstyled_list
     config.add_show_field "exhibited", label: "Exhibited", accessor: :exhibited, helper_method: :list
     config.add_show_field "govt_doc_number", label: "Govt. Doc. Number", accessor: :govt_doc_number, helper_method: :list
     config.add_show_field "music_publisher_number", label: "Music Publisher Number", accessor: :music_publisher_number, helper_method: :list
     config.add_show_field "related_records", label: "Related Records", accessor: :related_records, helper_method: :render_related_records_component
     config.add_show_field "rights_information", label: "Rights information", accessor: :rights_information, helper_method: :url_list, component: StaffOnlyComponent
-    config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_info, helper_method: :render_copyright_component
+    config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_status, helper_method: :render_copyright_component
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"
     # config.add_show_field "subtitle_tsim", label: "Subtitle"

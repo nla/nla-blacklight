@@ -338,7 +338,7 @@ RSpec.describe FieldHelper do
       view.lookup_context.view_paths.push "#{Rails.root}/app/components/"
     end
 
-    let(:copyright) { object_double(CopyrightInfo.new(document), info: copyright_response_hash) }
+    let(:copyright) { object_double(CopyrightStatus.new(document), info: copyright_response_hash) }
     let(:value) { [copyright] }
 
     it "renders the copyright component" do
