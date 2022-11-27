@@ -1221,6 +1221,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#issued_with" do
+    context "when there are related issues" do
+      subject(:issued_with_value) do
+        document = described_class.new(marc_ss: issued_with)
+        document.issued_with
+      end
+
+      it "will return all related issues" do
+        expect(issued_with_value.size).to eq 2
+      end
+    end
+
+    context "when there are no related issues" do
+      subject(:issued_with_value) do
+        document = described_class.new(marc_ss: awards)
+        document.issued_with
+      end
+
+      it "will return an empty array" do
+        expect(issued_with_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1425,5 +1449,9 @@ RSpec.describe SolrDocument do
 
   def related_title
     load_marc_from_file 620407
+  end
+
+  def issued_with
+    load_marc_from_file 1475436
   end
 end
