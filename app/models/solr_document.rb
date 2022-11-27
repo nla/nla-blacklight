@@ -306,6 +306,10 @@ class SolrDocument
     get_marc_derived_field("787abdistx")
   end
 
+  def issued_with
+    get_marc_derived_field("777abdistxz", options: {alternate_script: false})
+  end
+
   private
 
   def get_online_access_urls
