@@ -1245,6 +1245,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#frequency" do
+    context "when there are frequencies" do
+      subject(:frequency_value) do
+        document = described_class.new(marc_ss: frequency)
+        document.frequency
+      end
+
+      it "will return all frequencies" do
+        expect(frequency_value.size).to eq 2
+      end
+    end
+
+    context "when there are no frequencies" do
+      subject(:frequency_value) do
+        document = described_class.new(marc_ss: awards)
+        document.frequency
+      end
+
+      it "will return an empty array" do
+        expect(frequency_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1453,5 +1477,9 @@ RSpec.describe SolrDocument do
 
   def issued_with
     load_marc_from_file 1475436
+  end
+
+  def frequency
+    load_marc_from_file 4604577
   end
 end
