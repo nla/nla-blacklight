@@ -1197,6 +1197,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#related_title" do
+    context "when there are related titles" do
+      subject(:related_title_value) do
+        document = described_class.new(marc_ss: related_title)
+        document.related_title
+      end
+
+      it "will return all related titles" do
+        expect(related_title_value.size).to eq 2
+      end
+    end
+
+    context "when there are no related titles" do
+      subject(:related_title_value) do
+        document = described_class.new(marc_ss: awards)
+        document.related_title
+      end
+
+      it "will return an exmpty array" do
+        expect(related_title_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1397,5 +1421,9 @@ RSpec.describe SolrDocument do
 
   def awards
     load_marc_from_file 7328922
+  end
+
+  def related_title
+    load_marc_from_file 620407
   end
 end
