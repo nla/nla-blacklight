@@ -310,6 +310,10 @@ class SolrDocument
     get_marc_derived_field("777abdistxz", options: {alternate_script: false})
   end
 
+  def frequency
+    get_marc_derived_field("310ab")
+  end
+
   private
 
   def get_online_access_urls
