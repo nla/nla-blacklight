@@ -508,7 +508,6 @@ GEM
       ffi (~> 1.1)
     thor (1.2.1)
     tilt (2.0.11)
-    timecop (0.9.5)
     timeout (0.3.0)
     traject (3.7.0)
       concurrent-ruby (>= 0.8.0)
@@ -625,7 +624,6 @@ DEPENDENCIES
   standard
   stimulus-rails
   strong_migrations (~> 1.4)
-  timecop (~> 0.9.5)
   turbo-rails
   twitter-typeahead-rails (= 0.11.1)
   tzinfo-data
