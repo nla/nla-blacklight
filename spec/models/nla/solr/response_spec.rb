@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe NLA::Solr::Response do
+RSpec.describe Nla::Solr::Response do
   let(:config) { Blacklight::Configuration.new }
 
   context "when a standard search is performed" do

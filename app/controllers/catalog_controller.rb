@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
+require "digest"
+require "erb"
 require "blacklight/solr_cloud/repository"
 
 class CatalogController < ApplicationController
   include BlacklightAdvancedSearch::Controller
   include Blacklight::Catalog
   include BlacklightRangeLimit::ControllerOverride
-
   include Blacklight::Marc::Catalog
 
   configure_blacklight do |config|
@@ -26,7 +27,7 @@ class CatalogController < ApplicationController
     # config.search_builder_class = ::SearchBuilder
 
     ## Model that maps search index responses to the blacklight response model
-    config.response_model = NLA::Solr::Response
+    config.response_model = Nla::Solr::Response
 
     ## Should the raw solr document endpoint (e.g. /catalog/:id/raw) be enabled
     config.raw_endpoint.enabled = true
@@ -47,7 +48,7 @@ class CatalogController < ApplicationController
     config.index.title_field = "title_tsim"
     config.index.display_type_field = "format"
     config.index.thumbnail_field = "thumbnail_path_ss"
-    config.index.thumbnail_presenter = NLAThumbnailPresenter
+    config.index.thumbnail_presenter = NlaThumbnailPresenter
 
     config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
 
@@ -66,7 +67,7 @@ class CatalogController < ApplicationController
 
     # scxxx Thumbnails
     config.show.thumbnail_field = "thumbnail_path_ss"
-    config.show.thumbnail_presenter = NLAThumbnailPresenter
+    config.show.thumbnail_presenter = NlaThumbnailPresenter
     config.show.partials.insert(1, :thumbnail) # thumbnail after show_header
 
     # solr fields that will be treated as facets by the blacklight application
@@ -346,5 +347,47 @@ class CatalogController < ApplicationController
     # if the name of the solr.SuggestComponent provided in your solrconfig.xml is not the
     # default 'mySuggester', uncomment and provide it below
     # config.autocomplete_suggester = 'mySuggester'
+  end
+
+  def offsite
+    url = params[:url]
+
+    unless url.match?(/^https?:\/\/.*/)
+      raise t("offsite.invalid_url", url: url)
+    end
+
+    @eresource = Eresources.new.known_url(url)
+
+    if @eresource.present?
+      if helpers.user_type == :local || helpers.user_type == :staff
+        # let them straight through
+        return redirect_to url, allow_other_host: true
+      elsif @eresource[:entry]["remoteaccess"] == "yes"
+        # already logged in
+        if current_user.present?
+          return redirect_to @eresource[:url], allow_other_host: true if @eresource[:type] == "remoteurl"
+
+          # sorry for this.  EZProxy really needs a URL rewrite function.
+          return redirect_to EzproxyUrl.new("http://yomiuri:1234/rekishikan/").url, allow_other_host: true if url == "https://database.yomiuri.co.jp/rekishikan/"
+
+          return redirect_to EzproxyUrl.new(@eresource[:url]).url, allow_other_host: true
+        else
+          info_msg = if @eresource[:entry]["title"].strip.casecmp? "ebsco"
+            t("offsite.ebsco")
+          else
+            t("offsite.other", title: @eresource[:entry]["title"].strip)
+          end
+
+          return redirect_to new_user_session_url, flash: {alert: info_msg}
+        end
+      else
+        @requested_url = url
+        @record_url = solr_document_path(id: params[:id])
+        return render "onsite_only"
+      end
+    end
+
+    # if all else fails, redirect back to the same catalogue record page
+    redirect_to solr_document_path(id: params[:id])
   end
 end
