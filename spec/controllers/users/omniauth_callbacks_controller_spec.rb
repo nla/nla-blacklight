@@ -1,11 +1,9 @@
-require "rails_helper"
-
 # frozen_string_literal: true
+
+require "rails_helper"
 
 # rubocop:disable RSpec/NamedSubject
 RSpec.describe Users::OmniauthCallbacksController do
-  include Devise::Test::ControllerHelpers
-
   describe "#keycloakopenid" do
     context "when staff user doesn't exist in the database" do
       before do

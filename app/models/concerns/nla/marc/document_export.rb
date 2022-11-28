@@ -1,5 +1,5 @@
 # Override #register_export_formats to remove Refworks export link
-module NLA::Marc::DocumentExport
+module Nla::Marc::DocumentExport
   include Blacklight::Marc::DocumentExport
 
   def self.register_export_formats(document)
