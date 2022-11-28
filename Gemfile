@@ -87,7 +87,7 @@ gem "nokogiri", ">= 1.13.9"
 gem "addressable", "~> 2.8"
 gem "repost", "~> 0.4.1"
 gem "strong_migrations", "~> 1.4"
-gem "view_component", "2.74.0"
+gem "view_component", "2.78.0"
 gem "zk", "~> 1.10"
 gem "down", "~> 5.0"
 
