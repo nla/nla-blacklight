@@ -1,0 +1,98 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "136341ebbc7df224526e3f7eddae2e7ea2398c838f92f8f69ea49d3a85b264da",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/catalog_controller.rb",
+      "line": 371,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(EzproxyUrl.new(\"http://yomiuri:1234/rekishikan/\").url, :allow_other_host => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CatalogController",
+        "method": "offsite"
+      },
+      "user_input": "EzproxyUrl.new(\"http://yomiuri:1234/rekishikan/\").url",
+      "confidence": "High",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "8891c834809fa0ebd604a16127e8550a9ff7dc0963c94343e08b509b4463e02e",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/catalog_controller.rb",
+      "line": 368,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Eresources.new.known_url(params[:url])[:url], :allow_other_host => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CatalogController",
+        "method": "offsite"
+      },
+      "user_input": "Eresources.new.known_url(params[:url])[:url]",
+      "confidence": "High",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "b958643c103b02137c9f02f0a9fbfbef71d2c485c9db58262d1c477f1d4a9496",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/catalog_controller.rb",
+      "line": 364,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(params[:url], :allow_other_host => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CatalogController",
+        "method": "offsite"
+      },
+      "user_input": "params[:url]",
+      "confidence": "High",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "f7705a9e053bf97cc25f045ecba77f6016b2ee751ee9ee874bf17cf81531d49b",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/catalog_controller.rb",
+      "line": 373,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(EzproxyUrl.new(Eresources.new.known_url(params[:url])[:url]).url, :allow_other_host => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CatalogController",
+        "method": "offsite"
+      },
+      "user_input": "EzproxyUrl.new(Eresources.new.known_url(params[:url])[:url]).url",
+      "confidence": "High",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2022-11-28 13:34:55 +1100",
+  "brakeman_version": "5.4.0"
+}
