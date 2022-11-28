@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe NLAThumbnailPresenter do
+RSpec.describe NlaThumbnailPresenter do
   let(:document) { SolrDocument.new }
   let(:view_context) { instance_double(ActionView::Base) }
   let(:config) { Blacklight::Configuration.new.view_config(:index) }

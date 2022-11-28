@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module NLA::Solr::Response::Spelling
+module Nla::Solr::Response::Spelling
   extend Blacklight::Solr::Response::Spelling
 
   EXCLUDED_TERMS = %w[dismax edismax lucene]
