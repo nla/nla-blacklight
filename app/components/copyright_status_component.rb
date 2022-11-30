@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-class CopyrightInfoComponent < ViewComponent::Base
-  include CopyrightHelper
+class CopyrightStatusComponent < ViewComponent::Base
+  include CopyrightStatusHelper
 
   def initialize(copyright:)
     @copyright = copyright
@@ -16,10 +16,10 @@ class CopyrightInfoComponent < ViewComponent::Base
   end
 
   def render?
-    @copyright.present?
+    @copyright.present? && info.present?
   end
 
   def renderCopiesDirectForm?
-    info["contextMsg"] != "3" && info["contextMsg"] != "4" && info["contextMsg"] != "6" && info["contextMsg"] != "7"
+    %w[3 4 6 7].exclude? info["contextMsg"]
   end
 end
