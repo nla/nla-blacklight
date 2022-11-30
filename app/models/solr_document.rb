@@ -137,7 +137,13 @@ class SolrDocument
   end
 
   def copyright_status
-    get_copyright_status
+    copyright_info ||= get_copyright_status
+
+    # If no copyright info returned from the SOA
+    # don't show the component.
+    if copyright_info.info.present?
+      copyright_info
+    end
   end
 
   def form_of_work

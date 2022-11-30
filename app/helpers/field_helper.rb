@@ -130,7 +130,7 @@ module FieldHelper
 
   def render_copyright_component(document:, field:, config:, value:, context:)
     if value.present?
-      render CopyrightInfoComponent.new(copyright: value.first)
+      render CopyrightStatusComponent.new(copyright: value.first)
     end
   end
 
