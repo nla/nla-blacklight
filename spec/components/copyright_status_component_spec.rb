@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CopyrightInfoComponent, type: :component do
+RSpec.describe CopyrightStatusComponent, type: :component do
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485) }
 
   let(:copyright) { object_double(CopyrightStatus.new(document), info: {}) }

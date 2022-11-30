@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe CopyrightHelper do
+RSpec.describe CopyrightStatusHelper do
   let(:document) { SolrDocument.new(marc_ss: sample_marc) }
   let(:view_context) { instance_double(ActionView::Base) }
   let(:config) { Blacklight::Configuration.new.view_config(:show) }
