@@ -207,6 +207,24 @@ RSpec.describe SolrDocument do
       expect(copyright_info_value.info).not_to be_nil
       expect(copyright_info_value.info["contextMsg"]).to eq "1.1"
     end
+
+    context "when no copyright info is returned by the SOA" do
+      it "will return nil" do
+        stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
+
+        WebMock.stub_request(:get, "https://example.com/copyright/")
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+              "User-Agent" => "Faraday v2.7.1"
+            }
+          )
+          .to_return(status: 502, body: "", headers: {})
+
+        expect(copyright_info_value).to be_nil
+      end
+    end
   end
 
   describe "#form_of_work" do
