@@ -1273,6 +1273,10 @@ RSpec.describe SolrDocument do
       it "will return all frequencies" do
         expect(frequency_value.size).to eq 2
       end
+
+      it "will return linked 880 subfields" do
+        expect(frequency_value).to include "月刊"
+      end
     end
 
     context "when there are no frequencies" do
@@ -1283,6 +1287,34 @@ RSpec.describe SolrDocument do
 
       it "will return an empty array" do
         expect(frequency_value).to eq []
+      end
+    end
+  end
+
+  describe "#previous_frequency" do
+    context "when there are previous frequencies" do
+      subject(:previous_frequency_value) do
+        document = described_class.new(marc_ss: previous_frequency)
+        document.previous_frequency
+      end
+
+      it "will return all the previous frequencies" do
+        expect(previous_frequency_value.size).to eq 2
+      end
+
+      it "will return linked 880 subfields" do
+        expect(previous_frequency_value).to include "旬刊"
+      end
+    end
+
+    context "when there are no previous frequencies" do
+      subject(:previous_frequency_value) do
+        document = described_class.new(marc_ss: awards)
+        document.previous_frequency
+      end
+
+      it "will return an empty array" do
+        expect(previous_frequency_value).to eq []
       end
     end
   end
@@ -1499,5 +1531,9 @@ RSpec.describe SolrDocument do
 
   def frequency
     load_marc_from_file 4604577
+  end
+
+  def previous_frequency
+    load_marc_from_file 4651293
   end
 end
