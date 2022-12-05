@@ -1319,6 +1319,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#index_finding_aid_note" do
+    context "when there are finding aid notes" do
+      subject(:index_finding_aid_note_value) do
+        document = described_class.new(marc_ss: index_finding_aid_note)
+        document.index_finding_aid_note
+      end
+
+      it "will return all index/finding aid notes" do
+        expect(index_finding_aid_note_value.size).to eq 5
+      end
+    end
+
+    context "when there are no index/finding aid notes" do
+      subject(:index_finding_aid_note_value) do
+        document = described_class.new(marc_ss: index_finding_aid_note)
+        document.index_finding_aid_note
+      end
+
+      it "will return an empty array" do
+        expect(index_finding_aid_note).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1535,5 +1559,9 @@ RSpec.describe SolrDocument do
 
   def previous_frequency
     load_marc_from_file 4651293
+  end
+
+  def index_finding_aid_note
+    load_marc_from_file 773963
   end
 end
