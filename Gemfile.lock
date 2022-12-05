@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/nla/blacklight-solrcloud-repository
-  revision: dc958aeca8c93c38745bda9c383b893c44bde3a3
-  tag: 0.1.0
+  revision: 722b532cbba7a28360fe044d245a54f1a78127ab
+  tag: 0.2.0
   specs:
-    blacklight-solrcloud-repository (0.1.0)
+    blacklight-solrcloud-repository (0.2.0)
       blacklight (~> 7.30)
       rsolr
       zk (~> 1.10)
@@ -569,6 +569,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  arm64-darwin-22
   x86_64-darwin-20
   x86_64-darwin-21
   x86_64-linux
@@ -634,7 +635,7 @@ DEPENDENCIES
   zk (~> 1.10)
 
 RUBY VERSION
-   ruby 3.0.4p208
+   ruby 3.1.3p185
 
 BUNDLED WITH
    2.3.19
