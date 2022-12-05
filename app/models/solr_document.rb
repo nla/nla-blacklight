@@ -320,6 +320,10 @@ class SolrDocument
     get_marc_derived_field("310ab")
   end
 
+  def previous_frequency
+    get_marc_derived_field("321ab")
+  end
+
   def has_eresources?
     eresource_urls = []
 

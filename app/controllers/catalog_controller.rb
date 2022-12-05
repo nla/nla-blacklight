@@ -194,6 +194,7 @@ class CatalogController < ApplicationController
     config.add_show_field "related_title", label: "Related Title", accessor: :related_title, helper_method: :unstyled_list
     config.add_show_field "issued_with", label: "Issued With", accessor: :issued_with, helper_method: :unstyled_list
     config.add_show_field "frequency", label: "Frequency", accessor: :frequency, helper_method: :list
+    config.add_show_field "previous_frequency", label: "Previous Frequency", accessor: :previous_frequency, helper_method: :list
     config.add_show_field "awards", label: "Awards", accessor: :awards, helper_method: :unstyled_list
     config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :build_subject_search_list
     config.add_show_field "available_from", label: "Available From", accessor: :available_from, helper_method: :unstyled_list
