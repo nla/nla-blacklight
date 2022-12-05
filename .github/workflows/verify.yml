@@ -19,17 +19,16 @@ jobs:
       cancel-in-progress: true
     name: Linters
     runs-on: ubuntu-latest
-    env:
-      RUBY_VERSION: '3.0.4'
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@c7079efafd956afb5d823e8999c2506e1053aefa # v1.92
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Install gems
+        run: |
+          bundle install
 
       - name: RuboCop
         run: bundle exec rubocop --parallel
@@ -54,7 +53,6 @@ jobs:
     runs-on: ubuntu-latest
     env:
       CI: true
-      RUBY_VERSION: '3.0.4'
       DB_DATABASE: blacklight_test
       DB_USER: root
       DB_PASSWORD: root
@@ -64,11 +62,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install Ruby and gems
-        uses: ruby/setup-ruby@c7079efafd956afb5d823e8999c2506e1053aefa # v1.92
-        with:
-          ruby-version: ${{ env.RUBY_VERSION }}
-          bundler-cache: true
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+
+      - name: Install gems
+        run: |
+          bundle install
 
       - name: Set up MySQL
         run: |
