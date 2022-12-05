@@ -324,6 +324,10 @@ class SolrDocument
     get_marc_derived_field("321ab")
   end
 
+  def index_finding_aid_note
+    get_marc_derived_field("555a", options: {alternate_script: false})
+  end
+
   def has_eresources?
     eresource_urls = []
 
