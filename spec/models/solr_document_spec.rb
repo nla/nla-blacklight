@@ -1333,12 +1333,12 @@ RSpec.describe SolrDocument do
 
     context "when there are no index/finding aid notes" do
       subject(:index_finding_aid_note_value) do
-        document = described_class.new(marc_ss: index_finding_aid_note)
+        document = described_class.new(marc_ss: awards)
         document.index_finding_aid_note
       end
 
       it "will return an empty array" do
-        expect(index_finding_aid_note).to eq []
+        expect(index_finding_aid_note_value).to eq []
       end
     end
   end
