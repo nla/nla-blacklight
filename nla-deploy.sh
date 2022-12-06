@@ -13,6 +13,9 @@ export http_proxy=admin.nla.gov.au:3128
 export https_proxy=admin.nla.gov.au:3128
 cd "$ORIGDIR" || return
 
+echo "Updating ruby-build"
+git -C /apps/etc/.rbenv/plugins/ruby-build pull
+
 RUBY_VERSION=$(cat .ruby-version)
 echo "Checking rbenv Ruby version $RUBY_VERSION is installed."
 if [[ ! -d "/apps/etc/.rbenv/versions/$RUBY_VERSION" ]]; then
