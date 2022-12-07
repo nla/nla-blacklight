@@ -134,26 +134,9 @@ module FieldHelper
     end
   end
 
-  def build_subject_search_list(document:, field:, config:, value:, context:)
+  def subject_list(document:, field:, config:, value:, context:)
     if value.present?
-      elements = []
-
-      subjects = document.fetch(field)
-      elements << if subjects.size > 1
-        content_tag(:ul, class: "list-unstyled") do
-          safe_join(subjects.map do |subject|
-            content_tag(:li) do
-              encoded_subject = CGI.escape("\"#{subject}\"")
-              link_to(subject, "/?search_field=#{field}&q=#{encoded_subject}")
-            end
-          end, "")
-        end
-      else
-        encoded_subject = CGI.escape("\"#{subjects.first}\"")
-        link_to(subjects.first, "/?search_field=#{field}&q=#{encoded_subject}")
-      end
-
-      safe_join(elements, "\n")
+      catalogue_search_list(value, field)
     end
   rescue KeyError
     Rails.logger.info "Record #{document.id} has no '#{field}'"
@@ -163,6 +146,10 @@ module FieldHelper
     if value.present?
       render RelatedRecordsComponent.new(records: value.first)
     end
+  end
+
+  def occupation_list(document:, field:, config:, value:, context:)
+    catalogue_search_list(value, "occupation")
   end
 
   private
@@ -210,5 +197,27 @@ module FieldHelper
     end
 
     result
+  end
+
+  def catalogue_search_list(values, search_field)
+    elements = []
+
+    if values.empty?
+      return nil
+    end
+
+    elements << if values.size > 1
+      content_tag(:ul, class: "list-unstyled") do
+        safe_join(values.map do |val|
+          content_tag(:li) do
+            link_to val, search_catalog_path({search_field: search_field, q: "\"#{val}\""})
+          end
+        end, "\n")
+      end
+    else
+      link_to values.first, search_catalog_path({search_field: search_field, q: "\"#{values.first}\""})
+    end
+
+    safe_join(elements, "\n")
   end
 end
