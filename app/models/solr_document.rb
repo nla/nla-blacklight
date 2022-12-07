@@ -203,7 +203,7 @@ class SolrDocument
   end
 
   def printer
-    get_marc_derived_field("260efg:2643abc")
+    get_marc_derived_field("260efg:264|*3|3abc")
   end
 
   def full_contents
