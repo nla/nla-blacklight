@@ -642,6 +642,17 @@ RSpec.describe SolrDocument do
         expect(printer_value).to include "([New Brunswick, N.J.] : L. Deane)"
       end
     end
+
+    context "when the 264 field does not have an indicator2 value of 3" do
+      subject(:printer_value) do
+        document = described_class.new(marc_ss: printer_264)
+        document.printer
+      end
+
+      it "will return an empty array" do
+        expect(printer_value).to eq []
+      end
+    end
   end
 
   describe "#full_contents" do
@@ -1447,6 +1458,10 @@ RSpec.describe SolrDocument do
 
   def invalid_ismn
     load_marc_from_file 4773335
+  end
+
+  def printer_264
+    load_marc_from_file 7326111
   end
 
   def full_contents
