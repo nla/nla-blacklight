@@ -388,9 +388,9 @@ RSpec.describe FieldHelper do
     end
   end
 
-  describe "#build_subject_search_list" do
+  describe "#subject_list" do
     subject(:subject_list_value) do
-      helper.build_subject_search_list(document: document, field: "subject_ssim", config: config, value: value, context: "show")
+      helper.subject_list(document: document, field: "subject_ssim", config: config, value: value, context: "show")
     end
 
     let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, subject_ssim: value) }
@@ -403,7 +403,11 @@ RSpec.describe FieldHelper do
       end
 
       it "does not render a list" do
-        expect(subject_list_value).to eq '<a href="/?search_field=subject_ssim&amp;q=%22Band+music%2C+Arranged+--+Scores+and+parts%22">Band music, Arranged -- Scores and parts</a>'
+        expect(subject_list_value).not_to include "ul"
+        expect(subject_list_value).not_to include "li"
+        expect(subject_list_value).to include "search_field=subject_ssim"
+        expect(subject_list_value).to include "q=%22Band+music%2C+Arranged+--+Scores+and+parts%22"
+        expect(subject_list_value).to include "Band music, Arranged -- Scores and parts"
       end
     end
 
@@ -416,14 +420,21 @@ RSpec.describe FieldHelper do
       end
 
       it "renders an unstyled list" do
-        expect(subject_list_value).to eq '<ul class="list-unstyled"><li><a href="/?search_field=subject_ssim&amp;q=%22Band+music%2C+Arranged+--+Scores+and+parts%22">Band music, Arranged -- Scores and parts</a></li><li><a href="/?search_field=subject_ssim&amp;q=%22Marches+%28Band%29%2C+Arranged+--+Scores+and+parts%22">Marches (Band), Arranged -- Scores and parts</a></li></ul>'
+        expect(subject_list_value).to include "ul"
+        expect(subject_list_value).to include "li"
+        expect(subject_list_value).to include "list-unstyled"
+        expect(subject_list_value).to include "search_field=subject_ssim"
+        expect(subject_list_value).to include "q=%22Band+music%2C+Arranged+--+Scores+and+parts%22"
+        expect(subject_list_value).to include "Band music, Arranged -- Scores and parts"
+        expect(subject_list_value).to include "q=%22Marches+%28Band%29%2C+Arranged+--+Scores+and+parts%22"
+        expect(subject_list_value).to include "Marches (Band), Arranged -- Scores and parts"
       end
     end
 
     context "when there are no subjects" do
       let(:value) { [] }
 
-      it "returns an empty array" do
+      it "returns an empty string" do
         expect(subject_list_value).to be_nil
       end
     end
@@ -461,6 +472,47 @@ RSpec.describe FieldHelper do
     end
   end
 
+  describe "#occupation_list" do
+    subject(:occupation_list_value) do
+      helper.occupation_list(document: document, field: "occupation", config: config, value: value, context: "show")
+    end
+
+    let(:document) { SolrDocument.new(marc_ss: occupation, id: 1111) }
+
+    context "when there is a single occupation" do
+      let(:value) { %w[Soldiers.] }
+
+      it "does not render a list" do
+        expect(occupation_list_value).not_to include "ul"
+        expect(occupation_list_value).not_to include "li"
+        expect(occupation_list_value).to include "search_field=occupation"
+        expect(occupation_list_value).to include "q=%22Soldiers.%22"
+      end
+    end
+
+    context "when there are multiple occupations" do
+      let(:value) { %w[Soldiers. Missionaries.] }
+
+      it "renders an unstyled list" do
+        expect(occupation_list_value).to include "ul"
+        expect(occupation_list_value).to include "li"
+        expect(occupation_list_value).to include "list-unstyled"
+        expect(occupation_list_value).to include "search_field=occupation"
+        expect(occupation_list_value).to include "q=%22Soldiers.%22"
+        expect(occupation_list_value).to include "search_field=occupation"
+        expect(occupation_list_value).to include "q=%22Missionaries.%22"
+      end
+    end
+
+    context "when there are no occupations" do
+      let(:value) { [] }
+
+      it "returns an empty string" do
+        expect(occupation_list_value).to be_nil
+      end
+    end
+  end
+
   # Need to set the MARC source field to actual MARC XML in order to allow
   # the "#to_marc" method to be included in the SolrDocument model.
   def sample_marc
@@ -485,5 +537,9 @@ RSpec.describe FieldHelper do
 
   def copyright_response_hash
     Hash.from_xml(copyright_response.to_s)["response"]["itemList"]["item"]
+  end
+
+  def occupation
+    load_marc_from_file 1070015
   end
 end

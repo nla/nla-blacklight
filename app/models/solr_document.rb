@@ -328,6 +328,10 @@ class SolrDocument
     get_marc_derived_field("555a", options: {alternate_script: false})
   end
 
+  def occupation
+    get_marc_derived_field("656a", options: {alternate_script: false})
+  end
+
   def has_eresources?
     eresource_urls = []
 

@@ -197,7 +197,8 @@ class CatalogController < ApplicationController
     config.add_show_field "previous_frequency", label: "Previous Frequency", accessor: :previous_frequency, helper_method: :list
     config.add_show_field "index_finding_aid_note", label: "Index/Finding Aid Note", accessor: :index_finding_aid_note, helper_method: :unstyled_list
     config.add_show_field "awards", label: "Awards", accessor: :awards, helper_method: :unstyled_list
-    config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :build_subject_search_list
+    config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :subject_list
+    config.add_show_field "occupation", label: "Occupation", accessor: "occupation", helper_method: :occupation_list
     config.add_show_field "available_from", label: "Available From", accessor: :available_from, helper_method: :unstyled_list
     config.add_show_field "acknowledgement", label: "Acknowledgement", accessor: :acknowledgement, helper_method: :unstyled_list
     config.add_show_field "exhibited", label: "Exhibited", accessor: :exhibited, helper_method: :list
