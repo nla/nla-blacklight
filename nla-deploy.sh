@@ -39,6 +39,9 @@ bundle install
 RAILS_ENV=$RAILS_ENV bundle exec rails db:migrate
 RAILS_ENV=$RAILS_ENV bundle exec rails assets:precompile
 
+# try to fix permissions in vendor/bundle
+chmod -R o+r ./vendor/bundle
+
 mkdir -p "$BLACKLIGHT_TMP_PATH"/pids
 
 # Using file cache, so tmp:clear will also clear the cache
