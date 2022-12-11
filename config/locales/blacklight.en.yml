@@ -253,6 +253,8 @@ en:
 
     did_you_mean: 'Did you mean to type: %{options}?'
 
+    more_like_this: "Similar Items"
+
     main:
       aria:
         main_container: 'Main content'
