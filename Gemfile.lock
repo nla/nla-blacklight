@@ -1,9 +1,9 @@
 GIT
   remote: https://github.com/nla/blacklight-solrcloud-repository
-  revision: 722b532cbba7a28360fe044d245a54f1a78127ab
-  tag: 0.2.0
+  revision: 4dde865591f187d957c86f13c34180c66a9ddb96
+  tag: 0.2.1
   specs:
-    blacklight-solrcloud-repository (0.2.0)
+    blacklight-solrcloud-repository (0.2.1)
       blacklight (~> 7.30)
       rsolr
       zk (~> 1.10)
@@ -182,6 +182,7 @@ GEM
       activerecord (>= 5.a)
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
+    date (3.3.1)
     debug (1.7.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
@@ -312,11 +313,12 @@ GEM
     multi_test (1.1.0)
     multi_xml (0.6.0)
     mysql2 (0.5.4)
-    net-imap (0.3.1)
+    net-imap (0.3.2)
+      date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.0)
+    net-protocol (0.2.1)
       timeout
     net-smtp (0.3.3)
       net-protocol
