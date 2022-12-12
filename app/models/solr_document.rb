@@ -11,6 +11,8 @@ class SolrDocument
   include REXML
   include Blacklight::Configurable
 
+  attribute :callnumber, Blacklight::Types::Array, "lc_callnum_ssim"
+
   # The following shows how to setup this blacklight document to display marc documents
   extension_parameters[:marc_source_field] = :marc_ss
   extension_parameters[:marc_format_type] = :marcxml
@@ -89,6 +91,10 @@ class SolrDocument
 
   def marc_xml
     @marc_xml ||= to_marc_xml
+  end
+
+  def title_start
+    get_marc_derived_field("245a", options: {alternate_script: false}).first
   end
 
   def description

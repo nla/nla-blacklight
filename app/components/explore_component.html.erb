@@ -1,0 +1,25 @@
+<div class="card">
+  <div class="card-header"><h2 class="mb-0 h6"><%= t("blacklight.explore.title") %></h2></div>
+  <div class="card-body">
+    <ul class="list-unstyled">
+      <li class="explore-link"><%= image_tag "trove-icon.png" %> <%= link_to t("blacklight.explore.find_in_trove"), trove_query %></li>
+
+      <% if render_online_shop? %>
+        <a href="#">Buy at our online shop</a>
+      <% end %>
+
+      <% if render_google_preview? %>
+        <a href="#">Preview at Google Books</a>
+      <% end %>
+
+      <%
+        values = {
+          eresources: link_to(t("blacklight.explore.eresources"), "https://www.nla.gov.au/eresources"),
+          research_guides: link_to(t("blacklight.explore.research_guides"), "https://www.nla.gov.au/research-guides")
+        }
+      %>
+      <li class="explore-link"><%= t("blacklight.explore.check_eresources_research_guides", **values).html_safe %></li>
+    </ul>
+
+  </div>
+</div>
