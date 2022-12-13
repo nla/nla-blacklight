@@ -17,7 +17,7 @@ module Blacklight
     def label
       Deprecation.silence(Blacklight::BlacklightHelperBehavior) do
         if @show
-          helpers.render_document_show_field_label @field.document, label: @field.label('show'), field: @field.key
+          helpers.render_document_show_field_label @field.document, label: @field.label("show"), field: @field.key
         else
           helpers.render_index_field_label @field.document, label: @field.label, field: @field.key
         end
