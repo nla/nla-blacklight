@@ -99,11 +99,11 @@ RSpec.describe NlaThumbnailPresenter do
       let(:presenter) { described_class.new(document, view_context, config) }
 
       it "generates a small linked thumbnail" do
-        allow(view_context).to receive(:image_tag).with("image.png/image?wid=123", {alt: "Work Title", onerror: "this.style.display='none'"})
-          .and_return('<img src="image.png/image?wid=123" alt="Work Title" onerror="this.style.display=\'none\'" />')
+        allow(view_context).to receive(:image_tag).with("image.png/image?wid=123", {alt: "Work Title", onerror: "this.style.display='none'", class: "w-100"})
+          .and_return('<img src="image.png/image?wid=123" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
 
-        allow(view_context).to receive(:link_to_document).with(document, '<img src="image.png/image?wid=123" alt="Work Title" onerror="this.style.display=\'none\'" />', {})
-          .and_return('<a href="http://example.com/catalog/1"><img src="image.png/image?wid=123" alt="Work Title" onerror="this.style.display=\'none\'" /></a>')
+        allow(view_context).to receive(:link_to_document).with(document, '<img src="image.png/image?wid=123" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />', {})
+          .and_return('<a href="http://example.com/catalog/1"><img src="image.png/image?wid=123" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" /></a>')
 
         expect(tag).to include 'href="http://example.com/catalog/1"'
 
@@ -120,11 +120,11 @@ RSpec.describe NlaThumbnailPresenter do
       let(:presenter) { described_class.new(document, view_context, config) }
 
       it "generates a small linked thumbnail" do
-        allow(view_context).to receive(:image_tag).with("image.png/image?wid=500", {alt: "Work Title", onerror: "this.style.display='none'"})
-          .and_return('<img src="image.png/image?wid=500" alt="Work Title" onerror="this.style.display=\'none\'" />')
+        allow(view_context).to receive(:image_tag).with("image.png/image?wid=500", {alt: "Work Title", onerror: "this.style.display='none'", class: "w-100"})
+          .and_return('<img src="image.png/image?wid=500" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
 
-        allow(view_context).to receive(:link_to_document).with(document, '<img src="image.png/image?wid=500" alt="Work Title" onerror="this.style.display=\'none\'" />', {})
-          .and_return('<a href="https://nla.gov.au/nla.obj1234567"><img src="image.png/image?wid=500" alt="Work Title" onerror="this.style.display=\'none\'" /></a>')
+        allow(view_context).to receive(:link_to_document).with(document, '<img src="image.png/image?wid=500" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />', {})
+          .and_return('<a href="https://nla.gov.au/nla.obj1234567"><img src="image.png/image?wid=500" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" /></a>')
 
         expect(tag).to include 'href="https://nla.gov.au/nla.obj1234567"'
 
