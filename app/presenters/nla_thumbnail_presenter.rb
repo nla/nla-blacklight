@@ -25,7 +25,7 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
 
   # @param [Hash] image_options to pass to the image tag
   def thumbnail_value(image_options)
-    image_options = image_options.merge({alt: alt_title_from_document, onerror: "this.style.display='none'"})
+    image_options = image_options.merge({alt: alt_title_from_document, onerror: "this.style.display='none'", class: "w-100"})
     value = if thumbnail_method
       view_context.send(thumbnail_method, document, image_options)
     elsif thumbnail_field
