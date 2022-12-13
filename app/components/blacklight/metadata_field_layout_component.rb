@@ -15,7 +15,7 @@ module Blacklight
     end)
 
     # @param field [Blacklight::FieldPresenter]
-    def initialize(field:, label_class: 'col-12 col-md-3', value_class: 'col col-sm-9')
+    def initialize(field:, label_class: "col-12 col-md-3", value_class: "col col-sm-9")
       @field = field
       @key = @field.key.parameterize
       @label_class = label_class
@@ -23,9 +23,9 @@ module Blacklight
     end
 
     def value(*args, **kwargs, &block)
-      return set_slot(:values, nil, *args, **kwargs, &block) if block_given?
+      return set_slot(:values, nil, *args, **kwargs, &block) if block
 
-      Deprecation.warn(Blacklight::MetadataFieldLayoutComponent, 'The `value` content area is deprecated; render from the values slot instead')
+      Deprecation.warn(Blacklight::MetadataFieldLayoutComponent, "The `value` content area is deprecated; render from the values slot instead")
 
       values.first
     end

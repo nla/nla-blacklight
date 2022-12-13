@@ -25,7 +25,7 @@ module Blacklight
       next static_content if static_content.present?
       next unless component
 
-      Deprecation.warn(Blacklight::DocumentComponent, 'Pass the presenter to the DocumentComponent') if @presenter.nil?
+      Deprecation.warn(Blacklight::DocumentComponent, "Pass the presenter to the DocumentComponent") if @presenter.nil?
 
       component.new(*args, document: @document, presenter: @presenter, document_counter: @document_counter, **kwargs)
     end)
@@ -34,7 +34,7 @@ module Blacklight
     renders_one :metadata, (lambda do |static_content = nil, *args, component: nil, fields: nil, **kwargs|
       next static_content if static_content.present?
 
-      Deprecation.warn(Blacklight::DocumentComponent, 'Pass the presenter to the DocumentComponent') if !fields && @presenter.nil?
+      Deprecation.warn(Blacklight::DocumentComponent, "Pass the presenter to the DocumentComponent") if !fields && @presenter.nil?
 
       component ||= Blacklight::DocumentMetadataComponent
 
@@ -48,7 +48,7 @@ module Blacklight
       next image_options_or_static_content if image_options_or_static_content.is_a? String
 
       component ||= @presenter&.view_config&.thumbnail_component || Blacklight::Document::ThumbnailComponent
-      Deprecation.warn(Blacklight::DocumentComponent, 'Pass the presenter to the DocumentComponent') if !component && @presenter.nil?
+      Deprecation.warn(Blacklight::DocumentComponent, "Pass the presenter to the DocumentComponent") if !component && @presenter.nil?
 
       component.new(*args, document: @document, presenter: @presenter, counter: @counter, image_options: image_options_or_static_content, **kwargs)
     end)
@@ -74,14 +74,14 @@ module Blacklight
     # @param counter_offset [Number] with `document_counter`, the offset of the start of that collection counter to the overall result set
     # @param show [Boolean] are we showing only a single document (vs a list of search results); used for backwards-compatibility
     def initialize(document: nil, presenter: nil,
-                   id: nil, classes: [], component: :article, title_component: nil,
-                   metadata_component: nil,
-                   embed_component: nil,
-                   thumbnail_component: nil,
-                   counter: nil, document_counter: nil, counter_offset: 0,
-                   show: false)
+      id: nil, classes: [], component: :article, title_component: nil,
+      metadata_component: nil,
+      embed_component: nil,
+      thumbnail_component: nil,
+      counter: nil, document_counter: nil, counter_offset: 0,
+      show: false)
       if presenter.nil? && document.nil?
-        raise ArgumentError, 'missing keyword: :document or :presenter'
+        raise ArgumentError, "missing keyword: :document or :presenter"
       end
 
       @document = document || presenter&.document
@@ -89,16 +89,16 @@ module Blacklight
 
       @component = component
       @title_component = title_component
-      @id = id || ('document' if show)
+      @id = id || ("document" if show)
       @classes = classes
 
-      Deprecation.warn(Blacklight::DocumentComponent, 'Passing embed_component is deprecated') if @embed_component.present?
+      Deprecation.warn(Blacklight::DocumentComponent, "Passing embed_component is deprecated") if @embed_component.present?
       @embed_component = embed_component
 
-      Deprecation.warn(Blacklight::DocumentComponent, 'Passing metadata_component is deprecated') if @metadata_component.present?
+      Deprecation.warn(Blacklight::DocumentComponent, "Passing metadata_component is deprecated") if @metadata_component.present?
       @metadata_component = metadata_component || Blacklight::DocumentMetadataComponent
 
-      Deprecation.warn(Blacklight::DocumentComponent, 'Passing thumbnail_component is deprecated') if @thumbnail_component.present?
+      Deprecation.warn(Blacklight::DocumentComponent, "Passing thumbnail_component is deprecated") if @thumbnail_component.present?
       @thumbnail_component = thumbnail_component || Blacklight::Document::ThumbnailComponent
 
       @document_counter = document_counter
@@ -114,7 +114,7 @@ module Blacklight
       [
         @classes,
         helpers.render_document_class(@document),
-        'document row',
+        "document row",
         ("document-position-#{@counter}" if @counter)
       ].compact.flatten
     end
