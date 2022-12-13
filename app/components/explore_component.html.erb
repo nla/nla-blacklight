@@ -5,11 +5,22 @@
       <li class="explore-link"><%= image_tag "trove-icon.png" %> <%= link_to t("blacklight.explore.find_in_trove"), trove_query %></li>
 
       <% if render_online_shop? %>
-        <a href="#">Buy at our online shop</a>
+        <% nla_shop.each do |item| %>
+          <li class="explore-link"><%= link_to item[:itemlink] do %>
+            Buy at our online shop
+            <% if item[:price].present? %>
+              <small>(AUD <%= item[:price] %>)</small>
+            <% end %>
+          <% end %></li>
+        <% end %>
       <% end %>
 
       <% if render_google_preview? %>
         <a href="#">Preview at Google Books</a>
+      <% end %>
+
+      <% if render_library_thing? %>
+        <a href="#">Library Thing</a>
       <% end %>
 
       <%
