@@ -4,7 +4,7 @@ require "cgi"
 require "faraday"
 
 class ExploreComponent < ViewComponent::Base
-  attr_reader :document, :nla_shop, :google_books, :library_thing
+  attr_reader :document, :nla_shop
 
   def initialize(document)
     @document = document
@@ -14,8 +14,6 @@ class ExploreComponent < ViewComponent::Base
     @google_books_url = config.google_books_url
 
     @nla_shop ||= get_online_shop
-    @google_books ||= get_google_preview
-    @library_thing ||= get_library_thing
   end
 
   def trove_query
@@ -37,16 +35,16 @@ class ExploreComponent < ViewComponent::Base
     "https://trove.nla.gov.au/search?keyword=ANL AND (#{CGI.escape(query)}) AND title:%22#{CGI.escape(document.title_start.tr('"', ""))}%22"
   end
 
+  def library_thing_script
+    "https://www.librarything.com/api/json/workinfo.js?ids=#{lccn_list.join(",")}#{document.isbn.present? ? "," : ""}#{isbn_list.join(",")}&callback=showLibraryThing"
+  end
+
+  def google_books_script
+    "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list.join(",")}#{document.isbn.present? ? "," : ""}#{google_isbn_list.join(",")}&callback=showGoogleBooksPreview"
+  end
+
   def render_online_shop?
     nla_shop.present?
-  end
-
-  def render_google_preview?
-    google_books.present?
-  end
-
-  def render_library_thing?
-    library_thing.present?
   end
 
   def render?
@@ -55,9 +53,24 @@ class ExploreComponent < ViewComponent::Base
 
   private
 
-  def clean_isn(isn)
-    isn = isn.gsub(/[\s-]+/, '\1')
-    isn.gsub(/^.*?([0-9]+).*?$/, '\1')
+  def get_online_shop
+    result = []
+
+    unless document.isbn.empty?
+      res = Faraday.get("#{@nla_shop_url}?isbn13=#{isbn_list.join(",")}")
+      res_body = res.body.delete(" \t\r\n")
+      if res.status == 200 && res_body != ""
+        shop_response = JSON.parse(res.body)
+        isbn_list.each do |isn|
+          item = shop_response["InsertOnlineShop"][isn.to_s]
+          result << {thumbnail: item["thumbnail"], itemLink: item["itemLink"], price: item["price"]}
+        end
+      end
+    end
+
+    result
+  rescue JSON::ParserError
+    result
   end
 
   def isbn10_to_isbn13(isbn)
@@ -70,10 +83,8 @@ class ExploreComponent < ViewComponent::Base
 
       isbn13 = "978#{new_isbn}"[0..-12]
 
-      multiplier
-
       sum = 0
-      isbn13.each_char do |c|
+      isbn13.to_s.each_char do |c|
         multiplier = (c.ord % 2 == 0) ? 1 : 3
         sum += (c.ord - 48) * multiplier
       end
@@ -86,37 +97,52 @@ class ExploreComponent < ViewComponent::Base
     new_isbn
   end
 
-  def get_online_shop
+  def clean_isn(isn)
+    isn = isn.gsub(/[\s-]+/, '\1')
+    isn.gsub(/^.*?([0-9]+).*?$/, '\1')
+  end
+
+  def isbn_list
+    result = []
+    if document.isbn.present?
+      document.isbn.each do |isn|
+        result << clean_isn(isn)
+      end
+    end
+    result
+  end
+
+  def lccn_list
+    result = []
+    if document.lccn.present?
+      document.lccn.each do |lccn|
+        result << lccn
+      end
+    end
+    result
+  end
+
+  def google_lccn_list
     result = []
 
-    unless document.isbn.empty?
-      isbn_list = []
-      document.isbn.each do |isn|
-        isbn_list << clean_isn(isn)
-      end
-
-      conn = Faraday.new(@nla_shop_url) do |f|
-        f.response :json
-      end
-      res = conn.get("/api/jsonDetails.do?isbn13=#{isbn_list.join(",")}")
-      # res = Faraday.get("#{@nla_shop_url}?isbn13=#{isbn_list.join(",")}")
-      if res.status == 200 && res.body != ""
-        shop_response = JSON.parse(res.body)
-        isbn_list.each do |isn|
-          item = shop_response["InsertOnlineShop"]["#{isn}"]
-          result << {thumbnail: item["thumbnail"], itemLink: item["itemLink"], price: item["price"]}
-        end
+    if lccn_list.present?
+      lccn_list.each do |lcn|
+        result << "LCCN:#{clean_isn(lcn)}"
       end
     end
 
     result
   end
 
-  def get_google_preview
-    nil
-  end
+  def google_isbn_list
+    result = []
 
-  def get_library_thing
-    nil
+    if isbn_list.present?
+      isbn_list.each do |isn|
+        result << "ISBN:#{isn}"
+      end
+    end
+
+    result
   end
 end

@@ -376,6 +376,10 @@ class SolrDocument
     []
   end
 
+  def lccn
+    get_marc_derived_field("010a", options: {alternate_script: false})
+  end
+
   def has_eresources?
     eresource_urls = []
 
