@@ -198,7 +198,9 @@ class CatalogController < ApplicationController
     config.add_show_field "index_finding_aid_note", label: "Index/Finding Aid Note", accessor: :index_finding_aid_note, helper_method: :list
     config.add_show_field "awards", label: "Awards", accessor: :awards, helper_method: :unstyled_list
     config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :subject_list
-    config.add_show_field "occupation", label: "Occupation", accessor: "occupation", helper_method: :occupation_list
+    config.add_show_field "occupation", label: "Occupation", accessor: :occupation, helper_method: :occupation_list
+    config.add_show_field "genre", label: "Form/genre", accessor: :genre, helper_method: :genre_list
+    config.add_show_field "place", label: "Place", accessor: :place, helper_method: :list
     config.add_show_field "available_from", label: "Available From", accessor: :available_from, helper_method: :unstyled_list
     config.add_show_field "acknowledgement", label: "Acknowledgement", accessor: :acknowledgement, helper_method: :unstyled_list
     config.add_show_field "exhibited", label: "Exhibited", accessor: :exhibited, helper_method: :list
@@ -300,6 +302,13 @@ class CatalogController < ApplicationController
       field.label = "Occupation"
       field.solr_parameters = {
         qf: "occupation_tesim"
+      }
+    end
+
+    config.add_search_field("genre") do |field|
+      field.label = "Genre"
+      field.solr_parameters = {
+        qf: "genre_tesim"
       }
     end
 

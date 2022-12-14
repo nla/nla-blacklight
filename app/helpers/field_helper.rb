@@ -152,6 +152,10 @@ module FieldHelper
     catalogue_search_list(value, "occupation")
   end
 
+  def genre_list(document:, field:, config:, value:, context:)
+    catalogue_search_list(value, "genre")
+  end
+
   private
 
   # Original RegEx used by VuFind
