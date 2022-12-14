@@ -1354,6 +1354,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#genre" do
+    context "when there are forms/genres" do
+      subject(:genre_value) do
+        document = described_class.new(marc_ss: genre)
+        document.genre
+      end
+
+      it "will return all forms/genres" do
+        expect(genre_value.size).to eq 3
+      end
+    end
+
+    context "when there are no forms/genres" do
+      subject(:genre_value) do
+        document = described_class.new(marc_ss: index_finding_aid_note)
+        document.genre
+      end
+
+      it "will return an empty array" do
+        expect(genre_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1578,5 +1602,9 @@ RSpec.describe SolrDocument do
 
   def index_finding_aid_note
     load_marc_from_file 773963
+  end
+
+  def genre
+    load_marc_from_file 5474602
   end
 end
