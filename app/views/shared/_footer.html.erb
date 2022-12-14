@@ -2,18 +2,25 @@
   <div class="<%= container_classes %>">
   <div class="row">
     <section class="acknowledgement-of-country text-center col-md-8 mx-auto">
-      <h2 class="h6 font-family-sans text-uppercase font-weight-bold">Acknowledgement of Country</h2>
-      <p>The National Library of Australia acknowledges Australia’s First Nations Peoples – the First Australians – as the Traditional Owners and Custodians of this land and gives respect to the Elders – past and present – and through them to all Australian Aboriginal and Torres Strait Islander people.</p>
+      <h2 class="h6 font-family-sans text-uppercase font-weight-bold"><%= t('blacklight.footer.acknowledgement_of_country.title') %></h2>
+      <p><%= t('blacklight.footer.acknowledgement_of_country.description') %></p>
     </section>
   </div>
     <hr>
       <div class="row">
     <section class="col-sm-10 offset-sm-1 col-md-3 offset-md-1">
-      <h2 class="h4">Contact us</h2>
-      <p><a href="tel:0262621111">+61 (0)2 6262 1111</a><br>Parkes Place<br>Canberra ACT 2600<br>Australia</p><p><a href="/visit-us/opening-hours">Opening hours</a><br><a href="/contact-us">More contact information</a></p>
+      <h2 class="h4"><%= t('blacklight.footer.contact.title') %></h2>
+      <p>
+        <%= link_to t("blacklight.footer.contact.telephone"), "tel:+61262621111" %><br>
+        <%= t('blacklight.footer.contact.address').html_safe %>
+      </p>
+      <p>
+        <%= link_to t("blacklight.footer.contact.opening_hours"), "https://www.nla.gov.au/visit-us/opening-hours" %><br>
+        <%= link_to t("blacklight.footer.contact.more_contact_info"), "https://www.nla.gov.au/contact-us" %>
+      </p>
     </section>
     <section class="connect col-sm-10 offset-sm-1 col-md-4 offset-md-0 text-center">
-      <h2 class="h4">Connect</h2>
+      <h2 class="h4"><%= t('blacklight.footer.connect.title') %></h2>
       <ul class="list-inline">
         <li class="list-inline-item px-2">
             <a href="https://www.facebook.com/National.Library.of.Australia">
@@ -40,23 +47,23 @@
             </a>
         </li class="list-inline-item">
         <li class="list-inline-item px-2">
-            <a href="/subscribe-our-newsletter">
+            <a href="https://www.nla.gov.au/subscribe-our-newsletter">
                 <i class="far fa-envelope fa-2x" aria-hidden="true"></i>
                 <span class="sr-only">Newsletter</span>
             </a>
         </li>
     </ul>
-      <p><a href="https://www.nla.gov.au/subscribe-our-newsletter">Subscribe to our newsletter</a></p>
+      <p><%= link_to t("blacklight.footer.connect.enews"), "https://www.nla.gov.au/subscribe-our-newsletter" %></p>
     </section>
     <section class="col-sm-10 offset-sm-1 col-md-3 offset-md-1">
-      <h2 class="h4">Quicklinks</h2>
+      <h2 class="h4"><%= t('blacklight.footer.quicklinks.title') %></h2>
       <ul class="list-unstyled">
-        <li><a href="/jobs-at-the-library">Jobs at the Library</a></li>
-        <li><a href="https://www.nla.gov.au/about/fellowships-scholarships-and-grants">Awards and Grants</a></li>
-        <li><a href="https://copiesdirect.nla.gov.au/">Copies Direct</a></li>
-        <li><a href="/getting-started">Getting Started</a></li>
-        <li><a href="/about-us/about-site/user-feedback">User Feedback</a></li>
-        <li><a href="/news-and-media">Media Centre</a></li>
+        <li><%= link_to t("blacklight.footer.quicklinks.jobs"), "https://www.nla.gov.au/jobs-at-the-library" %></li>
+        <li><%= link_to t("blacklight.footer.quicklinks.grants"), "https://www.nla.gov.au/about/fellowships-scholarships-and-grants" %></li>
+        <li><%= link_to t("blacklight.footer.quicklinks.copies_direct"), "https://copiesdirect.nla.gov.au/" %></li>
+        <li><%= link_to t("blacklight.footer.quicklinks.getting_started"), "https://www.nla.gov.au/getting-started" %></li>
+        <li><%= link_to t("blacklight.footer.quicklinks.feedback"), "https://www.nla.gov.au/about-us/about-site/user-feedback" %></li>
+        <li><%= link_to t("blacklight.footer.quicklinks.media"), "https://www.nla.gov.au/news-and-media" %></li>
     </ul>
     </section>
       </div>
