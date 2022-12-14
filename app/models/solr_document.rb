@@ -332,6 +332,14 @@ class SolrDocument
     get_marc_derived_field("656a", options: {alternate_script: false})
   end
 
+  def genre
+    get_marc_derived_field("655a", options: {alternate_script: false})
+  end
+
+  def place
+    get_marc_derived_field("752abcd", options: {alternate_script: false})
+  end
+
   def has_eresources?
     eresource_urls = []
 
