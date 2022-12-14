@@ -1378,6 +1378,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#place" do
+    context "when there are places" do
+      subject(:place_value) do
+        document = described_class.new(marc_ss: place)
+        document.place
+      end
+
+      it "will return all places" do
+        expect(place_value.size).to eq 2
+      end
+    end
+
+    context "when there are no places" do
+      subject(:place_value) do
+        document = described_class.new(marc_ss: genre)
+        document.place
+      end
+
+      it "will return an empty array" do
+        expect(place_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1606,5 +1630,9 @@ RSpec.describe SolrDocument do
 
   def genre
     load_marc_from_file 5474602
+  end
+
+  def place
+    load_marc_from_file 3754127
   end
 end
