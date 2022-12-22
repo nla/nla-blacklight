@@ -1,7 +1,11 @@
 <% value = use_thumbnail_tag_behavior? ? presenter.thumbnail.thumbnail_tag(@image_options, 'aria-hidden': true, tabindex: -1, counter: @counter) : presenter.thumbnail.render(@image_options) %>
 
 <% if value %>
-  <div class="document-thumbnail col-4 col-md-2 order-3">
+  <% if value.include?('wid=123') %>
+    <div class="document-thumbnail col-4 col-md-2 order-3">
+    <% else %>
+    <div class="document-thumbnail col-12 col-md-5 mb-3">
+    <% end %>
     <% if use_thumbnail_tag_behavior? %>
       <% warn_about_deprecated_behavior %>
       <%= value %>
