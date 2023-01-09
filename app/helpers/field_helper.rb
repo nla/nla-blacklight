@@ -134,7 +134,7 @@ module FieldHelper
     end
   end
 
-  def subject_list(document:, field:, config:, value:, context:)
+  def subject_search_list(document:, field:, config:, value:, context:)
     if value.present?
       catalogue_search_list(value, field)
     end
@@ -148,12 +148,16 @@ module FieldHelper
     end
   end
 
-  def occupation_list(document:, field:, config:, value:, context:)
+  def occupation_search_list(document:, field:, config:, value:, context:)
     catalogue_search_list(value, "occupation")
   end
 
-  def genre_list(document:, field:, config:, value:, context:)
+  def genre_search_list(document:, field:, config:, value:, context:)
     catalogue_search_list(value, "genre")
+  end
+
+  def title_search_list(document:, field:, config:, value:, context:)
+    catalogue_search_list(value, "title", bulleted: true)
   end
 
   private
@@ -203,7 +207,7 @@ module FieldHelper
     result
   end
 
-  def catalogue_search_list(values, search_field)
+  def catalogue_search_list(values, search_field, bulleted: false)
     elements = []
 
     if values.empty?
@@ -211,7 +215,7 @@ module FieldHelper
     end
 
     elements << if values.size > 1
-      content_tag(:ul, class: "list-unstyled") do
+      content_tag(:ul, class: (bulleted ? "" : "list-unstyled").to_s) do
         safe_join(values.map do |val|
           content_tag(:li) do
             link_to val, search_catalog_path({search_field: search_field, q: "\"#{val}\""})
