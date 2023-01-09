@@ -340,6 +340,10 @@ class SolrDocument
     get_marc_derived_field("752abcd", options: {alternate_script: false})
   end
 
+  def has_supplement
+    get_marc_derived_field("770abistxz")
+  end
+
   def has_eresources?
     eresource_urls = []
 
