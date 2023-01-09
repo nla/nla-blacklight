@@ -388,9 +388,9 @@ RSpec.describe FieldHelper do
     end
   end
 
-  describe "#subject_list" do
-    subject(:subject_list_value) do
-      helper.subject_list(document: document, field: "subject_ssim", config: config, value: value, context: "show")
+  describe "#subject_search_list" do
+    subject(:subject_search_list_value) do
+      helper.subject_search_list(document: document, field: "subject_ssim", config: config, value: value, context: "show")
     end
 
     let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, subject_ssim: value) }
@@ -403,11 +403,11 @@ RSpec.describe FieldHelper do
       end
 
       it "does not render a list" do
-        expect(subject_list_value).not_to include "ul"
-        expect(subject_list_value).not_to include "li"
-        expect(subject_list_value).to include "search_field=subject_ssim"
-        expect(subject_list_value).to include "q=%22Band+music%2C+Arranged+--+Scores+and+parts%22"
-        expect(subject_list_value).to include "Band music, Arranged -- Scores and parts"
+        expect(subject_search_list_value).not_to include "ul"
+        expect(subject_search_list_value).not_to include "li"
+        expect(subject_search_list_value).to include "search_field=subject_ssim"
+        expect(subject_search_list_value).to include "q=%22Band+music%2C+Arranged+--+Scores+and+parts%22"
+        expect(subject_search_list_value).to include "Band music, Arranged -- Scores and parts"
       end
     end
 
@@ -420,14 +420,14 @@ RSpec.describe FieldHelper do
       end
 
       it "renders an unstyled list" do
-        expect(subject_list_value).to include "ul"
-        expect(subject_list_value).to include "li"
-        expect(subject_list_value).to include "list-unstyled"
-        expect(subject_list_value).to include "search_field=subject_ssim"
-        expect(subject_list_value).to include "q=%22Band+music%2C+Arranged+--+Scores+and+parts%22"
-        expect(subject_list_value).to include "Band music, Arranged -- Scores and parts"
-        expect(subject_list_value).to include "q=%22Marches+%28Band%29%2C+Arranged+--+Scores+and+parts%22"
-        expect(subject_list_value).to include "Marches (Band), Arranged -- Scores and parts"
+        expect(subject_search_list_value).to include "ul"
+        expect(subject_search_list_value).to include "li"
+        expect(subject_search_list_value).to include "list-unstyled"
+        expect(subject_search_list_value).to include "search_field=subject_ssim"
+        expect(subject_search_list_value).to include "q=%22Band+music%2C+Arranged+--+Scores+and+parts%22"
+        expect(subject_search_list_value).to include "Band music, Arranged -- Scores and parts"
+        expect(subject_search_list_value).to include "q=%22Marches+%28Band%29%2C+Arranged+--+Scores+and+parts%22"
+        expect(subject_search_list_value).to include "Marches (Band), Arranged -- Scores and parts"
       end
     end
 
@@ -435,7 +435,7 @@ RSpec.describe FieldHelper do
       let(:value) { [] }
 
       it "returns an empty string" do
-        expect(subject_list_value).to be_nil
+        expect(subject_search_list_value).to be_nil
       end
     end
   end
@@ -472,9 +472,9 @@ RSpec.describe FieldHelper do
     end
   end
 
-  describe "#occupation_list" do
-    subject(:occupation_list_value) do
-      helper.occupation_list(document: document, field: "occupation", config: config, value: value, context: "show")
+  describe "#occupation_search_list" do
+    subject(:occupation_search_list_value) do
+      helper.occupation_search_list(document: document, field: "occupation", config: config, value: value, context: "show")
     end
 
     let(:document) { SolrDocument.new(marc_ss: occupation, id: 1111) }
@@ -483,10 +483,10 @@ RSpec.describe FieldHelper do
       let(:value) { %w[Soldiers.] }
 
       it "does not render a list" do
-        expect(occupation_list_value).not_to include "ul"
-        expect(occupation_list_value).not_to include "li"
-        expect(occupation_list_value).to include "search_field=occupation"
-        expect(occupation_list_value).to include "q=%22Soldiers.%22"
+        expect(occupation_search_list_value).not_to include "ul"
+        expect(occupation_search_list_value).not_to include "li"
+        expect(occupation_search_list_value).to include "search_field=occupation"
+        expect(occupation_search_list_value).to include "q=%22Soldiers.%22"
       end
     end
 
@@ -494,13 +494,12 @@ RSpec.describe FieldHelper do
       let(:value) { %w[Soldiers. Missionaries.] }
 
       it "renders an unstyled list" do
-        expect(occupation_list_value).to include "ul"
-        expect(occupation_list_value).to include "li"
-        expect(occupation_list_value).to include "list-unstyled"
-        expect(occupation_list_value).to include "search_field=occupation"
-        expect(occupation_list_value).to include "q=%22Soldiers.%22"
-        expect(occupation_list_value).to include "search_field=occupation"
-        expect(occupation_list_value).to include "q=%22Missionaries.%22"
+        expect(occupation_search_list_value).to include "ul"
+        expect(occupation_search_list_value).to include "li"
+        expect(occupation_search_list_value).to include "list-unstyled"
+        expect(occupation_search_list_value).to include "search_field=occupation"
+        expect(occupation_search_list_value).to include "q=%22Soldiers.%22"
+        expect(occupation_search_list_value).to include "q=%22Missionaries.%22"
       end
     end
 
@@ -508,7 +507,83 @@ RSpec.describe FieldHelper do
       let(:value) { [] }
 
       it "returns an empty string" do
-        expect(occupation_list_value).to be_nil
+        expect(occupation_search_list_value).to be_nil
+      end
+    end
+  end
+
+  describe "#genre_search_list" do
+    subject(:genre_search_list_value) do
+      helper.genre_search_list(document: document, field: "occupation", config: config, value: value, context: "show")
+    end
+
+    context "when there is a single genre" do
+      let(:value) { %w[test] }
+
+      it "does not render a list" do
+        expect(genre_search_list_value).not_to include "ul"
+        expect(genre_search_list_value).not_to include "li"
+        expect(genre_search_list_value).to include "search_field=genre"
+        expect(genre_search_list_value).to include "q=%22test%22"
+      end
+    end
+
+    context "when there are multiple genres" do
+      let(:value) { %w[test genre] }
+
+      it "renders an unstyled list" do
+        expect(genre_search_list_value).to include "ul"
+        expect(genre_search_list_value).to include "li"
+        expect(genre_search_list_value).to include "list-unstyled"
+        expect(genre_search_list_value).to include "search_field=genre"
+        expect(genre_search_list_value).to include "q=%22test%22"
+        expect(genre_search_list_value).to include "q=%22genre%22"
+      end
+    end
+
+    context "when there are no genres" do
+      let(:value) { [] }
+
+      it "returns an empty string" do
+        expect(genre_search_list_value).to be_nil
+      end
+    end
+  end
+
+  describe "#title_search_list" do
+    subject(:title_search_list_value) do
+      helper.title_search_list(document: document, field: "has_supplement", config: config, value: value, context: "show")
+    end
+
+    context "when there is a single title" do
+      let(:value) { %w[test] }
+
+      it "does not render a list" do
+        expect(title_search_list_value).not_to include "ul"
+        expect(title_search_list_value).not_to include "li"
+        expect(title_search_list_value).to include "search_field=title"
+        expect(title_search_list_value).to include "q=%22test%22"
+      end
+    end
+
+    context "when there are multiple titles" do
+      let(:value) { %w[test test] }
+
+      it "renders an bulleted list" do
+        expect(title_search_list_value).to include "ul"
+        expect(title_search_list_value).to include "li"
+        expect(title_search_list_value).not_to include "list-unstyled"
+        expect(title_search_list_value).to include "search_field=title"
+        expect(title_search_list_value).to include "q=%22test%22"
+        expect(title_search_list_value).to include "q=%22test%22"
+      end
+    end
+
+    context "when there are no titles" do
+      let(:value) { [] }
+
+      it "returns an empty string" do
+        expect(title_search_list_value).to be_nil
       end
     end
   end
