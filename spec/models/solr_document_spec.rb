@@ -1450,6 +1450,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#new_title" do
+    context "when there are titles" do
+      subject(:title_value) do
+        document = described_class.new(marc_ss: later_title)
+        document.new_title
+      end
+
+      it "will return all titles" do
+        expect(title_value.size).to eq 2
+      end
+    end
+
+    context "when there are no titles" do
+      subject(:title_value) do
+        document = described_class.new(marc_ss: supplement_to)
+        document.new_title
+      end
+
+      it "will return an empty array" do
+        expect(title_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1690,5 +1714,9 @@ RSpec.describe SolrDocument do
 
   def supplement_to
     load_marc_from_file 1090172
+  end
+
+  def later_title
+    load_marc_from_file 2142448
   end
 end
