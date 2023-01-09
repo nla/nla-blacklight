@@ -193,6 +193,7 @@ class CatalogController < ApplicationController
     config.add_show_field "supplement_to", label: "Supplement To", accessor: :supplement_to, helper_method: :title_search_list
     config.add_show_field "has_subseries", label: "Has Sub-series", accessor: :has_subseries, helper_method: :list
     config.add_show_field "subseries_of", label: "Sub-series Of", accessor: :subseries_of, helper_method: :unstyled_list
+    config.add_show_field "later_title", label: "Later Title", accessor: :new_title, helper_method: :title_search_list
     config.add_show_field "related_title", label: "Related Title", accessor: :related_title, helper_method: :unstyled_list
     config.add_show_field "issued_with", label: "Issued With", accessor: :issued_with, helper_method: :unstyled_list
     config.add_show_field "frequency", label: "Frequency", accessor: :frequency, helper_method: :list
