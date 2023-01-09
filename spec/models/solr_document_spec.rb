@@ -1426,6 +1426,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#supplement_to" do
+    context "when there are supplements" do
+      subject(:supplement_value) do
+        document = described_class.new(marc_ss: supplement_to)
+        document.supplement_to
+      end
+
+      it "will return all supplements" do
+        expect(supplement_value.size).to eq 2
+      end
+    end
+
+    context "when there are no supplements" do
+      subject(:supplement_value) do
+        document = described_class.new(marc_ss: place)
+        document.supplement_to
+      end
+
+      it "will return an empty array" do
+        expect(supplement_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1662,5 +1686,9 @@ RSpec.describe SolrDocument do
 
   def has_supplement
     load_marc_from_file 1125877
+  end
+
+  def supplement_to
+    load_marc_from_file 1090172
   end
 end
