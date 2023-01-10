@@ -9,6 +9,7 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
     retrieve_values(field_config(@view_config[:title_field])).compact_blank.first
   end
 
+  # :nocov:
   def thumbnail_tag(image_options = {}, url_options = {})
     value = thumbnail_value(image_options)
     return value if value.nil? || url_options[:suppress_link]
@@ -20,10 +21,16 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
       view_context.link_to_document document, value, url_options
     end
   end
+  # :nocov:
+
+  def is_catalogue_record_page?
+    view_config[:key] == :show
+  end
 
   private
 
   # @param [Hash] image_options to pass to the image tag
+  # :nocov:
   def thumbnail_value(image_options)
     image_options = image_options.merge({alt: alt_title_from_document, onerror: "this.style.display='none'", class: "w-100"})
     value = if thumbnail_method
@@ -42,4 +49,5 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
 
     value || default_thumbnail_value(image_options)
   end
+  # :nocov:
 end

@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe NlaThumbnailPresenter do
   let(:document) { SolrDocument.new }
   let(:view_context) { instance_double(ActionView::Base) }
-  let(:config) { Blacklight::Configuration.new.view_config(:index) }
+  let(:config) { Blacklight::Configuration::ViewConfig.new }
   let(:presenter) { described_class.new(document, view_context, config) }
   let(:image_options) { {alt: ""} }
 
@@ -131,6 +131,28 @@ RSpec.describe NlaThumbnailPresenter do
         expect(tag).to include "?wid=500"
 
         expect(tag).to include 'onerror="this.style.display=\'none\'"'
+      end
+    end
+  end
+
+  describe "#is_catalogue_record_page?" do
+    subject(:catalogue_page_flag) { presenter.is_catalogue_record_page? }
+
+    context "when displayed on the index page" do
+      let(:config) { Blacklight::OpenStructWithHashAccess.new({thumbnail_field: :thumbnail_path_ss, title_field: :title_tsim}) }
+      let(:presenter) { described_class.new(document, view_context, config) }
+
+      it "returns false" do
+        expect(catalogue_page_flag).to be false
+      end
+    end
+
+    context "when displayed on the catalogue record page" do
+      let(:config) { Blacklight::OpenStructWithHashAccess.new({key: :show, thumbnail_field: :thumbnail_path_ss, title_field: :title_tsim, top_level_config: :show}) }
+      let(:presenter) { described_class.new(document, view_context, config) }
+
+      it "returns true" do
+        expect(catalogue_page_flag).to be true
       end
     end
   end
