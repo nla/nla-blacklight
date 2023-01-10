@@ -360,6 +360,10 @@ class SolrDocument
     get_marc_derived_field("246abfghinp")
   end
 
+  def terms_of_use
+    get_marc_derived_field("5403abcd", options: {alternate_script: false})
+  end
+
   def has_eresources?
     eresource_urls = []
 
