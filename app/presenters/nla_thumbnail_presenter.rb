@@ -20,7 +20,11 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
       view_context.link_to_document document, value, url_options
     end
   end
-
+  
+  def is_catalouge_record_page?
+    view_config[:key] == :show
+  end
+  
   private
 
   # @param [Hash] image_options to pass to the image tag
