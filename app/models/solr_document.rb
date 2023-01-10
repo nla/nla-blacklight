@@ -356,6 +356,10 @@ class SolrDocument
     get_marc_derived_field("247abfghnpx:780abdistx")
   end
 
+  def also_titled
+    get_marc_derived_field("246abfghinp")
+  end
+
   def has_eresources?
     eresource_urls = []
 

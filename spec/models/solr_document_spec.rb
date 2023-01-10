@@ -1498,6 +1498,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#also_titled" do
+    context "when there are titles" do
+      subject(:title_value) do
+        document = described_class.new(marc_ss: also_titled)
+        document.also_titled
+      end
+
+      it "will return all the titles" do
+        expect(title_value.size).to eq 2
+      end
+    end
+
+    context "when there are no titles" do
+      subject(:title_value) do
+        document = described_class.new(marc_ss: place)
+        document.also_titled
+      end
+
+      it "will return an empty array" do
+        expect(title_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1746,5 +1770,9 @@ RSpec.describe SolrDocument do
 
   def former_title
     load_marc_from_file 2181169
+  end
+
+  def also_titled
+    load_marc_from_file 4327251
   end
 end
