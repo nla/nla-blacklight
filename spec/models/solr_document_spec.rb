@@ -1522,6 +1522,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#terms_of_use" do
+    context "when there are terms of use" do
+      subject(:terms_value) do
+        document = described_class.new(marc_ss: terms_of_service)
+        document.terms_of_use
+      end
+
+      it "will return the terms of use" do
+        expect(terms_value.size).to eq 3
+      end
+    end
+
+    context "when there are no terms of use" do
+      subject(:terms_value) do
+        document = described_class.new(marc_ss: place)
+        document.terms_of_use
+      end
+
+      it "will return an empty array" do
+        expect(terms_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1774,5 +1798,9 @@ RSpec.describe SolrDocument do
 
   def also_titled
     load_marc_from_file 4327251
+  end
+
+  def terms_of_service
+    load_marc_from_file 3701679
   end
 end
