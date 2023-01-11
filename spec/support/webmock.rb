@@ -1,7 +1,10 @@
 require "webmock/rspec"
 
 # Disables HTTP requests, with the exception of requests to localhost
-WebMock.disable_net_connect!(allow_localhost: true)
+WebMock.disable_net_connect!(
+  allow_localhost: true,
+  allow: "chromedriver.storage.googleapis.com"
+)
 
 RSpec.configure do |config|
   config.before do
@@ -47,7 +50,7 @@ RSpec.configure do |config|
       )
       .to_return(status: 200, body: "", headers: {})
 
-    details_mock = IO.read("features/files/auth/user_details.xml")
+    details_mock = IO.read("spec/files/auth/user_details.xml")
 
     WebMock.stub_request(:get, /\S.nla.gov.au\/getalibrarycard\/patrons\/details\/([0-9]*).xml/)
       .with(
