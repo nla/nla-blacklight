@@ -17,9 +17,6 @@ bundle exec rubocop -A
 echo "[ bin/ci ] Running RSpec tests"
 bundle exec rspec
 
-echo "[ bin/ci ] Running Cucumber tests"
-bundle exec cucumber
-
 echo "[ bin/ci ] Analysing code for security vulnerabilities."
 echo "[ bin/ci ] Output will be in tmp/brakeman.html, which"
 echo "[ bin/ci ] can be opened in your browser."
