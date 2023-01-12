@@ -14,6 +14,7 @@ jobs:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
+          token: ${{ secrets.GH_TOKEN }}
           release-type: ruby
           package-name: blacklight-solrcloud-repository
           bump-minor-pre-major: true
