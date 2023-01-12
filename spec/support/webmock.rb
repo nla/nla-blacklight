@@ -14,7 +14,7 @@ RSpec.configure do |config|
         headers: {
           "Accept" => "*/*",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "Down/5.3.1"
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
         }
       )
       .to_return(status: 200, body: eresource_config, headers: {})
@@ -24,7 +24,7 @@ RSpec.configure do |config|
         headers: {
           "Accept" => "*/*",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "Down/5.3.1"
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
         }
       )
       .to_return(status: 500, body: "", headers: {})
@@ -34,10 +34,12 @@ RSpec.configure do |config|
         headers: {
           "Accept" => "*/*",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "Faraday v2.7.1"
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
         }
       )
       .to_return(status: 200, body: "", headers: {})
+
+    auth_mock = IO.read("spec/files/auth/authenticate.xml")
 
     WebMock.stub_request(:post, /\S.nla.gov.au\/getalibrarycard\/authenticate.xml/)
       .with(
@@ -45,10 +47,10 @@ RSpec.configure do |config|
           "Accept" => "*/*",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
           "Content-Length" => "0",
-          "User-Agent" => "Faraday v2.7.1"
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
         }
       )
-      .to_return(status: 200, body: "", headers: {})
+      .to_return(status: 200, body: auth_mock, headers: {})
 
     details_mock = IO.read("spec/files/auth/user_details.xml")
 
@@ -57,7 +59,7 @@ RSpec.configure do |config|
         headers: {
           "Accept" => "*/*",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "Faraday v2.7.1"
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
         }
       )
       .to_return(status: 200, body: details_mock, headers: {})

@@ -16,7 +16,7 @@ RSpec.describe CopyrightStatusComponent, type: :component do
         headers: {
           "Accept" => "*/*",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "Faraday v2.7.1"
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
         }
       )
       .to_return(status: 200, body: "", headers: {})
