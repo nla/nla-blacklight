@@ -33,4 +33,4 @@ jobs:
               {"type":"build","section":"Build System","hidden":false},
               {"type":"ci","section":"Continuous Integration","hidden":false}
             ]
-          version-file: "lib/blacklight/solr_cloud/version.rb"
+          version-file: "config/version.rb"
