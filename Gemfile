@@ -91,7 +91,7 @@ gem "view_component", "2.80.0"
 gem "zk", "~> 1.10"
 gem "down", "~> 5.0"
 
-gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository", tag: "0.2.1"
+gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

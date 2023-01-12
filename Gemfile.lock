@@ -1,7 +1,6 @@
 GIT
   remote: https://github.com/nla/blacklight-solrcloud-repository
-  revision: 4dde865591f187d957c86f13c34180c66a9ddb96
-  tag: 0.2.1
+  revision: e29d142890594ef3804619ea36402689c981bff0
   specs:
     blacklight-solrcloud-repository (0.2.1)
       blacklight (~> 7.30)
