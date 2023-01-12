@@ -1,0 +1,7 @@
+<response schema="http://schema.nla.gov.au/NXPL" version="1.0">
+  <itemList owner="user/507706" repository="LOON-USER-DB-CBD" type="LOON-PROPERTIES">
+    <item name="LOON-USER-AUTHENTICATED" id="507706" voyid="378393" message="voyager authentication">true</item>
+    <item name="LOON-USER-CATALOGUE-GROUP">MRR</item>
+    <report name="count" value="2"/>
+  </itemList>
+</response>
