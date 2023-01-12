@@ -44,7 +44,7 @@ class Eresources
 
     config = []
     begin
-      tempfile = Down.download(ENV["ERESOURCES_CONFIG_URL"])
+      tempfile = Down.download(ENV["ERESOURCES_CONFIG_URL"], headers: {"User-Agent" => "nla-blacklight/#{Rails.configuration.version}"})
       if tempfile.present?
         same = if File.exist? current_config_path
           FileUtils.compare_file(current_config_path, tempfile.path)
