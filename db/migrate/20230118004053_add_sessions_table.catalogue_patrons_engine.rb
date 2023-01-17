@@ -1,3 +1,4 @@
+# This migration comes from catalogue_patrons_engine (originally 20230117045047)
 class AddSessionsTable < ActiveRecord::Migration[7.0]
   def change
     create_table :sessions do |t|
