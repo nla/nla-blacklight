@@ -1,0 +1,63 @@
+{
+  "provider": "keycloakopenid",
+  "uid": "603e26dd-b2d4-4a88-ad9d-406eaec31463",
+  "info": {
+    "name": "Staff User",
+    "email": "staff@nla.gov.au",
+    "first_name": "Staff",
+    "last_name": "User"
+  },
+  "credentials": {
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImYyZjVmYjc3OWY4YjhhNjM2NDVlYjcxMTEzOWJhN2VhIn0.eyJleHAiOjE2NzM4NDAyOTYsImlhdCI6MTY3MzgzNjY5NiwiYXV0aF90aW1lIjoxNjczODM2Njk2LCJqdGkiOiI4ZGJmMDg4NS1kNzI3LTQ1YzQtODYwYS05ODE2YWUxOWZmNWYiLCJpc3MiOiJodHRwczovL2xvZ2luLmV4YW1wbGUuY29tL2F1dGgvcmVhbG1zL2V4YW1wbGUiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiZjVhZmFkODEtMDZjNC00OWE2LTgyN2UtMmVmMmRkM2I4ZmRhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiY2F0YWxvZ3VlIiwic2Vzc2lvbl9zdGF0ZSI6IjgwMjQyNDYwLWVlMjEtNGUyYy1iZmY2LTNjZmM1M2JjOGVmYiIsImFsbG93ZWQtb3JpZ2lucyI6WyJsb2NhbGhvc3QiLCIwLjAuMC4wIiwiY2F0YWxvZ3VlLm5sYS5nb3YuYXUiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwgcm9sZXMiLCJzaWQiOiI4MDI0MjQ2MC1lZTIxLTRlMmMtYmZmNi0zY2ZjNTNiYzhlZmIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXSwibmFtZSI6IlN0YWZmIFVzZXIiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJzdGFmZiIsImdpdmVuX25hbWUiOiJTdGFmZiIsImZhbWlseV9uYW1lIjoiVXNlciIsImVtYWlsIjoic3RhZmZAbmxhLmdvdi5hdSJ9.cjKwwSfeFvujsEduYtzDfoZSBnPHVb3vvc7mYwOoa2Ji_LYd7UNRz7iXzCqQG149_UlyrBfk8f9-JU6AVp_izTYt58H9p8FjgkE6p1U-C-SXKk8TdbM0Lf4GMbZs2spQNK4LTZYTjduGS8nU3ao30O8RQvtdd1XvucCTmEBFLlKG8U6j1IfxVEtNzHBtqJFyWvKQdfruVfgWfi2QpgkH-X-Hjr6PS5OKNsZhx6N6d9iTS8MMzZGZtIuHd9Ho-A3iL8dj6ReUAxXLAF_qFXCnp5xZZ0RtUsmr38XDl6A-iqhfD19vh3L1JZUboRgDaX85ViOkTkU5s-JJi7oC3e39OrAk2o_brDT5FM8AvkJjOB_d9xIZaMScgVgPHI3cueP0yiXgmYNxaJ8NtF0LlV4qrec3DB2y4FvF7kYGnXjof5_P3urC8MrT4c1xigfM6alXmkNUuKTTooDL9l9SpivV7c7WUrJ1nNmH3511ObmKjJWZIggJphfOpGBq9CqJ8nCr",
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjNjRhZTM5OS1hYmFmLTQ0MDQtYTUwNS04MDgwZmFkM2UzZTAifQ.eyJleHAiOjE2NzQwMDk0OTYsImlhdCI6MTY3MzgzNjY5NiwianRpIjoiZDE4ODViNzctMGUxNi00MzBjLWEyOTctNGE3NTA1ZWY0ZDFmIiwiaXNzIjoiaHR0cHM6Ly9sb2dpbi1kZXZlbC5ubGEuZ292LmF1L2F1dGgvcmVhbG1zL3NoaXJlIiwiYXVkIjoiaHR0cHM6Ly9sb2dpbi1kZXZlbC5ubGEuZ292LmF1L2F1dGgvcmVhbG1zL3NoaXJlIiwic3ViIjoiZjVhZmFkODEtMDZjNC00OWE2LTgyN2UtMmVmMmRkM2I4ZmRhIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImNhdGFsb2d1ZSIsInNlc3Npb25fc3RhdGUiOiI4MDI0MjQ2MC1lZTIxLTRlMmMtYmZmNi0zY2ZjNTNiYzhlZmIiLCJzY29wZSI6InByb2ZpbGUgZW1haWwgcm9sZXMiLCJzaWQiOiI4MDI0MjQ2MC1lZTIxLTRlMmMtYmZmNi0zY2ZjNTNiYzhlZmIifQ.q_P4zHKyeEHnhlu0FFENX9c6n_YimkaokX7AV9MC-Ag",
+    "expires_at": 1673840296,
+    "expires": true
+  },
+  "extra": {
+    "raw_info": {
+      "exp": 1673840296,
+      "iat": 1673836696,
+      "auth_time": 1673836696,
+      "jti": "8dbf0885-d727-45c4-860a-9816ae19ff5f",
+      "iss": "https://login.example.com/auth/realms/staff",
+      "aud": "account",
+      "sub": "603e26dd-b2d4-4a88-ad9d-406eaec31463",
+      "typ": "Bearer",
+      "azp": "catalogue",
+      "session_state": "80242460-ee21-4e2c-bff6-3cfc53bc8efb",
+      "allowed-origins": [
+        "localhost",
+        "0.0.0.0",
+        "catalogue.nla.gov.au"
+      ],
+      "realm_access": {
+        "roles": [
+          "offline_access",
+          "uma_authorization"
+        ]
+      },
+      "resource_access": {
+        "account": {
+          "roles": [
+            "manage-account",
+            "manage-account-links",
+            "view-profile"
+          ]
+        }
+      },
+      "scope": "profile email roles",
+      "sid": "80242460-ee21-4e2c-bff6-3cfc53bc8efb",
+      "email_verified": false,
+      "roles": [
+        "offline_access",
+        "uma_authorization"
+      ],
+      "name": "Staff User",
+      "preferred_username": "staff",
+      "given_name": "Staff",
+      "family_name": "User",
+      "email": "staff@nla.gov.au"
+    },
+    "id_token": null
+  }
+}

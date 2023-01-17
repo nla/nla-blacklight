@@ -73,15 +73,10 @@ gem "blacklight", "~> 7.32"
 gem "blacklight_advanced_search", "~> 7.0"
 gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
 gem "bootstrap", "~> 4.0"
-gem "devise"
 gem "jquery-rails"
 gem "rsolr", ">= 1.0", "< 3"
 gem "twitter-typeahead-rails", "0.11.1"
 gem "blacklight_range_limit"
-
-# authentication
-gem "omniauth-keycloak", "~> 1.4"
-gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 gem "nokogiri", ">= 1.13.9"
 gem "addressable", "~> 2.8"
@@ -92,6 +87,7 @@ gem "zk", "~> 1.10"
 gem "down", "~> 5.0"
 
 gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository"
+gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
