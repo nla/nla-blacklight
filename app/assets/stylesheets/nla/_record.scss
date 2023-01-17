@@ -1,0 +1,30 @@
+@charset "UTF-8";
+@import "variables";
+
+
+
+.document-thumbnail.col-12 a {
+  position: relative;
+  display: inline-block;
+  
+  &:before {
+      display: inline-block;
+      text-rendering: auto;
+      -webkit-font-smoothing: antialiased;
+      font: var(--fa-font-regular);
+      content: '\f00e';
+      color: color("white");
+      position: absolute;
+      top: 0.5em;
+      left: 0.5em;
+      background-color: rgba(0,0,0,0.6);
+      border-radius: 0.25em;
+      padding: 0.25em;
+      transition: background-color 0.25s ease-in-out;
+  }
+  
+  &:hover:before {
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+}
