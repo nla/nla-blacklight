@@ -115,8 +115,6 @@ RSpec.configure do |config|
     Rails.cache.clear
   end
 
-  config.include Devise::Test::ControllerHelpers, type: :controller
-  config.include Devise::Test::IntegrationHelpers, type: :request
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
   config.extend DeviseMacros

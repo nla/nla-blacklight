@@ -9,6 +9,10 @@ def setup
   system! 'bundle config --local path "vendor/bundle"'
   system! "bundle check || bundle install"
 
+  log "Installing migrations from dependencies"
+  # Copies migrations that don't already exist into the `db/migrate` directory
+  system! "bin/rails catalogue_patrons_engine:install:migrations"
+
   log "Dropping & recreating the development database"
   # Note that the very first time this runs, db:reset
   # will fail, but this failure is fixed by
