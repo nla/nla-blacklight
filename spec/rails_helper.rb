@@ -10,6 +10,8 @@ require "webmock/rspec"
 require "view_component/test_helpers"
 require "capybara/rspec"
 require "simplecov"
+require "mock_redis"
+require "caching/eresources_cache"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -113,6 +115,10 @@ RSpec.configure do |config|
 
   config.before do
     Rails.cache.clear
+    Caching::EresourcesCache.instance.clear
+
+    mock_redis = MockRedis.new
+    allow(Redis).to receive(:new).and_return(mock_redis)
   end
 
   config.include ViewComponent::TestHelpers, type: :component

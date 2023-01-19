@@ -1,15 +1,31 @@
 # frozen_string_literal: true
 
 require "rails_helper"
+require "caching/eresources_cache"
 
 RSpec.describe Eresources do
   let(:document) { SolrDocument.new(marc_ss: sample_marc) }
   let(:file_cache) { ActiveSupport::Cache.lookup_store(:file_store, file_caching_path) }
-  let(:cache) { Rails.cache }
+  let(:cache) { Caching::EresourcesCache.instance }
 
   describe "#initialize" do
     before do
       allow(Rails).to receive(:cache).and_return(file_cache)
+    end
+
+    context "when the eResources manager return a 200 status" do
+      let(:current_config) { [] }
+
+      let(:mock_config) { File.read("spec/files/eresources/config.txt") }
+
+      it "caches the current config" do
+        stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com/"))
+
+        expect(cache.exist?("eresources_config")).to be(false)
+
+        described_class.new
+        expect(cache.exist?("eresources_config")).to be(true)
+      end
     end
 
     context "when the eResources manager returns a non-200 status" do
