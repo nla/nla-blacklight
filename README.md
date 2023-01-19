@@ -37,6 +37,10 @@ Custom implementation of [Blacklight](http://projectblacklight.org/) for The Nat
     - Solr: 8
     - MySQL: 8
 
+* Gems:
+  - [blacklight-solrcloud-repository](https://github.com/nla/blacklight-solrcloud-repository)
+  - [catalogue-patrons](https://github.com/nla/catalogue-patrons)
+  
 The [GoRails guide](https://gorails.com/setup) has great instructions for setting up Ruby, Rails and MySQL for your operating system.
 
 ## Contributing
@@ -162,3 +166,6 @@ The following tools provide linting, security and vulnerability checking of the 
 * [brakeman](https://github.com/presidentbeef/brakeman) provides static analysis checking.
     * Reports are written to `tmp/brakeman.html`
 * [bundler-audit](https://github.com/rubysec/bundler-audit) checks application dependencies for security vulnerabilities.
+
+## License
+The application is available as open source under the terms of the [Apache 2 License](https://opensource.org/licenses/Apache-2.0).
