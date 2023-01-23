@@ -457,7 +457,7 @@ GEM
       websocket (~> 1.0)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
-    simplecov (0.21.2)
+    simplecov (0.22.0)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
@@ -598,7 +598,7 @@ DEPENDENCIES
   rufus-scheduler (~> 3.8)
   selenium-webdriver
   shoulda-matchers
-  simplecov (~> 0.21.2)
+  simplecov (~> 0.22.0)
   simplecov-json (~> 0.2.3)
   solr_wrapper (>= 0.3)
   sprockets-rails
