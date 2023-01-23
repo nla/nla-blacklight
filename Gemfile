@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.1.3"
+ruby "3.2.0"
 
 # All runtime config comes from the UNIX environment
 # but we use dotenv to store that in files for development and testing
@@ -86,8 +86,13 @@ gem "view_component", "2.82.0"
 gem "zk", "~> 1.10"
 gem "down", "~> 5.0"
 
+# Before a release, point this gem at a tag, instead of the `main` branch.
 gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository"
 gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons"
+# For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
+# the gems below are in the same directory. Adjust if needed to match your local dev environment.
+# gem "blacklight-solrcloud-repository", path: "../blacklight-solrcloud-repository"
+# gem "catalogue-patrons", path: "../catalogue-patrons"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
