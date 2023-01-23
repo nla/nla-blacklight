@@ -1,17 +1,17 @@
 GIT
   remote: https://github.com/nla/blacklight-solrcloud-repository
-  revision: 7c6c1b05e4b5a4e34927242fe02c63244738b045
+  revision: ee97d7cb8857bb6ef7062890b0a5776b284bcb7c
   specs:
-    blacklight-solrcloud-repository (0.2.1)
+    blacklight-solrcloud-repository (0.2.2)
       blacklight (~> 7.30)
       rsolr
       zk (~> 1.10)
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: 801fdbc259a250c1be3db1e797e7c7e73b291a16
+  revision: 52aadbbde7befe96dd8f8ec399720136884ae8f5
   specs:
-    catalogue-patrons (0.1.0)
+    catalogue-patrons (1.0.1)
       activerecord-session_store (~> 2.0)
       brakeman
       bundler-audit
@@ -19,7 +19,7 @@ GIT
       dotenv-rails
       omniauth-keycloak (~> 1.4)
       omniauth-rails_csrf_protection (~> 1.0)
-      rails (>= 7.0.4)
+      rails (~> 7.0.4)
       rufus-scheduler (~> 3.8)
 
 GEM
@@ -200,7 +200,7 @@ GEM
       railties (>= 5.0.0)
     faker (3.1.0)
       i18n (>= 1.8.11, < 2)
-    faraday (2.7.3)
+    faraday (2.7.4)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
     faraday-net_http (3.0.2)
@@ -208,7 +208,7 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    fugit (1.8.0)
+    fugit (1.8.1)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
     globalid (1.0.1)
@@ -290,7 +290,7 @@ GEM
     msgpack (1.6.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
-    mysql2 (0.5.4)
+    mysql2 (0.5.5)
     net-imap (0.3.4)
       date
       net-protocol
@@ -314,7 +314,7 @@ GEM
       rack (>= 1.2, < 4)
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
-    omniauth (2.1.0)
+    omniauth (2.1.1)
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
@@ -367,7 +367,7 @@ GEM
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
-    rails-html-sanitizer (1.4.4)
+    rails-html-sanitizer (1.5.0)
       loofah (~> 2.19, >= 2.19.1)
     railties (7.0.4.1)
       actionpack (= 7.0.4.1)
@@ -382,7 +382,7 @@ GEM
       redis-client (>= 0.9.0)
     redis-client (0.12.1)
       connection_pool
-    regexp_parser (2.6.1)
+    regexp_parser (2.6.2)
     reline (0.3.2)
       io-console (~> 0.5)
     repost (0.4.1)
@@ -434,9 +434,9 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
-    rubocop-rspec (2.18.0)
+    rubocop-rspec (2.18.1)
       rubocop (~> 1.33)
-      rubocop-capybara
+      rubocop-capybara (~> 2.17)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -482,7 +482,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    standard (1.22.0)
+    standard (1.22.1)
       language_server-protocol (~> 3.17.0.2)
       rubocop (= 1.42.0)
       rubocop-performance (= 1.15.2)
@@ -615,7 +615,7 @@ DEPENDENCIES
   zk (~> 1.10)
 
 RUBY VERSION
-   ruby 3.1.3p185
+   ruby 3.2.0p0
 
 BUNDLED WITH
    2.4.4
