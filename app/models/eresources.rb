@@ -3,6 +3,7 @@
 require "json"
 require "down"
 require "fileutils"
+require "caching/eresources_cache"
 
 class Eresources
   include ActiveModel::Model
@@ -10,7 +11,7 @@ class Eresources
   attr_accessor :entries
 
   def initialize
-    @entries = Rails.cache.fetch(["eresources_config"], race_condition_ttl: 10.seconds, expires_in: 4.hours) do
+    @entries = Caching::EresourcesCache.instance.fetch(["eresources_config"], race_condition_ttl: 10.seconds, expires_in: 4.hours) do
       fetch_latest_config
     end
   end

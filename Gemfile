@@ -47,6 +47,10 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
+# Use hiredis adapter for better performance than the "redis" gem
+gem "hiredis", "~> 0.6.3"
+gem "hiredis-client", "~> 0.12.1"
+
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.0"
 
@@ -135,4 +139,6 @@ group :test do
 
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-json", "~> 0.2.3"
+
+  gem "mock_redis", "~> 0.34.0"
 end

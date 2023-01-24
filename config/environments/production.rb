@@ -56,17 +56,14 @@ Rails.application.configure do
   config.log_tags = [:request_id]
 
   # Use a different cache store in production.
-  if ENV["BLACKLIGHT_TMP_PATH"].present?
-    config.action_controller.perform_caching = true
-    config.action_controller.enable_fragment_cache_logging = true
-
-    config.public_file_server.headers = {
-      "Cache-Control" => "public, max-age=#{2.days.to_i}"
-    }
-    config.cache_store = :file_store, "#{ENV["BLACKLIGHT_TMP_PATH"]}/cache"
-  else
-    abort("BLACKLIGHT_TMP_PATH must be defined")
-  end
+  config.cache_store = :redis_cache_store, {
+    driver: :hiredis,
+    url: ENV["REDIS_URL"],
+    timeout: 30,
+    reconnect_attempts: 3,
+    expires_in: 1.day,
+    namespace: "blacklight"
+  }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
