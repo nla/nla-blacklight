@@ -160,8 +160,8 @@ module FieldHelper
     catalogue_search_list(value, "title", bulleted: true)
   end
 
-  def author_link(document:, field:, config:, value:, context:)
-    catalogue_search_list(value, "author", bulleted: false)
+  def author_search_list(document:, field:, config:, value:, context:)
+    catalogue_search_list(value, "author", bulleted: false, search_values: document.fetch("author_tsim"))
   end
 
   private
@@ -211,12 +211,24 @@ module FieldHelper
     result
   end
 
-  def catalogue_search_list(values, search_field, bulleted: false)
+  def catalogue_search_list(values, search_field, bulleted: false, search_values: nil)
     elements = []
 
     if values.empty?
       return nil
     end
+
+    elements << if search_values.nil?
+      build_catalogue_search_link(values, search_field, bulleted)
+    else
+      build_catalogue_search_link_with_search_value(values, search_values, search_field, bulleted)
+    end
+
+    safe_join(elements, "\n")
+  end
+
+  def build_catalogue_search_link(values, search_field, bulleted)
+    elements = []
 
     elements << if values.size > 1
       content_tag(:ul, class: (bulleted ? "" : "list-unstyled").to_s) do
@@ -229,7 +241,22 @@ module FieldHelper
     else
       link_to values.first, search_catalog_path({search_field: search_field, q: "\"#{values.first}\""})
     end
+  end
 
-    safe_join(elements, "\n")
+  def build_catalogue_search_link_with_search_value(values, search_values, search_field, bulleted)
+    elements = []
+
+    elements << if values.size > 1
+      zipped_values = values.zip search_values
+      content_tag(:ul, class: (bulleted ? "" : "list-unstyled").to_s) do
+        safe_join(zipped_values.map do |val, search_val|
+          content_tag(:li) do
+            link_to val, search_catalog_path({search_field: search_field, q: "\"#{search_val}\""})
+          end
+        end, "\n")
+      end
+    else
+      link_to values.first, search_catalog_path({search_field: search_field, q: "\"#{search_values.first}\""})
+    end
   end
 end

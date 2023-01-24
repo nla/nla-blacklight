@@ -440,6 +440,42 @@ RSpec.describe FieldHelper do
     end
   end
 
+  describe "#author_search_list" do
+    subject(:author_search_list_value) do
+      helper.author_search_list(document: document, field: "author_with_relator_ssim", config: config, value: values, context: "show")
+    end
+
+    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, author_with_relator_ssim: values, author_tsim: search_values) }
+
+    context "when there is a single author" do
+      let(:values) { ["Joe Bloggs, author, illustrator"] }
+      let(:search_values) { ["Joe Bloggs"] }
+
+      it "will render a linked search for the author" do
+        expect(author_search_list_value).to include "Joe Bloggs, author, illustrator"
+        expect(author_search_list_value).to include "search_field=author"
+        expect(author_search_list_value).to include "q=%22Joe+Bloggs%22"
+      end
+    end
+
+    context "when there are multiple authors" do
+      let(:values) { ["Joe Bloggs, author, illustrator", "Sally Seashell, author"] }
+      let(:search_values) { ["Joe Bloggs", "Sally Seashell"] }
+
+      it "will render an unstyled list of linked searches for the authors" do
+        expect(author_search_list_value).to include "ul"
+        expect(author_search_list_value).to include "li"
+        expect(author_search_list_value).to include "list-unstyled"
+        expect(author_search_list_value).to include "Joe Bloggs, author, illustrator"
+        expect(author_search_list_value).to include "search_field=author"
+        expect(author_search_list_value).to include "q=%22Joe+Bloggs%22"
+        expect(author_search_list_value).to include "Sally Seashell, author"
+        expect(author_search_list_value).to include "search_field=author"
+        expect(author_search_list_value).to include "q=%22Sally+Seashell%22"
+      end
+    end
+  end
+
   describe "#paragraphs" do
     subject(:summary_value) do
       helper.paragraphs(document: document, field: "summary", config: config, value: value, context: "show")
