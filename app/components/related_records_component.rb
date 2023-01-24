@@ -21,10 +21,14 @@ class RelatedRecordsComponent < ViewComponent::Base
   end
 
   def collection_url
-    solr_document_path(id: parent_record.first[:id])
+    if parent_record.present?
+      solr_document_path(id: parent_record.first[:id])
+    end
   end
 
   def collection_records_url
-    search_catalog_path(search_field: "in_collection", q: "\"#{collection_id}\"")
+    if collection_id.present?
+      search_catalog_path(search_field: "in_collection", q: "\"#{collection_id}\"")
+    end
   end
 end
