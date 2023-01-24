@@ -43,8 +43,8 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
         else
           "/image?wid=123"
         end
+        view_context.image_tag image_url, image_options if image_url.present?
       end
-      view_context.image_tag image_url, image_options if image_url.present?
     end
 
     value || default_thumbnail_value(image_options)
