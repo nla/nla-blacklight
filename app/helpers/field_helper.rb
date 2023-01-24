@@ -160,6 +160,10 @@ module FieldHelper
     catalogue_search_list(value, "title", bulleted: true)
   end
 
+  def author_link(document:, field:, config:, value:, context:)
+    catalogue_search_list(value, "author", bulleted: false)
+  end
+
   private
 
   # Original RegEx used by VuFind
