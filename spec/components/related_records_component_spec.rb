@@ -47,6 +47,16 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         }
       )
       .to_return(status: 200, body: parent_query_response, headers: {})
+
+    WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22unknown%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+        }
+      )
+      .to_return(status: 200, body: no_parent_query_response, headers: {})
   end
 
   context "when record is part of a collection" do
@@ -86,7 +96,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
       it "renders the collection title" do
         render_inline(described_class.new(records: related_records))
 
-        expect(page.text).to include "This record belongs to the Land Rights camp at Heirisson Island, Western Australia, 1978 collection"
+        expect(page.text).to include "Land Rights camp at Heirisson Island, Western Australia, 1978 collection"
       end
 
       it "links to the collection record" do
@@ -103,6 +113,16 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         render_inline(described_class.new(records: related_records))
 
         expect(page.text).not_to include "This record belongs to the"
+      end
+    end
+
+    context "when it does not have a collection_url" do
+      let(:document) { SolrDocument.new(marc_ss: child_marc, parent_id_ssi: "unknown") }
+
+      it "does not link to the collection record" do
+        render_inline(described_class.new(records: related_records))
+
+        expect(page).not_to have_selector(:css, 'a[href="/catalog/3044380"]')
       end
     end
   end
@@ -174,5 +194,9 @@ RSpec.describe RelatedRecordsComponent, type: :component do
 
   def parent_query_response
     IO.read("spec/files/related_records/parent_record_response.json")
+  end
+
+  def no_parent_query_response
+    IO.read("spec/files/related_records/no_parent_record_response.json")
   end
 end

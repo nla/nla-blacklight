@@ -1,5 +1,10 @@
 <% if collection_name.present? %>
-  <p>This record belongs to the <%= link_to "#{collection_name} collection.", collection_url %></p>
+  <p>This record belongs to the
+    <% if collection_url.present? %>
+      <%= link_to "#{collection_name} collection.", collection_url %>
+    <% else %>
+      <%= "#{collection_name} collection." %>
+    <% end %></p>
 <% end %>
 <p class="mb-0">This collection is made up of <%= "#{formatted_collection_count} #{'record'.pluralize(collection_count)}" %>:</p>
 <ul class="list-unstyled">
