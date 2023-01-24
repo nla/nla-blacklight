@@ -23,10 +23,6 @@ Custom implementation of [Blacklight](http://projectblacklight.org/) for The Nat
   + [Releases](#releases)
 * [Deployment](#deployment)
 * [Linting, Static Analysis & Supply Chain Vulnerability Checking](#linting--static-analysis---supply-chain-vulnerability-checking)
-* [Containers](#containers)
-  + [Single-node Solr](#single-node-solr)
-  + [Zookeeper + SolrCloud cluster](#zookeeper---solrcloud-cluster)
-  + [Populating a local Solr index](#populating-a-local-solr-index)
 
 ## Requirements
 

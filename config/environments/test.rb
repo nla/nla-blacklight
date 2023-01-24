@@ -29,11 +29,14 @@ Rails.application.configure do
   # Show full error reports and disable caching.
   config.consider_all_requests_local = true
   config.action_controller.perform_caching = false
-  config.cache_store = if ENV["BLACKLIGHT_TMP_PATH"].present?
-    [:file_store, "#{ENV["BLACKLIGHT_TMP_PATH"]}/cache"]
-  else
-    :null_store
-  end
+  config.cache_store = :redis_cache_store, {
+    driver: :hiredis,
+    url: ENV["REDIS_URL"],
+    timeout: 30,
+    reconnect_attempts: 3,
+    expires_in: 1.day,
+    namespace: "blacklight"
+  }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque
