@@ -154,7 +154,7 @@ class CatalogController < ApplicationController
     config.add_show_field "id", label: "Bib ID", field: "id"
     config.add_show_field field: "format", label: "Format"
     config.add_show_field "form_of_work", label: "Form of work", accessor: :form_of_work, helper_method: :list
-    config.add_show_field "author", field: "author_with_relator_ssim", label: "Author", helper_method: :author_link
+    config.add_show_field "author", field: "author_with_relator_ssim", label: "Author", helper_method: :author_search_list
     config.add_show_field "translated_title", label: "Translated Title", accessor: :translated_title
     config.add_show_field "uniform_title", label: "Uniform Title", accessor: :uniform_title
     config.add_show_field "online_access", label: "Online Access", accessor: :online_access, helper_method: :url_list
@@ -165,7 +165,7 @@ class CatalogController < ApplicationController
     config.add_show_field "access_conditions", label: "Access Conditions", accessor: :access_conditions, helper_method: :emphasized_list
     config.add_show_field "scale", label: "Scale", accessor: :scale
     config.add_show_field "printer", label: "Printer", accessor: :printer, helper_method: :unstyled_list
-    config.add_show_field label: "Description", field: "description", accessor: :description
+    config.add_show_field label: "Description", field: "description", accessor: :description, helper_method: :unstyled_list
     config.add_show_field "isbn", label: "ISBN", accessor: :isbn, helper_method: :unstyled_list
     config.add_show_field "invalid_isbn", label: "Invalid ISBN", accessor: :invalid_isbn, helper_method: :unstyled_list
     config.add_show_field "issn", label: "ISSN", accessor: :issn
