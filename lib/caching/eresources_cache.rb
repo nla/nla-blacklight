@@ -14,8 +14,10 @@ module Caching
       @file_store.send(m, *args, &block)
     end
 
+    # :nocov:
     def respond_to_missing?(method_name, include_private = false)
       true
     end
+    # :nocov:
   end
 end

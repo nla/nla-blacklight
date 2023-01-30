@@ -1,4 +1,3 @@
-# This migration comes from catalogue_patrons_engine (originally 20230117053618)
 class AddOmniauthToUsers < ActiveRecord::Migration[7.0]
   def change
     change_column_null :users, :patron_id, true
