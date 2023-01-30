@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/nla/blacklight-solrcloud-repository
-  revision: 6be178f6ea85eb0d2409f9faaa162f945adf3908
+  revision: ee97d7cb8857bb6ef7062890b0a5776b284bcb7c
+  tag: 0.2.2
   specs:
     blacklight-solrcloud-repository (0.2.2)
       blacklight (~> 7.30)
@@ -9,10 +10,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: 52aadbbde7befe96dd8f8ec399720136884ae8f5
-  tag: 1.0.1
+  revision: d1447943d91c7967881892918978b404f99113f2
+  tag: 2.0.0
   specs:
-    catalogue-patrons (1.0.1)
+    catalogue-patrons (2.0.0)
       activerecord-session_store (~> 2.0)
       brakeman
       bundler-audit
