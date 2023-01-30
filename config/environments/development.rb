@@ -86,6 +86,7 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # allow requests to
+  config.hosts << ".test"
   config.hosts << "delong.nla.gov.au"
   config.hosts << "catalogue-devel.nla.gov.au"
 end
