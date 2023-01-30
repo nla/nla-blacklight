@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This migration comes from catalogue_patrons_engine (originally 20230117050223)
 class DeviseCreateUsers < ActiveRecord::Migration[7.0]
   def change
     create_table :users do |t|

@@ -53,6 +53,7 @@ jobs:
       DB_PASSWORD: root
       RAILS_ENV: test
       DATABASE_URL: "mysql2://root:root@localhost:3306/blacklight_test"
+      PATRONS_DB_URL: "mysql2://root:root@localhost:3306/blacklight_test"
     steps:
       - name: Checkout code
         uses: actions/checkout@v3

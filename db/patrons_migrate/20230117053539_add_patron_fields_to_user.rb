@@ -1,4 +1,3 @@
-# This migration comes from catalogue_patrons_engine (originally 20230117053539)
 class AddPatronFieldsToUser < ActiveRecord::Migration[7.0]
   def change
     add_column :users, :patron_id, :bigint, :after => :id, null: false

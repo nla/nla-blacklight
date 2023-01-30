@@ -11,7 +11,7 @@ def setup
 
   log "Installing migrations from dependencies"
   # Copies migrations that don't already exist into the `db/migrate` directory
-  system! "bin/rails catalogue_patrons_engine:install:migrations"
+  system! "bin/rails generate catalogue:patrons:install"
 
   log "Dropping & recreating the development database"
   # Note that the very first time this runs, db:reset
