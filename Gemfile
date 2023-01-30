@@ -140,5 +140,5 @@ group :test do
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-json", "~> 0.2.3"
 
-  gem "mock_redis", "~> 0.34.0"
+  gem "mock_redis", "~> 0.36.0"
 end
