@@ -189,12 +189,12 @@ class CatalogController < ApplicationController
     config.add_show_field "provenance", label: "Source of Acquisition", accessor: :provenance, helper_method: :unstyled_list
     config.add_show_field "cited_in", label: "Cited In", accessor: :cited_in, helper_method: :unstyled_list
     config.add_show_field "reproduction", label: "Reproduction", accessor: :reproduction, helper_method: :unstyled_list
-    config.add_show_field "has_supplement", label: "Has Supplement", accessor: :has_supplement, helper_method: :title_search_list
-    config.add_show_field "supplement_to", label: "Supplement To", accessor: :supplement_to, helper_method: :title_search_list
+    config.add_show_field "has_supplement", label: "Has Supplement", accessor: :has_supplement, helper_method: :unstyled_list
+    config.add_show_field "supplement_to", label: "Supplement To", accessor: :supplement_to, helper_method: :unstyled_list
     config.add_show_field "has_subseries", label: "Has Sub-series", accessor: :has_subseries, helper_method: :list
     config.add_show_field "subseries_of", label: "Sub-series Of", accessor: :subseries_of, helper_method: :unstyled_list
-    config.add_show_field "later_title", label: "Later Title", accessor: :new_title, helper_method: :title_search_list
-    config.add_show_field "former_title", label: "Former Title", accessor: :old_title, helper_method: :title_search_list
+    config.add_show_field "later_title", label: "Later Title", accessor: :new_title, helper_method: :unstyled_list
+    config.add_show_field "former_title", label: "Former Title", accessor: :old_title, helper_method: :unstyled_list
     config.add_show_field "related_title", label: "Related Title", accessor: :related_title, helper_method: :unstyled_list
     config.add_show_field "issued_with", label: "Issued With", accessor: :issued_with, helper_method: :unstyled_list
     config.add_show_field "frequency", label: "Frequency", accessor: :frequency, helper_method: :list
