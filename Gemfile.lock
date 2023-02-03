@@ -8,10 +8,8 @@ GIT
       rsolr
       zk (~> 1.10)
 
-GIT
-  remote: https://github.com/nla/catalogue-patrons
-  revision: d1447943d91c7967881892918978b404f99113f2
-  tag: 2.0.0
+PATH
+  remote: ../catalogue-patrons
   specs:
     catalogue-patrons (2.0.0)
       activerecord-session_store (~> 2.0)
@@ -629,4 +627,4 @@ RUBY VERSION
    ruby 3.2.0p0
 
 BUNDLED WITH
-   2.4.5
+   2.4.6

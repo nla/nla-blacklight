@@ -92,11 +92,11 @@ gem "down", "~> 5.0"
 
 # Before a release, point this gem at a tag, instead of the `main` branch.
 gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository", tag: "0.2.2"
-gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons", tag: "2.0.0"
+# gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons", tag: "2.0.0"
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
 # the gems below are in the same directory. Adjust if needed to match your local dev environment.
 # gem "blacklight-solrcloud-repository", path: "../blacklight-solrcloud-repository"
-# gem "catalogue-patrons", path: "../catalogue-patrons"
+gem "catalogue-patrons", path: "../catalogue-patrons"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
