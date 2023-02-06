@@ -114,7 +114,7 @@ GEM
     bindex (0.8.1)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
-    blacklight (7.33.0)
+    blacklight (7.33.1)
       deprecation
       globalid
       hashdiff
@@ -275,7 +275,7 @@ GEM
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
-    mail (2.8.0.1)
+    mail (2.8.1)
       mini_mime (>= 0.1.1)
       net-imap
       net-pop
@@ -570,7 +570,7 @@ DEPENDENCIES
   awesome_print
   better_errors
   binding_of_caller
-  blacklight (~> 7.32)
+  blacklight (~> 7.33)
   blacklight-marc (>= 7.0.0.rc1, < 9)
   blacklight-solrcloud-repository!
   blacklight_advanced_search (~> 7.0)
