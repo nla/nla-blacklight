@@ -2,7 +2,9 @@
   <%= render_nav_actions do |config, action|%>
     <li class="nav-item"><%= action %></li>
   <% end %>
-
+<li class="nav-item">
+  <%= link_to t('Beta feedback'), 'https://ourweb.nla.gov.au/apps/wiki/display/FUS/Blacklight+-+Staff+Beta', class: 'nav-link navbar-text' %>
+</li>
   <% if has_user_authentication_provider? %>
     <% if current_user %>
       <li class="nav-item">
