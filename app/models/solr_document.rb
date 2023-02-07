@@ -39,7 +39,7 @@ class SolrDocument
   # TODO: In Solr 8.8 the request handler searches across shards and this logic should be updated when Solr is upgraded.
   def more_like_this
     params = {
-      q: "{!mlt qf=lc_callnum_ssim,title_tsim,author_tsim,subject_tsimv,published_ssim,language_ssim boost=true}#{id}",
+      q: "{!mlt qf=lc_callnum_ssim,title_tsim,author_search_tsim,subject_tsimv,published_ssim,language_ssim boost=true}#{id}",
       fl: "id,title_tsim,format",
       indent: "off",
       rows: 5
@@ -362,6 +362,12 @@ class SolrDocument
 
   def terms_of_use
     get_marc_derived_field("5403abcd", options: {alternate_script: false})
+  end
+
+  def other_authors
+    fetch("additional_author_with_relator_ssim")
+  rescue KeyError
+    []
   end
 
   def has_eresources?

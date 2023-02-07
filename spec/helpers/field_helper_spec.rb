@@ -445,7 +445,7 @@ RSpec.describe FieldHelper do
       helper.author_search_list(document: document, field: "author_with_relator_ssim", config: config, value: values, context: "show")
     end
 
-    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, author_with_relator_ssim: values, author_tsim: search_values) }
+    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, author_with_relator_ssim: values, author_ssim: search_values) }
 
     context "when there is a single author" do
       let(:values) { ["Joe Bloggs, author, illustrator"] }
