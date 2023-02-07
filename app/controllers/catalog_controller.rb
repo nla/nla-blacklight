@@ -205,6 +205,7 @@ class CatalogController < ApplicationController
     config.add_show_field "occupation", label: "Occupation", accessor: :occupation, helper_method: :occupation_search_list
     config.add_show_field "genre", label: "Form/genre", accessor: :genre, helper_method: :genre_search_list
     config.add_show_field "place", label: "Place", accessor: :place, helper_method: :list
+    config.add_show_field "other_authors", label: "Other authors/contributors", accessor: :other_authors, helper_method: :other_author_search_list
     config.add_show_field "also_titled", label: "Also Titled", accessor: :also_titled, helper_method: :list
     config.add_show_field "terms_of_use", label: "Terms of Use", accessor: :terms_of_use, helper_method: :emphasized_list
     config.add_show_field "available_from", label: "Available From", accessor: :available_from, helper_method: :unstyled_list
@@ -275,6 +276,13 @@ class CatalogController < ApplicationController
         "spellcheck.dictionary": "author",
         qf: "author_search_tsim",
         pf: "author_search_tsim"
+      }
+    end
+
+    config.add_search_field("other_authors") do |field|
+      field.solr_parameters = {
+        qf: "author_addl_ssim",
+        pf: "author_addl_ssim"
       }
     end
 
