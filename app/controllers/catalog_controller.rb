@@ -279,13 +279,6 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field("other_authors") do |field|
-      field.solr_parameters = {
-        qf: "author_addl_ssim",
-        pf: "author_addl_ssim"
-      }
-    end
-
     config.add_search_field("subject_ssim") do |field|
       field.label = "Subject"
       field.qt = "search"
