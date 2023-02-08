@@ -165,7 +165,7 @@ module FieldHelper
   end
 
   def other_author_search_list(document:, field:, config:, value:, context:)
-    catalogue_search_list(value, "other_authors", bulleted: false, search_values: document.fetch("author_addl_tsim"))
+    catalogue_search_list(value, "author", bulleted: false, search_values: document.fetch("author_addl_ssim"))
   end
 
   private
