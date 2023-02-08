@@ -1546,6 +1546,65 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#other_authors" do
+    context "when there are other authors" do
+      additional_author_with_relator_ssim = [
+        "New South Wales. Board of Surveying and Spatial Information. Annual report",
+        "New South Wales. Board of Surveying and Spatial Information",
+        "Land and Property Management Authority (N.S.W.)"
+      ]
+      author_ssim = ["New South Wales. Department of Lands"]
+
+      subject(:other_authors_value) do
+        document = described_class.new(
+          marc_ss: other_authors,
+          author_ssim: author_ssim,
+          additional_author_with_relator_ssim: additional_author_with_relator_ssim
+        )
+        document.other_authors
+      end
+
+      it "will return other authors" do
+        expect(other_authors_value.size).to eq 3
+      end
+    end
+
+    context "when there are related 880 other authors" do
+      additional_author_with_relator_ssim = [
+        "Suwit Thatphithakkun, 1928-2015, honouree",
+        "สุวิทย์ ทัดพิทักษ์กุล, 1928-2015, honouree"
+      ]
+      author_addl_ssim = [
+        "Suwit Thatphithakkun, 1928-2015",
+        "สุวิทย์ ทัดพิทักษ์กุล, 1928-2015"
+      ]
+
+      subject(:other_authors_value) do
+        document = described_class.new(
+          marc_ss: terms_of_service,
+          author_addl_ssim: author_addl_ssim,
+          additional_author_with_relator_ssim: additional_author_with_relator_ssim
+        )
+        document.other_authors
+      end
+
+      it "will return related other authors" do
+        expect(other_authors_value).to include("สุวิทย์ ทัดพิทักษ์กุล, 1928-2015, honouree")
+      end
+    end
+
+    context "when there are no terms of use" do
+      subject(:other_authors_value) do
+        document = described_class.new(marc_ss: terms_of_service)
+        document.other_authors
+      end
+
+      it "will return no other authors" do
+        expect(other_authors_value).to eq []
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1802,5 +1861,13 @@ RSpec.describe SolrDocument do
 
   def terms_of_service
     load_marc_from_file 3701679
+  end
+
+  def other_authors
+    load_marc_from_file 3914143
+  end
+
+  def other_authors_880
+    load_marc_from_file 7052841
   end
 end
