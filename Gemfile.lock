@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/nla/blacklight-solrcloud-repository
-  revision: ee97d7cb8857bb6ef7062890b0a5776b284bcb7c
-  tag: 0.2.2
+  revision: 6be178f6ea85eb0d2409f9faaa162f945adf3908
+  branch: main
   specs:
     blacklight-solrcloud-repository (0.2.2)
       blacklight (~> 7.30)
@@ -10,8 +10,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: d1447943d91c7967881892918978b404f99113f2
-  tag: 2.0.0
+  revision: 41e7367bdc7c3418e59b84cb9afad6fcdf41c0ca
+  branch: main
   specs:
     catalogue-patrons (2.0.0)
       activerecord-session_store (~> 2.0)
@@ -101,6 +101,9 @@ GEM
     addressable (2.8.1)
       public_suffix (>= 2.0.2, < 6.0)
     aes_key_wrap (1.1.0)
+    annotate (3.2.0)
+      activerecord (>= 3.2, < 8.0)
+      rake (>= 10.4, < 14.0)
     ast (2.4.2)
     autoprefixer-rails (10.4.7.0)
       execjs (~> 2)
@@ -218,8 +221,8 @@ GEM
     hashdiff (1.0.1)
     hashie (5.0.0)
     hiredis (0.6.3)
-    hiredis-client (0.12.1)
-      redis-client (= 0.12.1)
+    hiredis-client (0.12.2)
+      redis-client (= 0.12.2)
     http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -308,11 +311,11 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.8)
-    nokogiri (1.14.1-arm64-darwin)
+    nokogiri (1.14.2-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.14.1-x86_64-darwin)
+    nokogiri (1.14.2-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.14.1-x86_64-linux)
+    nokogiri (1.14.2-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -339,12 +342,12 @@ GEM
     orm_adapter (0.5.0)
     ostruct (0.5.5)
     parallel (1.22.1)
-    parser (3.2.0.0)
+    parser (3.2.1.0)
       ast (~> 2.4.1)
     parslet (2.0.0)
     popper_js (1.16.1)
     public_suffix (5.0.1)
-    puma (6.0.2)
+    puma (6.1.0)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.2)
@@ -387,9 +390,9 @@ GEM
     rake (13.0.6)
     redis (5.0.6)
       redis-client (>= 0.9.0)
-    redis-client (0.12.1)
+    redis-client (0.12.2)
       connection_pool
-    regexp_parser (2.6.2)
+    regexp_parser (2.7.0)
     reline (0.3.2)
       io-console (~> 0.5)
     repost (0.4.1)
@@ -430,9 +433,9 @@ GEM
       rubocop-ast (>= 1.24.1, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 3.0)
-    rubocop-ast (1.24.1)
-      parser (>= 3.1.1.0)
-    rubocop-capybara (2.17.0)
+    rubocop-ast (1.26.0)
+      parser (>= 3.2.1.0)
+    rubocop-capybara (2.17.1)
       rubocop (~> 1.41)
     rubocop-performance (1.15.2)
       rubocop (>= 1.7.0, < 2.0)
@@ -473,7 +476,7 @@ GEM
       json
       simplecov
     simplecov_json_formatter (0.1.4)
-    slop (4.9.3)
+    slop (4.10.0)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -489,7 +492,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    standard (1.23.0)
+    standard (1.24.3)
       language_server-protocol (~> 3.17.0.2)
       rubocop (= 1.44.1)
       rubocop-performance (= 1.15.2)
@@ -499,7 +502,7 @@ GEM
       activerecord (>= 5.2)
     thor (1.2.1)
     tilt (2.0.11)
-    timeout (0.3.1)
+    timeout (0.3.2)
     traject (3.8.1)
       concurrent-ruby (>= 0.8.0)
       dot-properties (>= 0.1.1)
@@ -552,7 +555,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.6)
+    zeitwerk (2.6.7)
     zk (1.10.0)
       zookeeper (~> 1.5.0)
     zookeeper (1.5.5)
@@ -568,6 +571,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord-session_store (~> 2.0)
   addressable (~> 2.8)
+  annotate
   awesome_print
   better_errors
   binding_of_caller
@@ -629,4 +633,4 @@ RUBY VERSION
    ruby 3.2.0p0
 
 BUNDLED WITH
-   2.4.5
+   2.4.6
