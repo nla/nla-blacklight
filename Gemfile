@@ -91,12 +91,12 @@ gem "zk", "~> 1.10"
 gem "down", "~> 5.0"
 
 # Before a release, point this gem at a tag, instead of the `main` branch.
-gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository", tag: "0.2.2"
-# gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons", tag: "2.0.0"
+gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository", branch: "main"
+gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons", branch: "main"
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
 # the gems below are in the same directory. Adjust if needed to match your local dev environment.
 # gem "blacklight-solrcloud-repository", path: "../blacklight-solrcloud-repository"
-gem "catalogue-patrons", path: "../catalogue-patrons"
+# gem "catalogue-patrons", path: "../catalogue-patrons"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -120,6 +120,8 @@ group :development do
   # improve the Rails error console in development
   gem "better_errors"
   gem "binding_of_caller"
+
+  gem "annotate"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
