@@ -10,8 +10,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: de8dfd7a4798d50969035ff5144a41ad11d362c2
-  branch: main
+  revision: 844f4280bf9573c6b4d612a8a1db80666145430d
+  branch: feat/blac-204-folio-users
   specs:
     catalogue-patrons (2.0.0)
       activerecord-session_store (~> 2.0)
@@ -633,4 +633,4 @@ RUBY VERSION
    ruby 3.2.0p0
 
 BUNDLED WITH
-   2.4.6
+   2.4.7
