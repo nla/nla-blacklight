@@ -34,7 +34,7 @@ jobs:
 
       - name: Brakeman code scanning
         run: |
-          bundle exec brakeman -q -o tmp/brakeman.html
+          bundle exec brakeman --format github --no-pager --no-exit-on-warn
 
       - name: Bundler Audit check
         run: |

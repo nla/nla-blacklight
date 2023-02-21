@@ -92,7 +92,7 @@ gem "down", "~> 5.0"
 
 # Before a release, point this gem at a tag, instead of the `main` branch.
 gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository", branch: "main"
-gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons", branch: "feat/blac-204-folio-users"
+gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons", branch: "main"
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
 # the gems below are in the same directory. Adjust if needed to match your local dev environment.
 # gem "blacklight-solrcloud-repository", path: "../blacklight-solrcloud-repository"
