@@ -10,8 +10,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: 844f4280bf9573c6b4d612a8a1db80666145430d
-  branch: feat/blac-204-folio-users
+  revision: d4ac54b87bfb84fe24da76ed92cccdf0b64eb6dc
+  branch: main
   specs:
     catalogue-patrons (2.0.0)
       activerecord-session_store (~> 2.0)
@@ -145,7 +145,7 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.16.1, < 2)
       sassc-rails (>= 2.0.0)
-    brakeman (5.4.0)
+    brakeman (5.4.1)
     builder (3.2.4)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
