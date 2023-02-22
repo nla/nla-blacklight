@@ -274,8 +274,8 @@ class CatalogController < ApplicationController
     config.add_search_field("author") do |field|
       field.solr_parameters = {
         "spellcheck.dictionary": "author",
-        qf: "author_search_tsim",
-        pf: "author_search_tsim"
+        qf: "author_search_tesim",
+        pf: "author_search_tesim"
       }
     end
 
