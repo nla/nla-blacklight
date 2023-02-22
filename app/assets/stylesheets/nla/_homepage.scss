@@ -18,6 +18,19 @@
       background-color: color("white") !important;
     }
   }
+  
+  .submit-search-text {
+    // hide 'search' label at very small screens
+    @media screen and (max-width: breakpoint-max(md)) {
+      @if mixin-exists(sr-only) {
+        @include sr-only();
+      }
+      @if mixin-exists(visually-hidden) {
+        @include visually-hidden();
+      }
+    }
+  }
+
 }
 
 .eresources-search,
