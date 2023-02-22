@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: de8dfd7a4798d50969035ff5144a41ad11d362c2
+  revision: d4ac54b87bfb84fe24da76ed92cccdf0b64eb6dc
   branch: main
   specs:
     catalogue-patrons (2.0.0)
@@ -145,7 +145,7 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.16.1, < 2)
       sassc-rails (>= 2.0.0)
-    brakeman (5.4.0)
+    brakeman (5.4.1)
     builder (3.2.4)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
@@ -633,4 +633,4 @@ RUBY VERSION
    ruby 3.2.0p0
 
 BUNDLED WITH
-   2.4.6
+   2.4.7
