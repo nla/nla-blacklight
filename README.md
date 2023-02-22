@@ -68,7 +68,8 @@ values in your terminal before running the application.
 ### Environment Variables
 
 #### Blacklight database
-    DATABASE_URL
+    DATABASE_URL - Application database for Blacklight
+    PATRON_DB_URL - Shared user and sessions database
 
 #### Solr
     SOLR_URL - single node Solr
@@ -87,10 +88,19 @@ These variables are mainly used in the `staging` or `production` environment.
     GETALIBRARYCARD_AUTH_PATH - path to the authentication endpoint of Get a Library Card
     GETALIBRARYCARD_PATRON_DETAILS_PATH - path to the user details endpoint of Get a Library Card
 
-    KEYCLOAK_CLIENT - name of the client
-    KEYCLOAK_SECRET - secret defined in the client credentials
-    KEYCLOAK_URL - base URL of the Keycloak server e.g. https://login-devel.nla.gov.au
-    KEYCLOAK_REALM - name of the Keycloak realm
+    KEYCLOAK_URL - URL of the Keycloak server
+
+    KC_SOL_CLIENT - Staff Official Loan realm client name
+    KC_SOL_SECRET - Staff Official Loan realm client secret
+    KC_SOL_REALM - realm name for Staff Official Loan
+
+    KC_SPL_CLIENT - Staff Personal Loan realm client name
+    KC_SPL_SECRET - Staff Personal Loan realm client secret
+    KC_SPL_REALM - realm name for Staff Personal Loan
+
+    KC_SHARED_CLIENT - Staff Shared account realm client name
+    KC_SHARED_SECRET - Staff Shared account realm client secret
+    KC_SHARED_REALM - realm name for Staff Shared account realm
 
 #### Rails settings
 These variables are mainly used in the `staging` or `production` environment.
