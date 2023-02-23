@@ -32,6 +32,7 @@ Custom implementation of [Blacklight](http://projectblacklight.org/) for The Nat
 * System dependencies
     - Solr: 8
     - MySQL: 8
+    - Redis: 7
 
 * Gems:
   - [blacklight-solrcloud-repository](https://github.com/nla/blacklight-solrcloud-repository)
@@ -88,6 +89,9 @@ These variables are mainly used in the `staging` or `production` environment.
     GETALIBRARYCARD_AUTH_PATH - path to the authentication endpoint of Get a Library Card
     GETALIBRARYCARD_PATRON_DETAILS_PATH - path to the user details endpoint of Get a Library Card
 
+    PATRON_AUTH_URL - base URL for User Registration (a.k.a. "UserReg")
+    PATRON_AUTH_ENDPOINT - path to the authentication endpoint
+
     KEYCLOAK_URL - URL of the Keycloak server
 
     KC_SOL_CLIENT - Staff Official Loan realm client name
@@ -113,11 +117,9 @@ These variables are mainly used in the `staging` or `production` environment.
 
 1. Clone the app from GitHub.
 2. Make sure you have MySQL running locally and configured in the `.env.development.local` config file.
-3. Make sure you have Solr running locally and configured in the `.env.development.local` config file.<br />⚠️  If you are not planning on modifying the index, you can point this at the  devel or test environment Solr cluster.
-4. `bin/setup` installs gems and performs database migrations for the `development` environment.<br /> ⚠️ Gems are installed in `vendor/bundle`.
-5. _(Optional)_ If you'd like to develop locally using containerised services, install 
-[Podman](https://podman.io/), [Podman Desktop](https://podman-desktop.io/) and [podman-compose](https://github.com/containers/podman-compose),
-then read the [Containers](#containers) section.
+3. Make sure you have Redis running locally and configured in the `.env.development.local` config file.
+4. Make sure you have Solr running locally and configured in the `.env.development.local` config file.<br />⚠️  If you are not planning on modifying the Solr index, you can point this at the  devel or test environment Solr cluster.
+5. `bin/setup` installs gems and performs database migrations for the `development` environment.<br /> ⚠️ Gems are installed in `vendor/bundle`.
 
 ## Running the app
 
@@ -134,11 +136,9 @@ RAILS_ENV=test bin/ci
 * `bin/ci` contains all the tests and security vulnerability checks for the app.
 * `tmp/test.log` will use the production logging format *NOT* the development one.
 * The following test frameworks are used:
-    * [RSpec](https://rspec.info/) - for BDD testing
-    * [Cucumber](https://github.com/cucumber/cucumber-rails) - for acceptance testing
+    * [RSpec](https://rspec.info/)
     * [Capybara](http://teamcapybara.github.io/capybara/) - simulates web application interaction
     * [Webmock](https://github.com/bblimke/webmock) - HTTP request mocking and stubbing
-* 🚨 Some tests require a Zookeeper + SolrCloud cluster running locally. See [Containers](#containers) section below.
 
 ## Continuous Integration
 
@@ -172,6 +172,7 @@ The following tools provide linting, security and vulnerability checking of the 
 * [brakeman](https://github.com/presidentbeef/brakeman) provides static analysis checking.
     * Reports are written to `tmp/brakeman.html`
 * [bundler-audit](https://github.com/rubysec/bundler-audit) checks application dependencies for security vulnerabilities.
+* [strong-migrations](https://github.com/ankane/strong_migrations) catches unsafe migrations in development.
 
 ## License
 The application is available as open source under the terms of the [Apache 2 License](https://opensource.org/licenses/Apache-2.0).
