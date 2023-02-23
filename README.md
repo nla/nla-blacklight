@@ -83,6 +83,7 @@ These variables are mainly used in the `staging` or `production` environment.
 
     PIDFILE - relocates the server pid file outside of the application directory
     BLACKLIGHT_TMP_PATH - relocates the caching directory outside of the application directory
+    REDIS_URL - Redis cache
 
 #### External services
     GETALIBRARYCARD_BASE_URL - base URL for Get a Library Card
