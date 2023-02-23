@@ -39,29 +39,18 @@ RSpec.configure do |config|
       )
       .to_return(status: 200, body: "", headers: {})
 
-    auth_mock = IO.read("spec/files/auth/authenticate.xml")
+    success_auth_mock = IO.read("spec/files/auth/user_reg_success.json")
 
-    WebMock.stub_request(:post, /\S.nla.gov.au\/getalibrarycard\/authenticate.xml/)
+    WebMock.stub_request(:post, /auth-test.nla.gov.au\/authenticate/)
       .with(
+        body: "{\"barcode\":\"bltest\",\"lastName\":\"test\"}",
         headers: {
           "Accept" => "*/*",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "Content-Length" => "0",
+          "Content-Type" => "application/json",
           "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
         }
       )
-      .to_return(status: 200, body: auth_mock, headers: {})
-
-    details_mock = IO.read("spec/files/auth/user_details.xml")
-
-    WebMock.stub_request(:get, /\S.nla.gov.au\/getalibrarycard\/patrons\/details\/([0-9]*).xml/)
-      .with(
-        headers: {
-          "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
-        }
-      )
-      .to_return(status: 200, body: details_mock, headers: {})
+      .to_return(status: 200, body: success_auth_mock, headers: {})
   end
 end

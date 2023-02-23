@@ -1,7 +1,0 @@
-<response schema="http://schema.nla.gov.au/NXPL" version="1.0">
-  <itemList type="LOON-USER-PATRON" owner="user/507706" repository="LOON-USER-DB-CBD">
-    <item name="id">507706</item>
-    <item name="nameFamily">test</item>
-    <item name="nameGiven">blacklight</item>
-  </itemList>
-</response>

@@ -14,7 +14,7 @@ RSpec.describe "Navigation actions" do
   end
 
   context "when authenticated user" do
-    it "does not how the History link" do
+    it "does not show the History link" do
       visit new_user_session_path
 
       fill_in "user_username", with: "bltest"
