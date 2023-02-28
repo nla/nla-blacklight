@@ -14,6 +14,11 @@
   .facet-field-heading {
     .btn:after {
       float: none;
+      display: inline-block;
+    }
+    .btn:not(.collapsed):after {
+      transform: rotate(90deg);
+      transition: transform 0.15s ease-in-out;
     }
   }
   
