@@ -274,7 +274,7 @@ en:
 
     did_you_mean: 'Did you mean to type: %{options}?'
 
-    more_like_this: "Similar Items"
+    more_like_this: "Similar items"
 
     main:
       aria:
