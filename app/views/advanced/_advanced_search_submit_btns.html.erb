@@ -1,7 +1,7 @@
 <%# DO NOT REMOVE THIS HIDDEN FIELD OR ADVANCED SEARCH WILL STOP WORKING!!! %>
 <%= hidden_field_tag(:search_field, blacklight_config.advanced_search[:url_key]) %>
 <div class="submit-buttons pull-right">
-  <%= link_to t('blacklight_advanced_search.form.start_over'), blacklight_advanced_search_engine.advanced_search_path, :class =>"btn btn-secondary advanced-search-start-over" %>
-
   <%= submit_tag t('blacklight_advanced_search.form.search_btn'), :class=>'btn btn-primary advanced-search-submit', :id => "advanced-search-submit" %>
+  <%= link_to t('blacklight_advanced_search.form.start_over'), blacklight_advanced_search_engine.advanced_search_path, :class =>"btn btn-link advanced-search-start-over" %>
+
 </div>

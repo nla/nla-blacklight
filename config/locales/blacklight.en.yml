@@ -284,7 +284,7 @@ en:
     all: all
     any: any
     form:
-      title: Advanced Search
+      title: Advanced search
       search_context: Within search
       limit_criteria_heading_html: "<strong>AND</strong> have these attributes"
       query_criteria_heading_html: "Find items that match %{select_menu} of"
