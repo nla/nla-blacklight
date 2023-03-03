@@ -266,8 +266,8 @@ class CatalogController < ApplicationController
       # solr_parameters hash are sent to Solr as ordinary url query params.
       field.solr_parameters = {
         "spellcheck.dictionary": "title",
-        qf: "${title_qf}",
-        pf: "${title_pf}"
+        qf: "title_search_tsim",
+        pf: "title_search_tsim"
       }
     end
 
