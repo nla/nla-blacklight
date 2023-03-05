@@ -287,42 +287,48 @@ class CatalogController < ApplicationController
     config.add_search_field("call_number") do |field|
       field.label = "Call Number"
       field.solr_parameters = {
-        qf: "call_number_tsim"
+        qf: "call_number_tsim",
+        pf: "call_number_tsim"
       }
     end
 
     config.add_search_field("isbn") do |field|
       field.label = "ISBN/ISSN"
       field.solr_parameters = {
-        qf: "isbn_tsim"
+        qf: "isbn_tsim",
+        pf: "isbn_tsim"
       }
     end
 
     config.add_search_field("id") do |field|
       field.label = "Bib Id"
       field.solr_parameters = {
-        qf: "id"
+        qf: "id",
+        pf: "id"
       }
     end
 
     config.add_search_field("occupation") do |field|
       field.label = "Occupation"
       field.solr_parameters = {
-        qf: "occupation_tesim"
+        qf: "occupation_tesim",
+        pf: "occupation_tesim"
       }
     end
 
     config.add_search_field("genre") do |field|
       field.label = "Genre"
       field.solr_parameters = {
-        qf: "genre_tesim"
+        qf: "genre_tesim",
+        pf: "genre_tesim"
       }
     end
 
     config.add_search_field("in_collection") do |field|
       field.label = "In Collection"
       field.solr_parameters = {
-        qf: "parent_id_ssi"
+        qf: "parent_id_ssi",
+        pf: "parent_id_ssi"
       }
       field.include_in_simple_select = false
       field.include_in_advanced_search = false
@@ -331,7 +337,8 @@ class CatalogController < ApplicationController
     config.add_search_field("collection") do |field|
       field.label = "Collection"
       field.solr_parameters = {
-        qf: "collection_id_ssi"
+        qf: "collection_id_ssi",
+        pf: "collection_id_ssi"
       }
       field.include_in_simple_select = false
       field.include_in_advanced_search = false
