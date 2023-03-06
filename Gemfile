@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.0"
+ruby "3.2.1"
 
 # All runtime config comes from the UNIX environment
 # but we use dotenv to store that in files for development and testing
