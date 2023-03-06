@@ -137,8 +137,9 @@ GEM
     blacklight_advanced_search (7.0.0)
       blacklight (~> 7.0)
       parslet
-    blacklight_range_limit (8.2.3)
+    blacklight_range_limit (8.3.0)
       blacklight (>= 7.25.2, < 9)
+      deprecation
     bootsnap (1.16.0)
       msgpack (~> 1.2)
     bootstrap (4.6.2)
@@ -294,7 +295,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitar (0.9)
-    minitest (5.17.0)
+    minitest (5.18.0)
     mock_redis (0.36.0)
       ruby2_keywords
     msgpack (1.6.0)
@@ -351,7 +352,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.2)
-    rack (2.2.6.2)
+    rack (2.2.6.3)
     rack-protection (3.0.5)
       rack
     rack-test (2.0.2)
