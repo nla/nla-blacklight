@@ -22,7 +22,7 @@ RSpec.describe ApplicationHelper do
 
       context "when request from onsite" do
         before do
-          request.env["REMOTE_ADDR"] = "203.4.202.232"
+          request.env["REMOTE_ADDR"] = "200.2.40.0"
         end
 
         it "is false when it does not match a staff IP defined in the config" do
@@ -46,7 +46,7 @@ RSpec.describe ApplicationHelper do
 
       context "when request from local" do
         before do
-          request.env["REMOTE_ADDR"] = "192.102.239.232"
+          request.env["REMOTE_ADDR"] = "187.121.206.121"
         end
 
         it "is false when it does not match a local IP defined in the config" do
@@ -72,7 +72,7 @@ RSpec.describe ApplicationHelper do
 
     context "when in local subnet" do
       before do
-        request.env["REMOTE_ADDR"] = "192.102.239.232"
+        request.env["REMOTE_ADDR"] = "187.121.206.121"
       end
 
       it "returns true" do
@@ -96,7 +96,7 @@ RSpec.describe ApplicationHelper do
 
     context "when in staff subnet" do
       before do
-        request.env["REMOTE_ADDR"] = "203.4.202.232"
+        request.env["REMOTE_ADDR"] = "200.2.40.0"
       end
 
       it "returns true" do
@@ -120,7 +120,7 @@ RSpec.describe ApplicationHelper do
 
     context "when in local subnet" do
       before do
-        request.env["REMOTE_ADDR"] = "192.102.239.232"
+        request.env["REMOTE_ADDR"] = "187.121.206.121"
       end
 
       it "returns :onsite" do
@@ -130,7 +130,7 @@ RSpec.describe ApplicationHelper do
 
     context "when in staff subnet" do
       before do
-        request.env["REMOTE_ADDR"] = "203.4.202.232"
+        request.env["REMOTE_ADDR"] = "200.2.40.0"
       end
 
       it "returns :staff" do
@@ -154,7 +154,7 @@ RSpec.describe ApplicationHelper do
 
     context "when in local subnet" do
       before do
-        request.env["REMOTE_ADDR"] = "192.102.239.232"
+        request.env["REMOTE_ADDR"] = "187.121.206.121"
       end
 
       it "returns :local" do
@@ -164,7 +164,7 @@ RSpec.describe ApplicationHelper do
 
     context "when in staff subnet" do
       before do
-        request.env["REMOTE_ADDR"] = "203.4.202.232"
+        request.env["REMOTE_ADDR"] = "200.2.40.0"
       end
 
       it "returns :staff" do
@@ -240,7 +240,7 @@ RSpec.describe ApplicationHelper do
 
     context "when onsite" do
       before do
-        request.env["REMOTE_ADDR"] = "192.102.239.232"
+        request.env["REMOTE_ADDR"] = "187.121.206.121"
       end
 
       context "when an eResource entry exists" do
