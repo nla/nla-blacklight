@@ -11,13 +11,11 @@ module ApplicationHelper
   end
 
   def local_subnets
-    config = Rails.application.config_for(:catalogue)
-    config.subnet[:local].split(",")
+    ENV["LOCAL_SUBNET"].split(",")
   end
 
   def staff_subnets
-    config = Rails.application.config_for(:catalogue)
-    config.subnet[:staff].split(",")
+    ENV["STAFF_SUBNET"].split(",")
   end
 
   def client_in_subnets(subnets)

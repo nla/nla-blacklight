@@ -11,7 +11,7 @@ RSpec.describe StaffOnlyComponent, type: :component do
   describe "#render?" do
     context "when request is from onsite IP" do
       before do
-        request.env["REMOTE_ADDR"] = "203.4.202.232"
+        request.env["REMOTE_ADDR"] = "200.2.40.0"
       end
 
       it "returns true" do
