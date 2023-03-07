@@ -25,7 +25,7 @@ RSpec.describe "Offsite redirect", :request do
       context "when requested from a local subnet" do
         before do
           # rubocop:disable RSpec/AnyInstance
-          allow_any_instance_of(ActionDispatch::Request).to receive(:remote_addr).and_return("192.102.239.232")
+          allow_any_instance_of(ActionDispatch::Request).to receive(:remote_addr).and_return("187.121.206.121")
           # rubocop:enable RSpec/AnyInstance
         end
 
@@ -38,7 +38,7 @@ RSpec.describe "Offsite redirect", :request do
       context "when requested from a staff subnet" do
         before do
           # rubocop:disable RSpec/AnyInstance
-          allow_any_instance_of(ActionDispatch::Request).to receive(:remote_addr).and_return("203.4.202.232")
+          allow_any_instance_of(ActionDispatch::Request).to receive(:remote_addr).and_return("200.2.40.0")
           # rubocop:enable RSpec/AnyInstance
         end
 
