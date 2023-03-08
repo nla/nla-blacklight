@@ -90,6 +90,11 @@ gem "view_component", "2.82.0"
 gem "zk", "~> 1.10"
 gem "down", "~> 5.0"
 
+# feature flags
+gem "flipper", "~> 0.26.0"
+gem "flipper-active_record", "~> 0.26.0"
+gem "flipper-ui", "~> 0.26.0"
+
 # Before a release, point this gem at a tag, instead of the `main` branch.
 gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository", branch: "main"
 gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons", branch: "main"
