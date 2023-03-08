@@ -5,6 +5,7 @@
 <li class="nav-item">
   <%= link_to t('Beta feedback'), 'https://ourweb.nla.gov.au/apps/wiki/display/FUS/Blacklight+-+Staff+Beta', class: 'nav-link navbar-text' %>
 </li>
+<% if Flipper.enabled? :authentication %>
   <% if has_user_authentication_provider? %>
     <% if current_user %>
       <li class="nav-item">
@@ -21,4 +22,5 @@
     </li>
     <% end %>
   <% end %>
+<% end %>
 </ul>

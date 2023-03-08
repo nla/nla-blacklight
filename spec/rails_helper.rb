@@ -121,6 +121,10 @@ RSpec.configure do |config|
     allow(Redis).to receive(:new).and_return(mock_redis)
   end
 
+  config.before do
+    Flipper.instance = Flipper.new(Flipper::Adapters::Memory.new)
+  end
+
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
   config.extend DeviseMacros
