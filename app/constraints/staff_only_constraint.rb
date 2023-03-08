@@ -4,7 +4,7 @@ class StaffOnlyConstraint
   end
 
   def matches?(request)
-    Rails.env.development? || in_subnet?(request)
+    in_subnet?(request) || Rails.env.development?
   end
 
   protected
