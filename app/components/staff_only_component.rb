@@ -6,7 +6,7 @@ class StaffOnlyComponent < Blacklight::MetadataFieldComponent
   end
 
   def before_render
-    @in_staff_subnet = helpers.client_in_subnets(helpers.staff_subnets)
+    @in_staff_subnet = helpers.user_location == :staff
   end
 
   def render?

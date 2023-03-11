@@ -10,8 +10,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: 0510ba5d84cbeb2fc9674f21ab4bad5f21cc3fd6
-  branch: main
+  revision: f40fd15f0fe7f533621b6cf62a2e220bf53af327
+  branch: feat/blac-232-feature-flags-flipper
   specs:
     catalogue-patrons (3.0.0)
       activerecord-session_store (~> 2.0)
@@ -19,6 +19,9 @@ GIT
       bundler-audit
       devise
       dotenv-rails
+      flipper
+      flipper-redis
+      flipper-ui
       omniauth-keycloak (~> 1.4)
       omniauth-rails_csrf_protection (~> 1.0)
       rails (~> 7.0.4)
@@ -221,6 +224,9 @@ GEM
     flipper-active_record (0.26.0)
       activerecord (>= 4.2, < 8)
       flipper (~> 0.26.0)
+    flipper-redis (0.26.0)
+      flipper (~> 0.26.0)
+      redis (>= 3.0, < 6)
     flipper-ui (0.26.0)
       erubi (>= 1.0.0, < 2.0.0)
       flipper (~> 0.26.0)
@@ -517,7 +523,7 @@ GEM
       rubocop-performance (= 1.15.2)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
-    strong_migrations (1.4.3)
+    strong_migrations (1.4.4)
       activerecord (>= 5.2)
     thor (1.2.1)
     tilt (2.1.0)
@@ -655,4 +661,4 @@ RUBY VERSION
    ruby 3.2.1p31
 
 BUNDLED WITH
-   2.4.7
+   2.4.8

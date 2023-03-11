@@ -10,52 +10,6 @@ module ApplicationHelper
     options[:document].get_marc_derived_field(options[:config][:key])
   end
 
-  def local_subnets
-    ENV["LOCAL_SUBNET"].split(",")
-  end
-
-  def staff_subnets
-    ENV["STAFF_SUBNET"].split(",")
-  end
-
-  def client_in_subnets(subnets)
-    subnets.each do |subnet|
-      if client_in_subnet(subnet)
-        return true
-      end
-    end
-
-    false
-  end
-
-  def in_local_subnet?
-    client_in_subnets(local_subnets)
-  end
-
-  def in_staff_subnet?
-    client_in_subnets(staff_subnets)
-  end
-
-  def user_location
-    if in_local_subnet?
-      :onsite
-    elsif in_staff_subnet?
-      :staff
-    else
-      :offsite
-    end
-  end
-
-  def user_type
-    if in_local_subnet?
-      :local
-    elsif in_staff_subnet?
-      :staff
-    else
-      :external
-    end
-  end
-
   def makelink(document:, href:, text:, classes: "", extended_info: false, longtext: "")
     entry = nil
     caption = ""
@@ -88,35 +42,6 @@ module ApplicationHelper
   end
 
   private
-
-  def get_client_ip
-    client_ip = request.remote_ip
-
-    if client_ip.include? ","
-      client_ip = client_ip.split(",")
-      client_ip = client_ip.last
-    end
-
-    client_ip
-  end
-
-  def client_in_subnet(subnet)
-    client_ip = get_client_ip
-
-    client_ranges = client_ip.split(".")
-    subnet_ranges = subnet.split(".")
-
-    match = false
-    4.times { |i|
-      if subnet_ranges[i] == "0" || client_ranges[i] == subnet_ranges[i]
-        match = true
-      else
-        return false
-      end
-    }
-
-    match
-  end
 
   def makelink_eresource(href)
     entry = nil
