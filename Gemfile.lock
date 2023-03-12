@@ -10,8 +10,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: f40fd15f0fe7f533621b6cf62a2e220bf53af327
-  branch: feat/blac-232-feature-flags-flipper
+  revision: ff017fcf150abf570adc0f1a0d4b1142e94269fa
+  branch: main
   specs:
     catalogue-patrons (3.0.0)
       activerecord-session_store (~> 2.0)
