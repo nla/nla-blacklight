@@ -17,6 +17,7 @@ default: &default
   password:
   host: 127.0.0.1
   port: 3306
+  url: <%= ENV["DATABASE_URL"] %>
 
 patrons: &patrons
   adapter: mysql2
