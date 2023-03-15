@@ -13,14 +13,18 @@ SimpleCov.start "rails" do
     source_file.lines.count < 10
   end
 
-  # Filter out Blacklight files that are being overridden, but not modified
+  # Filter out Blacklight files that are being overridden, but not modified (i.e. styling changes only)
   add_filter "app/components/blacklight/document_component.rb"
   add_filter "app/components/blacklight/metadata_field_layout_component.rb"
   add_filter "app/components/blacklight/response/pagination_component.rb"
+  add_filter "app/components/blacklight/system/dropdown_component.rb"
   add_filter "app/models/marc_indexer.rb"
 
   # Filter out hack around Turbo + Devise issue
   add_filter "app/controllers/turbo_devise_controller.rb"
+
+  # Fixes error when user is not logged in
+  add_filter "app/controllers/concerns/blacklight/bookmarks.rb"
 
   # Filter out override of Blacklight Advanced Search Plugin override
   add_filter "lib/blacklight_advanced_search/render_constraints_override.rb"
