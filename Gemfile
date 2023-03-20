@@ -91,7 +91,7 @@ gem "zk", "~> 1.10"
 gem "down", "~> 5.0"
 
 # feature flags
-gem "flipper", "~> 0.26.0"
+gem "flipper", "~> 0.26.2"
 gem "flipper-active_record", "~> 0.26.0"
 gem "flipper-ui", "~> 0.26.0"
 
