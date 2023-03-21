@@ -134,14 +134,10 @@ class CatalogController < ApplicationController
     # solr fields to be displayed in the index (search results) view
     #   The ordering of the field names is the order of the display
     config.add_index_field "title_tsim", label: "Title"
-    config.add_index_field "title_vern_ssim", label: "Title"
     config.add_index_field "author_with_relator_ssim", label: "Author"
-    config.add_index_field "author_vern_ssim", label: "Author"
     config.add_index_field "format", label: "Format"
     config.add_index_field "language_ssim", label: "Language"
-    config.add_index_field "published_ssim", label: "Published"
-    config.add_index_field "published_vern_ssim", label: "Published"
-    config.add_index_field "lc_callnum_ssim", label: "Call number"
+    config.add_index_field "call_number_ssim", label: "Call number"
 
     # scxxx
     # test display addition
@@ -358,10 +354,10 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case). Add the sort: option to configure a
     # custom Blacklight url parameter value separate from the Solr sort fields.
-    config.add_sort_field "score desc, pub_date_si desc, title_si asc", label: "relevance"
-    config.add_sort_field "pub_date_si desc, title_si asc", label: "year"
-    config.add_sort_field "author_si asc, title_si asc", label: "author"
-    config.add_sort_field "title_si asc, pub_date_si desc", label: "title"
+    config.add_sort_field "score desc, pub_date_ssim desc, title_ssim asc", label: "relevance"
+    config.add_sort_field "pub_date_ssim desc, title_ssim asc", label: "year"
+    config.add_sort_field "author_si asc, title_ssim asc", label: "author"
+    config.add_sort_field "title_ssim asc, pub_date_ssim desc", label: "title"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

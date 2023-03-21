@@ -1,0 +1,108 @@
+<% if @results %>
+  <%= render "single_search/search_form" %>
+<% else %>
+  <%= render "single_search/search_form" %>
+  <%= render "single_search/search_options" %>
+<% end %>
+
+<div class="bento-search-results">
+  <% if @query.present? && @results.empty? %>
+    <p class="mt-4">Your search returned 0 results.</p>
+    <%= render "single_search/search_options" %>
+  <% end %>
+
+  <% if @results %>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card-columns clearfix mb-4">
+          <% unless @results["catalogue"].nil? || @results["catalogue"].total_items == 0 %>
+            <section class="item catalogue-bento">
+              <%= render "single_search/pane_results", key: "catalogue", result: @results["catalogue"] %>
+            </section>
+          <% end %>
+
+          <% unless @results["ebsco_eds_keyword"].nil? || @results["ebsco_eds_keyword"].total_items == 0 %>
+            <section class="item ebsco_eds_keyword-bento">
+              <%= render "single_search/pane_results", key: "ebsco_eds_keyword", result: @results["ebsco_eds_keyword"] %>
+            </section>
+          <% end %>
+
+          <% unless @results["ebsco_eds_title"].nil? || @results["ebsco_eds_title"].total_items == 0 %>
+            <section class="item ebsco_eds_title-bento">
+              <%= render "single_search/pane_results", key: "ebsco_eds_title", result: @results["ebsco_eds_title"] %>
+            </section>
+          <% end %>
+
+          <% unless @results["finding_aids"].nil? || @results["finding_aids"].total_items == 0 %>
+            <section class="item finding_aids-bento">
+              <%= render "single_search/pane_results", key: "finding_aids", result: @results["finding_aids"] %>
+            </section>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<!--<div class="bento-search-results">-->
+  <%# if @top_4_results.present? %>
+    <%# @top_4_results.from(0).to(0).each do |_key, result| %>
+      <%# if @query.present? && @results.empty? && result.blank? %>
+<!--        <p class="mt-4">Your search returned 0 results.</p>-->
+        <%#= render "single_search/search_options" %>
+      <%# end %>
+
+      <%# if @results || result.present? %>
+<!--        <div class="row">-->
+<!--          <div class="col-md-12" id="top-results">-->
+<!--            <div class="bento-items clearfix mb-4">-->
+              <%# if @results.blank? %>
+                <%# @top_4_results.to(0).each do |key, bento1_result, _position| %>
+<!--                  <section class="item bento1" id="<%#= "#{key}-Bento1" %>">-->
+                    <%# unless bento1_result.nil? or bento1_result[0].nil? %>
+                      <%#= render "single_search/pane_results", key: key, result: bento1_result %>
+                    <%# end %>
+<!--                  </section>-->
+                <%# end %>
+
+<!--                <section class="item bento2">-->
+<!--                  <div class="card mt-4">-->
+<!--                    <div class="card-body">-->
+<!--                      <p>No results from the <%#= link_to "Catalogue.", search_catalog_path %></p>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </section>-->
+              <%# else %>
+                <%# @top_4_results.from(1).to(0).each do |key, bento1_result| %>
+<!--                  <section class="item bento1" id="<%#= "#{key}-Bento1" %>">-->
+                    <%#= render "single_search/pane_results", key: key, result: bento1_result %>
+<!--                  </section>-->
+                <%# end %>
+
+                <%# @top_4_results.to(0).each do |key, bento1_result, _position| %>
+<!--                  <section class="item bento1" id="<%#= "#{key}-Bento1" %>">-->
+                    <%# unless bento1_result.nil? or bento1_result[0].nil? %>
+                      <%#= render "single_search/pane_results", key: key, result: bento1_result %>
+                    <%# end %>
+<!--                  </section>-->
+                <%# end %>
+
+                <%# @top_4_results.from(2).to(0).each do |key, bento3_result, _position| %>
+<!--                  <section class="item bento3" id="<%#= "#{key}-Bento3" %>">-->
+                    <%#= render "single_search/pane_results", key: key, result: bento3_result %>
+<!--                  </section>-->
+                <%# end %>
+
+                <%# @top_4_results.from(3).to(0).each do |key, bento4_result, _position| %>
+<!--                  <section class="item bento4" id="<%#= "#{key}-Bento4" %>">-->
+                    <%#= render "single_search/pane_results", key: key, result: bento4_result %>
+<!--                  </section>-->
+                <%# end %>
+              <%# end %>
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+      <%# end %>
+    <%# end %>
+  <%# end %>
+<!--</div>-->
