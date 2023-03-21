@@ -1,0 +1,69 @@
+.bento-search-bar {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0;
+}
+
+.bento-item {
+  margin-bottom: 4rem;
+}
+
+.bento-item-title {
+  font-size: 1.25rem
+}
+
+.result-columns {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-content: flex-start;
+
+  & .item {
+    width: 49%;
+  }
+}
+
+.bento-items section {
+  width: 100%;
+}
+
+.bento-items .catalogue-bento {
+  float: left;
+  clear: left;
+}
+
+.bento-items {
+  & .ebsco_eds_keyword-bento,
+  & .ebsco_eds_title-bento,
+  & .finding_aids-bento {
+    float: right;
+    clear: right;
+  }
+}
+
+@media (min-width: 576px) {
+  .bento-search-results .card-columns {
+    column-count: 1;
+  }
+}
+
+@media (min-width: 768px) {
+  .bento-search-results .card-columns {
+    column-count: 1;
+  }
+}
+
+@media (min-width: 992px) {
+  .bento-search-results .card-columns {
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1200px) {
+  .bento-search-results .card-columns {
+    column-count: 2;
+  }
+}

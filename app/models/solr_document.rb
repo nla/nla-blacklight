@@ -39,7 +39,7 @@ class SolrDocument
   # TODO: In Solr 8.8 the request handler searches across shards and this logic should be updated when Solr is upgraded.
   def more_like_this
     params = {
-      q: "{!mlt qf=lc_callnum_ssim,title_tsim,author_search_tsim,subject_tsimv,published_ssim,language_ssim boost=true}#{id}",
+      q: "{!mlt qf=call_number_tsim,title_tsim,author_search_tsim,subject_tsimv,published_ssim,language_ssim boost=true}#{id}",
       fl: "id,title_tsim,format",
       indent: "off",
       rows: 5
