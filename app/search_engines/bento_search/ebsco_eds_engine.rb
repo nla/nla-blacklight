@@ -53,7 +53,6 @@ class BentoSearch::EbscoEdsEngine
 
     sq = {
       query: q,
-      page: 0,
       results_per_page: per_page
     }
 

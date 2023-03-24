@@ -30,7 +30,7 @@ class CatalogController < ApplicationController
     config.response_model = Nla::Solr::Response
 
     ## Should the raw solr document endpoint (e.g. /catalog/:id/raw) be enabled
-    config.raw_endpoint.enabled = true
+    config.raw_endpoint.enabled = false
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {

@@ -27,20 +27,20 @@ module SingleSearchHelper
   end
 
   def bento_all_results_link(key)
-    case key
-    when "ebsco_eds"
-      bq = params[:q] || params[:query]
-      link = if bq.present?
-        "https://proxy.library.cornell.edu/login?url=https://discovery.ebsco.com/c/u2yil2/results?q=#{bq}"
+    bento_query = params[:q] || params[:query]
+    link = if key.start_with?("ebsco_eds_")
+      ebsco_link = if bento_query.present?
+        "#{ENV["EBSCO_SEARCH_URL"]}&custid=#{ENV["EDS_ORG"]}&bquery=#{bento_query}"
       else
-        "https://proxy.library.cornell.edu/login?url=https://discovery.ebsco.com/c/u2yil2"
+        "#{ENV["EBSCO_SEARCH_URL"]}&custid=#{ENV["EDS_ORG"]}"
       end
+      ebsco_link
+    elsif key == "finding_aids"
+      fa_base_url = ENV["FINDING_AIDS_SEARCH_URL"].chomp("/catalog.json")
+      "#{fa_base_url}?group=false&search_field=all_fields&q=#{bento_query}"
     else
-      # our app chooses to use 'q' as the query param; the ajax loading controller
-      # uses 'query'.This ordinarily is fine, but since we want this layout to work
-      # for both, we have to look for both, oh well.
-      link = controller.all_items_url(key, params[:q] || params[:query], BentoSearch.get_engine(key).configuration.blacklight_format)
-      link = request.protocol + request.host_with_port + "/" + link
+      cat_link = controller.all_items_url(key, bento_query, BentoSearch.get_engine(key).configuration.blacklight_format)
+      "#{request.protocol}#{request.host_with_port}#{cat_link}"
     end
 
     ss_uri_encode(link)

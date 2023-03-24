@@ -4,7 +4,6 @@ class SearchController < ApplicationController
   def index
     unless params["q"].nil?
       @query = params["q"]
-      original_query = @query
 
       if @query.include?('""')
         @query = check_mixed_quoted_bento(@query)
@@ -19,46 +18,20 @@ class SearchController < ApplicationController
       @results = {}
 
       searcher = BentoSearch.get_engine("ebsco_eds_keyword")
-      @results["ebsco_eds_keyword"] = searcher.search("#{@query}", per_page: @eds_per_page)
+      @results["ebsco_eds_keyword"] = searcher.search(@query, per_page: @eds_per_page)
 
       searcher = BentoSearch.get_engine("ebsco_eds_title")
-      @results["ebsco_eds_title"] = searcher.search("TI #{@query}", oq: original_query, per_page: @eds_per_page)
+      @results["ebsco_eds_title"] = searcher.search("TI #{@query}", per_page: @eds_per_page)
 
       searcher = BentoSearch.get_engine("catalogue")
       @results["catalogue"] = searcher.search(@query, per_page: @cat_per_page)
 
       searcher = BentoSearch.get_engine("finding_aids")
-      @results["finding_aids"] = searcher.search(@query, server_addr: request.server_name, per_page: @fa_per_page)
+      @results["finding_aids"] = searcher.search(@query, per_page: @fa_per_page)
     end
 
     render "single_search/index"
   end
-
-  # def single_search
-  #   begin
-  #     @engine = BentoSearch.get_engine(params[:engine])
-  #   rescue BentoSearch::NoSuchEngine => e
-  #     @engine = params[:engine]
-  #     @error_msg = e.message
-  #     flash.now[:error] = "There is no registered search engine for the type #{@engine}."
-  #     render status: 404, text: e.message, template: "single_search/single_search"
-  #     return
-  #   end
-  #
-  #   if params[:q]
-  #     args = {}
-  #     args[:query] = params[:q]
-  #     args[:oq] = params[:q]
-  #     args[:page] = params[:page]
-  #     args[:semantic_search_field] = params[:field]
-  #     args[:per_page] = 3
-  #     args[:sort] = params[:sort]
-  #     args[:per_page] = params[:per_page]
-  #     @results = @engine.search(params[:q], args)
-  #   end
-  #
-  #   render "single_search/single_search"
-  # end
 
   def self.transform_query(search_query)
     # Don't do anything for already-quoted queries or single-term queries
@@ -95,6 +68,10 @@ class SearchController < ApplicationController
       end
       "#{path}?#{escaped}"
     end
+  end
+
+  def eresources
+    redirect_to params[:url], allow_other_host: true
   end
 
   protected

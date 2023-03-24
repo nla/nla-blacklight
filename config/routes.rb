@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   # bento search
   get "/search", to: "search#index", as: "bento_search_index"
-  # get "/search/:engine", to: "search#single_search", as: "single_search"
+  get "/eresources-proxy", to: "search#eresources", as: "bento_eresources"
 
   # error handlers
   get "/404", to: "errors#not_found"
