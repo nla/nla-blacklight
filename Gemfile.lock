@@ -10,7 +10,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: 98943071240b6dea3495fd0a984084615325c82a
+  revision: 732f2caf67c707acdc41fe0966f9892cde4ee027
   branch: main
   specs:
     catalogue-patrons (3.0.0)
@@ -165,7 +165,7 @@ GEM
       xpath (~> 3.2)
     coderay (1.1.3)
     concurrent-ruby (1.2.2)
-    connection_pool (2.3.0)
+    connection_pool (2.4.0)
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -553,7 +553,7 @@ GEM
       unf_ext
     unf_ext (0.0.8.2)
     unicode-display_width (2.4.2)
-    version_gem (1.1.1)
+    version_gem (1.1.2)
     view_component (2.82.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
