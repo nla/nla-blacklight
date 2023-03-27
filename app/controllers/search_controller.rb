@@ -17,14 +17,14 @@ class SearchController < ApplicationController
 
       @results = {}
 
+      searcher = BentoSearch.get_engine("catalogue")
+      @results["catalogue"] = searcher.search(@query, per_page: @cat_per_page)
+
       searcher = BentoSearch.get_engine("ebsco_eds_keyword")
       @results["ebsco_eds_keyword"] = searcher.search(@query, per_page: @eds_per_page)
 
       searcher = BentoSearch.get_engine("ebsco_eds_title")
       @results["ebsco_eds_title"] = searcher.search("TI #{@query}", per_page: @eds_per_page)
-
-      searcher = BentoSearch.get_engine("catalogue")
-      @results["catalogue"] = searcher.search(@query, per_page: @cat_per_page)
 
       searcher = BentoSearch.get_engine("finding_aids")
       @results["finding_aids"] = searcher.search(@query, per_page: @fa_per_page)
