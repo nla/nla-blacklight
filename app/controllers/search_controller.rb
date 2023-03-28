@@ -2,7 +2,7 @@
 
 class SearchController < ApplicationController
   def index
-    unless params["q"].nil?
+    if params["q"].present?
       @query = params["q"]
 
       if @query.include?('""')
@@ -17,20 +17,50 @@ class SearchController < ApplicationController
 
       @results = {}
 
-      searcher = BentoSearch.get_engine("catalogue")
-      @results["catalogue"] = searcher.search(@query, per_page: @cat_per_page)
+      searchers = []
+      searchers << BentoSearch.get_engine("catalogue")
+      searchers << BentoSearch.get_engine("ebsco_eds_keyword")
+      searchers << BentoSearch.get_engine("ebsco_eds_title")
+      searchers << BentoSearch.get_engine("finding_aids")
 
-      searcher = BentoSearch.get_engine("ebsco_eds_keyword")
-      @results["ebsco_eds_keyword"] = searcher.search(@query, per_page: @eds_per_page)
+      bench = Benchmark.measure {
+        futures = searchers.collect do |searcher|
+          per_page = case searcher.engine_id
+          when "catalogue"
+            @cat_per_page
+          when "finding_aids"
+            @fa_per_page
+          when "ebsco_eds_keyword", "ebsco_eds_title"
+            @eds_per_page
+          else
+            3
+          end
 
-      searcher = BentoSearch.get_engine("ebsco_eds_title")
-      @results["ebsco_eds_title"] = searcher.search("TI #{@query}", per_page: @eds_per_page)
+          Concurrent::Future.execute {
+            Rails.application.executor.wrap {
+              searcher.search(@query, per_page: per_page)
+            }
+          }
+        end
 
-      searcher = BentoSearch.get_engine("finding_aids")
-      @results["finding_aids"] = searcher.search(@query, per_page: @fa_per_page)
+        pairs = ActiveSupport::Dependencies.interlock.permit_concurrent_loads do
+          futures.collect { |future| [future.value!.engine_id, future.value] }
+        end
+        @results = pairs.to_h.freeze
+      }
+      Rails.logger.debug { "Bento parallel search benchmark: #{bench}" }
+    end
+
+    @total_results = 0
+    @results&.each do |_key, res|
+      @total_results += res.total_items
     end
 
     render "single_search/index"
+  end
+
+  def self.search(query = "", searchers = [], cat_per_page = 3, eds_per_page = 3, fa_per_page = 3)
+
   end
 
   def self.transform_query(search_query)
