@@ -1,45 +1,47 @@
-<div class="card">
-  <div class="card-body">
-    <% if result %>
-      <h2 class="card-title"><%= BentoSearch.get_engine(key).configuration.title %></h2>
-    <% else %>
-      <h2 class="search-source"><%= BentoSearch.get_engine(key).configuration.title %></h2>
-    <% end %>
-
-    <% if result %>
-      <%= bento_search result %>
-
-      <% if result.total_items > 0 %>
-        <div class="view-all">
-          <% if key.start_with? "ebsco_eds_" %>
-            <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm" do %>
-              View
-              <%= number_with_delimiter(result.total_items) %> from
-              eResources
-              <i class="fa fa-angle-double-right"></i>
-            <% end %>
-          <% else %>
-            <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm", id: "link_top_#{downcast(key)}" do %>
-              View
-              <%= number_with_delimiter(result.total_items) %>
-              <% BentoSearch.get_engine(key).configuration.title %>
-              from
-              <% if key == "catalogue" %>
-                Catalogue
-              <% else %>
-                Finding Aids
-              <% end %>
-              <i class="fa fa-angle-double-right"></i>
-            <% end %>
-            <% if is_catalog_pane?(BentoSearch.get_engine(key).configuration.title) == true%>
-              <div class="bento_pane_advanced">
-                <% qp2 = "all_fields=#{ss_uri_encode(params[:q]).gsub('&','%26')}&search_field=advanced" %>
-                or use <%= link_to "advanced search", advanced_search_link(key, params[:q])  %>
-              </div>
-            <% end %>
-          <% end %>
-        </div>
+<section class="item" id="<%= key %>">
+  <div class="card">
+    <div class="card-body">
+      <% if result %>
+        <h2 class="card-title"><%= BentoSearch.get_engine(key).configuration.title %></h2>
+      <% else %>
+        <h2 class="search-source"><%= BentoSearch.get_engine(key).configuration.title %></h2>
       <% end %>
-    <% end %>
+
+      <% if result %>
+        <%= bento_search result %>
+
+        <% if result.total_items > 0 %>
+          <div class="view-all">
+            <% if key.start_with? "ebsco_eds_" %>
+              <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm" do %>
+                View
+                <%= number_with_delimiter(result.total_items) %> from
+                eResources
+                <i class="fa fa-angle-double-right"></i>
+              <% end %>
+            <% else %>
+              <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm", id: "link_top_#{downcast(key)}" do %>
+                View
+                <%= number_with_delimiter(result.total_items) %>
+                <% BentoSearch.get_engine(key).configuration.title %>
+                from
+                <% if key == "catalogue" %>
+                  Catalogue
+                <% else %>
+                  Finding Aids
+                <% end %>
+                <i class="fa fa-angle-double-right"></i>
+              <% end %>
+              <% if is_catalog_pane?(BentoSearch.get_engine(key).configuration.title) == true%>
+                <div class="bento_pane_advanced">
+                  <% qp2 = "all_fields=#{ss_uri_encode(params[:q]).gsub('&','%26')}&search_field=advanced" %>
+                  or use <%= link_to "advanced search", advanced_search_link(key, params[:q])  %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
   </div>
-</div>
+</section>
