@@ -99,6 +99,9 @@ gem "flipper", "~> 0.26.0"
 gem "flipper-active_record", "~> 0.26.0"
 gem "flipper-ui", "~> 0.26.0"
 
+# Fixes CVE-2023-28755
+gem "uri", "~> 0.12.1"
+
 # Before a release, point these gem at a tag, instead of the `main` branch.
 gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository", branch: "main"
 gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons", branch: "main"
