@@ -29,33 +29,23 @@
               <li>
                 <span class="navbar-brand">Results: </span>
               </li>
-              <%
-                @results.each do |key, result|
-                  unless result.nil? || result.total_items == 0
-              %>
+              <% @results.each do |key, result| %>
+                <% unless result.nil? || result.total_items == 0 %>
                   <li class="nav-item">
                     <span class="nav-link"><%= link_to BentoSearch.get_engine(key).configuration.title, "##{key}" %> (<%= number_with_delimiter result.total_items %>)</span>
                   </li>
-                <%
-                  end
-                  end
-                %>
+                <% end %>
+              <% end %>
             </ul>
           </div>
         </nav>
 
         <div class="card-columns clearfix mt-0 mb-2">
-          <%
-            @results.each do |key, result|
-              unless result.nil? || result.total_items == 0
-          %>
-              <section class="item" id="<%= key %>">
-                <%= render "single_search/pane_results", key: key, result: result %>
-              </section>
-            <%
-              end
-              end
-            %>
+          <% @results.each do |key, result| %>
+            <% unless result.nil? || result.total_items == 0 %>
+              <%= render "single_search/pane_results", key: key, result: result %>
+            <% end %>
+          <% end %>
         </div>
       <% end %>
     </div>

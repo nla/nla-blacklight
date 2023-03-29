@@ -1,15 +1,9 @@
 <% bento_decorate(item) do |item| %>
-  <% dbid = '' %>
+  <% dbid = "" %>
   <% dbid = "data-bibid=#{item.unique_id}" if is_catalogued?(item.link) %>
-  <% atl_data = (is_catalogued?(item.link) ? "data-atl='yes'" : "data-atl='no'") %>
 
-  <div class="bento-item clearfix mb-4"  <%= dbid %>  data-unique-id="<%= item.unique_id %>" <%= atl_data.html_safe %> >
-    <% if item.format_str && item.link.present? && (item.link).include?('digital') %>
-      <div class="pull-left" style="margin-right:10px">
-        <img src="<%= item.format_str %>" class="img-responsive img-thumbnail" alt="">
-      </div>
-    <% end %>
-    <%= render :partial => "bento_search/item_title", :object => item, :as => 'item', :locals => {} %>
+  <div class="bento-item clearfix mb-4" <%= dbid %> data-unique-id="<%= item.unique_id %>">
+    <%= render :partial => "bento_search/item_title", :object => item, :as => 'item', :locals => {index: (item_counter + 1)} %>
 
     <div class="col">
       <dl class="document-metadata dl-invert row">
