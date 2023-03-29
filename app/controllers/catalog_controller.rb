@@ -361,7 +361,11 @@ class CatalogController < ApplicationController
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.
-    config.spell_max = 1
+    #
+    # The spelling component uses a "less than or equal to" comparison against this number,
+    # so it actually needs to be 1 less than the lowest number of results otherwise, suggestions
+    # will be shown.
+    config.spell_max = 0
 
     # Configuration for autocomplete suggester
     config.autocomplete_enabled = true
