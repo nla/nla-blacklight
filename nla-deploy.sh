@@ -26,6 +26,9 @@ else
   echo "Ruby $RUBY_VERSION found; continuing deployment..."
 fi
 
+# update system gems
+gem update --system
+
 gem install bundler
 bundle config --local jobs $(nproc)
 bundle config --local path "vendor/bundle"

@@ -27,6 +27,7 @@ class BentoSearch::EbscoEdsEngine
       guest: false,
       user: ENV["EDS_USER"],
       pass: ENV["EDS_PASS"],
+      use_cache: Rails.env.production?,
       eds_cache_dir: ENV.fetch("BLACKLIGHT_TMP_PATH", "tmp"),
       log: ENV.fetch("BLACKLIGHT_TMP_PATH", "tmp") + "/eds_faraday.log"
     })
