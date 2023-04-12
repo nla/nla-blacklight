@@ -90,18 +90,28 @@ gem "view_component", "2.82.0"
 gem "zk", "~> 1.10"
 gem "down", "~> 5.0"
 
+gem "httpclient"
+gem "htmlentities"
+gem "ebsco-eds", "~> 1.1"
+
 # feature flags
 gem "flipper", "~> 0.26.0"
 gem "flipper-active_record", "~> 0.26.0"
 gem "flipper-ui", "~> 0.26.0"
 
-# Before a release, point this gem at a tag, instead of the `main` branch.
+# Fixes CVE-2023-28755
+gem "uri", "~> 0.12.1"
+
+# Before a release, point these gem at a tag, instead of the `main` branch.
 gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository", branch: "main"
 gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons", branch: "main"
+gem "bento_search", git: "https://github.com/yetti/bento_search.git", branch: "master"
+
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
 # the gems below are in the same directory. Adjust if needed to match your local dev environment.
 # gem "blacklight-solrcloud-repository", path: "../blacklight-solrcloud-repository"
 # gem "catalogue-patrons", path: "../catalogue-patrons"
+# gem "bento_search", path: "../bento_search"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -1,0 +1,873 @@
+{
+  "AvailableSearchCriteria": {
+    "AvailableSorts": [
+      {
+        "Id": "relevance",
+        "Label": "Relevance",
+        "AddAction": "setsort(relevance)"
+      },
+      {
+        "Id": "date",
+        "Label": "Date Newest",
+        "AddAction": "setsort(date)"
+      },
+      {
+        "Id": "date2",
+        "Label": "Date Oldest",
+        "AddAction": "setsort(date2)"
+      }
+    ],
+    "AvailableSearchFields": [
+      {
+        "FieldCode": "TX",
+        "Label": "All Text"
+      },
+      {
+        "FieldCode": "AU",
+        "Label": "Author"
+      },
+      {
+        "FieldCode": "TI",
+        "Label": "Title"
+      },
+      {
+        "FieldCode": "SU",
+        "Label": "Subject Terms"
+      },
+      {
+        "FieldCode": "SO",
+        "Label": "Source"
+      },
+      {
+        "FieldCode": "AB",
+        "Label": "Abstract"
+      },
+      {
+        "FieldCode": "IS",
+        "Label": "ISSN"
+      },
+      {
+        "FieldCode": "IB",
+        "Label": "ISBN"
+      }
+    ],
+    "AvailableExpanders": [
+      {
+        "Id": "thesaurus",
+        "Label": "Apply related words",
+        "AddAction": "addexpander(thesaurus)",
+        "DefaultOn": "n"
+      },
+      {
+        "Id": "fulltext",
+        "Label": "Also search within the full text of the articles",
+        "AddAction": "addexpander(fulltext)",
+        "DefaultOn": "y"
+      },
+      {
+        "Id": "relatedsubjects",
+        "Label": "Apply equivalent subjects",
+        "AddAction": "addexpander(relatedsubjects)",
+        "DefaultOn": "n"
+      }
+    ],
+    "AvailableLimiters": [
+      {
+        "Id": "FT",
+        "Label": "Full Text",
+        "Type": "select",
+        "AddAction": "addlimiter(FT:value)",
+        "DefaultOn": "n",
+        "Order": "1"
+      },
+      {
+        "Id": "FT1",
+        "Label": "Available in Library Collection",
+        "Type": "select",
+        "AddAction": "addlimiter(FT1:value)",
+        "DefaultOn": "n",
+        "Order": "2"
+      },
+      {
+        "Id": "RV",
+        "Label": "Scholarly (Peer Reviewed) Journals",
+        "Type": "select",
+        "AddAction": "addlimiter(RV:value)",
+        "DefaultOn": "n",
+        "Order": "3"
+      },
+      {
+        "Id": "AU",
+        "Label": "Author",
+        "Type": "text",
+        "AddAction": "addlimiter(AU:value)",
+        "DefaultOn": "n",
+        "Order": "4"
+      },
+      {
+        "Id": "SO",
+        "Label": "Journal Name",
+        "Type": "text",
+        "AddAction": "addlimiter(SO:value)",
+        "DefaultOn": "n",
+        "Order": "5"
+      },
+      {
+        "Id": "TI",
+        "Label": "Title",
+        "Type": "text",
+        "AddAction": "addlimiter(TI:value)",
+        "DefaultOn": "n",
+        "Order": "6"
+      },
+      {
+        "Id": "DT1",
+        "Label": "Date Published",
+        "Type": "ymrange",
+        "AddAction": "addlimiter(DT1:value)",
+        "DefaultOn": "n",
+        "Order": "7"
+      },
+      {
+        "Id": "LA99",
+        "Label": "Language",
+        "Type": "multiselectvalue",
+        "LimiterValues": [
+          {
+            "Value": "Afrikaans",
+            "AddAction": "addlimiter(LA99:Afrikaans)"
+          },
+          {
+            "Value": "Albanian",
+            "AddAction": "addlimiter(LA99:Albanian)"
+          },
+          {
+            "Value": "Aleut",
+            "AddAction": "addlimiter(LA99:Aleut)"
+          },
+          {
+            "Value": "Arabic",
+            "AddAction": "addlimiter(LA99:Arabic)"
+          },
+          {
+            "Value": "Chinese",
+            "AddAction": "addlimiter(LA99:Chinese)"
+          },
+          {
+            "Value": "Czech",
+            "AddAction": "addlimiter(LA99:Czech)"
+          },
+          {
+            "Value": "Danish",
+            "AddAction": "addlimiter(LA99:Danish)"
+          },
+          {
+            "Value": "Dutch; Flemish",
+            "AddAction": "addlimiter(LA99:Dutch; Flemish)"
+          },
+          {
+            "Value": "English",
+            "AddAction": "addlimiter(LA99:English)"
+          },
+          {
+            "Value": "Finnish",
+            "AddAction": "addlimiter(LA99:Finnish)"
+          },
+          {
+            "Value": "French",
+            "AddAction": "addlimiter(LA99:French)"
+          },
+          {
+            "Value": "German",
+            "AddAction": "addlimiter(LA99:German)"
+          },
+          {
+            "Value": "Haitian; Haitian Creole",
+            "AddAction": "addlimiter(LA99:Haitian; Haitian Creole)"
+          },
+          {
+            "Value": "Hebrew",
+            "AddAction": "addlimiter(LA99:Hebrew)"
+          },
+          {
+            "Value": "Hmong; Mong",
+            "AddAction": "addlimiter(LA99:Hmong; Mong)"
+          },
+          {
+            "Value": "Indonesian",
+            "AddAction": "addlimiter(LA99:Indonesian)"
+          },
+          {
+            "Value": "Inupiaq",
+            "AddAction": "addlimiter(LA99:Inupiaq)"
+          },
+          {
+            "Value": "Italian",
+            "AddAction": "addlimiter(LA99:Italian)"
+          },
+          {
+            "Value": "Japanese",
+            "AddAction": "addlimiter(LA99:Japanese)"
+          },
+          {
+            "Value": "Korean",
+            "AddAction": "addlimiter(LA99:Korean)"
+          },
+          {
+            "Value": "Lao",
+            "AddAction": "addlimiter(LA99:Lao)"
+          },
+          {
+            "Value": "Latin",
+            "AddAction": "addlimiter(LA99:Latin)"
+          },
+          {
+            "Value": "Lithuanian",
+            "AddAction": "addlimiter(LA99:Lithuanian)"
+          },
+          {
+            "Value": "Navajo; Navaho",
+            "AddAction": "addlimiter(LA99:Navajo; Navaho)"
+          },
+          {
+            "Value": "Persian",
+            "AddAction": "addlimiter(LA99:Persian)"
+          },
+          {
+            "Value": "Polish",
+            "AddAction": "addlimiter(LA99:Polish)"
+          },
+          {
+            "Value": "Portuguese",
+            "AddAction": "addlimiter(LA99:Portuguese)"
+          },
+          {
+            "Value": "Pushto; Pashto",
+            "AddAction": "addlimiter(LA99:Pushto; Pashto)"
+          },
+          {
+            "Value": "Romanian; Moldavian; Moldovan",
+            "AddAction": "addlimiter(LA99:Romanian; Moldavian; Moldovan)"
+          },
+          {
+            "Value": "Russian",
+            "AddAction": "addlimiter(LA99:Russian)"
+          },
+          {
+            "Value": "Spanish; Castilian",
+            "AddAction": "addlimiter(LA99:Spanish; Castilian)"
+          },
+          {
+            "Value": "Swedish",
+            "AddAction": "addlimiter(LA99:Swedish)"
+          },
+          {
+            "Value": "Tagalog",
+            "AddAction": "addlimiter(LA99:Tagalog)"
+          },
+          {
+            "Value": "Thai",
+            "AddAction": "addlimiter(LA99:Thai)"
+          },
+          {
+            "Value": "Turkish",
+            "AddAction": "addlimiter(LA99:Turkish)"
+          },
+          {
+            "Value": "Ukrainian",
+            "AddAction": "addlimiter(LA99:Ukrainian)"
+          },
+          {
+            "Value": "Vietnamese",
+            "AddAction": "addlimiter(LA99:Vietnamese)"
+          },
+          {
+            "Value": "Dutch",
+            "AddAction": "addlimiter(LA99:Dutch)"
+          },
+          {
+            "Value": "Spanish",
+            "AddAction": "addlimiter(LA99:Spanish)"
+          },
+          {
+            "Value": "Welsh",
+            "AddAction": "addlimiter(LA99:Welsh)"
+          },
+          {
+            "Value": "Afar",
+            "AddAction": "addlimiter(LA99:Afar)"
+          },
+          {
+            "Value": "Abkhazian",
+            "AddAction": "addlimiter(LA99:Abkhazian)"
+          },
+          {
+            "Value": "Catalan; Valencian",
+            "AddAction": "addlimiter(LA99:Catalan; Valencian)"
+          },
+          {
+            "Value": "Irish",
+            "AddAction": "addlimiter(LA99:Irish)"
+          },
+          {
+            "Value": "Greek, Modern (1453-)",
+            "AddAction": "addlimiter(LA99:Greek\\\\, Modern \\\\(1453-\\\\))"
+          },
+          {
+            "Value": "Swahili",
+            "AddAction": "addlimiter(LA99:Swahili)"
+          },
+          {
+            "Value": "Amharic",
+            "AddAction": "addlimiter(LA99:Amharic)"
+          },
+          {
+            "Value": "Armenian",
+            "AddAction": "addlimiter(LA99:Armenian)"
+          },
+          {
+            "Value": "Mapudungun; Mapuche",
+            "AddAction": "addlimiter(LA99:Mapudungun; Mapuche)"
+          },
+          {
+            "Value": "Asturian; Bable; Leonese; Asturleonese",
+            "AddAction": "addlimiter(LA99:Asturian; Bable; Leonese; Asturleonese)"
+          },
+          {
+            "Value": "Australian languages",
+            "AddAction": "addlimiter(LA99:Australian languages)"
+          },
+          {
+            "Value": "Basque",
+            "AddAction": "addlimiter(LA99:Basque)"
+          },
+          {
+            "Value": "Bengali",
+            "AddAction": "addlimiter(LA99:Bengali)"
+          },
+          {
+            "Value": "Bosnian",
+            "AddAction": "addlimiter(LA99:Bosnian)"
+          },
+          {
+            "Value": "Breton",
+            "AddAction": "addlimiter(LA99:Breton)"
+          },
+          {
+            "Value": "Burmese",
+            "AddAction": "addlimiter(LA99:Burmese)"
+          },
+          {
+            "Value": "Central American Indian languages",
+            "AddAction": "addlimiter(LA99:Central American Indian languages)"
+          },
+          {
+            "Value": "Chechen",
+            "AddAction": "addlimiter(LA99:Chechen)"
+          },
+          {
+            "Value": "Coptic",
+            "AddAction": "addlimiter(LA99:Coptic)"
+          },
+          {
+            "Value": "English, Middle (1100-1500)",
+            "AddAction": "addlimiter(LA99:English\\\\, Middle \\\\(1100-1500\\\\))"
+          },
+          {
+            "Value": "Esperanto",
+            "AddAction": "addlimiter(LA99:Esperanto)"
+          },
+          {
+            "Value": "Estonian",
+            "AddAction": "addlimiter(LA99:Estonian)"
+          },
+          {
+            "Value": "Faroese",
+            "AddAction": "addlimiter(LA99:Faroese)"
+          },
+          {
+            "Value": "Fijian",
+            "AddAction": "addlimiter(LA99:Fijian)"
+          },
+          {
+            "Value": "Germanic languages",
+            "AddAction": "addlimiter(LA99:Germanic languages)"
+          },
+          {
+            "Value": "Geez",
+            "AddAction": "addlimiter(LA99:Geez)"
+          },
+          {
+            "Value": "Galician",
+            "AddAction": "addlimiter(LA99:Galician)"
+          },
+          {
+            "Value": "Greek, Ancient (to 1453)",
+            "AddAction": "addlimiter(LA99:Greek\\\\, Ancient \\\\(to 1453\\\\))"
+          },
+          {
+            "Value": "Hindi",
+            "AddAction": "addlimiter(LA99:Hindi)"
+          },
+          {
+            "Value": "Croatian",
+            "AddAction": "addlimiter(LA99:Croatian)"
+          },
+          {
+            "Value": "Hungarian",
+            "AddAction": "addlimiter(LA99:Hungarian)"
+          },
+          {
+            "Value": "Icelandic",
+            "AddAction": "addlimiter(LA99:Icelandic)"
+          },
+          {
+            "Value": "Ido",
+            "AddAction": "addlimiter(LA99:Ido)"
+          },
+          {
+            "Value": "Interlingua (International Auxiliary Language Association)",
+            "AddAction": "addlimiter(LA99:Interlingua \\\\(International Auxiliary Language Association\\\\))"
+          },
+          {
+            "Value": "Javanese",
+            "AddAction": "addlimiter(LA99:Javanese)"
+          },
+          {
+            "Value": "Judeo-Arabic",
+            "AddAction": "addlimiter(LA99:Judeo-Arabic)"
+          },
+          {
+            "Value": "Kannada",
+            "AddAction": "addlimiter(LA99:Kannada)"
+          },
+          {
+            "Value": "Luxembourgish; Letzeburgesch",
+            "AddAction": "addlimiter(LA99:Luxembourgish; Letzeburgesch)"
+          },
+          {
+            "Value": "Malayalam",
+            "AddAction": "addlimiter(LA99:Malayalam)"
+          },
+          {
+            "Value": "Austronesian languages",
+            "AddAction": "addlimiter(LA99:Austronesian languages)"
+          },
+          {
+            "Value": "Malay",
+            "AddAction": "addlimiter(LA99:Malay)"
+          },
+          {
+            "Value": "Maltese",
+            "AddAction": "addlimiter(LA99:Maltese)"
+          },
+          {
+            "Value": "Mongolian",
+            "AddAction": "addlimiter(LA99:Mongolian)"
+          },
+          {
+            "Value": "Nahuatl languages",
+            "AddAction": "addlimiter(LA99:Nahuatl languages)"
+          },
+          {
+            "Value": "Neapolitan",
+            "AddAction": "addlimiter(LA99:Neapolitan)"
+          },
+          {
+            "Value": "Bokmål, Norwegian; Norwegian Bokmål",
+            "AddAction": "addlimiter(LA99:Bokmål\\\\, Norwegian; Norwegian Bokmål)"
+          },
+          {
+            "Value": "Norse, Old",
+            "AddAction": "addlimiter(LA99:Norse\\\\, Old)"
+          },
+          {
+            "Value": "Norwegian",
+            "AddAction": "addlimiter(LA99:Norwegian)"
+          },
+          {
+            "Value": "Occitan (post 1500)",
+            "AddAction": "addlimiter(LA99:Occitan \\\\(post 1500\\\\))"
+          },
+          {
+            "Value": "Ojibwa",
+            "AddAction": "addlimiter(LA99:Ojibwa)"
+          },
+          {
+            "Value": "Philippine languages",
+            "AddAction": "addlimiter(LA99:Philippine languages)"
+          },
+          {
+            "Value": "Romany",
+            "AddAction": "addlimiter(LA99:Romany)"
+          },
+          {
+            "Value": "Samaritan Aramaic",
+            "AddAction": "addlimiter(LA99:Samaritan Aramaic)"
+          },
+          {
+            "Value": "Sanskrit",
+            "AddAction": "addlimiter(LA99:Sanskrit)"
+          },
+          {
+            "Value": "Sinhala; Sinhalese",
+            "AddAction": "addlimiter(LA99:Sinhala; Sinhalese)"
+          },
+          {
+            "Value": "Slovak",
+            "AddAction": "addlimiter(LA99:Slovak)"
+          },
+          {
+            "Value": "Slovenian",
+            "AddAction": "addlimiter(LA99:Slovenian)"
+          },
+          {
+            "Value": "Sundanese",
+            "AddAction": "addlimiter(LA99:Sundanese)"
+          },
+          {
+            "Value": "Sumerian",
+            "AddAction": "addlimiter(LA99:Sumerian)"
+          },
+          {
+            "Value": "Classical Syriac",
+            "AddAction": "addlimiter(LA99:Classical Syriac)"
+          },
+          {
+            "Value": "Tibetan",
+            "AddAction": "addlimiter(LA99:Tibetan)"
+          },
+          {
+            "Value": "Ugaritic",
+            "AddAction": "addlimiter(LA99:Ugaritic)"
+          },
+          {
+            "Value": "Yiddish",
+            "AddAction": "addlimiter(LA99:Yiddish)"
+          },
+          {
+            "Value": "Zapotec",
+            "AddAction": "addlimiter(LA99:Zapotec)"
+          },
+          {
+            "Value": "Bulgarian",
+            "AddAction": "addlimiter(LA99:Bulgarian)"
+          },
+          {
+            "Value": "Latvian",
+            "AddAction": "addlimiter(LA99:Latvian)"
+          },
+          {
+            "Value": "Macedonian",
+            "AddAction": "addlimiter(LA99:Macedonian)"
+          },
+          {
+            "Value": "Serbian",
+            "AddAction": "addlimiter(LA99:Serbian)"
+          },
+          {
+            "Value": "Azerbaijani",
+            "AddAction": "addlimiter(LA99:Azerbaijani)"
+          },
+          {
+            "Value": "Catalan",
+            "AddAction": "addlimiter(LA99:Catalan)"
+          },
+          {
+            "Value": "Dutch/Flemish",
+            "AddAction": "addlimiter(LA99:Dutch/Flemish)"
+          },
+          {
+            "Value": "Greek",
+            "AddAction": "addlimiter(LA99:Greek)"
+          },
+          {
+            "Value": "Romanian",
+            "AddAction": "addlimiter(LA99:Romanian)"
+          },
+          {
+            "Value": "Serbo-Croatian",
+            "AddAction": "addlimiter(LA99:Serbo-Croatian)"
+          },
+          {
+            "Value": "Urdu",
+            "AddAction": "addlimiter(LA99:Urdu)"
+          },
+          {
+            "Value": "Gujarati",
+            "AddAction": "addlimiter(LA99:Gujarati)"
+          },
+          {
+            "Value": "Multiple languages",
+            "AddAction": "addlimiter(LA99:Multiple languages)"
+          },
+          {
+            "Value": "Chagatai",
+            "AddAction": "addlimiter(LA99:Chagatai)"
+          },
+          {
+            "Value": "Undetermined",
+            "AddAction": "addlimiter(LA99:Undetermined)"
+          },
+          {
+            "Value": "Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic",
+            "AddAction": "addlimiter(LA99:Church Slavic; Old Slavonic; Church Slavonic; Old Bulgarian; Old Church Slavonic)"
+          },
+          {
+            "Value": "Indic languages",
+            "AddAction": "addlimiter(LA99:Indic languages)"
+          },
+          {
+            "Value": "Altaic languages",
+            "AddAction": "addlimiter(LA99:Altaic languages)"
+          },
+          {
+            "Value": "Turkish, Ottoman (1500-1928)",
+            "AddAction": "addlimiter(LA99:Turkish\\\\, Ottoman \\\\(1500-1928\\\\))"
+          },
+          {
+            "Value": "Belarusian",
+            "AddAction": "addlimiter(LA99:Belarusian)"
+          },
+          {
+            "Value": "Sorbian languages",
+            "AddAction": "addlimiter(LA99:Sorbian languages)"
+          },
+          {
+            "Value": "Romansh",
+            "AddAction": "addlimiter(LA99:Romansh)"
+          },
+          {
+            "Value": "Marathi",
+            "AddAction": "addlimiter(LA99:Marathi)"
+          },
+          {
+            "Value": "Official Aramaic (700-300 BCE); Imperial Aramaic (700-300 BCE)",
+            "AddAction": "addlimiter(LA99:Official Aramaic \\\\(700-300 BCE\\\\); Imperial Aramaic \\\\(700-300 BCE\\\\))"
+          },
+          {
+            "Value": "Tamil",
+            "AddAction": "addlimiter(LA99:Tamil)"
+          },
+          {
+            "Value": "Mohawk",
+            "AddAction": "addlimiter(LA99:Mohawk)"
+          },
+          {
+            "Value": "Manx",
+            "AddAction": "addlimiter(LA99:Manx)"
+          },
+          {
+            "Value": "Algonquian languages",
+            "AddAction": "addlimiter(LA99:Algonquian languages)"
+          },
+          {
+            "Value": "North American Indian languages",
+            "AddAction": "addlimiter(LA99:North American Indian languages)"
+          },
+          {
+            "Value": "Scottish Gaelic",
+            "AddAction": "addlimiter(LA99:Scottish Gaelic)"
+          },
+          {
+            "Value": "Scots",
+            "AddAction": "addlimiter(LA99:Scots)"
+          },
+          {
+            "Value": "Romance languages",
+            "AddAction": "addlimiter(LA99:Romance languages)"
+          },
+          {
+            "Value": "Maori",
+            "AddAction": "addlimiter(LA99:Maori)"
+          },
+          {
+            "Value": "Arawak",
+            "AddAction": "addlimiter(LA99:Arawak)"
+          },
+          {
+            "Value": "Chinook jargon",
+            "AddAction": "addlimiter(LA99:Chinook jargon)"
+          },
+          {
+            "Value": "Cherokee",
+            "AddAction": "addlimiter(LA99:Cherokee)"
+          },
+          {
+            "Value": "Creoles and pidgins",
+            "AddAction": "addlimiter(LA99:Creoles and pidgins)"
+          },
+          {
+            "Value": "Dakota",
+            "AddAction": "addlimiter(LA99:Dakota)"
+          },
+          {
+            "Value": "Delaware",
+            "AddAction": "addlimiter(LA99:Delaware)"
+          },
+          {
+            "Value": "Ga",
+            "AddAction": "addlimiter(LA99:Ga)"
+          },
+          {
+            "Value": "Grebo",
+            "AddAction": "addlimiter(LA99:Grebo)"
+          },
+          {
+            "Value": "Hawaiian",
+            "AddAction": "addlimiter(LA99:Hawaiian)"
+          },
+          {
+            "Value": "Iroquoian languages",
+            "AddAction": "addlimiter(LA99:Iroquoian languages)"
+          },
+          {
+            "Value": "Creek",
+            "AddAction": "addlimiter(LA99:Creek)"
+          },
+          {
+            "Value": "Niger-Kordofanian languages",
+            "AddAction": "addlimiter(LA99:Niger-Kordofanian languages)"
+          },
+          {
+            "Value": "Yoruba",
+            "AddAction": "addlimiter(LA99:Yoruba)"
+          },
+          {
+            "Value": "Zulu",
+            "AddAction": "addlimiter(LA99:Zulu)"
+          },
+          {
+            "Value": "No linguistic content; Not applicable",
+            "AddAction": "addlimiter(LA99:No linguistic content; Not applicable)"
+          }
+        ],
+        "DefaultOn": "n",
+        "Order": "8"
+      },
+      {
+        "Id": "FR",
+        "Label": "References Available",
+        "Type": "select",
+        "AddAction": "addlimiter(FR:value)",
+        "DefaultOn": "n",
+        "Order": "9"
+      }
+    ],
+    "AvailableSearchModes": [
+      {
+        "Mode": "bool",
+        "Label": "Boolean/Phrase",
+        "DefaultOn": "y",
+        "AddAction": "setsearchmode(bool)"
+      },
+      {
+        "Mode": "all",
+        "Label": "Find all my search terms",
+        "DefaultOn": "n",
+        "AddAction": "setsearchmode(all)"
+      },
+      {
+        "Mode": "any",
+        "Label": "Find any of my search terms",
+        "DefaultOn": "n",
+        "AddAction": "setsearchmode(any)"
+      },
+      {
+        "Mode": "smart",
+        "Label": "SmartText Searching",
+        "DefaultOn": "n",
+        "AddAction": "setsearchmode(smart)"
+      }
+    ],
+    "AvailableRelatedContent": [
+      {
+        "Type": "emp",
+        "Label": "Exact Match Publication",
+        "DefaultOn": "y",
+        "AddAction": "includerelatedcontent(emp)"
+      },
+      {
+        "Type": "rs",
+        "Label": "Research Starters",
+        "DefaultOn": "n",
+        "AddAction": "includerelatedcontent(rs)"
+      }
+    ],
+    "AvailableDidYouMeanOptions": [
+      {
+        "Id": "AutoSuggest",
+        "Label": "Did You Mean",
+        "DefaultOn": "y"
+      },
+      {
+        "Id": "AutoCorrect",
+        "Label": "Auto Correct",
+        "DefaultOn": "n"
+      }
+    ]
+  },
+  "ViewResultSettings": {
+    "ResultsPerPage": "20",
+    "ResultListView": "brief",
+    "IncludeImageQuickView": {
+      "Id": "ImageQuickViewResults",
+      "Label": "Image Quick View Results",
+      "DefaultOn": "n"
+    }
+  },
+  "ApplicationSettings": {
+    "SessionTimeout": "480"
+  },
+  "ApiSettings": {
+    "MaxRecordJumpAhead": "250"
+  },
+  "ExportFormatSettings": {
+    "AvailableFormats": [
+      {
+        "Id": "RIS",
+        "Label": "RIS Format"
+      }
+    ]
+  },
+  "CitationStyleSettings": {
+    "AvailableStyles": [
+      {
+        "Id": "abnt",
+        "Label": "ABNT"
+      },
+      {
+        "Id": "ama",
+        "Label": "AMA 11th Edition"
+      },
+      {
+        "Id": "apa",
+        "Label": "APA 7th Edition"
+      },
+      {
+        "Id": "chicago",
+        "Label": "Chicago 17th Edition"
+      },
+      {
+        "Id": "harvard",
+        "Label": "Harvard"
+      },
+      {
+        "Id": "harvardaustralian",
+        "Label": "Harvard: Australian"
+      },
+      {
+        "Id": "mla",
+        "Label": "MLA 9th Edition"
+      },
+      {
+        "Id": "turabian",
+        "Label": "Chicago 17th Edition"
+      },
+      {
+        "Id": "vancouver",
+        "Label": "Vancouver/ICMJE"
+      }
+    ]
+  }
+}

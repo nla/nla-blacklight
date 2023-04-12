@@ -2,6 +2,7 @@ require:
   - standard
   - rubocop-rails
   - rubocop-rspec
+  - rubocop-capybara
 
 inherit_gem:
   standard: config/base.yml

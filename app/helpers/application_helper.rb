@@ -41,6 +41,14 @@ module ApplicationHelper
     result
   end
 
+  def is_excluded_blacklight_searchbar_display_path?
+    if (current_page?(root_path) || current_page?(search_catalog_path)) && !has_search_parameters?
+      true
+    else
+      current_page?(bento_search_index_path)
+    end
+  end
+
   private
 
   def makelink_eresource(href)
