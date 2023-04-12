@@ -22,8 +22,6 @@ Rails.application.routes.draw do
     concerns [:exportable, :marc_viewable]
   end
 
-  get "/staff", to: "application#staff_login"
-
   resources :bookmarks do
     concerns :exportable
 
@@ -31,6 +29,9 @@ Rails.application.routes.draw do
       delete "clear"
     end
   end
+
+  # bento search
+  get "/search", to: "search#index", as: "bento_search_index"
 
   # error handlers
   get "/404", to: "errors#not_found"
