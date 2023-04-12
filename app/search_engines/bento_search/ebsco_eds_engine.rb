@@ -19,8 +19,8 @@ class BentoSearch::EbscoEdsEngine
     client.connect_timeout = client.send_timeout = client.receive_timeout = http_timeout
   end
 
-  def eds_options(eds_params = {})
-    {
+  def search_implementation(args)
+    session = EBSCO::EDS::Session.new({
       caller: "blacklight-bento-search",
       debug: false,
       profile: ENV["EDS_PROFILE"],
@@ -29,17 +29,7 @@ class BentoSearch::EbscoEdsEngine
       pass: ENV["EDS_PASS"],
       eds_cache_dir: ENV.fetch("BLACKLIGHT_TMP_PATH", "tmp"),
       log: ENV.fetch("BLACKLIGHT_TMP_PATH", "tmp") + "/eds_faraday.log"
-    }
-  end
-
-  def search_implementation(args)
-    session = EBSCO::EDS::Session.new(
-      {
-        guest: false,
-        debug: false,
-        log: "#{ENV["BLACKLIGHT_TMP_PATH"]}/eds_faraday.log"
-      }
-    )
+    })
 
     results = BentoSearch::Results.new
 
@@ -51,8 +41,14 @@ class BentoSearch::EbscoEdsEngine
     required_hit_count = args[:per_page].present? ? [args[:per_page], 1].max : 1
     per_page = args[:per_page]
 
+    query = if configuration[:query_prefix].present?
+      "#{configuration[:query_prefix]} #{q}"
+    else
+      q
+    end
+
     sq = {
-      query: q,
+      query: query,
       results_per_page: per_page
     }
 
