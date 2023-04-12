@@ -55,7 +55,7 @@ RSpec.configure do |config|
 
     cat_search_mock = IO.read("spec/files/bento_search/cat_search.json")
 
-    WebMock.stub_request(:get, /catalogue.example.com\/catalog.json\?per_page=10&q=/)
+    WebMock.stub_request(:get, /test.host\/catalog.json\?per_page=10&q=/)
       .with(
         headers: {
           "Accept" => "*/*",
@@ -67,7 +67,7 @@ RSpec.configure do |config|
 
     fa_search_mock = IO.read("spec/files/bento_search/fa_search.json")
 
-    WebMock.stub_request(:get, /catalogue.example.com\/finding-aids\/catalog.json\?per_page=3&q=/)
+    WebMock.stub_request(:get, /test.host\/finding-aids\/catalog.json\?per_page=3&q=/)
       .with(
         headers: {
           "Accept" => "*/*",
