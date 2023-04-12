@@ -11,7 +11,7 @@ module SingleSearchHelper
   end
 
   def ss_uri_encode(link_url)
-    link_url = link_url.gsub("% ", "%25%20") unless link_url.match?("%25")
+    link_url = link_url.gsub("%", "%25") unless link_url.match?("%25")
     link_url = link_url.gsub("$", "%24")
     link_url = link_url.gsub(";", "%3B")
     link_url = link_url.gsub(" ", "%20")
@@ -57,29 +57,12 @@ module SingleSearchHelper
     "#{root_url}advanced?#{qp2}"
   end
 
-  def access_url_is_list?(args)
-    args["url_access_json"].present? && args["url_access_json"].size != 1
-  end
-
-  # def access_url_single(args)
-  #   if !args["url_access_json"].present? || access_url_is_list?(args)
-  #     nil
-  #   else
-  #     url_access = JSON.parse(args["url_access_json"][0])
-  #     if url_access['url'].present?
-  #       url_access['url']
-  #     else
-  #       nil
-  #     end
-  #   end
-  # end
-
   def is_catalogued?(url)
-    if url.nil?
+    uri = Addressable::URI.parse(url) || nil
+    if uri.nil?
       false
     else
-      # (url.include?("/catalog/") && !url.include?( "library.cornell.edu"))
-      url.start_with?("/catalog/")
+      uri.host.start_with?("catalogue")
     end
   end
 end

@@ -20,7 +20,7 @@
                 <i class="fa fa-angle-double-right"></i>
               <% end %>
             <% else %>
-              <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm", id: "link_top_#{downcast(key)}" do %>
+              <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm" do %>
                 View
                 <%= number_with_delimiter(result.total_items) %>
                 <% BentoSearch.get_engine(key).configuration.title %>
