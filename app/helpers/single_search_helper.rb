@@ -28,9 +28,16 @@ module SingleSearchHelper
 
   def bento_all_results_link(key)
     bento_query = params[:q] || params[:query]
-    link = if key.start_with?("ebsco_eds_")
+    link = if key.start_with?("ebsco_eds_keyword")
       ebsco_link = if bento_query.present?
         "#{ENV["EBSCO_SEARCH_URL"]}&custid=#{ENV["EDS_ORG"]}&bquery=#{bento_query}"
+      else
+        "#{ENV["EBSCO_SEARCH_URL"]}&custid=#{ENV["EDS_ORG"]}"
+      end
+      ebsco_link
+    elsif key == "ebsco_eds_title"
+      ebsco_link = if bento_query.present?
+        "#{ENV["EBSCO_SEARCH_URL"]}&custid=#{ENV["EDS_ORG"]}&bquery=TI+#{bento_query}"
       else
         "#{ENV["EBSCO_SEARCH_URL"]}&custid=#{ENV["EDS_ORG"]}"
       end
@@ -39,8 +46,7 @@ module SingleSearchHelper
       fa_base_url = ENV["FINDING_AIDS_SEARCH_URL"].chomp("/catalog.json")
       "#{fa_base_url}?group=false&search_field=all_fields&q=#{bento_query}"
     else
-      cat_link = controller.all_items_url(key, bento_query, BentoSearch.get_engine(key).configuration.blacklight_format)
-      "#{request.protocol}#{request.host_with_port}#{cat_link}"
+      "#{root_url}?search_field=all_fields&q=#{bento_query}"
     end
 
     ss_uri_encode(link)
@@ -48,7 +54,7 @@ module SingleSearchHelper
 
   def advanced_search_link(key, query)
     qp2 = "all_fields=#{ss_uri_encode(query).gsub("&", "%26")}&search_field=advanced"
-    "/advanced?#{qp2}"
+    "#{root_url}advanced?#{qp2}"
   end
 
   def access_url_is_list?(args)

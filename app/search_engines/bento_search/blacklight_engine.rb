@@ -1,23 +1,18 @@
 # frozen_string_literal: true
 
 require "faraday"
-require "uri"
 
 module BentoSearch
-  class FindingAidsEngine
+  class BlacklightEngine
     include BentoSearch::SearchEngine
 
     def search_implementation(args)
       results = BentoSearch::Results.new
 
-      uri = URI.parse(ENV["FINDING_AIDS_SEARCH_URL"])
+      uri = URI.parse(configuration.search_url)
 
       conn = Faraday.new(
-        url: "#{uri.scheme}://#{uri.host}#{uri.port.present? ? ":#{uri.port}" : ""}",
-        params: {
-          group: "false"
-        },
-        headers: {"Content-Type": "application/json"}
+        url: "#{uri.scheme}://#{uri.host}#{uri.port.present? ? ":#{uri.port}" : ""}"
       )
       endpoint = uri.path.to_s
 
