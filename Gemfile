@@ -95,9 +95,9 @@ gem "htmlentities"
 gem "ebsco-eds", "~> 1.1"
 
 # feature flags
-gem "flipper", "~> 0.26.0"
-gem "flipper-active_record", "~> 0.26.0"
-gem "flipper-ui", "~> 0.26.0"
+gem "flipper", "~> 0.28.0"
+gem "flipper-active_record", "~> 0.28.0"
+gem "flipper-ui", "~> 0.28.0"
 
 # Fixes CVE-2023-28755
 gem "uri", "~> 0.12.1"
