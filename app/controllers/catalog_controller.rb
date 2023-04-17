@@ -375,6 +375,9 @@ class CatalogController < ApplicationController
     # config.autocomplete_suggester = 'mySuggester'
   end
 
+  def home
+  end
+
   def offsite
     url = params[:url]
 
