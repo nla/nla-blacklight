@@ -49,6 +49,10 @@
     <main id="main-container" class="<%= container_classes %>" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
       <%= content_for(:container_header) %>
 
+      <% if display_global_message_on_page? %>
+        <%= render GlobalMessageComponent.new %>
+      <% end %>
+
       <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
 
       <div class="row">

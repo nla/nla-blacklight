@@ -1,4 +1,21 @@
 GIT
+  remote: https://github.com/nla/bento_search.git
+  revision: 10e085dac289847d0aed16714fa822d0b89a7d92
+  branch: master
+  specs:
+    bento_search (2.0.0.rc1)
+      confstruct (~> 1.0)
+      htmlentities
+      httpclient (>= 2.2.5, < 3.0.0)
+      language_list (~> 1.0)
+      multi_json (>= 1.0.4, < 2.0)
+      nokogiri
+      openurl (>= 0.3.1, < 1.1)
+      rails (>= 5.2, <= 7.1)
+      rails-controller-testing
+      summon
+
+GIT
   remote: https://github.com/nla/blacklight-solrcloud-repository
   revision: 6be178f6ea85eb0d2409f9faaa162f945adf3908
   branch: main
@@ -26,23 +43,6 @@ GIT
       omniauth-rails_csrf_protection (~> 1.0)
       rails (~> 7.0.4)
       rufus-scheduler (~> 3.8)
-
-GIT
-  remote: https://github.com/yetti/bento_search.git
-  revision: 10e085dac289847d0aed16714fa822d0b89a7d92
-  branch: master
-  specs:
-    bento_search (2.0.0.rc1)
-      confstruct (~> 1.0)
-      htmlentities
-      httpclient (>= 2.2.5, < 3.0.0)
-      language_list (~> 1.0)
-      multi_json (>= 1.0.4, < 2.0)
-      nokogiri
-      openurl (>= 0.3.1, < 1.1)
-      rails (>= 5.2, <= 7.1)
-      rails-controller-testing
-      summon
 
 GEM
   remote: https://rubygems.org/
@@ -249,7 +249,7 @@ GEM
     factory_bot_rails (6.2.0)
       factory_bot (~> 6.2.0)
       railties (>= 5.0.0)
-    faker (3.1.1)
+    faker (3.2.0)
       i18n (>= 1.8.11, < 2)
     faraday (1.10.3)
       faraday-em_http (~> 1.0)
@@ -534,7 +534,7 @@ GEM
     rubocop-performance (1.16.0)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.19.0)
+    rubocop-rails (2.19.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
@@ -731,14 +731,14 @@ DEPENDENCIES
   twitter-typeahead-rails (= 0.11.1)
   tzinfo-data
   uri (~> 0.12.1)
-  view_component (= 2.82.0)
+  view_component (~> 2.82)
   web-console
   webdrivers
   webmock
   zk (~> 1.10)
 
 RUBY VERSION
-   ruby 3.2.1p31
+   ruby 3.2.2p53
 
 BUNDLED WITH
    2.4.9

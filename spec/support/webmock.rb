@@ -163,7 +163,7 @@ RSpec.configure do |config|
 
     eds_search_title_mock = IO.read("spec/files/bento_search/ebsco/search_title.json")
 
-    stub_request(:post, /eds-api.ebscohost.com\/edsapi\/rest\/Search/)
+    WebMock.stub_request(:post, /eds-api.ebscohost.com\/edsapi\/rest\/Search/)
       .with(
         body: "{\"SearchCriteria\":{\"Queries\":[{\"Term\":\"TI hydrogen\"}],\"SearchMode\":\"bool\",\"IncludeFacets\":\"y\",\"FacetFilters\":[],\"Limiters\":[],\"Sort\":\"relevance\",\"PublicationId\":null,\"RelatedContent\":[\"emp\"],\"AutoSuggest\":\"y\",\"Expanders\":[\"fulltext\"],\"AutoCorrect\":\"n\"},\"RetrievalCriteria\":{\"View\":\"brief\",\"ResultsPerPage\":3,\"PageNumber\":1,\"Highlight\":null,\"IncludeImageQuickView\":false},\"Actions\":[\"GoToPage(1)\"],\"Comment\":\"\"}",
         headers: {
@@ -178,5 +178,29 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: eds_search_title_mock, headers: {"Content-Type" => "application/json"})
+
+    single_message_mock = IO.read("spec/files/global_messages/single_message.json")
+
+    WebMock.stub_request(:get, /test.nla.gov.au\/catalogue-message\/(1|1234)/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+        }
+      )
+      .to_return(status: 200, body: single_message_mock, headers: {"Content-Type" => "application/json"})
+
+    multi_message_mock = IO.read("spec/files/global_messages/multiple_messages.json")
+
+    WebMock.stub_request(:get, /test.nla.gov.au\/catalogue-message\/2/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+        }
+      )
+      .to_return(status: 200, body: multi_message_mock, headers: {"Content-Type" => "application/json"})
   end
 end
