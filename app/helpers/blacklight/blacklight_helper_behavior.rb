@@ -1,5 +1,7 @@
 # frozen_string_literal: true
+
 # Methods added to this helper will be available to all templates in the hosting application
+# rubocop:disable Rails/HelperInstanceVariable
 module Blacklight::BlacklightHelperBehavior
   extend Deprecation
 
@@ -19,9 +21,9 @@ module Blacklight::BlacklightHelperBehavior
   def application_name
     # It's important that we don't use ActionView::Helpers::CacheHelper#cache here
     # because it returns nil.
-    Rails.cache.fetch 'blacklight/application_name' do
-      t('blacklight.application_name',
-        default: t('blacklight.application_name', locale: I18n.default_locale))
+    Rails.cache.fetch "blacklight/application_name" do
+      t("blacklight.application_name",
+        default: t("blacklight.application_name", locale: I18n.default_locale))
     end
   end
 
@@ -56,7 +58,7 @@ module Blacklight::BlacklightHelperBehavior
   # @deprecated
   # @return [String]
   def render_opensearch_response_metadata
-    render partial: 'catalog/opensearch_response_metadata', locals: { response: @response }
+    render partial: "catalog/opensearch_response_metadata", locals: {response: @response}
   end
   deprecation_deprecate render_opensearch_response_metadata: 'Use `render "catalog/opensearch_response_metadata"\' instead'
 
@@ -72,7 +74,7 @@ module Blacklight::BlacklightHelperBehavior
   # @see render_body_class
   # @return [Array<String>]
   def extra_body_classes
-    @extra_body_classes ||= ['blacklight-' + controller.controller_name, 'blacklight-' + [controller.controller_name, controller.action_name].join('-')]
+    @extra_body_classes ||= ["blacklight-" + controller.controller_name, "blacklight-" + [controller.controller_name, controller.action_name].join("-")]
   end
 
   ##
@@ -83,7 +85,7 @@ module Blacklight::BlacklightHelperBehavior
       component_class = blacklight_config&.view_config(document_index_view_type)&.search_bar_component || Blacklight::SearchBarComponent
       render component_class.new(
         url: search_action_url,
-        advanced_search_url: search_action_url(action: 'advanced_search'),
+        advanced_search_url: search_action_url(action: "advanced_search"),
         params: search_state.params_for_search.except(:qt),
         search_fields: Deprecation.silence(Blacklight::ConfigurationHelperBehavior) { search_fields },
         autocomplete_path: search_action_path(action: :suggest)
@@ -155,7 +157,7 @@ module Blacklight::BlacklightHelperBehavior
         (response.spelling&.words&.any? || response.spelling&.collation&.present? || false)
     end
   end
-  deprecation_deprecate should_show_spellcheck_suggestions?: 'moving into a private method of Blacklight::Response::SpellcheckComponent'
+  deprecation_deprecate should_show_spellcheck_suggestions?: "moving into a private method of Blacklight::Response::SpellcheckComponent"
 
   # @!group Document helpers
   ##
@@ -184,9 +186,9 @@ module Blacklight::BlacklightHelperBehavior
     label = Deprecation.silence(Blacklight::ConfigurationHelperBehavior) do
       options[:label] || index_field_label(document, field)
     end
-    html_escape t(:"blacklight.search.index.#{document_index_view_type}.label", default: :'blacklight.search.index.label', label: label)
+    html_escape t(:"blacklight.search.index.#{document_index_view_type}.label", default: :"blacklight.search.index.label", label: label)
   end
-  deprecation_deprecate render_index_field_label: 'Use Blacklight::MetadataFieldComponent instead'
+  deprecation_deprecate render_index_field_label: "Use Blacklight::MetadataFieldComponent instead"
 
   ##
   # Render the show field label for a document
@@ -212,9 +214,9 @@ module Blacklight::BlacklightHelperBehavior
       options[:label] || document_show_field_label(document, field)
     end
 
-    t(:'blacklight.search.show.label', label: label)
+    t(:"blacklight.search.show.label", label: label)
   end
-  deprecation_deprecate render_document_show_field_label: 'Use Blacklight::MetadataFieldComponent instead'
+  deprecation_deprecate render_document_show_field_label: "Use Blacklight::MetadataFieldComponent instead"
 
   ##
   # Get the value of the document's "title" field, or a placeholder
@@ -227,7 +229,7 @@ module Blacklight::BlacklightHelperBehavior
     document ||= @document
     document_presenter(document).heading
   end
-  deprecation_deprecate document_heading: 'Use Blacklight::DocumentPresenter#heading instead'
+  deprecation_deprecate document_heading: "Use Blacklight::DocumentPresenter#heading instead"
 
   ##
   # Get the document's "title" to display in the <title> element.
@@ -242,7 +244,7 @@ module Blacklight::BlacklightHelperBehavior
 
     document_presenter(document).html_title
   end
-  deprecation_deprecate document_show_html_title: 'Use Blacklight::DocumentPresenter#html_title instead'
+  deprecation_deprecate document_show_html_title: "Use Blacklight::DocumentPresenter#html_title instead"
 
   ##
   # Render the document "heading" (title) in a content tag
@@ -263,7 +265,7 @@ module Blacklight::BlacklightHelperBehavior
 
     content_tag(tag, document_presenter(document).heading, itemprop: "name", class: "h3")
   end
-  deprecation_deprecate render_document_heading: 'Removed without replacement'
+  deprecation_deprecate render_document_heading: "Removed without replacement"
 
   ##
   # Get the current "view type" (and ensure it is a valid type)
@@ -316,19 +318,19 @@ module Blacklight::BlacklightHelperBehavior
   # @deprecated
   # @return [Blacklight::DocumentPresenter]
   def presenter(document)
-    Deprecation.warn(Blacklight::BlacklightHelperBehavior, '#presenter is deprecated; use #document_presenter instead')
+    Deprecation.warn(Blacklight::BlacklightHelperBehavior, "#presenter is deprecated; use #document_presenter instead")
 
     # As long as the presenter methods haven't been overridden, we can use the new behavior
     if method(:show_presenter).owner == Blacklight::BlacklightHelperBehavior &&
-       method(:index_presenter).owner == Blacklight::BlacklightHelperBehavior
+        method(:index_presenter).owner == Blacklight::BlacklightHelperBehavior
       return document_presenter_class(document).new(document, self)
     end
 
-    Deprecation.warn(Blacklight::BlacklightHelperBehavior, '#show_presenter and/or #index_presenter have been overridden; please override #document_presenter instead')
+    Deprecation.warn(Blacklight::BlacklightHelperBehavior, "#show_presenter and/or #index_presenter have been overridden; please override #document_presenter instead")
 
     Deprecation.silence(Blacklight::BlacklightHelperBehavior) do
       case action_name
-      when 'show', 'citation'
+      when "show", "citation"
         show_presenter(document)
       else
         index_presenter(document)
@@ -347,10 +349,10 @@ module Blacklight::BlacklightHelperBehavior
   # @deprecated
   # @return [Blacklight::ShowPresenter]
   def show_presenter(document)
-    Deprecation.warn(Blacklight::BlacklightHelperBehavior, '#show_presenter is deprecated; use #document_presenter instead')
+    Deprecation.warn(Blacklight::BlacklightHelperBehavior, "#show_presenter is deprecated; use #document_presenter instead")
 
     if method(:show_presenter_class).owner != Blacklight::BlacklightHelperBehavior
-      Deprecation.warn(Blacklight::BlacklightHelperBehavior, '#show_presenter_class has been overridden; please override #document_presenter_class instead')
+      Deprecation.warn(Blacklight::BlacklightHelperBehavior, "#show_presenter_class has been overridden; please override #document_presenter_class instead")
     end
 
     Deprecation.silence(Blacklight::BlacklightHelperBehavior) do
@@ -361,10 +363,10 @@ module Blacklight::BlacklightHelperBehavior
   # @deprecated
   # @return [Blacklight::IndexPresenter]
   def index_presenter(document)
-    Deprecation.warn(Blacklight::BlacklightHelperBehavior, '#index_presenter is deprecated; use #document_presenter instead')
+    Deprecation.warn(Blacklight::BlacklightHelperBehavior, "#index_presenter is deprecated; use #document_presenter instead")
 
     if method(:index_presenter_class).owner != Blacklight::BlacklightHelperBehavior
-      Deprecation.warn(Blacklight::BlacklightHelperBehavior, '#index_presenter_class has been overridden; please override #document_presenter_class instead')
+      Deprecation.warn(Blacklight::BlacklightHelperBehavior, "#index_presenter_class has been overridden; please override #document_presenter_class instead")
     end
 
     Deprecation.silence(Blacklight::BlacklightHelperBehavior) do
@@ -378,7 +380,7 @@ module Blacklight::BlacklightHelperBehavior
   def document_presenter_class(document = nil)
     Deprecation.silence(Blacklight::BlacklightHelperBehavior) do
       case action_name
-      when 'show', 'citation'
+      when "show", "citation"
         show_presenter_class(document)
       else
         index_presenter_class(document)
@@ -391,7 +393,7 @@ module Blacklight::BlacklightHelperBehavior
   # @deprecated
   # @return [Class]
   def show_presenter_class(_document)
-    Deprecation.warn(Blacklight::BlacklightHelperBehavior, '#show_presenter_class is deprecated; use #document_presenter_class instead')
+    Deprecation.warn(Blacklight::BlacklightHelperBehavior, "#show_presenter_class is deprecated; use #document_presenter_class instead")
 
     blacklight_config.view_config(:show, action_name: action_name).document_presenter_class
   end
@@ -399,7 +401,7 @@ module Blacklight::BlacklightHelperBehavior
   # @deprecated
   # @return [Class]
   def index_presenter_class(_document)
-    Deprecation.warn(Blacklight::BlacklightHelperBehavior, '#index_presenter_class is deprecated; use #document_presenter_class instead')
+    Deprecation.warn(Blacklight::BlacklightHelperBehavior, "#index_presenter_class is deprecated; use #document_presenter_class instead")
 
     blacklight_config.view_config(document_index_view_type, action_name: action_name).document_presenter_class
   end
@@ -414,7 +416,7 @@ module Blacklight::BlacklightHelperBehavior
   # Open Search discovery tag for HTML <head> links
   # @return [String]
   def opensearch_description_tag title, href
-    tag :link, href: href, title: title, type: "application/opensearchdescription+xml", rel: "search"
+    tag.link(href: href, title: title, type: "application/opensearchdescription+xml", rel: "search")
   end
 
   # @private
@@ -425,15 +427,16 @@ module Blacklight::BlacklightHelperBehavior
 
   def partial_from_blacklight?(partial)
     path = if Rails::VERSION::MAJOR >= 6
-             name = partial.split('/').last
-             prefix = partial.split('/').first if partial.include?('/')
-             logger&.debug "Looking for document index partial #{partial}"
-             prefixes = lookup_context.prefixes + [prefix, ""].compact
-             lookup_context.find_all(name, prefixes, true).first&.identifier
-           else
-             lookup_context.find_all(partial, lookup_context.prefixes + [""], true).first&.identifier
-           end
+      name = partial.split("/").last
+      prefix = partial.split("/").first if partial.include?("/")
+      logger&.debug "Looking for document index partial #{partial}"
+      prefixes = lookup_context.prefixes + [prefix, ""].compact
+      lookup_context.find_all(name, prefixes, true).first&.identifier
+    else
+      lookup_context.find_all(partial, lookup_context.prefixes + [""], true).first&.identifier
+    end
 
     path&.starts_with?(Blacklight::BlacklightHelperBehavior.blacklight_path)
   end
 end
+# rubocop:enable Rails/HelperInstanceVariable
