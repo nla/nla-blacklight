@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: 62cb787391f402d665a05e60ca2eb0e78c063fb7
+  revision: 39e1e69fc8a8bf5bf1a2aef4c102072a5e378079
   branch: main
   specs:
     catalogue-patrons (3.0.0)
@@ -741,4 +741,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.9
+   2.4.12
