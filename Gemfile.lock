@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: 2d683be3bd117f9f9c124ef64327d6146b7f0e04
+  revision: 27772fec959a55932687f9421e78ea068c9eee72
   branch: main
   specs:
     catalogue-patrons (3.0.0)
