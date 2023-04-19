@@ -21,7 +21,7 @@ RSpec.describe "Navigation actions" do
       fill_in "user_username", with: "bltest"
       fill_in "user_password", with: "test"
 
-      click_button "Log in"
+      click_button "Login"
 
       expect(page).not_to have_text("History")
     end
