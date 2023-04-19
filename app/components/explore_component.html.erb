@@ -54,7 +54,7 @@
     for (let i in booksInfo) {
       const book = booksInfo[i]
       if (book.preview && book.preview !== 'noview') {
-        document.getElementById('google-preview').innerHTML = `<a href="${book.preview_url}">Preview at Google Books</a>`
+        document.getElementById('google-preview').innerHTML = `<%= image_tag "google.png" %> <a href="${book.preview_url}">Preview at Google Books</a>`
         document.getElementById('google-preview').className = "explore-link"
       }
     }
