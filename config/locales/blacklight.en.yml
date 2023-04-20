@@ -93,7 +93,7 @@ en:
         action_confirm: 'Clear your bookmarks?'
         success: 'Cleared your bookmarks.'
         failure: 'Sorry, there was a problem clearing your bookmarks.'
-      need_login: 'Please log in to manage and view your bookmarks.'
+      need_login: 'Please login to manage and view your bookmarks.'
       list_title: 'Your Bookmarks'
       delete: 'Remove'
 
