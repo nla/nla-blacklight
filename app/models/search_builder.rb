@@ -16,7 +16,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   #   end
 
   def add_title_boost_to_query(solr_parameters)
-    unless blacklight_params[:q].blank?
+    if blacklight_params[:q].present?
       solr_parameters[:bf] = blacklight_config.solr_bf_title_boost
     end
   end
