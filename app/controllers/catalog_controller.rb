@@ -15,7 +15,7 @@ class CatalogController < ApplicationController
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
     # config.advanced_search[:qt] ||= 'advanced'
     config.advanced_search[:url_key] ||= "advanced"
-    config.advanced_search[:query_parser] ||= "dismax"
+    config.advanced_search[:query_parser] ||= "edismax"
     config.advanced_search[:form_solr_parameters] ||= {}
 
     ## Class for sending and receiving requests from a search index
@@ -34,7 +34,9 @@ class CatalogController < ApplicationController
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
-      rows: 10
+      rows: 10,
+      qf: "id title_tsim^10 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
+      pf: "id title_tsim title_addl_tsim author_search_tsim subject_tsimv"
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -258,12 +260,14 @@ class CatalogController < ApplicationController
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
 
+    config.solr_bf_title_boost = "mul(termfreq(title_tsim,$q),100)"
+
     config.add_search_field("title") do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
       field.solr_parameters = {
         "spellcheck.dictionary": "title",
-        qf: "title_search_tsim",
-        pf: "title_search_tsim"
+        qf: "id title_tsim^10 title_addl_tsim",
+        pf: "id title_tsim title_addl_tsim"
       }
     end
 
