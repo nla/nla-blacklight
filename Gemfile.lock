@@ -27,10 +27,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: 27772fec959a55932687f9421e78ea068c9eee72
+  revision: 8ec032fb07a03b4be26354a3732eba56ed0a43a8
   branch: main
   specs:
-    catalogue-patrons (3.0.0)
+    catalogue-patrons (3.1.0)
       activerecord-session_store (~> 2.0)
       brakeman
       bundler-audit
@@ -316,7 +316,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     httpclient (2.8.3)
-    i18n (1.12.0)
+    i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.5)
       actionpack (>= 6.0.0)
@@ -445,7 +445,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.2)
-    rack (2.2.6.4)
+    rack (2.2.7)
     rack-protection (3.0.6)
       rack
     rack-test (2.1.0)
@@ -655,7 +655,7 @@ GEM
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.7)
+    zeitwerk (2.6.8)
     zk (1.10.0)
       zookeeper (~> 1.5.0)
     zookeeper (1.5.5)
