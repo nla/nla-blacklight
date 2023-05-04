@@ -7,8 +7,14 @@
   padding: 0.5rem 0;
 }
 
-.bento-item-title {
-  font-size: 1.25rem
+.bento-search-results {
+  .card-title {
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 75%, rgba(255,255,255,0) 100%);
+  }
+  
+  .bento-item-title {
+    font-size: 1.25rem
+  }
 }
 
 @media (min-width: 576px) {
