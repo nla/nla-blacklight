@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-RSpec.describe RequestActionsComponent, type: :component do
+RSpec.describe CatalogueRecordActionsComponent, type: :component do
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485, format: ["Picture"]) }
 
   before do

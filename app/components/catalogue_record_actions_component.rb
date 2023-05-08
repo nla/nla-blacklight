@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class RequestActionsComponent < ViewComponent::Base
+class CatalogueRecordActionsComponent < ViewComponent::Base
   def initialize(document:)
     @document = document
   end
