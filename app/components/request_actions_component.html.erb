@@ -1,0 +1,15 @@
+<div class="col-12 sticky-top mb-2">
+  <div class="justify-content-start">
+    <% if render_online? %>
+      <a href="<%= online_url %>" class="btn btn-primary mb-4 mr-4">View online</a>
+    <% end %>
+    <% if render_request? %>
+      <a href="#request" class="btn btn-primary mb-4 mr-4"><%= request_label %></a>
+    <% end %>
+    <%= link_to "Order a copy", "javascript:;", class: "btn btn-primary mb-4 mr-4", onclick: "document.getElementById('copiesdirect_addcart').submit();".html_safe %>
+  </div>
+</div>
+<form action="<%= ENV["COPIES_DIRECT_URL"] %>/items/import" class="sr-only" id="copiesdirect_addcart" method="post">
+  <input id="source" name="source" type="hidden" value="cat">
+  <input id="sourcevalue" name="sourcevalue" type="hidden" value="<%= @document.id %>">
+</form>

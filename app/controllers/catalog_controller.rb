@@ -71,6 +71,7 @@ class CatalogController < ApplicationController
     config.show.thumbnail_field = "thumbnail_path_ss"
     config.show.thumbnail_presenter = NlaThumbnailPresenter
     config.show.partials.insert(1, :thumbnail) # thumbnail after show_header
+    config.show.partials.insert(2, :request_actions) # request_actions after thumbnail
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
@@ -377,9 +378,6 @@ class CatalogController < ApplicationController
     # if the name of the solr.SuggestComponent provided in your solrconfig.xml is not the
     # default 'mySuggester', uncomment and provide it below
     # config.autocomplete_suggester = 'mySuggester'
-  end
-
-  def home
   end
 
   def offsite

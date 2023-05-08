@@ -60,10 +60,10 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "renders the Copies Direct form" do
+    it "does not render the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
-      expect(page).to have_css "form[id='copiesdirect_addcart']"
+      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
@@ -88,10 +88,10 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "renders the Copies Direct form" do
+    it "does not render the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
-      expect(page).to have_css "form[id='copiesdirect_addcart']"
+      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
@@ -109,10 +109,10 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "renders the Copies Direct form" do
+    it "does not render the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
-      expect(page).to have_css "form[id='copiesdirect_addcart']"
+      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
@@ -137,10 +137,10 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "renders the Copies Direct form" do
+    it "does not render the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
-      expect(page).to have_css "form[id='copiesdirect_addcart']"
+      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "render the Copies Direct link" do
@@ -158,10 +158,10 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "renders the Copies Direct form" do
+    it "does not render the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
-      expect(page).to have_css "form[id='copiesdirect_addcart']"
+      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
@@ -235,10 +235,10 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "renders the Copies Direct form" do
+    it "does not render the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
-      expect(page).to have_css "form[id='copiesdirect_addcart']"
+      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
@@ -298,10 +298,10 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       allow(copyright).to receive(:info).and_return(rights_response)
     end
 
-    it "renders the Copies Direct form" do
+    it "does not render the Copies Direct form" do
       render_inline(described_class.new(copyright: copyright))
 
-      expect(page).to have_css "form[id='copiesdirect_addcart']"
+      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
