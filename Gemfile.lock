@@ -25,8 +25,10 @@ GIT
       rsolr
       zk (~> 1.10)
 
-PATH
-  remote: ../catalogue-patrons
+GIT
+  remote: https://github.com/nla/catalogue-patrons
+  revision: aa6959725bb1c2e31adcafda05af4a0ef803c7e7
+  branch: main
   specs:
     catalogue-patrons (3.1.0)
       activerecord-session_store (~> 2.0)
@@ -560,7 +562,7 @@ GEM
       sprockets-rails
       tilt
     scrub_rb (1.0.1)
-    selenium-webdriver (4.9.0)
+    selenium-webdriver (4.9.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
