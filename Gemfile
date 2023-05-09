@@ -103,9 +103,9 @@ gem "flipper-ui", "~> 0.28.0"
 gem "uri", "~> 0.12.1"
 
 # Before a release, point these gem at a tag, instead of the `main` branch.
-gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository", branch: "main"
-gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons", branch: "main"
-gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "master"
+gem "blacklight-solrcloud-repository", git: "https://github.com/nla/blacklight-solrcloud-repository", tag: "0.2.3"
+gem "catalogue-patrons", git: "https://github.com/nla/catalogue-patrons", tag: "3.1.0"
+gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
 # the gems below are in the same directory. Adjust if needed to match your local dev environment.
