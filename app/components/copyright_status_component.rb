@@ -11,10 +11,6 @@ class CopyrightStatusComponent < ViewComponent::Base
     @copyright.info
   end
 
-  def document
-    @copyright.document
-  end
-
   def render?
     @copyright.present? && info.present?
   end

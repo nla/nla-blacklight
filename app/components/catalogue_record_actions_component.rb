@@ -5,23 +5,45 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
     @document = document
   end
 
+  def render?
+    Flipper.enabled?(:requesting)
+  end
+
   def render_online?
-    @document.copy_access.present? && @document.copy_access.first[:href].include?("nla.gov.au")
+    has_online_access? || has_online_copy?
+  end
+
+  def online_label
+    if @document.fetch("format").first == "Audio"
+      "Listen"
+    else
+      "View online"
+    end
   end
 
   def online_url
-    @document.copy_access.first[:href]
+    if @document.online_access.present?
+      @document.online_access.first[:href].include?("nla.gov.au")
+    elsif @document.copy_access.present?
+      @document.copy_access.first[:href].include?("nla.gov.au")
+    else
+      "#"
+    end
   end
 
   def render_request?
-    Flipper.enabled? :requesting
+    !is_ned_item? || has_online_copy?
   end
 
-  def request_label
-    if @document.fetch("format").first == "Picture"
-      "View at library"
-    else
-      "Request"
-    end
+  private
+
+  def has_online_copy?
+    @document.copy_access.present? && @document.copy_access.first[:href].include?("nla.gov.au")
   end
+
+  def has_online_access?
+    @document.online_access.present? && @document.online_access.first[:href].include?("nla.gov.au")
+  end
+
+  alias_method :is_ned_item?, :has_online_access?
 end

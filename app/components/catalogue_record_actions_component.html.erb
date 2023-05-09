@@ -1,12 +1,12 @@
-<div class="col-12 sticky-top mb-2">
+<div id="catalogue-record-actions" class="col-12 sticky-top mb-2">
   <div class="justify-content-start">
     <% if render_online? %>
-      <a href="<%= online_url %>" class="btn btn-primary mb-4 mr-4">View online</a>
+      <a href="<%= online_url %>" class="btn btn-primary mb-2 mr-4"><%= online_label %></a>
     <% end %>
     <% if render_request? %>
-      <a href="#request" class="btn btn-primary mb-4 mr-4"><%= request_label %></a>
+      <a href="#request" class="btn btn-primary mb-2 mr-4">Request</a>
     <% end %>
-    <%= link_to "Order a copy", "javascript:;", class: "btn btn-primary mb-4 mr-4", onclick: "document.getElementById('copiesdirect_addcart').submit();".html_safe %>
+    <%= link_to "Order a copy", "javascript:;", class: "btn btn-primary mb-2 mr-4", onclick: "document.getElementById('copiesdirect_addcart').submit();".html_safe %>
   </div>
 </div>
 <form action="<%= ENV["COPIES_DIRECT_URL"] %>/items/import" class="sr-only" id="copiesdirect_addcart" method="post">

@@ -15,21 +15,57 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
     expect(page.text).to include("Order a copy")
   end
 
-  context "when the document is a picture" do
-    it "renders the 'View at library' button" do
+  it "renders the 'Request' button" do
+    allow(document).to receive(:copy_access).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
+
+    render_inline(described_class.new(document: document))
+
+    expect(page.text).to include("Request")
+  end
+
+  context "when item is a NED item" do
+    it "does not render the 'Request' button" do
+      allow(document).to receive(:copy_access).and_return([])
+      allow(document).to receive(:online_access).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
+
       render_inline(described_class.new(document: document))
 
-      expect(page.text).to include("View at library")
+      expect(page.text).not_to include("Request")
     end
   end
 
-  context "when the document is not a picture" do
-    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485, format: ["Book"]) }
+  # feature flag: :requesting
+  context "when requesting is disabled" do
+    before do
+      Flipper.disable(:requesting)
+    end
 
-    it "renders the 'Request' button" do
+    it "does not render the 'Request' button" do
       render_inline(described_class.new(document: document))
 
-      expect(page.text).to include("Request")
+      expect(page.text).not_to include("Request")
+    end
+  end
+
+  context "when available online" do
+    it "renders the 'View at library' button" do
+      allow(document).to receive(:copy_access).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
+
+      render_inline(described_class.new(document: document))
+
+      expect(page.text).to include("View online")
+    end
+
+    context "when the document is audio" do
+      let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485, format: ["Audio"]) }
+
+      it "renders the 'Listen' button" do
+        allow(document).to receive(:copy_access).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
+
+        render_inline(described_class.new(document: document))
+
+        expect(page.text).to include("Listen")
+      end
     end
   end
 
@@ -43,39 +79,16 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
 
       expect(page.text).not_to include("View online")
     end
-  end
 
-  context "when available online" do
-    it "renders the 'View at library' button" do
-      allow(document).to receive(:copy_access).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
+    context "when the document is audio" do
+      let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485, format: ["Audio"]) }
 
-      render_inline(described_class.new(document: document))
+      it "renders the 'Listen' button" do
+        allow(document).to receive(:copy_access).and_return([])
 
-      expect(page.text).to include("View online")
-    end
-  end
-
-  # feature flag: :requesting
-  context "when requesting is disabled" do
-    before do
-      Flipper.disable(:requesting)
-    end
-
-    context "when the document is a picture" do
-      it "does not render the 'View at library' button" do
         render_inline(described_class.new(document: document))
 
-        expect(page.text).not_to include("View at library")
-      end
-    end
-
-    context "when the document is not a picture" do
-      let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485, format: ["Book"]) }
-
-      it "does not render the 'Request' button" do
-        render_inline(described_class.new(document: document))
-
-        expect(page.text).not_to include("Request")
+        expect(page.text).not_to include("Listen")
       end
     end
   end

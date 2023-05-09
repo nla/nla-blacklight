@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/blacklight-solrcloud-repository
-  revision: 32ec3d5668bc63713b0764fbf91b4cd07c614334
+  revision: 333edeaa8a0fa52428ea4fbdcca6b630c0bbf0ee
   branch: main
   specs:
-    blacklight-solrcloud-repository (0.2.2)
+    blacklight-solrcloud-repository (0.2.3)
       blacklight (~> 7.30)
       rsolr
       zk (~> 1.10)
@@ -203,7 +203,7 @@ GEM
       database_cleaner-core (~> 2.0.0)
     database_cleaner-core (2.0.1)
     date (3.3.3)
-    debug (1.7.2)
+    debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     debug_inspector (1.1.0)
