@@ -12,9 +12,11 @@
 @import "lists";
 @import "homepage";
 @import "record";
+@import "catalog_sidebar";
 
 // Components
 @import "./components/copyright-info";
 @import "./components/related-records";
 @import "./components/more_like_this";
 @import "./components/bento-search";
+@import "./components/explore";

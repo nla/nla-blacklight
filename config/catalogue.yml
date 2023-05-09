@@ -3,17 +3,25 @@ development:
     url: "https://georekt-test.nla.gov.au/mapsearch/?type=map&mapClassifications=all&geolocation=all&text="
     search_url: "http://georekt-test.nla.gov.au/mapsearch/search/search?type=map&text="
 
+  nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
+
 test:
   mapsearch:
     url: "https://georekt-test.nla.gov.au/mapsearch/?type=map&mapClassifications=all&geolocation=all&text="
     search_url: "https://georekt-test.nla.gov.au/mapsearch/search/search?type=map&text="
+
+  nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
 
 staging:
   mapsearch:
     url: "https://mapsearch.nla.gov.au?type=map&mapClassifications=all&geolocation=all&text="
     search_url: "https://mapsearch.nla.gov.au/search/search?type=map&text="
 
+  nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
+
 production:
   mapsearch:
     url: "https://mapsearch.nla.gov.au?type=map&mapClassifications=all&geolocation=all&text="
     search_url: "https://mapsearch.nla.gov.au/search/search?type=map&text="
+
+  nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do

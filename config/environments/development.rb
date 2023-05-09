@@ -87,6 +87,5 @@ Rails.application.configure do
 
   # allow requests to
   config.hosts << ".test"
-  config.hosts << "delong.nla.gov.au"
-  config.hosts << "catalogue-devel.nla.gov.au"
+  config.hosts << ".nla.gov.au"
 end

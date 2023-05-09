@@ -202,5 +202,15 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: multi_message_mock, headers: {"Content-Type" => "application/json"})
+
+    WebMock.stub_request(:get, /https:\/\/bookshop.nla.gov.au\/api\/jsonDetails.do?/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+        }
+      )
+      .to_return(status: 200, body: "", headers: {})
   end
 end

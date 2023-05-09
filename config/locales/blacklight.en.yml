@@ -276,6 +276,13 @@ en:
 
     more_like_this: "Similar items"
 
+    explore:
+      title: "Explore"
+      find_in_trove: "Find in other libraries"
+      eresources: "eResources"
+      research_guides: "Research Guides"
+      check_eresources_research_guides: "Check %{eresources} and %{research_guides}"
+
     main:
       aria:
         main_container: 'Main content'

@@ -1,0 +1,66 @@
+<div class="card explore">
+  <div class="card-header"><h2 class="mt-4 mb-0 h4"><%= t("blacklight.explore.title") %></h2></div>
+  <div class="card-body">
+    <ul class="list-unstyled">
+      <li class="explore-link"><%= image_tag "trove-icon.png" %> <%= link_to t("blacklight.explore.find_in_trove"), trove_query %></li>
+
+      <% if render_online_shop? %>
+        <% nla_shop.each do |item| %>
+          <li class="explore-link"><%= link_to item[:itemlink], "Buy at our online shop" %>
+            <% if item[:price].present? %>
+              <small>(AUD <%= item[:price] %>)</small>
+            <% end %></li>
+        <% end %>
+      <% end %>
+
+      <li id="google-preview" class="explore-link d-none">&nbsp;</li>
+
+      <li id="library-thing" class="explore-link d-none">&nbsp;</li>
+
+      <%
+        values = {
+          eresources: link_to(t("blacklight.explore.eresources"), "https://www.nla.gov.au/eresources"),
+          research_guides: link_to(t("blacklight.explore.research_guides"), "https://www.nla.gov.au/research-guides")
+        }
+      %>
+      <li class="explore-link"><%= t("blacklight.explore.check_eresources_research_guides", **values).html_safe %></li>
+    </ul>
+
+  </div>
+</div>
+<script>
+  function showLibraryThing(booksInfo) {
+    for (let i in booksInfo) {
+      const book = booksInfo[i]
+      if (book.link && book.copies !== "0") {
+        let desc = ''
+        let ratingImg = ''
+        if (book.copies) {
+          desc = `${book.copies} entries`
+        }
+        if (book.reviews && book.reviews !== "0") {
+          desc += `, ${book.reviews} reviews`
+        }
+        if (book.rating) {
+          ratingImg = `<img src="${book.rating_img}" class="ml-1" alt="Rated ${book.rating}" />`
+        }
+        document.getElementById('library-thing').innerHTML = `<%= image_tag "librarything.gif" %> <a href="${book.link}">${desc} at LibraryThing ${ratingImg}</a>`
+        document.getElementById('library-thing').className = "explore-link"
+      }
+    }
+  }
+
+  function showGoogleBooksPreview(booksInfo) {
+    for (let i in booksInfo) {
+      const book = booksInfo[i]
+      if (book.preview && book.preview !== 'noview') {
+        document.getElementById('google-preview').innerHTML = `<%= image_tag "google.png" %> <a href="${book.preview_url}">Preview at Google Books</a>`
+        document.getElementById('google-preview').className = "explore-link"
+      }
+    }
+  }
+</script>
+<% if isbn_list.present? || document.lccn.present? %>
+<script defer src="<%= library_thing_script %>"></script>
+<script defer src="<%= google_books_script %>"></script>
+<% end %>
