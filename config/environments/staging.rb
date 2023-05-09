@@ -7,6 +7,6 @@ Rails.application.configure do
   config.active_job.queue_name_prefix = "nla_blacklight_staging"
 
   # allow requests to
-  config.hosts << "deshort.nla.gov.au"
-  config.hosts << "catalogue-test.nla.gov.au"
+  config.hosts.clear
+  config.hosts << ".nla.gov.au"
 end
