@@ -2,7 +2,7 @@
   <div class="card-header"><h2 class="mt-4 mb-0 h4"><%= t("blacklight.explore.title") %></h2></div>
   <div class="card-body">
     <ul class="list-unstyled">
-      <li class="explore-link"><%= image_tag "trove-icon.png" %> <%= link_to t("blacklight.explore.find_in_trove"), trove_query %></li>
+      <li class="explore-link"><%= image_tag "trove-icon.svg", width: "16", height: "16", alt: "Trove icon" %> <%= link_to t("blacklight.explore.find_in_trove"), trove_query %></li>
 
       <% if render_online_shop? %>
         <% nla_shop.each do |item| %>
