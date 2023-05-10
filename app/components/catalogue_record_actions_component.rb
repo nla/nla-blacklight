@@ -23,11 +23,9 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
 
   def online_url
     if @document.online_access.present?
-      @document.online_access.first[:href].include?("nla.gov.au")
+      @document.online_access.first[:href]
     elsif @document.copy_access.present?
-      @document.copy_access.first[:href].include?("nla.gov.au")
-    else
-      "#"
+      @document.copy_access.first[:href]
     end
   end
 
