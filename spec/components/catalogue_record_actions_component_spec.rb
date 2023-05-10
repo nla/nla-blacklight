@@ -53,7 +53,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
 
       render_inline(described_class.new(document: document))
 
-      expect(page.text).to include("View online")
+      expect(page).to have_link("View online", href: "https://nla.gov.au/nla.obj-123456789")
     end
 
     context "when the document is audio" do
@@ -64,7 +64,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
 
         render_inline(described_class.new(document: document))
 
-        expect(page.text).to include("Listen")
+        expect(page).to have_link("Listen", href: "https://nla.gov.au/nla.obj-123456789")
       end
     end
   end
