@@ -11,15 +11,7 @@ class CopyrightStatusComponent < ViewComponent::Base
     @copyright.info
   end
 
-  def document
-    @copyright.document
-  end
-
   def render?
     @copyright.present? && info.present?
-  end
-
-  def renderCopiesDirectForm?
-    %w[3 4 6 7].exclude? info["contextMsg"]
   end
 end

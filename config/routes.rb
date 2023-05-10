@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get "copies_direct/order"
   mount Blacklight::Engine => "/"
   mount BlacklightAdvancedSearch::Engine => "/"
   mount Flipper::UI.app(Flipper) => "/feats", :constraints => StaffOnlyConstraint.new
