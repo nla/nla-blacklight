@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.1](https://github.com/nla/nla-blacklight/compare/1.0.0...1.0.1) (2023-05-11)
+
+
+### Bug Fixes
+
+* display sidebar when showing search results on root_path ([547d05e](https://github.com/nla/nla-blacklight/commit/547d05e6ba8ecde913360556ca83c394c057ce9b))
+* re-hide search bar on advanced search page ([38ae24e](https://github.com/nla/nla-blacklight/commit/38ae24ebb06f113cec39db4b554ab79f73673876))
+
 ## 1.0.0 (2023-05-11)
 
 
