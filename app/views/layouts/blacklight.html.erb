@@ -4,9 +4,11 @@
       <%= yield %>
     </section>
 
-    <section id="sidebar" class="<%= sidebar_classes %> mt-5" aria-label="<%= t('blacklight.search.documents.aria.limit_search') %>">
-      <%= content_for(:sidebar) %>
-    </section>
+    <% if !current_page?(root_path) %>
+        <section id="sidebar" class="<%= sidebar_classes %> mt-5" aria-label="<%= t('blacklight.search.documents.aria.limit_search') %>">
+          <%= content_for(:sidebar) %>
+        </section>
+    <% end %>
   <% else %>
     <section class="col-md-12">
       <%= yield %>
