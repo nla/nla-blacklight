@@ -7,7 +7,7 @@ module LayoutHelper
   # Classes used for sizing the main content of a Blacklight page
   # @return [String]
   def main_content_classes
-    if !current_page?(root_path) && (current_page?(search_catalog_path) && has_search_parameters?)
+    if display_global_message_on_page?
       "col-md-8 col-lg-9"
     else
       "col-12"
