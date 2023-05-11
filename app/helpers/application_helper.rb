@@ -44,6 +44,8 @@ module ApplicationHelper
   def is_excluded_blacklight_searchbar_display_path?
     if (current_page?(root_path) || current_page?(search_catalog_path)) && !has_search_parameters?
       true
+    elsif current_page?(advanced_search_catalog_path)
+      true
     else
       current_page?(bento_search_index_path)
     end
@@ -58,6 +60,8 @@ module ApplicationHelper
       has_search_parameters?
     elsif !current_page?(root_path)
       true
+    elsif current_page?(root_path)
+      has_search_parameters?
     else
       false
     end
