@@ -58,6 +58,8 @@ module ApplicationHelper
       has_search_parameters?
     elsif !current_page?(root_path)
       true
+    elsif current_page?(root_path)
+      has_search_parameters?
     else
       false
     end
