@@ -7,7 +7,11 @@ module LayoutHelper
   # Classes used for sizing the main content of a Blacklight page
   # @return [String]
   def main_content_classes
-    "col-md-8 col-lg-9"
+    if !current_page?(root_path)
+      "col-md-8 col-lg-9"
+    else
+      "col-12"
+    end
   end
 
   ##
