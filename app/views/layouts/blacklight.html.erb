@@ -4,7 +4,7 @@
       <%= yield %>
     </section>
 
-    <% if !current_page?(root_path) %>
+    <% if !current_page?(root_path) && (current_page?(search_catalog_path) && has_search_parameters?) %>
         <section id="sidebar" class="<%= sidebar_classes %> mt-5" aria-label="<%= t('blacklight.search.documents.aria.limit_search') %>">
           <%= content_for(:sidebar) %>
         </section>
