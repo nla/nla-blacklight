@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/nla/nla-blacklight/compare/1.0.1...1.0.2) (2023-05-12)
+
+
+### Bug Fixes
+
+* remove advanced search button from bento search page ([fa3676d](https://github.com/nla/nla-blacklight/commit/fa3676d8d81f9502a30da0d77dd97549b46e7170))
+
 ## [1.0.1](https://github.com/nla/nla-blacklight/compare/1.0.0...1.0.1) (2023-05-11)
 
 
