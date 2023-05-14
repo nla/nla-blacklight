@@ -1,0 +1,18 @@
+<% @holding["itemRecords"].each do |item| %>
+  <div class="card w-100 mb-4">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-12 col-sm-8">
+          <dl class="document-metadata row mb-0">
+            <dt class="col-12 col-md-12 col-lg-4">Collect From:</dt>
+            <dd class="col col-md-12 col-lg-8"><%= item["pickupLocation"]["discoveryDisplayName"] %></dd>
+
+            <dt class="col-12 col-md-12 col-lg-4">Call Number:</dt>
+            <dd class="col col-md-12 col-lg-8"><p class="mb-0"><%= item["itemLevelCallNumber"] %> <br>Copy: <%= item["enumeration"] %></p></dd>
+          </dl>
+        </div>
+        <div class="select-item-btn col-12 col-sm-4 text-right"><%= link_to "Select", "#", class: "btn btn-primary" %></div>
+      </div>
+    </div>
+  </div>
+<% end %>

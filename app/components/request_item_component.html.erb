@@ -1,0 +1,11 @@
+<div id="request-details">
+  <div class="col-12 mb-2">
+    <h2 class="h3">Request this item</h2>
+    <p><%= t("requesting.message") %></p>
+    <div class="row">
+      <div class="col-12">
+        <%= render RequestDetailsComponent.with_collection(holdings) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,4 @@
 require "faraday"
-require "faraday/net_http"
 
 class MapSearch
   FORMAT = "Map"

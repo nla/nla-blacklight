@@ -306,6 +306,7 @@ GEM
     hiredis-client (0.14.1)
       redis-client (= 0.14.1)
     htmlentities (4.3.4)
+    http-2-next (0.5.1)
     http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -315,6 +316,8 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     httpclient (2.8.3)
+    httpx (0.23.2)
+      http-2-next (>= 0.4.1)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.6)
@@ -712,13 +715,16 @@ DEPENDENCIES
   hiredis-client (~> 0.14.0)
   htmlentities
   httpclient
+  httpx (~> 0.23.2)
   importmap-rails
   jbuilder
   jquery-rails
+  json-jwt (~> 1.15)
   lograge
   mock_redis (~> 0.36.0)
   mysql2 (~> 0.5)
   nokogiri (>= 1.13.9)
+  oauth2 (~> 2.0)
   puma (~> 6.0)
   rails (~> 7.0.4)
   rails-controller-testing (~> 1.0, >= 1.0.5)
