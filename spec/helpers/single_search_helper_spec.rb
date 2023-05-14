@@ -89,7 +89,7 @@ RSpec.describe SingleSearchHelper do
 
   describe "#advanced_search_link" do
     it "returns a link to the advanced search page" do
-      expect(helper.advanced_search_link("catalogue", "hello")).to eq("http://test.host/advanced?all_fields=hello&search_field=advanced")
+      expect(helper.advanced_search_link("catalogue", "hello")).to eq("http://test.host/catalog/advanced?all_fields=hello&search_field=advanced")
     end
   end
 
@@ -100,7 +100,7 @@ RSpec.describe SingleSearchHelper do
       end
 
       it "returns a link to the catalogue search results page" do
-        expect(helper.bento_all_results_link("catalogue")).to eq("http://test.host/?search_field=all_fields&q=hello")
+        expect(helper.bento_all_results_link("catalogue")).to eq("http://test.host/catalog?search_field=all_fields&q=hello")
       end
 
       it "returns a link to the finding aids search results page" do
@@ -118,7 +118,7 @@ RSpec.describe SingleSearchHelper do
 
     context "when a query is not present" do
       it "returns a link to the catalogue search results page" do
-        expect(helper.bento_all_results_link("catalogue")).to eq("http://test.host/?search_field=all_fields&q=")
+        expect(helper.bento_all_results_link("catalogue")).to eq("http://test.host/catalog?search_field=all_fields&q=")
       end
 
       it "returns a link to the finding aids search results page" do

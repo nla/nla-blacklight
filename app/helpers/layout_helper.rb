@@ -7,7 +7,7 @@ module LayoutHelper
   # Classes used for sizing the main content of a Blacklight page
   # @return [String]
   def main_content_classes
-    if display_global_message_on_page?
+    if show_facets_sidebar?
       "col-md-8 col-lg-9"
     else
       "col-12"

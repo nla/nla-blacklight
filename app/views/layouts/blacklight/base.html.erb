@@ -44,14 +44,11 @@
       <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
       <%= content_for(:skip_links) %>
     </nav>
+
     <%= render partial: 'shared/header_navbar' %>
 
     <main id="main-container" class="<%= container_classes %>" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>">
       <%= content_for(:container_header) %>
-
-      <% if display_global_message_on_page? %>
-        <%= render GlobalMessageComponent.new %>
-      <% end %>
 
       <%= render partial: 'shared/flash_msg', layout: 'shared/flash_messages' %>
 

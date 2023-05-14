@@ -46,7 +46,7 @@ module SingleSearchHelper
       fa_base_url = ENV["FINDING_AIDS_SEARCH_URL"].chomp("/catalog.json")
       "#{fa_base_url}?group=false&search_field=all_fields&q=#{bento_query}"
     else
-      "#{root_url}?search_field=all_fields&q=#{bento_query}"
+      "#{search_catalog_url}?search_field=all_fields&q=#{bento_query}"
     end
 
     ss_uri_encode(link)
@@ -54,7 +54,7 @@ module SingleSearchHelper
 
   def advanced_search_link(key, query)
     qp2 = "all_fields=#{ss_uri_encode(query).gsub("&", "%26")}&search_field=advanced"
-    "#{root_url}advanced?#{qp2}"
+    "#{advanced_search_catalog_url}?#{qp2}"
   end
 
   def is_catalogued?(url)

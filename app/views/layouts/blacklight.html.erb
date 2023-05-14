@@ -4,11 +4,11 @@
       <%= yield %>
     </section>
 
-    <% if display_global_message_on_page? %>
+    <%# if show_facets_sidebar? %>
         <section id="sidebar" class="<%= sidebar_classes %> mt-5" aria-label="<%= t('blacklight.search.documents.aria.limit_search') %>">
           <%= content_for(:sidebar) %>
         </section>
-    <% end %>
+    <%# end %>
   <% else %>
     <section class="col-md-12">
       <%= yield %>
