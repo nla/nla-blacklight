@@ -212,5 +212,24 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: "", headers: {})
+
+    site_info = IO.read("spec/files/catalogue_services/site_info.json")
+
+    WebMock.stub_request(:get, "http://auth.test/auth/realms/example-realm/.well-known/openid-configuration")
+      .to_return(status: 200, body: site_info, headers: {})
+
+    token_response = IO.read("spec/files/catalogue_services/token_response.json")
+
+    WebMock.stub_request(:post, "https://auth.test/auth/realms/example-realm/protocol/openid-connect/token")
+      .with(
+        body: {"grant_type" => "client_credentials"},
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "Content-Type" => "application/x-www-form-urlencoded",
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+        }
+      )
+      .to_return(status: 200, body: token_response, headers: {"Content-Type" => "application/json"})
   end
 end

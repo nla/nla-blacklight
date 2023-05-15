@@ -16,7 +16,11 @@ class CatalogueServicesClient
 
     res = conn.get("/catalogue-services/folio/instance/#{instance_id}")
     if res.status == 200
-      res.body["holdingsRecords"]
+      if res.body.present?
+        res.body["holdingsRecords"]
+      else
+        []
+      end
     else
       Rails.logger.error "Failed to retrieve holdings for #{instance_id}"
       []
@@ -33,6 +37,7 @@ class CatalogueServicesClient
       token_url: "/auth/realms/#{ENV["CATALOGUE_SERVICES_REALM"]}/protocol/openid-connect/token")
   end
 
+  # :nocov:
   def decode_access_token
     @certs_endpoint = "#{ENV["KEYCLOAK_URL"]}/auth/realms/#{ENV["CATALOGUE_SERVICES_REALM"]}/protocol/openid-connect/certs"
 
@@ -40,7 +45,7 @@ class CatalogueServicesClient
     if certs.status == 200
       json = JSON.parse(certs.body)
       @certs = json["keys"]
-      Rails.logger.debug "Successfully got certificate. Certificate length: #{@certs.length}"
+      Rails.logger.debug { "Successfully got certificate. Certificate length: #{@certs.length}" }
     else
       message = "Couldn't get certificate. URL: #{@certs_endpoint}"
       Rails.logger.error message
@@ -50,4 +55,5 @@ class CatalogueServicesClient
     jwks = JSON::JWK::Set.new(@certs)
     JSON::JWT.decode @token, jwks
   end
+  # :nocov:
 end

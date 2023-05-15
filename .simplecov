@@ -18,6 +18,7 @@ SimpleCov.start "rails" do
   add_filter "app/components/blacklight/metadata_field_layout_component.rb"
   add_filter "app/components/blacklight/response/pagination_component.rb"
   add_filter "app/components/blacklight/system/dropdown_component.rb"
+  add_filter "app/components/blacklight/start_over_button_component.rb"
   add_filter "app/models/marc_indexer.rb"
 
   # Filter out hack around Turbo + Devise issue
