@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/nla/bento_search.git
   revision: 10e085dac289847d0aed16714fa822d0b89a7d92
-  tag: 0.0.1
+  branch: master
   specs:
     bento_search (2.0.0.rc1)
       confstruct (~> 1.0)
@@ -18,7 +18,7 @@ GIT
 GIT
   remote: https://github.com/nla/blacklight-solrcloud-repository
   revision: 333edeaa8a0fa52428ea4fbdcca6b630c0bbf0ee
-  tag: 0.2.3
+  branch: main
   specs:
     blacklight-solrcloud-repository (0.2.3)
       blacklight (~> 7.30)
@@ -27,8 +27,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: 8ec032fb07a03b4be26354a3732eba56ed0a43a8
-  tag: 3.1.0
+  revision: aa6959725bb1c2e31adcafda05af4a0ef803c7e7
+  branch: main
   specs:
     catalogue-patrons (3.1.0)
       activerecord-session_store (~> 2.0)
@@ -306,7 +306,6 @@ GEM
     hiredis-client (0.14.1)
       redis-client (= 0.14.1)
     htmlentities (4.3.4)
-    http-2-next (0.5.1)
     http (5.1.1)
       addressable (~> 2.8)
       http-cookie (~> 1.0)
@@ -316,8 +315,6 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     httpclient (2.8.3)
-    httpx (0.23.2)
-      http-2-next (>= 0.4.1)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     importmap-rails (1.1.6)
@@ -365,7 +362,7 @@ GEM
       activesupport (>= 4)
       railties (>= 4)
       request_store (~> 1.0)
-    loofah (2.21.2)
+    loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -405,11 +402,11 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.14.4-arm64-darwin)
+    nokogiri (1.15.0-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.14.4-x86_64-darwin)
+    nokogiri (1.15.0-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.14.4-x86_64-linux)
+    nokogiri (1.15.0-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -715,7 +712,6 @@ DEPENDENCIES
   hiredis-client (~> 0.14.0)
   htmlentities
   httpclient
-  httpx (~> 0.23.2)
   importmap-rails
   jbuilder
   jquery-rails
