@@ -28,8 +28,10 @@
                         <dt class="col-12 col-md-12 col-lg-4">Status:</dt>
                         <dd class="col col-md-12 col-lg-8"><%= item["status"]["name"] %></dd>
 
-                        <dt class="col-12 col-md-12 col-lg-4">Recent Items/Issues Held:</dt>
-                        <dd class="col col-md-12 col-lg-8"><%= recent_item_issue_held(holding) %></dd>
+                        <% if recent_item_issue_held(holding).present? %>
+                          <dt class="col-12 col-md-12 col-lg-4">Recent Items/Issues Held:</dt>
+                          <dd class="col col-md-12 col-lg-8"><%= recent_item_issue_held(holding) %></dd>
+                        <% end %>
 
                         <% if items_issues_held(holding).present? %>
                           <dt class="col-12 col-md-12 col-lg-4">Items/Issues Held:</dt>

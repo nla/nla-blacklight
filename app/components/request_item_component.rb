@@ -24,7 +24,7 @@ class RequestItemComponent < ViewComponent::Base
       if most_recent["statement"].present?
         most_recent["statement"]
       elsif most_recent["note"].present?
-        most_recent["enumerationAndChronology"]
+        most_recent["enumeration"]
       end
     end
   end
