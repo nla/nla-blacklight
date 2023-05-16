@@ -33,6 +33,8 @@ RSpec/ExampleLength:
   Enabled: false
 RSpec/MultipleExpectations:
   Enabled: false
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
 RSpec/Capybara/FeatureMethods:
   Enabled: false
 Bundler/DuplicatedGem:

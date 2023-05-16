@@ -51,3 +51,5 @@ en:
     onsite_only:
       header: "Sorry!"
       message: '<p>%{original_url} is a subscription service that is only available within the National Library of Australia building in Canberra.</p><p>To %{return_link} please %{click_link}.</p>'
+  requesting:
+    message: "Request this item to view in the Library's reading room using your library card."

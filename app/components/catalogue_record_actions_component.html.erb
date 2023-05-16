@@ -4,7 +4,7 @@
       <a href="<%= online_url %>" class="btn btn-primary mb-2 mr-4"><%= online_label %></a>
     <% end %>
     <% if render_request? %>
-      <a href="#request" class="btn btn-primary mb-2 mr-4">Request</a>
+      <a href="#request-details" id="request-btn" class="btn btn-primary mb-2 mr-4">Request</a>
     <% end %>
     <%= link_to "Order a copy", "javascript:;", class: "btn btn-primary mb-2 mr-4", onclick: "document.getElementById('copiesdirect_addcart').submit();".html_safe %>
   </div>

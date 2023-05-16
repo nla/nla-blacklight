@@ -19,4 +19,11 @@ $(function() {
       scrollTop: $(section).offset().top-20
     }, 1200);
   });
+
+  $("#catalogue-record-actions #request-btn").click(function() {
+    const section = $(this).attr("href");
+    $("html, body").animate({
+      scrollTop: $(section).offset().top-20
+    }, 1200);
+  });
 });

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class CatalogueRecordActionsComponent < ViewComponent::Base
+  include RequestItemHelper
+
   def initialize(document:)
     @document = document
   end
@@ -10,7 +12,7 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def render_online?
-    has_online_access? || has_online_copy?
+    has_online_access?(@document) || has_online_copy?(@document)
   end
 
   def online_label
@@ -30,18 +32,6 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def render_request?
-    !is_ned_item? || has_online_copy?
+    !is_ned_item?(@document) || has_online_copy?(@document)
   end
-
-  private
-
-  def has_online_copy?
-    @document.copy_access.present? && @document.copy_access.first[:href].include?("nla.gov.au")
-  end
-
-  def has_online_access?
-    @document.online_access.present? && @document.online_access.first[:href].include?("nla.gov.au")
-  end
-
-  alias_method :is_ned_item?, :has_online_access?
 end

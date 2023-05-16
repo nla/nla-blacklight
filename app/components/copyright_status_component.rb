@@ -12,6 +12,6 @@ class CopyrightStatusComponent < ViewComponent::Base
   end
 
   def render?
-    @copyright.present? && info.present?
+    @copyright.present? && info.present? && info["contextMsg"].present?
   end
 end
