@@ -11,7 +11,13 @@
   </div>
 </header>
 
-<% unless is_excluded_blacklight_searchbar_display_path? %>
+<% if show_global_message? %>
+  <div class="<%= container_classes %>">
+    <%= render GlobalMessageComponent.new %>
+  </div>
+<% end %>
+
+<% if show_search_bar? %>
 <div class="navbar-search navbar navbar-light bg-light">
   <div class="<%= container_classes %>">
     <%= render_search_bar %>

@@ -40,5 +40,5 @@ Rails.application.routes.draw do
   get "/500", to: "errors#internal_server"
   get "/503", to: "errors#unavailable"
 
-  root to: "catalog#index"
+  root to: "static_pages#home"
 end
