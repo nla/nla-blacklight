@@ -25,6 +25,18 @@ class CatalogueServicesClient
     end
   end
 
+  def get_holding(instance_id:, holdings_id:, item_id:)
+    all_holdings = get_holdings(instance_id: instance_id)
+
+    # find holdings record
+    holding = all_holdings.select { |h| h["id"] == holdings_id }.first
+
+    # find item record
+    item = holding["itemRecords"].select { |i| i["id"] == item_id }.first
+
+    [holding, item]
+  end
+
   private
 
   def set_token

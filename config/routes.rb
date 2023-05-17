@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  get "copies_direct/order"
+  get 'request/new'
+  get 'request/create'
+  get 'request/show'
   mount Blacklight::Engine => "/"
   mount BlacklightAdvancedSearch::Engine => "/"
   mount Flipper::UI.app(Flipper) => "/feats", :constraints => StaffOnlyConstraint.new
@@ -21,6 +23,8 @@ Rails.application.routes.draw do
 
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
     concerns [:exportable, :marc_viewable]
+
+    resources :requests, only: [:new, :create, :show], path: "/requests", controller: "request"
   end
 
   resources :bookmarks do

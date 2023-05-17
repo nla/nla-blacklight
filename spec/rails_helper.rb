@@ -12,6 +12,7 @@ require "capybara/rspec"
 require "simplecov"
 require "mock_redis"
 require "caching/eresources_cache"
+require "factory_bot_rails"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -127,6 +128,8 @@ RSpec.configure do |config|
 
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
+
+  config.include Devise::Test::IntegrationHelpers, type: :request
   config.extend DeviseMacros
 end
 

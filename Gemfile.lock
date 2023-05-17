@@ -703,6 +703,7 @@ DEPENDENCIES
   dotenv-rails
   down (~> 5.0)
   ebsco-eds (~> 1.1)
+  factory_bot (~> 6.2)
   factory_bot_rails
   faker
   flipper (~> 0.28.0)
