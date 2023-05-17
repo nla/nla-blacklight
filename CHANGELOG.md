@@ -1,5 +1,24 @@
 # Changelog
 
+## [1.1.0](https://github.com/nla/nla-blacklight/compare/1.0.2...1.1.0) (2023-05-17)
+
+
+### Features
+
+* display request details for monographs ([a85fb4c](https://github.com/nla/nla-blacklight/commit/a85fb4c92909712a2b298250316ccb421be9ab8c))
+* display request details for serials ([4637ad5](https://github.com/nla/nla-blacklight/commit/4637ad54fb6bae504ff8c0af508dc893fcdd4823))
+
+
+### Miscellaneous
+
+* upgrade dependencies ([40f950d](https://github.com/nla/nla-blacklight/commit/40f950d978156183ead783d1ba0178a3e974d67d))
+
+
+### Code Refactoring
+
+* reduce request item to one component and add tests ([1c04fb0](https://github.com/nla/nla-blacklight/commit/1c04fb0bce9e57baad098694c8d76920842a762a))
+* use different field for request pickup location ([1aa8c99](https://github.com/nla/nla-blacklight/commit/1aa8c997305a0c92bd77a95cd4278555d37ea830))
+
 ## [1.0.2](https://github.com/nla/nla-blacklight/compare/1.0.1...1.0.2) (2023-05-12)
 
 
