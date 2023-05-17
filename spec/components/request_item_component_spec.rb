@@ -6,6 +6,7 @@ RSpec.describe RequestItemComponent, type: :component do
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485", folio_instance_id_ssim: ["93fe53ff-ffcf-5602-a9c1-be246cfadc5e"]) }
 
   before do
+    Flipper.enable(:requesting)
     WebMock.stub_request(:get, "http://catservices.test/catalogue-services/folio/instance/93fe53ff-ffcf-5602-a9c1-be246cfadc5e")
       .with(
         headers: {

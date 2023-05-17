@@ -9,7 +9,7 @@ class RequestItemComponent < ViewComponent::Base
   end
 
   def render?
-    !is_ned_item?(@document) || has_online_copy?(@document)
+    Flipper.enabled?(:requesting) && (!is_ned_item?(@document) || has_online_copy?(@document))
   end
 
   def holdings

@@ -5,7 +5,7 @@
 name: Release automation
 on:
   push:
-    branches: [main, release]
+    branches: [main]
 jobs:
   release-please:
     name: Create a new release
