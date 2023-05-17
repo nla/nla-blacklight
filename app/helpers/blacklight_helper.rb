@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+require "htmlentities"
+
 module BlacklightHelper
   include Blacklight::BlacklightHelperBehavior
 
@@ -34,7 +38,9 @@ module BlacklightHelper
     tag = options.fetch(:tag, :h4)
     document ||= @document
 
-    content_tag(tag, document_presenter(document).heading, itemprop: "name", class: "h3")
+    # the content_tag will escape special characters as HTML entities again, so we need to decode them first
+    clean_heading = HTMLEntities.new.decode(document_presenter(document).heading)
+    content_tag(tag, clean_heading, itemprop: "name", class: "h3")
   end
   deprecation_deprecate render_document_heading: "Removed without replacement"
   # rubocop:enable Rails/HelperInstanceVariable
