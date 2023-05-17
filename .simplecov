@@ -35,6 +35,7 @@ SimpleCov.start "rails" do
 
   # temporarily filter out bento search classes
   add_filter "app/item_decorators/bento_search/ebsco_eds_article_decorator.rb"
+  add_filter "app/search_engines/bento_search/ebsco_eds_engine.rb"
 
   add_group "Components", "app/components"
   add_group "Presenters", "app/presenters"
