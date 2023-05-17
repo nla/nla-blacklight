@@ -213,6 +213,18 @@ RSpec.configure do |config|
       )
       .to_return(status: 200, body: "", headers: {})
 
+    fa_search = IO.read("spec/files/bento_search/fa_search.json")
+
+    WebMock.stub_request(:get, "http://test.host/finding-aids/catalog.json?per_page=10&q=hydrogen")
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+        }
+      )
+      .to_return(status: 200, body: fa_search, headers: {})
+
     site_info = IO.read("spec/files/catalogue_services/site_info.json")
 
     WebMock.stub_request(:get, "http://auth.test/auth/realms/example-realm/.well-known/openid-configuration")
