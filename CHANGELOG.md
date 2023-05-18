@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.5](https://github.com/nla/nla-blacklight/compare/1.0.4...1.0.5) (2023-05-18)
+
+
+### Bug Fixes
+
+* disable catalogue record actions component ([2acee32](https://github.com/nla/nla-blacklight/commit/2acee3230e796f1ef75a2da0d6a1c8a4bdd1e89f))
+
+
+### Miscellaneous
+
+* resolve hotfix changes into main ([af11f0d](https://github.com/nla/nla-blacklight/commit/af11f0d2063b3db60da94220e6204e02b6ae8145))
+* resolve hotfix changes to main ([f162044](https://github.com/nla/nla-blacklight/commit/f16204457173ce408a9df402afc4ba6c5cb58dce))
+
 ## [1.0.2](https://github.com/nla/nla-blacklight/compare/1.0.1...1.0.2) (2023-05-12)
 
 
