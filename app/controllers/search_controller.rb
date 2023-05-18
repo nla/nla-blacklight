@@ -13,8 +13,8 @@ class SearchController < ApplicationController
 
       @results = {}
 
-      @results[:catalogue] = BentoSearch.get_engine(:catalogue).search(@query, per_page: @cat_per_page)
-      @results[:finding_aids] = BentoSearch.get_engine(:finding_aids).search(@query, per_page: @fa_per_page)
+      @results["catalogue"] = BentoSearch.get_engine(:catalogue).search(@query, per_page: @cat_per_page)
+      @results["finding_aids"] = BentoSearch.get_engine(:finding_aids).search(@query, per_page: @fa_per_page)
     end
 
     @total_results = 0
