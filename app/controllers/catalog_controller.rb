@@ -72,9 +72,7 @@ class CatalogController < ApplicationController
     config.show.thumbnail_presenter = NlaThumbnailPresenter
     config.show.partials.insert(1, :thumbnail) # thumbnail after show_header
     config.show.partials.insert(2, :copies_direct_form) # used in Copyright and by "Order a copy" action button
-    if Flipper.enabled?(:requesting)
-      config.show.partials.insert(3, :catalogue_record_actions) # request_actions after copies_direct_form
-    end
+    config.show.partials.insert(3, :catalogue_record_actions) # request_actions after copies_direct_form
     config.show.partials << :request_item
 
     # solr fields that will be treated as facets by the blacklight application
