@@ -3,12 +3,10 @@
 class CatalogueServicesClient
   def initialize
     @oauth_client ||= init_client
-
-    response = @oauth_client.client_credentials.get_token
-    @bearer_token = response.token
   end
 
   def get_holdings(instance_id:)
+    set_token
     conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
       f.request :authorization, "Bearer", @bearer_token
       f.response :json
@@ -28,6 +26,11 @@ class CatalogueServicesClient
   end
 
   private
+
+  def set_token
+    response = @oauth_client.client_credentials.get_token
+    @bearer_token = response.token
+  end
 
   def init_client
     site = "#{ENV["KEYCLOAK_URL"]}/auth/realms/#{ENV["CATALOGUE_SERVICES_REALM"]}/.well-known/openid-configuration"
