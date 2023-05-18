@@ -67,11 +67,12 @@ class CatalogController < ApplicationController
     config.show.title_field = "title_tsim"
     config.show.display_type_field = "format"
 
-    # scxxx Thumbnails
+    # configure additional partials for the document/show view
     config.show.thumbnail_field = "thumbnail_path_ss"
     config.show.thumbnail_presenter = NlaThumbnailPresenter
     config.show.partials.insert(1, :thumbnail) # thumbnail after show_header
-    config.show.partials.insert(2, :catalogue_record_actions) # request_actions after thumbnail
+    config.show.partials.insert(2, :copies_direct_form) # used in Copyright and by "Order a copy" action button
+    config.show.partials << :request_item
 
     # solr fields that will be treated as facets by the blacklight application
     #   The ordering of the field names is the order of the display
