@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "faraday"
+require "htmlentities"
 
 module BentoSearch
   class BlacklightEngine
@@ -44,7 +45,8 @@ module BentoSearch
 
           d["attributes"].each do |attr|
             if attr[0] == "title"
-              item.title = attr[1]
+              title = HTMLEntities.new.decode(attr[1])
+              item.title = title
             else
               value = attr[1]["attributes"]["value"]
               label = attr[1]["attributes"]["label"]
