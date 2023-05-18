@@ -16,6 +16,10 @@ RSpec.describe RequestItemComponent, type: :component do
         }
       )
       .to_return(status: 200, body: holdings_response, headers: {})
+    stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_CLIENT" => "catalogue-services"))
+    stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_SECRET" => "254241c8-1e99-4855-a0ae-52b04702c3e5"))
+    stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_REALM" => "example-realm"))
+    stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_API_BASE_URL" => "http://catservices.test/catalogue-services"))
   end
 
   it "renders the header" do
