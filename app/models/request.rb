@@ -3,9 +3,6 @@
 class Request
   include ActiveModel::Model
 
-  # FOLIO request ID
-  attr_accessor :request_id
-
   # FOLIO instance ID
   attr_accessor :instance_id
 
@@ -27,14 +24,20 @@ class Request
   # additional notes for the request
   attr_accessor :notes
 
+  # item barcode
+  attr_accessor :barcode
+
   # holdings data
-  attr_reader :holdings_data
+  attr_reader :holding
+
+  # item data
+  attr_reader :item
 
   def initialize(instance_id:, holdings_id:, item_id:)
     @instance_id = instance_id
     @holdings_id = holdings_id
     @item_id = item_id
 
-    @holdings_data = CatalogueServicesClient.new.get_holding(instance_id: @instance_id, holdings_id: @holdings_id, item_id: @item_id)
+    @holding, @item = CatalogueServicesClient.new.get_holding(instance_id: @instance_id, holdings_id: @holdings_id, item_id: @item_id)
   end
 end

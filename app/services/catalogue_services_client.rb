@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+class ItemRequestError < StandardError; end
+
 class CatalogueServicesClient
   def initialize
     @oauth_client ||= init_client
@@ -35,6 +37,34 @@ class CatalogueServicesClient
     item = holding["itemRecords"].select { |i| i["id"] == item_id }.first
 
     [holding, item]
+  end
+
+  def create_request(requester:, request:)
+    set_token
+    conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
+      f.request :authorization, "Bearer", @bearer_token
+      f.response :json
+    end
+
+    request_body = JSON.generate(requesterId: requester,
+      instanceId: request[:instance_id],
+      holdingsId: request[:holdings_id],
+      itemId: request[:item_id],
+      year: [request[:year]],
+      enumeration: request[:enumeration],
+      chronology: request[:chronology],
+      barcode: request[:barcode],
+      notes: request[:notes])
+    res = conn.post("/catalogue-services/folio/request/new") do |req|
+      req.headers["Content-Type"] = "application/json"
+      req.body = request_body
+    end
+    if res.status == 200
+      (res.body.presence || {})
+    else
+      Rails.logger.error "Failed to request #{request[:item_id]} for #{current_user}"
+      throw ItemRequestError.new("Unfortunately your request could not be completed. Please try again later.")
+    end
   end
 
   private

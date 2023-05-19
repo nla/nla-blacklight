@@ -243,5 +243,17 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: token_response, headers: {"Content-Type" => "application/json"})
+
+    holdings_response = IO.read("spec/files/catalogue_services/serial.json")
+
+    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+        }
+      )
+      .to_return(status: 200, body: holdings_response, headers: {})
   end
 end

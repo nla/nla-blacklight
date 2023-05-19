@@ -1,59 +1,63 @@
-<h2><%= @document.first("title_tsim") %></h2>
-<%= render Blacklight::Document::ThumbnailComponent.new(presenter: document_presenter(@document), counter: document_counter_with_offset(document_counter ||= 0)) %>
+<h1><%= @document.first("title_tsim") %></h1>
+<% if @request.item["itemCategory"] == "journal" %>
+  <%= render Blacklight::Document::ThumbnailComponent.new(presenter: document_presenter(@document), counter: document_counter_with_offset(document_counter ||= 0)) %>
+<% end %>
 
-<p><%= t("requesting.prompt") %></p>
+<div class="row mt-4 mb-4">
+  <p class="col-12 col-lg-8"><%= t("requesting.prompt") %></p>
+</div>
 <!--<div class="col">-->
   <div class="row">
     <div class="col-12">
       <dl class="document-metadata row mb-0">
         <% if @item["pickupLocation"].present? %>
-          <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.collect_from") %></dt>
-          <dd class="col col-md-12 col-lg-8"><%= @item["effectiveLocationDisplayName"] %></dd>
+          <dt class="col-12 col-md-12 col-lg-3"><%= t("requesting.metadata.collect_from") %></dt>
+          <dd class="col col-md-12 col-lg-9"><%= @item["effectiveLocationDisplayName"] %></dd>
         <% end %>
 
-        <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.call_number") %></dt>
-        <dd class="col col-md-12 col-lg-8">
-          <p class="mb-0"><%= @item["itemLevelCallNumber"] %>
-            <% if @item["itemCategory"] == "monograph" && @item["enumeration"].present? %>
-              <br>Copy: <%= @item["enumeration"] %>
+        <dt class="col-12 col-md-12 col-lg-3"><%= t("requesting.metadata.call_number") %></dt>
+        <dd class="col col-md-12 col-lg-9">
+          <p class="mb-0"><%= @request.item["itemLevelCallNumber"] %>
+            <% if @request.item["itemCategory"] == "monograph" && @request.item["enumeration"].present? %>
+              <br>Copy: <%= @request.item["enumeration"] %>
             <% end %></p>
         </dd>
 
-        <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.status") %></dt>
-        <dd class="col col-md-12 col-lg-8"><%= @item["status"]["name"] %></dd>
+        <dt class="col-12 col-md-12 col-lg-3"><%= t("requesting.metadata.status") %></dt>
+        <dd class="col col-md-12 col-lg-9"><%= @request.item["status"]["name"] %></dd>
 
-        <% if recent_item_issue_held(@holding).present? %>
-          <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.recent_items") %></dt>
-          <dd class="col col-md-12 col-lg-8"><%= recent_item_issue_held(@holding) %></dd>
+        <% if recent_item_issue_held(@request.holding).present? %>
+          <dt class="col-12 col-md-12 col-lg-3"><%= t("requesting.metadata.recent_items") %></dt>
+          <dd class="col col-md-12 col-lg-9"><%= recent_item_issue_held(@request.holding) %></dd>
         <% end %>
 
-        <% if items_issues_held(@holding).present? %>
-          <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.items_held") %></dt>
-          <dd class="col col-md-12 col-lg-8">
+        <% if items_issues_held(@request.holding).present? %>
+          <dt class="col-12 col-md-12 col-lg-3"><%= t("requesting.metadata.items_held") %></dt>
+          <dd class="col col-md-12 col-lg-9">
             <ul class="list-unstyled">
-              <% items_issues_held(@holding).each do |issue| %>
+              <% items_issues_held(@request.holding).each do |issue| %>
                 <li><%= issue %></li>
               <% end %>
             </ul>
           </dd>
         <% end %>
 
-        <% if supplements(@holding).present? %>
-          <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.supplements") %></dt>
-          <dd class="col col-md-12 col-lg-8">
+        <% if supplements(@request.holding).present? %>
+          <dt class="col-12 col-md-12 col-lg-3"><%= t("requesting.metadata.supplements") %></dt>
+          <dd class="col col-md-12 col-lg-9">
             <ul class="list-unstyled">
-              <% supplements(@holding).each do |supplement| %>
+              <% supplements(@request.holding).each do |supplement| %>
                 <li><%= supplement %></li>
               <% end %>
             </ul>
           </dd>
         <% end %>
 
-        <% if indexes(@holding).present? %>
-          <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.indexes") %></dt>
-          <dd class="col col-md-12 col-lg-8">
+        <% if indexes(@request.holding).present? %>
+          <dt class="col-12 col-md-12 col-lg-3"><%= t("requesting.metadata.indexes") %></dt>
+          <dd class="col col-md-12 col-lg-9">
             <ul class="list-unstyled">
-              <% indexes(@holding).each do |index| %>
+              <% indexes(@request.holding).each do |index| %>
                 <li><%= index %></li>
               <% end %>
             </ul>
@@ -64,4 +68,4 @@
   </div>
 <!--</div>-->
 
-<%= render "form", item_category: @item["itemCategory"] %>
+<%= render "form", request: @request %>

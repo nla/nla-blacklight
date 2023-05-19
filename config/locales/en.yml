@@ -54,7 +54,11 @@ en:
   requesting:
     heading: "Request this item"
     message: "Request this item to view in the Library's reading room using your library card."
+    success:
+      heading: "Request complete"
+      message: "Your request for <strong>%{title}</strong> is currently being processed and will be available for collection from 9am Monday."
     metadata:
+      item_requested: "Item Requested:"
       collect_from: "Collect From:"
       call_number: "Call Number:"
       status: "Status:"
@@ -75,3 +79,7 @@ en:
       volume: "80 character limit"
       enumeration: "80 character limit"
       notes: "< 100 characters"
+    collect_from:
+      base: "Collection desk in %{link}, %{location}"
+      special_collections: 'Collection desk in <a href="https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history">Newspapers and Family History zone</a>, Main Reading Room, Ground Floor'
+      newspapers_family_zone: 'Collection desk in <a href="https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history">Newspapers and Family History zone</a>, Main Reading Room, Ground Floor'

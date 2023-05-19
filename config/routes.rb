@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  get 'request/new'
-  get 'request/create'
-  get 'request/show'
+  get "request/new"
+  get "request/create"
+  get "request/show"
   mount Blacklight::Engine => "/"
   mount BlacklightAdvancedSearch::Engine => "/"
   mount Flipper::UI.app(Flipper) => "/feats", :constraints => StaffOnlyConstraint.new

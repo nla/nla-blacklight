@@ -209,17 +209,17 @@
       "callNumber": "910.5 NAT",
       "holdingsStatements": [
         {
+          "statement": "v.116:no.6 (1959:Dec.) - v.218:no.1 (2010:July),",
+          "note": "",
+          "staffNote": ""
+        },
+        {
           "statement": "v.218:no.4 (2010:Oct.) - v.222:no.2 (2012:Aug.)",
           "note": "",
           "staffNote": ""
         },
         {
           "statement": "v.222:no.4 (2012:Oct.) - v.242:no.3 (2022:Sep.)",
-          "note": "",
-          "staffNote": ""
-        },
-        {
-          "statement": "v.116:no.6 (1959:Dec.) - v.218:no.1 (2010:July),",
           "note": "",
           "staffNote": ""
         },
@@ -236,13 +236,8 @@
           "staffNote": ""
         },
         {
-          "statement": "2001",
-          "note": "",
-          "staffNote": ""
-        },
-        {
-          "statement": "2003",
-          "note": "",
+          "statement": "",
+          "note": "1888-1988",
           "staffNote": ""
         },
         {
@@ -251,8 +246,13 @@
           "staffNote": ""
         },
         {
-          "statement": "",
-          "note": "1888-1988",
+          "statement": "2001",
+          "note": "",
+          "staffNote": ""
+        },
+        {
+          "statement": "2003",
+          "note": "",
           "staffNote": ""
         },
         {
@@ -264,32 +264,12 @@
       "holdingsStatementsForSupplements": [
         {
           "statement": "",
-          "note": "Millennium Supplement: Population (Oct 1998)",
-          "staffNote": ""
-        },
-        {
-          "statement": "",
-          "note": "Special millennium issue (Jan 2000)",
-          "staffNote": ""
-        },
-        {
-          "statement": "",
-          "note": "Water (v.184 ,no. 5A, 1993)",
-          "staffNote": ""
-        },
-        {
-          "statement": "",
-          "note": "Supplement: Millennium in maps: cultures (Aug 1999)",
+          "note": "Maps of the United States and the world and cartography at the National Geographic Society, 1888-1988",
           "staffNote": ""
         },
         {
           "statement": "",
           "note": "Energy (Feb 1981)",
-          "staffNote": ""
-        },
-        {
-          "statement": "",
-          "note": "Maps of the United States and the world and cartography at the National Geographic Society, 1888-1988",
           "staffNote": ""
         },
         {
@@ -300,6 +280,26 @@
         {
           "statement": "",
           "note": "Native American heritage: a visitors guide (Oct 1991)",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "Water (v.184 ,no. 5A, 1993)",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "Millennium Supplement: Population (Oct 1998)",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "Supplement: Millennium in maps: cultures (Aug 1999)",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "Special millennium issue (Jan 2000)",
           "staffNote": ""
         }
       ],
