@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: aa6959725bb1c2e31adcafda05af4a0ef803c7e7
+  revision: 3e47061d6e6bc3d67e2810331496be720b467d3e
   branch: main
   specs:
     catalogue-patrons (3.1.0)
@@ -532,7 +532,7 @@ GEM
       parser (>= 3.2.1.0)
     rubocop-capybara (2.18.0)
       rubocop (~> 1.41)
-    rubocop-factory_bot (2.23.0)
+    rubocop-factory_bot (2.23.1)
       rubocop (~> 1.33)
     rubocop-performance (1.16.0)
       rubocop (>= 1.7.0, < 2.0)
