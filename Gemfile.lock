@@ -225,7 +225,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    down (5.4.0)
+    down (5.4.1)
       addressable (~> 2.8)
     ebsco-eds (1.1.5)
       activesupport (>= 5.2)
@@ -701,7 +701,7 @@ DEPENDENCIES
   database_cleaner-active_record
   debug
   dotenv-rails
-  down (~> 5.0)
+  down (~> 5.4)
   ebsco-eds (~> 1.1)
   factory_bot_rails
   faker

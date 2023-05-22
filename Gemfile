@@ -88,7 +88,7 @@ gem "repost", "~> 0.4.1"
 gem "strong_migrations", "~> 1.4"
 gem "view_component", "~> 2.82"
 gem "zk", "~> 1.10"
-gem "down", "~> 5.0"
+gem "down", "~> 5.4"
 gem "json-jwt", "~> 1.15"
 gem "oauth2", "~> 2.0"
 
