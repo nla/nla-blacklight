@@ -215,7 +215,7 @@ RSpec.configure do |config|
 
     fa_search = IO.read("spec/files/bento_search/fa_search.json")
 
-    WebMock.stub_request(:get, "http://test.host/finding-aids/catalog.json?per_page=10&q=hydrogen")
+    WebMock.stub_request(:get, "http://test.host/finding-aids/catalog.json?per_page=5&q=hydrogen")
       .with(
         headers: {
           "Accept" => "*/*",
