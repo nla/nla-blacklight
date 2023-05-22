@@ -3,30 +3,44 @@ module RequestHelper
     most_recent = holding["holdingsStatements"].last
 
     if most_recent.present?
-      if most_recent["statement"].present?
-        most_recent["statement"]
-      elsif most_recent["note"].present?
-        most_recent["enumeration"]
-      end
+      merge_statements(holding["holdingsStatements"].map)
+    else
+      []
     end
   end
 
   def items_issues_held(holding)
-    holding["holdingsStatements"].map do |statement|
+    merge_statements(holding["holdingsStatements"])
+  end
+
+  def supplements(holding)
+    merge_statements(holding["holdingsStatementsForSupplements"])
+  end
+
+  def merge_statements(statements)
+    statements = statements.map do |statement|
       if statement["statement"].present?
         statement["statement"]
       elsif statement["note"].present?
         statement["note"]
       end
     end
-  end
 
-  def supplements(holding)
-    holding["holdingsStatementsForSupplements"].pluck("note")
+    if statements.present?
+      statements.compact
+    else
+      []
+    end
   end
 
   def indexes(holding)
-    holding["holdingsStatementsForIndexes"].pluck("note")
+    holding["holdingsStatementsForIndexes"].map do |statement|
+      if statement["statement"].present?
+        statement["statement"]
+      elsif statement["note"].present?
+        statement["note"]
+      end
+    end
   end
 
   def pickup_location_text(item)

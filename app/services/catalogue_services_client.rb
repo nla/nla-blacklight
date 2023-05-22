@@ -50,11 +50,10 @@ class CatalogueServicesClient
       instanceId: request[:instance_id],
       holdingsId: request[:holdings_id],
       itemId: request[:item_id],
-      year: [request[:year]],
+      yearCaption: [request[:year]],
       enumeration: request[:enumeration],
       chronology: request[:chronology],
-      barcode: request[:barcode],
-      notes: request[:notes])
+      patronComments: request[:notes])
     res = conn.post("/catalogue-services/folio/request/new") do |req|
       req.headers["Content-Type"] = "application/json"
       req.body = request_body
