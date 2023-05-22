@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: 3e47061d6e6bc3d67e2810331496be720b467d3e
+  revision: 585325a01778f88edfbc0b1a0a4919a622e482ff
   branch: main
   specs:
     catalogue-patrons (3.1.0)
@@ -190,7 +190,7 @@ GEM
     concurrent-ruby (1.2.2)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
-    connection_pool (2.4.0)
+    connection_pool (2.4.1)
     crack (0.4.5)
       rexml
     crass (1.0.6)
@@ -225,7 +225,7 @@ GEM
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
-    down (5.4.0)
+    down (5.4.1)
       addressable (~> 2.8)
     ebsco-eds (1.1.5)
       activesupport (>= 5.2)
@@ -384,7 +384,7 @@ GEM
     minitest (5.18.0)
     mock_redis (0.36.0)
       ruby2_keywords
-    msgpack (1.7.0)
+    msgpack (1.7.1)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.3.0)
@@ -402,11 +402,11 @@ GEM
     net-smtp (0.3.3)
       net-protocol
     nio4r (2.5.9)
-    nokogiri (1.15.0-arm64-darwin)
+    nokogiri (1.15.1-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.0-x86_64-darwin)
+    nokogiri (1.15.1-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.0-x86_64-linux)
+    nokogiri (1.15.1-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -487,7 +487,7 @@ GEM
     redis-client (0.14.1)
       connection_pool
     regexp_parser (2.8.0)
-    reline (0.3.3)
+    reline (0.3.4)
       io-console (~> 0.5)
     repost (0.4.1)
     request_store (1.5.1)
