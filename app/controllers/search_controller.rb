@@ -11,7 +11,7 @@ class SearchController < ApplicationController
 
       @cat_per_page = params["cat_per_page"] || 10
       @eds_per_page = params["eds_per_page"] || 3
-      @fa_per_page = params["fa_per_page"] || 3
+      @fa_per_page = params["fa_per_page"] || 5
 
       @results = {}
 

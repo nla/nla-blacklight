@@ -24,7 +24,7 @@
         <%= index %>.
       <% end %>
     <% end %>
-    <%= link_to_unless(item.link.blank?, item.complete_title, item.link) %>
+    <%= link_to_unless(item.link.blank?, item.complete_title.truncate(175, separator: " "), item.link) %>
 
     <% if item.display_language.present? %>
 
