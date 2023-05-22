@@ -28,15 +28,23 @@
 
         <% if recent_item_issue_held(@request.holding).present? %>
           <dt class="col-12 col-md-12 col-lg-3"><%= t("requesting.metadata.recent_items") %></dt>
-          <dd class="col col-md-12 col-lg-9"><%= recent_item_issue_held(@request.holding) %></dd>
+          <dd class="col col-md-12 col-lg-9">
+            <ul class="list-unstyled">
+              <% recent_item_issue_held(@request.holding).each do |statement| %>
+                <li><%= statement %></li>
+              <% end %>
+            </ul>
+          </dd>
         <% end %>
 
         <% if items_issues_held(@request.holding).present? %>
           <dt class="col-12 col-md-12 col-lg-3"><%= t("requesting.metadata.items_held") %></dt>
           <dd class="col col-md-12 col-lg-9">
             <ul class="list-unstyled">
-              <% items_issues_held(@request.holding).each do |issue| %>
-                <li><%= issue %></li>
+              <% items_issues_held(@request.holding).each do |statement| %>
+                <% statement.each do |issue| %>
+                  <li><%= issue %></li>
+                <% end %>
               <% end %>
             </ul>
           </dd>
@@ -46,8 +54,10 @@
           <dt class="col-12 col-md-12 col-lg-3"><%= t("requesting.metadata.supplements") %></dt>
           <dd class="col col-md-12 col-lg-9">
             <ul class="list-unstyled">
-              <% supplements(@request.holding).each do |supplement| %>
-                <li><%= supplement %></li>
+              <% supplements(@request.holding).each do |statement| %>
+                <% statement.each do |supplement| %>
+                  <li><%= supplement %></li>
+                <% end %>
               <% end %>
             </ul>
           </dd>
@@ -57,8 +67,10 @@
           <dt class="col-12 col-md-12 col-lg-3"><%= t("requesting.metadata.indexes") %></dt>
           <dd class="col col-md-12 col-lg-9">
             <ul class="list-unstyled">
-              <% indexes(@request.holding).each do |index| %>
-                <li><%= index %></li>
+              <% indexes(@request.holding).each do |statement| %>
+                <% statement.each do |index| %>
+                  <li><%= index %></li>
+                <% end %>
               <% end %>
             </ul>
           </dd>

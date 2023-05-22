@@ -1,45 +1,62 @@
 module RequestHelper
   def recent_item_issue_held(holding)
-    most_recent = holding["holdingsStatements"].last
-
-    if most_recent.present?
-      merge_statements(holding["holdingsStatements"].map)
+    if holding["holdingsStatements"].size > 1
+      merge_statements_and_notes(holding["holdingsStatements"].last)
     else
       []
     end
   end
 
   def items_issues_held(holding)
-    merge_statements(holding["holdingsStatements"])
+    merged = []
+
+    # remove the last statement because it would've already been displayed as the
+    # recent item/issue held
+    issues = holding["holdingsStatements"].dup
+    if issues.size > 1
+      issues.pop
+    end
+    issues.each do |statement|
+      merged << merge_statements_and_notes(statement)
+    end
+
+    compact_merged_array(merged)
   end
 
   def supplements(holding)
-    merge_statements(holding["holdingsStatementsForSupplements"])
-  end
+    merged = []
 
-  def merge_statements(statements)
-    statements = statements.map do |statement|
-      if statement["statement"].present?
-        statement["statement"]
-      elsif statement["note"].present?
-        statement["note"]
-      end
+    holding["holdingsStatementsForSupplements"].each do |statement|
+      merged << merge_statements_and_notes(statement)
     end
 
-    if statements.present?
-      statements.compact
-    else
-      []
-    end
+    compact_merged_array(merged)
   end
 
   def indexes(holding)
-    holding["holdingsStatementsForIndexes"].map do |statement|
-      if statement["statement"].present?
-        statement["statement"]
-      elsif statement["note"].present?
-        statement["note"]
-      end
+    merged = []
+
+    holding["holdingsStatementsForIndexes"].each do |statement|
+      merged << merge_statements_and_notes(statement)
+    end
+
+    compact_merged_array(merged)
+  end
+
+  def merge_statements_and_notes(statements)
+    merged = []
+
+    merged << statements["statement"]
+    merged << statements["note"]
+
+    compact_merged_array(merged)
+  end
+
+  def compact_merged_array(merged)
+    if merged.present?
+      merged.reject(&:empty?)
+    else
+      []
     end
   end
 

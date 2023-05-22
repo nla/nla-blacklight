@@ -16,35 +16,13 @@ class RequestItemComponent < ViewComponent::Base
     cat_services_client.get_holdings(instance_id: instance_id)
   end
 
-  def recent_item_issue_held(holding)
-    most_recent = holding["holdingsStatements"].last
+  delegate :recent_item_issue_held, to: :helpers
 
-    if most_recent.present?
-      if most_recent["statement"].present?
-        most_recent["statement"]
-      elsif most_recent["note"].present?
-        most_recent["enumeration"]
-      end
-    end
-  end
+  delegate :items_issues_held, to: :helpers
 
-  def items_issues_held(holding)
-    holding["holdingsStatements"].map do |statement|
-      if statement["statement"].present?
-        statement["statement"]
-      elsif statement["note"].present?
-        statement["note"]
-      end
-    end
-  end
+  delegate :supplements, to: :helpers
 
-  def supplements(holding)
-    holding["holdingsStatementsForSupplements"].pluck("note")
-  end
-
-  def indexes(holding)
-    holding["holdingsStatementsForIndexes"].pluck("note")
-  end
+  delegate :indexes, to: :helpers
 
   def request_item_link(item)
     instance_id = @document.first("folio_instance_id_ssim")

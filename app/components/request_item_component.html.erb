@@ -28,16 +28,24 @@
                       <dd class="col col-md-12 col-lg-8"><%= item["status"]["name"] %></dd>
 
                       <% if recent_item_issue_held(holding).present? %>
-                        <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.items_held") %></dt>
-                        <dd class="col col-md-12 col-lg-8"><%= recent_item_issue_held(holding) %></dd>
+                        <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.recent_items") %></dt>
+                        <dd class="col col-md-12 col-lg-8">
+                          <ul class="list-unstyled">
+                            <% recent_item_issue_held(holding).each do |statement| %>
+                              <li><%= statement %></li>
+                            <% end %>
+                          </ul>
+                        </dd>
                       <% end %>
 
                       <% if items_issues_held(holding).present? %>
                         <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.items_held") %></dt>
                         <dd class="col col-md-12 col-lg-8">
                           <ul class="list-unstyled">
-                            <% items_issues_held(holding).each do |issue| %>
-                              <li><%= issue %></li>
+                            <% items_issues_held(holding).each do |statement| %>
+                              <% statement.each do |issue| %>
+                                <li><%= issue %></li>
+                              <% end %>
                             <% end %>
                           </ul>
                         </dd>
@@ -47,8 +55,10 @@
                         <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.supplements") %></dt>
                         <dd class="col col-md-12 col-lg-8">
                           <ul class="list-unstyled">
-                            <% supplements(holding).each do |supplement| %>
-                              <li><%= supplement %></li>
+                            <% supplements(holding).each do |statement| %>
+                              <% statement.each do |supplement| %>
+                                <li><%= supplement %></li>
+                              <% end %>
                             <% end %>
                           </ul>
                         </dd>
@@ -58,8 +68,10 @@
                         <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.indexes") %></dt>
                         <dd class="col col-md-12 col-lg-8">
                           <ul class="list-unstyled">
-                            <% indexes(holding).each do |index| %>
-                              <li><%= index %></li>
+                            <% indexes(holding).each do |statement| %>
+                              <% statement.each do |index| %>
+                                <li><%= index %></li>
+                              <% end %>
                             <% end %>
                           </ul>
                         </dd>
