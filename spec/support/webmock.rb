@@ -208,7 +208,7 @@ RSpec.configure do |config|
           "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
         }
       )
-      .to_return(status: 200, body: holdings_response, headers: {})
+      .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
 
     create_request_response = IO.read("spec/files/catalogue_services/create_request_response.json")
 
