@@ -81,103 +81,57 @@ RSpec.configure do |config|
 
     WebMock.stub_request(:post, /eds-api.ebscohost.com\/authservice\/rest\/uidauth/)
       .with(
+        body: "      {\n        \"UserId\":\"test\",\n        \"Password\":\"test\"\n      }\n",
         headers: {
           "Accept" => "application/json",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "Connection" => "keep-alive",
-          "Content-Type" => "application/json;charset=UTF-8",
-          "Keep-Alive" => "30",
-          "User-Agent" => "EBSCO EDS GEM v0.0.1",
-          "X-Authenticationtoken" => "",
-          "X-Sessiontoken" => ""
+          "Content-Type" => "application/json"
         }
       )
       .to_return(status: 200, body: eds_auth_mock, headers: {"Content-Type" => "application/json"})
 
-    eds_session_mock = IO.read("spec/files/bento_search/ebsco/session.json")
+    eds_session_mock = IO.read("spec/files/bento_search/ebsco/session.xml")
 
-    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/CreateSession\?displaydatabasename=y&guest=n&profile=edsapi/)
+    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/createsession\?guest=n&profile=edsapi/)
       .with(
         headers: {
-          "Accept" => "application/json",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "Connection" => "keep-alive",
-          "Content-Type" => "application/json;charset=UTF-8",
-          "Keep-Alive" => "30",
-          "User-Agent" => "EBSCO EDS GEM v0.0.1",
+          "Accept" => "application/xml",
+          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0"
+        }
+      )
+      .to_return(status: 200, body: eds_session_mock, headers: {})
+
+    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/endsession/)
+      .with(
+        headers: {
+          "Accept" => "application/xml",
+          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0"
+        }
+      )
+      .to_return(status: 200, body: "", headers: {})
+
+    eds_search_mock = IO.read("spec/files/bento_search/ebsco/search.xml")
+
+    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/search\?highlight=n&query=AND,hydrogen&resultsperpage=3&searchmode=all&view=detailed/)
+      .with(
+        headers: {
+          "Accept" => "application/xml",
           "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
           "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
         }
       )
-      .to_return(status: 200, body: eds_session_mock, headers: {"Content-Type" => "application/json"})
+      .to_return(status: 200, body: eds_search_mock, headers: {})
 
-    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/CreateSession\?displaydatabasename=y&guest=n&profile=edsapi/)
+    eds_publication_search_mock = IO.read("spec/files/bento_search/ebsco/publication_search.xml")
+
+    stub_request(:get, /eds-api.ebscohost.com\/edsapi\/publication\/search\?highlight=n&query=AND,hydrogen&resultsperpage=3&view=detailed/)
       .with(
         headers: {
-          "Accept" => "application/json",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "Connection" => "keep-alive",
-          "Content-Type" => "application/json;charset=UTF-8",
-          "Keep-Alive" => "30",
-          "User-Agent" => "EBSCO EDS GEM v0.0.1",
-          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
-          "X-Sessiontoken" => ""
-        }
-      )
-      .to_return(status: 200, body: eds_session_mock, headers: {"Content-Type" => "application/json"})
-
-    eds_info_mock = IO.read("spec/files/bento_search/ebsco/info.json")
-
-    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/Info/)
-      .with(
-        headers: {
-          "Accept" => "application/json",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "Connection" => "keep-alive",
-          "Content-Type" => "application/json;charset=UTF-8",
-          "Keep-Alive" => "30",
-          "User-Agent" => "EBSCO EDS GEM v0.0.1",
+          "Accept" => "application/xml",
           "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
           "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
         }
       )
-      .to_return(status: 200, body: eds_info_mock, headers: {"Content-Type" => "application/json"})
-
-    eds_search_mock = IO.read("spec/files/bento_search/ebsco/search.json")
-
-    WebMock.stub_request(:post, /eds-api.ebscohost.com\/edsapi\/rest\/Search/)
-      .with(
-        body: "{\"SearchCriteria\":{\"Queries\":[{\"Term\":\"hydrogen\"}],\"SearchMode\":\"bool\",\"IncludeFacets\":\"y\",\"FacetFilters\":[],\"Limiters\":[],\"Sort\":\"relevance\",\"PublicationId\":null,\"RelatedContent\":[\"emp\"],\"AutoSuggest\":\"y\",\"Expanders\":[\"fulltext\"],\"AutoCorrect\":\"n\"},\"RetrievalCriteria\":{\"View\":\"brief\",\"ResultsPerPage\":3,\"PageNumber\":1,\"Highlight\":null,\"IncludeImageQuickView\":false},\"Actions\":[\"GoToPage(1)\"],\"Comment\":\"\"}",
-        headers: {
-          "Accept" => "application/json",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "Connection" => "keep-alive",
-          "Content-Type" => "application/json;charset=UTF-8",
-          "Keep-Alive" => "30",
-          "User-Agent" => "EBSCO EDS GEM v0.0.1",
-          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
-          "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
-        }
-      )
-      .to_return(status: 200, body: eds_search_mock, headers: {"Content-Type" => "application/json"})
-
-    eds_search_title_mock = IO.read("spec/files/bento_search/ebsco/search_title.json")
-
-    WebMock.stub_request(:post, /eds-api.ebscohost.com\/edsapi\/rest\/Search/)
-      .with(
-        body: "{\"SearchCriteria\":{\"Queries\":[{\"Term\":\"TI hydrogen\"}],\"SearchMode\":\"bool\",\"IncludeFacets\":\"y\",\"FacetFilters\":[],\"Limiters\":[],\"Sort\":\"relevance\",\"PublicationId\":null,\"RelatedContent\":[\"emp\"],\"AutoSuggest\":\"y\",\"Expanders\":[\"fulltext\"],\"AutoCorrect\":\"n\"},\"RetrievalCriteria\":{\"View\":\"brief\",\"ResultsPerPage\":3,\"PageNumber\":1,\"Highlight\":null,\"IncludeImageQuickView\":false},\"Actions\":[\"GoToPage(1)\"],\"Comment\":\"\"}",
-        headers: {
-          "Accept" => "application/json",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "Connection" => "keep-alive",
-          "Content-Type" => "application/json;charset=UTF-8",
-          "Keep-Alive" => "30",
-          "User-Agent" => "EBSCO EDS GEM v0.0.1",
-          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
-          "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
-        }
-      )
-      .to_return(status: 200, body: eds_search_title_mock, headers: {"Content-Type" => "application/json"})
+      .to_return(status: 200, body: eds_publication_search_mock, headers: {})
 
     single_message_mock = IO.read("spec/files/global_messages/single_message.json")
 
