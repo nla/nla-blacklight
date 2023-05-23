@@ -74,6 +74,58 @@ RSpec.describe RequestHelper do
     end
   end
 
+  describe "#pickup_location_text" do
+    context "when the pickup location starts with 'MRR'" do
+      let(:item) { {"pickupLocation" => {"code" => "MRR-SP"}} }
+
+      it "returns the Main Reading Room pickup location text" do
+        expect(pickup_location_text(item)).to include "Main Reading Room"
+      end
+    end
+
+    context "when the pickup location starts with 'NMRR'" do
+      let(:item) { {"pickupLocation" => {"code" => "NMRR-SP"}} }
+
+      it "returns the Newspapers and Family History pickup location text" do
+        expect(pickup_location_text(item)).to include "Newspapers and Family History"
+      end
+    end
+
+    context "when the pickup location starts with 'SCRR'" do
+      let(:item) { {"pickupLocation" => {"code" => "SCRR-SP"}} }
+
+      it "returns the Special Collections Reading Room pickup location text" do
+        expect(pickup_location_text(item)).to include "Special Collections Reading Room"
+      end
+    end
+  end
+
+  describe "#pickup_location_img" do
+    context "when the pickup location starts with 'MRR'" do
+      let(:item) { {"pickupLocation" => {"code" => "MRR-SP"}} }
+
+      it "returns the Main Reading Room image" do
+        expect(pickup_location_img(item)).to include "main_reading_room.jpeg"
+      end
+    end
+
+    context "when the pickup location starts with 'NMRR'" do
+      let(:item) { {"pickupLocation" => {"code" => "NMRR-SP"}} }
+
+      it "returns the Newspapers and Family History image" do
+        expect(pickup_location_img(item)).to include "newspapers_and_family_history_zone.jpg"
+      end
+    end
+
+    context "when the pickup location starts with 'SCRR'" do
+      let(:item) { {"pickupLocation" => {"code" => "SCRR-SP"}} }
+
+      it "returns the Special Collections Reading Room image" do
+        expect(pickup_location_img(item)).to include "special_collections.jpeg"
+      end
+    end
+  end
+
   def holdings_response
     JSON.parse(IO.read("spec/files/catalogue_services/serial.json"))
   end

@@ -118,13 +118,6 @@ RSpec.describe "Requests" do
     end
   end
 
-  # describe "GET /show" do
-  #   it "returns http success" do
-  #     get "/catalog/1414519/request/show"
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-
   def serial_marc
     load_marc_from_file 1595553
   end
