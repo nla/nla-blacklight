@@ -49,7 +49,7 @@ module ApplicationHelper
   # GlobalMessageComponent is displayed inside the _home_text.html.erb template and would cause
   # the message to be displayed twice.
   def show_global_message?
-    !current_page?(root_path)
+    !current_page?(search_catalog_path)
   end
 
   def show_facets_sidebar?
