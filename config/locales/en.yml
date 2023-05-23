@@ -52,4 +52,34 @@ en:
       header: "Sorry!"
       message: '<p>%{original_url} is a subscription service that is only available within the National Library of Australia building in Canberra.</p><p>To %{return_link} please %{click_link}.</p>'
   requesting:
+    heading: "Request this item"
     message: "Request this item to view in the Library's reading room using your library card."
+    success:
+      heading: "Request complete"
+      message: "Your request for <strong>%{title}</strong> is currently being processed and will be available for collection from 9am Monday."
+    metadata:
+      item_requested: "Item Requested:"
+      collect_from: "Collect From:"
+      call_number: "Call Number:"
+      status: "Status:"
+      recent_items: "Recent Items/Issues Held:"
+      items_held: "Items/Issues Held:"
+      supplements: "Supplements:"
+      indexes: "Indexes:"
+    prompt: "You have requested an issue of a journal, magazine, newspaper, annual report or other multi-part item. Please use the fields below to tell our staff which issues you would like to request."
+    btn_request: "Request"
+    btn_select: "Select"
+    label:
+      year: "Year (YYYY):"
+      volume: "Volume/No:"
+      enumeration: "Day or month:"
+      notes: "Notes:"
+    help:
+      year: "20 character limit"
+      volume: "80 character limit"
+      enumeration: "80 character limit"
+      notes: "< 100 characters"
+    collect_from:
+      base: "Collection desk in %{link}, %{location}"
+      special_collections: 'Collection desk in <a href="https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history">Newspapers and Family History zone</a>, Main Reading Room, Ground Floor'
+      newspapers_family_zone: 'Collection desk in <a href="https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history">Newspapers and Family History zone</a>, Main Reading Room, Ground Floor'

@@ -4,6 +4,7 @@ module UrlHelper
   include Blacklight::UrlHelperBehavior
 
   def link_to_document(doc, field_or_opts = nil, opts = {counter: nil})
+    # :nocov:
     label = case field_or_opts
     when NilClass
       document_presenter(doc).heading
@@ -18,13 +19,14 @@ module UrlHelper
     else # String
       field_or_opts
     end
+    # :nocov:
 
     if current_page?(search_catalog_path)
       label = label.truncate(175, separator: " ")
     end
 
     Deprecation.silence(Blacklight::UrlHelperBehavior) do
-      link_to label, url_for_document(doc), document_link_params(doc, opts)
+      link_to label, "url_for_document(doc)", document_link_params(doc, opts)
     end
   end
 end

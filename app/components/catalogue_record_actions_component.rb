@@ -7,10 +7,6 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
     @document = document
   end
 
-  def render?
-    Flipper.enabled?(:requesting)
-  end
-
   def render_online?
     has_online_access?(@document) || has_online_copy?(@document)
   end
@@ -32,6 +28,6 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def render_request?
-    !is_ned_item?(@document) || has_online_copy?(@document)
+    Flipper.enabled?(:requesting) && (!is_ned_item?(@document) || has_online_copy?(@document))
   end
 end
