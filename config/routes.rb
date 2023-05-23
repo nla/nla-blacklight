@@ -36,10 +36,10 @@ Rails.application.routes.draw do
   get "/search", to: "search#index", as: "bento_search_index"
 
   # error handlers
-  get "/404", to: "errors#not_found"
-  get "/422", to: "errors#unprocessable"
-  get "/500", to: "errors#internal_server"
-  get "/503", to: "errors#unavailable"
+  get "/404", to: "errors#not_found", as: "not_found_error"
+  get "/422", to: "errors#unprocessable", as: "unprocessable_error"
+  get "/500", to: "errors#internal_server", as: "internal_server_error"
+  get "/503", to: "errors#unavailable", as: "unavailable_error"
 
   root to: "static_pages#home"
 end

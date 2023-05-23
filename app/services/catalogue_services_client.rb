@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+class ServiceTokenError < StandardError; end
+
+class HoldingsRequestError < StandardError; end
+
 class ItemRequestError < StandardError; end
 
 class CatalogueServicesClient
@@ -23,7 +27,7 @@ class CatalogueServicesClient
       end
     else
       Rails.logger.error "Failed to retrieve holdings for #{instance_id}"
-      []
+      raise HoldingsRequestError.new("Failed to retrieve holdings for #{instance_id}")
     end
   end
 
@@ -61,8 +65,9 @@ class CatalogueServicesClient
     if res.status == 200
       (res.body.presence || {})
     else
-      Rails.logger.error "Failed to request #{request[:item_id]} for #{current_user}"
-      throw ItemRequestError.new("Unfortunately your request could not be completed. Please try again later.")
+      message = "Failed to request item (#{request[:item_id]}) for requester (#{requester})"
+      Rails.logger.error message
+      raise ItemRequestError.new(message)
     end
   end
 
@@ -71,6 +76,11 @@ class CatalogueServicesClient
   def set_token
     response = @oauth_client.client_credentials.get_token
     @bearer_token = response.token
+  rescue => e
+    message = "Failed to get token from Keycloak: #{e}"
+    Rails.logger.error message
+    @bearer_token = nil
+    raise ServiceTokenError.new(message)
   end
 
   def init_client

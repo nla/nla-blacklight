@@ -28,16 +28,14 @@ class Request
   attr_accessor :barcode
 
   # holdings data
-  attr_reader :holding
+  attr_accessor :holding
 
   # item data
-  attr_reader :item
+  attr_accessor :item
 
   def initialize(instance_id:, holdings_id:, item_id:)
     @instance_id = instance_id
     @holdings_id = holdings_id
     @item_id = item_id
-
-    @holding, @item = CatalogueServicesClient.new.get_holding(instance_id: @instance_id, holdings_id: @holdings_id, item_id: @item_id)
   end
 end
