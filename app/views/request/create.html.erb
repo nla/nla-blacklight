@@ -1,10 +1,9 @@
 <h1><%= t("requesting.success.heading") %></h1>
 <h2 class="mt-4"><%= @document.first("title_tsim") %></h2>
 
-<%# TODO: BLAC-275 %>
-<!--<div class="row">-->
-<!--  <p class="col-12 col-lg-8"><%#= t("requesting.success.message", title: @document.first("title_tsim")).html_safe %></p>-->
-<!--</div>-->
+<div class="row">
+  <p class="col-12 col-lg-8"><%= t("requesting.success.message", title: @document.first("title_tsim")).html_safe %></p>
+</div>
 
 <div class="row mt-4">
   <div class="col-12">
