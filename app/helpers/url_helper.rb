@@ -26,7 +26,7 @@ module UrlHelper
     end
 
     Deprecation.silence(Blacklight::UrlHelperBehavior) do
-      link_to label, url_for_document(doc), document_link_params(doc, opts)
+      link_to label, "url_for_document(doc)", document_link_params(doc, opts)
     end
   end
 end
