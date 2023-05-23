@@ -94,7 +94,6 @@ gem "oauth2", "~> 2.0"
 
 gem "httpclient"
 gem "htmlentities"
-gem "ebsco-eds", "~> 1.1"
 
 # feature flags
 gem "flipper", "~> 0.28.0"
