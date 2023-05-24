@@ -18,6 +18,7 @@
     <autoCommit>
       <maxTime>120000</maxTime>
     </autoCommit>
+
   </updateHandler>
 
   <!-- solr lib dirs -->
@@ -26,6 +27,17 @@
   <lib dir="${solr.install.dir:../../../..}/contrib/analysis-extras/lucene-libs" />
 
   <dataDir>${solr.data.dir:}</dataDir>
+
+  <query>
+    <queryResultCache
+            class="solr.CaffeineCache"
+            size="512"
+            initialSize="512"
+            autowarmCount="0"/>
+  </query>
+
+  <statsCache class="org.apache.solr.search.stats.LocalStatsCache"/>
+
 
   <requestHandler name="search" class="solr.SearchHandler" default="true">
     <!-- default values for query parameters can be specified, these
@@ -40,12 +52,12 @@
       <int name="ps">2</int>
       <float name="tie">0.01</float>
       <!-- this qf and pf are used by default, if not otherwise specified by
-           client. The default blacklight_config will use these for the
-           "keywords" search. See the author_qf/author_pf, title_qf, etc
-           below, which the default blacklight_config will specify for
-           those searches. You may also be interested in:
-           http://wiki.apache.org/solr/LocalParams
-      -->
+            client. The default blacklight_config will use these for the
+            "keywords" search. See the author_qf/author_pf, title_qf, etc
+            below, which the default blacklight_config will specify for
+            those searches. You may also be interested in:
+            http://wiki.apache.org/solr/LocalParams
+       -->
       <str name="qf">
         id
         full_title_tsim
@@ -61,33 +73,33 @@
         all_text_timv^10
       </str>
 
-       <str name="author_qf">
-          author_tsim
-       </str>
-       <str name="author_pf">
-       </str>
-       <str name="title_qf">
-          title_tsim
-          full_title_tsim
-          short_title_tsim
-          alternative_title_tsim
-       </str>
-       <str name="title_pf">
-       </str>
-       <str name="subject_qf">
-         subject_tsim
-       </str>
-       <str name="subject_pf">
-       </str>
+      <str name="author_qf">
+        author_tsim
+      </str>
+      <str name="author_pf">
+      </str>
+      <str name="title_qf">
+        title_tsim
+        full_title_tsim
+        short_title_tsim
+        alternative_title_tsim
+      </str>
+      <str name="title_pf">
+      </str>
+      <str name="subject_qf">
+        subject_tsim
+      </str>
+      <str name="subject_pf">
+      </str>
 
-       <!--
+      <!--
        scxxx
        -->
-       <str name="subject-nla_qf">
-         subject-nla_tsim
-       </str>
-       <str name="subject-nla_pf">
-       </str>
+      <str name="subject-nla_qf">
+        subject-nla_tsim
+      </str>
+      <str name="subject-nla_pf">
+      </str>
 
       <str name="fl">
         *,
@@ -113,12 +125,12 @@
     </arr>
   </requestHandler>
 
-  <requestHandler name="permissions" class="solr.SearchHandler" >
+  <requestHandler name="permissions" class="solr.SearchHandler">
     <lst name="defaults">
       <str name="facet">off</str>
       <str name="echoParams">all</str>
       <str name="rows">1</str>
-      <str name="q">{!raw f=id v=$id}</str> <!-- use id=666 instead of q=id:666 -->
+      <str name="q">{!raw f=id v=$id}</str>      <!-- use id=666 instead of q=id:666 -->
       <str name="fl">
         id,
         access_ssim,
@@ -206,7 +218,7 @@
 
   <requestHandler name="/replication" class="solr.ReplicationHandler" startup="lazy" />
 
-  <requestDispatcher handleSelect="true" >
+  <requestDispatcher handleSelect="true">
     <requestParsers enableRemoteStreaming="true" multipartUploadLimitInKB="2048" />
   </requestDispatcher>
 
