@@ -55,24 +55,20 @@ RSpec.configure do |config|
 
     cat_search_mock = IO.read("spec/files/bento_search/cat_search.json")
 
-    WebMock.stub_request(:get, /test.host\/catalog.json\?per_page=10&q=/)
+    WebMock.stub_request(:get, /test.host\/catalog.json/)
       .with(
         headers: {
-          "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept" => "application/json"
         }
       )
       .to_return(status: 200, body: cat_search_mock, headers: {"Content-Type" => "application/json"})
 
     fa_search_mock = IO.read("spec/files/bento_search/fa_search.json")
 
-    WebMock.stub_request(:get, /test.host\/finding-aids\/catalog.json\?per_page=3&q=/)
+    WebMock.stub_request(:get, /test.host\/finding-aids\/catalog.json/)
       .with(
         headers: {
-          "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept" => "application/json"
         }
       )
       .to_return(status: 200, body: fa_search_mock, headers: {"Content-Type" => "application/json"})

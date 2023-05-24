@@ -7,7 +7,7 @@ SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
 ])
 
 SimpleCov.start "rails" do
-  enable_coverage :branch
+  # enable_coverage :branch
 
   add_filter do |source_file|
     source_file.lines.count < 10

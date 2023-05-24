@@ -94,6 +94,7 @@ gem "oauth2", "~> 2.0"
 
 gem "httpclient"
 gem "htmlentities"
+gem "openurl"
 
 # feature flags
 gem "flipper", "~> 0.28.0"
