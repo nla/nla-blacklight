@@ -191,7 +191,7 @@
 
     <!-- suggest and spelling -->
     <dynamicField name="*spell" type="textSpell" indexed="true" stored="false" multiValued="true" />
-    <dynamicField name="*suggest" type="textSuggest" indexed="true" stored="false" multiValued="true" />
+    <dynamicField name="*suggest" type="textSuggest" indexed="true" stored="true" multiValued="true" />
 
     <!-- you must define copyField source and dest fields explicity or schemaBrowser doesn't work -->
     <field name="all_text_timv" type="text" stored="false" indexed="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
@@ -284,10 +284,16 @@
     <fieldType name="_bbox_coord" class="solr.DoublePointField" docValues="true" stored="false"/>
 
     <fieldType name="text" class="solr.TextField" omitNorms="false">
-      <analyzer>
+      <analyzer type="index">
         <tokenizer class="solr.ICUTokenizerFactory"/>
         <filter class="solr.ICUFoldingFilterFactory"/>  <!-- NFKC, case folding, diacritics removed -->
         <filter class="solr.TrimFilterFactory"/>
+      </analyzer>
+      <analyzer type="query">
+        <tokenizer class="solr.ICUTokenizerFactory"/>
+        <filter class="solr.ICUFoldingFilterFactory"/>
+        <filter class="solr.TrimFilterFactory"/>
+        <filter class="solr.EnglishMinimalStemFilterFactory"/>
       </analyzer>
     </fieldType>
 
@@ -361,11 +367,11 @@
     </fieldType>
 
     <fieldType  name="textSuggest" class="solr.TextField" positionIncrementGap="100">
-       <analyzer>
-          <tokenizer class="solr.KeywordTokenizerFactory"/>
-          <filter class="solr.LowerCaseFilterFactory"/>
-          <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
-       </analyzer>
+      <analyzer>
+        <tokenizer class="solr.KeywordTokenizerFactory"/>
+        <filter class="solr.LowerCaseFilterFactory"/>
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
+      </analyzer>
     </fieldType>
 
     <!-- queries for paths match documents at that path, or in descendent paths -->
