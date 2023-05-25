@@ -1,23 +1,22 @@
 BentoSearch.register_engine("ebsco_eds_keyword") do |conf|
-  conf.engine = "BentoSearch::EdsEngine"
+  conf.engine = "BentoSearch::EdsApiEngine"
   conf.user_id = ENV["EDS_USER"]
   conf.password = ENV["EDS_PASS"]
-  conf.auth = true
-  conf.highlighting = false
   conf.profile = ENV["EDS_PROFILE"]
-  conf.title = "eResources (Keyword)"
-  conf.base_url = "https://eds-api.ebscohost.com/edsapi/rest/"
+  conf.title = "eResources (by keyword)"
+  conf.for_display = {decorator: "EbscoEdsArticleDecorator"}
+  conf.all_results_link = ENV["EDS_ALL_RESULTS_LINK"]
 end
 
 BentoSearch.register_engine("ebsco_eds_title") do |conf|
-  conf.engine = "BentoSearch::EdsEngine"
+  conf.engine = "BentoSearch::EdsApiEngine"
   conf.user_id = ENV["EDS_USER"]
   conf.password = ENV["EDS_PASS"]
-  conf.auth = true
-  conf.highlighting = false
   conf.profile = ENV["EDS_PROFILE"]
-  conf.title = "eResources (Title)"
-  conf.base_url = "https://eds-api.ebscohost.com/edsapi/rest/"
+  conf.title = "eResources (by title)"
+  conf.for_display = {decorator: "EbscoEdsArticleDecorator"}
+  conf.all_results_link = ENV["EDS_ALL_RESULTS_LINK"]
+  conf.search_field = "TI"
 end
 
 BentoSearch.register_engine("catalogue") do |conf|

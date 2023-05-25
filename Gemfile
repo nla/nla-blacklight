@@ -92,6 +92,7 @@ gem "down", "~> 5.0"
 gem "json-jwt", "~> 1.15"
 gem "oauth2", "~> 2.0"
 
+gem "ebsco-eds"
 gem "httpclient"
 gem "htmlentities"
 gem "openurl"
