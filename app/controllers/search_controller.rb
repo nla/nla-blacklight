@@ -25,7 +25,8 @@ class SearchController < ApplicationController
 
     @total_results = 0
     @results&.each do |_key, res|
-      @total_results += res.total_items
+      # the EDSEngine might return nil when there's an error, so we need to check for that
+      @total_results += res.total_items.nil? ? 0 : res.total_items
     end
 
     render "single_search/index"
