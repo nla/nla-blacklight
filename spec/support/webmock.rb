@@ -185,6 +185,78 @@ RSpec.configure do |config|
       )
       .to_return(status: 200, body: fa_search, headers: {})
 
+    eds_auth_mock = IO.read("spec/files/bento_search/ebsco/uidauth.json")
+
+    WebMock.stub_request(:post, /eds-api.ebscohost.com\/authservice\/rest\/uidauth/)
+      .with(
+        headers: {
+          "Accept" => "application/json",
+          "X-Authenticationtoken" => "",
+          "X-Sessiontoken" => ""
+        }
+      )
+      .to_return(status: 200, body: eds_auth_mock, headers: {"Content-Type" => "application/json"})
+
+    eds_session_mock = IO.read("spec/files/bento_search/ebsco/session.json")
+
+    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/CreateSession\?displaydatabasename=y&guest=n&profile=edsapi/)
+      .with(
+        headers: {
+          "Accept" => "application/json",
+          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
+          "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
+        }
+      )
+      .to_return(status: 200, body: eds_session_mock, headers: {"Content-Type" => "application/json"})
+
+    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/CreateSession\?displaydatabasename=y&guest=n&profile=edsapi/)
+      .with(
+        headers: {
+          "Accept" => "application/json",
+          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
+          "X-Sessiontoken" => ""
+        }
+      )
+      .to_return(status: 200, body: eds_session_mock, headers: {"Content-Type" => "application/json"})
+
+    eds_info_mock = IO.read("spec/files/bento_search/ebsco/info.json")
+
+    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/Info/)
+      .with(
+        headers: {
+          "Accept" => "application/json",
+          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
+          "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
+        }
+      )
+      .to_return(status: 200, body: eds_info_mock, headers: {"Content-Type" => "application/json"})
+
+    eds_search_mock = IO.read("spec/files/bento_search/ebsco/search.json")
+
+    WebMock.stub_request(:post, /eds-api.ebscohost.com\/edsapi\/rest\/Search/)
+      .with(
+        body: "{\"SearchCriteria\":{\"Queries\":[{\"Term\":\"AND,hydrogen\"}],\"SearchMode\":\"bool\",\"IncludeFacets\":\"n\",\"FacetFilters\":[],\"Limiters\":[],\"Sort\":\"relevance\",\"PublicationId\":null,\"RelatedContent\":[\"emp\"],\"AutoSuggest\":\"y\",\"Expanders\":[\"fulltext\"],\"AutoCorrect\":\"n\"},\"RetrievalCriteria\":{\"View\":\"brief\",\"ResultsPerPage\":3,\"PageNumber\":1,\"Highlight\":false,\"IncludeImageQuickView\":false},\"Actions\":[\"GoToPage(1)\"],\"Comment\":\"\"}",
+        headers: {
+          "Accept" => "application/json",
+          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
+          "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
+        }
+      )
+      .to_return(status: 200, body: eds_search_mock, headers: {"Content-Type" => "application/json"})
+
+    eds_search_title_mock = IO.read("spec/files/bento_search/ebsco/search_title.json")
+
+    WebMock.stub_request(:post, /eds-api.ebscohost.com\/edsapi\/rest\/Search/)
+      .with(
+        body: "{\"SearchCriteria\":{\"Queries\":[{\"Term\":\"AND,TI:hydrogen\"}],\"SearchMode\":\"bool\",\"IncludeFacets\":\"n\",\"FacetFilters\":[],\"Limiters\":[],\"Sort\":\"relevance\",\"PublicationId\":null,\"RelatedContent\":[\"emp\"],\"AutoSuggest\":\"y\",\"Expanders\":[\"fulltext\"],\"AutoCorrect\":\"n\"},\"RetrievalCriteria\":{\"View\":\"brief\",\"ResultsPerPage\":3,\"PageNumber\":1,\"Highlight\":false,\"IncludeImageQuickView\":false},\"Actions\":[\"GoToPage(1)\"],\"Comment\":\"\"}",
+        headers: {
+          "Accept" => "application/json",
+          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
+          "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
+        }
+      )
+      .to_return(status: 200, body: eds_search_title_mock, headers: {"Content-Type" => "application/json"})
+
     site_info = IO.read("spec/files/catalogue_services/site_info.json")
 
     WebMock.stub_request(:get, "http://auth.test/auth/realms/example-realm/.well-known/openid-configuration")
