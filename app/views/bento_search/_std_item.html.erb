@@ -7,9 +7,14 @@
 
     <div class="col">
       <dl class="document-metadata dl-invert row">
-        <% if item.authors.present? %>
+        <% if item.authors.reject(&:empty?).present? %>
           <dt class="col-12 col-md-3">Authors:</dt>
           <dd class="col col-sm-9"><%= item.render_authors_list %></dd>
+        <% end %>
+
+        <% if item.custom_data[:subjects].present? %>
+          <dt class="col-12 col-md-3">Subjects:</dt>
+          <dd class="col col-sm-9"><%= item.custom_data[:subjects] %></dd>
         <% end %>
 
         <% if item.abstract.present? %>
@@ -29,15 +34,16 @@
 
         <% if item.other_links.present? %>
           <dt class="col-12 col-md-3">Other links:</dt>
-          <dd class="col col-sm-9"><%= render :partial => "bento_search/link", :collection => item.other_links %></dd>
+          <dd class="col col-sm-9">
+            <ul class="list-unstyled">
+              <%= render :partial => "bento_search/link", :collection => item.other_links %>
+            </ul>
+          </dd>
         <% end %>
 
         <% if item.link_is_fulltext?.present? && item.format_str.present? %>
           <dt class="col-12 col-md-3">Format:</dt>
           <dd class="col col-sm-9"><i class="fa fa-check" title="Full text" aria-hidden="true"></i> Full text <%= item.format_str.downcase %></dd>
-        <% elsif !item.link_is_fulltext?.present? && item.format_str.present? && item.engine_id == "summon_bento" %>
-          <dt class="col-12 col-md-3">Format:</dt>
-          <dd class="col col-sm-9"><i class="fa fa-pencil" title="Citation only" aria-hidden="true"></i> Citation only</dd>
         <% end %>
 
         <% if is_catalogued?(item.link) %>
@@ -54,7 +60,7 @@
 
         <% if item.custom_data[:finding_aid] %>
           <% item.custom_data.each do |key, value| %>
-            <% unless key == :finding_aid %>
+            <% unless key == :finding_aid || key == :search_link %>
               <dt class="col-12 col-md-3"><%= key %></dt>
               <dd class="col col-sm-9"><%= bento_truncate(raw(value), length: 140) %></dd>
             <% end %>

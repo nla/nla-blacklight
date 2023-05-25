@@ -7,7 +7,7 @@ SimpleCov.formatters = SimpleCov::Formatter::MultiFormatter.new([
 ])
 
 SimpleCov.start "rails" do
-  enable_coverage :branch
+  # enable_coverage :branch
 
   add_filter do |source_file|
     source_file.lines.count < 10
@@ -35,7 +35,8 @@ SimpleCov.start "rails" do
 
   # temporarily filter out bento search classes
   add_filter "app/item_decorators/bento_search/ebsco_eds_article_decorator.rb"
-  add_filter "app/search_engines/bento_search/ebsco_eds_engine.rb" # ignore since it's not invoked right now
+  # ignore since it's 90% copied from the bento_search eds_engine.rb
+  add_filter "app/search_engines/bento_search/eds_publication_engine.rb"
 
   add_group "Components", "app/components"
   add_group "Presenters", "app/presenters"

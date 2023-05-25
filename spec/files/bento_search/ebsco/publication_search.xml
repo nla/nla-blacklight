@@ -1,0 +1,498 @@
+<PublicationSearchResponseMessageGet
+  xmlns="http://epnet.com/webservices/EbscoApi/Publication/Contracts"
+  xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <SearchRequestGet>
+    <QueryString>query-1=AND,AND:hydrogen&amp;sort=relevance&amp;includefacets=y&amp;autosuggest=n&amp;autocorrect=n&amp;view=detailed&amp;resultsperpage=3&amp;pagenumber=1&amp;highlight=n</QueryString>
+    <SearchCriteriaWithActions>
+      <QueriesWithAction>
+        <QueryWithAction>
+          <Query>
+            <BooleanOperator>AND</BooleanOperator>
+            <FieldCode>AND</FieldCode>
+            <Term>hydrogen</Term>
+          </Query>
+          <RemoveAction>removequery(1)</RemoveAction>
+        </QueryWithAction>
+      </QueriesWithAction>
+    </SearchCriteriaWithActions>
+  </SearchRequestGet>
+  <SearchResult>
+    <Statistics>
+      <TotalHits>46</TotalHits>
+      <TotalSearchTime>150</TotalSearchTime>
+    </Statistics>
+    <Data>
+      <RecordFormat>EP Display</RecordFormat>
+      <Records>
+        <Record>
+          <ResultId>1</ResultId>
+          <Header>
+            <PublicationId>edp27483820</PublicationId>
+            <IsSearchable>n</IsSearchable>
+            <RelevancyScore>2462</RelevancyScore>
+            <ResourceType>Journal</ResourceType>
+          </Header>
+          <PLink>
+            https://catalogue.nla.gov.au/Record/000000/Offsite?url=https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;db=edspub&amp;AN=edp27483820&amp;groupid=main&amp;profile=eds_test
+          </PLink>
+          <Items>
+            <Item>
+              <Name>Title</Name>
+              <Label>Title</Label>
+              <Group>Ti</Group>
+              <Data>Hydrogen</Data>
+            </Item>
+            <Item>
+              <Name>ISSN</Name>
+              <Label>ISSN</Label>
+              <Group>ISSN</Group>
+              <Data>2673-4141 (online)</Data>
+            </Item>
+            <Item>
+              <Name>TypePub</Name>
+              <Label>Resource Type</Label>
+              <Group>TypPub</Group>
+              <Data>Journal</Data>
+            </Item>
+          </Items>
+          <RecordInfo xmlns:a="http://epnet.com/webservices/EbscoApi/Contracts">
+            <a:BibRecord>
+              <a:BibEntity>
+                <a:Identifiers>
+                  <a:Identifier>
+                    <a:Type>issn-online</a:Type>
+                    <a:Value>26734141</a:Value>
+                  </a:Identifier>
+                </a:Identifiers>
+                <a:Titles>
+                  <a:Title>
+                    <a:TitleFull>Hydrogen</a:TitleFull>
+                    <a:Type>main</a:Type>
+                  </a:Title>
+                </a:Titles>
+              </a:BibEntity>
+            </a:BibRecord>
+          </RecordInfo>
+          <FullTextHoldings>
+            <FullTextHolding>
+              <URL>https://www.mdpi.com/journal/hydrogen</URL>
+              <Name>DOAJ: Directory of Open Access Journals</Name>
+              <CoverageDates>
+                <CoverageDate>
+                  <StartDate>20200101</StartDate>
+                  <EndDate>99991231</EndDate>
+                </CoverageDate>
+              </CoverageDates>
+              <CoverageStatement>01/01/2020 - present</CoverageStatement>
+              <Databases xmlns:a="http://epnet.com/webservices/EbscoApi/Contracts">
+                <a:DatabaseId>Records</a:DatabaseId>
+              </Databases>
+              <EmbargoUnit>Week</EmbargoUnit>
+              <EmbargoDescription/>
+              <Facts>
+                <Fact>
+                  <Key>packagename</Key>
+                  <Value>DOAJ: Directory of Open Access Journals</Value>
+                </Fact>
+                <Fact>
+                  <Key>vendorid</Key>
+                  <Value>94</Value>
+                </Fact>
+                <Fact>
+                  <Key>packagetitlelink</Key>
+                  <Value>https://www.mdpi.com/journal/hydrogen</Value>
+                </Fact>
+                <Fact>
+                  <Key>GenericTitle</Key>
+                  <Value>Hydrogen</Value>
+                </Fact>
+                <Fact>
+                  <Key>jtitle</Key>
+                  <Value>Hydrogen</Value>
+                </Fact>
+              </Facts>
+            </FullTextHolding>
+          </FullTextHoldings>
+        </Record>
+        <Record>
+          <ResultId>2</ResultId>
+          <Header>
+            <PublicationId>edp102313266</PublicationId>
+            <IsSearchable>n</IsSearchable>
+            <RelevancyScore>2410</RelevancyScore>
+            <ResourceType>Book</ResourceType>
+          </Header>
+          <PLink>
+            https://catalogue.nla.gov.au/Record/000000/Offsite?url=https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;db=edspub&amp;AN=edp102313266&amp;groupid=main&amp;profile=eds_test
+          </PLink>
+          <Items>
+            <Item>
+              <Name>Title</Name>
+              <Label>Title</Label>
+              <Group>Ti</Group>
+              <Data>Hydrogen Bonds</Data>
+            </Item>
+            <Item>
+              <Name>Author</Name>
+              <Label>Author</Label>
+              <Group>AuInfo</Group>
+              <Data>Jabłoński, Mirosław, editor</Data>
+            </Item>
+            <Item>
+              <Name>ISBN</Name>
+              <Label>ISBN</Label>
+              <Group>ISBN</Group>
+              <Data>978-3-0365-6770-9&lt;br /&gt;978-3-0365-6771-6</Data>
+            </Item>
+            <Item>
+              <Name>TypePub</Name>
+              <Label>Resource Type</Label>
+              <Group>TypPub</Group>
+              <Data>Book</Data>
+            </Item>
+          </Items>
+          <RecordInfo xmlns:a="http://epnet.com/webservices/EbscoApi/Contracts">
+            <a:BibRecord>
+              <a:BibEntity>
+                <a:Identifiers>
+                  <a:Identifier>
+                    <a:Type>isbn-online</a:Type>
+                    <a:Value>9783036567709</a:Value>
+                  </a:Identifier>
+                  <a:Identifier>
+                    <a:Type>isbn-online</a:Type>
+                    <a:Value>9783036567716</a:Value>
+                  </a:Identifier>
+                </a:Identifiers>
+                <a:Titles>
+                  <a:Title>
+                    <a:TitleFull>Hydrogen Bonds</a:TitleFull>
+                    <a:Type>main</a:Type>
+                  </a:Title>
+                </a:Titles>
+              </a:BibEntity>
+              <a:BibRelationships>
+                <a:HasContributorRelationships>
+                  <a:HasContributor>
+                    <a:PersonEntity>
+                      <a:Name>
+                        <a:NameFull>Jabłoński, Mirosław</a:NameFull>
+                      </a:Name>
+                    </a:PersonEntity>
+                  </a:HasContributor>
+                </a:HasContributorRelationships>
+              </a:BibRelationships>
+            </a:BibRecord>
+          </RecordInfo>
+          <FullTextHoldings>
+            <FullTextHolding>
+              <URL>https://directory.doabooks.org/handle/20.500.12854/98117</URL>
+              <Name>DOAB Directory of Open Access Books</Name>
+              <CoverageDates>
+                <CoverageDate>
+                  <StartDate>20230101</StartDate>
+                  <EndDate>20231231</EndDate>
+                </CoverageDate>
+              </CoverageDates>
+              <CoverageStatement>01/01/2023 - 12/31/2023</CoverageStatement>
+              <Databases xmlns:a="http://epnet.com/webservices/EbscoApi/Contracts">
+                <a:DatabaseId>doab</a:DatabaseId>
+              </Databases>
+              <EmbargoUnit>Week</EmbargoUnit>
+              <EmbargoDescription/>
+              <Facts>
+                <Fact>
+                  <Key>packagename</Key>
+                  <Value>DOAB Directory of Open Access Books</Value>
+                </Fact>
+                <Fact>
+                  <Key>vendorid</Key>
+                  <Value>625</Value>
+                </Fact>
+                <Fact>
+                  <Key>packagetitlelink</Key>
+                  <Value>https://directory.doabooks.org/handle/20.500.12854/98117</Value>
+                </Fact>
+                <Fact>
+                  <Key>GenericTitle</Key>
+                  <Value>Hydrogen Bonds</Value>
+                </Fact>
+                <Fact>
+                  <Key>btitle</Key>
+                  <Value>Hydrogen Bonds</Value>
+                </Fact>
+              </Facts>
+            </FullTextHolding>
+          </FullTextHoldings>
+        </Record>
+        <Record>
+          <ResultId>3</ResultId>
+          <Header>
+            <PublicationId>edp1416230</PublicationId>
+            <IsSearchable>n</IsSearchable>
+            <RelevancyScore>2410</RelevancyScore>
+            <ResourceType>Book</ResourceType>
+          </Header>
+          <PLink>
+            https://catalogue.nla.gov.au/Record/000000/Offsite?url=https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;db=edspub&amp;AN=edp1416230&amp;groupid=main&amp;profile=eds_test
+          </PLink>
+          <Items>
+            <Item>
+              <Name>Title</Name>
+              <Label>Title</Label>
+              <Group>Ti</Group>
+              <Data>Hydrogen Storage</Data>
+            </Item>
+            <Item>
+              <Name>Author</Name>
+              <Label>Author</Label>
+              <Group>AuInfo</Group>
+              <Data>Jianjun Liu, editor</Data>
+            </Item>
+            <Item>
+              <Name>ISBN</Name>
+              <Label>ISBN</Label>
+              <Group>ISBN</Group>
+              <Data>978-953-510-731-6&lt;br /&gt;978-953-516-231-5</Data>
+            </Item>
+            <Item>
+              <Name>TypePub</Name>
+              <Label>Resource Type</Label>
+              <Group>TypPub</Group>
+              <Data>Book</Data>
+            </Item>
+          </Items>
+          <RecordInfo xmlns:a="http://epnet.com/webservices/EbscoApi/Contracts">
+            <a:BibRecord>
+              <a:BibEntity>
+                <a:Identifiers>
+                  <a:Identifier>
+                    <a:Type>isbn-print</a:Type>
+                    <a:Value>9789535107316</a:Value>
+                  </a:Identifier>
+                  <a:Identifier>
+                    <a:Type>isbn-online</a:Type>
+                    <a:Value>9789535162315</a:Value>
+                  </a:Identifier>
+                </a:Identifiers>
+                <a:Titles>
+                  <a:Title>
+                    <a:TitleFull>Hydrogen Storage</a:TitleFull>
+                    <a:Type>main</a:Type>
+                  </a:Title>
+                </a:Titles>
+              </a:BibEntity>
+              <a:BibRelationships>
+                <a:HasContributorRelationships>
+                  <a:HasContributor>
+                    <a:PersonEntity>
+                      <a:Name>
+                        <a:NameFull>Jianjun Liu</a:NameFull>
+                      </a:Name>
+                    </a:PersonEntity>
+                  </a:HasContributor>
+                </a:HasContributorRelationships>
+              </a:BibRelationships>
+            </a:BibRecord>
+          </RecordInfo>
+          <FullTextHoldings>
+            <FullTextHolding>
+              <URL>https://directory.doabooks.org/handle/20.500.12854/66191</URL>
+              <Name>DOAB Directory of Open Access Books</Name>
+              <CoverageDates>
+                <CoverageDate>
+                  <StartDate>20120101</StartDate>
+                  <EndDate>20121231</EndDate>
+                </CoverageDate>
+              </CoverageDates>
+              <CoverageStatement>01/01/2012 - 12/31/2012</CoverageStatement>
+              <Databases xmlns:a="http://epnet.com/webservices/EbscoApi/Contracts">
+                <a:DatabaseId>doab</a:DatabaseId>
+              </Databases>
+              <EmbargoUnit>Week</EmbargoUnit>
+              <EmbargoDescription/>
+              <Facts>
+                <Fact>
+                  <Key>packagename</Key>
+                  <Value>DOAB Directory of Open Access Books</Value>
+                </Fact>
+                <Fact>
+                  <Key>vendorid</Key>
+                  <Value>625</Value>
+                </Fact>
+                <Fact>
+                  <Key>packagetitlelink</Key>
+                  <Value>https://directory.doabooks.org/handle/20.500.12854/66191</Value>
+                </Fact>
+                <Fact>
+                  <Key>GenericTitle</Key>
+                  <Value>Hydrogen Storage</Value>
+                </Fact>
+                <Fact>
+                  <Key>btitle</Key>
+                  <Value>Hydrogen Storage</Value>
+                </Fact>
+              </Facts>
+            </FullTextHolding>
+          </FullTextHoldings>
+        </Record>
+      </Records>
+    </Data>
+    <AvailableFacets>
+      <AvailableFacet>
+        <Id>SubjectPubDb</Id>
+        <Label/>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>technology</Value>
+            <Count>3</Count>
+            <AddAction>addfacetfilter(SubjectPubDb:technology)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>nuclear engineering</Value>
+            <Count>2</Count>
+            <AddAction>addfacetfilter(SubjectPubDb:nuclear engineering)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>automobiles &amp; trucks</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(SubjectPubDb:automobiles &amp; trucks)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>business</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(SubjectPubDb:business)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>diplomacy &amp; international relations</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(SubjectPubDb:diplomacy &amp; international relations)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>health &amp; medicine (general)</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(SubjectPubDb:health &amp; medicine \(general\))</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>power &amp; energy</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(SubjectPubDb:power &amp; energy)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>technology &amp; engineering / power resources / general</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(SubjectPubDb:technology &amp; engineering / power resources /
+              general)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>united states history</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(SubjectPubDb:united states history)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+      <AvailableFacet>
+        <Id>TypePublicationPubD</Id>
+        <Label/>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>book</Value>
+            <Count>39</Count>
+            <AddAction>addfacetfilter(TypePublicationPubD:book)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>journal</Value>
+            <Count>2</Count>
+            <AddAction>addfacetfilter(TypePublicationPubD:journal)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>proceedings</Value>
+            <Count>2</Count>
+            <AddAction>addfacetfilter(TypePublicationPubD:proceedings)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>report</Value>
+            <Count>2</Count>
+            <AddAction>addfacetfilter(TypePublicationPubD:report)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>book series</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(TypePublicationPubD:book series)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+      <AvailableFacet>
+        <Id>PublisherPubDb</Id>
+        <Label/>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>mdpi ag</Value>
+            <Count>16</Count>
+            <AddAction>addfacetfilter(PublisherPubDb:mdpi ag)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>oecd publications centre</Value>
+            <Count>8</Count>
+            <AddAction>addfacetfilter(PublisherPubDb:oecd publications centre)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>intech</Value>
+            <Count>7</Count>
+            <AddAction>addfacetfilter(PublisherPubDb:intech)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>oecd publishing</Value>
+            <Count>5</Count>
+            <AddAction>addfacetfilter(PublisherPubDb:oecd publishing)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>great neck publishing</Value>
+            <Count>2</Count>
+            <AddAction>addfacetfilter(PublisherPubDb:great neck publishing)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>marketline</Value>
+            <Count>2</Count>
+            <AddAction>addfacetfilter(PublisherPubDb:marketline)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>centers for disease control and prevention (cdc)</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(PublisherPubDb:centers for disease control and prevention
+              \(cdc\))
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>firenze university press</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(PublisherPubDb:firenze university press)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>frontiers media s.a</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(PublisherPubDb:frontiers media s.a)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>graduate institute publications</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(PublisherPubDb:graduate institute publications)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>masarykova univerzita</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(PublisherPubDb:masarykova univerzita)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+    </AvailableFacets>
+    <AvailableCriteria>
+      <DateRange>
+        <MinDate>0001-01</MinDate>
+        <MaxDate>0001-01</MaxDate>
+      </DateRange>
+    </AvailableCriteria>
+  </SearchResult>
+</PublicationSearchResponseMessageGet>
