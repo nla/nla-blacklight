@@ -117,6 +117,16 @@ RSpec.configure do |config|
       )
       .to_return(status: 200, body: eds_search_mock, headers: {})
 
+    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/search\?highlight=n&query=AND,TI:hydrogen&resultsperpage=3&searchmode=all&view=detailed/)
+      .with(
+        headers: {
+          "Accept" => "application/xml",
+          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
+          "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
+        }
+      )
+      .to_return(status: 200, body: eds_search_mock, headers: {})
+
     eds_publication_search_mock = IO.read("spec/files/bento_search/ebsco/publication_search.xml")
 
     stub_request(:get, /eds-api.ebscohost.com\/edsapi\/publication\/search\?highlight=n&query=AND,hydrogen&resultsperpage=3&view=detailed/)
