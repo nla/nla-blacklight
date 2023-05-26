@@ -14,11 +14,10 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
     value = thumbnail_value(image_options)
     return value if value.nil? || url_options[:suppress_link]
 
-    context = view_config[:key]
-    if context == :show
-      view_context.link_to value, link_value, {"aria-hidden": true, tabindex: -1, counter: @counter}
+    if is_catalogue_record_page?
+      view_context.link_to value, link_value, url_options
     else
-      view_context.link_to_document document, value, url_options
+      view_context.link_to value, view_context.solr_document_path(document), url_options
     end
   end
   # :nocov:

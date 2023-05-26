@@ -4,10 +4,13 @@ require "rails_helper"
 
 RSpec.describe NlaThumbnailPresenter do
   let(:document) { SolrDocument.new }
-  let(:view_context) { instance_double(ActionView::Base) }
+  # rubocop:disable RSpec/VerifiedDoubles
+  let(:view_context) { double "View context" }
+  # rubocop:enable RSpec/VerifiedDoubles
   let(:config) { Blacklight::Configuration::ViewConfig.new }
   let(:presenter) { described_class.new(document, view_context, config) }
   let(:image_options) { {alt: ""} }
+  let(:solr_document_path) { "/catalog/#{document.id}" }
 
   describe "#exists?" do
     subject(:exists) { presenter.exists? }
@@ -90,20 +93,21 @@ RSpec.describe NlaThumbnailPresenter do
   end
 
   describe "#thumbnail_tag" do
-    let(:document) { SolrDocument.new("thumbnail_path_ss" => "image.png", "title_tsim" => "Work Title") }
+    let(:document) { SolrDocument.new(id: 123, thumbnail_path_ss: "image.png", title_tsim: "Work Title") }
 
     context "when displayed on the index page" do
       subject(:tag) { presenter.thumbnail_tag }
 
-      let(:config) { Blacklight::OpenStructWithHashAccess.new({thumbnail_field: :thumbnail_path_ss, title_field: :title_tsim}) }
+      let(:config) { Blacklight::OpenStructWithHashAccess.new({key: :index, thumbnail_field: :thumbnail_path_ss, title_field: :title_tsim}) }
       let(:presenter) { described_class.new(document, view_context, config) }
 
       it "generates a small linked thumbnail" do
+        allow(view_context).to receive(:key).and_return(:index)
         allow(view_context).to receive(:image_tag).with("image.png/image?wid=123", {alt: "Work Title", onerror: "this.style.display='none'", class: "w-100"})
           .and_return('<img src="image.png/image?wid=123" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
-
-        allow(view_context).to receive(:link_to_document).with(document, '<img src="image.png/image?wid=123" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />', {})
+        allow(view_context).to receive(:link_to).with('<img src="image.png/image?wid=123" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />', "/catalog/123", {})
           .and_return('<a href="http://example.com/catalog/1"><img src="image.png/image?wid=123" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" /></a>')
+        allow(view_context).to receive(:solr_document_path).with(document).and_return(solr_document_path)
 
         expect(tag).to include 'href="http://example.com/catalog/1"'
 
@@ -116,15 +120,16 @@ RSpec.describe NlaThumbnailPresenter do
     context "when displayed on the catalogue record page" do
       subject(:tag) { presenter.thumbnail_tag }
 
-      let(:config) { Blacklight::OpenStructWithHashAccess.new({thumbnail_field: :thumbnail_path_ss, title_field: :title_tsim, top_level_config: :show}) }
+      let(:config) { Blacklight::OpenStructWithHashAccess.new({key: :show, thumbnail_field: :thumbnail_path_ss, title_field: :title_tsim, top_level_config: :show}) }
       let(:presenter) { described_class.new(document, view_context, config) }
 
       it "generates a small linked thumbnail" do
+        allow(view_context).to receive(:key).and_return(:show)
         allow(view_context).to receive(:image_tag).with("image.png/image?wid=500", {alt: "Work Title", onerror: "this.style.display='none'", class: "w-100"})
           .and_return('<img src="image.png/image?wid=500" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
-
-        allow(view_context).to receive(:link_to_document).with(document, '<img src="image.png/image?wid=500" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />', {})
+        allow(view_context).to receive(:link_to).with('<img src="image.png/image?wid=500" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />', "image.png", {})
           .and_return('<a href="https://nla.gov.au/nla.obj1234567"><img src="image.png/image?wid=500" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" /></a>')
+        allow(view_context).to receive(:solr_document_path).with(document).and_return(solr_document_path)
 
         expect(tag).to include 'href="https://nla.gov.au/nla.obj1234567"'
 
