@@ -21,12 +21,18 @@ module UrlHelper
     end
     # :nocov:
 
-    if current_page?(search_catalog_path)
-      label = label.truncate(175, separator: " ")
-    end
+    label = truncate_title(label)
 
     Deprecation.silence(Blacklight::UrlHelperBehavior) do
-      link_to label, "url_for_document(doc)", document_link_params(doc, opts)
+      link_to label, url_for_document(doc), document_link_params(doc, opts)
+    end
+  end
+
+  def truncate_title(title)
+    if current_page?(search_catalog_path)
+      title.truncate(175, separator: " ")
+    else
+      title
     end
   end
 end
