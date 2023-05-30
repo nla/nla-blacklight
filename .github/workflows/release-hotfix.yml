@@ -1,20 +1,21 @@
-# This workflow creates a release pull request whenever a change is pushed to 'main'.
-# When the release pull request is merged into main, it will automatically create and tag a new
+# This workflow creates a release pull request whenever a change is pushed to 'hotfix'.
+# When the release pull request is merged into hotfix, it will automatically create and tag a new
 # release version.
 
-name: Release automation
+name: Release automation from 'hotfix' branch
 on:
   push:
-    branches: [main]
+    branches: [hotfix]
 jobs:
   release-please:
-    name: Create a new release
+    name: Create a new hotfix release
     runs-on: ubuntu-latest
     steps:
       - uses: google-github-actions/release-please-action@v3
         id: release
         with:
           token: ${{ secrets.GH_TOKEN }}
+          default-branch: hotfix
           release-type: ruby
           package-name: nla-blacklight
           bump-minor-pre-major: true
