@@ -1,5 +1,61 @@
 # Changelog
 
+## [1.1.0](https://github.com/nla/nla-blacklight/compare/1.0.4...1.1.0) (2023-05-30)
+
+
+### Features
+
+* add some generic delivery times message ([0d78c8c](https://github.com/nla/nla-blacklight/commit/0d78c8cfea62a5c9a2ea3e3981e353407eae7f5a))
+* implement request form ([c64ce95](https://github.com/nla/nla-blacklight/commit/c64ce955aad958ac61a87af9c1c4a1a913476def))
+* replace EDS and blacklight bento search engines ([3663e54](https://github.com/nla/nla-blacklight/commit/3663e547c7b2a147fda217f4d13605a86a728a4c))
+* replace EDS gem with plain HTTP requests to EDS API ([270b78e](https://github.com/nla/nla-blacklight/commit/270b78ee385520fbe4625a9469ca33ce77de00c1))
+* truncate titles to 175 characters on index search page ([8bfbbe8](https://github.com/nla/nla-blacklight/commit/8bfbbe885a3b12b68f938d88e87b52c23cbfd73b))
+
+
+### Bug Fixes
+
+* disable catalogue record actions component ([2acee32](https://github.com/nla/nla-blacklight/commit/2acee3230e796f1ef75a2da0d6a1c8a4bdd1e89f))
+* fix catalogue-patrons version number ([afd2bc3](https://github.com/nla/nla-blacklight/commit/afd2bc39611fb6a6819b267e4faeb933d3d2aa82))
+* fix config for EDS bento title search ([69ab7fa](https://github.com/nla/nla-blacklight/commit/69ab7fae88eee50d39296ba46bd6589db22ba87f))
+* fix display of global message on home page ([5cb6b53](https://github.com/nla/nla-blacklight/commit/5cb6b53a233cd555387fb7eb1f51bed05c5a0ea4))
+* fix EDS search code and truncate title links ([19235fe](https://github.com/nla/nla-blacklight/commit/19235fe94b347af14494e18dcba30d20ed02c20e))
+* fix nil error ([783feb1](https://github.com/nla/nla-blacklight/commit/783feb1b61855f186c2dc2076a14f1670d0d8f88))
+* fixes as per code review comments ([790e77a](https://github.com/nla/nla-blacklight/commit/790e77a9eb7431028157ee792a2574781716077a))
+* fixes linking of images on search results page ([7df8dca](https://github.com/nla/nla-blacklight/commit/7df8dca14c93d21b5155a73cb4c1e3e085ab9762))
+* integrate login changes into Blacklight ([6aeaf97](https://github.com/nla/nla-blacklight/commit/6aeaf9740dc224cdc1e26d14adeec5c85342e34f))
+* isolates request for bearer token for catalogue services API ([9c4d1b4](https://github.com/nla/nla-blacklight/commit/9c4d1b44b3199a519cd976e6df8193ea7d90737b))
+* refactor EDS bento search engine ([1334380](https://github.com/nla/nla-blacklight/commit/13343804d6127a799b07fe6d30e60c91a49d0e34))
+* reinstate usage of EDS API gem ([8a3878d](https://github.com/nla/nla-blacklight/commit/8a3878db69a72cc6d724445cadca703537bfbb35))
+* removes duplicated title from search results index ([f4e4d44](https://github.com/nla/nla-blacklight/commit/f4e4d44131a16db450436920f657b8d225a2a5e3))
+* show the global message for catalog with search params ([c1fe252](https://github.com/nla/nla-blacklight/commit/c1fe252fad4622748d352345d199ec8f9213cae7))
+
+
+### Code Refactoring
+
+* remove extra request routes ([2d35bd8](https://github.com/nla/nla-blacklight/commit/2d35bd86ca44f49bf9ec5dae5aa1487d492031f1))
+
+
+### Tests
+
+* add more requesting tests ([7ffeb22](https://github.com/nla/nla-blacklight/commit/7ffeb229016d3d6d1dbf24350afc3d342c8a76e2))
+* add test for request success message ([ae01d2e](https://github.com/nla/nla-blacklight/commit/ae01d2e2dec9a327cc54c4822c8902677ccdd97d))
+* add tests for pickup location and image ([98c953e](https://github.com/nla/nla-blacklight/commit/98c953e217ce2c858ca19d4a150a164155c5ca55))
+* add tests for UrlHelper ([914b348](https://github.com/nla/nla-blacklight/commit/914b348bcb2d611c61861d897f5017197cdfde7e))
+* adds tests for request component and helper ([c950455](https://github.com/nla/nla-blacklight/commit/c9504551d3e055baf4f158a721110cf12a77b032))
+* fix FA search mock ([6f8fdb7](https://github.com/nla/nla-blacklight/commit/6f8fdb7babdabba31cf0036ca945187534cf9100))
+* fixes tests ([e92e45c](https://github.com/nla/nla-blacklight/commit/e92e45c9005d5a183a3420b383e128044cfe3226))
+* set Content-Type header so Faraday will parse response as JSON ([d30b683](https://github.com/nla/nla-blacklight/commit/d30b683c0efb52042c68ed423d7292074de063b8))
+
+
+### Miscellaneous
+
+* integrate renaming of staff shared login ([19db19e](https://github.com/nla/nla-blacklight/commit/19db19ea38bb962464e35933e2c19c9ca0987155))
+* prepare release ([08aab4f](https://github.com/nla/nla-blacklight/commit/08aab4f9250bc683bdf3e2ea600ebebf725b3474))
+* resolve hotfix changes into main ([af11f0d](https://github.com/nla/nla-blacklight/commit/af11f0d2063b3db60da94220e6204e02b6ae8145))
+* resolve hotfix changes to main ([f162044](https://github.com/nla/nla-blacklight/commit/f16204457173ce408a9df402afc4ba6c5cb58dce))
+* update bin/setup script bundler section ([5a70719](https://github.com/nla/nla-blacklight/commit/5a70719f97af1c8ff879d0d7544ec7c2b1e98566))
+* update blacklight solr files to be same as solr-tove ([6478e56](https://github.com/nla/nla-blacklight/commit/6478e56db1319acbd5ef1c742b61e47d9308b9c4))
+
 ## [1.0.2](https://github.com/nla/nla-blacklight/compare/1.0.1...1.0.2) (2023-05-12)
 
 
