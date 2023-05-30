@@ -11,7 +11,6 @@
 // this:
 //= require 'blacklight_range_limit'
 
-
 $(function() {
   $("#jumpbar .nav-link a").click(function() {
     const section = $(this).attr("href");
