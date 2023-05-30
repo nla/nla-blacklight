@@ -27,10 +27,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/catalogue-patrons
-  revision: 8ec032fb07a03b4be26354a3732eba56ed0a43a8
-  tag: 3.1.0
+  revision: 584ebdc0b3b9ccda2e176861819a0cb3976959d0
+  tag: 3.2.0
   specs:
-    catalogue-patrons (3.1.0)
+    catalogue-patrons (3.2.0)
       activerecord-session_store (~> 2.0)
       brakeman
       bundler-audit
