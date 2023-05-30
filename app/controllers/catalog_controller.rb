@@ -35,7 +35,7 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
       rows: 10,
-      qf: "id title_tsim^10 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
+      qf: "id title_tsim^250 title3_tsi^100 title5_tsi^70 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
       pf: "id title_tsim title_addl_tsim author_search_tsim subject_tsimv"
     }
 
@@ -261,8 +261,6 @@ class CatalogController < ApplicationController
     # Now we see how to over-ride Solr request handler defaults, in this
     # case for a BL "search field", which is really a dismax aggregate
     # of Solr search fields.
-
-    config.solr_bf_title_boost = "mul(termfreq(title_tsim,$q),100)"
 
     config.add_search_field("title") do |field|
       # solr_parameters hash are sent to Solr as ordinary url query params.
