@@ -266,8 +266,8 @@ class CatalogController < ApplicationController
       # solr_parameters hash are sent to Solr as ordinary url query params.
       field.solr_parameters = {
         "spellcheck.dictionary": "title",
-        qf: "id title_tsim^10 title_addl_tsim",
-        pf: "id title_tsim title_addl_tsim"
+        qf: "title_tsim^10 title_addl_tsim",
+        pf: "title_tsim title_addl_tsim"
       }
     end
 
@@ -279,9 +279,13 @@ class CatalogController < ApplicationController
       }
     end
 
-    config.add_search_field("subject_ssim") do |field|
+    config.add_search_field("subject") do |field|
       field.label = "Subject"
-      field.qt = "search"
+      field.solr_parameters = {
+        "spellcheck.dictionary": "subject",
+        qf: "subject_tsimv",
+        pf: "subject_tsimv"
+      }
     end
 
     config.add_search_field("call_number") do |field|
