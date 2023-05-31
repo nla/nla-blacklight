@@ -7,7 +7,7 @@ def setup
   # bundle check indicates we need to
   system! "gem install bundler --conservative"
   system! "bundle config set --local path vendor/bundle"
-  system! "bundle config set --local jobs $(nproc)"
+  system! "bundle config set --local jobs 3"
   system! "bundle config set --local retry 3"
   system("bundle check") || system!("bundle install")
   system! "bundle clean --force"
