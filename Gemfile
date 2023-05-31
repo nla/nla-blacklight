@@ -116,6 +116,9 @@ gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "mas
 # gem "catalogue-patrons", path: "../catalogue-patrons"
 # gem "bento_search", path: "../bento_search"
 
+# performance monitoring
+gem "rails_performance"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
