@@ -8,8 +8,22 @@
 }
 
 .bento-search-results {
+  .card {
+    
+    &:hover,
+    &:focus {
+      border-color: color("purple");
+    }
+  }
+  
   .card-title {
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 75%, rgba(255,255,255,0) 100%);
+    //background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 75%, rgba(255,255,255,0) 100%);
+    background: color("purple");
+    color: color("white");
+    margin-left: -1.25rem;
+    margin-right: -1.25rem;
+    margin-top: -1.25rem;
+    padding: 0.25rem 1.25rem;
   }
   
   .bento-item-title {

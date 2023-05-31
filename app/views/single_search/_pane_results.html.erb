@@ -2,7 +2,7 @@
   <div class="card">
     <div class="card-body">
       <% if result %>
-        <h2 class="card-title sticky-top pb-3"><%= BentoSearch.get_engine(key).configuration.title %></h2>
+        <h2 class="card-title sticky-top mb-4 h4"><%= BentoSearch.get_engine(key).configuration.title %></h2>
       <% else %>
         <h2 class="search-source"><%= BentoSearch.get_engine(key).configuration.title %></h2>
       <% end %>
