@@ -96,6 +96,7 @@ gem "ebsco-eds"
 gem "httpclient"
 gem "htmlentities"
 gem "openurl"
+gem "faraday-http-cache"
 
 # feature flags
 gem "flipper", "~> 0.28.0"
@@ -105,6 +106,9 @@ gem "flipper-ui", "~> 0.28.0"
 # Fixes CVE-2023-28755
 gem "uri", "~> 0.12.1"
 
+# performance monitoring
+gem "rails_performance"
+
 # Before a release, point these gem at a tag, instead of the `main` branch.
 gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "master"
@@ -113,9 +117,6 @@ gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "mas
 # the gems below are in the same directory. Adjust if needed to match your local dev environment.
 # gem "nla-blacklight_common", path: "../nla-blacklight_common"
 # gem "bento_search", path: "../bento_search"
-
-# performance monitoring
-gem "rails_performance"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

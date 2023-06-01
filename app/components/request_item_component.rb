@@ -3,22 +3,27 @@
 class RequestItemComponent < ViewComponent::Base
   include RequestItemHelper
 
+  attr_accessor :error
+
+  attr_accessor :holdings
+
   def initialize(document:)
     @document = document
+    @error = nil
+    @holdings = []
   end
 
   def render?
     Flipper.enabled?(:requesting) && (!is_ned_item?(@document) || has_online_copy?(@document))
   end
 
-  def holdings
+  def before_render
     instance_id = @document.first("folio_instance_id_ssim")
     begin
-      cat_services_client.get_holdings(instance_id: instance_id)
+      @holdings = cat_services_client.get_holdings(instance_id: instance_id)
     rescue ServiceTokenError, HoldingsRequestError => e
-      flash[:error] = "Unable to retrieve holdings for #{@document.first("title_tsim")}"
+      @error = "Unable to retrieve holdings for #{@document.first("title_tsim")}"
       Rails.logger.error "Unable to retrieve holdings for #{@document.id}: #{e}"
-      []
     end
   end
 
