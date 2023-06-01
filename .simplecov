@@ -38,6 +38,8 @@ SimpleCov.start "rails" do
   # ignore since it's 90% copied from the bento_search eds_engine.rb
   add_filter "app/search_engines/bento_search/eds_publication_engine.rb"
 
+  add_group "Services", "app/services"
   add_group "Components", "app/components"
   add_group "Presenters", "app/presenters"
+  add_group "Bento Search Engines", "app/search_engines"
 end
