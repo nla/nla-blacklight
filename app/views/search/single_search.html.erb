@@ -1,0 +1,11 @@
+<% if @query %>
+  <div class="row bento-search-results mt-2">
+    <div class="col-md-12">
+      <% @results.each do |key, result| %>
+        <% unless result.nil? %>
+          <%= render "search/pane_results", key: key, result: result %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

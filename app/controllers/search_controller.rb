@@ -5,13 +5,14 @@ require "benchmark"
 class SearchController < ApplicationController
   include BentoQueryConcern
 
-  def index
-    if params["q"].present?
-      @query = params["q"]
+  before_action :search_params
 
-      @cat_per_page = params["cat_per_page"] || 10
-      @eds_per_page = params["eds_per_page"] || 3
-      @fa_per_page = params["fa_per_page"] || 5
+  def index
+    q = search_params[:q]
+    if q.present?
+      @query = q
+
+      set_per_page
 
       @results = {}
 
@@ -28,7 +29,41 @@ class SearchController < ApplicationController
       # the search engines may return nil if there is an error, so we need to check for that
       @total_results += res.total_items.nil? ? 0 : res.total_items
     end
+  end
 
-    render "single_search/index"
+  def single_search
+    engine = search_params["engine"]
+
+    @query = search_params["q"]
+
+    set_per_page
+    case engine
+    when "catalogue"
+      @per_page = @cat_per_page
+    when "finding_aids"
+      @per_page = @fa_per_page
+    else
+      @per_page = @eds_per_page
+    end
+
+    @results = {}
+
+    Benchmark.bm do |x|
+      x.report(engine) { @results[engine] = BentoSearch.get_engine(engine.to_sym).search(@query, per_page: @per_page) }
+    end
+
+    @total_results = @results[engine].total_items.nil? ? 0 : @results[engine].total_items
+  end
+
+  private
+
+  def set_per_page
+    @cat_per_page = search_params["cat_per_page"] || 10
+    @eds_per_page = search_params["eds_per_page"] || 3
+    @fa_per_page = search_params["fa_per_page"] || 5
+  end
+
+  def search_params
+    params.permit(:engine, :q, :cat_per_page, :eds_per_page, :fa_per_page)
   end
 end

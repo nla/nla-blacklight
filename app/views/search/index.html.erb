@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-md-12">
-    <%= render "single_search/search_form" %>
+    <%= render "search/search_form" %>
   </div>
 </div>
 
@@ -12,7 +12,7 @@
           <div class="card-body">
             <p>Your search returned 0 results.</p>
 
-            <%= render "single_search/search_options" %>
+            <%= render "search/search_options" %>
           </div>
         </div>
       <% end %>
@@ -37,8 +37,8 @@
 
         <div class="card-columns clearfix mt-0 mb-2">
           <% @results.each do |key, result| %>
-            <% unless result.nil? || result.total_items == 0 %>
-              <%= render "single_search/pane_results", key: key, result: result %>
+            <% unless result.nil? %>
+              <%= render "search/pane_results", key: key, result: result %>
             <% end %>
           <% end %>
         </div>
