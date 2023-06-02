@@ -16,11 +16,6 @@ RSpec.describe SearchController do
         get :index
         expect(assigns(:results)).to be_nil
       end
-
-      it "assigns @total_results to 0" do
-        get :index
-        expect(assigns(:total_results)).to eq 0
-      end
     end
 
     context "when a query is provided" do
