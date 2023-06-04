@@ -36,7 +36,8 @@ class CatalogController < ApplicationController
     config.default_solr_params = {
       rows: 10,
       qf: "id title_tsim^250 title3_tsi^100 title5_tsi^70 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
-      pf: "id title_tsim title_addl_tsim author_search_tsim subject_tsimv"
+      pf: "id title_tsim title_addl_tsim author_search_tsim subject_tsimv",
+      add_boost_query: true
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -267,7 +268,8 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         "spellcheck.dictionary": "title",
         qf: "title_tsim^10 title_addl_tsim",
-        pf: "title_tsim title_addl_tsim"
+        pf: "title_tsim title_addl_tsim",
+        add_boost_query: true
       }
     end
 
@@ -275,7 +277,8 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         "spellcheck.dictionary": "author",
         qf: "author_search_tesim",
-        pf: "author_search_tesim"
+        pf: "author_search_tesim",
+        add_boost_query: false
       }
     end
 
@@ -284,7 +287,8 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         "spellcheck.dictionary": "subject",
         qf: "subject_tsimv",
-        pf: "subject_tsimv"
+        pf: "subject_tsimv",
+        add_boost_query: false
       }
     end
 
@@ -292,7 +296,8 @@ class CatalogController < ApplicationController
       field.label = "Call Number"
       field.solr_parameters = {
         qf: "call_number_tsim",
-        pf: "call_number_tsim"
+        pf: "call_number_tsim",
+        add_boost_query: false
       }
     end
 
@@ -300,7 +305,8 @@ class CatalogController < ApplicationController
       field.label = "ISBN/ISSN"
       field.solr_parameters = {
         qf: "isbn_tsim",
-        pf: "isbn_tsim"
+        pf: "isbn_tsim",
+        add_boost_query: false
       }
     end
 
@@ -308,7 +314,8 @@ class CatalogController < ApplicationController
       field.label = "Bib Id"
       field.solr_parameters = {
         qf: "id",
-        pf: "id"
+        pf: "id",
+        add_boost_query: false
       }
     end
 
@@ -316,7 +323,8 @@ class CatalogController < ApplicationController
       field.label = "Occupation"
       field.solr_parameters = {
         qf: "occupation_tesim",
-        pf: "occupation_tesim"
+        pf: "occupation_tesim",
+        add_boost_query: false
       }
     end
 
@@ -324,7 +332,8 @@ class CatalogController < ApplicationController
       field.label = "Genre"
       field.solr_parameters = {
         qf: "genre_tesim",
-        pf: "genre_tesim"
+        pf: "genre_tesim",
+        add_boost_query: false
       }
     end
 
@@ -332,7 +341,8 @@ class CatalogController < ApplicationController
       field.label = "In Collection"
       field.solr_parameters = {
         qf: "parent_id_ssi",
-        pf: "parent_id_ssi"
+        pf: "parent_id_ssi",
+        add_boost_query: false
       }
       field.include_in_simple_select = false
       field.include_in_advanced_search = false
@@ -342,7 +352,8 @@ class CatalogController < ApplicationController
       field.label = "Collection"
       field.solr_parameters = {
         qf: "collection_id_ssi",
-        pf: "collection_id_ssi"
+        pf: "collection_id_ssi",
+        add_boost_query: false
       }
       field.include_in_simple_select = false
       field.include_in_advanced_search = false
