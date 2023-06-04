@@ -8,21 +8,21 @@
   <div class="row bento-search-results mt-2">
     <div class="col-md-12">
 <!--      <nav class="navbar navbar-expand-lg navbar-light">-->
-<!--        <div id="jumpbar">-->
-<!--          <ul class="navbar-nav">-->
-<!--            <li>-->
-<!--              <span class="navbar-brand">Results: </span>-->
-<!--            </li>-->
-            <%# @results.each do |key, result| %>
-              <%# unless result.nil? || result.total_items == 0 %>
-<!--                <li class="nav-item">-->
-<!--                  <span class="nav-link"><%#= link_to BentoSearch.get_engine(key).configuration.title, "##{key}" %> (<%#= number_with_delimiter result.total_items %>)</span>-->
-<!--                </li>-->
-              <%# end %>
+<!--      <div id="jumpbar">-->
+<!--        <ul class="navbar-nav">-->
+<!--          <li>-->
+<!--            <span class="navbar-brand">Results: </span>-->
+<!--          </li>-->
+          <%# @results.each do |key, result| %>
+            <%# unless result.nil? || result.total_items == 0 %>
+<!--              <li class="nav-item">-->
+<!--                <span class="nav-link"><%#= link_to BentoSearch.get_engine(key).configuration.title, "##{key}" %> (<%#= number_with_delimiter result.total_items %>)</span>-->
+<!--              </li>-->
             <%# end %>
-<!--          </ul>-->
-<!--        </div>-->
-<!--      </nav>-->
+          <%# end %>
+<!--        </ul>-->
+<!--      </div>-->
+<!--    </nav>-->
 
       <div class="card-columns clearfix mt-0 mb-2">
         <%= turbo_frame_tag :catalogue, src: bento_single_search_path(engine: "catalogue", q: @query), loading: :lazy do %>
@@ -37,11 +37,6 @@
         <%= turbo_frame_tag :finding_aids, src: bento_single_search_path(engine: "finding_aids", q: @query), loading: :lazy do %>
           <%= render "pane_skeleton" %>
         <% end %>
-        <%# @results.each do |key, result| %>
-          <%# unless result.nil? %>
-            <%#= render "search/pane_results", key: key, result: result %>
-          <%# end %>
-        <%# end %>
       </div>
     </div>
   </div>
