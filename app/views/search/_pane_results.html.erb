@@ -15,7 +15,7 @@
             <% if key.start_with?("ebsco_eds_") && result.total_items > 1 %>
               <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm" do %>
                 View
-                <%= number_with_delimiter(result.total_items) %> from
+                <span id="<%= key %>_total"><%= number_with_delimiter(result.total_items) %></span> from
                 eResources
                 <i class="fa fa-angle-double-right"></i>
               <% end %>
@@ -23,7 +23,7 @@
               <% if result.total_items > 1 %>
                 <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm" do %>
                   View
-                  <%= number_with_delimiter(result.total_items) %>
+                  <span id="<%= key %>_total"><%= number_with_delimiter(result.total_items) %></span>
                   <% BentoSearch.get_engine(key).configuration.title %>
                   from
                   <% if key == "catalogue" %>

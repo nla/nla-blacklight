@@ -35,6 +35,7 @@ class SearchController < ApplicationController
     @engine = search_params["engine"]
 
     @query = search_params["q"]
+    @search_field = search_params["search_field"]
 
     set_per_page
     @per_page = case @engine
@@ -49,10 +50,12 @@ class SearchController < ApplicationController
     @results = {}
 
     Benchmark.bm do |x|
-      x.report(@engine) { @results[@engine] = BentoSearch.get_engine(@engine.to_sym).search(@query, per_page: @per_page) }
+      x.report(@engine) { @results[@engine] = BentoSearch.get_engine(@engine.to_sym).search(@query, per_page: @per_page, search_field: @search_field) }
     end
 
     @total_results = @results[@engine].total_items.nil? ? 0 : @results[@engine].total_items
+
+    render layout: false
   end
 
   private
@@ -64,6 +67,6 @@ class SearchController < ApplicationController
   end
 
   def search_params
-    params.permit(:engine, :q, :cat_per_page, :eds_per_page, :fa_per_page)
+    params.permit(:engine, :q, :search_field, :cat_per_page, :eds_per_page, :fa_per_page)
   end
 end
