@@ -25,7 +25,7 @@ RSpec.describe SearchController do
       end
     end
 
-    context "when Blacklight or Arclight returns an error" do
+    context "when a search engine request returns an error" do
       before do
         WebMock.stub_request(:get, /test.host\/catalog.json/)
           .with(
@@ -33,7 +33,7 @@ RSpec.describe SearchController do
               "Accept" => "application/json"
             }
           )
-          .to_return(status: 500, body: cat_response, headers: {"Content-Type" => "application/json"})
+          .to_return(status: 500, body: "", headers: {"Content-Type" => "application/json"})
       end
 
       it "returns http success but no results" do
@@ -42,7 +42,7 @@ RSpec.describe SearchController do
       end
     end
 
-    context "when Blacklight or Arclight request times out" do
+    context "when a search engine request times out" do
       before do
         WebMock.stub_request(:get, /test.host\/catalog.json/)
           .with(
@@ -58,9 +58,5 @@ RSpec.describe SearchController do
         expect(response).to have_http_status(:success)
       end
     end
-  end
-
-  def cat_response
-    IO.read("spec/files/bento_search/cat_search.json")
   end
 end

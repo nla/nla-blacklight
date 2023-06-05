@@ -1,7 +1,5 @@
 <% if @query %>
-  <% @results.each do |key, result| %>
-    <% unless result.nil? %>
-      <%= render "search/pane_results", key: key, result: result %>
-    <% end %>
+  <% unless @results.nil? %>
+    <%= render "search/pane_results", key: @results.engine_id, result: @results %>
   <% end %>
 <% end %>

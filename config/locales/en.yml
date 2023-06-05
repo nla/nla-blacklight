@@ -83,3 +83,5 @@ en:
       base: "Collection desk in %{link}, %{location}"
       special_collections: 'Collection desk in <a href="https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history">Newspapers and Family History zone</a>, Main Reading Room, Ground Floor'
       newspapers_family_zone: 'Collection desk in <a href="https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history">Newspapers and Family History zone</a>, Main Reading Room, Ground Floor'
+  bento_search:
+    search_error: "Sorry! An error occurred and results could not be retrieved."
