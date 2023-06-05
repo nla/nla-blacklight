@@ -5,7 +5,7 @@ module BlacklightAdvancedSearch
     include Blacklight::SearchFields
 
     def is_advanced_search?
-      (((blacklight_config.advanced_search && blacklight_params[:search_field] == blacklight_config.advanced_search[:url_key]) || blacklight_params[:f_inclusive]) && !blacklight_params[:search_type] == "simple")
+      (((blacklight_config.advanced_search && blacklight_params[:search_field] == blacklight_config.advanced_search[:url_key]) || blacklight_params[:f_inclusive]) && !(blacklight_params[:search_type] == "simple"))
     end
 
     # this method should get added into the processor chain
