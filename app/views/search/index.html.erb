@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-12">
+    <%= render "search/search_form" %>
+  </div>
+</div>
+
+<% if @query %>
+  <div class="row bento-search-results mt-2">
+    <div class="col-md-12">
+
+      <%= render BentoSearchTotalsComponent.new(%w[catalogue ebsco_eds_keyword ebsco_eds_title finding_aids]) %>
+
+      <div class="card-columns clearfix mt-0 mb-2">
+        <%= render BentoSearchResultsComponent.new("catalogue", bento_single_search_path(engine: "catalogue", q: @query)) %>
+        <%= render BentoSearchResultsComponent.new("ebsco_eds_keyword", bento_single_search_path(engine: "ebsco_eds_keyword", q: @query)) %>
+        <%= render BentoSearchResultsComponent.new("ebsco_eds_title", bento_single_search_path(engine: "ebsco_eds_title", q: @query, search_field: "TI")) %>
+        <%= render BentoSearchResultsComponent.new("finding_aids", bento_single_search_path(engine: "finding_aids", q: @query)) %>
+      </div>
+    </div>
+  </div>
+<% end %>

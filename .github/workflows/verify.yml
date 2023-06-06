@@ -81,8 +81,10 @@ jobs:
           mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
       - name: RSpec tests
-        run: |
-          bundle exec rspec
+        uses: coactions/setup-xvfb@v1.0.1
+        with:
+          run: |
+            bundle exec rspec
 
       - name: Simplecov Report
         uses: aki77/simplecov-report-action@v1

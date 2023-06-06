@@ -5,6 +5,9 @@ set -e
 echo "[ bin/ci ] Setting RAILS_ENV to test"
 export RAILS_ENV=test
 
+echo "[ bin/ci ] Setting HEADLESS to true"
+export HEADLESS=true
+
 echo "[ bin/ci ] Clearing log and temp files"
 bin/rails log:clear tmp:clear
 
@@ -27,6 +30,12 @@ echo "[ bin/ci ] security vulnerabilities"
 bundle exec bundle audit check --update
 
 echo "[ bin/ci ] Done"
+
+echo "[ bin/ci ] Clobbering precompiled assets"
+bin/rails assets:clobber
+
+echo "[ bin/ci ] Unsetting HEADLESS"
+unset HEADLESS
 
 echo "[ bin/ci ] Unsetting RAILS_ENV"
 unset RAILS_ENV
