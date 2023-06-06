@@ -559,7 +559,7 @@ GEM
     ruby-progressbar (1.13.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    rufus-scheduler (3.8.2)
+    rufus-scheduler (3.9.0)
       fugit (~> 1.1, >= 1.1.6)
     sanitize (6.0.1)
       crass (~> 1.0.2)
@@ -744,7 +744,7 @@ DEPENDENCIES
   rspec-rails (~> 6.0)
   rubocop-rails
   rubocop-rspec
-  rufus-scheduler (~> 3.8)
+  rufus-scheduler (~> 3.9)
   selenium-webdriver
   shoulda-matchers
   simplecov (~> 0.22.0)

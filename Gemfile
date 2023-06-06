@@ -21,7 +21,7 @@ gem "lograge"
 gem "activerecord-session_store", "~> 2.0"
 
 # in Rails scheduler
-gem "rufus-scheduler", "~> 3.8"
+gem "rufus-scheduler", "~> 3.9"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4"
