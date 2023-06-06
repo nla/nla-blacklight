@@ -14,16 +14,7 @@ module BlacklightAdvancedSearch
       @config = config
     end
 
-    # BLAC-326 adds additional query which will be used in conjunction with qf to boost exactish title matches
-    def add_title_query(params)
-      if params["title"].present?
-        params["title"] = params["title"] << " OR \"FINLLFIIJQ " + params["title"] + " AICULEDSSUL\""
-      end
-    end
-
     def to_solr
-      add_title_query(params)
-
       @to_solr ||= begin
                      {
                        q: process_query(params, config),
