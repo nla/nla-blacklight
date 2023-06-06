@@ -47,78 +47,10 @@
       </div>
 
       <div class="card-columns clearfix mt-0 mb-2">
-        <div
-          data-controller="bento-search-results"
-          data-bento-search-results-engine-value="catalogue"
-          data-bento-search-results-url-value="<%= bento_single_search_path(engine: "catalogue", q: @query) %>">
-
-          <div data-bento-search-results-target="output">
-            <div class="loading-skeleton">
-              <div class="card">
-                <div class="card-body">
-                  <h2 class="card-title mb-4 h4">Loading...</h2>
-                  <div class="bento-item clearfix mb-4">
-                    <% 10.times do |i| %> <%= render partial: "result", variants: [:skeleton] %> <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          data-controller="bento-search-results"
-          data-bento-search-results-engine-value="ebsco_eds_keyword"
-          data-bento-search-results-url-value="<%= bento_single_search_path(engine: "ebsco_eds_keyword", q: @query) %>">
-
-          <div data-bento-search-results-target="output">
-            <div class="loading-skeleton">
-              <div class="card">
-                <div class="card-body">
-                  <h2 class="card-title mb-4 h4">Loading...</h2>
-                  <div class="bento-item clearfix mb-4">
-                    <% 3.times do |i| %> <%= render partial: "result", variants: [:skeleton] %> <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          data-controller="bento-search-results"
-          data-bento-search-results-engine-value="ebsco_eds_title"
-          data-bento-search-results-url-value="<%= bento_single_search_path(engine: "ebsco_eds_title", q: @query, search_field: "TI") %>">
-
-          <div data-bento-search-results-target="output">
-            <div class="loading-skeleton">
-              <div class="card">
-                <div class="card-body">
-                  <h2 class="card-title mb-4 h4">Loading...</h2>
-                  <div class="bento-item clearfix mb-4">
-                    <% 3.times do |i| %> <%= render partial: "result", variants: [:skeleton] %> <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          data-controller="bento-search-results"
-          data-bento-search-results-engine-value="finding_aids"
-          data-bento-search-results-url-value="<%= bento_single_search_path(engine: "finding_aids", q: @query) %>">
-
-          <div data-bento-search-results-target="output">
-            <div class="loading-skeleton">
-              <div class="card">
-                <div class="card-body">
-                  <h2 class="card-title mb-4 h4">Loading...</h2>
-                  <div class="bento-item clearfix mb-4">
-                    <% 5.times do |i| %> <%= render partial: "result", variants: [:skeleton] %> <% end %>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render BentoSearchResultsComponent.new("catalogue", bento_single_search_path(engine: "catalogue", q: @query)) %>
+        <%= render BentoSearchResultsComponent.new("ebsco_eds_keyword", bento_single_search_path(engine: "ebsco_eds_keyword", q: @query)) %>
+        <%= render BentoSearchResultsComponent.new("ebsco_eds_title", bento_single_search_path(engine: "ebsco_eds_title", q: @query, search_field: "TI")) %>
+        <%= render BentoSearchResultsComponent.new("finding_aids", bento_single_search_path(engine: "finding_aids", q: @query)) %>
       </div>
     </div>
   </div>
