@@ -3,13 +3,20 @@
 require "rails_helper"
 
 RSpec.describe BentoSearchResultsComponent, type: :component do
-  pending "add some examples to (or delete) #{__FILE__}"
+  before do
+    BentoSearch.register_engine("test") do |conf|
+      conf.engine = "BentoSearch::BlacklightEngine"
+      conf.title = "Test"
+    end
+    BentoSearch.register_engine("test2") do |conf|
+      conf.engine = "BentoSearch::BlacklightEngine"
+      conf.title = "Test2"
+    end
+  end
 
-  # it "renders something useful" do
-  #   expect(
-  #     render_inline(described_class.new(attr: "value")) { "Hello, components!" }.css("p").to_html
-  #   ).to include(
-  #     "Hello, components!"
-  #   )
-  # end
+  it "renders skeletons for result categories" do
+    render_inline(described_class.new("catalogue", "/search/catalogue?q=hydrogen"))
+
+    expect(page).to have_css(".bento-item-title", text: "A result")
+  end
 end
