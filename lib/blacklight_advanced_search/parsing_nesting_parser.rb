@@ -1,9 +1,8 @@
-require 'parsing_nesting/tree'
+require "parsing_nesting/tree"
 module BlacklightAdvancedSearch::ParsingNestingParser
   def process_query(_params, config)
     title_boost_query_string = ""
     queries = keyword_queries.map do |field, query|
-
       param_hash = local_param_hash(field, config)
 
       # BLAC-326 add boosts to the anchored title index fields

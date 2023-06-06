@@ -22,7 +22,7 @@ class SearchBuilder < Blacklight::SearchBuilder
         solr_parameters["qf"] = solr_parameters["qf"] << " anchored_title_tsi^600 anchored_title_only_tsi^500 anchored_title_no_format_tsi^500 left_anchored_title_tsi^800"
         solr_parameters["q"] = solr_parameters["q"] << " OR \"FINLLFIIJQ " + solr_parameters["q"] + " AICULEDSSUL\""
       end
-      #solr_parameters.delete("add_boost_query")
+      # solr_parameters.delete("add_boost_query")
     end
   end
 end

@@ -1,5 +1,5 @@
-require 'parslet'
-require 'parsing_nesting/tree'
+require "parslet"
+require "parsing_nesting/tree"
 module BlacklightAdvancedSearch
   module AdvancedSearchBuilder
     include Blacklight::SearchFields
@@ -36,9 +36,9 @@ module BlacklightAdvancedSearch
     # need to figure out which one exists to rescue
     PARSLET_FAILED_EXCEPTIONS = if defined? Parslet::UnconsumedInput
       [Parslet::UnconsumedInput].freeze
-                                else
-                                  [Parslet::ParseFailed].freeze
-                                end
+    else
+      [Parslet::ParseFailed].freeze
+    end
 
     # This method can be included in the SearchBuilder to have us
     # parse an ordinary entered :q for AND/OR/NOT and produce appropriate
@@ -71,7 +71,7 @@ module BlacklightAdvancedSearch
         # do nothing, don't merge our input in, keep basic search
         # optional TODO, display error message in flash here, but hard to
         # display a good one.
-        return
+        nil
       end
     end
 
@@ -83,11 +83,11 @@ module BlacklightAdvancedSearch
     # Also adds any solr params set in blacklight_config.advanced_search[:form_solr_parameters]
     def facets_for_advanced_search_form(solr_p)
       # ensure empty query is all records, to fetch available facets on entire corpus
-      solr_p["q"]            = '{!lucene}*:*'
+      solr_p["q"] = "{!lucene}*:*"
       # explicitly use lucene defType since we are passing a lucene query above (and appears to be required for solr 7)
-      solr_p["defType"]      = 'lucene'
+      solr_p["defType"] = "lucene"
       # We only care about facets, we don't need any rows.
-      solr_p["rows"]         = "0"
+      solr_p["rows"] = "0"
 
       # Anything set in config as a literal
       if blacklight_config.advanced_search[:form_solr_parameters]

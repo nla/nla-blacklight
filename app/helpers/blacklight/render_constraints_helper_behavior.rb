@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+
 # All methods in here are 'api' that may be over-ridden by plugins and local
 # code, so method signatures and semantics should not be changed casually.
 # implementations can be of course.
@@ -7,7 +8,7 @@
 # search results page (render_constraints(_*))
 module Blacklight::RenderConstraintsHelperBehavior
   extend Deprecation
-  self.deprecation_horizon = 'blacklight 8.0'
+  self.deprecation_horizon = "blacklight 8.0"
 
   ##
   # Check if the query has any constraints defined (a query, facet, etc)
@@ -19,7 +20,7 @@ module Blacklight::RenderConstraintsHelperBehavior
     search_state = convert_to_search_state(params_or_search_state)
     search_state.has_constraints?
   end
-  deprecation_deprecate query_has_constraints?: 'use search_state#has_constraints?'
+  deprecation_deprecate query_has_constraints?: "use search_state#has_constraints?"
 
   ##
   # Render the actual constraints, not including header or footer
@@ -46,7 +47,7 @@ module Blacklight::RenderConstraintsHelperBehavior
   # @param [Blacklight::SearchState,ActionController::Parameters] params_or_search_state query parameters
   # @return [String]
   def render_constraints_query(params_or_search_state = search_state)
-    Deprecation.warn(Blacklight::RenderConstraintsHelperBehavior, 'render_constraints_query is deprecated')
+    Deprecation.warn(Blacklight::RenderConstraintsHelperBehavior, "render_constraints_query is deprecated")
     search_state = convert_to_search_state(params_or_search_state)
 
     # So simple don't need a view template, we can just do it here.
@@ -88,7 +89,7 @@ module Blacklight::RenderConstraintsHelperBehavior
   # @param [Blacklight::SearchState,ActionController::Parameters] params_or_search_state query parameters
   # @return [String]
   def remove_constraint_url(params_or_search_state = search_state)
-    Deprecation.warn(Blacklight::RenderConstraintsHelperBehavior, 'remove_constraint_url is deprecated')
+    Deprecation.warn(Blacklight::RenderConstraintsHelperBehavior, "remove_constraint_url is deprecated")
     search_state = convert_to_search_state(params_or_search_state)
 
     search_action_path(search_state.remove_query_params)
@@ -100,7 +101,7 @@ module Blacklight::RenderConstraintsHelperBehavior
   # @param [Blacklight::SearchState,Hash] params_or_search_state query parameters
   # @return [String]
   def render_constraints_filters(params_or_search_state = search_state)
-    Deprecation.warn(Blacklight::RenderConstraintsHelperBehavior, 'render_constraints_filters is deprecated')
+    Deprecation.warn(Blacklight::RenderConstraintsHelperBehavior, "render_constraints_filters is deprecated")
     search_state = convert_to_search_state(params_or_search_state)
 
     return "".html_safe unless search_state.filters.any?
@@ -120,7 +121,7 @@ module Blacklight::RenderConstraintsHelperBehavior
   # @param [Blacklight::SearchState] search_state path query parameters
   # @return [String]
   def render_filter_element(facet, values, search_state)
-    Deprecation.warn(Blacklight::RenderConstraintsHelperBehavior, 'render_filter_element is deprecated')
+    Deprecation.warn(Blacklight::RenderConstraintsHelperBehavior, "render_filter_element is deprecated")
     facet_config = facet_configuration_for_field(facet)
 
     safe_join(Array(values).map do |val|
@@ -161,8 +162,8 @@ module Blacklight::RenderConstraintsHelperBehavior
   # @option options [Array<String>] :classes an array of classes to add to container span for constraint.
   # @return [String]
   def render_constraint_element(label, value, options = {})
-    Deprecation.warn(Blacklight::RenderConstraintsHelperBehavior, 'render_constraints_element is deprecated')
-    render(partial: "catalog/constraints_element", locals: { label: label, value: value, options: options })
+    Deprecation.warn(Blacklight::RenderConstraintsHelperBehavior, "render_constraints_element is deprecated")
+    render(partial: "catalog/constraints_element", locals: {label: label, value: value, options: options})
   end
 
   # @private
@@ -173,7 +174,7 @@ module Blacklight::RenderConstraintsHelperBehavior
       method(:render_constraints_filters).owner == Blacklight::RenderConstraintsHelperBehavior &&
       method(:render_filter_element).owner == Blacklight::RenderConstraintsHelperBehavior &&
       method(:render_constraint_element).owner == Blacklight::RenderConstraintsHelperBehavior &&
-      partial_from_blacklight?('catalog/constraints_element')
+      partial_from_blacklight?("catalog/constraints_element")
   end
 
   private

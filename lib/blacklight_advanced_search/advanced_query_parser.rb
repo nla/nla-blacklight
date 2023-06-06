@@ -15,12 +15,10 @@ module BlacklightAdvancedSearch
     end
 
     def to_solr
-      @to_solr ||= begin
-                     {
-                       q: process_query(params, config),
-                       fq: generate_solr_fq
-                     }
-                   end
+      @to_solr ||= {
+        q: process_query(params, config),
+        fq: generate_solr_fq
+      }
     end
 
     # Returns "AND" or "OR", how #keyword_queries will be combined
@@ -38,7 +36,7 @@ module BlacklightAdvancedSearch
         return @keyword_queries unless @params[:search_field] == ::AdvancedController.blacklight_config.advanced_search[:url_key]
 
         config.search_fields.each do |key, _field_def|
-          unless @params[key.to_sym].blank?
+          if @params[key.to_sym].present?
             @keyword_queries[key] = @params[key.to_sym]
           end
         end
@@ -51,7 +49,7 @@ module BlacklightAdvancedSearch
     def filters
       unless @filters
         @filters = {}
-        return @filters unless @params[:f_inclusive] && @params[:f_inclusive].respond_to?(:each_pair)
+        return @filters unless @params[:f_inclusive]&.respond_to?(:each_pair)
         @params[:f_inclusive].each_pair do |field, value_array|
           @filters[field] ||= value_array.dup
         end
