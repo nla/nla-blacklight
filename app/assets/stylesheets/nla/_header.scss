@@ -24,4 +24,12 @@
       }
     }
   }
+  
+  &.bottombar {
+    border-top: 1px solid #4c4c4c;
+    color: color("white");
+    font-family: $font-family-serif;
+    font-size: 2rem;
+    font-weight: 700;
+  }
 }
