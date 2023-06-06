@@ -8,6 +8,7 @@ export default class extends Controller {
   }
 
   updateTotals(event) {
+    console.log(event);
     const engine = event.detail.engine;
     this[`${engine}Target`].textContent = document.getElementById(
         `${engine}_total`).textContent;
