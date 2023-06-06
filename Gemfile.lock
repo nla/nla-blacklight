@@ -445,7 +445,7 @@ GEM
     parslet (2.0.0)
     popper_js (1.16.1)
     public_suffix (4.0.7)
-    puma (6.2.2)
+    puma (6.3.0)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.6.2)
@@ -734,7 +734,7 @@ DEPENDENCIES
   nokogiri (>= 1.13.9)
   oauth2 (~> 2.0)
   openurl
-  puma (~> 6.0)
+  puma (~> 6.3)
   rails (~> 7.0.4)
   rails-controller-testing (~> 1.0, >= 1.0.5)
   rails_performance
