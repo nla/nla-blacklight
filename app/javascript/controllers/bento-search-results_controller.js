@@ -25,7 +25,7 @@ export default class extends Controller {
   }
 
   renderContent(content) {
-    // this.outputTarget.innerHTML = content;
+    this.outputTarget.innerHTML = content;
     this.dispatchEvent();
   }
 
