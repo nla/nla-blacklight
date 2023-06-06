@@ -21,14 +21,12 @@
   pointer-events: none;
   animation: loading-skeleton 1s infinite alternate;
 
-  img {
-    filter: grayscale(100) contrast(0%) brightness(1.8);
+  dt {
+    margin-bottom: 0.5rem;
+    border-right: 0.5rem solid #fff;
   }
-  h1, h2, h3, h4, h5, h6,
-  p, li,
-  .btn,
-  label,
-  .form-control,
+
+  h3,
   dt,
   dd {
     @extend %loading-skeleton;
