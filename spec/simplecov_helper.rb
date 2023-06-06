@@ -1,3 +1,4 @@
+require "simplecov"
 require "simplecov-html"
 require "simplecov_json_formatter"
 

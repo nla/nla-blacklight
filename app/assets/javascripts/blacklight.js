@@ -12,14 +12,16 @@
 //= require 'blacklight_range_limit'
 
 $(function() {
-  $("#jumpbar .nav-link a").click(function() {
+  $("#jumpbar .nav-link a").click(function(event) {
+    event.preventDefault();
     const section = $(this).attr("href");
     $("html, body").animate({
       scrollTop: $(section).offset().top-20
     }, 1200);
   });
 
-  $("#catalogue-record-actions #request-btn").click(function() {
+  $("#catalogue-record-actions #request-btn").click(function(event) {
+    event.preventDefault();
     const section = $(this).attr("href");
     $("html, body").animate({
       scrollTop: $(section).offset().top-20
