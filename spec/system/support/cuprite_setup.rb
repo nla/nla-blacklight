@@ -21,7 +21,7 @@ Capybara.register_driver(:better_cuprite) do |app|
 end
 
 # Configure Capybara to use :better_cuprite driver by default
-Capybara.default_driver = Capybara.javascript_driver = :better_cuprite
+# Capybara.default_driver = Capybara.javascript_driver = :better_cuprite
 
 module CupriteHelpers
   # Drop #pause anywhere in a test to stop the execution.
@@ -39,4 +39,8 @@ end
 
 RSpec.configure do |config|
   config.include CupriteHelpers, type: :system
+
+  config.before do |example|
+    Capybara.current_driver = :better_cuprite if example.metadata[:js]
+  end
 end
