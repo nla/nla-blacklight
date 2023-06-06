@@ -56,7 +56,7 @@ module Blacklight::RenderConstraintsHelperBehavior
     Deprecation.silence(Blacklight::RenderConstraintsHelperBehavior) do
       render_constraint_element(constraint_query_label(search_state.params),
         # BLAC-326 add boosts to the anchored title index fields
-        search_state.query_param.sub(/ OR "FINLLFIIJQ.+AICULEDSSUL"/, ""),
+        search_state.query_param.sub(/ OR "FINLLFIIJQ.+/, ""),
         classes: ["query"],
         remove: remove_constraint_url(search_state))
     end

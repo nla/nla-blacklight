@@ -23,7 +23,7 @@ module Blacklight
       @advanced_search_url = advanced_search_url
       @q = q || params[:q]
       # BLAC-326 add boosts to the anchored title index fields
-      @q&.sub!(/ OR "FINLLFIIJQ.+AICULEDSSUL"/, "")
+      @q&.sub!(/ OR "FINLLFIIJQ.+/, "")
       @query_param = query_param
       @search_field = search_field || params[:search_field]
       @params = params.except(:q, :search_field, :utf8, :page)
