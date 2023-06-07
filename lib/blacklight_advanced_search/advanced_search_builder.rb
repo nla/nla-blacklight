@@ -71,6 +71,7 @@ module BlacklightAdvancedSearch
         # do nothing, don't merge our input in, keep basic search
         # optional TODO, display error message in flash here, but hard to
         # display a good one.
+        Rails.logger.info "parslet exception: " + e.message
         nil
       end
     end
