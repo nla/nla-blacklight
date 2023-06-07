@@ -100,7 +100,7 @@ RSpec.describe SingleSearchHelper do
       end
 
       it "returns a link to the catalogue search results page" do
-        expect(helper.bento_all_results_link("catalogue")).to eq("http://test.host/catalog?search_field=all_fields&q=hello&search_type=simple")
+        expect(helper.bento_all_results_link("catalogue")).to eq("http://test.host/catalog?search_field=all_fields&q=hello")
       end
 
       it "returns a link to the finding aids search results page" do
@@ -118,7 +118,7 @@ RSpec.describe SingleSearchHelper do
 
     context "when a query is not present" do
       it "returns a link to the catalogue search results page" do
-        expect(helper.bento_all_results_link("catalogue")).to eq("http://test.host/catalog?search_field=all_fields&q=&search_type=simple")
+        expect(helper.bento_all_results_link("catalogue")).to eq("http://test.host/catalog?search_field=all_fields&q=")
       end
 
       it "returns a link to the finding aids search results page" do

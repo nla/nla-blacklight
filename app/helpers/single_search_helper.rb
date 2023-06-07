@@ -46,7 +46,7 @@ module SingleSearchHelper
       fa_base_url = ENV["FINDING_AIDS_SEARCH_URL"].chomp("/catalog.json")
       "#{fa_base_url}?group=false&search_field=all_fields&q=#{bento_query}"
     else
-      "#{search_catalog_url}?search_field=all_fields&q=#{bento_query}&search_type=simple"
+      "#{search_catalog_url}?search_field=all_fields&q=#{bento_query}"
     end
 
     ss_uri_encode(link)

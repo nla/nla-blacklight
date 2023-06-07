@@ -21,8 +21,8 @@ class SearchBuilder < Blacklight::SearchBuilder
       if solr_parameters["add_boost_query"] && solr_parameters["qf"] && solr_parameters["q"] && solr_parameters["q"].present?
         solr_parameters["qf"] = solr_parameters["qf"] << " anchored_title_tsi^600 anchored_title_only_tsi^500 anchored_title_no_format_tsi^500 left_anchored_title_tsi^800"
         solr_parameters["q"] = solr_parameters["q"] << " OR \"FINLLFIIJQ " + solr_parameters["q"] + " AICULEDSSUL\" OR \"FINLLFIIJQ " + solr_parameters["q"] + "\""
+        blacklight_params["search_type"] = "simple"
       end
-      # solr_parameters.delete("add_boost_query")
     end
   end
 end
