@@ -85,7 +85,6 @@ module BentoSearch
     def construct_query(args)
       url = "#{configuration.base_url}?q=#{CGI.escape args[:query]}"
       url += "&per_page=#{args[:per_page]}" if args[:per_page]
-
       url
     end
   end
