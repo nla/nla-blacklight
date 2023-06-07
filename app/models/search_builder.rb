@@ -17,6 +17,8 @@ class SearchBuilder < Blacklight::SearchBuilder
 
   # BLAC-326 Modify the query to add exactish title query and boost exactish title matches.
   def add_custom_data_to_query(solr_parameters)
+    return if blacklight_params["action"] == "citation"
+
     if solr_parameters.key?("add_boost_query")
       if solr_parameters["add_boost_query"] && solr_parameters["qf"] && solr_parameters["q"] && solr_parameters["q"].present?
         solr_parameters["qf"] = solr_parameters["qf"] << " anchored_title_tsi^600 anchored_title_only_tsi^500 anchored_title_no_format_tsi^500 left_anchored_title_tsi^800"
