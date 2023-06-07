@@ -49,6 +49,7 @@ module BlacklightAdvancedSearch
     # were not being used.
     def add_advanced_parse_q_to_solr(solr_parameters)
       return if blacklight_params[:q].blank? || !blacklight_params[:q].respond_to?(:to_str)
+      # BLAC-326 return if simple search type
       return if blacklight_params[:search_type] == "simple"
 
       field_def = blacklight_config.search_fields[blacklight_params[:search_field]] ||
@@ -71,6 +72,8 @@ module BlacklightAdvancedSearch
         # do nothing, don't merge our input in, keep basic search
         # optional TODO, display error message in flash here, but hard to
         # display a good one.
+        #
+        # BLAC-326 fix rubcop warning by logging exception
         Rails.logger.info "parslet exception: " + e.message
         nil
       end

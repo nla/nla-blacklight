@@ -64,6 +64,7 @@ module Blacklight
     end
 
     def query_param
+      # BLAC-326 remove the anchor queries
       params.key?(:q) ? params[:q].sub(/ OR "FINLLFIIJQ.+/, "") : params[:q]
     end
 
