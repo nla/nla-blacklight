@@ -21,6 +21,7 @@ RSpec.describe "Bento Search" do
 
     it "displays an error message" do
       visit bento_search_index_path(q: "hydrogen")
+      expect(page).to have_css("#catalogue")
       expect(page).to have_content("Sorry! An error occurred and results could not be retrieved.")
     end
   end
@@ -38,6 +39,7 @@ RSpec.describe "Bento Search" do
 
     it "displays an error message" do
       visit bento_search_index_path(q: "hydrogen")
+      expect(page).to have_css("#catalogue")
       expect(page).to have_content("Sorry! An error occurred and results could not be retrieved.")
     end
   end
