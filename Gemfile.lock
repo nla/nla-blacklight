@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/blacklight-solrcloud-repository
-  revision: 333edeaa8a0fa52428ea4fbdcca6b630c0bbf0ee
+  revision: 631f07f880099d6bf90d1b53479297e12fee75f0
   branch: main
   specs:
     blacklight-solrcloud-repository (0.2.3)
