@@ -1,0 +1,34 @@
+%loading-skeleton {
+  color: transparent;
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: #eee;
+  border-color: #eee;
+
+  &::placeholder {
+    color: transparent;
+  }
+}
+@keyframes loading-skeleton {
+  from {
+    opacity: .4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.loading-skeleton {
+  pointer-events: none;
+  animation: loading-skeleton 1s infinite alternate;
+
+  dt {
+    margin-bottom: 0.5rem;
+    border-right: 0.5rem solid #fff;
+  }
+
+  h3,
+  dt,
+  dd {
+    @extend %loading-skeleton;
+  }
+}

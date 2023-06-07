@@ -142,8 +142,6 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
 
-  gem "annotate"
-
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
 
@@ -156,9 +154,9 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem "webdrivers"
-  gem "database_cleaner-active_record"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
+  gem "cuprite"
 
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-json", "~> 0.2.3"
