@@ -37,6 +37,7 @@ class CatalogController < ApplicationController
       rows: 10,
       qf: "id title_tsim^250 title3_tsi^100 title5_tsi^70 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
       pf: "id title_tsim title_addl_tsim author_search_tsim subject_tsimv",
+      mm: "1<-1 2<-2 6<60%",
       add_boost_query: true
     }
 
