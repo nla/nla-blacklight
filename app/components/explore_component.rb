@@ -112,7 +112,7 @@ class ExploreComponent < ViewComponent::Base
 
     if lccn_list.present?
       lccn_list.each do |lcn|
-        result << "LCCN:#{clean_isn(lcn)}"
+        result << "LCCN:#{document.clean_isn(lcn)}"
       end
     end
 
