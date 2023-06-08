@@ -81,14 +81,16 @@ class CatalogueServicesClient
     url += "&lccList=#{lccn_list}" if lccn_list.present?
     url += "&width=#{width}"
 
-    res = conn.get(url)
+    Rails.cache.fetch("thumbnail_#{url}", expires_in: 1.day) do
+      res = conn.get(url)
 
-    if res.status == 200
-      content_type = res.headers["content-type"]
-      "data:#{content_type};base64,#{Base64.encode64(res.body).gsub("\n", "")}"
-    else
-      Rails.logger.debug { "Failed to retrieve thumbnail for #{bib_id}" }
-      nil
+      if res.status == 200
+        content_type = res.headers["content-type"]
+        "data:#{content_type};base64,#{Base64.encode64(res.body).gsub("\n", "")}"
+      else
+        Rails.logger.debug { "Failed to retrieve thumbnail for #{bib_id}" }
+        nil
+      end
     end
   end
 
