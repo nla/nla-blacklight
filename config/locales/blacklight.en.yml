@@ -26,6 +26,10 @@ en:
       search_field: 'Skip to search'
       first_result: 'Skip to first result'
     header_links:
+      search: 'New search'
+      catalogue: 'Catalogue'
+      eresources: 'eResources'
+      finding_aids: 'Finding aids'
       login: 'Login'
       logout: 'Log Out'
       bookmarks: 'Bookmarks'
