@@ -42,7 +42,7 @@ RSpec.describe BlacklightHelper do
       end
 
       it "converts them to standard apostrophes" do
-        expect(helper.render_document_heading).to eq "<h4 itemprop=\"name\" class=\"h3\">Mayor&#39;s Stone</h4>"
+        expect(helper.render_document_heading).to eq "<h4 itemprop=\"name\" class=\"h3 col\">Mayor&#39;s Stone</h4>"
       end
     end
   end

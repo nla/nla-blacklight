@@ -51,7 +51,8 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = "title_tsim"
     config.index.display_type_field = "format"
-    config.index.thumbnail_field = "thumbnail_path_ss"
+    # thumbnail_method is defined in ThumbnailHelper
+    config.index.thumbnail_method = :render_thumbnail
     config.index.thumbnail_presenter = NlaThumbnailPresenter
 
     config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
@@ -70,8 +71,6 @@ class CatalogController < ApplicationController
     config.show.display_type_field = "format"
 
     # configure additional partials for the document/show view
-    config.show.thumbnail_field = "thumbnail_path_ss"
-    config.show.thumbnail_presenter = NlaThumbnailPresenter
     config.show.partials.insert(1, :thumbnail) # thumbnail after show_header
     config.show.partials.insert(2, :copies_direct_form) # used in Copyright and by "Order a copy" action button
     config.show.partials.insert(3, :catalogue_record_actions) # request_actions after copies_direct_form

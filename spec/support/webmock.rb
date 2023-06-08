@@ -299,5 +299,15 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: create_request_response, headers: {})
+
+    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/thumbnail\/retrieve/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+        }
+      )
+      .to_return(status: 404, body: "", headers: {})
   end
 end
