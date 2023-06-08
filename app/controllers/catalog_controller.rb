@@ -64,7 +64,7 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
     config.add_show_tools_partial(:citation)
 
-    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: :render_bookmarks_control?)
+    # config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: :render_bookmarks_control?)
 
     # solr field configuration for document/show views
     config.show.title_field = "title_tsim"
