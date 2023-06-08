@@ -2,7 +2,11 @@
 
 class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
   def link_value
-    thumbnail_value_from_document
+    if document.online_access.present?
+      document.online_access.first[:href]
+    elsif document.copy_access.present?
+      document.copy_access.first[:href]
+    end
   end
 
   def alt_title_from_document
@@ -12,7 +16,8 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
   # :nocov:
   def thumbnail_tag(image_options = {}, url_options = {})
     value = thumbnail_value(image_options)
-    return value if value.nil? || url_options[:suppress_link]
+    return if value.nil?
+    return value if link_value.nil? || url_options[:suppress_link]
 
     if is_catalogue_record_page?
       view_context.link_to value, link_value, url_options
@@ -27,6 +32,10 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
   end
 
   private
+
+  def cat_services_client
+    @catalogue_services_client ||= CatalogueServicesClient.new
+  end
 
   # @param [Hash] image_options to pass to the image tag
   # :nocov:

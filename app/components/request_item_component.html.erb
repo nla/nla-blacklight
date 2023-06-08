@@ -1,94 +1,92 @@
-<div id="request-details">
-  <div class="col-12 mb-2">
-    <h2 class="h3"><%= t("requesting.heading") %></h2>
-    <p><%= t("requesting.message") %></p>
-    <div class="row">
-      <div class="col-12">
-        <% holdings.each do |holding| %>
-          <% holding["itemRecords"].each do |item| %>
-            <div class="holding card w-100 mb-4">
-              <div class="card-body">
-                <div class="row">
-                  <div class="col-12 col-sm-8">
-                    <dl class="document-metadata row mb-0">
-                      <% if item["pickupLocation"].present? %>
-                        <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.collect_from") %></dt>
-                        <dd class="col col-md-12 col-lg-8"><%= item["effectiveLocationDisplayName"] %></dd>
-                      <% end %>
-
-                      <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.call_number") %></dt>
-                      <dd class="col col-md-12 col-lg-8">
-                        <p class="mb-0"><%= item["itemLevelCallNumber"] %>
-                          <% if item["itemCategory"] == "monograph" && item["enumeration"].present? %>
-                            <br>Copy: <%= item["enumeration"] %>
-                          <% end %></p>
-                      </dd>
-
-                      <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.status") %></dt>
-                      <dd class="col col-md-12 col-lg-8"><%= item["status"]["name"] %></dd>
-
-                      <% if recent_item_issue_held(holding).present? %>
-                        <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.recent_items") %></dt>
-                        <dd class="col col-md-12 col-lg-8">
-                          <ul class="list-unstyled">
-                            <% recent_item_issue_held(holding).each do |statement| %>
-                              <li><%= statement %></li>
-                            <% end %>
-                          </ul>
-                        </dd>
-                      <% end %>
-
-                      <% if items_issues_held(holding).present? %>
-                        <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.items_held") %></dt>
-                        <dd class="col col-md-12 col-lg-8">
-                          <ul class="list-unstyled">
-                            <% items_issues_held(holding).each do |statement| %>
-                              <% statement.each do |issue| %>
-                                <li><%= issue %></li>
-                              <% end %>
-                            <% end %>
-                          </ul>
-                        </dd>
-                      <% end %>
-
-                      <% if supplements(holding).present? %>
-                        <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.supplements") %></dt>
-                        <dd class="col col-md-12 col-lg-8">
-                          <ul class="list-unstyled">
-                            <% supplements(holding).each do |statement| %>
-                              <% statement.each do |supplement| %>
-                                <li><%= supplement %></li>
-                              <% end %>
-                            <% end %>
-                          </ul>
-                        </dd>
-                      <% end %>
-
-                      <% if indexes(holding).present? %>
-                        <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.indexes") %></dt>
-                        <dd class="col col-md-12 col-lg-8">
-                          <ul class="list-unstyled">
-                            <% indexes(holding).each do |statement| %>
-                              <% statement.each do |index| %>
-                                <li><%= index %></li>
-                              <% end %>
-                            <% end %>
-                          </ul>
-                        </dd>
-                      <% end %>
-                    </dl>
-                  </div>
-                  <div class="select-item-btn col-12 col-sm-4 text-right">
-                    <% if item["requestable"] %>
-                      <%= request_item_link(item) %>
+<div id="request-details" class="col mb-2">
+  <h2 class="h3"><%= t("requesting.heading") %></h2>
+  <p><%= t("requesting.message") %></p>
+  <div class="row">
+    <div class="col-12">
+      <% holdings.each do |holding| %>
+        <% holding["itemRecords"].each do |item| %>
+          <div class="holding card w-100 mb-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12 col-sm-8">
+                  <dl class="document-metadata row mb-0">
+                    <% if item["pickupLocation"].present? %>
+                      <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.collect_from") %></dt>
+                      <dd class="col col-md-12 col-lg-8"><%= item["effectiveLocationDisplayName"] %></dd>
                     <% end %>
-                  </div>
+
+                    <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.call_number") %></dt>
+                    <dd class="col col-md-12 col-lg-8">
+                      <p class="mb-0"><%= item["itemLevelCallNumber"] %>
+                        <% if item["itemCategory"] == "monograph" && item["enumeration"].present? %>
+                          <br>Copy: <%= item["enumeration"] %>
+                        <% end %></p>
+                    </dd>
+
+                    <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.status") %></dt>
+                    <dd class="col col-md-12 col-lg-8"><%= item["status"]["name"] %></dd>
+
+                    <% if recent_item_issue_held(holding).present? %>
+                      <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.recent_items") %></dt>
+                      <dd class="col col-md-12 col-lg-8">
+                        <ul class="list-unstyled">
+                          <% recent_item_issue_held(holding).each do |statement| %>
+                            <li><%= statement %></li>
+                          <% end %>
+                        </ul>
+                      </dd>
+                    <% end %>
+
+                    <% if items_issues_held(holding).present? %>
+                      <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.items_held") %></dt>
+                      <dd class="col col-md-12 col-lg-8">
+                        <ul class="list-unstyled">
+                          <% items_issues_held(holding).each do |statement| %>
+                            <% statement.each do |issue| %>
+                              <li><%= issue %></li>
+                            <% end %>
+                          <% end %>
+                        </ul>
+                      </dd>
+                    <% end %>
+
+                    <% if supplements(holding).present? %>
+                      <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.supplements") %></dt>
+                      <dd class="col col-md-12 col-lg-8">
+                        <ul class="list-unstyled">
+                          <% supplements(holding).each do |statement| %>
+                            <% statement.each do |supplement| %>
+                              <li><%= supplement %></li>
+                            <% end %>
+                          <% end %>
+                        </ul>
+                      </dd>
+                    <% end %>
+
+                    <% if indexes(holding).present? %>
+                      <dt class="col-12 col-md-12 col-lg-4"><%= t("requesting.metadata.indexes") %></dt>
+                      <dd class="col col-md-12 col-lg-8">
+                        <ul class="list-unstyled">
+                          <% indexes(holding).each do |statement| %>
+                            <% statement.each do |index| %>
+                              <li><%= index %></li>
+                            <% end %>
+                          <% end %>
+                        </ul>
+                      </dd>
+                    <% end %>
+                  </dl>
+                </div>
+                <div class="select-item-btn col-12 col-sm-4 text-right">
+                  <% if item["requestable"] %>
+                    <%= request_item_link(item) %>
+                  <% end %>
                 </div>
               </div>
             </div>
-          <% end %>
+          </div>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>
