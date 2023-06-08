@@ -416,6 +416,11 @@ class SolrDocument
     eresource_urls.present?
   end
 
+  def clean_isn(isn)
+    isn = isn.gsub(/[\s-]+/, '\1')
+    isn.gsub(/^.*?([0-9]+).*?$/, '\1')
+  end
+
   private
 
   def get_online_access_urls
@@ -537,11 +542,6 @@ class SolrDocument
     else
       []
     end
-  end
-
-  def clean_isn(isn)
-    isn = isn.gsub(/[\s-]+/, '\1')
-    isn.gsub(/^.*?([0-9]+).*?$/, '\1')
   end
 
   def get_related_records
