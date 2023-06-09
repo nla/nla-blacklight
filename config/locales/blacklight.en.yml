@@ -26,6 +26,10 @@ en:
       search_field: 'Skip to search'
       first_result: 'Skip to first result'
     header_links:
+      search: 'New search'
+      catalogue: 'Catalogue'
+      eresources: 'eResources'
+      finding_aids: 'Finding aids'
       login: 'Login'
       logout: 'Log Out'
       bookmarks: 'Bookmarks'
@@ -46,8 +50,6 @@ en:
       title: 'Your National Library card'
       intro: 'A National Library card is your ticket to access millions of items from our collections, onsite or online, wherever you are. Getting a Library card is free to all Australian residents and signing up is simple.'
       button: 'Get a library card'
-      actions_header: 'With your Library card, you can:'
-      actions: 'Use books and other collection items in our <a href="https://www.nla.gov.au/reading-rooms">reading rooms</a>|Access online databases through our <a href="https://www.nla.gov.au/eresources">eResources</a> portal, from anywhere in Australia|Top up your balance to <a href="https://www.nla.gov.au/using-library/individuals/copying-reading-rooms">print, photocopy and scan</a> in our reading rooms'
     footer:
       acknowledgement_of_country:
         title: 'Acknowledgement of Country'
