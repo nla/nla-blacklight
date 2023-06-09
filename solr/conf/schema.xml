@@ -18,6 +18,9 @@
 
     <!-- text (_t...) -->
 
+    <!-- stemmed and stopword text field, used to assist boosting of exact matches -->
+    <dynamicField name="*_stim" type="s_text" stored="false" indexed="true" multiValued="true"/>
+
     <dynamicField name="*_ti" type="text" stored="false" indexed="true" multiValued="false"/>
     <dynamicField name="*_tim" type="text" stored="false" indexed="true" multiValued="true"/>
 
@@ -210,6 +213,9 @@
   <copyField source="*_ssim" dest="all_text_timv" maxChars="3000"/>
   <copyField source="*_si" dest="all_text_timv" maxChars="3000"/>
 
+  <!-- create stemmed text fields -->
+  <copyField source="*_tsim" dest="*_stim"/>
+
   <copyField source="title_ssim" dest="suggest" maxChars="256"/>
   <copyField source="call_number_ssim" dest="suggest" maxChars="256"/>
   <copyField source="subject_ssim" dest="suggest" maxChars="256"/>
@@ -286,10 +292,20 @@
     <fieldType name="text" class="solr.TextField" omitNorms="false">
       <analyzer>
         <tokenizer class="solr.ICUTokenizerFactory"/>
+        <filter class="solr.ICUFoldingFilterFactory"/>  <!-- NFKC, case folding, diacritics removed -->
+        <filter class="solr.TrimFilterFactory"/>
+      </analyzer>
+    </fieldType>
+
+    <!-- text field type used to assist boosting of exact matches -->
+    <fieldType name="s_text" class="solr.TextField" omitNorms="false">
+      <analyzer>
+        <tokenizer class="solr.ICUTokenizerFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
         <filter class="solr.ICUFoldingFilterFactory"/>  <!-- NFKC, case folding, diacritics removed -->
-        <filter class="solr.EnglishMinimalStemFilterFactory"/>
+        <filter class="solr.KStemFilterFactory"/>
         <filter class="solr.TrimFilterFactory"/>
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
       </analyzer>
     </fieldType>
 

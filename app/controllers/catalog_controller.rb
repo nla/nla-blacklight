@@ -35,7 +35,7 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
       rows: 10,
-      qf: "id^2 title_tsim^250 title3_tsi^100 title5_tsi^70 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
+      qf: "id^2 title_tsim^250 title_stim^200 title3_tsi^100 title5_tsi^70 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
       pf: "id title_tsim title_addl_tsim author_search_tsim subject_tsimv",
       mm: "1<-1 2<-2 6<60%",
       add_boost_query: true
@@ -267,7 +267,7 @@ class CatalogController < ApplicationController
       # solr_parameters hash are sent to Solr as ordinary url query params.
       field.solr_parameters = {
         "spellcheck.dictionary": "title",
-        qf: "title_tsim^10 title_addl_tsim",
+        qf: "title_tsim^10 title_addl_tsim title_stim^5",
         pf: "title_tsim title_addl_tsim",
         add_boost_query: true
       }
