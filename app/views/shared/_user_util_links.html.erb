@@ -1,18 +1,31 @@
 <ul class="navbar-nav">
+  <li class="nav-item">
+    <%= link_to t('blacklight.header_links.search'), '/', class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t('blacklight.header_links.catalogue'), '/catalog', class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t('blacklight.header_links.eresources'), 'https://www.nla.gov.au/eresources', class: 'nav-link' %>
+  </li>
+  <li class="nav-item">
+    <%= link_to t('blacklight.header_links.finding_aids'), '/finding-aids', class: 'nav-link' %>
+  </li>
   <%= render_nav_actions do |config, action|%>
     <li class="nav-item"><%= action %></li>
   <% end %>
   <% if Flipper.enabled? :authentication %>
     <% if has_user_authentication_provider? %>
       <% if current_user %>
-        <li class="nav-item">
-          <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, class: 'nav-link navbar-text', method: :delete, data: { turbo_method: :delete } %>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= current_user %>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= render partial: "blacklight/nav/bookmark" %>
+            <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete, data: { turbo_method: :delete } %>
+          </div>
         </li>
-        <% unless current_user.to_s.blank? %>
-          <li class="nav-item">
-            <%= link_to current_user, root_path, class: 'nav-link' %>
-          </li>
-        <% end %>
       <% else %>
       <li class="nav-item">
         <%= link_to t('blacklight.header_links.login'), new_user_session_path, class: 'nav-link' %>
