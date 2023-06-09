@@ -20,7 +20,7 @@ class ExploreComponent < ViewComponent::Base
     query = ""
     if document.isbn.present?
       document.isbn.each do |isn|
-        query += "isbn:#{clean_isn isn}#{(isn != document.isbn.last) ? " OR " : ""}"
+        query += "isbn:#{document.clean_isn isn}#{(isn != document.isbn.last) ? " OR " : ""}"
       end
     else
       query += document.id.to_s
@@ -36,7 +36,7 @@ class ExploreComponent < ViewComponent::Base
   end
 
   def library_thing_script
-    "https://www.librarything.com/api/json/workinfo.js?ids=#{lccn_list.join(",")}#{document.isbn.present? ? "," : ""}#{isbn_list.join(",")}&callback=showLibraryThing"
+    "https://www.librarything.com/api/json/workinfo.js?ids=#{lccn_list.join(",")}#{document.isbn.present? ? "," : ""}#{document.isbn_list.join(",")}&callback=showLibraryThing"
   end
 
   def google_books_script
@@ -57,11 +57,11 @@ class ExploreComponent < ViewComponent::Base
     result = []
 
     unless document.isbn.empty?
-      res = Faraday.get("#{@nla_shop_url}?isbn13=#{isbn_list.join(",")}")
+      res = Faraday.get("#{@nla_shop_url}?isbn13=#{document.isbn_list.join(",")}")
       res_body = res.body.delete(" \t\r\n")
       if res.status == 200 && res_body != ""
         shop_response = JSON.parse(res.body)
-        isbn_list.each do |isn|
+        document.isbn_list.each do |isn|
           item = shop_response["InsertOnlineShop"][isn.to_s]
           result << {thumbnail: item["thumbnail"], itemLink: item["itemLink"], price: item["price"]}
         end
@@ -97,21 +97,6 @@ class ExploreComponent < ViewComponent::Base
     new_isbn
   end
 
-  def clean_isn(isn)
-    isn = isn.gsub(/[\s-]+/, '\1')
-    isn.gsub(/^.*?([0-9]+).*?$/, '\1')
-  end
-
-  def isbn_list
-    result = []
-    if document.isbn.present?
-      document.isbn.each do |isn|
-        result << clean_isn(isn)
-      end
-    end
-    result
-  end
-
   def lccn_list
     result = []
     if document.lccn.present?
@@ -127,7 +112,7 @@ class ExploreComponent < ViewComponent::Base
 
     if lccn_list.present?
       lccn_list.each do |lcn|
-        result << "LCCN:#{clean_isn(lcn)}"
+        result << "LCCN:#{document.clean_isn(lcn)}"
       end
     end
 
@@ -137,8 +122,8 @@ class ExploreComponent < ViewComponent::Base
   def google_isbn_list
     result = []
 
-    if isbn_list.present?
-      isbn_list.each do |isn|
+    if document.isbn_list.present?
+      document.isbn_list.each do |isn|
         result << "ISBN:#{isn}"
       end
     end

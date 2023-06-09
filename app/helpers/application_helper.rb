@@ -99,4 +99,8 @@ module ApplicationHelper
 
     [entry, caption, icon]
   end
+
+  def cat_services_client
+    @catalogue_services_client ||= CatalogueServicesClient.new
+  end
 end

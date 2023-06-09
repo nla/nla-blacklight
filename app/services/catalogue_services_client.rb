@@ -71,6 +71,29 @@ class CatalogueServicesClient
     end
   end
 
+  def get_thumbnail(bib_id = nil, isbn_list = nil, lccn_list = nil, width = 500)
+    conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
+      f.request :authorization, "Bearer", bearer_token.token
+    end
+
+    url = "/catalogue-services/thumbnail/retrieve?bibId=#{bib_id}"
+    url += "&isbnList=#{isbn_list}" if isbn_list.present?
+    url += "&lccList=#{lccn_list}" if lccn_list.present?
+    url += "&width=#{width}"
+
+    Rails.cache.fetch("thumbnail_#{url}", expires_in: 1.day) do
+      res = conn.get(url)
+
+      if res.status == 200
+        content_type = res.headers["content-type"]
+        "data:#{content_type};base64,#{Base64.encode64(res.body).gsub("\n", "")}"
+      else
+        Rails.logger.debug { "Failed to retrieve thumbnail for #{bib_id}" }
+        nil
+      end
+    end
+  end
+
   private
 
   def bearer_token(attempt = 0)

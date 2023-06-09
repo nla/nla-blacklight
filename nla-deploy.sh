@@ -41,7 +41,9 @@ fi
 bundle install
 RAILS_ENV=$RAILS_ENV bundle exec rails db:migrate
 RAILS_ENV=$RAILS_ENV bundle exec rails assets:precompile
-#RAILS_ENV=$RAILS_ENV bundle exec rails dev:cache
+if [[ "$RAILS_DEV_CACHE" == true ]]; then
+  RAILS_ENV=$RAILS_ENV bundle exec rails dev:cache
+fi
 
 # try to fix permissions in vendor/bundle
 chmod -R o+r ./vendor/bundle

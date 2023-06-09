@@ -35,7 +35,7 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
       rows: 10,
-      qf: "id^2 title_tsim^250 title3_tsi^100 title5_tsi^70 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
+      qf: "id^2 title_tsim^250 title_stim^200 title3_tsi^100 title5_tsi^70 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
       pf: "id title_tsim title_addl_tsim author_search_tsim subject_tsimv",
       mm: "1<-1 2<-2 6<60%",
       add_boost_query: true
@@ -51,7 +51,8 @@ class CatalogController < ApplicationController
     # solr field configuration for search results/index views
     config.index.title_field = "title_tsim"
     config.index.display_type_field = "format"
-    config.index.thumbnail_field = "thumbnail_path_ss"
+    # thumbnail_method is defined in ThumbnailHelper
+    config.index.thumbnail_method = :render_thumbnail
     config.index.thumbnail_presenter = NlaThumbnailPresenter
 
     config.add_results_document_tool(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
@@ -63,15 +64,13 @@ class CatalogController < ApplicationController
     config.add_show_tools_partial(:bookmark, partial: "bookmark_control", if: :render_bookmarks_control?)
     config.add_show_tools_partial(:citation)
 
-    config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: :render_bookmarks_control?)
+    # config.add_nav_action(:bookmark, partial: "blacklight/nav/bookmark", if: :render_bookmarks_control?)
 
     # solr field configuration for document/show views
     config.show.title_field = "title_tsim"
     config.show.display_type_field = "format"
 
     # configure additional partials for the document/show view
-    config.show.thumbnail_field = "thumbnail_path_ss"
-    config.show.thumbnail_presenter = NlaThumbnailPresenter
     config.show.partials.insert(1, :thumbnail) # thumbnail after show_header
     config.show.partials.insert(2, :copies_direct_form) # used in Copyright and by "Order a copy" action button
     config.show.partials.insert(3, :catalogue_record_actions) # request_actions after copies_direct_form
@@ -268,7 +267,7 @@ class CatalogController < ApplicationController
       # solr_parameters hash are sent to Solr as ordinary url query params.
       field.solr_parameters = {
         "spellcheck.dictionary": "title",
-        qf: "title_tsim^10 title_addl_tsim",
+        qf: "title_tsim^10 title_addl_tsim title_stim^5",
         pf: "title_tsim title_addl_tsim",
         add_boost_query: true
       }

@@ -60,7 +60,7 @@
     }
   }
 </script>
-<% if isbn_list.present? || document.lccn.present? %>
+<% if document.isbn_list.present? || document.lccn.present? %>
 <script defer src="<%= library_thing_script %>"></script>
 <script defer src="<%= google_books_script %>"></script>
 <% end %>

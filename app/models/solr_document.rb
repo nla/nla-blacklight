@@ -184,6 +184,16 @@ class SolrDocument
     get_isbn(tag: "020", sfield: "a", qfield: "q", use_880: true)
   end
 
+  def isbn_list
+    result = []
+    if isbn.present?
+      isbn.each do |isn|
+        result << clean_isn(isn)
+      end
+    end
+    result
+  end
+
   def invalid_isbn
     get_isbn(tag: "020", sfield: "z", qfield: "q", use_880: true)
   end
@@ -404,6 +414,11 @@ class SolrDocument
     end
 
     eresource_urls.present?
+  end
+
+  def clean_isn(isn)
+    isn = isn.gsub(/[\s-]+/, '\1')
+    isn.gsub(/^.*?([0-9]+).*?$/, '\1')
   end
 
   private
