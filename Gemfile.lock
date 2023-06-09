@@ -16,21 +16,11 @@ GIT
       summon
 
 GIT
-  remote: https://github.com/nla/blacklight-solrcloud-repository
-  revision: 631f07f880099d6bf90d1b53479297e12fee75f0
+  remote: https://github.com/yetti/nla-blacklight_common
+  revision: c74c0a634911149294cf1774a9045584cabb0799
   branch: main
   specs:
-    blacklight-solrcloud-repository (0.2.3)
-      blacklight (~> 7.30)
-      rsolr
-      zk (~> 1.10)
-
-GIT
-  remote: https://github.com/nla/catalogue-patrons
-  revision: 07ebdb173e298c5d981da5903b6f8773a5361083
-  branch: main
-  specs:
-    catalogue-patrons (3.2.0)
+    nla-blacklight_common (0.1.2)
       activerecord-session_store (~> 2.0)
       annotaterb
       brakeman
@@ -43,7 +33,9 @@ GIT
       omniauth-keycloak (~> 1.4)
       omniauth-rails_csrf_protection (~> 1.0)
       rails (~> 7.0.4)
+      rsolr
       rufus-scheduler (~> 3.8)
+      zk (~> 1.10)
 
 GEM
   remote: https://rubygems.org/
@@ -699,7 +691,6 @@ DEPENDENCIES
   binding_of_caller
   blacklight (~> 7.32)
   blacklight-marc (>= 7.0.0.rc1, < 9)
-  blacklight-solrcloud-repository!
   blacklight_advanced_search (~> 7.0)
   blacklight_range_limit
   bootsnap
@@ -707,7 +698,6 @@ DEPENDENCIES
   brakeman
   bundler-audit
   capybara
-  catalogue-patrons!
   cuprite
   debug
   dotenv-rails
@@ -729,6 +719,7 @@ DEPENDENCIES
   lograge
   mock_redis (~> 0.36.0)
   mysql2 (~> 0.5)
+  nla-blacklight_common!
   nokogiri (>= 1.13.9)
   oauth2 (~> 2.0)
   openurl
