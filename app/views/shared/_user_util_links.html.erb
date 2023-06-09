@@ -23,7 +23,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <%= render partial: "blacklight/nav/bookmark" %>
-            <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, class: 'nav-link navbar-text', method: :delete, data: { turbo_method: :delete } %>
+            <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete, data: { turbo_method: :delete } %>
           </div>
         </li>
       <% else %>

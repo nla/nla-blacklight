@@ -1,0 +1,4 @@
+<%= link_to bookmarks_path, id:'bookmarks_nav', class: 'dropdown-item' do %>
+  <%= t('blacklight.header_links.bookmarks') %>
+<span class="badge badge-pill badge-secondary bg-secondary" data-role='bookmark-counter'><%= current_or_guest_user.bookmarks.count %></span>
+<% end %>
