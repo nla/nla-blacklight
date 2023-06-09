@@ -139,8 +139,4 @@ class CatalogueServicesClient
       authorize_url: "/auth/realms/#{ENV["CATALOGUE_SERVICES_REALM"]}/protocol/openid-connect/auth",
       token_url: "/auth/realms/#{ENV["CATALOGUE_SERVICES_REALM"]}/protocol/openid-connect/token")
   end
-
-  def http_cache_store
-    ActiveSupport::Cache.lookup_store(:redis_cache_store, expires_in: 1.hour, url: ENV["REDIS_URL"])
-  end
 end
