@@ -1,0 +1,9 @@
+<div class="citation-details">
+  <h2 class="h4">Catalogue persistent identifier</h2>
+  <p><%= persistent_id_link %> <i class="fa-regular fa-copy"></i></p>
+
+  <% @formats.each do |i18n_key, citation_method| %>
+    <h2 class="h4"><%= t(i18n_key) %></h2>
+    <p><%= @document.send(citation_method).html_safe %></p>
+  <% end %>
+</div>
