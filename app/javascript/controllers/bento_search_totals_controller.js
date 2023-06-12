@@ -8,7 +8,6 @@ export default class extends Controller {
   }
 
   updateTotals(event) {
-    console.log(event);
     const engine = event.detail.engine;
     const no_results_el = document.querySelector(`#${engine} p.bento_search_no_results`);
     const totals_el = document.getElementById(`${engine}_total`);
