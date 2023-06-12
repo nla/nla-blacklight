@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/blacklight-solrcloud-repository
-  revision: 631f07f880099d6bf90d1b53479297e12fee75f0
+  revision: efd8a58988e59d15def6e24f7f903b6c8ad22021
   branch: main
   specs:
-    blacklight-solrcloud-repository (0.2.3)
+    blacklight-solrcloud-repository (0.2.4)
       blacklight (~> 7.30)
       rsolr
       zk (~> 1.10)
@@ -447,7 +447,7 @@ GEM
     puma (6.3.0)
       nio4r (~> 2.0)
     raabro (1.4.0)
-    racc (1.6.2)
+    racc (1.7.0)
     rack (2.2.7)
     rack-protection (3.0.6)
       rack
