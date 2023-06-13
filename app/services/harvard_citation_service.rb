@@ -1,39 +1,46 @@
 # frozen_string_literal: true
+
 class HarvardCitationService
   def initialize(document)
     @document = document
   end
 
   def cite
+    format = @document.first("format").downcase
+
     result = []
 
     result << cite_authors
     result << cite_pubdate
     result << "<em>#{@document.first("title_tsim")}</em>."
-    result << cite_publisher
+    if format == "book"
+      result << cite_publisher
+    end
     result << cite_url
 
     result.join(" ")
   end
 
   def cite_authors
-    authors = []
+    cited_authors = []
 
     author = @document.first("author_with_relator_ssim")
-    authors << author.to_s if author.present?
+    cited_authors << author.to_s if author.present?
 
     other_authors = @document.other_authors
     other_authors.each do |other|
-      authors << other.to_s
+      cited_authors << other.to_s
     end
 
-    "#{authors.join(" & ")}."
+    if cited_authors.present?
+      "#{cited_authors.join(" & ")}."
+    end
   end
 
   def cite_pubdate
-    pub_date = @document.first("pub_date_ssim")
+    pub_date = @document.first("date_lower_isi")
     if pub_date.present?
-      "#{@document.first("pub_date_ssim")},"
+      "#{@document.first("date_lower_isi")},"
     else
       "n.d., "
     end

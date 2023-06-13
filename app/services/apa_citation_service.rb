@@ -6,12 +6,16 @@ class ApaCitationService
   end
 
   def cite
+    format = @document.first("format").downcase
+
     result = []
 
     result << cite_authors
-    result << "(#{@document.first("pub_date_ssim")})." if @document.first("pub_date_ssim").present?
+    result << "(#{@document.first("date_lower_isi")})." if @document.first("date_lower_isi").present?
     result << "<em>#{@document.first("title_tsim")}</em>."
-    result << cite_publisher
+    if format == "book"
+      result << cite_publisher
+    end
     result << cite_url
 
     result.join(" ")
@@ -27,7 +31,9 @@ class ApaCitationService
     @document.other_authors.each do |other_author|
       cited_authors << other_author.to_s
     end
-    "#{cited_authors.join(" & ")}."
+    if cited_authors.present?
+      "#{cited_authors.join(" & ")}."
+    end
   end
 
   def cite_publisher

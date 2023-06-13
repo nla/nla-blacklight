@@ -6,12 +6,16 @@ class MlaCitationService
   end
 
   def cite
+    format = @document.first("format").downcase
+
     result = []
 
     result << cite_authors
     result << "<em>#{@document.first("title_tsim")}</em>"
-    result << cite_publisher
-    result << "#{@document.first("pub_date_ssim")}" if @document.first("pub_date_ssim").present?
+    if format == "book"
+      result << cite_publisher
+    end
+    result << @document.first("date_lower_isi").to_s if @document.first("date_lower_isi").present?
     result << cite_url
 
     result.join(" ")
@@ -27,7 +31,10 @@ class MlaCitationService
     @document.other_authors.each do |other_author|
       cited_authors << other_author.to_s
     end
-    "#{cited_authors.join(" and ")}."
+
+    if cited_authors.present?
+      "#{cited_authors.join(" and ")}."
+    end
   end
 
   def cite_publisher

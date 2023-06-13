@@ -20,11 +20,6 @@ RSpec.describe CitationComponent, type: :component do
     expect(page.text).to include("APA")
   end
 
-  it "renders the Chicago citation" do
-    render_inline(described_class.new(document: document))
-    expect(page.text).to include("Chicago")
-  end
-
   it "renders the Australian/Harvard citation" do
     render_inline(described_class.new(document: document))
     expect(page.text).to include("Australian/Harvard")

@@ -10,7 +10,7 @@ class WikimediaCitationService
 
     format = @document.first("format")
 
-    if format == "journal"
+    if format.downcase == "journal"
       result += " | title=[article title here]\n"
       result += " | author=[article author here]\n"
       result += " | author2=[first co-author here]\n"
@@ -32,7 +32,7 @@ class WikimediaCitationService
       author_count += 1
     end
 
-    result += " | year=#{@document.first("pub_date_ssim")}\n"
+    result += " | year=#{@document.first("date_lower_isi")}\n"
 
     publisher = @document.first("publisher_tsim")
     if publisher.present?
