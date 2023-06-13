@@ -422,6 +422,28 @@ class SolrDocument
     isn.gsub(/^.*?([0-9]+).*?$/, '\1')
   end
 
+  def publication_place
+    data = get_marc_derived_field("260a", options: {alternate_script: false}) || get_marc_derived_field("264a", options: {alternate_script: false})
+    if data.present?
+      publication_place = data.join(" ")
+      if publication_place.end_with?(":")
+        publication_place = publication_place.chop.strip
+      end
+      publication_place
+    end
+  end
+
+  def publisher
+    data = get_marc_derived_field("260b", options: {alternate_script: false}) || get_marc_derived_field("264b", options: {alternate_script: false})
+    if data.present?
+      publisher = data.join(" ")
+      if publisher.end_with?(",")
+        publisher = publisher.chop.strip
+      end
+      publisher
+    end
+  end
+
   private
 
   def get_online_access_urls

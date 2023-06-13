@@ -1,5 +1,6 @@
 # frozen_string_literal: true
-class HarvardCitationService
+
+class ApaCitationService
   def initialize(document)
     @document = document
   end
@@ -8,7 +9,7 @@ class HarvardCitationService
     result = []
 
     result << cite_authors
-    result << cite_pubdate
+    result << "(#{@document.first("pub_date_ssim")})." if @document.first("pub_date_ssim").present?
     result << "<em>#{@document.first("title_tsim")}</em>."
     result << cite_publisher
     result << cite_url
@@ -17,26 +18,16 @@ class HarvardCitationService
   end
 
   def cite_authors
-    authors = []
-
+    cited_authors = []
     author = @document.first("author_with_relator_ssim")
-    authors << author.to_s if author.present?
-
-    other_authors = @document.other_authors
-    other_authors.each do |other|
-      authors << other.to_s
+    if author.present?
+      cited_authors << author.to_s
     end
 
-    "#{authors.join(" & ")}."
-  end
-
-  def cite_pubdate
-    pub_date = @document.first("pub_date_ssim")
-    if pub_date.present?
-      "#{@document.first("pub_date_ssim")},"
-    else
-      "n.d., "
+    @document.other_authors.each do |other_author|
+      cited_authors << other_author.to_s
     end
+    "#{cited_authors.join(" & ")}."
   end
 
   def cite_publisher
@@ -46,7 +37,7 @@ class HarvardCitationService
     if publisher.present?
       publication_place = @document.publication_place
       cited_publisher += if publication_place.present?
-        "#{publisher} #{publication_place}"
+        "#{publication_place} : #{publisher}"
       else
         publisher
       end
