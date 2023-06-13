@@ -21,14 +21,14 @@ class WikimediaCitationService
     end
 
     author_count = 1
-    author = @document.first("author")
+    author = @document.first("author_with_relator_ssim")
     if author.present?
-      result += " | author#{author_count}=#{@document.first("author")}\n"
+      result += " | author#{author_count}=#{author}\n"
       author_count += 1
     end
 
-    @document.other_authors.each do |author|
-      result += " | author#{author_count}=#{author}\n"
+    @document.other_authors.each do |other_author|
+      result += " | author#{author_count}=#{other_author}\n"
       author_count += 1
     end
 

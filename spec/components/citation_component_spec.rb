@@ -27,7 +27,7 @@ RSpec.describe CitationComponent, type: :component do
 
   it "renders the Australian/Harvard citation" do
     render_inline(described_class.new(document: document))
-    expect(page.text).to include("Harvard")
+    expect(page.text).to include("Australian/Harvard")
   end
 
   it "renders the Wikipedia citation" do
