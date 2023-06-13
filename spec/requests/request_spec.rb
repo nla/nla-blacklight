@@ -68,13 +68,15 @@ RSpec.describe "Requests" do
         allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return([nil, document])
         allow_any_instance_of(CatalogueServicesClient).to receive(:get_holding).and_raise(ServiceTokenError)
 
-        get new_solr_document_request_path(
-          solr_document_id: solr_document_id,
-          instance: instance_id,
-          holdings: holdings_id,
-          item: item_id
-        )
-        expect(response).to have_http_status(:internal_server_error)
+        expect {
+          get new_solr_document_request_path(
+            solr_document_id: solr_document_id,
+            instance: instance_id,
+            holdings: holdings_id,
+            item: item_id
+          )
+          expect(response).to have_http_status(:internal_server_error)
+        }.to raise_error(ServiceTokenError)
       end
     end
   end
@@ -104,16 +106,17 @@ RSpec.describe "Requests" do
         allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return([nil, document])
         allow_any_instance_of(CatalogueServicesClient).to receive(:get_holding).and_raise(ServiceTokenError)
 
-        post solr_document_requests_path(
-          solr_document_id: solr_document_id,
-          requester: "111",
-          request: {
-            instance_id: instance_id,
-            holdings_id: holdings_id,
-            item_id: item_id
-          }
-        )
-        expect(response).to have_http_status(:internal_server_error)
+        expect {
+          post solr_document_requests_path(
+            solr_document_id: solr_document_id,
+            requester: "111",
+            request: {
+              instance_id: instance_id,
+              holdings_id: holdings_id,
+              item_id: item_id
+            }
+          )
+        }.to raise_error(ServiceTokenError)
       end
     end
   end
