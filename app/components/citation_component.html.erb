@@ -1,6 +1,9 @@
 <div class="citation-details">
-  <h2 class="h4">Catalogue persistent identifier</h2>
-  <p><%= persistent_id_link %> <i class="fa-regular fa-copy"></i></p>
+  <h2 class="h4"><%= t("citation.persistent_id") %></h2>
+  <div data-controller="clipboard" data-clipboard-success-content-value="<%= t("citation.copied") %>">
+    <p><%= link_to "https://nla.gov.au/nla.cat-vn#{@document.id}", "https://nla.gov.au/nla.cat-vn#{@document.id}", { data: { "clipboard-target": "source" } }
+    %> <button type="button" data-action="clipboard#copy" data-clipboard-target="button" class="btn btn-icon"><i class="fa-regular fa-copy"></i></button></p>
+  </div>
 
   <% @formats.each do |i18n_key, citation_method| %>
     <h2 class="h4"><%= t(i18n_key) %></h2>

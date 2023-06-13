@@ -257,6 +257,8 @@ GEM
     faraday-em_http (1.0.0)
     faraday-em_synchrony (1.0.0)
     faraday-excon (1.1.0)
+    faraday-http-cache (2.5.0)
+      faraday (>= 0.8)
     faraday-httpclient (1.0.1)
     faraday-multipart (1.0.4)
       multipart-post (~> 2)
@@ -689,9 +691,9 @@ DEPENDENCIES
   bento_search!
   better_errors
   binding_of_caller
-  blacklight (~> 7.32)
+  blacklight (~> 7.32, < 8)
   blacklight-marc (>= 7.0.0.rc1, < 9)
-  blacklight_advanced_search (~> 7.0)
+  blacklight_advanced_search (~> 7.0, < 8)
   blacklight_range_limit
   bootsnap
   bootstrap (~> 4.0)
@@ -705,6 +707,7 @@ DEPENDENCIES
   ebsco-eds
   factory_bot_rails
   faker
+  faraday-http-cache
   flipper (~> 0.28.0)
   flipper-active_record (~> 0.28.0)
   flipper-ui (~> 0.28.0)
