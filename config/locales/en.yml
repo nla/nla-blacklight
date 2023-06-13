@@ -88,3 +88,5 @@ en:
   citation:
     persistent_id: "Catalogue persistent identifier"
     copied: "Copied"
+    harvard: "Australian/Harvard"
+    wikipedia: "Wikipedia"

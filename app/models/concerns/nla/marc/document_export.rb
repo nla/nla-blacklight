@@ -9,6 +9,7 @@ module Nla::Marc::DocumentExport
     # http://tools.ietf.org/html/draft-denenberg-mods-etc-media-types-00
     document.will_export_as(:marcxml, "application/marcxml+xml")
     document.will_export_as(:openurl_ctx_kev, "application/x-openurl-ctx-kev")
+    document.will_export_as(:refworks_marc_txt, "text/plain")
     document.will_export_as(:endnote, "application/x-endnote-refer")
   end
 end

@@ -25,6 +25,16 @@ RSpec.describe CitationComponent, type: :component do
     expect(page.text).to include("Chicago")
   end
 
+  it "renders the Australian/Harvard citation" do
+    render_inline(described_class.new(document: document))
+    expect(page.text).to include("Harvard")
+  end
+
+  it "renders the Wikipedia citation" do
+    render_inline(described_class.new(document: document))
+    expect(page.text).to include("Wikipedia")
+  end
+
   def sample_marc
     load_marc_from_file 4157458
   end

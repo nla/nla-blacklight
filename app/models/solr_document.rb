@@ -10,6 +10,7 @@ class SolrDocument
   include Blacklight::Solr::Document
   include REXML
   include Blacklight::Configurable
+  include Nla::Citations
 
   attribute :callnumber, Blacklight::Types::Array, "lc_callnum_ssim"
 
