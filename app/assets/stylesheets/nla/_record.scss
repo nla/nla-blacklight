@@ -67,6 +67,15 @@
   .h4 {
     margin-bottom: 0;
   }
+  
+  .btn-icon {
+    color: color("light-purple");
+    
+    &:hover,
+    &:focus {
+      color: color("purple");
+    }
+  }
 }
 
 .explore {
