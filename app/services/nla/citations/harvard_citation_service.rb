@@ -28,28 +28,13 @@ module Nla
       end
 
       def cite_pubdate
-        pub_date = @document.first("date_lower_isi")
-        if pub_date.present?
-          "#{@document.first("date_lower_isi")},"
+        cited_pubdate = super
+
+        if cited_pubdate.present?
+          "#{cited_pubdate},"
         else
-          "n.d., "
+          "n.d.,"
         end
-      end
-
-      def cite_publisher
-        cited_publisher = ""
-
-        publisher = @document.publisher
-        if publisher.present?
-          publication_place = @document.publication_place
-          cited_publisher += if publication_place.present?
-            "#{publisher} #{publication_place}"
-          else
-            publisher
-          end
-        end
-
-        cited_publisher
       end
     end
   end

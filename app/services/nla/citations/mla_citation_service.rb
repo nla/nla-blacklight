@@ -13,7 +13,7 @@ module Nla
         if format == "book"
           result << cite_publisher
         end
-        result << @document.first("date_lower_isi").to_s if @document.first("date_lower_isi").present?
+        result << cite_pubdate
         result << cite_url
 
         "<span data-clipboard-target=\"source\">#{result.join(" ")}</span>"
@@ -25,22 +25,6 @@ module Nla
         if cited_authors.present?
           "#{cited_authors.join(" and ")}."
         end
-      end
-
-      def cite_publisher
-        cited_publisher = ""
-
-        publisher = @document.publisher
-        if publisher.present?
-          publication_place = @document.publication_place
-          cited_publisher += if publication_place.present?
-            "#{publisher} #{publication_place}"
-          else
-            publisher
-          end
-        end
-
-        cited_publisher
       end
     end
   end

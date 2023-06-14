@@ -40,24 +40,28 @@ RSpec.describe CitationComponent, type: :component do
       expect(page.text).to include("https://nla.gov.au/nla.cat-vn3601830")
     end
 
-    it "renders the MLA citation" do
+    it "renders the MLA citation with publisher details" do
       render_inline(described_class.new(document: document))
       expect(page.text).to include("MLA")
+      expect(page).to have_css("#mla_citation", text: "Murdoch Sydney")
     end
 
-    it "renders the APA citation" do
+    it "renders the APA citation with publisher details" do
       render_inline(described_class.new(document: document))
       expect(page.text).to include("APA")
+      expect(page).to have_css("#apa_citation", text: "Sydney : Murdoch")
     end
 
-    it "renders the Australian/Harvard citation" do
+    it "renders the Australian/Harvard citation with publisher details" do
       render_inline(described_class.new(document: document))
       expect(page.text).to include("Australian/Harvard")
+      expect(page).to have_css("#australian_harvard_citation", text: "Murdoch Sydney")
     end
 
-    it "renders the Wikipedia citation" do
+    it "renders the Wikipedia citation with publisher details" do
       render_inline(described_class.new(document: document))
       expect(page.text).to include("Wikipedia")
+      expect(page).to have_css("#wikipedia_citation", text: "Murdoch")
     end
   end
 

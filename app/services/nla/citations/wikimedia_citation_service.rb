@@ -8,51 +8,109 @@ module Nla
 
         format = @document.first("format")
 
-        if format.downcase == "journal"
-          result += " | title=[article title here]\n"
-          result += " | author=[article author here]\n"
-          result += " | author2=[first co-author here]\n"
-          result += " | date=[date of publication]\n"
-          result += " | journal=#{@document.first("title_tsim")}\n"
-        else
-          result += " | title=#{@document.first("title_tsim")}\n"
+        title = build_title(format)
+        if title.present?
+          result += title
         end
 
-        author_count = 1
-        author = @document.first("author_with_relator_ssim")
-        if author.present?
-          result += " | author#{author_count}=#{author}\n"
-          author_count += 1
+        authors = build_authors
+        if authors.present?
+          result += authors
         end
 
-        @document.other_authors.each do |other_author|
-          result += " | author#{author_count}=#{other_author}\n"
-          author_count += 1
+        pub_date = build_pubdate
+        if pub_date.present?
+          result += pub_date
         end
 
-        result += " | year=#{@document.first("date_lower_isi")}\n"
-
-        publisher = @document.first("publisher_tsim")
+        publisher = build_publisher
         if publisher.present?
-          result += " | publisher=#{publisher}\n"
+          result += publisher
         end
 
+        isbns = build_isbns
+        if isbns.present?
+          result += isbns
+        end
+
+        language = build_language
+        if language.present?
+          result += language
+        end
+
+        pi = build_pi
+        if pi.present?
+          result += pi
+        end
+
+        result + "}}"
+      end
+
+      def build_title(format)
+        title = ""
+
+        if format.downcase == "journal"
+          title += " | title=[article title here]\n"
+          title += " | author=[article author here]\n"
+          title += " | author2=[first co-author here]\n"
+          title += " | date=[date of publication]\n"
+          title += " | journal=#{@document.first("title_tsim")}\n"
+        else
+          title += " | title=#{@document.first("title_tsim")}\n"
+        end
+
+        title
+      end
+
+      def build_authors
+        author_string = ""
+
+        authors = cite_authors
+        if authors.present?
+          authors.each_with_index do |author, author_count|
+            author_string += " | author#{author_count + 1}=#{author}\n"
+          end
+        end
+
+        author_string
+      end
+
+      def build_pubdate
+        cited_pubdate = cite_pubdate
+
+        if cited_pubdate.present?
+          " | year=#{cited_pubdate}\n"
+        end
+      end
+
+      def build_publisher
+        publisher = @document.publisher
+        if publisher.present?
+          " | publisher=#{publisher}\n"
+        end
+      end
+
+      def build_isbns
         isbns = @document.isbn_list
         if isbns.present?
-          result += " | isbn=#{isbns.first}\n"
+          " | isbn=#{isbns.first}\n"
         end
+      end
 
+      def build_language
         language = @document.first("language_ssim")
-        result += if language.present?
-          " | language=#{@document.first("language_ssim")}\n"
+        if language.present?
+          " | language=#{language}\n"
         else
           " | language=No linguistic content\n"
         end
+      end
 
+      def build_pi
         pi = @document.pi
-        result += " | url=#{pi}\n" if pi.present?
-
-        result + "}}"
+        if pi.present?
+          " | url=#{pi.first}\n"
+        end
       end
     end
   end

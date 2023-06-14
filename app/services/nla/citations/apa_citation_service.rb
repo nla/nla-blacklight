@@ -9,7 +9,7 @@ module Nla
         result = []
 
         result << cite_authors
-        result << "(#{@document.first("date_lower_isi")})." if @document.first("date_lower_isi").present?
+        result << cite_pubdate
         result << "<em>#{@document.first("title_tsim")}</em>."
         if format == "book"
           result << cite_publisher
@@ -24,6 +24,14 @@ module Nla
 
         if cited_authors.present?
           "#{cited_authors.join(" & ")}."
+        end
+      end
+
+      def cite_pubdate
+        cited_pubdate = super
+
+        if cited_pubdate.present?
+          "(#{cited_pubdate})."
         end
       end
 

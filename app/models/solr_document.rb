@@ -387,6 +387,12 @@ class SolrDocument
     []
   end
 
+  def all_authors
+    fetch("author_search_tsim")
+  rescue KeyError
+    []
+  end
+
   def lccn
     get_marc_derived_field("010a", options: {alternate_script: false})
   end
