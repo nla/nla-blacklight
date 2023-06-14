@@ -1,7 +1,7 @@
 import Clipboard from 'stimulus-clipboard'
 
 export default class extends Clipboard {
-  copy() {
+  copy(event) {
     event.preventDefault()
 
     const text = this.sourceTarget.innerText || this.sourceTarget.value
