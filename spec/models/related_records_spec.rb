@@ -36,7 +36,7 @@ RSpec.describe RelatedRecords do
       let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
 
       it "returns false" do
-        expect(record.parent?).to be false
+        expect(record.is_parent?).to be false
       end
     end
 
@@ -46,7 +46,7 @@ RSpec.describe RelatedRecords do
       let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
 
       it "returns true" do
-        expect(record.parent?).to be true
+        expect(record.is_parent?).to be true
       end
     end
 
@@ -56,7 +56,7 @@ RSpec.describe RelatedRecords do
       let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872", collection_id_ssi: "(AuCNLDY)318537") }
 
       it "returns true" do
-        expect(record.parent?).to be true
+        expect(record.is_parent?).to be true
       end
     end
   end
@@ -70,7 +70,7 @@ RSpec.describe RelatedRecords do
       let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
 
       it "returns true" do
-        expect(record.child?).to be true
+        expect(record.is_child?).to be true
       end
     end
 
@@ -80,7 +80,7 @@ RSpec.describe RelatedRecords do
       let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
 
       it "returns false" do
-        expect(record.child?).to be false
+        expect(record.is_child?).to be false
       end
     end
 
@@ -90,7 +90,7 @@ RSpec.describe RelatedRecords do
       let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872", collection_id_ssi: "(AuCNLDY)318537") }
 
       it "returns true" do
-        expect(record.child?).to be true
+        expect(record.is_child?).to be true
       end
     end
   end

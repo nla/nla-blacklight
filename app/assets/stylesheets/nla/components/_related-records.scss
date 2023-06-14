@@ -8,4 +8,12 @@ dd[class*="blacklight-related_records"] {
       content: "- ";
     }
   }
+
+  .related {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: 1fr;
+    grid-column-gap: 16px;
+    grid-row-gap: 0px;
+  }
 }
