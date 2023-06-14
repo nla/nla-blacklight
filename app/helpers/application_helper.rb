@@ -56,6 +56,20 @@ module ApplicationHelper
     !current_page?(root_path)
   end
 
+  def svg(name)
+    file_path = "#{Rails.root}/app/assets/images/#{name}.svg"
+
+    if File.exist?(file_path)
+      Rails.cache.fetch("svg-#{name}", expires_in: 1.year) do
+        # rubocop:disable Rails/OutputSafety
+        File.read(file_path).html_safe
+        # rubocop:enable Rails/OutputSafety
+      end
+    else
+      "(not found)"
+    end
+  end
+  
   private
 
   def makelink_eresource(href)

@@ -45,6 +45,14 @@ class RelatedRecordsComponent < ViewComponent::Base
 
   delegate :collection_name, :collection_id, :parent, :parent_id, :child_count, :sibling_count, to: :value
 
+  def related_class
+    if value.has_parent? && value.has_children?
+      "related-three-level"
+    else
+      "related-two-level"
+    end
+  end
+
   def collection_text
     text = []
 
@@ -60,16 +68,16 @@ class RelatedRecordsComponent < ViewComponent::Base
       text << helpers.t("related_records.collection_total", url: parent_collection_url, total: formatted_sibling_count)
     end
 
-    text.join("<br>")
+    text.join("<br>").html_safe
   end
 
   def base_icon
     if value.has_parent? && value.has_children?
-      helpers.image_tag("related-records/3-child.svg", width: "63")
+      helpers.svg("related-records/3-child")
     elsif value.has_children?
-      helpers.image_tag("related-records/2-parent.svg", width: "46")
+      helpers.svg("related-records/2-parent")
     else
-      helpers.image_tag("related-records/2-child.svg", width: "46")
+      helpers.svg("related-records/2-child")
     end
   end
 end
