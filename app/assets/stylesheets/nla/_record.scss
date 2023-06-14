@@ -68,7 +68,7 @@
     margin-bottom: 0;
   }
   
-  .btn-icon {
+  [data-clipboard-target="button"] {
     color: color("light-purple");
     
     &:hover,
