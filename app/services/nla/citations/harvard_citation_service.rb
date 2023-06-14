@@ -20,15 +20,7 @@ module Nla
       end
 
       def cite_authors
-        cited_authors = []
-
-        author = @document.first("author_with_relator_ssim")
-        cited_authors << author.to_s if author.present?
-
-        other_authors = @document.other_authors
-        other_authors.each do |other|
-          cited_authors << other.to_s
-        end
+        cited_authors = super
 
         if cited_authors.present?
           "#{cited_authors.join(" & ")}."

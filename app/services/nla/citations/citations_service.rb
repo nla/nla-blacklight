@@ -13,6 +13,20 @@ module Nla
       def export
       end
 
+      def cite_authors
+        cited_authors = []
+        author = @document.first("author_with_relator_ssim")
+        if author.present?
+          cited_authors << author.to_s
+        end
+
+        @document.other_authors.each do |other_author|
+          cited_authors << other_author.to_s
+        end
+
+        cited_authors
+      end
+
       def cite_url
         url = ""
 
