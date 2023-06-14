@@ -444,6 +444,16 @@ class SolrDocument
     end
   end
 
+  def pi
+    data = get_marc_derived_field("856u")
+    if data.present?
+      pi = data.first
+      if pi.match(/^https?:\/\/nla\.gov\.au\/(.*)$/)
+        pi
+      end
+    end
+  end
+
   private
 
   def get_online_access_urls

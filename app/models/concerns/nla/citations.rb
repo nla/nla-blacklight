@@ -3,20 +3,19 @@ module Nla
     extend ActiveSupport::Concern
 
     def export_as_nla_apa_citation_txt
-      ApaCitationService.new(self).cite
+      ApaCitationService.cite(self)
     end
 
     def export_as_nla_mla_citation_txt
-      MlaCitationService.new(self).cite
+      MlaCitationService.cite(self)
     end
 
     def export_as_nla_harvard_citation_txt
-      HarvardCitationService.new(self).cite
+      HarvardCitationService.cite(self)
     end
 
     def export_as_nla_wikipedia_citation_txt
-      citation = 'Please see <a href="https://en.wikipedia.org/wiki/Template:Citation">Wikipedia\'s template documentation</a> for further citation fields that may be required.'
-      citation + WikimediaCitationService.new(self).cite
+      WikimediaCitationService.cite(self)
     end
   end
 end
