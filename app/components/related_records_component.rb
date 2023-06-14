@@ -45,11 +45,21 @@ class RelatedRecordsComponent < ViewComponent::Base
 
   delegate :collection_name, :collection_id, :parent, :parent_id, :child_count, :sibling_count, to: :value
 
-  def related_class
+  def hierarchy_class
     if value.has_parent? && value.has_children?
       "related-three-level"
     else
       "related-two-level"
+    end
+  end
+
+  def icon_class
+    if value.has_parent? && value.has_children?
+      "three-level-child"
+    elsif value.has_children?
+      "two-level-parent"
+    else
+      "two-level-child"
     end
   end
 
