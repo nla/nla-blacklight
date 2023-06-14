@@ -88,3 +88,9 @@ en:
   citation:
     persistent_id: "Catalogue persistent identifier"
     copied: "Copied"
+    copy_to_clipboard: "Copy to clipboard"
+    harvard: "Australian/Harvard"
+    wikipedia:
+      title: "Wikipedia"
+      help: "<p>Please see <a href=\"https://en.wikipedia.org/wiki/Template:Citation\">Wikipedia's template documentation</a> for further citation fields that may be required.</p>"
+    test: "Test"

@@ -10,6 +10,7 @@ class SolrDocument
   include Blacklight::Solr::Document
   include REXML
   include Blacklight::Configurable
+  include Nla::Citations
 
   attribute :callnumber, Blacklight::Types::Array, "lc_callnum_ssim"
 
@@ -386,6 +387,12 @@ class SolrDocument
     []
   end
 
+  def all_authors
+    fetch("author_search_tsim")
+  rescue KeyError
+    []
+  end
+
   def lccn
     get_marc_derived_field("010a", options: {alternate_script: false})
   end
@@ -419,6 +426,38 @@ class SolrDocument
   def clean_isn(isn)
     isn = isn.gsub(/[\s-]+/, '\1')
     isn.gsub(/^.*?([0-9]+).*?$/, '\1')
+  end
+
+  def publication_place
+    data = get_marc_derived_field("260a", options: {alternate_script: false}) || get_marc_derived_field("264a", options: {alternate_script: false})
+    if data.present?
+      publication_place = data.join(" ")
+      if publication_place.end_with?(":")
+        publication_place = publication_place.chop.strip
+      end
+      publication_place
+    end
+  end
+
+  def publisher
+    data = get_marc_derived_field("260b", options: {alternate_script: false}) || get_marc_derived_field("264b", options: {alternate_script: false})
+    if data.present?
+      publisher = data.join(" ")
+      if publisher.end_with?(",")
+        publisher = publisher.chop.strip
+      end
+      publisher
+    end
+  end
+
+  def pi
+    data = get_marc_derived_field("856u")
+    if data.present?
+      pi = data.first
+      if pi.match(/^https?:\/\/nla\.gov\.au\/(.*)$/)
+        pi
+      end
+    end
   end
 
   private
