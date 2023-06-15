@@ -1,5 +1,5 @@
-<div class="row mt-4">
-  <div class="col-12 col-sm-8">
+<div class="row">
+  <div class="col-12 col-lg-8">
     <%= form_with url: solr_document_requests_path, model: request, method: :post do |f| %>
       <%= hidden_field :request, :instance_id %>
       <%= hidden_field :request, :holdings_id %>
@@ -9,30 +9,38 @@
 
       <% if request.item["itemCategory"] == "journal" %>
         <div class="form-group row">
-          <%= f.label :year, t("requesting.label.year"), class: "col col-form-label" %>
-          <%= f.text_field :year, class: "form-control col-sm-6", maxlength: 20 %>
+          <%= f.label :year, t("requesting.label.year"), class: "col-md-3 col-form-label text-md-right" %>
+          <div class="col-sm-6">
+            <%= f.text_field :year, class: "form-control", maxlength: 20 %>
+          </div>
           <span id="year-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.year") %></span>
         </div>
         <div class="form-group row">
-          <%= f.label :volume, t("requesting.label.volume"), class: "col col-form-label" %>
-          <%= f.text_field :volume, class: "form-control col-sm-6", maxlength: 80 %>
+          <%= f.label :volume, t("requesting.label.volume"), class: "col-md-3 col-form-label text-md-right" %>
+          <div class="col-sm-6">
+            <%= f.text_field :volume, class: "form-control", maxlength: 80 %>
+          </div>
           <span id="volume-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.volume") %></span>
         </div>
         <div class="form-group row">
-          <%= f.label :chronology, t("requesting.label.enumeration"), class: "col col-form-label" %>
-          <%= f.text_field :chronology, class: "form-control col-sm-6", maxlength: 80 %>
+          <%= f.label :chronology, t("requesting.label.enumeration"), class: "col-md-3 col-form-label text-md-right" %>
+          <div class="col-sm-6">
+            <%= f.text_field :chronology, class: "form-control", maxlength: 80 %>
+          </div>
           <span id="enumeration-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.enumeration") %></span>
         </div>
       <% end %>
       <div class="form-group row">
-        <%= f.label :notes, t("requesting.label.notes"), class: "col col-form-label" %>
-        <%= f.text_area :notes, class: "form-control col-sm-6", maxlength: 100 %>
+        <%= f.label :notes, t("requesting.label.notes"), class: "col-md-3 col-form-label text-md-right" %>
+        <div class="col-sm-6">
+          <%= f.text_area :notes, class: "form-control", maxlength: 100 %>
+        </div>
         <span id="notes-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.notes") %></span>
       </div>
 
       <div class="form-group row">
-        <div class="col"></div>
-        <div class="col-sm-6 pl-0 pr-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary" %></div>
+        <!--<div class="col"></div>-->
+        <div class="offset-md-3 col-sm-6 pr-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary" %></div>
         <div class="col-sm-3"></div>
       </div>
     <% end %>
