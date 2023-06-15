@@ -78,7 +78,9 @@ class RelatedRecordsComponent < ViewComponent::Base
       text << helpers.t("related_records.collection_total", url: parent_collection_url, total: formatted_sibling_count)
     end
 
+    # rubocop:disable Rails/OutputSafety
     text.join("<br>").html_safe
+    # rubocop:enable Rails/OutputSafety
   end
 
   def base_icon

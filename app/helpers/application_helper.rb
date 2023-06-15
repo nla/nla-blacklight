@@ -69,7 +69,7 @@ module ApplicationHelper
       "(not found)"
     end
   end
-  
+
   private
 
   def makelink_eresource(href)

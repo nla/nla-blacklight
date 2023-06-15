@@ -52,10 +52,10 @@ class RelatedRecords
 
   private
 
-  def fetch_child_count
+  def fetch_count(id)
     search_service = Blacklight.repository_class.new(blacklight_config)
     response = search_service.search(
-      q: "parent_id_ssi:\"#{collection_id}\"",
+      q: "parent_id_ssi:\"#{id}\"",
       rows: 0
     )
     if response.present? && response["response"].present?
@@ -63,51 +63,29 @@ class RelatedRecords
     else
       0
     end
+  end
+
+  def fetch_child_count
+    fetch_count(collection_id)
   end
 
   def fetch_sibling_count
-    search_service = Blacklight.repository_class.new(blacklight_config)
-    response = search_service.search(
-      q: "parent_id_ssi:\"#{parent_id}\"",
-      rows: 0
-    )
-    if response.present? && response["response"].present?
-      response["response"]["numFound"]
-    else
-      0
-    end
+    fetch_count(parent_id)
   end
 
   def fetch_parent
-    search_service = Blacklight.repository_class.new(blacklight_config)
-    response = search_service.search(
-      q: "collection_id_ssi:\"#{parent_id}\"",
-      fl: "id,title_tsim",
-      sort: "score desc, pub_date_si desc, title_si asc",
-      rows: 1
-    )
-    if response.present? && response["response"].present?
-      response["response"]["docs"].map do |doc|
-        {id: doc["id"], title: doc["title_tsim"]}
-      end
-    end
-  end
-
-  # Fetches the first 3 children records of a collection. Filters out the
-  # currently viewed record, to avoid redundantly displaying/linking
-  # to the current record.
-  def fetch_children
-    search_service = Blacklight.repository_class.new(blacklight_config)
-    response = search_service.search(
-      q: "parent_id_ssi:\"#{collection_id}\"",
-      fq: ["-filter(id:#{document.id})"],
-      fl: "id,title_tsim",
-      sort: "score desc, pub_date_si desc, title_si asc",
-      rows: 3
-    )
-    if response.present? && response["response"].present?
-      response["response"]["docs"].map do |doc|
-        {id: doc["id"], title: doc["title_tsim"]}
+    if parent_id.present?
+      search_service = Blacklight.repository_class.new(blacklight_config)
+      response = search_service.search(
+        q: "collection_id_ssi:\"#{parent_id}\"",
+        fl: "id,title_tsim",
+        sort: "score desc, pub_date_si desc, title_si asc",
+        rows: 1
+      )
+      if response.present? && response["response"].present?
+        response["response"]["docs"].map do |doc|
+          {id: doc["id"], title: doc["title_tsim"]}
+        end
       end
     end
   end
