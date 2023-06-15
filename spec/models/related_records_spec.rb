@@ -6,25 +6,10 @@ RSpec.describe RelatedRecords do
   let(:document) { SolrDocument.new(marc_ss: sample_marc) }
   let(:collection_id) { "" }
 
-  describe "#collection_id" do
-    let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
-
-    it "returns the collection_id_ssi value" do
-      expect(record.collection_id).to eq "(AuCNLDY)318537"
-    end
-  end
-
-  describe "#parent_id" do
-    let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
-
-    it "returns the parent_id_ssi value" do
-      expect(record.parent_id).to eq "(AKIN)23783872"
-    end
-  end
-
   describe "#in_collection?" do
-    context "when record only has a collection_id_ssi value and has children" do
-      let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
+    context "when record only has a collection_id value and has children" do
+      let(:document) { SolrDocument.new(marc_ss: sample_marc) }
+      let(:collection_id) { "(AuCNLDY)318537" }
 
       it "returns true" do
         WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
@@ -40,8 +25,8 @@ RSpec.describe RelatedRecords do
       end
     end
 
-    context "when record only has a collection_id_ssi value and no children" do
-      let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
+    context "when record only has a collection_id value and no children" do
+      let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
       it "returns false" do
         WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
@@ -57,8 +42,12 @@ RSpec.describe RelatedRecords do
       end
     end
 
-    context "when record has only a parent_id_ssi value" do
-      let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
+    context "when record has only a parent_id value" do
+      before do
+        record.parent_id = "(AKIN)23783872"
+      end
+
+      let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
       it "returns true" do
         expect(record.in_collection?).to be true
@@ -76,6 +65,11 @@ RSpec.describe RelatedRecords do
 
   describe "#collection_name" do
     context "when the MARCXML contains the collection name" do
+      before do
+        record.subfield = "773"
+        record.parent_id = "(AKIN)23783872"
+      end
+
       let(:document) { SolrDocument.new(marc_ss: child_marc) }
 
       it "returns the value as a single string" do
@@ -122,7 +116,12 @@ RSpec.describe RelatedRecords do
 
   describe "#parent" do
     context "when there is a parent_id" do
-      let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
+      before do
+        record.subfield = "773"
+        record.parent_id = "(AKIN)23783872"
+      end
+
+      let(:document) { SolrDocument.new(marc_ss: child_marc, parent_id_ssi: "(AKIN)23783872") }
 
       it "returns the parent record" do
         WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22.*%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
@@ -148,7 +147,7 @@ RSpec.describe RelatedRecords do
   end
 
   describe "#child_count" do
-    let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
+    let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
     it "returns the result count" do
       WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
@@ -178,7 +177,7 @@ RSpec.describe RelatedRecords do
   end
 
   describe "#sibling_count" do
-    let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
+    let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
     it "returns the result count" do
       WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)

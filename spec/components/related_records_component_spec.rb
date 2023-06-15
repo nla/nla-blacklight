@@ -7,57 +7,11 @@ RSpec.describe RelatedRecordsComponent, type: :component do
   let(:field_config) { Blacklight::Configuration::Field.new(key: "related_records", label: "Related Records", accessor: :related_records, component: described_class) }
   let(:document) { SolrDocument.new }
   let(:related_records) { document.related_records }
-
-  # before do
-  # WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
-  #   .with(
-  #     headers: {
-  #       "Accept" => "*/*",
-  #       "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-  #     }
-  #   )
-  #   .to_return(status: 200, body: child_count_query_response, headers: {})
-  #
-  # WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&fq=-filter\(id:.*\)&q=parent_id_ssi:%22.*%22&rows=3&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
-  #   .with(
-  #     headers: {
-  #       "Accept" => "*/*",
-  #       "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-  #     }
-  #   )
-  #   .to_return(status: 200, body: children_query_response, headers: {})
-  #
-  # WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&fq=-filter\(id:554321\)&q=parent_id_ssi:%22(AKIN)23783872%22&rows=3&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
-  #   .with(
-  #     headers: {
-  #       "Accept" => "*/*",
-  #       "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-  #     }
-  #   )
-  #   .to_return(status: 200, body: filtered_query_response, headers: {})
-  #
-  # WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22.*%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
-  #   .with(
-  #     headers: {
-  #       "Accept" => "*/*",
-  #       "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-  #     }
-  #   )
-  #   .to_return(status: 200, body: parent_query_response, headers: {})
-  #
-  # WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22unknown%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
-  #   .with(
-  #     headers: {
-  #       "Accept" => "*/*",
-  #       "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-  #     }
-  #   )
-  #   .to_return(status: 200, body: no_parent_query_response, headers: {})
-  # end
+  let(:collection_id) { "" }
 
   context "when record is a parent in a collection" do
     before do
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22\(AuCNLDY\)318537%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22\(AKIN\)14156869%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -66,7 +20,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         )
         .to_return(status: 200, body: child_count_query_response, headers: {})
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22\(AuCNLDY\)318537%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22\(AKIN\)14156869%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -76,23 +30,23 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         .to_return(status: 200, body: no_parent_query_response, headers: {})
     end
 
-    let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
+    let(:document) { SolrDocument.new(marc_ss: parent_record_marc) }
 
     it "states this is a collection" do
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records.first))
 
       expect(page.text).to include "This is a collection"
     end
 
     it "links to the collection" do
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records.first))
 
       expect(page.text).to include "This collection contains"
-      expect(page).to have_link("8 records", href: "/catalog?q=%22%28AuCNLDY%29318537%22&search_field=in_collection")
+      expect(page).to have_link("8 records", href: "/catalog?q=%22%28AKIN%2914156869%22&search_field=in_collection")
     end
 
     it "renders the 'two-level parent' hierarchy icon" do
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records.first))
 
       expect(page).to have_css("#two-level-parent")
     end
@@ -128,24 +82,24 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         .to_return(status: 200, body: parent_query_response, headers: {})
     end
 
-    let(:document) { SolrDocument.new(marc_ss: child_record_marc, parent_id_ssi: "(AKIN)23783872", collection_id_ssi: "(AuCNLDY)318537") }
+    let(:document) { SolrDocument.new(marc_ss: child_record_marc) }
 
     it "states this is a collection" do
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records.first))
 
       expect(page.text).to include "This belongs to the"
       expect(page).to have_link("Land Rights camp at Heirisson Island, Western Australia, 1978", href: "/catalog/3044380")
     end
 
     it "links to the collection" do
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records.first))
 
       expect(page.text).to include "This collection contains"
       expect(page).to have_link("11 records", href: "/catalog?q=%22%28AKIN%2923783872%22&search_field=in_collection")
     end
 
     it "renders the 'two-level child' hierarchy icon" do
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records.first))
 
       expect(page).to have_css("#two-level-child")
     end
@@ -190,31 +144,31 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         .to_return(status: 200, body: parent_response.to_json, headers: {})
     end
 
-    let(:document) { SolrDocument.new(marc_ss: child_parent_record_marc, parent_id_ssi: "(AKIN)24850123", collection_id_ssi: "(AKIN)10887198") }
+    let(:document) { SolrDocument.new(marc_ss: child_parent_record_marc) }
 
     it "states this is a collection" do
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records.first))
 
       expect(page.text).to include "This is part of the"
       expect(page).to have_link("Dunlop family photograph albums", href: "/catalog/1586062")
     end
 
     it "links to sibling collections" do
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records.first))
 
       expect(page.text).to include "There are"
       expect(page).to have_link("5 related collections", href: "/catalog?q=%22%28AKIN%2924850123%22&search_field=in_collection")
     end
 
     it "links to the collection" do
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records.first))
 
       expect(page.text).to include "This collection contains"
       expect(page).to have_link("177 records", href: "/catalog?q=%22%28AKIN%2910887198%22&search_field=in_collection")
     end
 
     it "renders the 'three-level child' hierarchy icon" do
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records.first))
 
       expect(page).to have_css("#three-level-child")
     end
@@ -233,7 +187,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         )
         .to_return(status: 200, body: "", headers: {})
 
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records))
 
       expect(page.text).not_to include "Related Records:"
     end
@@ -266,6 +220,10 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         <subfield code='q'>(Ian J.)</subfield>
       </datafield>
     </record>"
+  end
+
+  def parent_record_marc
+    load_marc_from_file 1585818
   end
 
   def child_record_marc
