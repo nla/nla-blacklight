@@ -7,15 +7,10 @@
   </div>
 </div>
 <script>
-  let threeLevelChild = document.querySelectorAll(".three-level-child rect");
-  let twoLevelParent = document.querySelectorAll(".two-level-parent rect");
-  let twoLevelChild = document.querySelectorAll(".two-level-child rect");
-
-  const siblingLink = document.querySelector("a.sibling");
-
-
-  if (threeLevelChild.length > 0) {
+  if (document.querySelectorAll(".three-level-child rect").length > 0) {
+    let threeLevelChild = document.querySelectorAll(".three-level-child rect");
     let parentLink = document.querySelector(".related-three-level a.parent");
+
     if (parentLink) {
       parentLink.addEventListener("mouseover", () => {
         threeLevelChild[0].setAttribute("fill", "#34075B");
@@ -55,8 +50,10 @@
     }
   }
 
-  if (twoLevelParent.length > 0) {
+  if (document.querySelectorAll(".two-level-parent rect").length > 0) {
+    let twoLevelParent = document.querySelectorAll(".two-level-parent rect");
     let childLink = document.querySelector(".related-two-level a.child");
+
     if (childLink) {
       childLink.addEventListener("mouseover", () => {
         twoLevelParent[1].setAttribute("fill", "#34075B");
@@ -72,8 +69,10 @@
     }
   }
 
-  if (twoLevelChild.length > 0) {
+  if (document.querySelectorAll(".two-level-child rect").length > 0) {
+    let twoLevelChild = document.querySelectorAll(".two-level-child rect");
     let parentLink = document.querySelector(".related-two-level a.parent");
+
     if (parentLink) {
       parentLink.addEventListener("mouseover", () => {
         twoLevelChild[0].setAttribute("fill", "#34075B");
