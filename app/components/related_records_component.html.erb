@@ -1,15 +1,100 @@
-<% if collection_name.present? %>
-  <p>This record belongs to the
-    <% if collection_url.present? %>
-      <%= link_to "#{collection_name} collection.", collection_url %>
-    <% else %>
-      <%= "#{collection_name} collection." %>
-    <% end %></p>
-<% end %>
-<p class="mb-0">This collection is made up of <%= "#{formatted_collection_count} #{'record'.pluralize(collection_count)}" %>:</p>
-<ul class="list-unstyled">
-  <% child_records.each do |record| %>
-    <li><%= link_to record[:title].first, solr_document_path(id: record[:id]) %></li>
-  <% end %>
-</ul>
-<%= link_to "View all #{formatted_collection_count} #{'record'.pluralize(collection_count)}", collection_records_url, class: "btn btn-outline-secondary" %>
+<div class="<%= hierarchy_class %>">
+  <div class="image <%= icon_class %>">
+    <%= base_icon %>
+  </div>
+  <div class="hierarchy">
+    <p><%= collection_text %></p>
+  </div>
+</div>
+<script>
+  let threeLevelChild = document.querySelectorAll(".three-level-child rect");
+  let twoLevelParent = document.querySelectorAll(".two-level-parent rect");
+  let twoLevelChild = document.querySelectorAll(".two-level-child rect");
+
+  const siblingLink = document.querySelector("a.sibling");
+
+
+  if (threeLevelChild.length > 0) {
+    let parentLink = document.querySelector(".related-three-level a.parent");
+    if (parentLink) {
+      parentLink.addEventListener("mouseover", () => {
+        threeLevelChild[0].setAttribute("fill", "#34075B");
+      });
+
+      parentLink.addEventListener("mouseout", () => {
+        threeLevelChild[0].setAttribute("fill", "#FFFFFF");
+      });
+    }
+
+    let siblingLink = document.querySelector(".related-three-level a.sibling");
+    if (siblingLink) {
+      siblingLink.addEventListener("mouseover", () => {
+        threeLevelChild[1].setAttribute("fill", "#34075B");
+        threeLevelChild[2].setAttribute("fill", "#34075B");
+      });
+
+      siblingLink.addEventListener("mouseout", () => {
+        threeLevelChild[1].setAttribute("fill", "#FFFFFF");
+        threeLevelChild[2].setAttribute("fill", "#FFFFFF");
+      });
+    }
+
+    let childLink = document.querySelector(".related-three-level a.child");
+    if (childLink) {
+      childLink.addEventListener("mouseover", () => {
+        threeLevelChild[4].setAttribute("fill", "#34075B");
+        threeLevelChild[5].setAttribute("fill", "#34075B");
+        threeLevelChild[6].setAttribute("fill", "#34075B");
+      });
+
+      childLink.addEventListener("mouseout", () => {
+        threeLevelChild[4].setAttribute("fill", "#FFFFFF");
+        threeLevelChild[5].setAttribute("fill", "#FFFFFF");
+        threeLevelChild[6].setAttribute("fill", "#FFFFFF");
+      });
+    }
+  }
+
+  if (twoLevelParent.length > 0) {
+    let childLink = document.querySelector(".related-two-level a.child");
+    if (childLink) {
+      childLink.addEventListener("mouseover", () => {
+        twoLevelParent[1].setAttribute("fill", "#34075B");
+        twoLevelParent[2].setAttribute("fill", "#34075B");
+        twoLevelParent[3].setAttribute("fill", "#34075B");
+      });
+
+      childLink.addEventListener("mouseout", () => {
+        twoLevelParent[1].setAttribute("fill", "#FFFFFF");
+        twoLevelParent[2].setAttribute("fill", "#FFFFFF");
+        twoLevelParent[3].setAttribute("fill", "#FFFFFF");
+      });
+    }
+  }
+
+  if (twoLevelChild.length > 0) {
+    let parentLink = document.querySelector(".related-two-level a.parent");
+    if (parentLink) {
+      parentLink.addEventListener("mouseover", () => {
+        twoLevelChild[0].setAttribute("fill", "#34075B");
+      });
+
+      parentLink.addEventListener("mouseout", () => {
+        twoLevelChild[0].setAttribute("fill", "#FFFFFF");
+      });
+    }
+
+    let childLink = document.querySelector(".related-two-level a.child");
+    if (childLink) {
+      childLink.addEventListener("mouseover", () => {
+        twoLevelChild[1].setAttribute("fill", "#34075B");
+        twoLevelChild[2].setAttribute("fill", "#34075B");
+      });
+
+      childLink.addEventListener("mouseout", () => {
+        twoLevelChild[1].setAttribute("fill", "#FFFFFF");
+        twoLevelChild[2].setAttribute("fill", "#FFFFFF");
+      });
+    }
+  }
+</script>

@@ -94,3 +94,9 @@ en:
       title: "Wikipedia"
       help: "<p>Please see <a href=\"https://en.wikipedia.org/wiki/Template:Citation\">Wikipedia's template documentation</a> for further citation fields that may be required.</p>"
     test: "Test"
+  related_records:
+    parent_collection: "This is a collection."
+    child_collection: "This belongs to the <a href=\"%{url}\" class=\"parent\">%{collection_name}</a>."
+    parent_child_collection: "This is part of the <a href=\"%{url}\" class=\"parent\">%{collection_name}</a>."
+    related_collection_total: "There are <a href=\"%{url}\" class=\"sibling\">%{total} related collections</a>."
+    collection_total: "This collection contains <a href=\"%{url}\" class=\"child\">%{total} records</a>."

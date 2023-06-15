@@ -9,33 +9,19 @@ class RelatedRecords
   end
 
   def collection_id
-    @collection_id ||= if child?
-      document.fetch("parent_id_ssi")
-    else
-      document.fetch("collection_id_ssi")
-    end
+    @collection_id ||= document.fetch("collection_id_ssi")
   rescue KeyError
     nil
   end
 
-  def parent?
-    @parent ||= document.fetch("collection_id_ssi").present?
+  def parent_id
+    @parent_id ||= document.fetch("parent_id_ssi")
   rescue KeyError
-    false
-  end
-
-  def child?
-    @child ||= document.fetch("parent_id_ssi").present?
-  rescue KeyError
-    false
+    nil
   end
 
   def in_collection?
-    child? || (parent? && has_children?)
-  end
-
-  def has_children?
-    parent? && collection_count > 0
+    collection_id.present? || parent_id.present?
   end
 
   def collection_name
@@ -44,24 +30,32 @@ class RelatedRecords
     title.join
   end
 
-  def parent_record
+  def has_parent?
+    parent.present?
+  end
+
+  def has_children?
+    child_count > 0
+  end
+
+  def parent
     @parent ||= fetch_parent
   end
 
-  def child_records
-    @children ||= fetch_children
+  def child_count
+    @child_count ||= fetch_child_count
   end
 
-  def collection_count
-    @count ||= fetch_count
+  def sibling_count
+    @sibling_count ||= fetch_sibling_count
   end
 
   private
 
-  def fetch_count
+  def fetch_count(id)
     search_service = Blacklight.repository_class.new(blacklight_config)
     response = search_service.search(
-      q: "parent_id_ssi:\"#{collection_id}\"",
+      q: "parent_id_ssi:\"#{id}\"",
       rows: 0
     )
     if response.present? && response["response"].present?
@@ -71,41 +65,28 @@ class RelatedRecords
     end
   end
 
-  def fetch_parent
-    search_service = Blacklight.repository_class.new(blacklight_config)
-    response = search_service.search(
-      q: "collection_id_ssi:\"#{collection_id}\"",
-      fl: "id,title_tsim",
-      sort: "score desc, pub_date_si desc, title_si asc",
-      rows: 1
-    )
-    if response.present? && response["response"].present?
-      response["response"]["docs"].map do |doc|
-        {id: doc["id"], title: doc["title_tsim"]}
-      end
-    else
-      []
-    end
+  def fetch_child_count
+    fetch_count(collection_id)
   end
 
-  # Fetches the first 3 children records of a collection. Filters out the
-  # currently viewed record, to avoid redundantly displaying/linking
-  # to the current record.
-  def fetch_children
-    search_service = Blacklight.repository_class.new(blacklight_config)
-    response = search_service.search(
-      q: "parent_id_ssi:\"#{collection_id}\"",
-      fq: ["-filter(id:#{document.id})"],
-      fl: "id,title_tsim",
-      sort: "score desc, pub_date_si desc, title_si asc",
-      rows: 3
-    )
-    if response.present? && response["response"].present?
-      response["response"]["docs"].map do |doc|
-        {id: doc["id"], title: doc["title_tsim"]}
+  def fetch_sibling_count
+    fetch_count(parent_id)
+  end
+
+  def fetch_parent
+    if parent_id.present?
+      search_service = Blacklight.repository_class.new(blacklight_config)
+      response = search_service.search(
+        q: "collection_id_ssi:\"#{parent_id}\"",
+        fl: "id,title_tsim",
+        sort: "score desc, pub_date_si desc, title_si asc",
+        rows: 1
+      )
+      if response.present? && response["response"].present?
+        response["response"]["docs"].map do |doc|
+          {id: doc["id"], title: doc["title_tsim"]}
+        end
       end
-    else
-      []
     end
   end
 end
