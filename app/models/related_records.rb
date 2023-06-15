@@ -2,32 +2,40 @@ class RelatedRecords
   include ActiveModel::Model
   include Blacklight::Configurable
 
-  attr_accessor :document
+  attr_reader :document, :collection_id
+  attr_accessor :parent_id, :subfield
 
-  def initialize(document)
+  def initialize(document, collection_id)
     @document = document
-  end
-
-  def collection_id
-    @collection_id ||= document.fetch("collection_id_ssi")
-  rescue KeyError
-    nil
-  end
-
-  def parent_id
-    @parent_id ||= document.fetch("parent_id_ssi")
-  rescue KeyError
-    nil
+    @collection_id = collection_id
   end
 
   def in_collection?
-    (collection_id.present? && has_children?) || parent_id.present?
+    (@collection_id.present? && has_children?) || @parent_id.present?
   end
 
   def collection_name
-    title = document.get_marc_derived_field("773abdghkmnopqrstuxyz34678")
-    title = document.get_marc_derived_field("973abdghkmnopqrstuxyz34678") if title.blank?
-    title.join
+    title = []
+
+    if @subfield == "773"
+      title_773 = document.get_marc_derived_field("773abdghkmnopqrstuxyz34678w")
+      title_773.each do |t|
+        if t.include?(@parent_id)
+          title << t.delete_suffix(" #{@parent_id}")
+        end
+      end
+    end
+
+    if @subfield == "973"
+      title_973 = document.get_marc_derived_field("973abdghkmnopqrstuxyz34678w")
+      title_973.each do |t|
+        if t.include?(@parent_id)
+          title << t.delete_suffix(" #{@parent_id}")
+        end
+      end
+    end
+
+    title.join("")
   end
 
   def has_parent?
@@ -55,7 +63,7 @@ class RelatedRecords
   def fetch_count(id)
     search_service = Blacklight.repository_class.new(blacklight_config)
     response = search_service.search(
-      q: "parent_id_ssi:\"#{id}\"",
+      q: "parent_id_ssim:\"#{id}\"",
       rows: 0
     )
     if response.present? && response["response"].present?
@@ -66,18 +74,18 @@ class RelatedRecords
   end
 
   def fetch_child_count
-    fetch_count(collection_id)
+    fetch_count(@collection_id)
   end
 
   def fetch_sibling_count
-    fetch_count(parent_id)
+    fetch_count(@parent_id)
   end
 
   def fetch_parent
-    if parent_id.present?
+    if @parent_id.present?
       search_service = Blacklight.repository_class.new(blacklight_config)
       response = search_service.search(
-        q: "collection_id_ssi:\"#{parent_id}\"",
+        q: "collection_id_ssim:\"#{@parent_id}\"",
         fl: "id,title_tsim",
         sort: "score desc, pub_date_si desc, title_si asc",
         rows: 1

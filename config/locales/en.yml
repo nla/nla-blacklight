@@ -96,7 +96,7 @@ en:
     test: "Test"
   related_records:
     parent_collection: "This is a collection."
-    child_collection: "This belongs to the <a href=\"%{url}\" class=\"parent\">%{collection_name}</a>."
-    parent_child_collection: "This is part of the <a href=\"%{url}\" class=\"parent\">%{collection_name}</a>."
-    related_collection_total: "There are <a href=\"%{url}\" class=\"sibling\">%{total} related collections</a>."
-    collection_total: "This collection contains <a href=\"%{url}\" class=\"child\">%{total} records</a>."
+    child_collection: "This belongs to the <a href=\"%{url}\" class=\"parent\" data-related-records-target=\"link\">%{collection_name}</a>."
+    parent_child_collection: "This is part of the <a href=\"%{url}\" class=\"parent\" data-related-records-target=\"link\">%{collection_name}</a>."
+    related_collection_total: "There are <a href=\"%{url}\" class=\"sibling\" data-related-records-target=\"link\">%{total} related collections</a>."
+    collection_total: "This collection contains <a href=\"%{url}\" class=\"child\" data-related-records-target=\"link\">%{total} records</a>."

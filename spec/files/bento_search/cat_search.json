@@ -1504,7 +1504,7 @@
     },
     {
       "type": "facet",
-      "id": "parent_id_ssi",
+      "id": "parent_id_ssim",
       "attributes": {
         "label": "In Collection",
         "items": [
@@ -1515,7 +1515,7 @@
               "hits": 4
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssi%5D%5B%5D=%28AKIN%2922668350\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AKIN%2922668350\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1525,7 +1525,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssi%5D%5B%5D=%28AKIN%2911546686\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AKIN%2911546686\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1535,7 +1535,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssi%5D%5B%5D=%28AuCNL%293258550\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%293258550\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1545,7 +1545,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssi%5D%5B%5D=%28AuCNL%293563487\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%293563487\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1555,7 +1555,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssi%5D%5B%5D=%28AuCNL%294492592\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%294492592\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1565,7 +1565,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssi%5D%5B%5D=%28AuCNL%294503218\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%294503218\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1575,7 +1575,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssi%5D%5B%5D=%28AuCNL%295728060\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%295728060\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1585,7 +1585,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssi%5D%5B%5D=%28AuCNL%296810316\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%296810316\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1595,18 +1595,18 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssi%5D%5B%5D=%28SUSA%29585230\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28SUSA%29585230\u0026per_page=10\u0026q=smooth"
             }
           }
         ]
       },
       "links": {
-        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/parent_id_ssi.json?per_page=10\u0026q=smooth"
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/parent_id_ssim.json?per_page=10\u0026q=smooth"
       }
     },
     {
       "type": "facet",
-      "id": "collection_id_ssi",
+      "id": "collection_id_ssim",
       "attributes": {
         "label": "Collection",
         "items": [
@@ -1617,7 +1617,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssi%5D%5B%5D=%28AuCNLDY%291040155\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291040155\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1627,7 +1627,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssi%5D%5B%5D=%28AuCNLDY%291056770\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291056770\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1637,7 +1637,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssi%5D%5B%5D=%28AuCNLDY%2911168\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%2911168\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1647,7 +1647,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssi%5D%5B%5D=%28AuCNLDY%29114183\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%29114183\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1657,7 +1657,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssi%5D%5B%5D=%28AuCNLDY%291147092\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291147092\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1667,7 +1667,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssi%5D%5B%5D=%28AuCNLDY%291153985\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291153985\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1677,7 +1677,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssi%5D%5B%5D=%28AuCNLDY%291168664\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291168664\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1687,7 +1687,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssi%5D%5B%5D=%28AuCNLDY%291179181\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291179181\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1697,7 +1697,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssi%5D%5B%5D=%28AuCNLDY%291196384\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291196384\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1707,7 +1707,7 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssi%5D%5B%5D=%28AuCNLDY%291219659\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291219659\u0026per_page=10\u0026q=smooth"
             }
           },
           {
@@ -1717,13 +1717,13 @@
               "hits": 1
             },
             "links": {
-              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssi%5D%5B%5D=%28AuCNLDY%291229840\u0026per_page=10\u0026q=smooth"
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291229840\u0026per_page=10\u0026q=smooth"
             }
           }
         ]
       },
       "links": {
-        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/collection_id_ssi.json?per_page=10\u0026q=smooth"
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/collection_id_ssim.json?per_page=10\u0026q=smooth"
       }
     },
     {

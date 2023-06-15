@@ -584,8 +584,67 @@ class SolrDocument
   end
 
   def get_related_records
-    related = RelatedRecords.new(self)
-    related.in_collection? ? related : []
+    ids = get_marc_derived_field("0359")
+    collection_id = ""
+    if ids.present?
+      ids.each do |id|
+        if id.match(/\(.*\)/)
+          collection_id = id
+          break
+        end
+      end
+    end
+
+    related_records = []
+
+    # Check for related collections in the 773 subfield
+    related_773_records = []
+    related_773 = get_marc_derived_field("773w")
+    related_773.each do |r|
+      rec = RelatedRecords.new(self, collection_id)
+      rec.subfield = "773"
+      rec.parent_id = r
+      related_773_records << rec if rec.in_collection?
+    end
+
+    # Check for related collections in the 973 subfield
+    related_973_records = []
+    related_973 = get_marc_derived_field("973w")
+    related_973.each do |r|
+      rec = RelatedRecords.new(self, collection_id)
+      rec.subfield = "973"
+      rec.parent_id = r
+      related_973_records << rec if rec.in_collection?
+    end
+
+    # If there are no 973 or 773 records, but there is a collection ID, then this could be a
+    # parent collection.
+    if related_773_records.blank? && related_973_records.blank?
+      related_records << RelatedRecords.new(self, collection_id)
+    else
+      related_records += related_773_records
+      related_records += related_973_records
+    end
+
+    if related_records.present?
+      # Check if any of any of the collections this record belongs to is really a collection,
+      # because it's possible for a parent collection not to have any children.
+      visible = false
+      related_records.each do |rec|
+        if rec.in_collection?
+          visible = true
+          break
+        end
+      end
+
+      # There is at least one collection, so let's render the Related Records section
+      if visible
+        return related_records
+      end
+    end
+
+    # Record is not part of any collection, return an empty array
+    []
   end
 
   def format_contents(data)
