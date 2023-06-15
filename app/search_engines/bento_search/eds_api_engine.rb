@@ -7,7 +7,7 @@ module BentoSearch
     def search_implementation(args)
       session = EBSCO::EDS::Session.new({
         caller: "blacklight-bento-search",
-        debug: ENV.fetch("EDS_DEBUG", true),
+        debug: ENV.fetch("EDS_DEBUG", false),
         profile: ENV["EDS_PROFILE"],
         guest: false,
         user: ENV["EDS_USER"],
@@ -29,6 +29,10 @@ module BentoSearch
           highlight: false,
           include_facets: false
         }
+
+        if args[:search_field]
+          sq["search_field"] = args[:search_field]
+        end
 
         response = session.search(sq, add_actions: false)
         total_hits = response.stat_total_hits
@@ -84,13 +88,7 @@ module BentoSearch
     end
 
     def construct_query(args)
-      query = "AND,"
-      if args[:search_field]
-        query += "#{args[:search_field]}:"
-      end
-      # Can't have any commas in query, it turns out, although
-      # this is not documented.
-      query + args[:query].gsub(",", " ")
+      args[:query].gsub(",", " ")
     end
 
     def prepare_ebsco_eds_payload(str, html_safe = false)
