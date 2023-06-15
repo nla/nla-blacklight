@@ -21,7 +21,7 @@ class RelatedRecords
   end
 
   def in_collection?
-    collection_id.present? || parent_id.present?
+    (collection_id.present? && has_children?) || parent_id.present?
   end
 
   def collection_name
