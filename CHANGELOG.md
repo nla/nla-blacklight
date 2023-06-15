@@ -1,5 +1,56 @@
 # Changelog
 
+## [2.1.0](https://github.com/nla/nla-blacklight/compare/2.0.0...2.1.0) (2023-06-15)
+
+
+### Features
+
+* add persistent identifier ([08e73ce](https://github.com/nla/nla-blacklight/commit/08e73ce197e5faf76859644831975180951edb81))
+* add persistent identifier ([0b3f785](https://github.com/nla/nla-blacklight/commit/0b3f78550fd14a972010f63330cb90679c0f71dc))
+* extend stimulus-clipboard to only copy text not HTML ([b4b5bc9](https://github.com/nla/nla-blacklight/commit/b4b5bc9d863e0a7c36dd25b83d46bd16a3c8d67c))
+* implement Harvard citation ([ed1fcbc](https://github.com/nla/nla-blacklight/commit/ed1fcbc124386b34dbdc92f6badcadc19e1397b7))
+* implement heirarchy icon hover states ([cfc8f68](https://github.com/nla/nla-blacklight/commit/cfc8f68790e7039946522115062b1da1fcb501de))
+* implement related records wording and links ([b694724](https://github.com/nla/nla-blacklight/commit/b69472498d4a2248d316ddeee699c0f3034cbb31))
+* implement Wikipedia citation format ([03dfdde](https://github.com/nla/nla-blacklight/commit/03dfdde3be87bbc570926c826ba41634f28addf6))
+* integrate stimulus-clipboard button ([010be8f](https://github.com/nla/nla-blacklight/commit/010be8f339a62a80b11030e89237fbab47513542))
+* load and inline svg from file ([0db7a35](https://github.com/nla/nla-blacklight/commit/0db7a350749df74ec5fb030b7c6f09e22366a266))
+* remove Chicago and re-implement APA and MLA citations ([94694ed](https://github.com/nla/nla-blacklight/commit/94694ed58399872395ca55952c51fd9660a8bb78))
+
+
+### Bug Fixes
+
+* add NLA favicon ([c602520](https://github.com/nla/nla-blacklight/commit/c602520c85894065117b3262b0ede64856e9f337))
+* change colour of copy citation icon ([7241415](https://github.com/nla/nla-blacklight/commit/7241415bd03d7bc9dba54766c55cfa061c33f79a))
+* clean up tests and verify change to #in-collection? ([e763fce](https://github.com/nla/nla-blacklight/commit/e763fce85f2f72b91312f01fc38519d3c8e7c89a))
+* fix citation format errors ([31c100b](https://github.com/nla/nla-blacklight/commit/31c100bcb6fa43e725c10330004ab2309316904a))
+* fix heirarchy hover states ([974c321](https://github.com/nla/nla-blacklight/commit/974c3211638dcc02192d5dcf4469434fa95ef396))
+* minor accessibility improvements to PI citation ([6ff0a0c](https://github.com/nla/nla-blacklight/commit/6ff0a0c79bbc19a2d070162510e9316fdcb97ac3))
+* UI align elements in request ([cd7b28e](https://github.com/nla/nla-blacklight/commit/cd7b28e98bd028aefa0fcb15db5e3763f80152ed))
+* update #in_collection? to check if collection has children ([b1ed97d](https://github.com/nla/nla-blacklight/commit/b1ed97dfb7461249ff7bfe1ca569610d6c4a9c02))
+
+
+### Code Refactoring
+
+* make parent citation service ([dd40c40](https://github.com/nla/nla-blacklight/commit/dd40c4095d44a1f645a6e62ecc5c72e2b80c914c))
+* pass event in `copy` function of clipboard controller ([7f36b53](https://github.com/nla/nla-blacklight/commit/7f36b53f4e00f1665b195a79d7ed1cf522680ec9))
+* refactor other authors citation ([34a99fc](https://github.com/nla/nla-blacklight/commit/34a99fce0f438eca2f08fc12bed2a775ce59c0c6))
+* remove overridden Blacklight citation components ([f2540e5](https://github.com/nla/nla-blacklight/commit/f2540e5d434bd67222abdf6ba253e12f537fc551))
+* remove unnecessary function in clipboard controller ([602cf51](https://github.com/nla/nla-blacklight/commit/602cf510ce5ba00620b9615265a768461327df85))
+
+
+### Tests
+
+* add citation service tests and more refactoring ([4e9c190](https://github.com/nla/nla-blacklight/commit/4e9c1901f90c68446f0f6e27e0eb911ddd7c0b59))
+* modify tests to reflect change in implementation ([052723a](https://github.com/nla/nla-blacklight/commit/052723aaae0f7370f202b7a8ea472750922e5032))
+* update citation specs ([bca4829](https://github.com/nla/nla-blacklight/commit/bca48296b380c3f2d126002e12f893deaa122537))
+
+
+### Miscellaneous
+
+* point dependencies back to "main"/"master" branches ([2730f9b](https://github.com/nla/nla-blacklight/commit/2730f9b20363454658a46f37a995957915ee3306))
+* remove console.logs ([8a86bf1](https://github.com/nla/nla-blacklight/commit/8a86bf19b6ae8d2d14c830808fac56ec128ad412))
+* turn on debug logs for EDS API ([488e6e5](https://github.com/nla/nla-blacklight/commit/488e6e5974b139379809811a70c75a42c46a51d2))
+
 ## [2.0.0](https://github.com/nla/nla-blacklight/compare/1.1.0...2.0.0) (2023-06-13)
 
 
