@@ -33,6 +33,8 @@ Rails.application.routes.draw do
     end
   end
 
+  get "/thumbnail/:id", to: "thumbnail#thumbnail", as: "thumbnail"
+
   # bento search
   get "/search", to: "search#index", as: "bento_search_index"
   get "/search/:engine", to: "search#single_search", as: "bento_single_search"
