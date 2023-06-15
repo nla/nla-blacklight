@@ -7,7 +7,7 @@ module BentoSearch
     def search_implementation(args)
       session = EBSCO::EDS::Session.new({
         caller: "blacklight-bento-search",
-        debug: false,
+        debug: ENV.fetch("EDS_DEBUG", true),
         profile: ENV["EDS_PROFILE"],
         guest: false,
         user: ENV["EDS_USER"],
