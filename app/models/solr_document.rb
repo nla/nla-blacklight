@@ -597,16 +597,6 @@ class SolrDocument
 
     related_records = []
 
-    # Check for related collections in the 973 subfield
-    related_973_records = []
-    related_973 = get_marc_derived_field("973w")
-    related_973.each do |r|
-      rec = RelatedRecords.new(self, collection_id)
-      rec.subfield = "973"
-      rec.parent_id = r
-      related_973_records << rec if rec.in_collection?
-    end
-
     # Check for related collections in the 773 subfield
     related_773_records = []
     related_773 = get_marc_derived_field("773w")
@@ -617,13 +607,23 @@ class SolrDocument
       related_773_records << rec if rec.in_collection?
     end
 
+    # Check for related collections in the 973 subfield
+    related_973_records = []
+    related_973 = get_marc_derived_field("973w")
+    related_973.each do |r|
+      rec = RelatedRecords.new(self, collection_id)
+      rec.subfield = "973"
+      rec.parent_id = r
+      related_973_records << rec if rec.in_collection?
+    end
+
     # If there are no 973 or 773 records, but there is a collection ID, then this could be a
     # parent collection.
-    if related_973_records.blank? && related_773_records.blank?
+    if related_773_records.blank? && related_973_records.blank?
       related_records << RelatedRecords.new(self, collection_id)
     else
-      related_records += related_973_records
       related_records += related_773_records
+      related_records += related_973_records
     end
 
     if related_records.present?

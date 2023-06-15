@@ -11,7 +11,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
 
   context "when record is a parent in a collection" do
     before do
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22\(AKIN\)14156869%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22\(AKIN\)14156869%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -20,7 +20,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         )
         .to_return(status: 200, body: child_count_query_response, headers: {})
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22\(AKIN\)14156869%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)14156869%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -54,7 +54,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
 
   context "when records is a child in a collection" do
     before do
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22\(AuCNLDY\)318537%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22\(AuCNLDY\)318537%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -63,7 +63,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         )
         .to_return(status: 200, body: no_count_response, headers: {})
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22\(AKIN\)23783872%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22\(AKIN\)23783872%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -72,7 +72,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         )
         .to_return(status: 200, body: sibling_count_response, headers: {})
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22\(AKIN\)23783872%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)23783872%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -110,7 +110,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
       child_count = JSON.parse(child_count_query_response)
       child_count["response"]["numFound"] = 177
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22\(AKIN\)10887198%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22\(AKIN\)10887198%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -122,7 +122,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
       sibling_count = JSON.parse(sibling_count_response)
       sibling_count["response"]["numFound"] = 5
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22\(AKIN\)24850123%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22\(AKIN\)24850123%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -134,7 +134,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
       parent_response = JSON.parse(parent_query_response)
       parent_response["response"]["docs"][0] = {id: "1586062", title_tsim: "Dunlop family photograph albums"}
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22\(AKIN\)24850123%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)24850123%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -178,7 +178,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
     let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
     it "does not render the collection details" do
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22.*%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",

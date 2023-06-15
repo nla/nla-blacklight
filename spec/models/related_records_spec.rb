@@ -12,7 +12,7 @@ RSpec.describe RelatedRecords do
       let(:collection_id) { "(AuCNLDY)318537" }
 
       it "returns true" do
-        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22.*%22&rows=0&wt=json/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -29,7 +29,7 @@ RSpec.describe RelatedRecords do
       let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
       it "returns false" do
-        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22.*%22&rows=0&wt=json/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -54,7 +54,7 @@ RSpec.describe RelatedRecords do
       end
     end
 
-    context "when record has neither a collection_id_ssi or parent_id_ssi value" do
+    context "when record has neither a collection_id or parent_id value" do
       let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
       it "returns false" do
@@ -85,10 +85,10 @@ RSpec.describe RelatedRecords do
   end
 
   describe "#has_children?" do
-    let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AKIN)23783872") }
+    let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssim: "(AKIN)23783872") }
 
     it "returns true when the result count is greater than 0" do
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22.*%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -101,7 +101,7 @@ RSpec.describe RelatedRecords do
     end
 
     it "returns false when the result count is 0" do
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22.*%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -121,10 +121,10 @@ RSpec.describe RelatedRecords do
         record.parent_id = "(AKIN)23783872"
       end
 
-      let(:document) { SolrDocument.new(marc_ss: child_marc, parent_id_ssi: "(AKIN)23783872") }
+      let(:document) { SolrDocument.new(marc_ss: child_marc) }
 
       it "returns the parent record" do
-        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22.*%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22.*%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -150,7 +150,7 @@ RSpec.describe RelatedRecords do
     let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
     it "returns the result count" do
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22.*%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -163,7 +163,7 @@ RSpec.describe RelatedRecords do
     end
 
     it "returns 0 when there is no response" do
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22.*%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -180,7 +180,7 @@ RSpec.describe RelatedRecords do
     let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
     it "returns the result count" do
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22.*%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -193,7 +193,7 @@ RSpec.describe RelatedRecords do
     end
 
     it "returns 0 when there is no response" do
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22.*%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
