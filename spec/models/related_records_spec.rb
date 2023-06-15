@@ -1,11 +1,12 @@
 require "rails_helper"
 
 RSpec.describe RelatedRecords do
+  subject(:record) { described_class.new(document, collection_id) }
+
   let(:document) { SolrDocument.new(marc_ss: sample_marc) }
+  let(:collection_id) { "" }
 
   describe "#collection_id" do
-    subject(:record) { described_class.new(document) }
-
     let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
 
     it "returns the collection_id_ssi value" do
@@ -14,8 +15,6 @@ RSpec.describe RelatedRecords do
   end
 
   describe "#parent_id" do
-    subject(:record) { described_class.new(document) }
-
     let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
 
     it "returns the parent_id_ssi value" do
@@ -25,8 +24,6 @@ RSpec.describe RelatedRecords do
 
   describe "#in_collection?" do
     context "when record only has a collection_id_ssi value and has children" do
-      subject(:record) { described_class.new(document) }
-
       let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
 
       it "returns true" do
@@ -44,8 +41,6 @@ RSpec.describe RelatedRecords do
     end
 
     context "when record only has a collection_id_ssi value and no children" do
-      subject(:record) { described_class.new(document) }
-
       let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
 
       it "returns false" do
@@ -63,8 +58,6 @@ RSpec.describe RelatedRecords do
     end
 
     context "when record has only a parent_id_ssi value" do
-      subject(:record) { described_class.new(document) }
-
       let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
 
       it "returns true" do
@@ -73,8 +66,6 @@ RSpec.describe RelatedRecords do
     end
 
     context "when record has neither a collection_id_ssi or parent_id_ssi value" do
-      subject(:record) { described_class.new(document) }
-
       let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
       it "returns false" do
@@ -84,8 +75,6 @@ RSpec.describe RelatedRecords do
   end
 
   describe "#collection_name" do
-    subject(:record) { described_class.new(document) }
-
     context "when the MARCXML contains the collection name" do
       let(:document) { SolrDocument.new(marc_ss: child_marc) }
 
@@ -102,8 +91,6 @@ RSpec.describe RelatedRecords do
   end
 
   describe "#has_children?" do
-    subject(:record) { described_class.new(document) }
-
     let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AKIN)23783872") }
 
     it "returns true when the result count is greater than 0" do
@@ -135,8 +122,6 @@ RSpec.describe RelatedRecords do
 
   describe "#parent" do
     context "when there is a parent_id" do
-      subject(:record) { described_class.new(document) }
-
       let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
 
       it "returns the parent record" do
@@ -154,8 +139,6 @@ RSpec.describe RelatedRecords do
     end
 
     context "when there is no parent_id" do
-      subject(:record) { described_class.new(document) }
-
       let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
       it "returns nil" do
@@ -165,8 +148,6 @@ RSpec.describe RelatedRecords do
   end
 
   describe "#child_count" do
-    subject(:record) { described_class.new(document) }
-
     let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
 
     it "returns the result count" do
@@ -197,8 +178,6 @@ RSpec.describe RelatedRecords do
   end
 
   describe "#sibling_count" do
-    subject(:record) { described_class.new(document) }
-
     let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
 
     it "returns the result count" do

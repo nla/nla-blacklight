@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class RelatedRecordsComponent < ViewComponent::Base
-  def initialize(records:)
-    @related_records = records
+  def initialize(related_records:)
+    @related_records = related_records
   end
 
   def value
