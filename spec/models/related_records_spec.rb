@@ -24,13 +24,41 @@ RSpec.describe RelatedRecords do
   end
 
   describe "#in_collection?" do
-    context "when record only has a collection_id_ssi value" do
+    context "when record only has a collection_id_ssi value and has children" do
       subject(:record) { described_class.new(document) }
 
       let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
 
       it "returns true" do
+        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: count_response, headers: {})
+
         expect(record.in_collection?).to be true
+      end
+    end
+
+    context "when record only has a collection_id_ssi value and no children" do
+      subject(:record) { described_class.new(document) }
+
+      let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
+
+      it "returns false" do
+        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: no_count_response, headers: {})
+
+        expect(record.in_collection?).to be false
       end
     end
 
@@ -73,165 +101,6 @@ RSpec.describe RelatedRecords do
     end
   end
 
-  # describe "#parent?" do
-  #   subject(:record) { described_class.new(document) }
-  #
-  #   context "when record has a parent_id_ssi value" do
-  #     subject(:record) { described_class.new(document) }
-  #
-  #     let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
-  #
-  #     it "returns false" do
-  #       expect(record.is_parent?).to be false
-  #     end
-  #   end
-  #
-  #   context "when record has a collection_id_ssi" do
-  #     subject(:record) { described_class.new(document) }
-  #
-  #     let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
-  #
-  #     it "returns true" do
-  #       expect(record.is_parent?).to be true
-  #     end
-  #   end
-  #
-  #   context "when record has both a parent_id_ssi value and collection_id_ssi value" do
-  #     subject(:record) { described_class.new(document) }
-  #
-  #     let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872", collection_id_ssi: "(AuCNLDY)318537") }
-  #
-  #     it "returns true" do
-  #       expect(record.is_parent?).to be true
-  #     end
-  #   end
-  # end
-  #
-  # describe "#child?" do
-  #   subject(:record) { described_class.new(document) }
-  #
-  #   context "when record has a parent_id_ssi" do
-  #     subject(:record) { described_class.new(document) }
-  #
-  #     let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
-  #
-  #     it "returns true" do
-  #       expect(record.is_child?).to be true
-  #     end
-  #   end
-  #
-  #   context "when record has a collection_id_ssi" do
-  #     subject(:record) { described_class.new(document) }
-  #
-  #     let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AuCNLDY)318537") }
-  #
-  #     it "returns false" do
-  #       expect(record.is_child?).to be false
-  #     end
-  #   end
-  #
-  #   context "when record has both a parent_id_ssi value and collection_id_ssi value" do
-  #     subject(:record) { described_class.new(document) }
-  #
-  #     let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872", collection_id_ssi: "(AuCNLDY)318537") }
-  #
-  #     it "returns true" do
-  #       expect(record.is_child?).to be true
-  #     end
-  #   end
-  # end
-  #
-  # describe "#in_collection?" do
-  #   subject(:record) { described_class.new(document) }
-  #
-  #   context "when there is a collection ID and children" do
-  #     subject(:record) { described_class.new(document) }
-  #
-  #     let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AKIN)23783872") }
-  #
-  #     it "is in a collection" do
-  #       WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
-  #         .with(
-  #           headers: {
-  #             "Accept" => "*/*",
-  #             "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-  #             "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
-  #           }
-  #         )
-  #         .to_return(status: 200, body: child_count_response, headers: {})
-  #
-  #       expect(record.in_collection?).to be true
-  #     end
-  #   end
-  #
-  #   context "when there is a collection ID and no children" do
-  #     subject(:record) { described_class.new(document) }
-  #
-  #     let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AKIN)23783872") }
-  #
-  #     let(:children_response) do
-  #       response = JSON.parse(child_count_response)
-  #       response["response"]["numFound"] = 0
-  #       response.to_json
-  #     end
-  #
-  #     it "is not in a collection" do
-  #       WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
-  #         .with(
-  #           headers: {
-  #             "Accept" => "*/*",
-  #             "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-  #             "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
-  #           }
-  #         )
-  #         .to_return(status: 200, body: children_response, headers: {})
-  #
-  #       expect(record.in_collection?).to be false
-  #     end
-  #   end
-  #
-  #   context "when there is a collection ID and Solr returns no response" do
-  #     subject(:record) { described_class.new(document) }
-  #
-  #     let(:document) { SolrDocument.new(marc_ss: sample_marc, collection_id_ssi: "(AKIN)23783872") }
-  #
-  #     it "is not in a collection" do
-  #       WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
-  #         .with(
-  #           headers: {
-  #             "Accept" => "*/*",
-  #             "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-  #             "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
-  #           }
-  #         )
-  #         .to_return(status: 200, body: "", headers: {})
-  #
-  #       expect(record.in_collection?).to be false
-  #     end
-  #   end
-  #
-  #   context "when there is a parent ID" do
-  #     subject(:record) { described_class.new(document) }
-  #
-  #     let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872") }
-  #
-  #     it "is in a collection" do
-  #       expect(record.in_collection?).to be true
-  #     end
-  #   end
-  #
-  #   context "when there is a parent ID and collection ID" do
-  #     subject(:record) { described_class.new(document) }
-  #
-  #     let(:document) { SolrDocument.new(marc_ss: sample_marc, parent_id_ssi: "(AKIN)23783872", collection_id_ssi: "(AuCNLDY)318537") }
-  #
-  #     it "is in a collection" do
-  #       expect(record.in_collection?).to be true
-  #     end
-  #   end
-  # end
-  # # rubocop:enable RSpec/RepeatedExampleGroupBody
-  #
   describe "#has_children?" do
     subject(:record) { described_class.new(document) }
 
