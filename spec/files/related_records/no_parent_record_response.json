@@ -4,7 +4,7 @@
     "status": 0,
     "QTime": 124,
     "params": {
-      "q": "collection_id_ssi:\"unknown\"",
+      "q": "collection_id_ssim:\"unknown\"",
       "fl": "id,title_tsim",
       "sort": "score desc, pub_date_si desc, title_si asc",
       "rows": "0",

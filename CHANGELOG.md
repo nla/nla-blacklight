@@ -1,5 +1,86 @@
 # Changelog
 
+## [2.0.0](https://github.com/nla/nla-blacklight/compare/1.1.0...2.0.0) (2023-06-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* use nla-blacklight_common
+
+### Features
+
+* add single search engine controller action ([a6803b2](https://github.com/nla/nla-blacklight/commit/a6803b21f0c8ff5079690c6fa1a2cd6ca841c1bc))
+* add skeleton loading animation ([1604483](https://github.com/nla/nla-blacklight/commit/1604483548c52f49bafe20caced9b2044280a932))
+* cache catalogue services access token ([b917e0f](https://github.com/nla/nla-blacklight/commit/b917e0f2740dee9cd44d7eaa818c067750d7a79e))
+* use nla-blacklight_common ([30ffe14](https://github.com/nla/nla-blacklight/commit/30ffe14b5f6496ecd0b4d88826c8a9bc23d74583))
+
+
+### Bug Fixes
+
+* add lower bar to header for application name ([2e99807](https://github.com/nla/nla-blacklight/commit/2e998070c7dc551af97d2ab1a125f49bac48200e))
+* change styling of bento headings ([00a402f](https://github.com/nla/nla-blacklight/commit/00a402f358f6272fd2f2ba014be52ef5d531c612))
+* determine totalss based on visible elements in bento results ([fe417c6](https://github.com/nla/nla-blacklight/commit/fe417c66b8441d3c9e961d0ec8421b40ad53df27))
+* fix display of thumbnails ([99a146b](https://github.com/nla/nla-blacklight/commit/99a146b4b4b3f5b9d4ee0878d9594ad770746a0b))
+* fix reference to "#clean_isn" ([476f36a](https://github.com/nla/nla-blacklight/commit/476f36a65d4077048a599105f06a5bcea020c2be))
+* fix references to `#isbn_list` and `#clean_isn` ([ba17b50](https://github.com/nla/nla-blacklight/commit/ba17b50ec511a2c685ba6eb39c49c217b9a05a02))
+* fix styling of bento search skeleton ([944b678](https://github.com/nla/nla-blacklight/commit/944b67802f8b616b41f9b2e6ed408254545d6f97))
+* fix verify workflow ([110b04b](https://github.com/nla/nla-blacklight/commit/110b04b05bc0ca42016f32a5f310f75e1ff60785))
+* hide button for single bento results ([4d0ad06](https://github.com/nla/nla-blacklight/commit/4d0ad067ffeca069fe18b8be8f16cd6ba388f9a6))
+* refine layout so image is better sized and update text ([e58ad3a](https://github.com/nla/nla-blacklight/commit/e58ad3a58f04f094bfc6a5d137e176e41659ab12))
+* remove expand on bottombar ([5844f4d](https://github.com/nla/nla-blacklight/commit/5844f4d58b7ef2d14b7bc4756f48a95e309981c2))
+* remove sticky header rule for “environment bar” ([c581685](https://github.com/nla/nla-blacklight/commit/c581685ddabf301ae9ca4c5d6cf9ad805852c71f))
+* replace library card image with newer ([6977dbe](https://github.com/nla/nla-blacklight/commit/6977dbec3708e7ae269e682f8da0c8fea0672533))
+* reposition and style navbar actions ([904e149](https://github.com/nla/nla-blacklight/commit/904e149972aebddba7a40ecdb792a9a3ede1dd73))
+* use bookmark nav partial and style ([bb902aa](https://github.com/nla/nla-blacklight/commit/bb902aadbb5c78aebe256e8620271dc04d3f58f4))
+
+
+### Continuous Integration
+
+* add Redis to verify workflow ([76f7dea](https://github.com/nla/nla-blacklight/commit/76f7dea6998b97f1f865514e18d568b4d6acfd16))
+* create hotfix release workflow ([1c8eb9d](https://github.com/nla/nla-blacklight/commit/1c8eb9d854e8589bd965541baefd2d335e6d9d6d))
+* modify simplecov configuration ([b3e66dc](https://github.com/nla/nla-blacklight/commit/b3e66dc5e4b60dbecc94f20eeef7b97b2629746f))
+
+
+### Build System
+
+* add env flag to nla-deploy.sh to turn on dev caching ([95319e7](https://github.com/nla/nla-blacklight/commit/95319e704659c41e8b595ffd1a9c6c3b6b06af3e))
+* change bundle config for jobs to static number ([6b1344b](https://github.com/nla/nla-blacklight/commit/6b1344ba0749d3eefb6aa75ebefa0c41f60cff61))
+* make cuprite optional for Capybara specs ([e7c78d0](https://github.com/nla/nla-blacklight/commit/e7c78d08e914430f4d866dc0d15b8a688a0e9600))
+
+
+### Code Refactoring
+
+* convert some bento controller tests to system tests ([1857897](https://github.com/nla/nla-blacklight/commit/185789774d0468efa96bf5e96bf60da27a5102a7))
+* create component for bento search results ([9f9aaae](https://github.com/nla/nla-blacklight/commit/9f9aaae8595af40fd4712625f213dae1be0cae96))
+* create component for bento search totals ([58178bb](https://github.com/nla/nla-blacklight/commit/58178bbd31b131fa642b9ba1a8d478868346e102))
+* have requesting errors be handled by 500 page ([e38a786](https://github.com/nla/nla-blacklight/commit/e38a786219d63fd739a01ee76a45f443e6f8041b))
+* move thumbnail cache from page to service ([35b0ea6](https://github.com/nla/nla-blacklight/commit/35b0ea634820249bc71fe4b4c3efdf4b1503ba5c))
+* refactor display of holdings error on catalogue record page ([9887dcf](https://github.com/nla/nla-blacklight/commit/9887dcfbd79cceceeb5f0c96578bf581e22373ba))
+* reposition navbar actions ([95b529a](https://github.com/nla/nla-blacklight/commit/95b529af22465e963bc4e1f71799413476b3f158))
+* revert and comment out changes to bento search ([b265a4f](https://github.com/nla/nla-blacklight/commit/b265a4fd15361956f2557e394862c94e9c9f4727))
+* update wording on error pages ([e40eb32](https://github.com/nla/nla-blacklight/commit/e40eb322d52bb7e3d54230500f50aff58069f686))
+* use stimulus to lazy load bento results ([426d157](https://github.com/nla/nla-blacklight/commit/426d157521d6fbc8e4a280287f0abb4d012bc834))
+
+
+### Tests
+
+* add tests for access token caching ([6063446](https://github.com/nla/nla-blacklight/commit/60634466132df086283d8576cdf2c1610c8cb0f4))
+* add tests for bento components ([cc72210](https://github.com/nla/nla-blacklight/commit/cc7221013f3e1fe1a2675153eac47cbe407b69ed))
+* fix tests ([b3fd8d3](https://github.com/nla/nla-blacklight/commit/b3fd8d355464a34102245f966a743a98e4bbb705))
+* make Capybara wait for catalogue search result card ([1293fef](https://github.com/nla/nla-blacklight/commit/1293fef86488065585b5697c5ccf0a95e883166f))
+
+
+### Miscellaneous
+
+* add simple performance monitoring ([60e99fe](https://github.com/nla/nla-blacklight/commit/60e99fe98c0db56b67f518894098ab3c990c1fa9))
+* delete JavaScript console.out ([2b9032f](https://github.com/nla/nla-blacklight/commit/2b9032f0bf0df6e72e17afb4b70335ccf3a90821))
+* point dependencies back at main/master branch ([85a47d3](https://github.com/nla/nla-blacklight/commit/85a47d3ea795af4478e2ea435755b1442523c29b))
+* prepare release ([27360de](https://github.com/nla/nla-blacklight/commit/27360de82ebd27b96a0470075d5141fea2162659))
+* upgrade catalogue-patrons dependency ([0351279](https://github.com/nla/nla-blacklight/commit/0351279bbf1a87a8fae26c9ff43c9116555c589b))
+* upgrade dependencies and fix inclusion of Stimulus controllers ([b54904a](https://github.com/nla/nla-blacklight/commit/b54904ae9a741c9bc751921543c9c0d7f77e2e5f))
+* upgrade solr adapter dependencies ([0f9c644](https://github.com/nla/nla-blacklight/commit/0f9c64479ea0cca186f6a758afd5b254a95318e9))
+* upgrade version of bundler in Gemfile.lock ([a845b42](https://github.com/nla/nla-blacklight/commit/a845b42b5563411f75821a013846bd998e8787b0))
+
 ## [1.1.0](https://github.com/nla/nla-blacklight/compare/1.0.4...1.1.0) (2023-05-30)
 
 

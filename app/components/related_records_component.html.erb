@@ -1,15 +1,11 @@
-<% if collection_name.present? %>
-  <p>This record belongs to the
-    <% if collection_url.present? %>
-      <%= link_to "#{collection_name} collection.", collection_url %>
-    <% else %>
-      <%= "#{collection_name} collection." %>
-    <% end %></p>
-<% end %>
-<p class="mb-0">This collection is made up of <%= "#{formatted_collection_count} #{'record'.pluralize(collection_count)}" %>:</p>
-<ul class="list-unstyled">
-  <% child_records.each do |record| %>
-    <li><%= link_to record[:title].first, solr_document_path(id: record[:id]) %></li>
-  <% end %>
-</ul>
-<%= link_to "View all #{formatted_collection_count} #{'record'.pluralize(collection_count)}", collection_records_url, class: "btn btn-outline-secondary" %>
+<div
+  class="<%= hierarchy_class %>"
+  data-controller="related-records"
+  data-related-records-icon-value="<%= icon_class %>">
+  <div class="image <%= icon_class %>" data-related-records-target="icon">
+    <%= base_icon %>
+  </div>
+  <div class="hierarchy" data->
+    <p><%= collection_text %></p>
+  </div>
+</div>

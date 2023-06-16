@@ -1,129 +1,176 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 RSpec.describe RelatedRecordsComponent, type: :component do
   let(:view_context) { controller.view_context }
   let(:field_config) { Blacklight::Configuration::Field.new(key: "related_records", label: "Related Records", accessor: :related_records, component: described_class) }
-  let(:children_response) { children_response_query }
   let(:document) { SolrDocument.new }
   let(:related_records) { document.related_records }
+  let(:collection_id) { "" }
 
-  before do
-    WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
-      .with(
-        headers: {
-          "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
-        }
-      )
-      .to_return(status: 200, body: child_count_query_response, headers: {})
+  context "when record is a parent in a collection" do
+    before do
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22\(AKIN\)14156869%22&rows=0&wt=json/)
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          }
+        )
+        .to_return(status: 200, body: child_count_query_response, headers: {})
 
-    WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&fq=-filter\(id:.*\)&q=parent_id_ssi:%22.*%22&rows=3&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
-      .with(
-        headers: {
-          "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
-        }
-      )
-      .to_return(status: 200, body: children_query_response, headers: {})
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)14156869%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          }
+        )
+        .to_return(status: 200, body: no_parent_query_response, headers: {})
+    end
 
-    WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&fq=-filter\(id:554321\)&q=parent_id_ssi:%22(AKIN)23783872%22&rows=3&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
-      .with(
-        headers: {
-          "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
-        }
-      )
-      .to_return(status: 200, body: filtered_query_response, headers: {})
+    let(:document) { SolrDocument.new(marc_ss: parent_record_marc) }
 
-    WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22.*%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
-      .with(
-        headers: {
-          "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
-        }
-      )
-      .to_return(status: 200, body: parent_query_response, headers: {})
+    it "states this is a collection" do
+      render_inline(described_class.new(related_records: related_records.first))
 
-    WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssi:%22unknown%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
-      .with(
-        headers: {
-          "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
-        }
-      )
-      .to_return(status: 200, body: no_parent_query_response, headers: {})
+      expect(page.text).to include "This is a collection"
+    end
+
+    it "links to the collection" do
+      render_inline(described_class.new(related_records: related_records.first))
+
+      expect(page.text).to include "This collection contains"
+      expect(page).to have_link("8 records", href: "/catalog?q=%22%28AKIN%2914156869%22&search_field=in_collection")
+    end
+
+    it "renders the 'two-level parent' hierarchy icon" do
+      render_inline(described_class.new(related_records: related_records.first))
+
+      expect(page).to have_css("#two-level-parent")
+    end
   end
 
-  context "when record is part of a collection" do
-    let(:document) { SolrDocument.new(marc_ss: child_marc, parent_id_ssi: "(AKIN)23783872") }
+  context "when records is a child in a collection" do
+    before do
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22\(AuCNLDY\)318537%22&rows=0&wt=json/)
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          }
+        )
+        .to_return(status: 200, body: no_count_response, headers: {})
 
-    it "renders the number of children in the collection" do
-      render_inline(described_class.new(records: related_records))
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22\(AKIN\)23783872%22&rows=0&wt=json/)
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          }
+        )
+        .to_return(status: 200, body: sibling_count_response, headers: {})
 
-      expect(page.text).to include "This collection is made up of 8 records:"
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)23783872%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          }
+        )
+        .to_return(status: 200, body: parent_query_response, headers: {})
     end
 
-    it "renders a link to view all the child records" do
-      render_inline(described_class.new(records: related_records))
+    let(:document) { SolrDocument.new(marc_ss: child_record_marc) }
 
-      expect(page.text).to include "View all 8 records"
+    it "states this is a collection" do
+      render_inline(described_class.new(related_records: related_records.first))
+
+      expect(page.text).to include "This belongs to the"
+      expect(page).to have_link("Land Rights camp at Heirisson Island, Western Australia, 1978", href: "/catalog/3044380")
     end
 
-    it "renders a list of the first 3 child records" do
-      render_inline(described_class.new(records: related_records))
+    it "links to the collection" do
+      render_inline(described_class.new(related_records: related_records.first))
 
-      expect(page.text).to include "Robert Bropho, Heirisson Island, Western Australia, 1978 [picture] / Stephen Smith"
-      expect(page.text).to include "Some young Indigenous peoples outside the tent, Heirisson Island, Western Australia, 1978 [picture] / Stephen Smith"
-      expect(page.text).to include "Children and a baby under the Aboriginal tent, Heirisson Island, Western Australia, 1978 [picture] / Stephen Smith"
+      expect(page.text).to include "This collection contains"
+      expect(page).to have_link("11 records", href: "/catalog?q=%22%28AKIN%2923783872%22&search_field=in_collection")
     end
 
-    context "when current record is one of the first 3 child records" do
-      let(:document) { SolrDocument.new(marc_ss: child_marc, id: "554321", parent_id_ssi: "(AKIN)23783872") }
+    it "renders the 'two-level child' hierarchy icon" do
+      render_inline(described_class.new(related_records: related_records.first))
 
-      it "does not render a link to the current record" do
-        render_inline(described_class.new(records: related_records))
+      expect(page).to have_css("#two-level-child")
+    end
+  end
 
-        expect(page.text).not_to include '<a href="/catalog/554321">Robert Bropho, Heirisson Island, Western Australia, 1978 [picture] / Stephen Smith</a>'
-      end
+  context "when record is a child in a collection and parent of a collection" do
+    before do
+      child_count = JSON.parse(child_count_query_response)
+      child_count["response"]["numFound"] = 177
+
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22\(AKIN\)10887198%22&rows=0&wt=json/)
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          }
+        )
+        .to_return(status: 200, body: child_count.to_json, headers: {})
+
+      sibling_count = JSON.parse(sibling_count_response)
+      sibling_count["response"]["numFound"] = 5
+
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22\(AKIN\)24850123%22&rows=0&wt=json/)
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          }
+        )
+        .to_return(status: 200, body: sibling_count.to_json, headers: {})
+
+      parent_response = JSON.parse(parent_query_response)
+      parent_response["response"]["docs"][0] = {id: "1586062", title_tsim: "Dunlop family photograph albums"}
+
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)24850123%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          }
+        )
+        .to_return(status: 200, body: parent_response.to_json, headers: {})
     end
 
-    context "when record has a collection title" do
-      it "renders the collection title" do
-        render_inline(described_class.new(records: related_records))
+    let(:document) { SolrDocument.new(marc_ss: child_parent_record_marc) }
 
-        expect(page.text).to include "Land Rights camp at Heirisson Island, Western Australia, 1978 collection"
-      end
+    it "states this is a collection" do
+      render_inline(described_class.new(related_records: related_records.first))
 
-      it "links to the collection record" do
-        render_inline(described_class.new(records: related_records))
-
-        expect(page).to have_selector(:css, 'a[href="/catalog/3044380"]')
-      end
+      expect(page.text).to include "This is part of the"
+      expect(page).to have_link("Dunlop family photograph albums", href: "/catalog/1586062")
     end
 
-    context "when record has no collection title" do
-      let(:document) { SolrDocument.new(marc_ss: sample_marc) }
+    it "links to sibling collections" do
+      render_inline(described_class.new(related_records: related_records.first))
 
-      it "does not render the collection title" do
-        render_inline(described_class.new(records: related_records))
-
-        expect(page.text).not_to include "This record belongs to the"
-      end
+      expect(page.text).to include "There are"
+      expect(page).to have_link("5 related collections", href: "/catalog?q=%22%28AKIN%2924850123%22&search_field=in_collection")
     end
 
-    context "when it does not have a collection_url" do
-      let(:document) { SolrDocument.new(marc_ss: child_marc, parent_id_ssi: "unknown") }
+    it "links to the collection" do
+      render_inline(described_class.new(related_records: related_records.first))
 
-      it "does not link to the collection record" do
-        render_inline(described_class.new(records: related_records))
+      expect(page.text).to include "This collection contains"
+      expect(page).to have_link("177 records", href: "/catalog?q=%22%28AKIN%2910887198%22&search_field=in_collection")
+    end
 
-        expect(page).not_to have_selector(:css, 'a[href="/catalog/3044380"]')
-      end
+    it "renders the 'three-level child' hierarchy icon" do
+      render_inline(described_class.new(related_records: related_records.first))
+
+      expect(page).to have_css("#three-level-child")
     end
   end
 
@@ -131,17 +178,16 @@ RSpec.describe RelatedRecordsComponent, type: :component do
     let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
     it "does not render the collection details" do
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssi:%22.*%22&rows=0&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22.*%22&rows=0&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
-            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-            "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
           }
         )
         .to_return(status: 200, body: "", headers: {})
 
-      render_inline(described_class.new(records: related_records))
+      render_inline(described_class.new(related_records: related_records))
 
       expect(page.text).not_to include "Related Records:"
     end
@@ -176,20 +222,36 @@ RSpec.describe RelatedRecordsComponent, type: :component do
     </record>"
   end
 
-  def child_marc
-    load_marc_from_file 2076183
+  def parent_record_marc
+    load_marc_from_file 1585818
+  end
+
+  def child_record_marc
+    load_marc_from_file 554064
+  end
+
+  def child_parent_record_marc
+    load_marc_from_file 1585528
   end
 
   def child_count_query_response
-    IO.read("spec/files/related_records/collection_count_response.json")
+    IO.read("spec/files/related_records/child_count_response.json")
+  end
+
+  def no_count_response
+    res = JSON.parse(child_count_query_response)
+    res["response"] = nil
+    res.to_json
+  end
+
+  def sibling_count_response
+    res = JSON.parse(child_count_query_response)
+    res["response"]["numFound"] = 11
+    res.to_json
   end
 
   def children_query_response
     IO.read("spec/files/related_records/child_records_response.json")
-  end
-
-  def filtered_query_response
-    IO.read("spec/files/related_records/filter_current_record_response.json")
   end
 
   def parent_query_response

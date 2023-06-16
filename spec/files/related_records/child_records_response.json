@@ -4,7 +4,7 @@
     "status": 0,
     "QTime": 11,
     "params": {
-      "q": "parent_id_ssi:\"(AKIN)23783872\"",
+      "q": "parent_id_ssim:\"(AKIN)23783872\"",
       "fl": "id, title_tsim",
       "fq": "-filter(id:2076571)",
       "sort": "score desc, pub_date_si desc, title_si asc",

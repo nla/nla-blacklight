@@ -67,6 +67,15 @@
   .h4 {
     margin-bottom: 0;
   }
+  
+  [data-clipboard-target="button"] {
+    color: color("light-purple");
+    
+    &:hover,
+    &:focus {
+      color: color("purple");
+    }
+  }
 }
 
 .explore {

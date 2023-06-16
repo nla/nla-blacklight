@@ -144,7 +144,7 @@ module FieldHelper
 
   def render_related_records_component(document:, field:, config:, value:, context:)
     if value.present?
-      render RelatedRecordsComponent.new(records: value.first)
+      render RelatedRecordsComponent.with_collection(value)
     end
   end
 
