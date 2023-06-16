@@ -1,39 +1,25 @@
 require "parsing_nesting/tree"
 module BlacklightAdvancedSearch::ParsingNestingParser
   def process_query(_params, config)
-    title_boost_query_string = ""
     queries = keyword_queries.map do |field, query|
       param_hash = local_param_hash(field, config)
 
       # BLAC-326 add boosts to the anchored title index fields
-      if field == "title"
-        add_anchored_title_boosts(param_hash)
-        title_boost_query_string = add_title_boost_queries(config, query, param_hash)
+      if field == "title" || field == "all_fields"
+        add_anchored_title_boosts(param_hash, query)
       end
       ParsingNesting::Tree.parse(query, config.advanced_search[:query_parser]).to_query(param_hash)
     end
 
-    if title_boost_query_string.empty?
-      queries.join(" #{keyword_op} ")
-    else
-      queries.join(" #{keyword_op} ") + " OR " + title_boost_query_string
-    end
+    queries.join(" #{keyword_op} ")
   end
 
   # BLAC-326 add boosts to the anchored title index fields
-  def add_title_boost_queries(config, query, param_hash)
-    title_boost_query = []
-    title_boost_query << ParsingNesting::Tree.parse("\"FINLLFIIJQ " + query + " AICULEDSSUL\"", config.advanced_search[:query_parser]).to_query(param_hash)
-    title_boost_query << ParsingNesting::Tree.parse("\"FINLLFIIJQ " + query + "\"", config.advanced_search[:query_parser]).to_query(param_hash)
-    title_boost_query.join(" OR ")
-  end
-
-  # BLAC-326 add boosts to the anchored title index fields
-  def add_anchored_title_boosts(param_hash)
-    if param_hash.key?(:add_boost_query) && param_hash[:add_boost_query] && param_hash.key?(:qf) && param_hash[:qf].present?
-      param_hash[:qf] = param_hash[:qf] << " anchored_title_tsi^600 anchored_title_only_tsi^500 anchored_title_no_format_tsi^500 left_anchored_title_tsi^800"
-      param_hash.delete(:add_boost_query)
-    end
+  def add_anchored_title_boosts(param_hash, query)
+    param_hash[:bq] = "anchored_title_tsi:\"FINLLFIIJQ " + query + " AICULEDSSUL\"^600 OR
+anchored_title_only_tsi:\"FINLLFIIJQ " + query + " AICULEDSSUL\"^500 OR
+anchored_title_no_format_tsi:\"FINLLFIIJQ " + query + " AICULEDSSUL\"^500 OR
+left_anchored_title_tsi:\"FINLLFIIJQ " + query + "\"^800"
   end
 
   def local_param_hash(key, config)
