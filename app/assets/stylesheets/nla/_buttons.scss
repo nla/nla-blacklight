@@ -5,9 +5,32 @@
   text-transform: uppercase;
   letter-spacing: 0.5px;
   
-  &.arrow {
+  &.arrow-before {
     position: relative;
     padding-left: 3rem;
+    padding-right: 2rem;
+    
+    &:after {
+      color: color("orange");
+      content: "\F177";
+      font: var(--fa-font-regular);
+      position: absolute;
+      font-weight: 400;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    &:hover:after,
+    &:focus:after {
+      left: 1.25rem;
+      color: color("white");
+    }
+  }
+  
+  &.arrow-after {
+    position: relative;
+    padding-left: 2rem;
     padding-right: 3rem;
     
     &:after {
@@ -21,7 +44,8 @@
       transform: translateY(-50%);
     }
     
-    &:hover:after {
+    &:hover:after,
+    &:focus:after {
       right: 1.25rem;
       color: color("white");
     }
