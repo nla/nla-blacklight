@@ -81,6 +81,7 @@ RSpec.describe NlaThumbnailPresenter do
       context "when there is no image" do
         it "returns nil" do
           allow(view_context).to receive(:render_thumbnail).and_return(nil)
+          allow(request).to receive(:referrer).with(no_args).and_return("/catalog")
 
           expect(presenter.thumbnail_tag).to be_nil
         end
@@ -89,6 +90,7 @@ RSpec.describe NlaThumbnailPresenter do
       context "when there is no link" do
         it "returns an image tag only" do
           allow(view_context).to receive(:render_thumbnail).and_return('<img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
+          allow(request).to receive(:referrer).with(no_args).and_return("/catalog")
 
           expect(presenter.thumbnail_tag.include?("href")).to be false
         end
