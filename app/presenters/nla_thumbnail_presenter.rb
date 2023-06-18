@@ -45,7 +45,7 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
   # @param [Hash] image_options to pass to the image tag
   # :nocov:
   def thumbnail_value(image_options)
-    image_options = image_options.merge({alt: alt_title_from_document, onerror: "this.style.display='none'", class: "w-100 fade", data: {"scroll-reveal-target": "item", delay: "250ms"}})
+    image_options = image_options.merge({alt: alt_title_from_document, onerror: "this.style.display='none'", class: "fade border", data: {"scroll-reveal-target": "item", delay: "250ms"}})
     value = if thumbnail_method
       view_context.send(thumbnail_method, document, image_options)
     elsif thumbnail_field
