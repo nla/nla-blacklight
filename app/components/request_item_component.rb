@@ -38,7 +38,7 @@ class RequestItemComponent < ViewComponent::Base
   def request_item_link(item)
     holdings_id = item["holdingsRecordId"]
     item_id = item["id"]
-    link_to t("requesting.btn_select"), solr_document_request_new_path(solr_document_id: @document.id, holdings: holdings_id, item: item_id), class: "btn btn-primary"
+    link_to t("requesting.btn_select"), solr_document_request_new_path(solr_document_id: @document.id, holdings: holdings_id, item: item_id), class: "btn btn-primary", target: "_top"
   end
 
   private

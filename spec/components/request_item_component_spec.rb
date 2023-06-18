@@ -13,12 +13,6 @@ RSpec.describe RequestItemComponent, type: :component do
     stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_API_BASE_URL" => "http://catservices.test/catalogue-services"))
   end
 
-  it "renders the header" do
-    render_inline(described_class.new(document: document))
-
-    expect(page).to have_css("h2", text: "Request this item")
-  end
-
   it "renders the holdings" do
     render_inline(described_class.new(document: document))
 

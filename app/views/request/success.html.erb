@@ -1,5 +1,5 @@
-<h1><%= t("requesting.success.heading") %></h1>
-<h2 class="mt-4"><%= @document.first("title_tsim") %></h2>
+<h1 class="h3"><%= t("requesting.success.heading") %></h1>
+<h2 class="h3 mt-4"><%= @document.first("title_tsim") %></h2>
 
 <div class="row">
   <p class="col-12 col-lg-8"><%= t("requesting.success.message", title: @document.first("title_tsim")).html_safe %></p>

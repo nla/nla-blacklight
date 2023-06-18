@@ -1,1 +1,22 @@
-<%= render RequestItemComponent.new(document: document) %>
+<div id="request-details" class="col mb-2">
+  <h2 class="h3"><%= t("requesting.heading") %></h2>
+  <p><%= t("requesting.message") %></p>
+  <%= turbo_frame_tag :"#{document.id}_request", src: solr_document_request_path(solr_document_id: document.id), loading: :lazy do %>
+  <div class="loading-skeleton">
+    <% 2.times do |i| %>
+      <div class="holding card w-100 mb-4">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-12 col-sm-8">
+              <div class="document-metadata"></div>
+            </div>
+            <div class="select-item-btn col-12 col-sm-4 text-right">
+              <a class="btn btn-primary" href="#">Select</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+  </div>
+</div>

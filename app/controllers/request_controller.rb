@@ -5,7 +5,7 @@ require "faraday"
 class RequestController < ApplicationController
   include Blacklight::Searchable
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create, :success]
   before_action :request_params
   before_action :set_document
 
