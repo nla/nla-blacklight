@@ -31,6 +31,8 @@
 
 en:
   loading: "Loading..."
+  headings:
+    search: "Search"
   collection:
     parent: "This is a collection-level record."
     child: "This record belongs in a collection."
