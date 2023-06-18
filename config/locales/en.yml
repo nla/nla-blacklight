@@ -30,6 +30,7 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  loading: "Loading..."
   collection:
     parent: "This is a collection-level record."
     child: "This record belongs in a collection."

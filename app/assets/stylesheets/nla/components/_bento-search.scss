@@ -31,6 +31,12 @@
   }
 }
 
+.bento-item {
+  .document-thumbnail {
+    max-width: 123px;
+  }
+}
+
 @media (min-width: 576px) {
   .bento-search-results .card-columns {
     column-count: 1;
