@@ -6,7 +6,9 @@
     <%= render :partial => "bento_search/item_title", :object => item, :as => 'item', :locals => {index: (item_counter + 1)} %>
 
     <% if item.engine_id == "catalogue" %>
-      <turbo-frame id="<%= item.unique_id %>_thumb" src="<%= thumbnail_path(id: item.unique_id) %>" loading="lazy" class="document-thumbnail mr-4 order-2" target="_top"></turbo-frame>
+      <turbo-frame id="<%= item.unique_id %>_thumb" src="<%= thumbnail_path(id: item.unique_id) %>" loading="lazy" class="document-thumbnail mr-4 order-2" target="_top">
+        <%= render partial: "shared/thumbnail_spinner" %>
+      </turbo-frame>
     <% end %>
 
     <div class="col">

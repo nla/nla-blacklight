@@ -1,4 +1,6 @@
 <%
   container_class = current_page?(solr_document_path(id: document.id)) ? "col-12 col-md-5 mb-3" : "col-4 col-md-2 order-3"
 %>
-<turbo-frame id="<%= document.id %>_thumb" src="<%= thumbnail_path(id: document.id) %>" loading="lazy" class="document-thumbnail <%= container_class %>" target="_top"></turbo-frame>
+<turbo-frame id="<%= document.id %>_thumb" src="<%= thumbnail_path(id: document.id) %>" loading="lazy" class="document-thumbnail <%= container_class %>" target="_top">
+  <%= render partial: "shared/thumbnail_spinner" %>
+</turbo-frame>
