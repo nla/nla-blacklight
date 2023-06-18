@@ -5,15 +5,24 @@ require "faraday"
 class RequestController < ApplicationController
   include Blacklight::Searchable
 
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create, :success]
   before_action :request_params
-  before_action :set_document, only: [:new, :create, :show]
+  before_action :set_document
 
-  def show
+  def index
+  end
+
+  def success
+    @title = @document.first("title_tsim")
+    @instance_id = @document.first("folio_instance_id_ssim")
+    @holdings_id = request_params[:holdings]
+    @item_id = request_params[:item]
+
+    _, @item = cat_services_client.get_holding(instance_id: @instance_id, holdings_id: @holdings_id, item_id: @item_id)
   end
 
   def new
-    @instance_id = request_params[:instance]
+    @instance_id = @document.first("folio_instance_id_ssim")
     @holdings_id = request_params[:holdings]
     @item_id = request_params[:item]
 
@@ -25,12 +34,17 @@ class RequestController < ApplicationController
   end
 
   def create
-    instance_id = request_params[:request][:instance_id]
+    instance_id = @document.first("folio_instance_id_ssim")
     holdings_id = request_params[:request][:holdings_id]
     item_id = request_params[:request][:item_id]
 
+    new_request = request_params[:request].to_h
+    new_request.merge!({instance_id: instance_id})
+
     _holding, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
-    @create_response = cat_services_client.create_request(requester: current_user.folio_id, request: request_params[:request])
+    @create_response = cat_services_client.create_request(requester: current_user.folio_id, request: new_request)
+
+    redirect_to action: :success, holdings: holdings_id, item: item_id
   end
 
   private
@@ -44,6 +58,6 @@ class RequestController < ApplicationController
   end
 
   def request_params
-    params.permit(:solr_document_id, :instance, :holdings, :item, request: [:instance_id, :holdings_id, :item_id, :year, :enumeration, :chronology, :notes])
+    params.permit(:solr_document_id, :holdings, :item, request: [:instance_id, :holdings_id, :item_id, :year, :enumeration, :chronology, :notes])
   end
 end

@@ -36,10 +36,9 @@ class RequestItemComponent < ViewComponent::Base
   delegate :indexes, to: :helpers
 
   def request_item_link(item)
-    instance_id = @document.first("folio_instance_id_ssim")
     holdings_id = item["holdingsRecordId"]
     item_id = item["id"]
-    link_to t("requesting.btn_select"), new_solr_document_request_path(solr_document_id: @document.id, instance: instance_id, holdings: holdings_id, item: item_id), class: "btn btn-primary"
+    link_to t("requesting.btn_select"), solr_document_request_new_path(solr_document_id: @document.id, holdings: holdings_id, item: item_id), class: "btn btn-primary", target: "_top"
   end
 
   private
