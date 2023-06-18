@@ -17,7 +17,7 @@ RSpec.describe "Requests" do
       it "returns http success" do
         allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return([nil, document])
 
-        get new_solr_document_request_path(
+        get solr_document_request_new_path(
           solr_document_id: solr_document_id,
           instance: instance_id,
           holdings: holdings_id,
@@ -34,7 +34,7 @@ RSpec.describe "Requests" do
       it "returns http success" do
         allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return([nil, document])
 
-        get new_solr_document_request_path(
+        get solr_document_request_new_path(
           solr_document_id: solr_document_id,
           instance: instance_id,
           holdings: holdings_id,
@@ -50,7 +50,7 @@ RSpec.describe "Requests" do
       end
 
       it "redirects to login page" do
-        get new_solr_document_request_path(
+        get solr_document_request_new_path(
           solr_document_id: solr_document_id,
           instance: instance_id,
           holdings: holdings_id,
@@ -69,7 +69,7 @@ RSpec.describe "Requests" do
         allow_any_instance_of(CatalogueServicesClient).to receive(:get_holding).and_raise(ServiceTokenError)
 
         expect {
-          get new_solr_document_request_path(
+          get solr_document_request_new_path(
             solr_document_id: solr_document_id,
             instance: instance_id,
             holdings: holdings_id,
@@ -88,15 +88,19 @@ RSpec.describe "Requests" do
     it "returns http success" do
       allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return([nil, document])
 
-      post solr_document_requests_path(
+      post solr_document_request_path(
         solr_document_id: solr_document_id,
         requester: "111",
         request: {
-          instance_id: instance_id,
           holdings_id: holdings_id,
           item_id: item_id
         }
       )
+
+      expect(response).to redirect_to(solr_document_request_success_path(solr_document_id: solr_document_id, holdings: holdings_id, item: item_id))
+
+      follow_redirect!
+
       expect(response).to have_http_status(:success)
       expect(response.body).to include("Your request for <strong>National Geographic</strong> is currently being processed.")
     end
@@ -107,11 +111,10 @@ RSpec.describe "Requests" do
         allow_any_instance_of(CatalogueServicesClient).to receive(:get_holding).and_raise(ServiceTokenError)
 
         expect {
-          post solr_document_requests_path(
+          post solr_document_request_path(
             solr_document_id: solr_document_id,
             requester: "111",
             request: {
-              instance_id: instance_id,
               holdings_id: holdings_id,
               item_id: item_id
             }
