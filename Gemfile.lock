@@ -378,7 +378,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitar (0.9)
-    minitest (5.18.0)
+    minitest (5.18.1)
     mock_redis (0.36.0)
       ruby2_keywords
     msgpack (1.7.1)
@@ -389,7 +389,7 @@ GEM
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.3.4)
+    net-imap (0.3.6)
       date
       net-protocol
     net-pop (0.1.2)
@@ -441,7 +441,7 @@ GEM
     puma (6.3.0)
       nio4r (~> 2.0)
     raabro (1.4.0)
-    racc (1.6.2)
+    racc (1.7.1)
     rack (2.2.7)
     rack-protection (3.0.6)
       rack
@@ -471,7 +471,7 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
-    rails_performance (1.0.5.2)
+    rails_performance (1.1.0)
       rails
       redis
       redis-namespace
@@ -488,7 +488,7 @@ GEM
       redis-client (>= 0.9.0)
     redis-client (0.14.1)
       connection_pool
-    redis-namespace (1.10.0)
+    redis-namespace (1.11.0)
       redis (>= 4)
     regexp_parser (2.8.0)
     reline (0.3.5)
