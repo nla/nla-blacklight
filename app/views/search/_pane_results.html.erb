@@ -13,15 +13,14 @@
         <% if result.total_items > 0 %>
           <div class="view-all">
             <% if key.start_with?("ebsco_eds_") && result.total_items > 1 %>
-              <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm" do %>
+              <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm arrow-after" do %>
                 View
                 <span id="<%= key %>_total"><%= number_with_delimiter(result.total_items) %></span> from
                 eResources
-                <i class="fa fa-angle-double-right"></i>
               <% end %>
             <% else %>
               <% if result.total_items > 1 %>
-                <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm" do %>
+                <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm arrow-after" do %>
                   View
                   <span id="<%= key %>_total"><%= number_with_delimiter(result.total_items) %></span>
                   <% BentoSearch.get_engine(key).configuration.title %>
@@ -31,7 +30,6 @@
                   <% else %>
                     Finding Aids
                   <% end %>
-                  <i class="fa fa-angle-double-right"></i>
                 <% end %>
               <% end %>
               <% if is_catalog_pane?(BentoSearch.get_engine(key).configuration.title) == true%>
