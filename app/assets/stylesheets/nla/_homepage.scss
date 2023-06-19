@@ -33,14 +33,33 @@
 
 }
 
+.catalogue-search,
 .eresources-search,
 .finding-aids-search {
+  border: none;
+  
+  &:focus,
+  &:hover {
+    box-shadow: 3px 3px 6px 0 rgba(112,57,150,0.1);
+  }
+  
   .image-container {
     overflow: hidden;
   }
   
   .card-img-top {
     transition: transform .1s ease-in-out;
+  }
+  
+  .card-title a {
+    color: color("purple");
+    text-decoration: none;
+    
+    &:hover,
+    &:focus {
+      color: color("purple");
+      text-decoration: underline;
+    }
   }
   
   &:hover {
