@@ -13,6 +13,13 @@ Rails.application.routes.draw do
     get ":id/offsite", action: "offsite", as: "offsite"
   end
 
+  concern :requestable do
+    get "request", controller: "request", action: "index"
+    post "request", controller: "request", action: "create"
+    get "request/new", controller: "request", action: "new"
+    get "request/success", controller: "request", action: "success"
+  end
+
   resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable
     concerns :range_searchable
@@ -20,9 +27,7 @@ Rails.application.routes.draw do
   end
 
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
-    concerns [:exportable, :marc_viewable]
-
-    resources :requests, only: [:new, :create, :show], path: "/requests", controller: "request"
+    concerns [:exportable, :marc_viewable, :requestable]
   end
 
   resources :bookmarks do
@@ -32,6 +37,8 @@ Rails.application.routes.draw do
       delete "clear"
     end
   end
+
+  get "/thumbnail/:id", to: "thumbnail#thumbnail", as: "thumbnail"
 
   # bento search
   get "/search", to: "search#index", as: "bento_search_index"

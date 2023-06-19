@@ -9,10 +9,12 @@
 
 .bento-search-results {
   .card {
+    border-color: transparent;
     
     &:hover,
     &:focus {
       border-color: color("purple");
+      box-shadow: 3px 3px 6px 0 rgba(112,57,150,0.1);
     }
   }
   
@@ -28,6 +30,12 @@
   
   .bento-item-title {
     font-size: 1.25rem
+  }
+}
+
+.bento-item {
+  .document-thumbnail {
+    max-width: 123px;
   }
 }
 

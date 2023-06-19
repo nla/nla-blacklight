@@ -7,10 +7,15 @@ RSpec.describe NlaThumbnailPresenter do
   # rubocop:disable RSpec/VerifiedDoubles
   let(:view_context) { double "View context" }
   # rubocop:enable RSpec/VerifiedDoubles
+  let(:request) { instance_double(ActionDispatch::Request) }
   let(:config) { Blacklight::OpenStructWithHashAccess.new({thumbnail_method: :render_thumbnail, title_field: :title_tsim}) }
   let(:presenter) { described_class.new(document, view_context, config) }
   let(:image_options) { {alt: ""} }
   let(:solr_document_path) { "/catalog/#{document.id}" }
+
+  before do
+    allow(view_context).to receive(:request).with(no_args).and_return(request)
+  end
 
   describe "#exists?" do
     subject(:exists) { presenter.exists? }
@@ -76,6 +81,7 @@ RSpec.describe NlaThumbnailPresenter do
       context "when there is no image" do
         it "returns nil" do
           allow(view_context).to receive(:render_thumbnail).and_return(nil)
+          allow(request).to receive(:referrer).with(no_args).and_return("/catalog")
 
           expect(presenter.thumbnail_tag).to be_nil
         end
@@ -84,6 +90,7 @@ RSpec.describe NlaThumbnailPresenter do
       context "when there is no link" do
         it "returns an image tag only" do
           allow(view_context).to receive(:render_thumbnail).and_return('<img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
+          allow(request).to receive(:referrer).with(no_args).and_return("/catalog")
 
           expect(presenter.thumbnail_tag.include?("href")).to be false
         end
@@ -95,6 +102,7 @@ RSpec.describe NlaThumbnailPresenter do
           allow(view_context).to receive(:solr_document_path).with(any_args).and_return("/catalog/#{document.id}")
           allow(view_context).to receive(:link_to).with(any_args).and_return(%(<a href="/catalog/#{document.id}"><img src="image.png" alt="Work Title" onerror="this.style.display='none'" class="w-100" /></a>))
           allow(document).to receive(:online_access).and_return([{href: "https://example.com"}])
+          allow(request).to receive(:referrer).with(no_args).and_return("/catalog")
 
           expect(presenter.thumbnail_tag.include?("href")).to be true
           expect(presenter.thumbnail_tag.include?("img")).to be true
@@ -113,9 +121,9 @@ RSpec.describe NlaThumbnailPresenter do
         it "returns an image tag inside an anchor" do
           allow(document).to receive(:online_access).and_return([{href: "https://example.com"}])
           allow(view_context).to receive(:render_thumbnail).and_return('<img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
-          allow(view_context).to receive(:solr_document_path).with(any_args).and_return("/catalog/#{document.id}")
           allow(view_context).to receive(:link_to).with(any_args).and_return('<a href="https://example.com"><img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" /></a>')
           allow(document).to receive(:online_access).and_return([{href: "https://example.com"}])
+          allow(request).to receive(:referrer).with(no_args).and_return("/catalog/#{document.id}")
 
           expect(presenter.thumbnail_tag.include?("href")).to be true
           expect(presenter.thumbnail_tag.include?("img")).to be true
@@ -130,6 +138,8 @@ RSpec.describe NlaThumbnailPresenter do
 
     context "when displayed on the index page" do
       it "returns false" do
+        allow(request).to receive(:referrer).with(no_args).and_return("/catalog")
+
         expect(catalogue_page_flag).to be false
       end
     end
@@ -138,6 +148,9 @@ RSpec.describe NlaThumbnailPresenter do
       let(:config) { Blacklight::OpenStructWithHashAccess.new({key: :show, thumbnail_field: :thumbnail_path_ss, title_field: :title_tsim, top_level_config: :show}) }
 
       it "returns true" do
+        allow(request).to receive(:referrer).with(no_args).and_return("/catalog/#{document.id}")
+        allow(view_context).to receive(:request).with(no_args).and_return(request)
+
         expect(catalogue_page_flag).to be true
       end
     end

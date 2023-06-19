@@ -25,7 +25,10 @@ class ApplicationController < ActionController::Base
   # - The request is an Ajax request as this can lead to very unexpected behaviour.
   # :nocov:
   def storable_location?
-    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+    request.get? &&
+      is_navigational_format? &&
+      (!is_a?(Users::SessionsController) && !is_a?(Users::OmniauthCallbacksController) && !devise_controller?) &&
+      !request.xhr?
   end
   # :nocov:
 

@@ -26,9 +26,15 @@
     border-right: 0.5rem solid #fff;
   }
 
+  .document-metadata {
+    @extend %loading-skeleton;
+    height: 150px;
+  }
+
   h3,
   dt,
-  dd {
+  dd,
+  .btn {
     @extend %loading-skeleton;
   }
 }
