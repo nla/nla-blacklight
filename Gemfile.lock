@@ -314,7 +314,7 @@ GEM
     httpclient (2.8.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
-    importmap-rails (1.1.6)
+    importmap-rails (1.2.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
@@ -378,7 +378,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitar (0.9)
-    minitest (5.18.0)
+    minitest (5.18.1)
     mock_redis (0.36.0)
       ruby2_keywords
     msgpack (1.7.1)
@@ -441,7 +441,7 @@ GEM
     puma (6.3.0)
       nio4r (~> 2.0)
     raabro (1.4.0)
-    racc (1.6.2)
+    racc (1.7.1)
     rack (2.2.7)
     rack-protection (3.0.6)
       rack
