@@ -23,10 +23,10 @@ class SearchBuilder < Blacklight::SearchBuilder
       if solr_parameters["add_boost_query"] && solr_parameters["qf"] && solr_parameters["q"] && solr_parameters["q"].present?
         blacklight_params["search_type"] = "simple"
         return if blacklight_params["search_field"] != "all_fields" && blacklight_params["search_field"] != "title"
-        solr_parameters["bq"] = "anchored_title_tsi:\"FINLLFIIJQ " + solr_parameters["q"] + " AICULEDSSUL\"^600 OR
-anchored_title_only_tsi:\"FINLLFIIJQ " + solr_parameters["q"] + " AICULEDSSUL\"^500 OR
-anchored_title_no_format_tsi:\"FINLLFIIJQ " + solr_parameters["q"] + " AICULEDSSUL\"^500 OR
-left_anchored_title_tsi:\"FINLLFIIJQ " + solr_parameters["q"] + "\"^800"
+        solr_parameters["bq"] = "anchored_title_tsi:\"FINLLFIIJQ " + solr_parameters["q"] +
+          " AICULEDSSUL\"^600 OR anchored_title_only_tsi:\"FINLLFIIJQ " +
+          solr_parameters["q"] + " AICULEDSSUL\"^500 OR anchored_title_no_format_tsi:\"FINLLFIIJQ " + solr_parameters["q"] +
+          " AICULEDSSUL\"^500 OR left_anchored_title_tsi:\"FINLLFIIJQ " + solr_parameters["q"] + "\"^800"
       end
     end
   end

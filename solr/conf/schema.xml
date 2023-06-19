@@ -20,7 +20,7 @@
 
     <!-- stemmed and stopword text field, used to assist boosting of exact matches -->
     <dynamicField name="*_stim" type="s_text" stored="false" indexed="true" multiValued="true"/>
-    <dynamicField name="*_sti" type="s_text" stored="true" indexed="true" multiValued="false"/>
+    <dynamicField name="*_sti" type="s_text" stored="false" indexed="true" multiValued="false"/>
 
     <dynamicField name="*_ti" type="text" stored="false" indexed="true" multiValued="false"/>
     <dynamicField name="*_tim" type="text" stored="false" indexed="true" multiValued="true"/>
@@ -216,7 +216,7 @@
 
   <!-- create stemmed text fields -->
   <copyField source="*_tsim" dest="*_stim"/>
-  <copyField source="*_sti" dest="*_tsi"/>
+  <copyField source="*_tsi" dest="*_sti"/>
 
   <copyField source="title_ssim" dest="suggest" maxChars="256"/>
   <copyField source="call_number_ssim" dest="suggest" maxChars="256"/>
