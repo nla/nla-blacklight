@@ -35,9 +35,9 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
       rows: 10,
-      qf: "id^2 title_tsim^250 title_stim^200 title3_tsi^100 title5_tsi^70 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
+      qf: "id^2 title_tsim^250 title_stim^300 title3_tsi^100 title5_tsi^70 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
       pf: "id title_tsim title_addl_tsim author_search_tsim subject_tsimv",
-      mm: "1<-1 2<-2 6<60%",
+      mm: "1<100% 3<75% 6<60%",
       add_boost_query: true
     }
 
