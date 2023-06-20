@@ -75,9 +75,9 @@ module RequestHelper
 
   def pickup_location_img(item)
     if pickup_location_code(item).start_with? "MRR"
-      image_tag "pickup-locations/main_reading_room.jpeg", class: "img-fluid"
+      image_tag "pickup-locations/main_reading_room.jpg", class: "img-fluid"
     elsif pickup_location_code(item).start_with? "SCRR"
-      image_tag "pickup-locations/special_collections.jpeg", class: "img-fluid"
+      image_tag "pickup-locations/special_collections.jpg", class: "img-fluid"
     else
       image_tag "pickup-locations/newspapers_and_family_history_zone.jpg", class: "img-fluid"
     end
