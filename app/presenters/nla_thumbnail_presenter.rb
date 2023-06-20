@@ -40,12 +40,16 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
     is_catalogue_record_page? ? "ml-3 mr-3" : ""
   end
 
+  def thumbnail_classes
+    is_catalogue_record_page? ? "fade border" : "w-100 fade border"
+  end
+
   private
 
   # @param [Hash] image_options to pass to the image tag
   # :nocov:
   def thumbnail_value(image_options)
-    image_options = image_options.merge({alt: alt_title_from_document, onerror: "this.style.display='none'", class: "w-100 fade border", data: {"scroll-reveal-target": "item", delay: "150ms"}})
+    image_options = image_options.merge({alt: alt_title_from_document, onerror: "this.style.display='none'", class: thumbnail_classes, data: {"scroll-reveal-target": "item", delay: "150ms"}})
     value = if thumbnail_method
       view_context.send(thumbnail_method, document, image_options)
     elsif thumbnail_field
