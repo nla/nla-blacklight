@@ -41,7 +41,7 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
   end
 
   def thumbnail_classes
-    is_catalogue_record_page? ? "fade border" : "w-100 fade border"
+    is_catalogue_record_page? ? "fade thumbnail" : "w-100 fade thumbnail"
   end
 
   private
