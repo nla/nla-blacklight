@@ -34,6 +34,7 @@ en:
       logout: 'Log Out'
       bookmarks: 'Bookmarks'
       search_history: 'History'
+      register: 'Sign up'
     welcome: 'Welcome LSP Board!'
     and: 'and'
     or: 'or'
