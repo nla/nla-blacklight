@@ -14,7 +14,7 @@ def setup
 
   log "== Installing migrations from dependencies =="
   # Copies migrations that don't already exist into the `db` directory
-  system! "bin/rails generate catalogue:patrons:install"
+  system! "bin/rails generate nla:blacklight_common:install"
 
   log "== Dropping & recreating the development database =="
   # Note that the very first time this runs, db:reset

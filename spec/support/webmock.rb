@@ -13,8 +13,7 @@ RSpec.configure do |config|
       .with(
         headers: {
           "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 200, body: eresource_config, headers: {})
@@ -23,8 +22,7 @@ RSpec.configure do |config|
       .with(
         headers: {
           "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 500, body: "", headers: {})
@@ -33,8 +31,7 @@ RSpec.configure do |config|
       .with(
         headers: {
           "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 200, body: "", headers: {})
@@ -47,8 +44,7 @@ RSpec.configure do |config|
         headers: {
           "Accept" => "*/*",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "Content-Type" => "application/json",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Content-Type" => "application/json"
         }
       )
       .to_return(status: 200, body: success_auth_mock, headers: {})
@@ -145,8 +141,7 @@ RSpec.configure do |config|
       .with(
         headers: {
           "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 200, body: single_message_mock, headers: {"Content-Type" => "application/json"})
@@ -157,8 +152,7 @@ RSpec.configure do |config|
       .with(
         headers: {
           "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 200, body: multi_message_mock, headers: {"Content-Type" => "application/json"})
@@ -167,8 +161,7 @@ RSpec.configure do |config|
       .with(
         headers: {
           "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 200, body: "", headers: {})
@@ -179,8 +172,7 @@ RSpec.configure do |config|
       .with(
         headers: {
           "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 200, body: fa_search, headers: {})
@@ -270,8 +262,7 @@ RSpec.configure do |config|
         headers: {
           "Accept" => "*/*",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "Content-Type" => "application/x-www-form-urlencoded",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Content-Type" => "application/x-www-form-urlencoded"
         }
       )
       .to_return(status: 200, body: token_response, headers: {"Content-Type" => "application/json"})
@@ -282,8 +273,7 @@ RSpec.configure do |config|
       .with(
         headers: {
           "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
@@ -294,8 +284,7 @@ RSpec.configure do |config|
       .with(
         headers: {
           "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 200, body: create_request_response, headers: {})
@@ -304,10 +293,20 @@ RSpec.configure do |config|
       .with(
         headers: {
           "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 404, body: "", headers: {})
+
+    request_summary = IO.read("spec/files/account/request_summary.json")
+
+    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/.*\/myRequests/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+        }
+      )
+      .to_return(status: 200, body: request_summary, headers: {})
   end
 end

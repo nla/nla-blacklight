@@ -9,8 +9,33 @@ class ItemRequestError < StandardError; end
 class CatalogueServicesClient
   MAX_TOKEN_RETRIES = 3
 
+  # rubocop:disable Lint/SymbolConversion
+  DEFAULT_REQUEST_SUMMARY = {
+    "readyForCollection": [],
+    "itemsRequested": [],
+    "notAvailable": [],
+    "previousRequests": [],
+    "numRequestsRemaining": 999
+  }
+  # rubocop:enable Lint/SymbolConversion
+
   def initialize
     @oauth_client ||= init_client
+  end
+
+  def get_request_summary(folio_id:)
+    conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
+      f.request :authorization, "Bearer", bearer_token.token
+      f.response :json
+    end
+
+    res = conn.get("/catalogue-services/folio/user/#{folio_id}/myRequests")
+    if res.status == 200
+      res.body.presence || DEFAULT_REQUEST_SUMMARY
+    else
+      Rails.logger.error "Failed to retrieve request summary for #{folio_id}"
+      raise HoldingsRequestError.new("Failed to retrieve request summary for #{folio_id}")
+    end
   end
 
   def get_holdings(instance_id:)
@@ -81,7 +106,7 @@ class CatalogueServicesClient
     url += "&lccList=#{lccn_list}" if lccn_list.present?
     url += "&width=#{width}"
 
-    Rails.cache.fetch("thumbnail_#{url}", expires_in: 1.day) do
+    Rails.cache.fetch("thumbnail_#{url}", expires_in: 1.year) do
       res = conn.get(url)
 
       if res.status == 200

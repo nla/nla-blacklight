@@ -1,0 +1,25 @@
+{
+  "responseHeader": {
+    "zkConnected": true,
+    "status": 0,
+    "QTime": 377,
+    "params": {
+      "q": "folio_instance_id_ssim:\"81d5eb5a-4c86-5a1e-a3f3-7cd8a0b48859\"",
+      "fl": "id",
+      "sort": "score desc",
+      "rows": "1",
+      "wt": "json"
+    }
+  },
+  "response": {
+    "numFound": 1,
+    "start": 0,
+    "maxScore": 11.963547,
+    "numFoundExact": true,
+    "docs": [
+      {
+        "id": "8564488"
+      }
+    ]
+  }
+}

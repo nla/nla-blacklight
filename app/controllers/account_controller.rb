@@ -3,15 +3,7 @@
 class AccountController < ApplicationController
   before_action :authenticate_user!
 
-  # :nocov:
   def requests
-    @requests = {
-      readyForCollection: [],
-      itemsRequested: [],
-      notAvailable: [],
-      previousRequests: [],
-      numRequestsRemaining: 999
-    }
+    @requests = helpers.cat_services_client.get_request_summary(folio_id: current_user.folio_id)
   end
-  # :nocov:
 end

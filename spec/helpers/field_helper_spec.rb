@@ -350,8 +350,7 @@ RSpec.describe FieldHelper do
         .with(
           headers: {
             "Accept" => "*/*",
-            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-            "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
           }
         )
         .to_return(status: 200, body: "", headers: {})
@@ -374,8 +373,7 @@ RSpec.describe FieldHelper do
           .with(
             headers: {
               "Accept" => "*/*",
-              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-              "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
           .to_return(status: 200, body: "", headers: {})
