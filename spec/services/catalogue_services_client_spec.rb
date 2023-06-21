@@ -28,8 +28,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
             headers: {
               "Accept" => "*/*",
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-              "Content-Type" => "application/x-www-form-urlencoded",
-              "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+              "Content-Type" => "application/x-www-form-urlencoded"
             }
           )
           .to_return(status: 200, body: expired_token_response, headers: {"Content-Type" => "application/json"})
@@ -46,8 +45,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
           .with(
             headers: {
               "Accept" => "*/*",
-              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-              "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
           .to_return(status: 401, body: "", headers: {})
