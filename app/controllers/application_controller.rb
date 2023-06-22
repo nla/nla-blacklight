@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   def storable_location?
     request.get? &&
       is_navigational_format? &&
-      (!is_a?(Users::SessionsController) && !is_a?(Users::OmniauthCallbacksController) && !devise_controller?) &&
+      (!is_a?(ThumbnailController) && !is_a?(Users::SessionsController) && !is_a?(Users::OmniauthCallbacksController) && !devise_controller?) &&
       !request.xhr?
   end
   # :nocov:
