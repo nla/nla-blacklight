@@ -1,4 +1,4 @@
-<% if Flipper.enabled?(:requesting) && (!is_ned_item?(@document) || has_online_copy?(@document)) %>
+<% if render_request?(@document) %>
 <div id="request-details" class="col mb-2">
   <h2 class="h3"><%= t("requesting.heading") %></h2>
   <p><%= t("requesting.message") %></p>
