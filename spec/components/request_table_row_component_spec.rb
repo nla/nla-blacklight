@@ -42,7 +42,8 @@ RSpec.describe RequestTableRowComponent, type: :component do
   it "renders the request date" do
     render_inline(described_class.new(request_data))
 
-    expect(page).to have_css("td", text: "2023-06-2018:36:33")
+    expect(page).to have_css("td", text: "20 June 2023")
+    expect(page).to have_css("small.text-muted", text: "06:36:33pm")
   end
 
   def request_data

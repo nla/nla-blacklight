@@ -1,7 +1,7 @@
-<div class="request-summary table-responsive-md">
-  <table class="table table-striped table-hover table-bordered">
-    <caption><%= @caption %> (<%= count %>)</caption>
-    <thead class="bg-secondary text-light">
+<div class="request-summary table-responsive">
+  <table class="table table-hover table-sm mb-4">
+    <caption><%= @caption %> <span class="badge badge-pill badge-secondary"><%= count %></span></caption>
+    <thead>
     <tr>
       <th scope="col"><%= t("account.requests.table_column_headings.title") %></th>
       <th scope="col"><%= t("account.requests.table_column_headings.location") %></th>
