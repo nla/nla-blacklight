@@ -16,15 +16,14 @@
       <li id="google-preview" class="explore-link d-none">&nbsp;</li>
 
       <li id="library-thing" class="explore-link d-none">&nbsp;</li>
-
-      <%
-        values = {
-          eresources: link_to(t("blacklight.explore.eresources"), "https://www.nla.gov.au/eresources"),
-          research_guides: link_to(t("blacklight.explore.research_guides"), "https://www.nla.gov.au/research-guides")
-        }
-      %>
-      <!--<li class="explore-link"><%= t("blacklight.explore.check_eresources_research_guides", **values).html_safe %></li>-->
     </ul>
+    <%
+      values = {
+        eresources: link_to(t("blacklight.explore.eresources"), "https://www.nla.gov.au/eresources"),
+        research_guides: link_to(t("blacklight.explore.research_guides"), "https://www.nla.gov.au/research-guides")
+      }
+    %>
+    <%= t("blacklight.explore.check_eresources_research_guides", **values).html_safe %>
 
   </div>
 </div>

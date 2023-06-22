@@ -8,7 +8,7 @@ RSpec.describe ExploreComponent, type: :component do
   it "renders a link to Trove" do
     render_inline(described_class.new(document))
 
-    expect(page).to have_xpath("//a[text()='Find in other libraries']")
+    expect(page).to have_xpath("//a[text()='Find in other libraries at Trove']")
     expect(page).to have_xpath("//a[contains(@href, '4157485')]")
     expect(page).to have_xpath("//img[contains(@src, 'trove-icon')]")
   end
@@ -17,8 +17,8 @@ RSpec.describe ExploreComponent, type: :component do
     render_inline(described_class.new(document))
 
     expect(page.text).to include "Check eResources and Research Guides"
-    expect(page).to have_xpath("//a[text()='eResources']")
-    expect(page).to have_xpath("//a[text()='Research Guides']")
+    expect(page).to have_link(href: "https://www.nla.gov.au/eresources", text: "eResources")
+    expect(page).to have_link(href: "https://www.nla.gov.au/research-guides", text: "Research Guides")
   end
 
   context "when the online shop search has no results" do
