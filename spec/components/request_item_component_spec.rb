@@ -13,12 +13,6 @@ RSpec.describe RequestItemComponent, type: :component do
     stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_API_BASE_URL" => "http://catservices.test/catalogue-services"))
   end
 
-  it "renders the header" do
-    render_inline(described_class.new(document: document))
-
-    expect(page).to have_css("h2", text: "Request this item")
-  end
-
   it "renders the holdings" do
     render_inline(described_class.new(document: document))
 
@@ -31,8 +25,7 @@ RSpec.describe RequestItemComponent, type: :component do
         .with(
           headers: {
             "Accept" => "*/*",
-            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-            "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
           }
         )
         .to_return(status: 200, body: "", headers: {})
@@ -51,8 +44,7 @@ RSpec.describe RequestItemComponent, type: :component do
         .with(
           headers: {
             "Accept" => "*/*",
-            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-            "User-Agent" => "nla-blacklight/#{Rails.configuration.version}"
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
           }
         )
         .to_return(status: 500, body: "", headers: {})

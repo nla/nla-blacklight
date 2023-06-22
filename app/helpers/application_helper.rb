@@ -70,6 +70,14 @@ module ApplicationHelper
     end
   end
 
+  def cat_services_client
+    @catalogue_services_client ||= CatalogueServicesClient.new
+  end
+
+  def thumbnail_service
+    @thumbnail_service ||= ThumbnailService.new
+  end
+
   private
 
   def makelink_eresource(href)
@@ -112,9 +120,5 @@ module ApplicationHelper
     end
 
     [entry, caption, icon]
-  end
-
-  def cat_services_client
-    @catalogue_services_client ||= CatalogueServicesClient.new
   end
 end

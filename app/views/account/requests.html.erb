@@ -1,0 +1,10 @@
+<h2><%= t("account.requests.heading") %></h2>
+<div class="alert alert-info" role="alert">
+  <%= t("account.requests.num_remaining", count: @requests["numRequestsRemaining"]) %>
+</div>
+
+<%= render RequestsTableComponent.new(@requests["readyForCollection"], t("account.requests.table_headings.ready")) %>
+<%= render RequestsTableComponent.new(@requests["itemsRequested"], t("account.requests.table_headings.requested")) %>
+<%= render RequestsTableComponent.new(@requests["notAvailable"], t("account.requests.table_headings.not_available")) %>
+<%= render RequestsTableComponent.new(@requests["previousRequests"], t("account.requests.table_headings.previous")) %>
+

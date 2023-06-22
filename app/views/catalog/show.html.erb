@@ -1,0 +1,11 @@
+<% if current_search_session %>
+  <div id="appliedParams" class="clearfix constraints-container mb-3">
+    <%= link_back_to_catalog class: 'btn btn-outline-secondary btn-sm back-to-results arrow-before' %>
+  </div>
+<% end %>
+
+<%= render 'show_main_content' %>
+
+<% content_for(:sidebar) do %>
+  <%= render_document_sidebar_partial @document %>
+<% end %>

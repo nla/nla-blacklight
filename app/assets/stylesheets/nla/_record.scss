@@ -27,6 +27,11 @@
     background-color: rgba(0,0,0,0.4);
   }
   
+  .thumbnail {
+    max-height: 500px;
+    object-fit: contain;
+    object-position: 0 0;
+  }
 }
 
 .show-tools {

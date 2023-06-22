@@ -30,6 +30,9 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  loading: "Loading..."
+  headings:
+    search: "Search"
   collection:
     parent: "This is a collection-level record."
     child: "This record belongs in a collection."
@@ -100,3 +103,18 @@ en:
     parent_child_collection: "This is part of the <a href=\"%{url}\" class=\"parent\" data-related-records-target=\"link\">%{collection_name}</a>."
     related_collection_total: "There are <a href=\"%{url}\" class=\"sibling\" data-related-records-target=\"link\">%{total} related collections</a>."
     collection_total: "This collection contains <a href=\"%{url}\" class=\"child\" data-related-records-target=\"link\">%{total} records</a>."
+  account:
+    requests:
+      heading: "Your Requests"
+      menu: "Requests"
+      num_remaining: "You can request %{count} more items."
+      table_headings:
+        ready: "Ready for collection"
+        requested: "Items requested"
+        not_available: "Not available"
+        previous: "Previous requests"
+      table_column_headings:
+        title: "Title"
+        location: "Pickup location"
+        notes: "Notes"
+        request_date: "Requested on"

@@ -105,7 +105,7 @@ RSpec.describe RequestHelper do
       let(:item) { {"pickupLocation" => {"code" => "MRR-SP"}} }
 
       it "returns the Main Reading Room image" do
-        expect(pickup_location_img(item)).to include "main_reading_room.jpeg"
+        expect(pickup_location_img(item)).to include "main_reading_room.jpg"
       end
     end
 
@@ -121,7 +121,7 @@ RSpec.describe RequestHelper do
       let(:item) { {"pickupLocation" => {"code" => "SCRR-SP"}} }
 
       it "returns the Special Collections Reading Room image" do
-        expect(pickup_location_img(item)).to include "special_collections.jpeg"
+        expect(pickup_location_img(item)).to include "special_collections.jpg"
       end
     end
   end

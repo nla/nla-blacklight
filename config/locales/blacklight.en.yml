@@ -34,12 +34,16 @@ en:
       logout: 'Log Out'
       bookmarks: 'Bookmarks'
       search_history: 'History'
+      register: 'Sign up'
     welcome: 'Welcome LSP Board!'
     and: 'and'
     or: 'or'
     collection_search:
       title: 'Search our collections'
       description: 'The collections held in the National Library of Australia reflect all Australians from all walks of life. By collecting today what is important tomorrow, we aim to better tell the stories and history of Australia, including those of First Australians. Here, you will find everything, from history, culture, language and knowledge—full of truths, half-truths and frank misunderstandings. We understand that our collections have the power to grow, to heal and to wound.'
+    catalogue:
+      title: 'Search our catalogue'
+      description: 'Search the Catalogue to find books, puctures, maps, oral history interviews, manuscripts and more.'
     eresources:
       title: 'Search eResources'
       description: 'Search eResources for articles, journals, ebooks, databases and more.'
@@ -168,7 +172,7 @@ en:
           blank: 'You must select a carrier'
           invalid: "You must enter a valid carrier"
 
-    back_to_search: 'Back to Search'
+    back_to_search: 'Back to search results'
     back_to_bookmarks: 'Back to Bookmarks'
 
     search:
@@ -243,7 +247,7 @@ en:
         remove:
           value: 'Remove constraint %{value}'
           label_value: 'Remove constraint %{label}: %{value}'
-      start_over: 'Start Over'
+      start_over: 'New catalogue search'
       index:
         label: '%{label}:'
       show:
@@ -280,7 +284,7 @@ en:
 
     explore:
       title: "Explore"
-      find_in_trove: "Find in other libraries"
+      find_in_trove: "Find in other libraries at Trove"
       eresources: "eResources"
       research_guides: "Research Guides"
       check_eresources_research_guides: "Check %{eresources} and %{research_guides}"

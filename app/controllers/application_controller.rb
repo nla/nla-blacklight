@@ -25,11 +25,20 @@ class ApplicationController < ActionController::Base
   # - The request is an Ajax request as this can lead to very unexpected behaviour.
   # :nocov:
   def storable_location?
-    request.get? && is_navigational_format? && !devise_controller? && !request.xhr?
+    request.get? &&
+      is_navigational_format? &&
+      (is_a_storable_controller_action? && !devise_controller?) &&
+      !request.xhr?
   end
-  # :nocov:
 
-  # :nocov:
+  # Some parts of the application are not suitable for storing the location
+  def is_a_storable_controller_action?
+    !is_a?(ThumbnailController) && # ignore lazy loaded thumbnail requests
+      !(is_a?(SearchController) && params[:action] == "single_search") && # ignore single search requests from bento
+      !is_a?(Users::SessionsController) && # ignore login requests
+      !is_a?(Users::OmniauthCallbacksController) # ignore login requests to Keycloak
+  end
+
   def store_user_location!
     # :user is the scope we are authenticating
     store_location_for(:user, request.fullpath)

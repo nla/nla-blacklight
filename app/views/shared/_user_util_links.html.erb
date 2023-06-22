@@ -10,13 +10,17 @@
             <%= current_user %>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to t("account.requests.menu"), account_requests_path, class: 'dropdown-item' %>
             <%= render partial: "blacklight/nav/bookmark" %>
             <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete, data: { turbo_method: :delete } %>
           </div>
         </li>
       <% else %>
       <li class="nav-item">
-        <%= link_to t('blacklight.header_links.login'), new_user_session_path, class: 'nav-link' %>
+        <%= link_to t("blacklight.header_links.register"), "https://www.nla.gov.au/getting-started/your-national-library-card", class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t('blacklight.header_links.login'), new_user_session_path, class: "nav-link" %>
       </li>
       <% end %>
     <% end %>

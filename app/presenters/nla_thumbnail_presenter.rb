@@ -27,20 +27,29 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
   end
   # :nocov:
 
+  # Thumbnail is lazy loaded and rendered by calling the ThumbnailController, instead of it being
+  # immediately loaded and rendered when the catalogue record document is rendered by the CatalogController.
+  # This needs to check the referrer path to determine where the request to load and render the
+  # thumbnail came from; the catalog "index" page or the "show" page.
   def is_catalogue_record_page?
-    view_config[:key] == :show
+    path = Rails.application.routes.recognize_path view_context.request.referrer
+    path[:controller] == "catalog" && path[:action] == "show"
+  end
+
+  def thumbnail_container_classes
+    is_catalogue_record_page? ? "ml-3 mr-3" : ""
+  end
+
+  def thumbnail_classes
+    is_catalogue_record_page? ? "fade thumbnail" : "w-100 fade thumbnail"
   end
 
   private
 
-  def cat_services_client
-    @catalogue_services_client ||= CatalogueServicesClient.new
-  end
-
   # @param [Hash] image_options to pass to the image tag
   # :nocov:
   def thumbnail_value(image_options)
-    image_options = image_options.merge({alt: alt_title_from_document, onerror: "this.style.display='none'", class: "w-100"})
+    image_options = image_options.merge({alt: alt_title_from_document, onerror: "this.style.display='none'", class: thumbnail_classes, data: {"scroll-reveal-target": "item", delay: "150ms"}})
     value = if thumbnail_method
       view_context.send(thumbnail_method, document, image_options)
     elsif thumbnail_field

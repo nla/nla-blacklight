@@ -13,7 +13,7 @@
   </div>
   <div class="navbar navbar-dark bg-dark bottombar">
     <div class="container">
-      <%= t('blacklight.application_name') %>
+      <%= content_for(:page_header) || t('blacklight.application_name') %>
     </div>
   </div>
 </header>

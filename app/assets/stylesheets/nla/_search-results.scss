@@ -5,10 +5,6 @@
 .constraints-container {
   margin-top: 1rem;
   
-  .catalog_startOverLink {
-    font-size: 0.75rem;
-  }
-  
   .applied-filter {
     .constraint-value {
       border-top-left-radius: 3rem;
@@ -21,7 +17,8 @@
       padding-left: 1rem;
       padding-right: 1rem;
       
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: color("white");
         color: color("purple");
         cursor: default;
