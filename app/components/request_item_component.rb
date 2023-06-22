@@ -14,9 +14,7 @@ class RequestItemComponent < ViewComponent::Base
   end
 
   def render?
-    Flipper.enabled?(:requesting) &&
-      (!is_ned_item?(@document) || has_online_copy?(@document)) &&
-      !is_electronic_resource?(@document)
+    helpers.render_request?(@document)
   end
 
   def before_render

@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 module RequestItemHelper
+  def render_request?(document)
+    Flipper.enabled?(:requesting) &&
+      (!is_ned_item?(document) || has_online_copy?(document)) &&
+      !is_electronic_resource?(document)
+  end
+
   def has_online_copy?(document)
     document.copy_access.present? && document.copy_access.first[:href].include?("nla.gov.au")
   end
