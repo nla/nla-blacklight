@@ -289,7 +289,7 @@ RSpec.configure do |config|
       )
       .to_return(status: 200, body: create_request_response, headers: {})
 
-    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/thumbnail\/retrieve/)
+    WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url/)
       .with(
         headers: {
           "Accept" => "*/*",

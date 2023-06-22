@@ -4,24 +4,20 @@ require "rails_helper"
 
 RSpec.describe ThumbnailHelper do
   describe "#render_thumbnail" do
-    context "when document has not Bib ID" do
-      it "returns nil" do
-        expect(helper.render_thumbnail(SolrDocument.new)).to be_nil
-      end
-    end
+    context "when an image is found via nla.obj" do
+      let(:document) { SolrDocument.new(id: 123, marc_ss: sample_marc, nlaobjid_ss: "nla.obj-123") }
 
-    context "when an image is found via Bib ID" do
       it "returns an image tag" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/thumbnail\/retrieve\?bibId=123/)
+        WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?isbnList=&lccnList=&nlaObjId=nla.obj-123&width=123/)
           .with(
             headers: {
               "Accept" => "*/*",
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
-          .to_return(status: 200, body: bib_id_image, headers: {})
+          .to_return(status: 200, body: nla_obj_image.to_json, headers: {})
 
-        expect(helper.render_thumbnail(SolrDocument.new(id: 123, marc_ss: sample_marc))).to match(/img/)
+        expect(helper.render_thumbnail(document, {})).to match(/img/)
       end
     end
 
@@ -29,14 +25,14 @@ RSpec.describe ThumbnailHelper do
       let(:document) { SolrDocument.new(id: 123, marc_ss: sample_marc) }
 
       it "returns an image tag" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/thumbnail\/retrieve\?bibId=123&isbnList=8559378&width=123/)
+        WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?isbnList=8559378&lccnList=&nlaObjId=&width=123/)
           .with(
             headers: {
               "Accept" => "*/*",
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
-          .to_return(status: 200, body: isbn_image, headers: {"content-type": "image/jpeg"})
+          .to_return(status: 200, body: isbn_image.to_json, headers: {"content-type": "image/jpeg"})
 
         allow(document).to receive(:isbn).and_return(["8559378"])
 
@@ -48,14 +44,14 @@ RSpec.describe ThumbnailHelper do
       let(:document) { SolrDocument.new(id: 123, marc_ss: sample_marc) }
 
       it "returns an image tag" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/thumbnail\/retrieve\?bibId=123&lccList=93002529&width=123/)
+        WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?isbnList=&lccnList=93002529&nlaObjId=&width=123/)
           .with(
             headers: {
               "Accept" => "*/*",
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
-          .to_return(status: 200, body: lccn_image, headers: {"content-type": "image/jpeg"})
+          .to_return(status: 200, body: lccn_image.to_json, headers: {"content-type": "image/jpeg"})
 
         allow(document).to receive(:lccn).and_return(["93002529"])
 
@@ -64,16 +60,22 @@ RSpec.describe ThumbnailHelper do
     end
   end
 
-  def bib_id_image
-    IO.read("spec/files/thumbnails/bib_id.png")
+  def nla_obj_image
+    {
+      url: "https://dl-uat.nla.gov.au/dl-repo/ImageController/nla.obj-137185831?WID=123"
+    }
   end
 
   def isbn_image
-    IO.read("spec/files/thumbnails/isbn.png")
+    {
+      url: "http://books.google.com/books/content?id=fI-HGp1pnnQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    }
   end
 
   def lccn_image
-    IO.read("spec/files/thumbnails/lccn.png")
+    {
+      url: "http://books.google.com/books/content?id=fI-HGp1pnnQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"
+    }
   end
 
   def sample_marc

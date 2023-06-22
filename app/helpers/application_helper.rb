@@ -74,6 +74,10 @@ module ApplicationHelper
     @catalogue_services_client ||= CatalogueServicesClient.new
   end
 
+  def thumbnail_service
+    @thumbnail_service ||= ThumbnailService.new
+  end
+
   private
 
   def makelink_eresource(href)

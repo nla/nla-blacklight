@@ -4,12 +4,14 @@ module ThumbnailHelper
   def render_thumbnail(document, options = {})
     return if document.first("id").blank?
 
-    bib_id = document.first("id")
-    isbn_list = document.isbn_list.join(",")
-    lccn_list = document.lccn.join(",")
+    service_options = {
+      nlaObjId: document.first("nlaobjid_ss"),
+      isbnList: document.isbn_list.join(","),
+      lccnList: document.lccn.join(","),
+      width: thumbnail_image_width
+    }
 
-    width = thumbnail_image_width
-    thumb_url = cat_services_client.get_thumbnail(bib_id, isbn_list, lccn_list, width)
+    thumb_url = thumbnail_service.get_url(service_options)
     if thumb_url.present?
       image_tag thumb_url, options
     end
