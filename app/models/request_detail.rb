@@ -18,11 +18,11 @@ class RequestDetail
 
   def request_date
     # requestDate.strftime("%FT%T")
-    date.strftime("%F")
+    date.strftime("%-d %B %Y")
   end
 
   def request_time
-    date.strftime("%T")
+    date.strftime("%I:%M:%S%P")
   end
 
   private

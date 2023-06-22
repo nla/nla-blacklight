@@ -1,6 +1,6 @@
 <h2><%= t("account.requests.heading") %></h2>
 <div class="alert alert-info" role="alert">
-  <p><%= t("account.requests.num_remaining", count: @requests["numRequestsRemaining"]) %></p>
+  <%= t("account.requests.num_remaining", count: @requests["numRequestsRemaining"]) %>
 </div>
 
 <%= render RequestsTableComponent.new(@requests["readyForCollection"], t("account.requests.table_headings.ready")) %>
