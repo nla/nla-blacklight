@@ -8,7 +8,7 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def render_online?
-    has_online_access?(@document) || has_online_copy?(@document)
+    has_online_access?(@document) || has_online_copy?(@document) || is_ned_item?(@document) || is_electronic_resource?(@document)
   end
 
   def online_label
@@ -28,6 +28,8 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def render_request?
-    Flipper.enabled?(:requesting) && (!is_ned_item?(@document) || has_online_copy?(@document))
+    Flipper.enabled?(:requesting) &&
+      (!is_ned_item?(@document) || has_online_copy?(@document)) &&
+      !is_electronic_resource?(@document)
   end
 end
