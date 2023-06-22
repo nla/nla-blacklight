@@ -305,6 +305,8 @@
         <tokenizer class="solr.ICUTokenizerFactory"/>
         <filter class="solr.StopFilterFactory" ignoreCase="true" words="stopwords.txt"/>
         <filter class="solr.ICUFoldingFilterFactory"/>  <!-- NFKC, case folding, diacritics removed -->
+        <filter class="solr.EnglishPossessiveFilterFactory"/>
+        <filter class="solr.EnglishMinimalStemFilterFactory"/>
         <filter class="solr.KStemFilterFactory"/>
         <filter class="solr.TrimFilterFactory"/>
         <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
