@@ -25,7 +25,7 @@ class SolrDocument
     title: "title_ssm",
     author: "author_ssm",
     language: "language_ssim",
-    format: "format"
+    format: "format_ssi"
   )
 
   # self.unique_key = 'id'
