@@ -92,6 +92,9 @@ class CatalogueServicesClient
         nil
       end
     end
+  rescue
+    Rails.logger.error "Error fetching thumbnail for #{bib_id}"
+    nil
   end
 
   private
