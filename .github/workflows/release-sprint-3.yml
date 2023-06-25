@@ -15,7 +15,7 @@ jobs:
         id: release
         with:
           token: ${{ secrets.GH_TOKEN }}
-          default_branch: "release/sprint-3"
+          default-branch: "release/sprint-3"
           release-type: ruby
           package-name: nla-blacklight
           bump-minor-pre-major: true
