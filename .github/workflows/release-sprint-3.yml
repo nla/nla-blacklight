@@ -5,7 +5,7 @@
 name: Release automation from 'main' branch
 on:
   push:
-    branches: [main]
+    branches: [release/sprint-3]
 jobs:
   release-please:
     name: Create a new release
