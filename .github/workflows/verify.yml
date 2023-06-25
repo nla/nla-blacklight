@@ -7,10 +7,12 @@ on:
   push:
     branches:
       - "main"
+      - "release/*"
       - "hotfix/*"
   pull_request:
     branches:
       - "main"
+      - "release/*"
       - "hotfix/*"
 jobs:
   linters:
