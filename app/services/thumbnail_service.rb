@@ -7,7 +7,7 @@ class ThumbnailService
     end
 
     url = "/thumbnail-service/thumbnail/url?#{options.to_query}"
-    Rails.cache.fetch("thumb_url_#{url}", expires: 1.year) do
+    Rails.cache.fetch("thumb_url_#{url}", expires: 6.hours) do
       res = conn.get(url)
       if res.status == 200
         res.body["url"]
