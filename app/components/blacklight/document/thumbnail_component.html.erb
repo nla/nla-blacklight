@@ -1,7 +1,7 @@
 <% value = use_thumbnail_tag_behavior? ? presenter.thumbnail.thumbnail_tag(@image_options, 'aria-hidden': true, tabindex: -1, counter: @counter) : presenter.thumbnail.render(@image_options) %>
 
 <% if value %>
-<div class="<%= presenter.thumbnail.thumbnail_container_classes %>"
+<div
   data-controller="scroll-reveal"
   data-scroll-reveal-class-value="active show"
   data-scroll-reveal-threshold-value="0"

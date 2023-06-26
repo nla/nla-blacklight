@@ -22,22 +22,13 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
     if is_catalogue_record_page?
       view_context.link_to value, link_value, url_options
     else
-      view_context.link_to value, view_context.solr_document_path(document), url_options
+      view_context.link_to value, view_context.solr_document_path(id: document.id), url_options
     end
   end
   # :nocov:
 
-  # Thumbnail is lazy loaded and rendered by calling the ThumbnailController, instead of it being
-  # immediately loaded and rendered when the catalogue record document is rendered by the CatalogController.
-  # This needs to check the referrer path to determine where the request to load and render the
-  # thumbnail came from; the catalog "index" page or the "show" page.
   def is_catalogue_record_page?
-    path = Rails.application.routes.recognize_path view_context.request.referrer
-    path[:controller] == "catalog" && path[:action] == "show"
-  end
-
-  def thumbnail_container_classes
-    is_catalogue_record_page? ? "ml-3 mr-3" : ""
+    view_context.current_page?(view_context.solr_document_path(id: document.id))
   end
 
   def thumbnail_classes
