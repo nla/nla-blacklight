@@ -23,9 +23,11 @@
           "id": "565c607a-4a21-5a9c-bc22-370947bb9a7c",
           "holdingsRecordId": "bed76196-e6ed-50d8-b658-ef64ce8ad90e",
           "barcode": "31508009830584",
-          "itemLevelCallNumber": "Nq 363.19262 EXP",
           "effectiveLocationId": "6e569414-0af3-45ba-a919-3a7f5dd09fd9",
           "effectiveLocationDisplayName": "Main Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "Nq 363.19262 EXP"
+          },
           "status": {
             "name": "Available",
             "date": "2023-03-25T01:49:39.174+00:00"
@@ -50,7 +52,8 @@
           "discoverySuppress": false,
           "requestable": false
         }
-      ]
+      ],
+      "notes": []
     }
   ]
 }

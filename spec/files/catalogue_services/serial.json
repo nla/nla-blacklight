@@ -22,9 +22,11 @@
           "id": "60ae1cf9-5b4c-5fac-9a38-2cb195cdb7b2",
           "holdingsRecordId": "37fbc2dd-3b37-58b8-b447-b538ba7265b9",
           "barcode": "31508021167700",
-          "itemLevelCallNumber": "NKA 1132",
           "effectiveLocationId": "7b4822a2-9aa7-442d-8ed5-8da3cc8c01a2",
           "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "NKA 1132"
+          },
           "status": {
             "name": "Available",
             "date": "2023-03-25T02:08:44.151+00:00"
@@ -48,7 +50,8 @@
           "discoverySuppress": false,
           "requestable": true
         }
-      ]
+      ],
+      "notes": []
     },
     {
       "id": "fc59f835-c340-5ea4-978d-4bfe4193cee0",
@@ -71,9 +74,11 @@
           "id": "95d87c3b-ef17-5440-9dbb-befcc2b7670b",
           "holdingsRecordId": "fc59f835-c340-5ea4-978d-4bfe4193cee0",
           "barcode": "31508019674725",
-          "itemLevelCallNumber": "HSW 2071",
           "effectiveLocationId": "4ac9fcf1-8288-41b5-ac14-e15648f97158",
           "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "HSW 2071"
+          },
           "status": {
             "name": "Available",
             "date": "2023-03-25T02:09:52.977+00:00"
@@ -98,7 +103,8 @@
           "discoverySuppress": false,
           "requestable": true
         }
-      ]
+      ],
+      "notes": []
     },
     {
       "id": "44e5936d-0bd9-5df5-a86a-5091d04bd84d",
@@ -121,9 +127,11 @@
         {
           "id": "52209e0d-00bd-5f19-91e8-55e1314ef637",
           "holdingsRecordId": "44e5936d-0bd9-5df5-a86a-5091d04bd84d",
-          "itemLevelCallNumber": "N 919.4 NAT",
           "effectiveLocationId": "14b466b6-86b3-499b-9ddb-262fa0ac56ce",
           "effectiveLocationDisplayName": "Main Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "N 919.4 NAT"
+          },
           "status": {
             "name": "Available",
             "date": "2023-03-25T02:11:49.217+00:00"
@@ -148,7 +156,8 @@
           "discoverySuppress": false,
           "requestable": true
         }
-      ]
+      ],
+      "notes": []
     },
     {
       "id": "d6c97d9e-dfe6-5faa-9f0b-020b2bddbf8c",
@@ -171,9 +180,11 @@
         {
           "id": "7460acfb-72b9-5dba-9089-603921fb47c7",
           "holdingsRecordId": "d6c97d9e-dfe6-5faa-9f0b-020b2bddbf8c",
-          "itemLevelCallNumber": "NL 919.4 NAT",
           "effectiveLocationId": "e041308f-c160-48b6-b6e7-cd5d0d582122",
           "effectiveLocationDisplayName": "Main Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "NL 919.4 NAT"
+          },
           "status": {
             "name": "Available",
             "date": "2023-03-25T02:16:38.698+00:00"
@@ -198,7 +209,8 @@
           "discoverySuppress": false,
           "requestable": true
         }
-      ]
+      ],
+      "notes": []
     },
     {
       "id": "fe525746-5142-5b54-8c89-c6ed7a9c6196",
@@ -309,9 +321,11 @@
           "id": "0f17532a-2fcf-5c72-a0c9-751fc459481f",
           "holdingsRecordId": "fe525746-5142-5b54-8c89-c6ed7a9c6196",
           "barcode": "31508002260425",
-          "itemLevelCallNumber": "S 910.5 NAT",
           "effectiveLocationId": "11c74e44-110d-4e53-8418-cf4bad1e314a",
           "effectiveLocationDisplayName": "Main Reading Room - Most pre 2005 held offsite",
+          "effectiveCallNumberComponents": {
+            "callNumber": "S 910.5 NAT"
+          },
           "status": {
             "name": "Available",
             "date": "2023-03-25T01:29:35.005+00:00"
@@ -340,9 +354,11 @@
           "id": "e9d2cf15-a219-565a-8ec1-9bc914364c87",
           "holdingsRecordId": "fe525746-5142-5b54-8c89-c6ed7a9c6196",
           "barcode": "2524166",
-          "itemLevelCallNumber": "S 910.5 NAT",
           "effectiveLocationId": "11c74e44-110d-4e53-8418-cf4bad1e314a",
           "effectiveLocationDisplayName": "Main Reading Room - Most pre 2005 held offsite",
+          "effectiveCallNumberComponents": {
+            "callNumber": "S 910.5 NAT"
+          },
           "status": {
             "name": "Available",
             "date": "2023-03-25T02:23:47.983+00:00"
@@ -369,7 +385,8 @@
           "discoverySuppress": false,
           "requestable": false
         }
-      ]
+      ],
+      "notes": []
     }
   ]
 }
