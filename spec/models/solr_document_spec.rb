@@ -1601,6 +1601,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#life_dates" do
+    context "when there is a single life date" do
+      subject(:life_dates_value) do
+        document = described_class.new(marc_ss: single_life_date)
+        document.life_dates
+      end
+
+      it "will return the life date" do
+        expect(life_dates_value).to eq ["-84. Jagrg., Heft 6 (Dez. 1974)"]
+      end
+    end
+
+    context "when there are multiple life dates" do
+      subject(:life_dates_value) do
+        document = described_class.new(marc_ss: multiple_life_dates)
+        document.life_dates
+      end
+
+      it "will return the life dates as a single string" do
+        expect(life_dates_value).to eq ["Began in Jan. 6, 1966 -v. 13, no. 13 (Apr. 5, 1978)"]
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1865,5 +1889,13 @@ RSpec.describe SolrDocument do
 
   def other_authors_880
     load_marc_from_file 7052841
+  end
+
+  def single_life_date
+    load_marc_from_file 3410930
+  end
+
+  def multiple_life_dates
+    load_marc_from_file 1324307
   end
 end
