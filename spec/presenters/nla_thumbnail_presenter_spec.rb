@@ -81,7 +81,8 @@ RSpec.describe NlaThumbnailPresenter do
       context "when there is no image" do
         it "returns nil" do
           allow(view_context).to receive(:render_thumbnail).and_return(nil)
-          allow(request).to receive(:referrer).with(no_args).and_return("/catalog")
+          allow(view_context).to receive(:solr_document_path).with({id: 123}).and_return("/catalog/#{document.id}")
+          allow(view_context).to receive(:current_page?).with("/catalog/#{document.id}").and_return(false)
 
           expect(presenter.thumbnail_tag).to be_nil
         end
@@ -90,7 +91,8 @@ RSpec.describe NlaThumbnailPresenter do
       context "when there is no link" do
         it "returns an image tag only" do
           allow(view_context).to receive(:render_thumbnail).and_return('<img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
-          allow(request).to receive(:referrer).with(no_args).and_return("/catalog")
+          allow(view_context).to receive(:solr_document_path).with({id: 123}).and_return("/catalog/#{document.id}")
+          allow(view_context).to receive(:current_page?).with("/catalog/#{document.id}").and_return(false)
 
           expect(presenter.thumbnail_tag.include?("href")).to be false
         end
@@ -99,10 +101,10 @@ RSpec.describe NlaThumbnailPresenter do
       context "when there is a link" do
         it "returns an image tag inside an anchor" do
           allow(view_context).to receive(:render_thumbnail).and_return('<img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
-          allow(view_context).to receive(:solr_document_path).with(any_args).and_return("/catalog/#{document.id}")
+          allow(view_context).to receive(:current_page?).with("/catalog/#{document.id}").and_return(false)
+          allow(view_context).to receive(:solr_document_path).with({id: 123}).and_return("/catalog/#{document.id}")
           allow(view_context).to receive(:link_to).with(any_args).and_return(%(<a href="/catalog/#{document.id}"><img src="image.png" alt="Work Title" onerror="this.style.display='none'" class="w-100" /></a>))
           allow(document).to receive(:online_access).and_return([{href: "https://example.com"}])
-          allow(request).to receive(:referrer).with(no_args).and_return("/catalog")
 
           expect(presenter.thumbnail_tag.include?("href")).to be true
           expect(presenter.thumbnail_tag.include?("img")).to be true
@@ -123,7 +125,8 @@ RSpec.describe NlaThumbnailPresenter do
           allow(view_context).to receive(:render_thumbnail).and_return('<img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
           allow(view_context).to receive(:link_to).with(any_args).and_return('<a href="https://example.com"><img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" /></a>')
           allow(document).to receive(:online_access).and_return([{href: "https://example.com"}])
-          allow(request).to receive(:referrer).with(no_args).and_return("/catalog/#{document.id}")
+          allow(view_context).to receive(:solr_document_path).with({id: 123}).and_return("/catalog/#{document.id}")
+          allow(view_context).to receive(:current_page?).with("/catalog/#{document.id}").and_return(true)
 
           expect(presenter.thumbnail_tag.include?("href")).to be true
           expect(presenter.thumbnail_tag.include?("img")).to be true
@@ -138,7 +141,8 @@ RSpec.describe NlaThumbnailPresenter do
 
     context "when displayed on the index page" do
       it "returns false" do
-        allow(request).to receive(:referrer).with(no_args).and_return("/catalog")
+        allow(view_context).to receive(:solr_document_path).with({id: 123}).and_return("/catalog/123")
+        allow(view_context).to receive(:current_page?).with("/catalog/#{document.id}").and_return(false)
 
         expect(catalogue_page_flag).to be false
       end
@@ -148,8 +152,8 @@ RSpec.describe NlaThumbnailPresenter do
       let(:config) { Blacklight::OpenStructWithHashAccess.new({key: :show, thumbnail_field: :thumbnail_path_ss, title_field: :title_tsim, top_level_config: :show}) }
 
       it "returns true" do
-        allow(request).to receive(:referrer).with(no_args).and_return("/catalog/#{document.id}")
-        allow(view_context).to receive(:request).with(no_args).and_return(request)
+        allow(view_context).to receive(:solr_document_path).with({id: 123}).and_return("/catalog/#{document.id}")
+        allow(view_context).to receive(:current_page?).with("/catalog/#{document.id}").and_return(true)
 
         expect(catalogue_page_flag).to be true
       end
