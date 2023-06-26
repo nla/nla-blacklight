@@ -460,6 +460,18 @@ class SolrDocument
     end
   end
 
+  def life_dates
+    data = get_marc_derived_field("362a")
+    if data.present?
+      clean_dates = data.map do |date|
+        date&.chomp(".")
+      end
+      [clean_dates.join(" ")]
+    else
+      []
+    end
+  end
+
   private
 
   def get_online_access_urls
