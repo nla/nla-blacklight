@@ -46,7 +46,7 @@ class Eresources
     config = []
     begin
       tempfile = Down.download(ENV["ERESOURCES_CONFIG_URL"], headers: {"User-Agent" => "nla-blacklight/#{Rails.configuration.version}"})
-      if tempfile.present?
+      if tempfile.present? && tempfile.status.include?("200") && valid_json?(tempfile)
         same = if File.exist? current_config_path
           FileUtils.compare_file(current_config_path, tempfile.path)
         else
@@ -74,6 +74,14 @@ class Eresources
     end
 
     config
+  end
+
+  def valid_json?(tempfile)
+    !!begin
+      JSON.parse(File.read(tempfile))
+    rescue
+      nil
+    end
   end
 
   def current_config_path
