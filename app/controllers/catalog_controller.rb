@@ -193,6 +193,7 @@ class CatalogController < ApplicationController
     config.add_show_field "provenance", label: "Source of Acquisition", accessor: :provenance, helper_method: :unstyled_list
     config.add_show_field "cited_in", label: "Cited In", accessor: :cited_in, helper_method: :unstyled_list
     config.add_show_field "reproduction", label: "Reproduction", accessor: :reproduction, helper_method: :unstyled_list
+    config.add_show_field "life_dates", label: "Life Dates", accessor: :life_dates
     config.add_show_field "has_supplement", label: "Has Supplement", accessor: :has_supplement, helper_method: :unstyled_list
     config.add_show_field "supplement_to", label: "Supplement To", accessor: :supplement_to, helper_method: :unstyled_list
     config.add_show_field "has_subseries", label: "Has Sub-series", accessor: :has_subseries, helper_method: :list
