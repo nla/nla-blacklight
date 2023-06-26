@@ -19,7 +19,7 @@
 
                     <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.call_number") %></dt>
                     <dd class="col-12 col-lg-8">
-                      <p class="mb-0"><%= item["itemLevelCallNumber"] %>
+                      <p class="mb-0"><%= item["effectiveCallNumberComponents"]["callNumber"] %>
                         <% if item["itemCategory"] == "monograph" && item["enumeration"].present? %>
                           <br>Copy: <%= item["enumeration"] %>
                         <% end %></p>
