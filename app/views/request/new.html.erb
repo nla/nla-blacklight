@@ -18,7 +18,7 @@
 
         <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.call_number") %></dt>
         <dd class="col col-md-9">
-          <p class="mb-0"><%= @request.item["itemLevelCallNumber"] %>
+          <p class="mb-0"><%= @request.item["effectiveCallNumberComponents"]["callNumber"] %>
             <% if @request.item["itemCategory"] == "monograph" && @request.item["enumeration"].present? %>
               <br>Copy: <%= @request.item["enumeration"] %>
             <% end %></p>

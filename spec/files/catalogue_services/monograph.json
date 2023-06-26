@@ -23,9 +23,11 @@
           "id": "4ea9ee16-5adc-52b3-9f5d-f3849fb1cbf2",
           "holdingsRecordId": "5c4999f0-8b7b-5d1b-8837-a835a9f86eb6",
           "barcode": "990001921402",
-          "itemLevelCallNumber": "N A 823.3 W793cl",
           "effectiveLocationId": "14b466b6-86b3-499b-9ddb-262fa0ac56ce",
           "effectiveLocationDisplayName": "Main Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "N A 823.3 W793cl"
+          },
           "status": {
             "name": "Available",
             "date": "2023-03-25T01:40:14.177+00:00"
@@ -50,7 +52,8 @@
           "discoverySuppress": false,
           "requestable": true
         }
-      ]
+      ],
+      "notes": []
     },
     {
       "id": "5efa2e80-6620-522b-95a7-6f7f7c8e42b7",
@@ -74,9 +77,11 @@
           "id": "c13f51a6-65fb-5692-83e0-d0f51829ccd4",
           "holdingsRecordId": "5efa2e80-6620-522b-95a7-6f7f7c8e42b7",
           "barcode": "31508005863779",
-          "itemLevelCallNumber": "NL A 823.3 W793cl",
           "effectiveLocationId": "e041308f-c160-48b6-b6e7-cd5d0d582122",
           "effectiveLocationDisplayName": "Main Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "NL A 823.3 W793cl"
+          },
           "status": {
             "name": "Available",
             "date": "2023-03-25T01:40:14.177+00:00"
@@ -101,7 +106,8 @@
           "discoverySuppress": false,
           "requestable": true
         }
-      ]
+      ],
+      "notes": []
     }
   ]
 }
