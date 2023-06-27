@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe ExploreComponent, type: :component do
-  let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485") }
+  let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485", format: "Map") }
 
   it "renders a link to Trove" do
     render_inline(described_class.new(document))
@@ -11,14 +11,6 @@ RSpec.describe ExploreComponent, type: :component do
     expect(page).to have_xpath("//a[text()='Find in other libraries at Trove']")
     expect(page).to have_xpath("//a[contains(@href, '4157485')]")
     expect(page).to have_xpath("//img[contains(@src, 'trove-icon')]")
-  end
-
-  it "renders a link to eResources and Research Guides" do
-    render_inline(described_class.new(document))
-
-    expect(page.text).to include "Check eResources and Research Guides"
-    expect(page).to have_link(href: "https://www.nla.gov.au/eresources", text: "eResources")
-    expect(page).to have_link(href: "https://www.nla.gov.au/research-guides", text: "Research Guides")
   end
 
   context "when the online shop search has no results" do
@@ -91,106 +83,51 @@ RSpec.describe ExploreComponent, type: :component do
     end
   end
 
-  context "when there are no ISBNs or LCCNs" do
-    it "does not include the Library Thing script" do
-      render_inline(described_class.new(document))
-
-      expect(page.native.to_s).not_to include "www.librarything.com"
-      expect(page.native.to_s).not_to include "books.google.com"
-    end
-  end
-
-  context "when there are ISBNs" do
-    subject(:library_thing_script_value) do
-      described_class.new(document).library_thing_script
-    end
-
-    let(:document) { SolrDocument.new(marc_ss: sample_marc_lccn, id: "213391") }
-
-    it "includes the ISBNs in the Library Thing script URL" do
-      expect(library_thing_script_value).to include "0902907468"
-    end
-  end
-
-  describe "#library_thing_script" do
+  describe "#google_books_script" do
     context "when there is no ISBN" do
-      subject(:library_thing_script_value) do
-        described_class.new(document).library_thing_script
+      subject(:google_books_script_value) do
+        described_class.new(document).google_books_script
       end
 
-      it "does not include the ISBN in the Library Thing script URL" do
-        expect(library_thing_script_value).to eq "https://www.librarything.com/api/json/workinfo.js?ids=&callback=showLibraryThing"
+      it "does not include the ISBN in the Google Books URL" do
+        expect(google_books_script_value).not_to include "ISBN:"
       end
     end
 
     context "when there are ISBNs" do
-      subject(:library_thing_script_value) do
-        described_class.new(document).library_thing_script
+      subject(:google_books_script_value) do
+        described_class.new(document).google_books_script
       end
 
       let(:document) { SolrDocument.new(marc_ss: sample_marc_lccn, id: "213391") }
 
-      it "includes the ISBNs in the Library Thing script URL" do
-        expect(library_thing_script_value).to include "0902907468"
+      it "prefixes the ISBN list with 'ISBN:'" do
+        expect(google_books_script_value).to include "ISBN:0902907468"
+      end
+    end
+
+    context "when there is no LCCN" do
+      subject(:google_books_script_value) do
+        described_class.new(document).google_books_script
       end
 
-      it "separates the LCCNs and ISBNs with ','" do
-        expect(library_thing_script_value).to include "ids=74190336,0902907468"
+      it "does not include the ISBN in the Google Books URL" do
+        expect(google_books_script_value).not_to include "LCCN:"
       end
     end
 
     context "when there are LCCNs" do
-      subject(:library_thing_script_value) do
-        described_class.new(document).library_thing_script
+      subject(:google_books_script_value) do
+        described_class.new(document).google_books_script
       end
 
       let(:document) { SolrDocument.new(marc_ss: sample_marc_lccn, id: "213391") }
 
-      it "includes the LCCNs in the Library Thing script URL" do
-        expect(library_thing_script_value).to include "74190336"
-      end
-
-      it "separates the LCCNs and ISBNs with ','" do
-        expect(library_thing_script_value).to include "ids=74190336,0902907468"
+      it "prefixes the LCCN list with 'LCCN:'" do
+        expect(google_books_script_value).to include "LCCN:74190336"
       end
     end
   end
-
-  # describe "#google_books_script" do
-  #   context "when there is no ISBN" do
-  #     subject(:google_books_script_value) do
-  #       described_class.new(document).google_books_script
-  #     end
-  #
-  #     it "does not include the ISBN in the Library Thing script URL" do
-  #       expect(google_books_script_value).not_to include "https://books.google.com/books?jscmd=viewapi&bibkeys=&callback=showGoogleBooksPreview"
-  #     end
-  #   end
-  # end
-
-  # describe "#google_lccn_list" do
-  #   subject(:google_lccn_list_value) do
-  #     described_class.new(document).google_lccn_list
-  #   end
-  #
-  #   let(:document) { SolrDocument.new(marc_ss: sample_marc_lccn, id: "213391") }
-  #
-  #   it "prefixes the LCCN with 'LCCN:'" do
-  #     expect(google_lccn_list_value).to include "LCCN:74190336"
-  #   end
-  # end
-  #
-  # describe "#google_isbn_list" do
-  #   subject(:google_isbn_list_value) do
-  #     described_class.new(document).google_isbn_list
-  #   end
-  #
-  #   let(:document) { SolrDocument.new(marc_ss: sample_marc_lccn, id: "213391") }
-  #
-  #   it "prefixes the LCCN with 'ISBN:'" do
-  #     expect(google_isbn_list_value).to include "ISBN:0902907468"
-  #   end
-  # end
 
   def sample_marc
     load_marc_from_file 4157458

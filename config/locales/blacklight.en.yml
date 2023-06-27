@@ -285,9 +285,7 @@ en:
     explore:
       title: "Explore"
       find_in_trove: "Find in other libraries at Trove"
-      eresources: "eResources"
-      research_guides: "Research Guides"
-      check_eresources_research_guides: "Check %{eresources} and %{research_guides}"
+      map_search: "Looking for maps of Australia? Try our <a href=\"https://mapsearch.nla.gov.au/\">map search</a>."
 
     main:
       aria:

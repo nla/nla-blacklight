@@ -4,7 +4,7 @@ require "cgi"
 require "faraday"
 
 class ExploreComponent < ViewComponent::Base
-  attr_reader :document, :nla_shop
+  attr_reader :document, :nla_shop, :map_search
 
   def initialize(document)
     @document = document
@@ -35,16 +35,16 @@ class ExploreComponent < ViewComponent::Base
     "https://trove.nla.gov.au/search?keyword=ANL AND (#{CGI.escape(query)}) AND title:%22#{CGI.escape(document.title_start.tr('"', ""))}%22"
   end
 
-  def library_thing_script
-    "https://www.librarything.com/api/json/workinfo.js?ids=#{lccn_list.join(",")}#{document.isbn.present? ? "," : ""}#{document.isbn_list.join(",")}&callback=showLibraryThing"
-  end
-
   def google_books_script
     "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list.join(",")}#{document.isbn.present? ? "," : ""}#{google_isbn_list.join(",")}&callback=showGoogleBooksPreview"
   end
 
   def render_online_shop?
     nla_shop.present?
+  end
+
+  def render_map_search?
+    document.fetch("format").presence.include? "Map"
   end
 
   def render?
