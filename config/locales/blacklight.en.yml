@@ -205,6 +205,9 @@ en:
         search:
           label: 'search for'
           placeholder: 'Find books, maps, audio, databases & more...'
+        bento_search:
+          label: 'search for'
+          placeholder: 'Search our catalogue, eResources and finding aids'          
         submit: 'Search'
       pagination:
         title: 'Results navigation'
