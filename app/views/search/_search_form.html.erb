@@ -1,7 +1,7 @@
 <div class="navbar-search navbar navbar-light px-0">
   <%= form_tag bento_search_index_path, method: :get, class: "search-query-form", id: "search", aria: { label: t("blacklight.search.form.submit")} do %>
     <div class="input-group">
-      <label for="q" class="sr-only visually-hidden"><%= t("blacklight.search.form.search.label") %></label>
+      <label for="q" class="sr-only visually-hidden"><%= t("blacklight.search.form.bento_search.label") %></label>
       <%= text_field_tag(
           "q",
           @query,
