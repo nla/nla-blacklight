@@ -1,7 +1,4 @@
 <h1 class="h3"><%= @document.first("title_tsim") %></h1>
-<% if @request.item["itemCategory"] == "journal" %>
-  <%= render Blacklight::Document::ThumbnailComponent.new(presenter: document_presenter(@document), counter: document_counter_with_offset(document_counter ||= 0)) %>
-<% end %>
 
 <div class="row mt-4 mb-4">
   <% if @request_form == "manuscripts" %>
