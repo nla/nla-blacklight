@@ -71,9 +71,11 @@ RSpec.describe "Offsite redirect", :request do
 
             context "when eResource type is 'ezproxy'" do
               it "redirects to the 'url'" do
-                travel_to Time.zone.local(2022, 11, 28, 0, 0, 0) do
-                  get "/catalog/0000/offsite?url=http://www.macquariedictionary.com.au/login"
-                  expect(request).to redirect_to("https://ezproxy.example.com/login?user=user&ticket=60d52eca002749aef4d50486c91c2a6d%24u1669554000&url=http://www.macquariedictionary.com.au/login")
+                Time.use_zone("Canberra") do
+                  travel_to Time.zone.local(2022, 11, 28, 0, 0, 0) do
+                    get "/catalog/0000/offsite?url=http://www.macquariedictionary.com.au/login"
+                    expect(request).to redirect_to("https://ezproxy.example.com/login?user=user&ticket=60d52eca002749aef4d50486c91c2a6d%24u1669554000&url=http://www.macquariedictionary.com.au/login")
+                  end
                 end
               end
             end
