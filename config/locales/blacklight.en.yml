@@ -285,11 +285,6 @@ en:
 
     more_like_this: "Similar items"
 
-    explore:
-      title: "Explore"
-      find_in_trove: "Find in other libraries at Trove"
-      map_search: "Looking for maps of Australia? Try our <a href=\"https://mapsearch.nla.gov.au/\">map search</a>."
-
     main:
       aria:
         main_container: 'Main content'
