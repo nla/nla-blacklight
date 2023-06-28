@@ -8,7 +8,7 @@ RSpec.describe ExploreComponent, type: :component do
   it "renders a link to Trove" do
     render_inline(described_class.new(document))
 
-    expect(page).to have_xpath("//a[text()='Find in other libraries at Trove']")
+    expect(page).to have_link(text: "Find in other libraries at Trove")
     expect(page).to have_xpath("//a[contains(@href, '4157485')]")
     expect(page).to have_xpath("//img[contains(@src, 'trove-icon')]")
   end
@@ -17,7 +17,30 @@ RSpec.describe ExploreComponent, type: :component do
     it "does not render the online shop link" do
       render_inline(described_class.new(document))
 
-      expect(page.text).not_to have_xpath("//a[text()='Buy at our online shop']")
+      expect(page.text).not_to have_link(text: I18n.t("explore.nla_shop"))
+    end
+  end
+
+  context "when the online shop search has results" do
+    before do
+      response = IO.read("spec/files/nla_shop/response.json")
+
+      WebMock.stub_request(:get, /https:\/\/bookshop.nla.gov.au\/api\/jsonDetails.do\?isbn13=9781922507372,9781922507377/)
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          }
+        )
+        .to_return(status: 200, body: response, headers: {})
+    end
+
+    let(:document) { SolrDocument.new(marc_ss: bookshop_marc, id: "8680859", format: ["Book"]) }
+
+    it "renders the online shop link" do
+      render_inline(described_class.new(document))
+
+      expect(page).to have_link(text: I18n.t("explore.nla_shop"))
     end
   end
 
@@ -143,5 +166,9 @@ RSpec.describe ExploreComponent, type: :component do
 
   def no_external_resources
     load_marc_from_file 1336868
+  end
+
+  def bookshop_marc
+    load_marc_from_file 8680859
   end
 end

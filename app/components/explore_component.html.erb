@@ -1,13 +1,13 @@
 <div class="card explore">
-  <div class="card-header"><h2 class="mt-4 mb-0 h4"><%= t("blacklight.explore.title") %></h2></div>
+  <div class="card-header"><h2 class="mt-4 mb-0 h4"><%= t("explore.title") %></h2></div>
   <div class="card-body">
     <ul class="list-unstyled">
-      <li class="explore-link"><%= image_tag "trove-icon.svg", width: "16", height: "16", alt: "Trove icon", aria: {hidden: true} %> <%= link_to t("blacklight.explore.find_in_trove"), trove_query %></li>
+      <li class="explore-link"><%= image_tag "trove-icon.svg", width: "16", height: "16", alt: "Trove icon", aria: {hidden: true} %> <%= link_to t("explore.find_in_trove"), trove_query %></li>
 
       <% if render_online_shop? %>
         <% nla_shop.each do |item| %>
           <li class="explore-link"><%= image_tag "nla_logo.svg", width: "16", height: "16", alt: "National Library of Australia icon", aria: {hidden: true}, style: 'filter:invert(100%)' %>
-            <%= link_to "Buy at our online shop", item[:itemLink] %>
+            <%= link_to t("explore.nla_shop"), item[:itemLink] %>
             <% if item[:price].present? %>
               <small class="text-muted"><%= number_to_currency(item[:price], unit: "$", separator: ".") %></small>
             <% end %>
@@ -19,7 +19,7 @@
 
       <% if render_map_search? %>
         <li id="map-search" class="explore-link">
-          <%= t("blacklight.explore.map_search").html_safe %>
+          <%= t("explore.map_search").html_safe %>
         </li>
       <% end %>
     </ul>

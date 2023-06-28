@@ -125,3 +125,8 @@ en:
         location: "Pickup location"
         notes: "Notes"
         request_date: "Requested on"
+  explore:
+    title: "Explore"
+    find_in_trove: "Find in other libraries at Trove"
+    map_search: "Looking for maps of Australia? Try our <a href=\"https://mapsearch.nla.gov.au/\">map search</a>."
+    nla_shop: "Buy at our online shop"
