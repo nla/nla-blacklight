@@ -472,6 +472,10 @@ class SolrDocument
     end
   end
 
+  def finding_aid_url
+    get_marc_derived_field("856u")
+  end
+
   private
 
   def get_online_access_urls

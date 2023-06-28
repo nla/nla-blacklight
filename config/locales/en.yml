@@ -70,6 +70,9 @@ en:
       supplements: "Supplements:"
       indexes: "Indexes:"
     prompt: "You have requested an issue of a journal, magazine, newspaper, annual report or other multi-part item. Please use the fields below to tell our staff which issues you would like to request."
+    multi_box_prompt: "<strong>You have requested a multiple box collection. Please use the fields below to tell our staff which box or boxes you would like to request.</strong> Use one request for up to five consecutive boxes. Use a separate request for non-consecutive boxes/series/folders/items."
+    multi_box_prompt_2: "If available, use the %{finding_aid} to select your box number, or a series/folder/item number and enter them below. If you need assistance with this please <a href=\"%{contact_us}\">contact us.</a>"
+    collection_finding_aid: "collection finding aid"
     btn_request: "Request"
     btn_select: "Select"
     label:
@@ -77,11 +80,15 @@ en:
       volume: "Volume/No:"
       enumeration: "Day or month:"
       notes: "Notes:"
+      box_number: "Box number:"
+      series_number: "Series number:"
+      folder_item_number: "Folder/Item number:"
     help:
       year: "20 character limit"
       volume: "80 character limit"
       enumeration: "80 character limit"
       notes: "< 100 characters"
+      need_help: "Need help? <a href=\"%{contact_us}\">Contact us</a>."
     collect_from:
       base: "Collection desk in %{link}, %{location}"
       special_collections: 'Collection desk in <a href="https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history">Newspapers and Family History zone</a>, Main Reading Room, Ground Floor'
