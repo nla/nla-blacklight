@@ -28,17 +28,13 @@ class RequestController < ApplicationController
 
     @holding, @item = cat_services_client.get_holding(instance_id: @instance_id, holdings_id: @holdings_id, item_id: @item_id)
 
-    format = @document.fetch("format")
-    @request_form =
-      if format.present? && @item["enumeration"].present? && @item["enumeration"].include?("USE THE REQUEST OPTION BELOW")
-        if format.first == "Manuscript"
-          "manuscripts_serial"
-        else
-          "journals"
-        end
-      else
-        "monograph"
-      end
+    @request_form = if @item["itemCategory"] == "manuscript"
+      "manuscripts"
+    elsif @item["itemCategory"] == "journal"
+      "serials"
+    else
+      "monographs"
+    end
 
     @finding_aids_link = if @document.finding_aid_url.present?
       helpers.link_to I18n.t("requesting.collection_finding_aid"), @document.finding_aid_url.first, target: "_blank", rel: "noopener noreferrer"
