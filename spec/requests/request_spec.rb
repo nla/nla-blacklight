@@ -10,40 +10,9 @@ RSpec.describe "Requests" do
   let(:instance_id) { "08aed703-3648-54d0-80ef-fddb3c635731" }
   let(:holdings_id) { "37fbc2dd-3b37-58b8-b447-b538ba7265b9" }
   let(:item_id) { "60ae1cf9-5b4c-5fac-9a38-2cb195cdb7b2" }
-  let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_marc, title_tsim: "National Geographic") }
+  let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_marc, title_tsim: ["National Geographic"], format: ["Journal"]) }
 
   describe "GET /new" do
-    context "when requesting a monograph" do
-      it "returns http success" do
-        allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return([nil, document])
-
-        get solr_document_request_new_path(
-          solr_document_id: solr_document_id,
-          instance: instance_id,
-          holdings: holdings_id,
-          item: item_id
-        )
-        expect(response).to have_http_status(:success)
-      end
-    end
-
-    context "when requesting a serial" do
-      let(:holdings_id) { "fe525746-5142-5b54-8c89-c6ed7a9c6196" }
-      let(:item_id) { "0f17532a-2fcf-5c72-a0c9-751fc459481f" }
-
-      it "returns http success" do
-        allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return([nil, document])
-
-        get solr_document_request_new_path(
-          solr_document_id: solr_document_id,
-          instance: instance_id,
-          holdings: holdings_id,
-          item: item_id
-        )
-        expect(response).to have_http_status(:success)
-      end
-    end
-
     context "when user is not logged in" do
       before do
         sign_out :user

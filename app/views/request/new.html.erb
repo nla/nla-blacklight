@@ -4,9 +4,13 @@
 <% end %>
 
 <div class="row mt-4 mb-4">
-  <p class="col-12 col-lg-8"><%= t("requesting.prompt") %></p>
+  <% if @request_form == "manuscripts_serial" %>
+    <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt").html_safe %></p>
+    <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt_2", finding_aid: @finding_aids_link, contact_us: Rails.application.config_for(:catalogue).contact_us_url).html_safe %></p>
+  <% else %>
+    <p class="col-12 col-lg-8"><%= t("requesting.prompt") %></p>
+  <% end %>
 </div>
-<!--<div class="col">-->
 <section id="request-details">
   <div class="row">
     <div class="col-12 col-lg-8">
@@ -80,7 +84,5 @@
     </div>
   </div>
 
-<!--</div>-->
-
-<%= render "form", request: @request %>
+<%= render "#{@request_form}_form", request: @request %>
 </section>

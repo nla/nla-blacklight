@@ -88,6 +88,7 @@ RSpec.configure do |config|
   config.include Capybara::RSpecMatchers, type: :component
 
   config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::Test::IntegrationHelpers, type: :feature
   config.extend DeviseMacros
 end
 
