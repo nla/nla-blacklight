@@ -17,7 +17,7 @@ RSpec.describe "Requests" do
 
   describe "GET /new" do
     context "when requesting a monograph" do
-      it "renders the requesting prompt" do
+      it "does not render a message" do
         visit solr_document_request_new_path(
           solr_document_id: solr_document_id,
           instance: instance_id,
@@ -25,7 +25,8 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
-        expect(page).to have_css("p", text: I18n.t("requesting.prompt"))
+        expect(page.html).not_to include(I18n.t("requesting.multi_box_prompt"))
+        expect(page).not_to have_css("p", text: I18n.t("requesting.prompt"))
       end
 
       it "renders the monograph form" do
