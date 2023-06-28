@@ -1625,6 +1625,41 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#time_coverage" do
+    context "when single time coverage" do
+      subject(:time_coverage_value) do
+        document = described_class.new(marc_ss: single_time_coverage)
+        document.time_coverage
+      end
+
+      it "returns a single year" do
+        expect(time_coverage_value).to eq ["1916"]
+      end
+    end
+
+    context "when there are mulitple time coverages" do
+      subject(:time_coverage_value) do
+        document = described_class.new(marc_ss: multiple_time_coverage)
+        document.time_coverage
+      end
+
+      it "returns comma separated years" do
+        expect(time_coverage_value).to eq ["1868, 1880"]
+      end
+    end
+
+    context "when there is a range of time coverage" do
+      subject(:time_coverage_value) do
+        document = described_class.new(marc_ss: ranged_time_coverage)
+        document.time_coverage
+      end
+
+      it "returns a range of years" do
+        expect(time_coverage_value).to eq ["1890-1899"]
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -1897,5 +1932,17 @@ RSpec.describe SolrDocument do
 
   def multiple_life_dates
     load_marc_from_file 1324307
+  end
+
+  def single_time_coverage
+    load_marc_from_file 2066922
+  end
+
+  def multiple_time_coverage
+    load_marc_from_file 568776
+  end
+
+  def ranged_time_coverage
+    load_marc_from_file 4318191
   end
 end
