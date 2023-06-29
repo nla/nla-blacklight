@@ -2,7 +2,18 @@
   <div class="card">
     <div class="card-body">
       <% if result %>
-        <h2 class="card-title sticky-top mb-4 h4"><%= BentoSearch.get_engine(key).configuration.title %></h2>
+      <div class="card-title sticky-top mb-4 d-flex justify-content-between align-items-baseline">
+        <h2 class="h4 mb-0"><%= BentoSearch.get_engine(key).configuration.title %></h2>
+        <% if result %>
+          <% if result.total_items > 0 %>
+            <div class="view-all-results">
+              <%= link_to bento_all_results_link(key) do %>
+                View <%= number_with_delimiter(result.total_items) %> results <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+              <% end %>
+            </div>
+          <% end %>  
+        <% end %>
+      </div>
       <% else %>
         <h2 class="search-source"><%= BentoSearch.get_engine(key).configuration.title %></h2>
       <% end %>
@@ -15,8 +26,8 @@
             <% if key.start_with?("ebsco_eds_") && result.total_items > 1 %>
               <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm arrow-after" do %>
                 View
-                <span id="<%= key %>_total"><%= number_with_delimiter(result.total_items) %></span> from
-                eResources
+                <span id="<%= key %>_total"><%= number_with_delimiter(result.total_items) %></span> 
+                eResources results
               <% end %>
             <% else %>
               <% if result.total_items > 1 %>
@@ -24,12 +35,12 @@
                   View
                   <span id="<%= key %>_total"><%= number_with_delimiter(result.total_items) %></span>
                   <% BentoSearch.get_engine(key).configuration.title %>
-                  from
                   <% if key == "catalogue" %>
                     Catalogue
                   <% else %>
                     Finding Aids
                   <% end %>
+                  results
                 <% end %>
               <% end %>
               <% if is_catalog_pane?(BentoSearch.get_engine(key).configuration.title) == true%>
