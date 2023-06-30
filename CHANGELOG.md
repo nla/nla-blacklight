@@ -1,5 +1,94 @@
 # Changelog
 
+## [2.1.0](https://github.com/nla/nla-blacklight/compare/2.0.1...2.1.0) (2023-06-30)
+
+
+### Features
+
+* add Requests menu link and dummy page ([e9023c1](https://github.com/nla/nla-blacklight/commit/e9023c1a80ea1f62031502dc8820e55e13af0bfa))
+* adds Sign up link to header nav ([e3528b2](https://github.com/nla/nla-blacklight/commit/e3528b246e1aa2715796e9b5dea7bde6a93deea3))
+* display thumbnails in catalogue bento search results ([e92e2c8](https://github.com/nla/nla-blacklight/commit/e92e2c8ec2081132675b0940b496309b4d16b4e2))
+* ensure login from bento results redirects back to all search results ([296d8c6](https://github.com/nla/nla-blacklight/commit/296d8c653ffb56afdfd69e0f87f3703b0dbe9e4b))
+* hide requesting for online or electronic resources ([148a525](https://github.com/nla/nla-blacklight/commit/148a52558e9981cc2522138930ae12ae38c42772))
+* implement multiple collections ([7328205](https://github.com/nla/nla-blacklight/commit/7328205ee3d16a7968a33d7072cb90df3ed0c432))
+* lazy load holdings data ([e7aa9ed](https://github.com/nla/nla-blacklight/commit/e7aa9ed01c71cf0ab624528f39c8951a28661fc6))
+* lazy load thumbnails ([ef27fad](https://github.com/nla/nla-blacklight/commit/ef27fad07f357935608b694f24a2da7e334b4da8))
+* restyle bento and thumbnail loading states ([e676875](https://github.com/nla/nla-blacklight/commit/e676875d05bb6551c5ab4e6d9662c23ddf3df9f1))
+* restyle loading state of request holdings ([ab9364c](https://github.com/nla/nla-blacklight/commit/ab9364c5befc5494c9610f2e6e922333ce6f0a0f))
+
+
+### Bug Fixes
+
+* add catalogue card and image on homepage ([f183198](https://github.com/nla/nla-blacklight/commit/f1831981b25438aa6bdd1b1ea777d6f6625f37db))
+* change bento search page header ([7a5baab](https://github.com/nla/nla-blacklight/commit/7a5baab27fa5f5773ae3e4af1a8281f97247be38))
+* change display of “Start over” and “Back to search” ([20e9275](https://github.com/nla/nla-blacklight/commit/20e9275101d14124f9977c2935d1243c1a56b196))
+* change spacing to keep buttons in one line on tablet view ([c98f69f](https://github.com/nla/nla-blacklight/commit/c98f69fb8a01904d8b581ffc84f3a2d2ecd69d29))
+* constrain images to fit in 500x500px space (especially for panoramic images) ([0bed209](https://github.com/nla/nla-blacklight/commit/0bed209a1b7770d0c2f86673f4ec4b2ddb87ee43))
+* exclude custom devise controllers from storable location ([7af7b24](https://github.com/nla/nla-blacklight/commit/7af7b245115cbeb1320afbf2da777b1066e4ddc7))
+* exclude thumbnail routes from Devise location store ([3e2b24e](https://github.com/nla/nla-blacklight/commit/3e2b24e85ea4a8f4a98dfd44e0ca96f6dd3ce710))
+* fix tests and HTML ([55e35b0](https://github.com/nla/nla-blacklight/commit/55e35b03cac531dd2b4f55127658bf3ae7345bff))
+* fix thumbnail sizing for non-DLIR thumbnails ([67c35a6](https://github.com/nla/nla-blacklight/commit/67c35a64ab265e66c13b8c982de020a81c0f4090))
+* hide Request Item when disabled ([b00447b](https://github.com/nla/nla-blacklight/commit/b00447b748ba8c9a4affa77013043acb06db0341))
+* hide requesting for electronic and online resources ([837879d](https://github.com/nla/nla-blacklight/commit/837879d61ba18a6f39f90577edc9d20aa228e097))
+* implement requests summary for user ([050cd3e](https://github.com/nla/nla-blacklight/commit/050cd3e38a41fce849bba60d0c85679db2994aad))
+* load thumbnails in correct size based on view ([a24f9ff](https://github.com/nla/nla-blacklight/commit/a24f9ff8e22e9628b7f8b8bdf182cb704ac01132))
+* remove duplicate content  on catalogue specific  homepage ([13f86b3](https://github.com/nla/nla-blacklight/commit/13f86b3785fe0b96c28a8bd81468d2b67c1b8bdd))
+* rename pickup location images ([03cbab5](https://github.com/nla/nla-blacklight/commit/03cbab532d8de5c66e181de9a26d169d2ef35988))
+* specify "all_fields" to fix bento search results ([10a755a](https://github.com/nla/nla-blacklight/commit/10a755a973072593c83c25b4eec3438a7bd900a4))
+* styling of thumbnail size ([498804d](https://github.com/nla/nla-blacklight/commit/498804d3b8927684925bcc73a51b5b010b47b208))
+* take into account record without a format ([d30fc0d](https://github.com/nla/nla-blacklight/commit/d30fc0db4ce17cce15c8896a1d298ce04107f875))
+* UI changes for bento ([320fdca](https://github.com/nla/nla-blacklight/commit/320fdca9489fe6ddeb1138332fbf54ef9cdafb75))
+* UI on request list page ([f05d628](https://github.com/nla/nla-blacklight/commit/f05d628e182ab9cf04ae6a687fc5ad312be949bf))
+* update bento results UI for tablet. Result summary pills ([d9c1196](https://github.com/nla/nla-blacklight/commit/d9c11968fe44f8af8a0950c9b4491be8cdfde58f))
+* update logos & text ([842d9af](https://github.com/nla/nla-blacklight/commit/842d9af1a1ef5ac4ecea263bccf9a776f62171af))
+* update semantic field for "format" ([9046a9d](https://github.com/nla/nla-blacklight/commit/9046a9dc07a659b8528c168a481a38cb24e62a10))
+* verify if eresources config is valid JSON before caching ([966dd94](https://github.com/nla/nla-blacklight/commit/966dd947eb98531e282c76d92453ed12f7c50660))
+
+
+### Reverts
+
+* restore format semantic field ([9e06bda](https://github.com/nla/nla-blacklight/commit/9e06bda3f119b52d2c0c41667938e8919559ee50))
+
+
+### Styles
+
+* fix styling of thumbnails ([e13587b](https://github.com/nla/nla-blacklight/commit/e13587b542e8541a3f2c1c0456bcf2a013262989))
+
+
+### Code Refactoring
+
+* get thumbnails from thumbnail-services ([6dac437](https://github.com/nla/nla-blacklight/commit/6dac437571f26a521720d62c440681ad092b5cca))
+* make requests routing more Rails-centric ([8c62689](https://github.com/nla/nla-blacklight/commit/8c62689638e742c9de00bba1b02abd131ff334f9))
+* use stimulus controller for related records icon hover state ([2d8ed33](https://github.com/nla/nla-blacklight/commit/2d8ed330f47a171ae248b6f0c16445e41abb2a89))
+
+
+### Tests
+
+* fix pickup location thumbnail tests ([f0ea4a4](https://github.com/nla/nla-blacklight/commit/f0ea4a4a9b696e7fe89f117d01a7471ed72a08db))
+* fix related records tests ([488c10a](https://github.com/nla/nla-blacklight/commit/488c10a94a8b58653955a0438144eb6400f54874))
+* fix tests ([fe96ab0](https://github.com/nla/nla-blacklight/commit/fe96ab0878c2e5bf42c4065020460f6c28232425))
+* fixes test ([4951a4d](https://github.com/nla/nla-blacklight/commit/4951a4d94f9ffd2dde94548562338a498f6d5678))
+
+
+### Continuous Integration
+
+* add release workflow for sprint 3 ([8d38a72](https://github.com/nla/nla-blacklight/commit/8d38a7291f8bd5a9df61d3dc44c1ba0b82b39668))
+* allow release branches to trigger verify workflow ([cdafac0](https://github.com/nla/nla-blacklight/commit/cdafac077d6b32b5831c5c0e36b18107c8356139))
+* fix release-sprint-3 workflow ([41d9a83](https://github.com/nla/nla-blacklight/commit/41d9a83ef5792c185bb9a508e169855dee57b24f))
+* fix verify workflow trigger ([401afde](https://github.com/nla/nla-blacklight/commit/401afdedfd30910a01e919f0cfe415ca408a9d19))
+
+
+### Miscellaneous
+
+* cherry pick fix for BLAC-396 into release ([2b1c56a](https://github.com/nla/nla-blacklight/commit/2b1c56a8256b79060bcdcfe95682411f8eead2c5))
+* extract Search header to localisation config ([7843483](https://github.com/nla/nla-blacklight/commit/7843483f4f36fbfd4754d6b4956692f782c7f167))
+* finalise sprint 3 release ([54317dd](https://github.com/nla/nla-blacklight/commit/54317dd7a591e01edbd29bfaa1fb9e2cbd6ca38f))
+* fix release-sprint-3 workflow ([dd1be27](https://github.com/nla/nla-blacklight/commit/dd1be276c772d1122835e7ef7ecf511951853bd2))
+* rename parent_id_ssi and collection_id_ssi fields ([fcd6875](https://github.com/nla/nla-blacklight/commit/fcd687589f322e9bdf51fe06678117c5292f3d12))
+* upgrade bundler ([b92982a](https://github.com/nla/nla-blacklight/commit/b92982aa4fb0daac784b31bcea75498afc125795))
+* upgrade deps to address CVE-2023-28362 ([4940005](https://github.com/nla/nla-blacklight/commit/4940005f620d483b269751e3693acc6e1dc41ea8))
+* upgrade nla-blacklight_common dependency ([f8d09aa](https://github.com/nla/nla-blacklight/commit/f8d09aa44d00abedf18a1ba24081342a2c5d8102))
+
 ## [2.0.0](https://github.com/nla/nla-blacklight/compare/1.1.0...2.0.0) (2023-06-13)
 
 
