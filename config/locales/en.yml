@@ -108,6 +108,7 @@ en:
       heading: "Your Requests"
       menu: "Requests"
       num_remaining: "You can request %{count} more items."
+      no_requests: "There are no items requested."
       table_headings:
         ready: "Ready for collection"
         requested: "Items requested"
