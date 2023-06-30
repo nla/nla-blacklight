@@ -25,7 +25,7 @@ RSpec.describe RequestsTableComponent, type: :component do
     it "renders a message" do
       render_inline(described_class.new([], I18n.t("account.requests.table_headings.ready")))
 
-      expect(page).to have_css("td", text: I18n.t("account.requests.no_requests"))
+      expect(page).to have_css("td", text: I18n.t("account.requests.no_request_message"))
     end
   end
 end
