@@ -1,3 +1,98 @@
-.page-sidebar .card {
-  margin-bottom: 1em;
+.page-sidebar {
+  .card {
+    border: none;
+    margin-bottom: 1rem;
+    
+    .card-header {
+      background-color: none;
+      border: none;
+      
+      .h4 {
+        font-family: "Roboto condensed", sans-serif;
+        font-size: 1.375rem;
+        color: color("purple");
+        font-weight: bold;
+        text-shadow: 0 1px 0 color("white");
+        text-transform: uppercase;
+        margin-left: -1.25rem;
+      }
+    }
+    
+    .card-body {
+      border: none;
+      
+    }
+  }
+  
+  .show-tools,
+  .more-like-this,
+  .explore {
+    .card-body {
+      padding: 0;
+    }
+    
+    a {
+      color: color("purple");
+      text-decoration: none;
+      
+      &:hover,
+      &:focus {
+        background: color("light-purple");
+        color: color("white");
+      }
+    }
+  }
+  
+  .show-tools {
+    .list-group-item {
+      border: none;
+      padding: 0;
+      
+      a {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+    }
+  }
+  
+  .more-like-this {
+    .more_like_this_document {
+      margin-bottom: 0;
+      
+      a {
+        padding: 1rem;
+        display: block;
+      }
+    }
+}
+  
+  .explore {    
+    .explore-link {
+      display: block;
+      padding: 1rem;
+      margin-bottom: 0;
+      
+      &:hover,
+      &:focus {
+        background: color("light-purple");
+        color: color("white");
+        
+        a {
+          color: color("white");
+        }
+        
+        .explore-nla-shop-icon {
+          filter: invert(0%);
+        }
+        
+        .text-muted {
+          color: color("white") !important;
+        }
+      }
+            
+      .explore-nla-shop-icon {
+        filter: invert(100%);
+      }
+    }
+  }
 }

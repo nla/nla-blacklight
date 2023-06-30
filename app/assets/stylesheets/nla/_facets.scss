@@ -4,6 +4,16 @@
 // Facets
 .facets,
 .advanced-facet-limits {
+  
+  .facets-heading {
+    font-family: "Roboto condensed", sans-serif;
+    font-size: 1.375rem;
+    color: color("purple");
+    font-weight: bold;
+    text-shadow: 0 1px 0 color("white");
+    text-transform: uppercase;
+    margin-left: 0;
+  }
   .card-header {
     background: color("white");
   }
@@ -20,6 +30,16 @@
     .btn:not(.collapsed):after {
       transform: rotate(90deg);
       transition: transform 0.15s ease-in-out;
+    }
+  }
+  
+  .facet-select {
+    text-decoration: none;
+    
+    &:hover,
+    &:focus {
+      color: color("blue");
+      text-decoration: underline;
     }
   }
   
