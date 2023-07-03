@@ -1,7 +1,7 @@
 <% if show_doc_actions? %>
-  <div class="card show-tools">
+  <div class="card show-tools mt-5">
     <div class="card-header">
-      <h2 class="mb-0 h4"><%= t('blacklight.tools.title') %></h2>
+      <h2 class="mt-2 mb-0 h4"><%= t('blacklight.tools.title') %></h2>
     </div>
     <% if render_show_doc_actions_method_from_blacklight? %>
       <%= render(Blacklight::Document::ActionsComponent.new(document: @document, tag: 'ul', classes: 'list-group list-group-flush', wrapping_tag: 'li', wrapping_classes: 'list-group-item', actions: document_actions(@document), url_opts: Blacklight::Parameters.sanitize(params.to_unsafe_h))) %>
