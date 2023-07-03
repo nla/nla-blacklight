@@ -39,6 +39,16 @@ RSpec.describe RequestTableRowComponent, type: :component do
     expect(page).to have_css("td", text: "Testing patron comments")
   end
 
+  context "when there is a cancellation reason" do
+    it "renders the cancellation reason and the cancellation comments" do
+      render_inline(described_class.new(request_data_with_cancellation))
+
+      expect(page).to have_css("td", text: "Testing patron comments")
+      expect(page).to have_css("td", text: "We need more detailed information in order to retrieve this item.")
+      expect(page).to have_css("td", text: "this is a test cancellation")
+    end
+  end
+
   it "renders the request date" do
     render_inline(described_class.new(request_data))
 
@@ -48,6 +58,11 @@ RSpec.describe RequestTableRowComponent, type: :component do
 
   def request_data
     data = IO.read("spec/files/account/single_request.json")
+    {request: JSON.parse(data)}
+  end
+
+  def request_data_with_cancellation
+    data = IO.read("spec/files/account/single_request_with_cancellation.json")
     {request: JSON.parse(data)}
   end
 end
