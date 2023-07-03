@@ -1,25 +1,24 @@
 <div class="request-summary table-responsive">
-  <%- if @requests.present? %>
-    <table class="table table-hover table-sm mb-4">
-      <caption><%= @caption %> <span class="badge badge-pill badge-secondary"><%= count %></span></caption>
-      <thead>
-      <tr>
-        <th scope="col"><%= t("account.requests.table_column_headings.title") %></th>
-        <th scope="col"><%= t("account.requests.table_column_headings.location") %></th>
-        <th scope="col"><%= t("account.requests.table_column_headings.notes") %></th>
-        <th scope="col"><%= t("account.requests.table_column_headings.request_date") %></th>
-      </tr>
-      </thead>
-      <tbody>
+  <table class="table table-hover table-sm mb-4">
+    <caption><%= @caption %> <span class="badge badge-pill badge-secondary"><%= count %></span></caption>
+    <%- if @requests.present? %>
+    <thead>
+    <tr>
+      <th scope="col"><%= t("account.requests.table_column_headings.title") %></th>
+      <th scope="col"><%= t("account.requests.table_column_headings.location") %></th>
+      <th scope="col"><%= t("account.requests.table_column_headings.notes") %></th>
+      <th scope="col"><%= t("account.requests.table_column_headings.request_date") %></th>
+    </tr>
+    </thead>
+    <%- end %>
+    <tbody>
+    <%- if @requests.present? %>
       <%= render RequestTableRowComponent.with_collection(@requests) %>
-      </tbody>
-    </table>
-  <%- else %>
-    <table class="table table-hover table-sm mb-4">
-      <caption><%= @caption %> <span class="badge badge-pill badge-secondary"><%= count %></span></caption>
+    <%- elsif @requests.blank? %>
       <tr>
-        <td><%= t("account.requests.no_requests") %></td>
+        <td><%= t("account.requests.no_request_message") %></td>
       </tr>
-    </table>
-  <% end %>
+    <% end %>
+    </tbody>
+  </table>
 </div>

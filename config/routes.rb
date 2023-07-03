@@ -38,9 +38,7 @@ Rails.application.routes.draw do
     end
   end
 
-  if Flipper.enabled?(:request_summary)
-    get "/account/requests", to: "account#requests", as: "account_requests"
-  end
+  get "/account/requests", to: "account#requests", as: "account_requests"
 
   get "/thumbnail/:id", to: "thumbnail#thumbnail", as: "thumbnail"
 
