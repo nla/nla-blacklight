@@ -6,7 +6,7 @@ class RequestDetail
 
   attr_reader :details
 
-  delegate :instanceId, :title, :callNumber, :enumeration, :pickupServicePoint, :patronComments, :requestDate, to: :details
+  delegate :instanceId, :title, :callNumber, :enumeration, :pickupServicePoint, :patronComments, :requestDate, :cancellationComment, :cancellationReason, to: :details
 
   def initialize(details)
     @details = details

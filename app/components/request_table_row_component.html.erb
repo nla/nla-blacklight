@@ -1,6 +1,13 @@
 <tr>
   <td><%= link_to_record %></td>
   <td><%= @request_details.pickupServicePoint %></td>
-  <td><%= @request_details.patronComments %></td>
+  <td>
+    <p><%= @request_details.patronComments %></p>
+    <%- if @request_details.cancellationReason.present? %>
+      <p><%= @request_details.cancellationReason %></p>
+      <p><%= @request_details.cancellationComment %></p>
+    <%- end %>
+  </td>
   <td><%= @request_details.request_date %> <small class="text-muted"><%= @request_details.request_time %></small></td>
 </tr>
+
