@@ -5,6 +5,8 @@
     <p><%= @request_details.patronComments %></p>
     <%- if @request_details.cancellationReason.present? %>
       <p><%= @request_details.cancellationReason %></p>
+    <%- end %>
+    <%- if @request_details.cancellationComment.present? %>
       <p><%= @request_details.cancellationComment %></p>
     <%- end %>
   </td>
