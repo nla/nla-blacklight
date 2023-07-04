@@ -38,6 +38,8 @@ RSpec/MultipleExpectations:
   Enabled: false
 RSpec/MultipleMemoizedHelpers:
   Enabled: false
+RSpec/NestedGroups:
+  Enabled: false
 RSpec/Capybara/FeatureMethods:
   Enabled: false
 Bundler/DuplicatedGem:

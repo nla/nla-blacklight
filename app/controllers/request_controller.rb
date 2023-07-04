@@ -13,24 +13,39 @@ class RequestController < ApplicationController
   end
 
   def success
-    @title = @document.first("title_tsim")
-    @instance_id = @document.first("folio_instance_id_ssim")
-    @holdings_id = request_params[:holdings]
-    @item_id = request_params[:item]
+    instance_id = @document.first("folio_instance_id_ssim")
+    holdings_id = request_params[:holdings]
+    item_id = request_params[:item]
 
-    _, @item = cat_services_client.get_holding(instance_id: @instance_id, holdings_id: @holdings_id, item_id: @item_id)
+    _, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
   end
 
   def new
-    @instance_id = @document.first("folio_instance_id_ssim")
-    @holdings_id = request_params[:holdings]
-    @item_id = request_params[:item]
+    instance_id = @document.first("folio_instance_id_ssim")
+    holdings_id = request_params[:holdings]
+    item_id = request_params[:item]
 
-    @holding, @item = cat_services_client.get_holding(instance_id: @instance_id, holdings_id: @holdings_id, item_id: @item_id)
+    holding, item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
 
-    @request = Request.new(instance_id: @instance_id, holdings_id: @holdings_id, item_id: @item_id)
-    @request.holding = @holding
-    @request.item = @item
+    @request_form = if item["itemCategory"] == "manuscript"
+      "manuscripts"
+    elsif item["itemCategory"] == "journal"
+      "serials"
+    elsif item["itemCategory"] == "map"
+      "maps"
+    else
+      "monographs"
+    end
+
+    @finding_aids_link = if @document.finding_aid_url.present?
+      helpers.link_to I18n.t("requesting.collection_finding_aid"), @document.finding_aid_url.first, target: "_blank", rel: "noopener noreferrer"
+    else
+      I18n.t("requesting.collection_finding_aid")
+    end
+
+    @request = Request.new(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
+    @request.holding = holding
+    @request.item = item
   end
 
   def create
@@ -42,7 +57,7 @@ class RequestController < ApplicationController
     new_request.merge!({instance_id: instance_id})
 
     _holding, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
-    @create_response = cat_services_client.create_request(requester: current_user.folio_id, request: new_request)
+    cat_services_client.create_request(requester: current_user.folio_id, request: new_request)
 
     redirect_to action: :success, holdings: holdings_id, item: item_id
   end

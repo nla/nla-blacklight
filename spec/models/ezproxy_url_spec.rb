@@ -23,8 +23,10 @@ RSpec.describe EzproxyUrl do
     end
 
     it "generates an ezproxy authentication ticket" do
-      travel_to Time.zone.local(2022, 11, 28, 0, 0, 0) do
-        expect(ezproxy_url).to include "ticket=60d52eca002749aef4d50486c91c2a6d%24u1669554000"
+      Time.use_zone("Canberra") do
+        travel_to Time.zone.local(2022, 11, 28, 0, 0, 0) do
+          expect(ezproxy_url).to include "ticket=60d52eca002749aef4d50486c91c2a6d%24u1669554000"
+        end
       end
     end
   end

@@ -1,6 +1,7 @@
 <div class="request-summary table-responsive">
   <table class="table table-hover table-sm mb-4">
     <caption><%= @caption %> <span class="badge badge-pill badge-secondary"><%= count %></span></caption>
+    <%- if @requests.present? %>
     <thead>
     <tr>
       <th scope="col"><%= t("account.requests.table_column_headings.title") %></th>
@@ -9,8 +10,15 @@
       <th scope="col"><%= t("account.requests.table_column_headings.request_date") %></th>
     </tr>
     </thead>
+    <%- end %>
     <tbody>
+    <%- if @requests.present? %>
       <%= render RequestTableRowComponent.with_collection(@requests) %>
+    <%- elsif @requests.blank? %>
+      <tr>
+        <td><%= t("account.requests.no_request_message") %></td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </div>

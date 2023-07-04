@@ -26,6 +26,25 @@
     margin-right: -1.25rem;
     margin-top: -1.25rem;
     padding: 0.25rem 1.25rem;
+    
+    .h4 {
+      color: color("white");
+    }
+    
+    .view-all-results {
+      font-size: 0.875rem;
+      
+      a {
+        color: color("white");
+        text-decoration: none;
+        
+        &:hover,
+        &:focus {
+          color: color("white");
+          text-decoration: underline;
+        }
+      }
+    }
   }
   
   .bento-item-title {

@@ -4,6 +4,7 @@ development:
     search_url: "http://georekt-test.nla.gov.au/mapsearch/search/search?type=map&text="
 
   nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
+  contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian
 
 test:
   mapsearch:
@@ -11,6 +12,7 @@ test:
     search_url: "https://georekt-test.nla.gov.au/mapsearch/search/search?type=map&text="
 
   nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
+  contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian
 
 staging:
   mapsearch:
@@ -18,6 +20,7 @@ staging:
     search_url: "https://mapsearch.nla.gov.au/search/search?type=map&text="
 
   nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
+  contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian
 
 production:
   mapsearch:
@@ -25,3 +28,4 @@ production:
     search_url: "https://mapsearch.nla.gov.au/search/search?type=map&text="
 
   nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
+  contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian

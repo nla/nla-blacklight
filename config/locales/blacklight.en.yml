@@ -205,6 +205,9 @@ en:
         search:
           label: 'search for'
           placeholder: 'Find books, maps, audio, databases & more...'
+        bento_search:
+          label: 'search for'
+          placeholder: 'Search our catalogue, eResources and finding aids'          
         submit: 'Search'
       pagination:
         title: 'Results navigation'
@@ -281,13 +284,6 @@ en:
     did_you_mean: 'Did you mean to type: %{options}?'
 
     more_like_this: "Similar items"
-
-    explore:
-      title: "Explore"
-      find_in_trove: "Find in other libraries at Trove"
-      eresources: "eResources"
-      research_guides: "Research Guides"
-      check_eresources_research_guides: "Check %{eresources} and %{research_guides}"
 
     main:
       aria:

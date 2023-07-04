@@ -4,7 +4,7 @@ require "cgi"
 require "faraday"
 
 class ExploreComponent < ViewComponent::Base
-  attr_reader :document, :nla_shop
+  attr_reader :document, :nla_shop, :map_search
 
   def initialize(document)
     @document = document
@@ -18,9 +18,10 @@ class ExploreComponent < ViewComponent::Base
 
   def trove_query
     query = ""
-    if document.isbn.present?
-      document.isbn.each do |isn|
-        query += "isbn:#{document.clean_isn isn}#{(isn != document.isbn.last) ? " OR " : ""}"
+    if document.isbn_list.present?
+      isbn_list = document.isbn_list
+      isbn_list.each do |isn|
+        query += "isbn:#{document.clean_isn isn}#{(isn != isbn_list.last) ? " OR " : ""}"
       end
     else
       query += document.id.to_s
@@ -35,16 +36,17 @@ class ExploreComponent < ViewComponent::Base
     "https://trove.nla.gov.au/search?keyword=ANL AND (#{CGI.escape(query)}) AND title:%22#{CGI.escape(document.title_start.tr('"', ""))}%22"
   end
 
-  def library_thing_script
-    "https://www.librarything.com/api/json/workinfo.js?ids=#{lccn_list.join(",")}#{document.isbn.present? ? "," : ""}#{document.isbn_list.join(",")}&callback=showLibraryThing"
-  end
-
   def google_books_script
-    "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list.join(",")}#{document.isbn.present? ? "," : ""}#{google_isbn_list.join(",")}&callback=showGoogleBooksPreview"
+    isbn_list = document.isbn_list
+    "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list.join(",")}#{isbn_list.present? ? "," : ""}#{google_isbn_list.join(",")}&callback=showGoogleBooksPreview"
   end
 
   def render_online_shop?
     nla_shop.present?
+  end
+
+  def render_map_search?
+    document.fetch("format").presence.include? "Map"
   end
 
   def render?
@@ -56,14 +58,18 @@ class ExploreComponent < ViewComponent::Base
   def get_online_shop
     result = []
 
-    unless document.isbn.empty?
-      res = Faraday.get("#{@nla_shop_url}?isbn13=#{document.isbn_list.join(",")}")
+    isbn_list = document.isbn_list.map { |isn| isbn10_to_isbn13(isn) }
+
+    unless isbn_list.empty?
+      res = Faraday.get("#{@nla_shop_url}?isbn13=#{isbn_list.join(",")}")
       res_body = res.body.delete(" \t\r\n")
       if res.status == 200 && res_body != ""
         shop_response = JSON.parse(res.body)
-        document.isbn_list.each do |isn|
+        isbn_list.each do |isn|
           item = shop_response["InsertOnlineShop"][isn.to_s]
-          result << {thumbnail: item["thumbnail"], itemLink: item["itemLink"], price: item["price"]}
+          if item.present?
+            result << {thumbnail: item["thumbnail"], itemLink: item["itemLink"], price: item["price"]}
+          end
         end
       end
     end
@@ -81,7 +87,7 @@ class ExploreComponent < ViewComponent::Base
         return new_isbn
       end
 
-      isbn13 = "978#{new_isbn}"[0..-12]
+      isbn13 = "978#{new_isbn}"[0..12]
 
       sum = 0
       isbn13.to_s.each_char do |c|

@@ -104,7 +104,7 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field "format", label: "Format", limit: 20
-    config.add_facet_field "pub_date_ssim", label: "Publication Year", single: true
+    config.add_facet_field "pub_date_ssim", label: "Publication Year", single: true, limit: 99999, sort: "index"
     config.add_facet_field "author_ssim", label: "Author", limit: true, index_range: "A".."Z"
     config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
     config.add_facet_field "language_ssim", label: "Language", limit: true
@@ -207,6 +207,7 @@ class CatalogController < ApplicationController
     config.add_show_field "index_finding_aid_note", label: "Index/Finding Aid Note", accessor: :index_finding_aid_note, helper_method: :list
     config.add_show_field "awards", label: "Awards", accessor: :awards, helper_method: :unstyled_list
     config.add_show_field "subjects", label: "Subjects", field: "subject_ssim", helper_method: :subject_search_list
+    config.add_show_field "time_coverage", label: "Time Coverage", accessor: :time_coverage
     config.add_show_field "occupation", label: "Occupation", accessor: :occupation, helper_method: :occupation_search_list
     config.add_show_field "genre", label: "Form/genre", accessor: :genre, helper_method: :genre_search_list
     config.add_show_field "place", label: "Place", accessor: :place, helper_method: :list
@@ -377,10 +378,13 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case). Add the sort: option to configure a
     # custom Blacklight url parameter value separate from the Solr sort fields.
-    config.add_sort_field "score desc, pub_date_ssim desc, title_ssim asc", label: "relevance"
-    config.add_sort_field "pub_date_ssim desc, title_ssim asc", label: "year"
-    config.add_sort_field "author_si asc, title_ssim asc", label: "author"
-    config.add_sort_field "title_ssim asc, pub_date_ssim desc", label: "title"
+    config.add_sort_field "score desc, pub_date_ssim desc, title_si asc", label: "Relevance"
+    config.add_sort_field "pub_date_ssim desc, title_si asc", label: "Date New to Old"
+    config.add_sort_field "pub_date_ssim asc, title_si asc", label: "Date Old to New"
+    config.add_sort_field "author_si asc, title_si asc", label: "Author A-Z"
+    config.add_sort_field "author_si desc, title_si asc", label: "Author Z-A"
+    config.add_sort_field "title_si asc, pub_date_ssim desc", label: "Title A-Z"
+    config.add_sort_field "title_si desc, pub_date_ssim desc", label: "Title Z-A"
 
     # If there are more than this many search results, no spelling ("did you
     # mean") suggestion is offered.

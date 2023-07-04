@@ -472,6 +472,27 @@ class SolrDocument
     end
   end
 
+  def finding_aid_url
+    get_marc_derived_field("856u")
+  end
+
+  def time_coverage
+    data = if single_time_coverage.present?
+      single_time_coverage
+    elsif multiple_time_coverage.present?
+      [multiple_time_coverage.join(", ")]
+    elsif ranged_time_coverage.present?
+      [ranged_time_coverage.join("-")]
+    else
+      []
+    end
+
+    # The date values are prefixed with "d", but we don't want to show that.
+    data.map do |date|
+      date&.delete_prefix("d")
+    end
+  end
+
   private
 
   def get_online_access_urls
@@ -667,5 +688,23 @@ class SolrDocument
     end
 
     contents
+  end
+
+  def single_time_coverage
+    clean_time_coverage get_marc_derived_field("045|0*|b")
+  end
+
+  def multiple_time_coverage
+    clean_time_coverage get_marc_derived_field("045|1*|b")
+  end
+
+  def ranged_time_coverage
+    clean_time_coverage get_marc_derived_field("045|2*|b")
+  end
+
+  def clean_time_coverage(dates)
+    dates.map do |date|
+      date&.delete_prefix("d")
+    end
   end
 end
