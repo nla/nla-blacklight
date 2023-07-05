@@ -34,6 +34,7 @@ class ApplicationController < ActionController::Base
   # Some parts of the application are not suitable for storing the location
   def is_a_storable_controller_action?
     !is_a?(ThumbnailController) && # ignore lazy loaded thumbnail requests
+      !(is_a?(RequestController) && params[:action] == "index") && # ignore lazy loaded holdings listing requests
       !(is_a?(SearchController) && params[:action] == "single_search") && # ignore single search requests from bento
       !is_a?(Users::SessionsController) && # ignore login requests
       !is_a?(Users::OmniauthCallbacksController) # ignore login requests to Keycloak
