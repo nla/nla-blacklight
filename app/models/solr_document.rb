@@ -488,6 +488,13 @@ class SolrDocument
     end
   end
 
+  def publication_date
+    data = get_marc_derived_field("260c", options: {alternate_script: false})
+    data.map do |date|
+      date.chomp(".")
+    end
+  end
+
   private
 
   def get_online_access_urls

@@ -145,7 +145,7 @@ class CatalogController < ApplicationController
     config.add_index_field "author_with_relator_ssim", label: "Author"
     config.add_index_field "format", label: "Format"
     config.add_index_field "language_ssim", label: "Language"
-    config.add_index_field "call_number_ssim", label: "Call number"
+    config.add_index_field "publication_date", label: "Publication Date", accessor: :publication_date
 
     # scxxx
     # test display addition
