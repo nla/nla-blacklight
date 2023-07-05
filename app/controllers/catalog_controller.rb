@@ -117,7 +117,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "subject_era_ssim", label: "Era"
     config.add_facet_field "access_ssim", label: "Access"
     config.add_facet_field "decade_isim",
-      label: "Decade",
+      label: "Year Range",
       include_in_advanced_search: false,
       range: {
         num_segments: 6,
