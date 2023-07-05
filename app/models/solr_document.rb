@@ -477,7 +477,7 @@ class SolrDocument
   end
 
   def time_coverage
-    data = if single_time_coverage.present?
+    if single_time_coverage.present?
       single_time_coverage
     elsif multiple_time_coverage.present?
       [multiple_time_coverage.join(", ")]
@@ -485,11 +485,6 @@ class SolrDocument
       [ranged_time_coverage.join("-")]
     else
       []
-    end
-
-    # The date values are prefixed with "d", but we don't want to show that.
-    data.map do |date|
-      date&.delete_prefix("d")
     end
   end
 
@@ -704,7 +699,7 @@ class SolrDocument
 
   def clean_time_coverage(dates)
     dates.map do |date|
-      date&.delete_prefix("d")
+      date&.delete_prefix("d")&.[](0..3)
     end
   end
 end
