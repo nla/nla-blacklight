@@ -1671,6 +1671,17 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#publication_date" do
+    subject(:publication_date_value) do
+      document = described_class.new(marc_ss: publication_date)
+      document.publication_date
+    end
+
+    it "returns the publication date" do
+      expect(publication_date_value).to eq ["[1976] c1975"]
+    end
+  end
+
   private
 
   def single_series
@@ -1959,5 +1970,9 @@ RSpec.describe SolrDocument do
 
   def year_too_long_time_coverage
     load_marc_from_file 2015365
+  end
+
+  def publication_date
+    load_marc_from_file 744313
   end
 end
