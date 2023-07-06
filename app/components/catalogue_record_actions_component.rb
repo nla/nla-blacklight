@@ -12,14 +12,12 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def online_label
-    format = @document.fetch("format")
-    if format.include? "Audio"
+    format = @document.first("format")
+    if format.present? && format.include?("Audio")
       "Listen"
     else
       "View online"
     end
-  rescue
-    "View online"
   end
 
   def online_url

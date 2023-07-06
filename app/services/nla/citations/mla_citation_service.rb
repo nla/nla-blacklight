@@ -4,13 +4,13 @@ module Nla
   module Citations
     class MlaCitationService < CitationsService
       def export
-        format = @document.first("format").downcase
+        format = @document.first("format")
 
         result = []
 
         result << cite_authors
         result << "<em>#{@document.first("title_tsim")}</em>"
-        if format == "book"
+        if format.present? && format.downcase == "book"
           result << cite_publisher
         end
         result << cite_pubdate
