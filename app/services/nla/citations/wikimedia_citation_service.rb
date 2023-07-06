@@ -49,7 +49,7 @@ module Nla
       def build_title(format)
         title = ""
 
-        if format.downcase == "journal"
+        if format.present? && format.downcase == "journal"
           title += " | title=[article title here]\n"
           title += " | author=[article author here]\n"
           title += " | author2=[first co-author here]\n"
