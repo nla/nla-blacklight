@@ -1658,6 +1658,28 @@ RSpec.describe SolrDocument do
         expect(time_coverage_value).to eq ["1890-1899"]
       end
     end
+
+    context "when the year is too long" do
+      subject(:time_coverage_value) do
+        document = described_class.new(marc_ss: year_too_long_time_coverage)
+        document.time_coverage
+      end
+
+      it "returns the year with only 4 digits" do
+        expect(time_coverage_value).to eq ["1921"]
+      end
+    end
+  end
+
+  describe "#publication_date" do
+    subject(:publication_date_value) do
+      document = described_class.new(marc_ss: publication_date)
+      document.publication_date
+    end
+
+    it "returns the publication date" do
+      expect(publication_date_value).to eq ["[1976] c1975"]
+    end
   end
 
   private
@@ -1944,5 +1966,13 @@ RSpec.describe SolrDocument do
 
   def ranged_time_coverage
     load_marc_from_file 4318191
+  end
+
+  def year_too_long_time_coverage
+    load_marc_from_file 2015365
+  end
+
+  def publication_date
+    load_marc_from_file 744313
   end
 end

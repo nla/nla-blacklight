@@ -64,12 +64,10 @@
           <% end %>
         <% end %>
 
-        <% if item.custom_data[:finding_aid] %>
-          <% item.custom_data.each do |key, value| %>
-            <% unless key == :finding_aid || key == :search_link %>
-              <dt class="col-12 col-md-3"><%= key %></dt>
-              <dd class="col col-sm-9"><%= bento_truncate(raw(value), length: 140) %></dd>
-            <% end %>
+        <% item.custom_data.each do |key, value| %>
+          <% unless key == :finding_aid || key == :search_link %>
+            <dt class="col-12 col-md-3"><%= key %></dt>
+            <dd class="col col-sm-9"><%= bento_truncate(raw(value), length: 140) %></dd>
           <% end %>
         <% end %>
       </dl>

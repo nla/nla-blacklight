@@ -477,7 +477,7 @@ class SolrDocument
   end
 
   def time_coverage
-    data = if single_time_coverage.present?
+    if single_time_coverage.present?
       single_time_coverage
     elsif multiple_time_coverage.present?
       [multiple_time_coverage.join(", ")]
@@ -486,10 +486,12 @@ class SolrDocument
     else
       []
     end
+  end
 
-    # The date values are prefixed with "d", but we don't want to show that.
+  def publication_date
+    data = get_marc_derived_field("260c", options: {alternate_script: false})
     data.map do |date|
-      date&.delete_prefix("d")
+      date.chomp(".")
     end
   end
 
@@ -704,7 +706,7 @@ class SolrDocument
 
   def clean_time_coverage(dates)
     dates.map do |date|
-      date&.delete_prefix("d")
+      date&.delete_prefix("d")&.[](0..3)
     end
   end
 end

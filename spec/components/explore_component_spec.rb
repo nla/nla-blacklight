@@ -152,6 +152,22 @@ RSpec.describe ExploreComponent, type: :component do
     end
   end
 
+  describe "#render_map_search?" do
+    context "when the format is Map" do
+      it "returns true" do
+        expect(described_class.new(document).render_map_search?).to be true
+      end
+    end
+
+    context "when there is no format" do
+      let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485") }
+
+      it "returns false" do
+        expect(described_class.new(document).render_map_search?).to be false
+      end
+    end
+  end
+
   def sample_marc
     load_marc_from_file 4157458
   end

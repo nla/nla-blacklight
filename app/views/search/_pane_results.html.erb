@@ -5,7 +5,7 @@
       <div class="card-title sticky-top mb-4 d-flex justify-content-between align-items-baseline">
         <h2 class="h4 mb-0"><%= BentoSearch.get_engine(key).configuration.title %></h2>
         <% if result %>
-          <% if result.total_items > 0 %>
+          <% if result.total_items > 1 %>
             <div class="view-all-results">
               <%= link_to bento_all_results_link(key) do %>
                 View <%= number_with_delimiter(result.total_items) %> results <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>

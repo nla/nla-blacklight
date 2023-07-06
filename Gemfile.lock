@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 808aaf43863a53682d5bbfb445ecd452359624f1
+  revision: ebcb4fa461664bb3c95b83319892784358f805ce
   branch: main
   specs:
     nla-blacklight_common (0.1.2)
@@ -764,4 +764,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.14
+   2.4.15

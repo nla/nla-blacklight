@@ -104,7 +104,7 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field "format", label: "Format", limit: 20
-    config.add_facet_field "pub_date_ssim", label: "Publication Year", single: true, limit: 99999, sort: "index"
+    config.add_facet_field "pub_date_ssim", label: "Publication Year", single: true, limit: 9999, sort: "index"
     config.add_facet_field "author_ssim", label: "Author", limit: true, index_range: "A".."Z"
     config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
     config.add_facet_field "language_ssim", label: "Language", limit: true
@@ -145,7 +145,7 @@ class CatalogController < ApplicationController
     config.add_index_field "author_with_relator_ssim", label: "Author"
     config.add_index_field "format", label: "Format"
     config.add_index_field "language_ssim", label: "Language"
-    config.add_index_field "call_number_ssim", label: "Call number"
+    config.add_index_field "publication_date", label: "Publication Date", accessor: :publication_date
 
     # scxxx
     # test display addition
