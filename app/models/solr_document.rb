@@ -407,7 +407,7 @@ class SolrDocument
 
     map_url = get_map_search_url
     if map_url.present?
-      eresource_urls << map_url if Eresources.new.known_url(map_url[:href]).present?
+      eresource_urls << map_url.first if Eresources.new.known_url(map_url.first).present?
     end
 
     copy_urls = get_copy_urls
@@ -555,6 +555,10 @@ class SolrDocument
 
   def get_copyright_status
     CopyrightStatus.new(self)
+  end
+
+  def has_copyright?
+    CopyrightStatus.new(self).present? && info.present? && info["contextMsg"].present?
   end
 
   def get_uniform_title
