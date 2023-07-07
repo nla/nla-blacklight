@@ -17,11 +17,6 @@
         margin-left: -1.25rem;
       }
     }
-    
-    .card-body {
-      border: none;
-      
-    }
   }
   
   .show-tools,
@@ -29,6 +24,7 @@
   .explore {
     .card-body {
       padding: 0;
+      border: none;
     }
     
     a {
@@ -64,34 +60,30 @@
         display: block;
       }
     }
-}
+  }
   
   .explore {    
     .explore-link {
-      display: block;
-      padding: 1rem;
-      margin-bottom: 0;
-      
-      &:hover,
-      &:focus {
-        background: color("light-purple");
-        color: color("white");
-        
-        a {
-          color: color("white");
-        }
+      padding: 0;
+            
+      a {
+        padding: 1rem;
+        display: block;
         
         .explore-nla-shop-icon {
-          filter: invert(0%);
+          filter: invert(100%);
         }
         
-        .text-muted {
-          color: color("white") !important;
+        &:hover,
+        &:focus {
+          .explore-nla-shop-icon {
+            filter: invert(0%);
+          }
+          
+          .text-muted {
+            color: color("white") !important;
+          }
         }
-      }
-            
-      .explore-nla-shop-icon {
-        filter: invert(100%);
       }
     }
   }
