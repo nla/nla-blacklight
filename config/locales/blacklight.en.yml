@@ -30,6 +30,8 @@ en:
       catalogue: 'Catalogue'
       eresources: 'eResources'
       finding_aids: 'Finding aids'
+      ask_a_librarian: 'Ask a librarian'
+      help: 'Help'
       login: 'Login'
       logout: 'Log Out'
       bookmarks: 'Bookmarks'
