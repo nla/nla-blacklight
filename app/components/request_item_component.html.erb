@@ -7,6 +7,7 @@
     <div class="col-12">
       <% holdings.each do |holding| %>
         <% holding["itemRecords"].each do |item| %>
+          <% unless item["discoverySuppress"] %>
           <div class="holding card w-100 mb-4">
             <div class="card-body">
               <div class="row">
@@ -87,6 +88,7 @@
               </div>
             </div>
           </div>
+          <% end %>
         <% end %>
       <% end %>
     </div>
