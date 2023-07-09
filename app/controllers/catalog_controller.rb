@@ -106,7 +106,6 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field "format", label: "Format", limit: 20
-    config.add_facet_field "pub_date_ssim", label: "Publication Year", single: true, limit: 9999, sort: "index"
     config.add_facet_field "author_ssim", label: "Author", limit: true, index_range: "A".."Z"
     config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
     config.add_facet_field "language_ssim", label: "Language", limit: true
@@ -127,12 +126,6 @@ class CatalogController < ApplicationController
       }
 
     # config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: %w[format language_ssim], collapsing: true
-
-    config.add_facet_field "example_query_facet_field", label: "Publish Date", query: {
-      years_5: {label: "within 5 Years", fq: "pub_date_ssim:[#{Time.zone.now.year - 5} TO *]"},
-      years_10: {label: "within 10 Years", fq: "pub_date_ssim:[#{Time.zone.now.year - 10} TO *]"},
-      years_25: {label: "within 25 Years", fq: "pub_date_ssim:[#{Time.zone.now.year - 25} TO *]"}
-    }
 
     config.add_facet_field "parent_id_ssim", label: "In Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
     config.add_facet_field "collection_id_ssim", label: "Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
