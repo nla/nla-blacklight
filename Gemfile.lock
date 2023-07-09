@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: ebcb4fa461664bb3c95b83319892784358f805ce
+  revision: d8475dfbd724181ec850a8676d8a944a47d4edfe
   branch: main
   specs:
     nla-blacklight_common (0.1.2)
@@ -351,7 +351,7 @@ GEM
     language_server-protocol (3.17.0.3)
     latex-decode (0.4.0)
     library_stdnums (1.6.0)
-    lint_roller (1.0.0)
+    lint_roller (1.1.0)
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
       rake (~> 13.0)
@@ -495,7 +495,7 @@ GEM
     redis-namespace (1.11.0)
       redis (>= 4)
     regexp_parser (2.8.1)
-    reline (0.3.5)
+    reline (0.3.6)
       io-console (~> 0.5)
     repost (0.4.1)
     request_store (1.5.1)
@@ -601,7 +601,7 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    standard (1.29.0)
+    standard (1.30.1)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.52.0)
@@ -609,8 +609,8 @@ GEM
       standard-performance (~> 1.1.0)
     standard-custom (1.0.1)
       lint_roller (~> 1.0)
-    standard-performance (1.1.0)
-      lint_roller (~> 1.0)
+    standard-performance (1.1.1)
+      lint_roller (~> 1.1)
       rubocop-performance (~> 1.18.0)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
