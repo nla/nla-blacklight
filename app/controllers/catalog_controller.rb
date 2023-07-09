@@ -106,14 +106,6 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field "format", label: "Format", limit: 20
-    config.add_facet_field "author_ssim", label: "Author", limit: true, index_range: "A".."Z"
-    config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
-    config.add_facet_field "language_ssim", label: "Language", limit: true
-    config.add_facet_field "austlang_ssim", label: "Aboriginal and Torres Strait Islander Language", limit: 10
-    config.add_facet_field "lc_1letter_ssim", label: "Call Number"
-    config.add_facet_field "geographic_name_ssim", label: "Geographic", limit: true, index_range: "A".."Z"
-    config.add_facet_field "series_ssim", label: "Series", limit: true, index_range: "A".."Z", single: true
-    config.add_facet_field "subject_era_ssim", label: "Era"
     config.add_facet_field "access_ssim", label: "Access"
     config.add_facet_field "decade_isim",
       label: "Year Range",
@@ -124,6 +116,12 @@ class CatalogController < ApplicationController
         segments: true,
         maxlength: 4
       }
+    config.add_facet_field "author_ssim", label: "Author", limit: true, index_range: "A".."Z"
+    config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
+    config.add_facet_field "austlang_ssim", label: "Aboriginal and Torres Strait Islander Language", limit: 10
+    config.add_facet_field "language_ssim", label: "Language", limit: true
+    config.add_facet_field "geographic_name_ssim", label: "Geographic", limit: true, index_range: "A".."Z"
+    config.add_facet_field "series_ssim", label: "Series", limit: true, index_range: "A".."Z", single: true
 
     # config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: %w[format language_ssim], collapsing: true
 
