@@ -123,8 +123,6 @@ class CatalogController < ApplicationController
     config.add_facet_field "geographic_name_ssim", label: "Geographic", limit: true, index_range: "A".."Z"
     config.add_facet_field "series_ssim", label: "Series", limit: true, index_range: "A".."Z", single: true
 
-    # config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: %w[format language_ssim], collapsing: true
-
     config.add_facet_field "parent_id_ssim", label: "In Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
     config.add_facet_field "collection_id_ssim", label: "Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
 

@@ -1,4 +1,11 @@
 <h1 class="h3"><%= t("requesting.success.heading") %></h1>
+
+<%- if @met_request_limit %>
+  <div class="alert alert-danger" role="alert">
+    <%= t("requesting.request_limit_error", url: ENV["ASK_LIBRARIAN_URL"]).html_safe %>
+  </div>
+<%- end %>
+
 <h2 class="h3 mt-4"><%= @document.first("title_tsim") %></h2>
 
 <div class="row">

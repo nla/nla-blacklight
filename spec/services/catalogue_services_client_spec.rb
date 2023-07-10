@@ -54,4 +54,51 @@ RSpec.describe CatalogueServicesClient, type: :request do
       end
     end
   end
+
+  describe "#request_limit_reached?" do
+    context "when unable to check request limit" do
+      it "raises an ItemRequestError" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 404, body: "", headers: {})
+
+        expect { service.request_limit_reached?(requester: "1111") }.to raise_error(ItemRequestError)
+      end
+    end
+
+    context "when user has met request limit" do
+      it "returns true" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: "{\"requestLimitReached\": \"true\"}", headers: {})
+
+        expect(service.request_limit_reached?(requester: "1111")).to be true
+      end
+    end
+
+    context "when user has not met request limit" do
+      it "returns false" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: "{\"requestLimitReached\": \"false\"}", headers: {})
+
+        expect(service.request_limit_reached?(requester: "1111")).to be false
+      end
+    end
+  end
 end
