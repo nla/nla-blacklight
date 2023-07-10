@@ -71,7 +71,8 @@ RSpec.describe "Requests" do
       follow_redirect!
 
       expect(response).to have_http_status(:success)
-      expect(response.body).to include("Your request for <strong>National Geographic</strong> is currently being processed.")
+      expect(response.body).to include(I18n.t("requesting.success.message"))
+      expect(response.body).to include(I18n.t("requesting.success.collection"))
     end
 
     context "when a catalogue services error occurs" do
