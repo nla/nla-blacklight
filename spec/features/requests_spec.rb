@@ -251,6 +251,21 @@ RSpec.describe "Requests" do
         expect(page).to have_css(".alert-danger", text: "Your request limit has been reached")
       end
     end
+
+    context "when pickup location is Special Collections Reading Room" do
+      let(:item_id) { "60ae1cf9-5b4c-5fac-9a38-2cb195cdb7b2" }
+
+      it "renders the special collections message" do
+        visit solr_document_request_success_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_css("p", text: "To prepare for your visit, and find out more about use of and access to our special collections")
+      end
+    end
   end
 
   def serial_marc

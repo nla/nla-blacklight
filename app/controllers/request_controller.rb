@@ -13,16 +13,6 @@ class RequestController < ApplicationController
     # lazy loaded via Turboframes into the "Request this item" section of the catalogue record page
   end
 
-  def success
-    instance_id = @document.first("folio_instance_id_ssim")
-    holdings_id = request_params[:holdings]
-    item_id = request_params[:item]
-
-    _, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
-
-    @met_request_limit = check_request_limit
-  end
-
   def new
     instance_id = @document.first("folio_instance_id_ssim")
     holdings_id = request_params[:holdings]
@@ -65,6 +55,20 @@ class RequestController < ApplicationController
     cat_services_client.create_request(requester: current_user.folio_id, request: new_request)
 
     redirect_to action: :success, holdings: holdings_id, item: item_id
+  end
+
+  def success
+    instance_id = @document.first("folio_instance_id_ssim")
+    holdings_id = request_params[:holdings]
+    item_id = request_params[:item]
+
+    _, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
+
+    @met_request_limit = check_request_limit
+
+    if @item["pickupLocation"]["code"].start_with? "SCRR"
+      @show_scrr = true
+    end
   end
 
   private
