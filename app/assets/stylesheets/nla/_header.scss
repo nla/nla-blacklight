@@ -21,7 +21,8 @@
       line-height: 1.2;
       
       &:hover,
-      &:focus {
+      &:focus,
+      &.active {
         border-bottom-color: color("orange");
       }
     }
