@@ -308,5 +308,14 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: request_summary, headers: {})
+
+    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+        }
+      )
+      .to_return(status: 200, body: "{\"requestLimitReached\": \"false\"}", headers: {})
   end
 end

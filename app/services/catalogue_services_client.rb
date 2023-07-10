@@ -96,6 +96,25 @@ class CatalogueServicesClient
     end
   end
 
+  def request_limit_reached?(requester:)
+    conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
+      f.request :authorization, "Bearer", bearer_token.token
+      f.response :json
+    end
+
+    res = conn.get("/catalogue-services/folio/user/#{requester}/requestLimitReached")
+    if res.status == 200
+      res.body["requestLimitReached"].to_s.downcase == "true"
+    else
+      message = "Failed to check request limit for requester (#{requester})"
+      Rails.logger.error message
+
+      # Raise an ItemRequestError, since if we're unable to check the user's request limit, the
+      # user will likely be unable to request items also (i.e. their account is broken).
+      raise ItemRequestError.new(message)
+    end
+  end
+
   private
 
   def bearer_token(attempt = 0)
