@@ -20,7 +20,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         )
         .to_return(status: 200, body: child_count_query_response, headers: {})
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)14156869%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)14156869%22&rows=1&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -72,7 +72,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         )
         .to_return(status: 200, body: sibling_count_response, headers: {})
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)23783872%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)23783872%22&rows=1&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -134,7 +134,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
       parent_response = JSON.parse(parent_query_response)
       parent_response["response"]["docs"][0] = {id: "1586062", title_tsim: "Dunlop family photograph albums"}
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)24850123%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)24850123%22&rows=1&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",

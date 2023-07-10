@@ -124,7 +124,7 @@ RSpec.describe RelatedRecords do
       let(:document) { SolrDocument.new(marc_ss: child_marc) }
 
       it "returns the parent record" do
-        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22.*%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22.*%22&rows=1&wt=json/)
           .with(
             headers: {
               "Accept" => "*/*",

@@ -1,7 +1,19 @@
 <h2><%= t("account.requests.heading") %></h2>
+<%- if @met_request_limit %>
+<<<<<<< HEAD
+  <div class="alert alert-danger" role="alert">
+    <%= t("requesting.request_limit_error", url: ENV["ASK_LIBRARIAN_URL"]).html_safe %>
+  </div>
+=======
+<div class="alert alert-danger" role="alert">
+  <%= t("requesting.request_limit_error", url: ENV["ASK_LIBRARIAN_URL"]).html_safe %>
+</div>
+>>>>>>> dceac25 (feat: implement request limit error message)
+<%- else %>
 <div class="alert alert-info" role="alert">
   <%= t("account.requests.num_remaining", count: @requests["numRequestsRemaining"]) %>
 </div>
+<%- end %>
 
 <%= render RequestsTableComponent.new(@requests["readyForCollection"], t("account.requests.table_headings.ready"), t("account.requests.no_request_message.ready")) %>
 <%= render RequestsTableComponent.new(@requests["itemsRequested"], t("account.requests.table_headings.requested"), t("account.requests.no_request_message.requested")) %>

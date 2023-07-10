@@ -87,7 +87,6 @@ class RelatedRecords
       response = search_service.search(
         q: "collection_id_ssim:\"#{@parent_id}\"",
         fl: "id,title_tsim",
-        sort: "score desc, pub_date_si desc, title_si asc",
         rows: 1
       )
       if response.present? && response["response"].present?

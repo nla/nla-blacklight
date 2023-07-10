@@ -10,6 +10,7 @@ class RequestController < ApplicationController
   before_action :set_document
 
   def index
+    # lazy loaded via Turboframes into the "Request this item" section of the catalogue record page
   end
 
   def success
@@ -18,6 +19,8 @@ class RequestController < ApplicationController
     item_id = request_params[:item]
 
     _, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
+
+    @met_request_limit = check_request_limit
   end
 
   def new
@@ -46,6 +49,8 @@ class RequestController < ApplicationController
     @request = Request.new(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
     @request.holding = holding
     @request.item = item
+
+    @met_request_limit = check_request_limit
   end
 
   def create
@@ -65,7 +70,7 @@ class RequestController < ApplicationController
   private
 
   def cat_services_client
-    @catalogue_services_client ||= CatalogueServicesClient.new
+    helpers.cat_services_client
   end
 
   def set_document
@@ -74,5 +79,10 @@ class RequestController < ApplicationController
 
   def request_params
     params.permit(:solr_document_id, :holdings, :item, request: [:instance_id, :holdings_id, :item_id, :year, :enumeration, :chronology, :notes])
+  end
+
+  def check_request_limit
+    # check the user's request limit
+    cat_services_client.request_limit_reached?(requester: current_user.folio_id)
   end
 end

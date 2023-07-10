@@ -17,6 +17,29 @@ RSpec.describe "Requests" do
     let(:solr_document_id) { "1595553" }
     let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["National Geographic"], format: ["Journal"]) }
 
+    context "when user has reached their request limit" do
+      it "renders the request limit error" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: "{\"requestLimitReached\": \"true\"}", headers: {})
+
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_css(".alert-danger", text: "Your request limit has been reached")
+        expect(page).not_to have_css("#request-details")
+      end
+    end
+
     context "when requesting a monograph" do
       it "does not render a message" do
         visit solr_document_request_new_path(
@@ -196,6 +219,36 @@ RSpec.describe "Requests" do
         expect(page).to have_css("label", text: I18n.t("requesting.label.map_name"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.year"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
+      end
+    end
+  end
+
+  describe "GET /success" do
+    let(:instance_id) { "08aed703-3648-54d0-80ef-fddb3c635731" }
+    let(:holdings_id) { "37fbc2dd-3b37-58b8-b447-b538ba7265b9" }
+    let(:item_id) { "60ae1cf9-5b4c-5fac-9a38-2cb195cdb7b2" }
+    let(:solr_document_id) { "1595553" }
+    let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["National Geographic"], format: ["Journal"]) }
+
+    context "when user has reached their request limit" do
+      it "renders the request limit error" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: "{\"requestLimitReached\": \"true\"}", headers: {})
+
+        visit solr_document_request_success_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_css(".alert-danger", text: "Your request limit has been reached")
       end
     end
   end
