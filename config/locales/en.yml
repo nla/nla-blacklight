@@ -67,6 +67,8 @@ en:
       collect_from: "Collect From:"
       call_number: "Call Number:"
       status: "Status:"
+      access_conditions: "Access Conditions:"
+      notes: "Notes:"
       recent_items: "Recent Items/Issues Held:"
       items_held: "Items/Issues Held:"
       supplements: "Supplements:"
