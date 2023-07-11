@@ -134,3 +134,7 @@ en:
     find_in_trove: "Find in other libraries at Trove"
     map_search: "Australian maps at map search"
     nla_shop: "Buy at our online shop"
+  home:
+    p1: "Search the Catalogue to find books, pictures, maps, oral history interviews, manuscripts and more. Some items can be viewed online but most can be requested to view at the Library."
+    p2: "If you need help then try our <a href=\"https://www.nla.gov.au/research-guides\">research guides</a>. They cover a variety of topics, and are where you'll find research advice, key resources and featured collection items."
+    p3: "Have a question? Take a look at our <a href=\"https://www.nla.gov.au/faq\">frequently asked questions</a> page. You can also <a href=\"https://www.nla.gov.au/using-library/getting-started/ask-librarian\">Ask a Librarian</a>."
