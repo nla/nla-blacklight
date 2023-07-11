@@ -2,14 +2,21 @@
   <div class="card-header"><h2 class="mt-2 mb-0 h4"><%= t("explore.title") %></h2></div>
   <div class="card-body">
     <ul class="list-unstyled">
-      <li class="explore-link"><%= image_tag "trove-icon.svg", width: "16", height: "16", alt: "Trove icon", aria: {hidden: true} %> <%= link_to t("explore.find_in_trove"), trove_query %></li>
+      <li class="explore-link">
+        <%= link_to trove_query do %>
+          <%= image_tag "trove-icon.svg", width: "16", height: "16", alt: "Trove icon", aria: {hidden: true} %> <%= t("explore.find_in_trove") %>
+        <% end %>
+      </li>
 
       <% if render_online_shop? %>
         <% nla_shop.each do |item| %>
-          <li class="explore-link"><%= image_tag "nla_logo.svg", width: "16", height: "16", alt: "National Library of Australia icon", aria: {hidden: true}, class: "explore-nla-shop-icon" %>
-            <%= link_to t("explore.nla_shop"), item[:itemLink] %>
-            <% if item[:price].present? %>
-              <small class="text-muted"><%= number_to_currency(item[:price], unit: "$", separator: ".") %></small>
+          <li class="explore-link">
+            <%= link_to item[:itemLink] do %>
+              <%= image_tag "nla_logo.svg", width: "16", height: "16", alt: "National Library of Australia icon", aria: {hidden: true}, class: "explore-nla-shop-icon" %>
+              <%= t("explore.nla_shop") %>
+              <% if item[:price].present? %>
+                <small class="text-muted"><%= number_to_currency(item[:price], unit: "$", separator: ".") %></small>
+              <% end %>
             <% end %>
           </li>
         <% end %>
@@ -19,7 +26,10 @@
 
       <% if render_map_search? %>
         <li id="map-search" class="explore-link">
-          <%= t("explore.map_search").html_safe %>
+          <%= link_to 'https://mapsearch.nla.gov.au/' do %>
+            <%= image_tag "nla_logo.svg", width: "16", height: "16", alt: "National Library of Australia icon", aria: {hidden: true}, class: "explore-nla-shop-icon" %>
+            <%= t("explore.map_search") %>
+          <% end %>
         </li>
       <% end %>
     </ul>
@@ -30,7 +40,7 @@
     for (let i in booksInfo) {
       const book = booksInfo[i]
       if (book.preview && book.preview !== 'noview') {
-        document.getElementById('google-preview').innerHTML = `<%= image_tag "google-books.png", width: "16", height: "16", alt: "Google books logo", aria: {hidden: true} %> <a href="${book.preview_url}">Preview at Google Books</a>`
+        document.getElementById('google-preview').innerHTML = `<a href="${book.preview_url}"><%= image_tag "google-books.png", width: "16", height: "16", alt: "Google books logo", aria: {hidden: true} %> Preview at Google Books</a>`
         document.getElementById('google-preview').className = "explore-link"
       }
     }

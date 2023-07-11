@@ -10,14 +10,7 @@ class RequestController < ApplicationController
   before_action :set_document
 
   def index
-  end
-
-  def success
-    instance_id = @document.first("folio_instance_id_ssim")
-    holdings_id = request_params[:holdings]
-    item_id = request_params[:item]
-
-    _, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
+    # lazy loaded via Turboframes into the "Request this item" section of the catalogue record page
   end
 
   def new
@@ -46,6 +39,8 @@ class RequestController < ApplicationController
     @request = Request.new(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
     @request.holding = holding
     @request.item = item
+
+    @met_request_limit = check_request_limit
   end
 
   def create
@@ -62,10 +57,24 @@ class RequestController < ApplicationController
     redirect_to action: :success, holdings: holdings_id, item: item_id
   end
 
+  def success
+    instance_id = @document.first("folio_instance_id_ssim")
+    holdings_id = request_params[:holdings]
+    item_id = request_params[:item]
+
+    _, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
+
+    @met_request_limit = check_request_limit
+
+    if @item["pickupLocation"]["code"].start_with? "SCRR"
+      @show_scrr = true
+    end
+  end
+
   private
 
   def cat_services_client
-    @catalogue_services_client ||= CatalogueServicesClient.new
+    helpers.cat_services_client
   end
 
   def set_document
@@ -74,5 +83,10 @@ class RequestController < ApplicationController
 
   def request_params
     params.permit(:solr_document_id, :holdings, :item, request: [:instance_id, :holdings_id, :item_id, :year, :enumeration, :chronology, :notes])
+  end
+
+  def check_request_limit
+    # check the user's request limit
+    cat_services_client.request_limit_reached?(requester: current_user.folio_id)
   end
 end

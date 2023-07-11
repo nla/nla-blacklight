@@ -63,23 +63,23 @@ module RequestHelper
   def pickup_location_text(item)
     if pickup_location_code(item).start_with? "MRR"
       link = link_to "Main Reading Room", "https://www.nla.gov.au/reading-rooms/main"
-      t("requesting.collect_from.base", link: link, location: "Ground Level")
+      t("requesting.collect_from.base", link: link, location: ", Ground Floor")
     elsif pickup_location_code(item).start_with? "SCRR"
       link = link_to "Special Collections Reading Room", "https://www.nla.gov.au/reading-rooms/special-collections"
-      t("requesting.collect_from.base", link: link, location: "Level 1")
+      t("requesting.collect_from.base", link: link, location: ", First Floor")
     else
       link = link_to "Newspapers and Family History", "https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history"
-      t("requesting.collect_from.base", link: link, location: "Main Reading Room, Ground Level")
+      t("requesting.collect_from.base", link: link, location: "in the Main Reading Room, Ground Level")
     end
   end
 
   def pickup_location_img(item)
     if pickup_location_code(item).start_with? "MRR"
-      image_tag "pickup-locations/main_reading_room.jpg", class: "img-fluid"
+      image_tag "pickup-locations/NLA_006.png", class: "img-fluid"
     elsif pickup_location_code(item).start_with? "SCRR"
-      image_tag "pickup-locations/special_collections.jpg", class: "img-fluid"
+      image_tag "pickup-locations/NLA_003.png", class: "img-fluid"
     else
-      image_tag "pickup-locations/newspapers_and_family_history_zone.jpg", class: "img-fluid"
+      image_tag "pickup-locations/NLA_011.png", class: "img-fluid"
     end
   end
 

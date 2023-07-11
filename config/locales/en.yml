@@ -59,7 +59,9 @@ en:
     message: "Request this item to view in the Library's reading room using your library card."
     success:
       heading: "Request complete"
-      message: 'Your request for <strong>%{title}</strong> is currently being processed. Check our <a href="https://www.nla.gov.au/using-library/collection-delivery-service/collection-delivery-times">collection delivery times</a>.'
+      message: "Your request is being processed. We will email you when the material is ready to collect."
+      collection: 'Please check collection <a href="https://www.nla.gov.au/using-library/collection-delivery-service/collection-delivery-times">delivery times</a> and <a href="https://www.nla.gov.au/visit-us/opening-hours">opening hours</a>.'
+      scrr: 'To prepare for your visit, and find out more about use of and access to our special collections, view our Research Guide on <a href="https://www.nla.gov.au/research-guides/using-the-special-collections-reading-room">Using the Special Collections Reading Room</a>.'
     metadata:
       item_requested: "Item Requested:"
       collect_from: "Collect From:"
@@ -92,9 +94,8 @@ en:
       notes: "< 100 characters"
       need_help: "Need help? <a href=\"%{contact_us}\">Contact us</a>."
     collect_from:
-      base: "Collection desk in %{link}, %{location}"
-      special_collections: 'Collection desk in <a href="https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history">Newspapers and Family History zone</a>, Main Reading Room, Ground Floor'
-      newspapers_family_zone: 'Collection desk in <a href="https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history">Newspapers and Family History zone</a>, Main Reading Room, Ground Floor'
+      base: "%{link}%{location}"
+    request_limit_error: 'Your request limit has been reached and you are unable to make any further requests. For further assistance please see desk staff in the Library reading rooms or <a href="%{url}">Ask a Librarian</a>.'
   bento_search:
     search_error: "Sorry! An error occurred and results could not be retrieved."
   citation:
@@ -131,5 +132,5 @@ en:
   explore:
     title: "Explore"
     find_in_trove: "Find in other libraries at Trove"
-    map_search: "Looking for maps of Australia? Try our <a href=\"https://mapsearch.nla.gov.au/\">map search</a>."
+    map_search: "Australian maps at map search"
     nla_shop: "Buy at our online shop"

@@ -105,7 +105,7 @@ RSpec.describe RequestHelper do
       let(:item) { {"pickupLocation" => {"code" => "MRR-SP"}} }
 
       it "returns the Main Reading Room image" do
-        expect(pickup_location_img(item)).to include "main_reading_room.jpg"
+        expect(pickup_location_img(item)).to include "NLA_006.png"
       end
     end
 
@@ -113,7 +113,7 @@ RSpec.describe RequestHelper do
       let(:item) { {"pickupLocation" => {"code" => "NMRR-SP"}} }
 
       it "returns the Newspapers and Family History image" do
-        expect(pickup_location_img(item)).to include "newspapers_and_family_history_zone.jpg"
+        expect(pickup_location_img(item)).to include "NLA_011.png"
       end
     end
 
@@ -121,7 +121,7 @@ RSpec.describe RequestHelper do
       let(:item) { {"pickupLocation" => {"code" => "SCRR-SP"}} }
 
       it "returns the Special Collections Reading Room image" do
-        expect(pickup_location_img(item)).to include "special_collections.jpg"
+        expect(pickup_location_img(item)).to include "NLA_003.png"
       end
     end
   end

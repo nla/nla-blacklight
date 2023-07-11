@@ -17,9 +17,12 @@
       border-bottom-color: transparent;
       padding-left: 0.625rem;
       padding-right: 0.625rem;
+      padding-bottom: 0.75rem;
+      line-height: 1.2;
       
       &:hover,
-      &:focus {
+      &:focus,
+      &.active {
         border-bottom-color: color("orange");
       }
     }

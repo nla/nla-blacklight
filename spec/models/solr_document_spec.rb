@@ -64,7 +64,7 @@ RSpec.describe SolrDocument do
       let(:mock_response) { IO.read("spec/files/map_search/113030.json") }
 
       it "generates a link to Map Search" do
-        stub_request(:get, "https://georekt-test.nla.gov.au/mapsearch/search/search?text=113030&type=map")
+        stub_request(:get, "https://mapsearch.nla.gov.au/search/search?type=map&text=113030")
           .with(
             headers: {
               "Accept" => "*/*",
@@ -73,7 +73,7 @@ RSpec.describe SolrDocument do
           )
           .to_return(status: 200, body: mock_response, headers: {})
 
-        expect(map_search_value).to eq ["https://georekt-test.nla.gov.au/mapsearch/?type=map&mapClassifications=all&geolocation=all&text=113030"]
+        expect(map_search_value).to eq ["https://mapsearch.nla.gov.au?type=map&mapClassifications=all&geolocation=all&text=113030"]
       end
     end
 
@@ -86,7 +86,7 @@ RSpec.describe SolrDocument do
       let(:mock_response) { IO.read("spec/files/map_search/3647081.json") }
 
       it "does not generate a link to Map Search" do
-        stub_request(:get, "https://georekt-test.nla.gov.au/mapsearch/search/search?text=3647081&type=map")
+        stub_request(:get, "https://mapsearch.nla.gov.au/search/search?type=map&text=3647081")
           .with(
             headers: {
               "Accept" => "*/*",

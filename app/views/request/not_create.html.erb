@@ -1,8 +1,19 @@
-<h1><%= t("requesting.success.heading") %></h1>
-<h2 class="mt-4"><%= @document.first("title_tsim") %></h2>
+<%- if @met_request_limit %>
+  <div class="alert alert-danger" role="alert">
+    <%= t("requesting.request_limit_error", url: ENV["ASK_LIBRARIAN_URL"]).html_safe %>
+  </div>
+<%- end %>
+
+<h1 class="h3"><%= t("requesting.success.heading") %></h1>
+
+<h2 class="h3 mt-4"><%= @document.first("title_tsim") %></h2>
 
 <div class="row">
-  <p class="col-12 col-lg-8"><%= t("requesting.success.message", title: @document.first("title_tsim")).html_safe %></p>
+  <p class="col-12 col-lg-8"><%= t("requesting.success.message") %></p>
+  <p class="col-12 col-lg-8"><%= t("requesting.success.collection").html_safe %></p>
+  <%- if @show_scrr %>
+    <p class="col-12 col-lg-8"><%= t("requesting.success.scrr").html_safe %></p>
+  <%- end %>
 </div>
 
 <div class="row mt-4">

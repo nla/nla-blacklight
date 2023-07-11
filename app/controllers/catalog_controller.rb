@@ -68,6 +68,8 @@ class CatalogController < ApplicationController
     config.add_nav_action(:catalogue, partial: "shared/nav/catalogue")
     config.add_nav_action(:eresources, partial: "shared/nav/eresources")
     config.add_nav_action(:finding_aids, partial: "shared/nav/finding_aids")
+    config.add_nav_action(:ask_a_librarian, partial: "shared/nav/ask_a_librarian")
+    config.add_nav_action(:help, partial: "shared/nav/help")
 
     # solr field configuration for document/show views
     config.show.title_field = "title_tsim"
@@ -104,18 +106,9 @@ class CatalogController < ApplicationController
     # :index_range can be an array or range of prefixes that will be used to create the navigation (note: It is case sensitive when searching values)
 
     config.add_facet_field "format", label: "Format", limit: 20
-    config.add_facet_field "pub_date_ssim", label: "Publication Year", single: true, limit: 9999, sort: "index"
-    config.add_facet_field "author_ssim", label: "Author", limit: true, index_range: "A".."Z"
-    config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
-    config.add_facet_field "language_ssim", label: "Language", limit: true
-    config.add_facet_field "austlang_ssim", label: "Aboriginal and Torres Strait Islander Language", limit: 10
-    config.add_facet_field "lc_1letter_ssim", label: "Call Number"
-    config.add_facet_field "geographic_name_ssim", label: "Geographic", limit: true, index_range: "A".."Z"
-    config.add_facet_field "series_ssim", label: "Series", limit: true, index_range: "A".."Z", single: true
-    config.add_facet_field "subject_era_ssim", label: "Era"
     config.add_facet_field "access_ssim", label: "Access"
     config.add_facet_field "decade_isim",
-      label: "Decade",
+      label: "Year Range",
       include_in_advanced_search: false,
       range: {
         num_segments: 6,
@@ -123,14 +116,12 @@ class CatalogController < ApplicationController
         segments: true,
         maxlength: 4
       }
-
-    # config.add_facet_field "example_pivot_field", label: "Pivot Field", pivot: %w[format language_ssim], collapsing: true
-
-    config.add_facet_field "example_query_facet_field", label: "Publish Date", query: {
-      years_5: {label: "within 5 Years", fq: "pub_date_ssim:[#{Time.zone.now.year - 5} TO *]"},
-      years_10: {label: "within 10 Years", fq: "pub_date_ssim:[#{Time.zone.now.year - 10} TO *]"},
-      years_25: {label: "within 25 Years", fq: "pub_date_ssim:[#{Time.zone.now.year - 25} TO *]"}
-    }
+    config.add_facet_field "author_ssim", label: "Author", limit: true, index_range: "A".."Z"
+    config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
+    config.add_facet_field "austlang_ssim", label: "Aboriginal and Torres Strait Islander Language", limit: 10
+    config.add_facet_field "language_ssim", label: "Language", limit: true
+    config.add_facet_field "geographic_name_ssim", label: "Geographic", limit: true, index_range: "A".."Z"
+    config.add_facet_field "series_ssim", label: "Series", limit: true, index_range: "A".."Z", single: true
 
     config.add_facet_field "parent_id_ssim", label: "In Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
     config.add_facet_field "collection_id_ssim", label: "Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
@@ -221,7 +212,11 @@ class CatalogController < ApplicationController
     config.add_show_field "music_publisher_number", label: "Music Publisher Number", accessor: :music_publisher_number, helper_method: :list
     config.add_show_field "related_records", label: "Related Records", accessor: :related_records, helper_method: :render_related_records_component
     config.add_show_field "rights_information", label: "Rights information", accessor: :rights_information, helper_method: :url_list, component: StaffOnlyComponent
-    config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_status, helper_method: :render_copyright_component
+    config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_status, helper_method: :render_copyright_component, if: ->(_controller, _config, document) do
+      value = document.copyright_status
+      # if there is no contextMsg, there is no rights information from the copyright service
+      value.present? && value.info.present? && value.info["contextMsg"].present?
+    end
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"
     # config.add_show_field "subtitle_tsim", label: "Subtitle"
