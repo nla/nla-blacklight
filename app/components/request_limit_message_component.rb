@@ -1,18 +1,21 @@
 # frozen_string_literal: true
 
 class RequestLimitMessageComponent < ViewComponent::Base
-  def initialize(show_remaining: false)
-    @show_remaining = show_remaining
+  renders_one :limit_reached
+  renders_one :remaining_requests
+
+  def initialize(current_user, cat_services_client)
+    @current_user = current_user
+    @cat_services_client = cat_services_client
   end
 
   def before_render
-    if helpers.current_user.present?
-      @met_limit = helpers.cat_services_client.request_limit_reached?(requester: helpers.current_user.folio_id)
-      @requests = helpers.cat_services_client.get_request_summary(folio_id: helpers.current_user.folio_id)
+    if !limit_reached? && @current_user.present?
+      @met_limit = @cat_services_client.request_limit_reached?(requester: @current_user.folio_id)
     end
   end
 
   def render?
-    helpers.current_user.present?
+    @current_user.present?
   end
 end

@@ -1,6 +1,8 @@
 <h2><%= t("account.requests.heading") %></h2>
 
-<%= render RequestLimitMessageComponent.new(show_remaining: true) %>
+<%= render RequestLimitMessageComponent.new(current_user, cat_services_client) do |component| %>
+  <% component.with_remaining_requests.with_content(@requests["numRequestsRemaining"]) %>
+<% end %>
 
 <%= render RequestsTableComponent.new(@requests["readyForCollection"], t("account.requests.table_headings.ready"), t("account.requests.no_request_message.ready")) %>
 <%= render RequestsTableComponent.new(@requests["itemsRequested"], t("account.requests.table_headings.requested"), t("account.requests.no_request_message.requested")) %>

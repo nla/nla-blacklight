@@ -8,6 +8,7 @@ class RequestController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :success]
   before_action :request_params
   before_action :set_document
+  before_action :check_request_limit, only: [:new, :success]
 
   def index
     # lazy loaded via Turboframes into the "Request this item" section of the catalogue record page
@@ -39,8 +40,6 @@ class RequestController < ApplicationController
     @request = Request.new(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
     @request.holding = holding
     @request.item = item
-
-    @met_request_limit = check_request_limit
   end
 
   def create
@@ -64,8 +63,6 @@ class RequestController < ApplicationController
 
     _, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
 
-    @met_request_limit = check_request_limit
-
     if @item["pickupLocation"]["code"].start_with? "SCRR"
       @show_scrr = true
     end
@@ -86,7 +83,6 @@ class RequestController < ApplicationController
   end
 
   def check_request_limit
-    # check the user's request limit
-    cat_services_client.request_limit_reached?(requester: current_user.folio_id)
+    @met_request_limit = cat_services_client.request_limit_reached?(requester: current_user.folio_id)
   end
 end
