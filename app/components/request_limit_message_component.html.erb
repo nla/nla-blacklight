@@ -1,6 +1,6 @@
-<%- if limit_reached? || @met_limit %>
+<%- if limit_reached? && limit_reached.to_s.downcase == "true" %>
   <div class="alert alert-danger" role="alert">
-    <%= t("requesting.request_limit_error", url: ENV["ASK_LIBRARIAN_URL"]).html_safe %>
+    <%= limit_message.html_safe %>
   </div>
 <%- elsif remaining_requests? %>
 <div class="alert alert-info" role="alert">
