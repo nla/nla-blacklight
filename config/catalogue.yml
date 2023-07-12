@@ -5,6 +5,8 @@ development:
 
   nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
   contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian
+  staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
+  data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97
 
 test:
   mapsearch:
@@ -13,6 +15,8 @@ test:
 
   nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
   contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian
+  staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
+  data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97
 
 staging:
   mapsearch:
@@ -21,6 +25,8 @@ staging:
 
   nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
   contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian
+  staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
+  data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97
 
 production:
   mapsearch:
@@ -29,3 +35,5 @@ production:
 
   nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
   contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian
+  staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
+  data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97
