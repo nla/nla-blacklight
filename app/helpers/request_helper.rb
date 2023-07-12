@@ -68,7 +68,7 @@ module RequestHelper
       link = link_to "Special Collections Reading Room", "https://www.nla.gov.au/reading-rooms/special-collections"
       t("requesting.collect_from.base", link: link, location: ", First Floor")
     else
-      link = link_to "Newspapers and Family History", "https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history"
+      link = link_to "Newspapers and Family History Zone", "https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history"
       t("requesting.collect_from.base", link: link, location: " in the Main Reading Room, Ground Floor")
     end
   end
