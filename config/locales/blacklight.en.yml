@@ -45,7 +45,7 @@ en:
       description: 'The collections held in the National Library of Australia reflect all Australians from all walks of life. By collecting today what is important tomorrow, we aim to better tell the stories and history of Australia, including those of First Australians. Here, you will find everything, from history, culture, language and knowledge—full of truths, half-truths and frank misunderstandings. We understand that our collections have the power to grow, to heal and to wound.'
     catalogue:
       title: 'Search our catalogue'
-      description: 'Search the Catalogue to find books, puctures, maps, oral history interviews, manuscripts and more.'
+      description: 'Search the Catalogue to find books, pictures, maps, oral history interviews, manuscripts and more.'
     eresources:
       title: 'Search eResources'
       description: 'Search eResources for articles, journals, ebooks, databases and more.'
@@ -59,7 +59,7 @@ en:
     footer:
       acknowledgement_of_country:
         title: 'Acknowledgement of Country'
-        description: 'The National Library of Australia acknowledges Australia’s First Nations Peoples – the First Australians – as the Traditional Owners and Custodians of this land and gives respect to the Elders – past and present – and through them to all Australian Aboriginal and Torres Strait Islander people.'
+        description: 'The National Library of Australia acknowledges Australia’s First Nations Peoples – the First Australians – as the Traditional Owners and Custodians of this land and gives respect to the Elders – past and present – and through them to all Australian Aboriginal and Torres Strait Islander people.'
       contact:
         title: 'Contact us'
         telephone: '+61 (0)2 6262 1111'
