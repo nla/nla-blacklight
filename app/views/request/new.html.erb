@@ -1,10 +1,7 @@
 <h1 class="h3"><%= @document.first("title_tsim") %></h1>
 
-<%- if @met_request_limit %>
-  <div class="alert alert-danger" role="alert">
-    <%= t("requesting.request_limit_error", url: ENV["ASK_LIBRARIAN_URL"]).html_safe %>
-  </div>
-<%- end %>
+<%= render RequestLimitMessageComponent.new %>
+
 <%- unless @met_request_limit %>
 <div class="row mt-4 mb-4">
   <% if @request_form == "manuscripts" %>

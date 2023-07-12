@@ -1,0 +1,9 @@
+<%- if @met_limit %>
+  <div class="alert alert-danger" role="alert">
+    <%= t("requesting.request_limit_error", url: ENV["ASK_LIBRARIAN_URL"]).html_safe %>
+  </div>
+<%- elsif @show_remaining %>
+<div class="alert alert-info" role="alert">
+  <%= t("account.requests.num_remaining", count: @requests["numRequestsRemaining"]) %>
+</div>
+<%- end %>
