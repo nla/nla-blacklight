@@ -110,7 +110,7 @@ gem "uri", "~> 0.12.1"
 gem "rails_performance"
 
 # Before a release, point these gem at a tag, instead of the `main` branch.
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "feat/blac-426-blurbs"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "master"
 
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
