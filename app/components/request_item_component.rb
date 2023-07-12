@@ -21,7 +21,7 @@ class RequestItemComponent < ViewComponent::Base
     instance_id = @document.first("folio_instance_id_ssim")
     begin
       @holdings = cat_services_client.get_holdings(instance_id: instance_id)
-    rescue ServiceTokenError, HoldingsRequestError => e
+    rescue ServiceTokenError, HoldingsRequestError, StandardError => e
       @error = "Unable to retrieve holdings for #{@document.first("title_tsim")}"
       Rails.logger.error "Unable to retrieve holdings for #{@document.id}: #{e}"
     end
