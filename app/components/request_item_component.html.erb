@@ -13,7 +13,7 @@
               <div class="row">
                 <div class="col-12 col-sm-8">
                   <dl class="document-metadata row mb-0">
-                    <% if item["pickupLocation"].present? %>
+                    <% if item["effectiveLocationDisplayName"].present? %>
                       <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.collect_from") %></dt>
                       <dd class="col-12 col-lg-8"><%= item["effectiveLocationDisplayName"] %></dd>
                     <% end %>
