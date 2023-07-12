@@ -35,6 +35,10 @@ class RequestItemComponent < ViewComponent::Base
 
   delegate :indexes, to: :helpers
 
+  delegate :holding_notes, to: :helpers
+
+  delegate :access_condition_notes, to: :helpers
+
   def request_item_link(item)
     holdings_id = item["holdingsRecordId"]
     item_id = item["id"]

@@ -28,8 +28,8 @@
             "callNumber": "NKA 1132"
           },
           "status": {
-            "name": "Available",
-            "date": "2023-03-25T02:08:44.151+00:00"
+            "name": "Paged",
+            "date": "2023-07-06T01:19:20.449+00:00"
           },
           "pickupLocation": {
             "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
@@ -48,7 +48,7 @@
           "yearCaption": [],
           "itemCategory": "monograph",
           "discoverySuppress": false,
-          "requestable": true
+          "requestable": false
         }
       ],
       "notes": []
@@ -127,6 +127,7 @@
         {
           "id": "52209e0d-00bd-5f19-91e8-55e1314ef637",
           "holdingsRecordId": "44e5936d-0bd9-5df5-a86a-5091d04bd84d",
+          "barcode": "78000000225462",
           "effectiveLocationId": "14b466b6-86b3-499b-9ddb-262fa0ac56ce",
           "effectiveLocationDisplayName": "Main Reading Room",
           "effectiveCallNumberComponents": {
@@ -180,6 +181,7 @@
         {
           "id": "7460acfb-72b9-5dba-9089-603921fb47c7",
           "holdingsRecordId": "d6c97d9e-dfe6-5faa-9f0b-020b2bddbf8c",
+          "barcode": "78000000214089",
           "effectiveLocationId": "e041308f-c160-48b6-b6e7-cd5d0d582122",
           "effectiveLocationDisplayName": "Main Reading Room",
           "effectiveCallNumberComponents": {

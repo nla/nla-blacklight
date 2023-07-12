@@ -126,7 +126,49 @@ RSpec.describe RequestHelper do
     end
   end
 
+  describe "#access_condition_notes" do
+    context "when there are restriction notes" do
+      let(:holding) { notes_response["holdingsRecords"][1] }
+
+      it "returns the restriction notes only" do
+        expect(helper.access_condition_notes(holding).size).to eq 1
+        expect(helper.access_condition_notes(holding).first["holdingsNoteType"]).to eq "Restriction"
+      end
+    end
+
+    context "when there are no restriction notes" do
+      let(:holding) { holdings_response["holdingsRecords"].last }
+
+      it "returns no notes" do
+        expect(helper.access_condition_notes(holding)).to eq []
+      end
+    end
+  end
+
+  describe "#holding_notes" do
+    context "when there are notes" do
+      let(:holding) { notes_response["holdingsRecords"][1] }
+
+      it "doesn't return restriction notes" do
+        expect(helper.holding_notes(holding).size).to eq 1
+        expect(helper.holding_notes(holding).first["holdingsNoteType"]).to eq "Action note"
+      end
+    end
+
+    context "when there are no holding notes" do
+      let(:holding) { holdings_response["holdingsRecords"].last }
+
+      it "returns no notes" do
+        expect(helper.holding_notes(holding)).to eq []
+      end
+    end
+  end
+
   def holdings_response
     JSON.parse(IO.read("spec/files/catalogue_services/serial.json"))
+  end
+
+  def notes_response
+    JSON.parse(IO.read("spec/files/catalogue_services/serial_manuscript.json"))
   end
 end

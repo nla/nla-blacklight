@@ -86,4 +86,12 @@ module RequestHelper
   def pickup_location_code(item)
     item["pickupLocation"]["code"]
   end
+
+  def access_condition_notes(holding)
+    holding["notes"].select { |note| note["holdingsNoteType"] == "Restriction" }
+  end
+
+  def holding_notes(holding)
+    holding["notes"].select { |note| note["holdingsNoteType"] != "Restriction" }
+  end
 end
