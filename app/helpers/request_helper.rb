@@ -69,7 +69,7 @@ module RequestHelper
       t("requesting.collect_from.base", link: link, location: ", First Floor")
     else
       link = link_to "Newspapers and Family History", "https://www.nla.gov.au/reading-rooms/main/newspapers-and-family-history"
-      t("requesting.collect_from.base", link: link, location: "in the Main Reading Room, Ground Level")
+      t("requesting.collect_from.base", link: link, location: " in the Main Reading Room, Ground Floor")
     end
   end
 
@@ -85,5 +85,13 @@ module RequestHelper
 
   def pickup_location_code(item)
     item["pickupLocation"]["code"]
+  end
+
+  def access_condition_notes(holding)
+    holding["notes"].select { |note| note["holdingsNoteType"] == "Restriction" }
+  end
+
+  def holding_notes(holding)
+    holding["notes"].select { |note| note["holdingsNoteType"] != "Restriction" }
   end
 end

@@ -67,6 +67,8 @@ en:
       collect_from: "Collect From:"
       call_number: "Call Number:"
       status: "Status:"
+      access_conditions: "Access Conditions:"
+      notes: "Notes:"
       recent_items: "Recent Items/Issues Held:"
       items_held: "Items/Issues Held:"
       supplements: "Supplements:"
@@ -95,7 +97,11 @@ en:
       need_help: "Need help? <a href=\"%{contact_us}\">Contact us</a>."
     collect_from:
       base: "%{link}%{location}"
-    request_limit_error: 'Your request limit has been reached and you are unable to make any further requests. For further assistance please see desk staff in the Library reading rooms or <a href="%{url}">Ask a Librarian</a>.'
+    request_limit_error:
+      sol: '<p>Your request limit has been reached. You are unable to make any further Staff Official Loan requests until you have returned some items. Please read the borrowing conditions for <a href="%{staff_borrowing}">Staff Official Loans</a>.</p><p>For assistance, please contact Data Systems via the <a href="%{enquiry_form}">Data Systems Enquiry Form</a>.</p>'
+      spl: '<p>Your request limit has been reached. You are unable to make any further Staff Personal Loan requests until you have returned some items. The borrowing limit for Staff Personal Loans is two (2) items only. Please read the borrowing conditions for <a href="%{staff_borrowing}">Staff Personal Loans</a>.</p><p>For assistance, please contact Reading Room Operations on <a href="mailto:readingroomissues@nla.gov.au">readingroomissues@nla.gov.au</a></p>'
+      tol: '<p>Your request limit has been reached. You are unable to make any further Team Official Loan requests until you have returned some items. Please read the borrowing conditions for <a href="%{staff_borrowing}">Team Official Loans</a>.</p><p>For assistance, please contact Data Systems via the <a href="%{enquiry_form}">Data Systems Enquiry Form</a>.</p>'
+      patron: '<p>Your request limit has been reached and you are unable to make any further requests.</p><p>For further assistance please see desk staff in the Library reading rooms or <a href="%{url}">Ask a Librarian</a>.</p><p><a href="https://nla.gov.au">National Library of Australia</a></p>'
   bento_search:
     search_error: "Sorry! An error occurred and results could not be retrieved."
   citation:
@@ -134,3 +140,7 @@ en:
     find_in_trove: "Find in other libraries at Trove"
     map_search: "Australian maps at map search"
     nla_shop: "Buy at our online shop"
+  home:
+    p1: "Search the Catalogue to find books, pictures, maps, oral history interviews, manuscripts and more. Some items can be viewed online but most can be requested to view at the Library."
+    p2: "If you need help then try our <a href=\"https://www.nla.gov.au/research-guides\">research guides</a>. They cover a variety of topics, and are where you'll find research advice, key resources and featured collection items."
+    p3: "Have a question? Take a look at our <a href=\"https://www.nla.gov.au/faq\">frequently asked questions</a> page. You can also <a href=\"https://www.nla.gov.au/using-library/getting-started/ask-librarian\">Ask a Librarian</a>."
