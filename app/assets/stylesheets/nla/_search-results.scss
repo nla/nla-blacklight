@@ -74,6 +74,11 @@
       float: none;
       margin-bottom: 0;
       padding-left: 0;
+      text-align: right;
+    }
+    
+    .toggle-bookmark {
+      color: color("light-purple");
     }
   }
 }

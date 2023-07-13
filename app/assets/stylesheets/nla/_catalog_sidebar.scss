@@ -49,6 +49,18 @@
         padding-bottom: 1rem;
       }
     }
+    
+    label {
+      margin-bottom: 0;
+      padding: 1rem;
+      color: color("purple");
+      display: block;
+      
+      &:hover {
+        background: color("light-purple");
+        color: color("white");
+      }
+    }
   }
   
   .more-like-this {
