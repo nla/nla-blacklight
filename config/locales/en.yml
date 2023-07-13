@@ -130,6 +130,7 @@ en:
         requested: "Items requested"
         not_available: "Not available"
         previous: "Previous requests"
+        checked_out: "Checked out"
       table_column_headings:
         title: "Title"
         location: "Pickup location"

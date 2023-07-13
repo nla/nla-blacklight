@@ -11,7 +11,7 @@ class RequestTableRowComponent < ViewComponent::Base
   end
 
   def render?
-    @request_details.present? && @request_details.instanceId.present?
+    @request_details.present?
   end
 
   def link_to_record
