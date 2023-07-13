@@ -1,4 +1,21 @@
 {
+  "checkedOutItems": [
+    {
+      "requestDate": "2023-07-12T03:57:31.267Z",
+      "title": "The policy orientation of political science [by] Harold D. Lasswell.",
+      "callNumber": "320.01 L348",
+      "status": "Open",
+      "pickupServicePoint": "Main Reading Room"
+    },
+    {
+      "requestDate": "2023-07-05T23:23:43.004Z",
+      "title": "National geographic.",
+      "chronology": "March, April, May",
+      "callNumber": "910.5 NAT",
+      "status": "Open",
+      "pickupServicePoint": "Main Reading Room"
+    }
+  ],
   "readyForCollection": [],
   "itemsRequested": [
     {
