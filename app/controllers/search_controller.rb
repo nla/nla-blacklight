@@ -11,23 +11,6 @@ class SearchController < ApplicationController
     q = search_params[:q]
     if q.present?
       @query = q
-      #
-      #   set_per_page
-      #
-      #   @results = {}
-      #
-      #   Benchmark.bm do |x|
-      #     x.report("catalogue") { @results["catalogue"] = BentoSearch.get_engine(:catalogue).search(@query, per_page: @cat_per_page) }
-      #     x.report("ebsco_eds_keyword") { @results["ebsco_eds_keyword"] = BentoSearch.get_engine(:ebsco_eds_keyword).search(@query, per_page: @eds_per_page) }
-      #     x.report("ebsco_eds_title") { @results["ebsco_eds_title"] = BentoSearch.get_engine(:ebsco_eds_title).search(@query, per_page: @eds_per_page, search_field: "TI") }
-      #     x.report("finding_aids") { @results["finding_aids"] = BentoSearch.get_engine(:finding_aids).search(@query, per_page: @fa_per_page) }
-      #   end
-      # end
-      #
-      # @total_results = 0
-      # @results&.each do |_key, res|
-      #   # the search engines may return nil if there is an error, so we need to check for that
-      #   @total_results += res.total_items.nil? ? 0 : res.total_items
     end
   end
 

@@ -10,6 +10,8 @@ class CatalogController < ApplicationController
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Marc::Catalog
 
+  before_action :reset_search_session, only: [:show]
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
@@ -437,5 +439,13 @@ class CatalogController < ApplicationController
 
     # if all else fails, redirect back to the same catalogue record page
     redirect_to solr_document_path(id: params[:id])
+  end
+
+  def reset_search_session
+    referrer = request.referrer
+    if referrer.present? && referrer.include?("/search?q=")
+      Rails.logger.info "Referrer is #{referrer}, resetting search session."
+      session[:search] = {}
+    end
   end
 end
