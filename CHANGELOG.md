@@ -1,5 +1,53 @@
 # Changelog
 
+## [2.2.0](https://github.com/nla/nla-blacklight/compare/2.1.0...2.2.0) (2023-07-13)
+
+
+### Features
+
+* add active link to navbar ([956d748](https://github.com/nla/nla-blacklight/commit/956d748c057699442c6093c877b6faa11b53001d))
+* display cancellation reason in request notes ([9ddb59a](https://github.com/nla/nla-blacklight/commit/9ddb59ab674f7e7c89aa90c8f5295bfacac334c5))
+* display Publication Date in search results ([d1653e9](https://github.com/nla/nla-blacklight/commit/d1653e950f9995939f516aa90012d34157950731))
+* display request limit message ([45242fe](https://github.com/nla/nla-blacklight/commit/45242febade29283233710882ad6e57252f5530f))
+* remove Publish Date and Publication Year facets ([0322691](https://github.com/nla/nla-blacklight/commit/032269189a06cc11cac3bee0990ad0d7b4778fcf))
+
+
+### Bug Fixes
+
+* Add links to header ([a4e52a3](https://github.com/nla/nla-blacklight/commit/a4e52a32ffe894cbfedc6d4dbaba8dea93314048))
+* add request#index action to ignored redirects locations ([8c893b7](https://github.com/nla/nla-blacklight/commit/8c893b76ed5fb2cdf17b00224623f58777a7cebb))
+* check if cancellation comment is present before rendering ([a00b1e2](https://github.com/nla/nla-blacklight/commit/a00b1e27cab53dbea6cbae26c398a2e15d6c21fa))
+* display custom "no request" message for each type of request ([f08771b](https://github.com/nla/nla-blacklight/commit/f08771b7708c28efcfa3495656ac1886e1ed0cc5))
+* ensure time coverage date is only 4 digits long ([48e424b](https://github.com/nla/nla-blacklight/commit/48e424b3286d61ba5013284fd08984491ea3a541))
+* fix check for format ([b8e3834](https://github.com/nla/nla-blacklight/commit/b8e38342bdab8e247be6c489b60d27fc33b5be7c))
+* fixes MapSearch URL ([0c664f7](https://github.com/nla/nla-blacklight/commit/0c664f7f9a4963928f0f79b3401968c64e8e09cc))
+* handle any errors raised when fetching holdings ([16bbf38](https://github.com/nla/nla-blacklight/commit/16bbf38a40476b348bd7367c4ad345019ddf5d49))
+* make sure to check for supression ([47c15ae](https://github.com/nla/nla-blacklight/commit/47c15ae16336aeb0f13b1182768dc650b8ceca5c))
+* pickup location typo ([a027aab](https://github.com/nla/nla-blacklight/commit/a027aab79fc867a407624d92523e9c9301dc9880))
+* Refactor links and CSS in explore ([fd1111f](https://github.com/nla/nla-blacklight/commit/fd1111f5e719bc6adfd932ee6204fbde86cbc707))
+* replace pickup images and text ([1225fa7](https://github.com/nla/nla-blacklight/commit/1225fa7b2f55a8a28eacd0cecbe1eb677f65923d))
+* show result link in bento if more than 1 result ([7e215c9](https://github.com/nla/nla-blacklight/commit/7e215c9cb8be9d0999c7c5ec74ded8e3b211c5a3))
+* typo in pickup location text ([84ffbe0](https://github.com/nla/nla-blacklight/commit/84ffbe0578a2080cbf362f374c3ff29a9421c846))
+* typo in requestlimitReached ([3816e24](https://github.com/nla/nla-blacklight/commit/3816e244ed7875f8ad62ef751d48b6a790d686a2))
+
+
+### Code Refactoring
+
+* change Decade facet heading ([eac60b7](https://github.com/nla/nla-blacklight/commit/eac60b7cb81a3ce6efce68ee18e94f535fdd456e))
+* re-order facets ([101ed77](https://github.com/nla/nla-blacklight/commit/101ed77d89c6662366661ee8935c9cb1a3367fc2))
+
+
+### Miscellaneous
+
+* prepare for next sprint ([31d8022](https://github.com/nla/nla-blacklight/commit/31d80223d29d65226e478dfab6c4d13c320f9204))
+* prepare Sprint 4 release ([0525ae4](https://github.com/nla/nla-blacklight/commit/0525ae4fb72f8402d197bae6a42cc787fc96a3ee))
+* remove old pickup location images ([701aac2](https://github.com/nla/nla-blacklight/commit/701aac2ebe61245a0459ad6a880f8de6f19ea1b3))
+* resolve merge release back to main ([ca577e7](https://github.com/nla/nla-blacklight/commit/ca577e717776002e79da8a6b81b608c727eff443))
+* update blacklight_common dependency ([728b17d](https://github.com/nla/nla-blacklight/commit/728b17d01c932751cf4a1b8bb996bbbdc3163e3c))
+* update dependencies ([775a9a4](https://github.com/nla/nla-blacklight/commit/775a9a4d8b831698b298b495e68a5c1f8fb1df85))
+* update nla-blacklight_common dependency ([eb8aac3](https://github.com/nla/nla-blacklight/commit/eb8aac392438b628fe014f489358d0552c03a28a))
+* upgrade Bundler version in Gemfile.lock ([78ec738](https://github.com/nla/nla-blacklight/commit/78ec738042497484a75eded352399f2fc838e198))
+
 ## [2.1.0](https://github.com/nla/nla-blacklight/compare/2.0.1...2.1.0) (2023-06-30)
 
 
