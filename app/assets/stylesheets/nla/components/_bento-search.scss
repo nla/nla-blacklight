@@ -1,3 +1,6 @@
+@charset "UTF-8";
+@import "../variables";
+
 .bento-search-bar {
   position: relative;
   display: flex;
@@ -19,15 +22,14 @@
   }
   
   .card-title {
-    //background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(255,255,255,1) 75%, rgba(255,255,255,0) 100%);
     background: color("purple");
     color: color("white");
     margin-left: -1.25rem;
     margin-right: -1.25rem;
     margin-top: -1.25rem;
-    padding: 0.25rem 1.25rem;
     
-    .h4 {
+    .h5 {
+      font-family: $font-family-sans-serif;
       color: color("white");
     }
     
