@@ -9,6 +9,7 @@ class CatalogController < ApplicationController
   include Blacklight::Catalog
   include BlacklightRangeLimit::ControllerOverride
   include Blacklight::Marc::Catalog
+  include BentoSessionResetConcern
 
   configure_blacklight do |config|
     # default advanced config values

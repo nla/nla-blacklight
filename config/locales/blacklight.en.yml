@@ -261,7 +261,7 @@ en:
       rss_feed: 'RSS for results'
       atom_feed: 'Atom for results'
       bookmarks:
-        present: "In Bookmarks"
+        present: "In bookmarks"
         absent: "Bookmark"
         inprogress: "Saving..."
       zero_results:

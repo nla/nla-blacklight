@@ -26,7 +26,7 @@ RSpec.describe "Requests" do
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
-          .to_return(status: 200, body: "{\"requestlimitReached\": \"true\"}", headers: {})
+          .to_return(status: 200, body: "{\"requestLimitReached\": \"true\"}", headers: {})
 
         visit solr_document_request_new_path(
           solr_document_id: solr_document_id,
@@ -239,7 +239,7 @@ RSpec.describe "Requests" do
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
-          .to_return(status: 200, body: "{\"requestlimitReached\": \"true\"}", headers: {})
+          .to_return(status: 200, body: "{\"requestLimitReached\": \"true\"}", headers: {})
 
         visit solr_document_request_success_path(
           solr_document_id: solr_document_id,

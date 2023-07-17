@@ -104,7 +104,7 @@ class CatalogueServicesClient
 
     res = conn.get("/catalogue-services/folio/user/#{requester}/requestLimitReached")
     if res.status == 200
-      res.body["requestlimitReached"].to_s.downcase == "true"
+      res.body["requestLimitReached"].to_s.downcase == "true"
     else
       message = "Failed to check request limit for requester (#{requester})"
       Rails.logger.error message

@@ -21,10 +21,21 @@ RSpec.describe RequestTableRowComponent, type: :component do
     expect(page).to have_css("td", count: 4)
   end
 
-  it "renders the title" do
-    render_inline(described_class.new(request_data))
+  context "when there is an instance id" do
+    it "renders a linked title" do
+      render_inline(described_class.new(request_data))
 
-    expect(page).to have_link(href: "/catalog/8564488", text: "The Mad Max movies / Adrian Martin. / N N 791.43720994 M379 / pbk")
+      expect(page).to have_link(href: "/catalog/8564488", text: "The Mad Max movies / Adrian Martin. / N N 791.43720994 M379 / pbk")
+    end
+  end
+
+  context "when there is no instance id" do
+    it "renders the title" do
+      render_inline(described_class.new(request_data_without_instance_id))
+
+      expect(page).not_to have_css("a")
+      expect(page).to have_text("National geographic.")
+    end
   end
 
   it "renders the pick up location" do
@@ -63,6 +74,11 @@ RSpec.describe RequestTableRowComponent, type: :component do
 
   def request_data_with_cancellation
     data = IO.read("spec/files/account/single_request_with_cancellation.json")
+    {request: JSON.parse(data)}
+  end
+
+  def request_data_without_instance_id
+    data = IO.read("spec/files/account/single_request_without_instance_id.json")
     {request: JSON.parse(data)}
   end
 end

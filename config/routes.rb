@@ -52,5 +52,11 @@ Rails.application.routes.draw do
   get "/500", to: "errors#internal_server", as: "internal_server_error"
   get "/503", to: "errors#unavailable", as: "unavailable_error"
 
+  # redirect old VuFind URLs
+  scope :Record do
+    get "/:id", to: redirect("/catalog/%{id}")
+    get "/:id/Offsite", to: redirect { |params, request| "/catalog/#{params[:id]}/offsite?#{request.env["QUERY_STRING"]}" }
+  end
+
   root to: "static_pages#home"
 end

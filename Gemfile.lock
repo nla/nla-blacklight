@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/nla/bento_search.git
   revision: 10e085dac289847d0aed16714fa822d0b89a7d92
-  branch: master
+  tag: 0.0.1
   specs:
     bento_search (2.0.0.rc1)
       confstruct (~> 1.0)
@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: b258fa0a6f8f6910a39ca320624a78acc598e366
+  revision: 546ada8840fa3ad7c9e05d03134bae39e12e2399
   branch: main
   specs:
     nla-blacklight_common (0.1.3)

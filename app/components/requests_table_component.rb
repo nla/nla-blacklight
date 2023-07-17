@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 class RequestsTableComponent < ViewComponent::Base
-  def initialize(requests, caption, no_requests_message = nil)
+  def initialize(requests, caption)
     @requests = requests
     @caption = caption
-    @no_requests_message = no_requests_message
   end
 
   def count

@@ -5,8 +5,9 @@
   <% component.with_remaining_requests.with_content(@requests["numRequestsRemaining"]) %>
 <% end %>
 
-<%= render RequestsTableComponent.new(@requests["readyForCollection"], t("account.requests.table_headings.ready"), t("account.requests.no_request_message.ready")) %>
-<%= render RequestsTableComponent.new(@requests["itemsRequested"], t("account.requests.table_headings.requested"), t("account.requests.no_request_message.requested")) %>
+<%= render RequestsTableComponent.new(@requests["checkedOutItems"], t("account.requests.table_headings.checked_out")) %>
+<%= render RequestsTableComponent.new(@requests["readyForCollection"], t("account.requests.table_headings.ready")) %>
 <%= render RequestsTableComponent.new(@requests["notAvailable"], t("account.requests.table_headings.not_available")) %>
-<%= render RequestsTableComponent.new(@requests["previousRequests"], t("account.requests.table_headings.previous"), t("account.requests.no_request_message.previous")) %>
+<%= render RequestsTableComponent.new(@requests["itemsRequested"], t("account.requests.table_headings.requested")) %>
+<%= render RequestsTableComponent.new(@requests["previousRequests"], t("account.requests.table_headings.previous")) %>
 
