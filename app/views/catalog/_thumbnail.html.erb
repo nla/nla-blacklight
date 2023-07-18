@@ -1,5 +1,5 @@
 <%
-  container_class = current_page?(solr_document_path(id: document.id)) ? "col-12 col-md-5 mb-3" : "col-4 col-md-2 order-3"
+  container_class = current_page?(solr_document_path(id: document.id)) ? "col-12 mb-3" : "col-4 col-md-2 order-3"
 %>
 <div id="<%= document.id %>_thumb" class="document-thumbnail <%= container_class %>">
   <%= render Blacklight::Document::ThumbnailComponent.new(presenter: document_presenter(document), counter: document_counter_with_offset(document_counter ||= 0)) -%>
