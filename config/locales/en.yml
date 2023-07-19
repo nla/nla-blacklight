@@ -69,6 +69,7 @@ en:
       status: "Status:"
       access_conditions: "Access Conditions:"
       notes: "Notes:"
+      items_in_use: "Items/Issues In Use:"
       recent_items: "Recent Items/Issues Held:"
       items_held: "Items/Issues Held:"
       supplements: "Supplements:"
@@ -81,6 +82,7 @@ en:
     collection_finding_aid: "collection finding aid"
     btn_request: "Request"
     btn_select: "Select"
+    btn_in_use: "In use"
     label:
       year: "Year (YYYY):"
       volume: "Volume/No:"

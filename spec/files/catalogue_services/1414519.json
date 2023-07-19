@@ -50,10 +50,12 @@
           "enumeration": "N pbk",
           "itemCategory": "monograph",
           "discoverySuppress": false,
-          "requestable": false
+          "requestable": false,
+          "displayStatus": "Available"
         }
       ],
-      "notes": []
+      "notes": [],
+      "checkedOutItems": []
     }
   ]
 }

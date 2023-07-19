@@ -164,6 +164,20 @@ RSpec.describe RequestHelper do
     end
   end
 
+  describe "#items_issues_in_use" do
+    context "when there are notes" do
+      let(:holding) { holdings_response["holdingsRecords"][4] }
+
+      it "returns the items/issues in use" do
+        expect(helper.items_issues_in_use(holding).size).to eq 14
+      end
+
+      it "merges chronology, enumeration and yearCaption into a single string" do
+        expect(helper.items_issues_in_use(holding)[2]).to eq "March, April, May 2022"
+      end
+    end
+  end
+
   def holdings_response
     JSON.parse(IO.read("spec/files/catalogue_services/serial.json"))
   end
