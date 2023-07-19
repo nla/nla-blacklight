@@ -27,6 +27,8 @@ class RequestItemComponent < ViewComponent::Base
     end
   end
 
+  delegate :items_issues_in_use, to: :helpers
+
   delegate :recent_item_issue_held, to: :helpers
 
   delegate :items_issues_held, to: :helpers

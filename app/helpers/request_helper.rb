@@ -1,6 +1,12 @@
 module RequestHelper
+  def items_issues_in_use(holding)
+    if holding["checkedOutItems"].present?
+      format_items_in_use(holding)
+    end
+  end
+
   def recent_item_issue_held(holding)
-    if holding["holdingsStatements"].size > 1
+    if holding["holdingsStatements"].present?
       merge_statements_and_notes(holding["holdingsStatements"].last)
     else
       []
@@ -93,5 +99,12 @@ module RequestHelper
 
   def holding_notes(holding)
     holding["notes"].select { |note| note["holdingsNoteType"] != "Restriction" }
+  end
+
+  def format_items_in_use(holding)
+    holding["checkedOutItems"].map do |item|
+      concatenated = "#{item["enumeration"]} #{item["chronology"]} #{item["yearCaption"]}"
+      concatenated.strip
+    end
   end
 end
