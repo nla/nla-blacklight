@@ -50,10 +50,12 @@
           "enumeration": "N copy",
           "itemCategory": "monograph",
           "discoverySuppress": false,
-          "requestable": true
+          "requestable": true,
+          "displayStatus": "Available"
         }
       ],
-      "notes": []
+      "notes": [],
+      "checkedOutItems": []
     },
     {
       "id": "5efa2e80-6620-522b-95a7-6f7f7c8e42b7",
@@ -104,10 +106,12 @@
           "enumeration": "NL copy",
           "itemCategory": "monograph",
           "discoverySuppress": false,
-          "requestable": true
+          "requestable": true,
+          "displayStatus": "Available"
         }
       ],
-      "notes": []
+      "notes": [],
+      "checkedOutItems": []
     }
   ]
 }

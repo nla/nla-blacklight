@@ -38,7 +38,7 @@
         </dd>
 
         <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.status") %></dt>
-        <dd class="col col-md-9"><%= @request.item["status"]["name"] %></dd>
+        <dd class="col col-md-9"><%= @request.item["displayStatus"] %></dd>
 
         <% if recent_item_issue_held(@request.holding).present? %>
           <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.recent_items") %></dt>

@@ -81,6 +81,7 @@ en:
     collection_finding_aid: "collection finding aid"
     btn_request: "Request"
     btn_select: "Select"
+    btn_in_use: "In use"
     label:
       year: "Year (YYYY):"
       volume: "Volume/No:"

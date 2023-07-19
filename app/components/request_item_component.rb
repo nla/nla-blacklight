@@ -42,7 +42,11 @@ class RequestItemComponent < ViewComponent::Base
   def request_item_link(item)
     holdings_id = item["holdingsRecordId"]
     item_id = item["id"]
-    link_to t("requesting.btn_select"), solr_document_request_new_path(solr_document_id: @document.id, holdings: holdings_id, item: item_id), class: "btn btn-primary", target: "_top"
+    if item["displayStatus"] == "In use"
+      button_to I18n.t("requesting.btn_in_use"), "#", target: "_top", class: "btn btn-primary", disabled: true
+    else
+      link_to I18n.t("requesting.btn_select"), solr_document_request_new_path(solr_document_id: @document.id, holdings: holdings_id, item: item_id), class: "btn btn-primary", target: "_top", disabled: item["displayStatus"] == "In use"
+    end
   end
 
   private
