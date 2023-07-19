@@ -36,3 +36,9 @@
     object-position: 0 0;
   }
 }
+
+.document {
+  .dl-invert dt {
+    color: color("gray-medium-light");
+  }
+}
