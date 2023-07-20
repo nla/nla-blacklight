@@ -25,7 +25,6 @@ class CatalogueServicesClient
 
   def get_request_summary(folio_id:)
     conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.request :authorization, "Bearer", bearer_token.token
       f.response :json
     end
 
@@ -40,7 +39,6 @@ class CatalogueServicesClient
 
   def get_holdings(instance_id:)
     conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.request :authorization, "Bearer", bearer_token.token
       f.response :json
     end
 
@@ -71,7 +69,6 @@ class CatalogueServicesClient
 
   def create_request(requester:, request:)
     conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.request :authorization, "Bearer", bearer_token.token
       f.response :json
     end
 
@@ -98,7 +95,6 @@ class CatalogueServicesClient
 
   def request_limit_reached?(requester:)
     conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.request :authorization, "Bearer", bearer_token.token
       f.response :json
     end
 
