@@ -458,6 +458,19 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#isbn_list" do
+    context "when there is an ISBN" do
+      subject(:isbn_value) do
+        document = described_class.new(marc_ss: isbn)
+        document.isbn_list
+      end
+
+      it "will return the ISBNs as numbers only" do
+        expect(isbn_value).to eq %w[0855507322 0855507403 1111]
+      end
+    end
+  end
+
   describe "#invalid_isbn" do
     context "when there is an invalid ISBN" do
       subject(:invalid_isbn_value) do
@@ -1597,6 +1610,19 @@ RSpec.describe SolrDocument do
 
       it "will return no other authors" do
         expect(other_authors_value).to eq []
+      end
+    end
+  end
+
+  describe "#lccn" do
+    context "when there is an lccn" do
+      subject(:lccn_value) do
+        document = described_class.new(marc_ss: isbn_format)
+        document.lccn
+      end
+
+      it "returns the lccn as numbers only" do
+        expect(lccn_value).to eq ["2019016276"]
       end
     end
   end
