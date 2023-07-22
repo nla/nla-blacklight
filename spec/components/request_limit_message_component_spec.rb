@@ -47,7 +47,9 @@ RSpec.describe RequestLimitMessageComponent, type: :component do
       it "renders the patron error message" do
         render_inline(component)
 
-        expect(page).to have_text("For further assistance please see desk staff in the Library reading rooms or Ask a Librarian.")
+        expect(page).to have_text("Your request limit has been reached and you are unable to make any further requests until you have returned some items.")
+        expect(page).to have_text("For further assistance please see desk staff in our reading rooms or Ask a Librarian.")
+        expect(page).to have_text("National Library of Australia")
       end
     end
 
