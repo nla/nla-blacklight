@@ -113,42 +113,6 @@ class CatalogueServicesClient
 
   private
 
-  def bearer_token(attempt = 0)
-    # check if we've tried too many times
-    if attempt > MAX_TOKEN_RETRIES
-      Rails.logger.error("Failed to authenticate with catalogue services. Tried #{attempt} times.")
-      raise ServiceTokenError.new("Failed to authenticate with catalogue services.")
-    end
-
-    # If there is no cached access token, retrieve one
-    # We store the object as a JSON string and rehydrate it later because some objects will
-    # not serialize well.
-    token_string = Rails.cache.fetch("catalogue_services_bearer_token", expires_in: 15.minutes) do
-      response = get_token
-      response.to_json.to_s
-    end
-
-    @bearer_token = OAuth2::AccessToken.from_hash(@oauth_client, JSON.parse(token_string))
-
-    # if the cached access token is expired, retrieve a new one
-    if @bearer_token.expired?
-      # delete the cached token, to make sure we get a new one
-      Rails.cache.delete("catalogue_services_bearer_token")
-
-      @bearer_token = bearer_token(attempt + 1)
-    end
-
-    @bearer_token
-  end
-
-  def get_token
-    @oauth_client.client_credentials.get_token
-  rescue
-    message = "Failed to authenticate with catalogue services."
-    Rails.logger.error message
-    raise ServiceTokenError.new(message)
-  end
-
   def init_client
     site = "#{ENV["KEYCLOAK_URL"]}/auth/realms/#{ENV["CATALOGUE_SERVICES_REALM"]}/.well-known/openid-configuration"
     OAuth2::Client.new(ENV["CATALOGUE_SERVICES_CLIENT"], ENV["CATALOGUE_SERVICES_SECRET"],
