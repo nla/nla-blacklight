@@ -4,6 +4,6 @@
   </div>
 <%- elsif remaining_requests? %>
 <div class="alert alert-info" role="alert">
-  <%= t("account.requests.num_remaining", count: remaining_requests) %>
+  <%= t("account.requests.num_remaining", count: remaining_requests.to_s.to_i) %>
 </div>
 <%- end %>

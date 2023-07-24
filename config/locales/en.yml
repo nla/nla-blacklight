@@ -126,7 +126,9 @@ en:
     requests:
       heading: "Your Requests"
       menu: "Requests"
-      num_remaining: "You can request %{count} more items."
+      num_remaining:
+        one: "You can request 1 more item."
+        other: "You can request %{count} more items."
       no_request_message: "There are no requests."
       table_headings:
         ready: "Ready for collection"
