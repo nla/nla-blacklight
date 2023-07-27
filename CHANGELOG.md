@@ -1,5 +1,62 @@
 # Changelog
 
+## [2.3.0](https://github.com/nla/nla-blacklight/compare/2.2.0...2.3.0) (2023-07-27)
+
+
+### Features
+
+* adds Feedback widget to sidebar ([7a65c4a](https://github.com/nla/nla-blacklight/commit/7a65c4aa19ed76f66cd5c2b67812d6c1379c8fd1))
+* display "in use" items and status ([76ca83d](https://github.com/nla/nla-blacklight/commit/76ca83d2d7e239d9634e4bfe9199f0d740c65969))
+* display link to delivery conditions ([1149bac](https://github.com/nla/nla-blacklight/commit/1149bac3fa6e0f0ca4ca69dc7a2937b97db1d9f6))
+* display user's checked out items ([1dc214f](https://github.com/nla/nla-blacklight/commit/1dc214f3f23b1af21fddec930675f6bba73a67bc))
+* modify display for "In use" items ([e5d9f01](https://github.com/nla/nla-blacklight/commit/e5d9f01db225e9a2a21589dcde3686a7e8ac26cb))
+* re-order user's request summary ([eaac452](https://github.com/nla/nla-blacklight/commit/eaac4528932f84244d07b9a849a78709775bda94))
+* redirect old VuFind URLs ([bf280ab](https://github.com/nla/nla-blacklight/commit/bf280ab3fb4715350c739680836bb203512745cc))
+
+
+### Bug Fixes
+
+* Change capitalisation ([4868410](https://github.com/nla/nla-blacklight/commit/4868410f7e73429348ff534cb360a4d797107dae))
+* check if requestable when building request link ([1c92610](https://github.com/nla/nla-blacklight/commit/1c926105c4b086e8f071d9402d76f4e8fc301090))
+* clean ISBN and LCCN for thumbnail params ([30fca3f](https://github.com/nla/nla-blacklight/commit/30fca3fdddfe810916ec53fcb63cd457e4757393))
+* clear search session when coming from a bento search ([e71eb50](https://github.com/nla/nla-blacklight/commit/e71eb503e55bb04e49a3011bcc19b0d2ff32f5c5))
+* colour contrast for metadata labels ([c7e7156](https://github.com/nla/nla-blacklight/commit/c7e71567c02006c7030b48af1e66d10ec84a5e07))
+* constrain image in tablet and mobile view ([cebc397](https://github.com/nla/nla-blacklight/commit/cebc3975869f6ef2a987279e791be6eb790b2b49))
+* hide primary nav on tablet & mobile ([32b0e8b](https://github.com/nla/nla-blacklight/commit/32b0e8b280cfa152d71016619251156a97a6306b))
+* link colours ([51d6d47](https://github.com/nla/nla-blacklight/commit/51d6d4724421627e4e784ab5b0d719f71a28e3d1))
+* pluralize request limit remaining message ([06a3d8f](https://github.com/nla/nla-blacklight/commit/06a3d8fe652a4edbe0e5a57068ed53351b83cd0a))
+* Rename eResources bento and update styles ([a364318](https://github.com/nla/nla-blacklight/commit/a3643187bdd35b6202f6a4b8a3249f74dfacee3a))
+* replace image used for Catalogue ([567d47b](https://github.com/nla/nla-blacklight/commit/567d47b605d24d4ed015df82196af04dd7badcd3))
+* reword request limit message and remove unused code ([7a29cbb](https://github.com/nla/nla-blacklight/commit/7a29cbb62505c6924a3bfba2a0a0a744319e59ec))
+* Style bookmarks checkbox and positioning ([f3a59ae](https://github.com/nla/nla-blacklight/commit/f3a59aeb82ed6d1ae8e229c5a1fcbd24020ae53a))
+* update colour ([66c5f03](https://github.com/nla/nla-blacklight/commit/66c5f03597e9c7a42aba58928b3f17b7cd09a8e3))
+* Update URL for help ([96292de](https://github.com/nla/nla-blacklight/commit/96292de804e068570f6cfb31e7fdb561ee1e524c))
+* update wording of homepage cultural message ([a0ea944](https://github.com/nla/nla-blacklight/commit/a0ea944189a83b200b7a3a5945a88e7d2e06b944))
+
+
+### Reverts
+
+* undo formatting for test.env ([351d620](https://github.com/nla/nla-blacklight/commit/351d620fa7bafdf7b529455a11f7af757ff0ac54))
+
+
+### Miscellaneous
+
+* fix webdrivers dependency ([2447a82](https://github.com/nla/nla-blacklight/commit/2447a821ada7b021dc1569b5d7a9b2246efb1db8))
+* prepare for Sprint 5 ([d4f38bd](https://github.com/nla/nla-blacklight/commit/d4f38bd416d14a9f04006c4246411e289485d7e4))
+* prepare Sprint 5 release ([a0f064f](https://github.com/nla/nla-blacklight/commit/a0f064fd0f2e8227864ab26e2d85e9e642c860a4))
+* resolve merge conflicts ([87c33a2](https://github.com/nla/nla-blacklight/commit/87c33a2ae780c0bd17514c5d7bbc5c1ecab148b0))
+* update dependencies ([0e45003](https://github.com/nla/nla-blacklight/commit/0e45003ec925b05e1fafba3175082a67c5f2259d))
+
+
+### Code Refactoring
+
+* remove bearer token from catalogue-services requests ([e24f71b](https://github.com/nla/nla-blacklight/commit/e24f71b193ca0cc7e2f81f44a8ee1c7782e86561))
+
+
+### Tests
+
+* fix tests ([b70a8d3](https://github.com/nla/nla-blacklight/commit/b70a8d3ce837ad41723efaeb63688990a8ea4932))
+
 ## [2.2.0](https://github.com/nla/nla-blacklight/compare/2.1.0...2.2.0) (2023-07-13)
 
 
