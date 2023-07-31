@@ -20,7 +20,7 @@ class RequestItemComponent < ViewComponent::Base
   def before_render
     instance_id = @document.first("folio_instance_id_ssim")
     begin
-      @holdings = cat_services_client.get_holdings(instance_id: instance_id)
+      @holdings = CatalogueServicesClient.new.get_holdings(instance_id: instance_id)
     rescue ServiceTokenError, HoldingsRequestError, StandardError => e
       @error = "Unable to retrieve holdings for #{@document.first("title_tsim")}"
       Rails.logger.error "Unable to retrieve holdings for #{@document.id}: #{e}"
@@ -50,11 +50,5 @@ class RequestItemComponent < ViewComponent::Base
     elsif item["requestable"]
       link_to I18n.t("requesting.btn_select"), solr_document_request_new_path(solr_document_id: @document.id, holdings: holdings_id, item: item_id), class: "btn btn-primary", target: "_top"
     end
-  end
-
-  private
-
-  def cat_services_client
-    @catalogue_services_client ||= CatalogueServicesClient.new
   end
 end

@@ -47,11 +47,7 @@ class SearchController < ApplicationController
       @eds_per_page
     end
 
-    @results = {}
-
-    Benchmark.bm do |x|
-      x.report(@engine) { @results = BentoSearch.get_engine(@engine.to_sym).search(@query, per_page: @per_page, search_field: @search_field) }
-    end
+    @results = BentoSearch.get_engine(@engine.to_sym).search(@query, per_page: @per_page, search_field: @search_field)
 
     @total_results = @results.total_items.nil? ? 0 : @results.total_items
 
