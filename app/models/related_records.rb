@@ -58,12 +58,16 @@ class RelatedRecords
     @sibling_count ||= fetch_sibling_count
   end
 
+  def clean_id(id)
+    id.gsub(/[[:space:]]/, "")
+  end
+
   private
 
   def fetch_count(id)
     search_service = Blacklight.repository_class.new(blacklight_config)
     response = search_service.search(
-      q: "parent_id_ssim:\"#{id}\"",
+      q: "parent_id_ssim:\"#{clean_id(id)}\"",
       rows: 0
     )
     if response.present? && response["response"].present?
@@ -85,7 +89,7 @@ class RelatedRecords
     if @parent_id.present?
       search_service = Blacklight.repository_class.new(blacklight_config)
       response = search_service.search(
-        q: "collection_id_ssim:\"#{@parent_id}\"",
+        q: "collection_id_ssim:\"#{clean_id(@parent_id)}\"",
         fl: "id,title_tsim",
         sort: "score desc, pub_date_si desc, title_si asc",
         rows: 1

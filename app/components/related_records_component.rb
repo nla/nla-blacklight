@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class RelatedRecordsComponent < ViewComponent::Base
+  delegate :collection_name, :collection_id, :parent, :parent_id, :child_count, :sibling_count, :clean_id, to: :value
+
   def initialize(related_records:)
     @related_records = related_records
   end
@@ -15,7 +17,7 @@ class RelatedRecordsComponent < ViewComponent::Base
 
   def collection_url
     if collection_id.present?
-      search_catalog_path(search_field: "in_collection", q: "\"#{collection_id}\"")
+      search_catalog_path(search_field: "in_collection", q: "\"#{clean_id(collection_id)}\"")
     end
   end
 
@@ -29,7 +31,7 @@ class RelatedRecordsComponent < ViewComponent::Base
 
   def parent_collection_url
     if parent_id.present?
-      search_catalog_path(search_field: "in_collection", q: "\"#{parent_id}\"")
+      search_catalog_path(search_field: "in_collection", q: "\"#{clean_id(parent_id)}\"")
     end
   end
 
@@ -42,8 +44,6 @@ class RelatedRecordsComponent < ViewComponent::Base
     count = sibling_count
     number_with_delimiter(count, locale: I18n.locale)
   end
-
-  delegate :collection_name, :collection_id, :parent, :parent_id, :child_count, :sibling_count, to: :value
 
   def hierarchy_class
     if value.has_parent? && value.has_children?
