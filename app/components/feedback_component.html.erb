@@ -3,7 +3,7 @@
   <div class="card-body">
     <ul class="list-unstyled">
       <li class="feedback-link">
-        <%= link_to t("feedback.report_error"), ENV.fetch("FEEDBACK_ERROR_URL", "#") %>
+        <%= link_to t("feedback.report_error"), helpers.error_feedback_url(@id) %>
       </li>
     </ul>
   </div>
