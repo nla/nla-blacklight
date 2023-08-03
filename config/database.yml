@@ -72,21 +72,23 @@ test:
 production:
   primary: &production
     <<: *default
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 50 } %>
     database: nla_blacklight_production
     username: nla_blacklight
     password: <%= ENV["NLA_BLACKLIGHT_DATABASE_PASSWORD"] %>
-    connect_timeout: 5
-    read_timeout: 5
-    write_timeout: 5
+    connect_timeout: 60
+    read_timeout: 60
+    write_timeout: 60
     variables:
       max_execution_time: 15000 # ms
       lock_wait_timeout: 10 # sec
   patrons: &patrons_production
     <<: *patrons
+    pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 50 } %>
     database: nla_blacklight_production
-    connect_timeout: 5
-    read_timeout: 5
-    write_timeout: 5
+    connect_timeout: 60
+    read_timeout: 60
+    write_timeout: 60
     variables:
       max_execution_time: 15000 # ms
       lock_wait_timeout: 10 # sec

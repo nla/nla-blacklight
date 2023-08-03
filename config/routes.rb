@@ -47,10 +47,10 @@ Rails.application.routes.draw do
   get "/search/:engine", to: "search#single_search", as: "bento_single_search"
 
   # error handlers
-  get "/404", to: "errors#not_found", as: "not_found_error"
-  get "/422", to: "errors#unprocessable", as: "unprocessable_error"
-  get "/500", to: "errors#internal_server", as: "internal_server_error"
-  get "/503", to: "errors#unavailable", as: "unavailable_error"
+  get "/404", to: "errors#not_found", as: "not_found_error", via: :all
+  get "/422", to: "errors#unprocessable", as: "unprocessable_error", via: :all
+  get "/500", to: "errors#internal_server", as: "internal_server_error", via: :all
+  get "/503", to: "errors#unavailable", as: "unavailable_error", via: :all
 
   # redirect old VuFind URLs
   scope :Record do
