@@ -5,7 +5,7 @@
 name: Release automation from 'main' branch
 on:
   push:
-    branches: [hotfix/2.3.1]
+    branches: [hotfix/2.3.2]
 jobs:
   release-please:
     name: Create a new release
@@ -15,7 +15,7 @@ jobs:
         id: release
         with:
           token: ${{ secrets.GH_TOKEN }}
-          default-branch: "hotfix/2.3.1"
+          default-branch: "hotfix/2.3.2"
           release-type: ruby
           package-name: nla-blacklight
           bump-minor-pre-major: true
