@@ -27,4 +27,11 @@ $(function() {
       scrollTop: $(section).offset().top-20
     }, 1200);
   });
+  
+  $('.blrl-plot-config').data('plot-config', {
+    selection: { color: '#46474A' },
+    colors: ['#ffffff'],
+    series: { lines: { fillColor: 'rgba(112,57,150, 0.8)' }},
+    grid: { color: '#677078', tickColor: '#f4f5f6', borderWidth: 1 }
+  });
 });
