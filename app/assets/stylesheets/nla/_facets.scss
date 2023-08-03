@@ -70,4 +70,23 @@
       }
     }
   }
+  
+  .slider_js {
+    .slider-handle {
+      background-image: none;
+      background-color: color("white");
+      border: 2px solid color("purple");
+      opacity: 1;
+      
+      &:active,
+      &:hover {
+        background-color: color("purple");
+      }
+    }
+    
+    .slider-selection {
+      background-image: none;
+      background: color("light-purple") !important;
+    }
+  }
 }
