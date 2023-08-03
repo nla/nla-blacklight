@@ -14,32 +14,32 @@
     <div class="col">
       <dl class="document-metadata dl-invert row">
         <% if item.authors.reject(&:empty?).present? %>
-          <dt class="col-12 col-md-3">Authors:</dt>
+          <dt class="col-12 col-md-3">Authors</dt>
           <dd class="col col-sm-9"><%= item.render_authors_list %></dd>
         <% end %>
 
         <% if item.custom_data[:subjects].present? %>
-          <dt class="col-12 col-md-3">Subjects:</dt>
+          <dt class="col-12 col-md-3">Subjects</dt>
           <dd class="col col-sm-9"><%= item.custom_data[:subjects] %></dd>
         <% end %>
 
         <% if item.abstract.present? %>
-          <dt class="col-12 col-md-3">Summary:</dt>
+          <dt class="col-12 col-md-3">Summary</dt>
           <dd class="col col-sm-9"><%= item.render_summary %></dd>
         <% end %>
 
         <% if item.has_source_info? %>
-          <dt class="col-12 col-md-3">Source:</dt>
+          <dt class="col-12 col-md-3">Source</dt>
           <dd class="col col-sm-9"><%= item.render_source_info %></dd>
         <% end %>
 
         <% if item.any_present?(:publication_date, :year) %>
-          <dt class="col-12 col-md-3">Published:</dt>
+          <dt class="col-12 col-md-3">Published</dt>
           <dd class="col col-sm-9"><%= item.display_date %></dd>
         <% end %>
 
         <% if item.other_links.present? %>
-          <dt class="col-12 col-md-3">Other links:</dt>
+          <dt class="col-12 col-md-3">Other links</dt>
           <dd class="col col-sm-9">
             <ul class="list-unstyled">
               <%= render :partial => "bento_search/link", :collection => item.other_links %>
@@ -48,18 +48,18 @@
         <% end %>
 
         <% if item.link_is_fulltext?.present? && item.format_str.present? %>
-          <dt class="col-12 col-md-3">Format:</dt>
+          <dt class="col-12 col-md-3">Format</dt>
           <dd class="col col-sm-9"><i class="fa fa-check" title="Full text" aria-hidden="true"></i> Full text <%= item.format_str.downcase %></dd>
         <% end %>
 
         <% if is_catalogued?(item.link) %>
           <% if item.language_str.present? %>
-            <dt class="col-12 col-md-3">Language:</dt>
+            <dt class="col-12 col-md-3">Language</dt>
             <dd class="col col-sm-9"><%= item.language_str %></dd>
           <% end %>
 
           <% if item.custom_data[:callnumber].present? %>
-            <dt class="col-12 col-md-3">Call number:</dt>
+            <dt class="col-12 col-md-3">Call number</dt>
             <dd class="col col-sm-9"><%= item.custom_data[:callnumber] %></dd>
           <% end %>
         <% end %>
