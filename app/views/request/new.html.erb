@@ -1,6 +1,6 @@
 <h1 class="h3"><%= @document.first("title_tsim") %></h1>
 
-<%= render RequestLimitMessageComponent.new(current_user, cat_services_client) do |component| %>
+<%= render RequestLimitMessageComponent.new(current_user, CatalogueServicesClient.new) do |component| %>
   <% component.with_limit_reached.with_content(@met_request_limit) %>
 <% end %>
 

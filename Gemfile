@@ -110,13 +110,23 @@ gem "uri", "~> 0.12.1"
 gem "rails_performance"
 
 # Before a release, point these gem at a tag, instead of the `main` branch.
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", tag: "0.1.4"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
 # the gems below are in the same directory. Adjust if needed to match your local dev environment.
 # gem "nla-blacklight_common", path: "../nla-blacklight_common"
 # gem "bento_search", path: "../bento_search"
+
+# Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+gem "rack-mini-profiler"
+# append ?pp=flamegraph to URL for flamegraphs
+gem "flamegraph"
+gem "stackprof"
+# append ?pp=profile-memory to URL
+# ?pp=profile-gc to report on GC statistics
+# ?pp=analyze-memory to report on Object statistics
+gem "memory_profiler"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -140,9 +150,6 @@ group :development do
   # improve the Rails error console in development
   gem "better_errors"
   gem "binding_of_caller"
-
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"

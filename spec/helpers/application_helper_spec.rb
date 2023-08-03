@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe ApplicationHelper do
   include Devise::Test::ControllerHelpers
 
-  let(:document) { SolrDocument.new(marc_ss: sample_marc) }
+  let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "123") }
 
   describe "#from_marc" do
     subject(:value) { helper.from_marc({document: document, config: {key: "003"}}) }
@@ -107,6 +107,16 @@ RSpec.describe ApplicationHelper do
     end
   end
   # rubocop:enable RSpec/NestedGroups
+
+  describe "#error_feedback_url" do
+    subject(:url) { helper.error_feedback_url(document.id) }
+
+    it "returns the correct URL" do
+      request.env["HTTP_HOST"] = "catalogue.test"
+      request.env["ORIGINAL_FULLPATH"] = "/catalog/123"
+      expect(url).to eq "#{ENV["FEEDBACK_ERROR_URL"]}&qnudftb17=http://catalogue.test/catalog/123&qnudftb11=123"
+    end
+  end
 
   def ebsco_record
     load_marc_from_file 6417357

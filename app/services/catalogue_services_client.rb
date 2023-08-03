@@ -19,10 +19,6 @@ class CatalogueServicesClient
   }
   # rubocop:enable Lint/SymbolConversion
 
-  def initialize
-    @oauth_client ||= init_client
-  end
-
   def get_request_summary(folio_id:)
     conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
       f.response :json
@@ -109,15 +105,5 @@ class CatalogueServicesClient
       # user will likely be unable to request items also (i.e. their account is broken).
       raise ItemRequestError.new(message)
     end
-  end
-
-  private
-
-  def init_client
-    site = "#{ENV["KEYCLOAK_URL"]}/auth/realms/#{ENV["CATALOGUE_SERVICES_REALM"]}/.well-known/openid-configuration"
-    OAuth2::Client.new(ENV["CATALOGUE_SERVICES_CLIENT"], ENV["CATALOGUE_SERVICES_SECRET"],
-      site: site,
-      authorize_url: "/auth/realms/#{ENV["CATALOGUE_SERVICES_REALM"]}/protocol/openid-connect/auth",
-      token_url: "/auth/realms/#{ENV["CATALOGUE_SERVICES_REALM"]}/protocol/openid-connect/token")
   end
 end

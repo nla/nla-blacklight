@@ -70,12 +70,13 @@ module ApplicationHelper
     end
   end
 
-  def cat_services_client
-    @catalogue_services_client ||= CatalogueServicesClient.new
-  end
+  def error_feedback_url(id)
+    url = ENV.fetch("FEEDBACK_ERROR_URL", "#")
+    if url != "#"
+      url = "#{url}&qnudftb17=#{request.original_url}&qnudftb11=#{id}"
+    end
 
-  def thumbnail_service
-    @thumbnail_service ||= ThumbnailService.new
+    url
   end
 
   private
