@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.3.2](https://github.com/nla/nla-blacklight/compare/2.3.1...2.3.2) (2023-08-03)
+
+
+### Bug Fixes
+
+* remove HTML error pages ([1777b2d](https://github.com/nla/nla-blacklight/commit/1777b2dcda49acd5c155c680addb5c026360cd97))
+
+
+### Continuous Integration
+
+* bump hotfix version ([0d8a38b](https://github.com/nla/nla-blacklight/commit/0d8a38b708adc79f4bcd890a43306b42af1f24a6))
+
 ## [2.3.1](https://github.com/nla/nla-blacklight/compare/2.3.0...2.3.1) (2023-08-03)
 
 
