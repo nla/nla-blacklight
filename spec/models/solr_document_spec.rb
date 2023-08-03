@@ -10,7 +10,7 @@ RSpec.describe SolrDocument do
     end
 
     it "retrieves the description from the MARC record" do
-      expect(description_value).to eq "Shatin, N. T., Hong Kong : Institute of Chinese Studies, Chinese University of Hong Kong, c1985, x, 197 p. : ill. ; 26 cm."
+      expect(description_value).to eq ["Shatin, N. T., Hong Kong : Institute of Chinese Studies, Chinese University of Hong Kong, c1985", "x, 197 p. : ill. ; 26 cm."]
     end
   end
 
