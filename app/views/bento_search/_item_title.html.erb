@@ -18,12 +18,6 @@
   #
   # %>
   <h3 class="bento-item-title col-12">
-    <% if local_assigns[:index] %>
-      <% id_attr = item.html_id(local_assigns[:id_prefix], index) %>
-      <%= content_tag("span", :class => "bento_index", :id => (id_attr if id_attr)) do %>
-        <%= index %>.
-      <% end %>
-    <% end %>
     <%= link_to_unless(item.link.blank?, item.complete_title.truncate(175, separator: " "), item.link) %>
 
     <% if item.display_language.present? %>
