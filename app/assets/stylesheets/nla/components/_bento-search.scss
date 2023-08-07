@@ -50,7 +50,14 @@
   }
   
   .bento-item-title {
-    font-size: 1.25rem
+    font-size: 1.25rem;
+    a {
+      text-decoration: none;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 
