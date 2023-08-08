@@ -7,14 +7,12 @@ class ThumbnailService
     end
 
     url = "/thumbnail-service/thumbnail/url?#{options.to_query}"
-    Rails.cache.fetch("thumb_url_#{url}", expires: 6.hours) do
-      res = conn.get(url)
-      if res.status == 200
-        res.body["url"]
-      else
-        Rails.logger.error "Failed to retrieve thumbnail for #{options.to_json}"
-        nil
-      end
+    res = conn.get(url)
+    if res.status == 200
+      res.body["url"]
+    else
+      Rails.logger.error "Failed to retrieve thumbnail for #{options.to_json}"
+      nil
     end
   end
 
@@ -24,15 +22,13 @@ class ThumbnailService
     conn = Faraday.new(url: ENV["THUMBNAIL_SERVICE_API_BASE_URL"])
 
     url = "/thumbnail-service/thumbnail/retrieve?#{options.to_query}"
-    Rails.cache.fetch("thumb_raw_#{url}", expires: 1.year) do
-      res = conn.get(url)
-      if res.status == 200
-        content_type = res.headers["content-type"]
-        "data:#{content_type};base64,#{Base64.encode64(res.body).gsub("\n", "")}"
-      else
-        Rails.logger.error "Failed to retrieve thumbnail for #{options.to_json}"
-        nil
-      end
+    res = conn.get(url)
+    if res.status == 200
+      content_type = res.headers["content-type"]
+      "data:#{content_type};base64,#{Base64.encode64(res.body).gsub("\n", "")}"
+    else
+      Rails.logger.error "Failed to retrieve thumbnail for #{options.to_json}"
+      nil
     end
   end
   # :nocov:
