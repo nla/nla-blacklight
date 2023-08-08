@@ -15,10 +15,8 @@ GIT
       rails-controller-testing
       summon
 
-GIT
-  remote: https://github.com/nla/nla-blacklight_common
-  revision: 8bed29750b31f667a4981a7e0752a13fe9e3638d
-  branch: main
+PATH
+  remote: ../nla-blacklight_common
   specs:
     nla-blacklight_common (0.1.4)
       activerecord-session_store (~> 2.0)
