@@ -1,4 +1,4 @@
-<%= warn "#{__FILE__} is a deprecated partial." %>
+<%= warn "#{__FILE__} is a deprecated partial." if Rails.env.development? %>
 <% unless current_page? blacklight_advanced_search_engine.advanced_search_path %>
 <%= render((blacklight_config&.view_config(document_index_view_type)&.search_bar_component || Blacklight::SearchBarComponent).new(
       url: search_catalog_url,
