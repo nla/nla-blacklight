@@ -3,7 +3,7 @@ require "rails_helper"
 RSpec.describe RelatedRecords do
   subject(:record) { described_class.new(document, collection_id) }
 
-  let(:document) { SolrDocument.new(marc_ss: sample_marc) }
+  let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "123") }
   let(:collection_id) { "" }
 
   describe "#in_collection?" do
@@ -177,7 +177,12 @@ RSpec.describe RelatedRecords do
   end
 
   describe "#sibling_count" do
-    let(:document) { SolrDocument.new(marc_ss: sample_marc) }
+    before do
+      record.subfield = "773"
+      record.parent_id = "(AKIN)23783872"
+    end
+
+    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "123") }
 
     it "returns the result count" do
       WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?q=parent_id_ssim:%22.*%22&rows=0&wt=json/)

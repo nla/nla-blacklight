@@ -1,8 +1,6 @@
 @charset "UTF-8";
 @import "variables";
 
-
-
 .document-thumbnail {
   &.col-12 a {
     position: relative;
@@ -40,5 +38,19 @@
 .document {
   .dl-invert dt {
     color: color("gray-medium-light");
+  }
+}
+
+.document-title-heading {
+  .document-counter {
+    display: none;
+  }
+
+  a {
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
   }
 }

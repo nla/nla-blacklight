@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :store_user_location!, if: :storable_location?
+  before_action :authorize_profile
 
   # Adds a few additional behaviors into the application controller
   include Blacklight::Controller
@@ -9,12 +10,6 @@ class ApplicationController < ActionController::Base
   # Make sure to use an absolute path when rendering the partial because
   # view context is based on the executing controller.
   append_view_path "#{Rails.root}/app/components/"
-
-  # :nocov:
-  def staff_login
-    redirect_post(user_keycloakopenid_omniauth_authorize_path, options: {authenticity_token: "auto"})
-  end
-  # :nocov:
 
   private
 
@@ -43,6 +38,10 @@ class ApplicationController < ActionController::Base
   def store_user_location!
     # :user is the scope we are authenticating
     store_location_for(:user, request.fullpath)
+  end
+
+  def authorize_profile
+    Rack::MiniProfiler.authorize_request if Whitelist.instance.location(request) == :staff && ENV.fetch("ENABLE_PROFILER") { "n" } == "y"
   end
   # :nocov:
 end
