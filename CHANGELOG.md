@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.3.4](https://github.com/nla/nla-blacklight/compare/2.3.3...2.3.4) (2023-08-08)
+
+
+### Miscellaneous
+
+* prepare hotfix ([9592718](https://github.com/nla/nla-blacklight/commit/95927189300e387b4bf07379ffbc7f072bf4e9f0))
+
 ## [2.3.3](https://github.com/nla/nla-blacklight/compare/2.3.2...2.3.3) (2023-08-07)
 
 
