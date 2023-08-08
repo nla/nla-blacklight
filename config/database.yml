@@ -13,6 +13,9 @@ default: &default
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  connect_timeout: 60
+  read_timeout: 60
+  write_timeout: 60
   username: root
   password:
   host: 127.0.0.1
@@ -23,6 +26,9 @@ patrons: &patrons
   adapter: mysql2
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  connect_timeout: 60
+  read_timeout: 60
+  write_timeout: 60
   username: root
   password:
   host: 127.0.0.1
