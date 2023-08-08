@@ -118,15 +118,7 @@ gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 # gem "nla-blacklight_common", path: "../nla-blacklight_common"
 # gem "bento_search", path: "../bento_search"
 
-# Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-gem "rack-mini-profiler"
-# append ?pp=flamegraph to URL for flamegraphs
-gem "flamegraph"
-gem "stackprof"
-# append ?pp=profile-memory to URL
-# ?pp=profile-gc to report on GC statistics
-# ?pp=analyze-memory to report on Object statistics
-gem "memory_profiler"
+gem "puma_worker_killer", "~> 0.3.0"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -153,6 +145,16 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+  gem "rack-mini-profiler"
+  # append ?pp=flamegraph to URL for flamegraphs
+  gem "flamegraph"
+  gem "stackprof"
+  # append ?pp=profile-memory to URL
+  # ?pp=profile-gc to report on GC statistics
+  # ?pp=analyze-memory to report on Object statistics
+  gem "memory_profiler"
 end
 
 group :test do

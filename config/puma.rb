@@ -30,7 +30,7 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-# workers ENV.fetch("WEB_CONCURRENCY") { 2 }
+workers ENV.fetch("WEB_CONCURRENCY") { 2 }
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
@@ -41,3 +41,19 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
+
+before_fork do
+  require "puma_worker_killer"
+
+  PumaWorkerKiller.config do |config|
+    config.ram = 10240 # mb
+    config.frequency = 5 # seconds
+    config.percent_usage = 0.9
+    config.rolling_restart_frequency = 2 * 3600 # seconds
+    config.reaper_status_logs = true
+
+    config.pre_term = ->(worker) { puts "Worker #{worker.inspect} being killed" }
+    config.rolling_pre_term = ->(worker) { puts "Worker #{worker.inspect} being killed by rolling restart" }
+  end
+  PumaWorkerKiller.start
+end
