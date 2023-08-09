@@ -100,7 +100,7 @@ gem "faraday-http-cache"
 
 # feature flags
 gem "flipper", "~> 0.28.0"
-gem "flipper-active_record", "~> 0.28.0"
+gem "flipper-active_record", "~> 0.28.3"
 gem "flipper-ui", "~> 0.28.0"
 
 # Fixes CVE-2023-28755

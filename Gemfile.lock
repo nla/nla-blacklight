@@ -281,9 +281,9 @@ GEM
     flamegraph (0.9.5)
     flipper (0.28.3)
       concurrent-ruby (< 2)
-    flipper-active_record (0.28.2)
+    flipper-active_record (0.28.3)
       activerecord (>= 4.2, < 8)
-      flipper (~> 0.28.2)
+      flipper (~> 0.28.3)
     flipper-redis (0.28.3)
       flipper (~> 0.28.3)
       redis (>= 3.0, < 6)
@@ -296,8 +296,6 @@ GEM
     fugit (1.8.1)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
-    get_process_mem (0.2.7)
-      ffi (~> 1.0)
     globalid (1.1.0)
       activesupport (>= 5.0)
     hashdiff (1.0.1)
@@ -445,9 +443,6 @@ GEM
     public_suffix (4.0.7)
     puma (6.3.0)
       nio4r (~> 2.0)
-    puma_worker_killer (0.3.1)
-      get_process_mem (~> 0.2)
-      puma (>= 2.7)
     raabro (1.4.0)
     racc (1.7.1)
     rack (2.2.8)
@@ -713,7 +708,7 @@ DEPENDENCIES
   faraday-http-cache
   flamegraph
   flipper (~> 0.28.0)
-  flipper-active_record (~> 0.28.0)
+  flipper-active_record (~> 0.28.3)
   flipper-ui (~> 0.28.0)
   hiredis (~> 0.6.3)
   hiredis-client (~> 0.14.0)
@@ -732,7 +727,6 @@ DEPENDENCIES
   oauth2 (~> 2.0)
   openurl
   puma (~> 6.0)
-  puma_worker_killer (~> 0.3.0)
   rack-mini-profiler
   rails (~> 7.0.4)
   rails-controller-testing (~> 1.0, >= 1.0.5)
