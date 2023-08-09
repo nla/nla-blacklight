@@ -20,8 +20,7 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       )
       .to_return(status: 200, body: "", headers: {})
 
-    allow(copyright).to receive(:document).and_return(document)
-    allow(copyright).to receive(:info).and_return(service_response_hash)
+    allow(copyright).to receive_messages(document: document, info: service_response_hash)
   end
 
   it "renders the 'Contact us' link" do
