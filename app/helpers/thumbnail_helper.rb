@@ -18,6 +18,7 @@ module ThumbnailHelper
       image_tag thumb_url, options
     else
       Rails.logger.warn "Failed to retrieve thumbnail for #{document.first("id")}"
+      nil
     end
   end
 
