@@ -32,8 +32,7 @@ RSpec.describe NlaThumbnailPresenter do
 
     context "when has online access" do
       it "returns the online access url" do
-        allow(document).to receive(:online_access).and_return([{href: "https://example.com"}])
-        allow(document).to receive(:copy_access).and_return([])
+        allow(document).to receive_messages(online_access: [{href: "https://example.com"}], copy_access: [])
 
         expect(url).to eq "https://example.com"
       end
@@ -41,8 +40,7 @@ RSpec.describe NlaThumbnailPresenter do
 
     context "when has copy access" do
       it "returns the copy access url" do
-        allow(document).to receive(:online_access).and_return([])
-        allow(document).to receive(:copy_access).and_return([{href: "https://example.com"}])
+        allow(document).to receive_messages(online_access: [], copy_access: [{href: "https://example.com"}])
 
         expect(url).to eq "https://example.com"
       end

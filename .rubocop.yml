@@ -17,6 +17,7 @@ AllCops:
     - db/**/*
     - bin/**/*
     - tmp/**/*
+    - config/puma.rb
 
 Rails:
   Enabled: true
