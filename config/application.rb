@@ -11,7 +11,7 @@ if %w[development test].include? ENV["RAILS_ENV"]
   Dotenv::Railtie.load
 end
 
-if %w[staging production].include? ENV["RAILS_ENV"]
+if %w[development staging production].include? ENV["RAILS_ENV"]
   # Silence deprecation warnings in staging/production
   require "deprecation"
   Deprecation.default_deprecation_behavior = :silence
