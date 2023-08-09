@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   mount Blacklight::Engine => "/"
   mount BlacklightAdvancedSearch::Engine => "/"
   mount Flipper::UI.app(Flipper) => "/feats", :constraints => StaffOnlyConstraint.new
-  mount RailsPerformance::Engine => "/monitor", :constraints => StaffOnlyConstraint.new
 
   concern :exportable, Blacklight::Routes::Exportable.new
   concern :searchable, Blacklight::Routes::Searchable.new

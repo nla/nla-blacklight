@@ -34,14 +34,12 @@ class RequestDetail
   def fetch_record_id
     if @details.instanceId.present?
       search_service = Blacklight.repository_class.new(blacklight_config)
-      response = Rails.cache.fetch("#{@details.instanceId}_record", expires_in: 15.minutes) do
-        search_service.search(
-          q: "folio_instance_id_ssim:\"#{@details.instanceId}\"",
-          fl: "id",
-          sort: "score desc",
-          rows: 1
-        )
-      end
+      response = search_service.search(
+        q: "folio_instance_id_ssim:\"#{@details.instanceId}\"",
+        fl: "id",
+        sort: "score desc",
+        rows: 1
+      )
       if response.present? && response["response"].present?
         doc = response["response"]["docs"].first
         doc.present? ? doc["id"] : nil

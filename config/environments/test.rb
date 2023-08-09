@@ -33,8 +33,8 @@ Rails.application.configure do
     driver: :hiredis,
     url: ENV["REDIS_URL"],
     timeout: 30,
-    reconnect_attempts: 3,
-    expires_in: 1.day,
+    reconnect_attempts: 1,
+    expires_in: 1.hour,
     namespace: "blacklight"
   }
 
