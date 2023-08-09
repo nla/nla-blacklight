@@ -1,5 +1,40 @@
 # Changelog
 
+## [2.4.0](https://github.com/nla/nla-blacklight/compare/2.3.4...2.4.0) (2023-08-09)
+
+
+### Features
+
+* remove rails_performance to reduce Redis usage ([f8726e0](https://github.com/nla/nla-blacklight/commit/f8726e02254428c8c0b25aa350caed2c227eb429))
+
+
+### Bug Fixes
+
+* reconfigure puma_worker_killer frequency ([67358e5](https://github.com/nla/nla-blacklight/commit/67358e55eaca8fd84ce3314c6e23a01292880a3c))
+* remove initializer for rack-mini-profiler ([f9ff012](https://github.com/nla/nla-blacklight/commit/f9ff012dc572f40a1dc057f4b6a1e5cb7f364e96))
+* return value when no thumbnail returned ([a9b962c](https://github.com/nla/nla-blacklight/commit/a9b962cbad3a649687af7081627ac9e168b67a04))
+
+
+### Reverts
+
+* remove puma_worker_killer ([b091ccc](https://github.com/nla/nla-blacklight/commit/b091ccce7c606e4eb583528f60228babb4b8a924))
+
+
+### Miscellaneous
+
+* reconfigure puma_worker_killer ([b58e183](https://github.com/nla/nla-blacklight/commit/b58e18377cfce42eef83601b5ec8dd183c633ff1))
+* upgrade dependencies ([978efe8](https://github.com/nla/nla-blacklight/commit/978efe801e011459f24adbb0533ed2eaae02b4eb))
+
+
+### Code Refactoring
+
+* make thumbnail fetch failure a warning and move to helper ([c1b9c26](https://github.com/nla/nla-blacklight/commit/c1b9c269425b8f721784a1e54825dc1b2ae7bdf0))
+
+
+### Tests
+
+* correct rubocop errors ([c00ae21](https://github.com/nla/nla-blacklight/commit/c00ae21bdaf2d88aaed6bc7ae05afdfaf1413da1))
+
 ## [2.3.4](https://github.com/nla/nla-blacklight/compare/2.3.3...2.3.4) (2023-08-08)
 
 
