@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   mount Blacklight::Engine => "/"
   mount BlacklightAdvancedSearch::Engine => "/"
   mount Flipper::UI.app(Flipper) => "/feats", :constraints => StaffOnlyConstraint.new
+  mount Yabeda::Prometheus::Exporter => "/metrics"
 
   concern :exportable, Blacklight::Routes::Exportable.new
   concern :searchable, Blacklight::Routes::Searchable.new
