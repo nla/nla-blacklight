@@ -16,6 +16,8 @@ module ThumbnailHelper
     thumb_url = ThumbnailService.new.get_url(service_options)
     if thumb_url.present?
       image_tag thumb_url, options
+    else
+      Rails.logger.warn "Failed to retrieve thumbnail for #{document.first("id")}"
     end
   end
 

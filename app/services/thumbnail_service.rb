@@ -11,7 +11,6 @@ class ThumbnailService
     if res.status == 200
       res.body["url"]
     else
-      Rails.logger.error "Failed to retrieve thumbnail for #{options.to_json}"
       nil
     end
   end
@@ -27,7 +26,6 @@ class ThumbnailService
       content_type = res.headers["content-type"]
       "data:#{content_type};base64,#{Base64.encode64(res.body).gsub("\n", "")}"
     else
-      Rails.logger.error "Failed to retrieve thumbnail for #{options.to_json}"
       nil
     end
   end
