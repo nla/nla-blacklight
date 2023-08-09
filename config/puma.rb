@@ -39,5 +39,16 @@ pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 #
 # preload_app!
 
+before_fork do
+  # Make sure files from previous run are emptied when the app starts
+  Dir[File.join(ENV.fetch("BLACKLIGHT_TMP_PATH", "./tmp"), "prometheus_direct_file_store", "*.bin")].each do |file_path|
+    File.unlink(file_path)
+  end
+end
+
+# Allow Yabeda to export stats to Prometheus
+activate_control_app
+plugin :yabeda
+
 # Allow puma to be restarted by `bin/rails restart` command.
 plugin :tmp_restart
