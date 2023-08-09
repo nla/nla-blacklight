@@ -106,9 +106,6 @@ gem "flipper-ui", "~> 0.28.0"
 # Fixes CVE-2023-28755
 gem "uri", "~> 0.12.1"
 
-# performance monitoring
-gem "rails_performance"
-
 # Before a release, point these gem at a tag, instead of the `main` branch.
 gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"

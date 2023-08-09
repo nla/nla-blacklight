@@ -160,7 +160,6 @@ GEM
       popper_js (>= 1.16.1, < 2)
       sassc-rails (>= 2.0.0)
     brakeman (6.0.1)
-    browser (5.3.1)
     builder (3.2.4)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
@@ -483,11 +482,6 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
-    rails_performance (1.2.0)
-      browser
-      rails
-      redis
-      redis-namespace
     railties (7.0.6)
       actionpack (= 7.0.6)
       activesupport (= 7.0.6)
@@ -501,8 +495,6 @@ GEM
       redis-client (>= 0.9.0)
     redis-client (0.14.1)
       connection_pool
-    redis-namespace (1.11.0)
-      redis (>= 4)
     regexp_parser (2.8.1)
     reline (0.3.6)
       io-console (~> 0.5)
@@ -744,7 +736,6 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 7.0.4)
   rails-controller-testing (~> 1.0, >= 1.0.5)
-  rails_performance
   redis (~> 5.0)
   repost (~> 0.4.1)
   rsolr (>= 1.0, < 3)
