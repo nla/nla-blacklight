@@ -1,3 +1,4 @@
 <%= render 'show_tools' %>
+<%= render FeedbackComponent.new(document.id) %>
 <%= render(Blacklight::Document::MoreLikeThisComponent.new(document: document)) %>
 <%= render ExploreComponent.new(document) %>

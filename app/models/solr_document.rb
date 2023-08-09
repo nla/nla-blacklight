@@ -104,7 +104,7 @@ class SolrDocument
     date_fields_array.each do |s|
       s.gsub!(/[, .\\;]*$|^[, .\/;]*/, "")
     end
-    date_fields_array.push(*description_fields_array) * ", "
+    [*date_fields_array, *description_fields_array]
   end
 
   def online_access
@@ -394,7 +394,8 @@ class SolrDocument
   end
 
   def lccn
-    get_marc_derived_field("010a", options: {alternate_script: false})
+    data = get_marc_derived_field("010a", options: {alternate_script: false})
+    data.map { |d| d.gsub(/\s+/, "") }
   end
 
   def has_eresources?
@@ -425,7 +426,8 @@ class SolrDocument
 
   def clean_isn(isn)
     isn = isn.gsub(/[\s-]+/, '\1')
-    isn.gsub(/^.*?([0-9]+).*?$/, '\1')
+    isn = isn.gsub(/^.*?([0-9]+).*?$/, '\1')
+    isn.gsub(/\s+/, "")
   end
 
   def publication_place

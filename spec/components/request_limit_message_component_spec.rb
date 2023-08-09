@@ -47,7 +47,9 @@ RSpec.describe RequestLimitMessageComponent, type: :component do
       it "renders the patron error message" do
         render_inline(component)
 
-        expect(page).to have_text("For further assistance please see desk staff in the Library reading rooms or Ask a Librarian.")
+        expect(page).to have_text("Your request limit has been reached and you are unable to make any further requests until you have returned some items.")
+        expect(page).to have_text("For further assistance please see desk staff in our reading rooms or Ask a Librarian.")
+        expect(page).to have_text("National Library of Australia")
       end
     end
 
@@ -93,14 +95,30 @@ RSpec.describe RequestLimitMessageComponent, type: :component do
       allow(cat_services_client).to receive(:request_limit_reached?).and_return(false)
     end
 
-    it "renders the remaining requests" do
-      component = described_class.new(user, cat_services_client).tap do |c|
-        c.with_remaining_requests.with_content(5)
+    context "when there are multiple requests remaining" do
+      it "renders the remaining requests" do
+        component = described_class.new(user, cat_services_client).tap do |c|
+          c.with_remaining_requests.with_content(5)
+        end
+
+        render_inline(component)
+
+        expect(page).to have_css("div.alert-info")
+        expect(page).to have_text("You can request 5 more items.")
       end
+    end
 
-      render_inline(component)
+    context "when there is only 1 request remaining" do
+      it "renders a singular message" do
+        component = described_class.new(user, cat_services_client).tap do |c|
+          c.with_remaining_requests.with_content(1)
+        end
 
-      expect(page).to have_css("div.alert-info")
+        render_inline(component)
+
+        expect(page).to have_css("div.alert-info")
+        expect(page).to have_text("You can request 1 more item.")
+      end
     end
   end
 end

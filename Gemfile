@@ -118,6 +118,16 @@ gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 # gem "nla-blacklight_common", path: "../nla-blacklight_common"
 # gem "bento_search", path: "../bento_search"
 
+# Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
+gem "rack-mini-profiler"
+# append ?pp=flamegraph to URL for flamegraphs
+gem "flamegraph"
+gem "stackprof"
+# append ?pp=profile-memory to URL
+# ?pp=profile-gc to report on GC statistics
+# ?pp=analyze-memory to report on Object statistics
+gem "memory_profiler"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
@@ -141,9 +151,6 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
 
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
@@ -152,7 +159,6 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
   gem "selenium-webdriver"
-  gem "webdrivers"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"

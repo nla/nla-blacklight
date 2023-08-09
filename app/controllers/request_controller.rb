@@ -19,7 +19,7 @@ class RequestController < ApplicationController
     holdings_id = request_params[:holdings]
     item_id = request_params[:item]
 
-    holding, item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
+    holding, item = CatalogueServicesClient.new.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
 
     @request_form = if item["itemCategory"] == "manuscript"
       "manuscripts"
@@ -50,6 +50,7 @@ class RequestController < ApplicationController
     new_request = request_params[:request].to_h
     new_request.merge!({instance_id: instance_id})
 
+    cat_services_client = CatalogueServicesClient.new
     _holding, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
     cat_services_client.create_request(requester: current_user.folio_id, request: new_request)
 
@@ -61,7 +62,7 @@ class RequestController < ApplicationController
     holdings_id = request_params[:holdings]
     item_id = request_params[:item]
 
-    _, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
+    _, @item = CatalogueServicesClient.new.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
 
     if @item["pickupLocation"]["code"].start_with? "SCRR"
       @show_scrr = true
@@ -69,10 +70,6 @@ class RequestController < ApplicationController
   end
 
   private
-
-  def cat_services_client
-    helpers.cat_services_client
-  end
 
   def set_document
     _deprecated_response, @document = search_service.fetch(request_params[:solr_document_id])
@@ -83,6 +80,6 @@ class RequestController < ApplicationController
   end
 
   def check_request_limit
-    @met_request_limit = cat_services_client.request_limit_reached?(requester: current_user.folio_id)
+    @met_request_limit = CatalogueServicesClient.new.request_limit_reached?(requester: current_user.folio_id)
   end
 end

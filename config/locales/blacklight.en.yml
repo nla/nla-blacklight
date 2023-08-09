@@ -34,7 +34,8 @@ en:
       help: 'Help'
       login: 'Login'
       logout: 'Log Out'
-      bookmarks: 'Bookmarks'
+      bookmarks: 'Bookmarks - Catalogue'
+      bookmarks_fa: 'Bookmarks - Finding aids'
       search_history: 'History'
       register: 'Sign up'
     welcome: 'Welcome LSP Board!'
@@ -42,7 +43,9 @@ en:
     or: 'or'
     collection_search:
       title: 'Search our collections'
-      description: 'The collections held in the National Library of Australia reflect all Australians from all walks of life. By collecting today what is important tomorrow, we aim to better tell the stories and history of Australia, including those of First Australians. Here, you will find everything, from history, culture, language and knowledge—full of truths, half-truths and frank misunderstandings. We understand that our collections have the power to grow, to heal and to wound.'
+      description: 
+        p1: 'The collections held in the National Library of Australia reflect all Australians from all walks of life. By collecting today what is important tomorrow, the Library’s collection aims to better tell the stories and history of all Australians.'
+        p2: 'Aboriginal and Torres Strait Islander people should be aware that this catalogue may contain images, voices and names of deceased persons. Some words or descriptions in the catalogue may reflect the attitudes of the period in which the works were created, and may now be considered inaccurate, inappropriate or offensive.'
     catalogue:
       title: 'Search our catalogue'
       description: 'Search the Catalogue to find books, pictures, maps, oral history interviews, manuscripts and more.'

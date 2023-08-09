@@ -28,8 +28,8 @@
             "callNumber": "NKA 1132"
           },
           "status": {
-            "name": "Paged",
-            "date": "2023-07-06T01:19:20.449+00:00"
+            "name": "Available",
+            "date": "2023-07-18T05:51:36.620+00:00"
           },
           "pickupLocation": {
             "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
@@ -48,10 +48,12 @@
           "yearCaption": [],
           "itemCategory": "monograph",
           "discoverySuppress": false,
-          "requestable": false
+          "requestable": true,
+          "displayStatus": "Available"
         }
       ],
-      "notes": []
+      "notes": [],
+      "checkedOutItems": []
     },
     {
       "id": "fc59f835-c340-5ea4-978d-4bfe4193cee0",
@@ -101,10 +103,16 @@
           "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
           "itemCategory": "journal",
           "discoverySuppress": false,
-          "requestable": true
+          "requestable": true,
+          "displayStatus": "Available"
         }
       ],
-      "notes": []
+      "notes": [],
+      "checkedOutItems": [
+        {
+          "yearCaption": "1977"
+        }
+      ]
     },
     {
       "id": "44e5936d-0bd9-5df5-a86a-5091d04bd84d",
@@ -134,8 +142,8 @@
             "callNumber": "N 919.4 NAT"
           },
           "status": {
-            "name": "Available",
-            "date": "2023-03-25T02:11:49.217+00:00"
+            "name": "Paged",
+            "date": "2023-07-13T23:01:56.573+00:00"
           },
           "pickupLocation": {
             "id": "325aea8b-f5f2-4160-88ca-63d803856a70",
@@ -155,10 +163,12 @@
           "enumeration": "N pbk",
           "itemCategory": "monograph",
           "discoverySuppress": false,
-          "requestable": true
+          "requestable": false,
+          "displayStatus": "In use"
         }
       ],
-      "notes": []
+      "notes": [],
+      "checkedOutItems": []
     },
     {
       "id": "d6c97d9e-dfe6-5faa-9f0b-020b2bddbf8c",
@@ -188,8 +198,8 @@
             "callNumber": "NL 919.4 NAT"
           },
           "status": {
-            "name": "Available",
-            "date": "2023-03-25T02:16:38.698+00:00"
+            "name": "Paged",
+            "date": "2023-07-13T23:01:30.563+00:00"
           },
           "pickupLocation": {
             "id": "325aea8b-f5f2-4160-88ca-63d803856a70",
@@ -209,10 +219,12 @@
           "enumeration": "NL pbk",
           "itemCategory": "monograph",
           "discoverySuppress": false,
-          "requestable": true
+          "requestable": false,
+          "displayStatus": "In use"
         }
       ],
-      "notes": []
+      "notes": [],
+      "checkedOutItems": []
     },
     {
       "id": "fe525746-5142-5b54-8c89-c6ed7a9c6196",
@@ -350,7 +362,8 @@
           "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
           "itemCategory": "journal",
           "discoverySuppress": false,
-          "requestable": true
+          "requestable": true,
+          "displayStatus": "Available"
         },
         {
           "id": "e9d2cf15-a219-565a-8ec1-9bc914364c87",
@@ -385,10 +398,64 @@
           "enumeration": "January",
           "itemCategory": "monograph",
           "discoverySuppress": false,
-          "requestable": false
+          "requestable": false,
+          "displayStatus": "Available"
         }
       ],
-      "notes": []
+      "notes": [],
+      "checkedOutItems": [
+        {
+          "chronology": "Dec",
+          "yearCaption": "1939"
+        },
+        {
+          "chronology": "Dec",
+          "yearCaption": "1990"
+        },
+        {
+          "chronology": "March, April, May",
+          "yearCaption": "2022"
+        },
+        {
+          "chronology": "May, June, July",
+          "yearCaption": "2008"
+        },
+        {
+          "chronology": "March, April, May",
+          "yearCaption": "2022"
+        },
+        {
+          "chronology": "May, June, July",
+          "yearCaption": "2008"
+        },
+        {
+          "chronology": "June, July, August",
+          "yearCaption": "2008"
+        },
+        {
+          "yearCaption": "1939"
+        },
+        {
+          "yearCaption": "1959"
+        },
+        {
+          "yearCaption": "1962"
+        },
+        {
+          "yearCaption": "1966"
+        },
+        {
+          "yearCaption": "1972"
+        },
+        {
+          "chronology": "June, July",
+          "yearCaption": "2009"
+        },
+        {
+          "chronology": "June,July",
+          "yearCaption": "2008"
+        }
+      ]
     }
   ]
 }

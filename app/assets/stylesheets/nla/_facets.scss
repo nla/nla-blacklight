@@ -71,3 +71,44 @@
     }
   }
 }
+
+.slider_js {
+  .slider-handle {
+    background-image: none;
+    background-color: color("white");
+    border: 2px solid color("purple");
+    opacity: 1;
+
+    &:active,
+    &:hover {
+      background-color: color("purple");
+    }
+  }
+
+  .slider-selection {
+    background-image: none;
+    background: color("light-purple") !important;
+  }
+}
+
+// Blacklight Range Limit slider in modal
+.modal-body {
+  .slider_js {
+    .slider-handle {
+      background-image: none;
+      background-color: color("white");
+      border: 2px solid color("purple");
+      opacity: 1;
+
+      &:active,
+      &:hover {
+        background-color: color("purple");
+      }
+    }
+
+    .slider-selection {
+      background-image: none;
+      background: color("light-purple") !important;
+    }
+  }
+}

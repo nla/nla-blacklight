@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 546ada8840fa3ad7c9e05d03134bae39e12e2399
+  revision: 30d3caa53175e1247a5b0b290397949d6b5e87de
   branch: main
   specs:
-    nla-blacklight_common (0.1.3)
+    nla-blacklight_common (0.1.4)
       activerecord-session_store (~> 2.0)
       annotaterb
       brakeman
@@ -159,7 +159,7 @@ GEM
       autoprefixer-rails (>= 9.1.0)
       popper_js (>= 1.16.1, < 2)
       sassc-rails (>= 2.0.0)
-    brakeman (6.0.0)
+    brakeman (6.0.1)
     browser (5.3.1)
     builder (3.2.4)
     bundler-audit (0.9.1)
@@ -279,17 +279,18 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    flipper (0.28.0)
+    flamegraph (0.9.5)
+    flipper (0.28.3)
       concurrent-ruby (< 2)
-    flipper-active_record (0.28.0)
+    flipper-active_record (0.28.2)
       activerecord (>= 4.2, < 8)
-      flipper (~> 0.28.0)
-    flipper-redis (0.28.0)
-      flipper (~> 0.28.0)
+      flipper (~> 0.28.2)
+    flipper-redis (0.28.3)
+      flipper (~> 0.28.3)
       redis (>= 3.0, < 6)
-    flipper-ui (0.28.0)
+    flipper-ui (0.28.3)
       erubi (>= 1.0.0, < 2.0.0)
-      flipper (~> 0.28.0)
+      flipper (~> 0.28.3)
       rack (>= 1.4, < 3)
       rack-protection (>= 1.5.3, <= 4.0.0)
       sanitize (< 7)
@@ -319,7 +320,7 @@ GEM
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
-    irb (1.7.2)
+    irb (1.7.4)
       reline (>= 0.3.6)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
@@ -376,13 +377,14 @@ GEM
       marc (~> 1.0)
     marcel (1.0.2)
     matrix (0.4.2)
+    memory_profiler (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitar (0.9)
-    minitest (5.18.1)
+    minitest (5.19.0)
     mock_redis (0.36.0)
       ruby2_keywords
-    msgpack (1.7.1)
+    msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.3.0)
@@ -390,7 +392,7 @@ GEM
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.3.6)
+    net-imap (0.3.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -445,6 +447,8 @@ GEM
     raabro (1.4.0)
     racc (1.7.1)
     rack (2.2.7)
+    rack-mini-profiler (3.1.0)
+      rack (>= 1.2.0)
     rack-protection (3.0.6)
       rack
     rack-test (2.1.0)
@@ -601,15 +605,17 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
+    stackprof (0.2.25)
     standard (1.30.1)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.52.0)
       standard-custom (~> 1.0.0)
       standard-performance (~> 1.1.0)
-    standard-custom (1.0.1)
+    standard-custom (1.0.2)
       lint_roller (~> 1.0)
-    standard-performance (1.1.1)
+      rubocop (~> 1.50)
+    standard-performance (1.1.2)
       lint_roller (~> 1.1)
       rubocop-performance (~> 1.18.0)
     stimulus-rails (1.2.1)
@@ -659,23 +665,19 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webdrivers (5.2.0)
-      nokogiri (~> 1.6)
-      rubyzip (>= 1.3.0)
-      selenium-webdriver (~> 4.0)
     webmock (3.18.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.8.1)
     websocket (1.2.9)
-    websocket-driver (0.7.5)
+    websocket-driver (0.7.6)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yell (2.2.2)
-    zeitwerk (2.6.8)
+    zeitwerk (2.6.9)
     zk (1.10.0)
       zookeeper (~> 1.5.0)
     zookeeper (1.5.5)
@@ -712,6 +714,7 @@ DEPENDENCIES
   factory_bot_rails
   faker
   faraday-http-cache
+  flamegraph
   flipper (~> 0.28.0)
   flipper-active_record (~> 0.28.0)
   flipper-ui (~> 0.28.0)
@@ -724,6 +727,7 @@ DEPENDENCIES
   jquery-rails
   json-jwt (~> 1.15)
   lograge
+  memory_profiler
   mock_redis (~> 0.36.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
@@ -731,6 +735,7 @@ DEPENDENCIES
   oauth2 (~> 2.0)
   openurl
   puma (~> 6.0)
+  rack-mini-profiler
   rails (~> 7.0.4)
   rails-controller-testing (~> 1.0, >= 1.0.5)
   rails_performance
@@ -747,6 +752,7 @@ DEPENDENCIES
   simplecov-json (~> 0.2.3)
   solr_wrapper (>= 0.3)
   sprockets-rails
+  stackprof
   standard
   stimulus-rails
   strong_migrations (~> 1.4)
@@ -756,7 +762,6 @@ DEPENDENCIES
   uri (~> 0.12.1)
   view_component (~> 2.82)
   web-console
-  webdrivers
   webmock
   zk (~> 1.10)
 
@@ -764,4 +769,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.15
+   2.4.17

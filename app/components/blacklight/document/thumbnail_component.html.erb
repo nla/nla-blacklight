@@ -7,7 +7,7 @@
   data-scroll-reveal-threshold-value="0"
   data-scroll-reveal-root-margin-value="10px">
   <% if use_thumbnail_tag_behavior? %>
-    <% warn_about_deprecated_behavior %>
+    <% warn_about_deprecated_behavior if Rails.env.development? %>
     <%= value %>
   <% else %>
     <%= helpers.link_to_document(presenter.document, value, 'aria-hidden': true, tabindex: -1, counter: @counter) %>

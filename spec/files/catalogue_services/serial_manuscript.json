@@ -43,7 +43,8 @@
           "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
           "itemCategory": "manuscript",
           "discoverySuppress": false,
-          "requestable": true
+          "requestable": true,
+          "displayStatus": "Available"
         }
       ],
       "notes": [
@@ -52,6 +53,12 @@
           "staffOnly": false,
           "holdingsNoteTypeId": "4b937761-3c97-48db-8641-ea0729f3615b",
           "holdingsNoteType": "Restriction"
+        }
+      ],
+      "checkedOutItems": [
+        {
+          "chronology": "1",
+          "yearCaption": "1"
         }
       ]
     },
@@ -97,7 +104,8 @@
           "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
           "itemCategory": "manuscript",
           "discoverySuppress": false,
-          "requestable": true
+          "requestable": true,
+          "displayStatus": "Available"
         }
       ],
       "notes": [
@@ -113,7 +121,8 @@
           "holdingsNoteTypeId": "d6510242-5ec3-42ed-b593-3585d2e48fd6",
           "holdingsNoteType": "Action note"
         }
-      ]
+      ],
+      "checkedOutItems": []
     },
     {
       "id": "98c1ac7a-196d-5071-9ede-4664db00197b",
@@ -157,7 +166,8 @@
           "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
           "itemCategory": "manuscript",
           "discoverySuppress": false,
-          "requestable": true
+          "requestable": true,
+          "displayStatus": "Available"
         }
       ],
       "notes": [
@@ -167,7 +177,8 @@
           "holdingsNoteTypeId": "4b937761-3c97-48db-8641-ea0729f3615b",
           "holdingsNoteType": "Restriction"
         }
-      ]
+      ],
+      "checkedOutItems": []
     }
   ]
 }

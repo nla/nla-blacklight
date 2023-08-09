@@ -21,7 +21,8 @@
   
   .show-tools,
   .more-like-this,
-  .explore {
+  .explore,
+  .feedback {
     .card-body {
       padding: 0;
       border: none;
@@ -96,6 +97,17 @@
             color: color("white") !important;
           }
         }
+      }
+    }
+  }
+
+  .feedback {
+    .feedback-link {
+      padding: 0;
+
+      a {
+        padding: 1rem;
+        display: block;
       }
     }
   }

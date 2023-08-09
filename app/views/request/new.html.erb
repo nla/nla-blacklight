@@ -1,6 +1,6 @@
 <h1 class="h3"><%= @document.first("title_tsim") %></h1>
 
-<%= render RequestLimitMessageComponent.new(current_user, cat_services_client) do |component| %>
+<%= render RequestLimitMessageComponent.new(current_user, CatalogueServicesClient.new) do |component| %>
   <% component.with_limit_reached.with_content(@met_request_limit) %>
 <% end %>
 
@@ -38,7 +38,18 @@
         </dd>
 
         <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.status") %></dt>
-        <dd class="col col-md-9"><%= @request.item["status"]["name"] %></dd>
+        <dd class="col col-md-9"><%= @request.item["displayStatus"] %></dd>
+
+        <% if items_issues_in_use(@request.holding).present? %>
+          <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.items_in_use") %></dt>
+          <dd class="col-12 col-lg-8">
+            <ul class="list-unstyled">
+              <% items_issues_in_use(@request.holding).each do |statement| %>
+                <li><%= statement %></li>
+              <% end %>
+            </ul>
+          </dd>
+        <% end %>
 
         <% if recent_item_issue_held(@request.holding).present? %>
           <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.recent_items") %></dt>

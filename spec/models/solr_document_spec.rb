@@ -10,7 +10,7 @@ RSpec.describe SolrDocument do
     end
 
     it "retrieves the description from the MARC record" do
-      expect(description_value).to eq "Shatin, N. T., Hong Kong : Institute of Chinese Studies, Chinese University of Hong Kong, c1985, x, 197 p. : ill. ; 26 cm."
+      expect(description_value).to eq ["Shatin, N. T., Hong Kong : Institute of Chinese Studies, Chinese University of Hong Kong, c1985", "x, 197 p. : ill. ; 26 cm."]
     end
   end
 
@@ -454,6 +454,19 @@ RSpec.describe SolrDocument do
 
       it "will strip extra punctuation around the ISBN" do
         expect(isbn_value).to eq ["9781478007364 (electronic book)", "1478007362 (electronic book)"]
+      end
+    end
+  end
+
+  describe "#isbn_list" do
+    context "when there is an ISBN" do
+      subject(:isbn_value) do
+        document = described_class.new(marc_ss: isbn)
+        document.isbn_list
+      end
+
+      it "will return the ISBNs as numbers only" do
+        expect(isbn_value).to eq %w[0855507322 0855507403 1111]
       end
     end
   end
@@ -1597,6 +1610,19 @@ RSpec.describe SolrDocument do
 
       it "will return no other authors" do
         expect(other_authors_value).to eq []
+      end
+    end
+  end
+
+  describe "#lccn" do
+    context "when there is an lccn" do
+      subject(:lccn_value) do
+        document = described_class.new(marc_ss: isbn_format)
+        document.lccn
+      end
+
+      it "returns the lccn as numbers only" do
+        expect(lccn_value).to eq ["2019016276"]
       end
     end
   end
