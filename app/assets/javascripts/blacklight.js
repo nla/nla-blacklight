@@ -27,13 +27,6 @@ $(function() {
     }, 1200);
   });
 
-  $('.blrl-plot-config').data('plot-config', {
-    selection: { color: '#46474A' },
-    colors: ['#ffffff'],
-    series: { lines: { fillColor: 'rgba(112,57,150, 0.8)' }},
-    grid: { color: '#677078', tickColor: '#f4f5f6', borderWidth: 1 }
-  });
-
   let blacklightModal = $('#blacklight-modal');
   let modalObserver = new MutationObserver(function(mutations) {
     mutations.forEach(function(mutation) {
