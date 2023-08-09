@@ -10,8 +10,6 @@ class ThumbnailService
     res = conn.get(url)
     if res.status == 200
       res.body["url"]
-    else
-      nil
     end
   end
 
@@ -25,8 +23,6 @@ class ThumbnailService
     if res.status == 200
       content_type = res.headers["content-type"]
       "data:#{content_type};base64,#{Base64.encode64(res.body).gsub("\n", "")}"
-    else
-      nil
     end
   end
   # :nocov:
