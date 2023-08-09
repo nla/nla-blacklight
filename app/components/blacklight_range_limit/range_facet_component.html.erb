@@ -3,8 +3,7 @@
     <%= @facet_field.label %>
   <% end %>
 
-  <% component.body do %>
-    <p>test</p>
+  <% component.body do %>=
     <div class="limit_content range_limit <%= @facet_field.key %>-config blrl-plot-config">
       <% if @facet_field.selected_range_facet_item %>
         <%= render BlacklightRangeLimit::RangeSegmentsComponent.new(facet_field: @facet_field, facet_items: [@facet_field.selected_range_facet_item], classes: ['current']) %>
