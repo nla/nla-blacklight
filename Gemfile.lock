@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: cb68121774f7244316e9f8a88b1f2cae02e12a10
-  branch: main
+  revision: 09ed7f0aeecccbddbda022b413f88427da0c2cfd
+  tag: 0.1.5
   specs:
-    nla-blacklight_common (0.1.4)
+    nla-blacklight_common (0.1.5)
       activerecord-session_store (~> 2.0)
       annotaterb
       brakeman
@@ -281,7 +281,6 @@ GEM
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
-    flamegraph (0.9.5)
     flipper (0.28.3)
       concurrent-ruby (< 2)
     flipper-active_record (0.28.3)
@@ -379,7 +378,6 @@ GEM
       marc (~> 1.0)
     marcel (1.0.2)
     matrix (0.4.2)
-    memory_profiler (1.0.1)
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitar (0.9)
@@ -450,8 +448,6 @@ GEM
     raabro (1.4.0)
     racc (1.7.1)
     rack (2.2.8)
-    rack-mini-profiler (3.1.1)
-      rack (>= 1.2.0)
     rack-protection (3.1.0)
       rack (~> 2.2, >= 2.2.4)
     rack-test (2.1.0)
@@ -605,7 +601,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    stackprof (0.2.25)
     standard (1.30.1)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
@@ -734,7 +729,6 @@ DEPENDENCIES
   factory_bot_rails
   faker
   faraday-http-cache
-  flamegraph
   flipper (~> 0.28.0)
   flipper-active_record (~> 0.28.0)
   flipper-ui (~> 0.28.0)
@@ -747,7 +741,6 @@ DEPENDENCIES
   jquery-rails
   json-jwt (~> 1.15)
   lograge
-  memory_profiler
   mock_redis (~> 0.36.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
@@ -755,7 +748,6 @@ DEPENDENCIES
   oauth2 (~> 2.0)
   openurl
   puma (~> 6.0)
-  rack-mini-profiler
   rails (~> 7.0.4)
   rails-controller-testing (~> 1.0, >= 1.0.5)
   redis (~> 5.0)
@@ -771,7 +763,6 @@ DEPENDENCIES
   simplecov-json (~> 0.2.3)
   solr_wrapper (>= 0.3)
   sprockets-rails
-  stackprof
   standard
   stimulus-rails
   strong_migrations (~> 1.4)
