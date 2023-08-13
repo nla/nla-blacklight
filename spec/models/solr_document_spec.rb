@@ -95,7 +95,7 @@ RSpec.describe SolrDocument do
           )
           .to_return(status: 200, body: mock_response, headers: {})
 
-        expect(map_search_value).to eq []
+        expect(map_search_value).to be_nil
       end
     end
 
@@ -106,7 +106,7 @@ RSpec.describe SolrDocument do
       end
 
       it "does not generate a link to Map Search" do
-        expect(map_search_value).to eq []
+        expect(map_search_value).to be_nil
       end
     end
   end
@@ -149,7 +149,7 @@ RSpec.describe SolrDocument do
       end
 
       it "retrieves the note" do
-        expect(notes_value).to eq({notes: ["Cover title."], more_notes: []})
+        expect(notes_value).to eq({notes: ["Cover title."], more_notes: nil})
       end
     end
 
@@ -242,7 +242,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will return nil" do
-        expect(form_of_work_value).to eq []
+        expect(form_of_work_value).to be_nil
       end
     end
   end
@@ -270,8 +270,8 @@ RSpec.describe SolrDocument do
         document.translated_title
       end
 
-      it "will return an empty array" do
-        expect(translated_title_value).to eq []
+      it "will return nil" do
+        expect(translated_title_value).to be_nil
       end
     end
   end
@@ -305,8 +305,8 @@ RSpec.describe SolrDocument do
         document.uniform_title
       end
 
-      it "will return an empty array" do
-        expect(uniform_title_value).to eq []
+      it "will return nil" do
+        expect(uniform_title_value).to be_nil
       end
     end
   end
@@ -361,7 +361,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will not return an access condition" do
-        expect(access_condition_value).to eq []
+        expect(access_condition_value).to be_nil
       end
     end
   end
@@ -384,8 +384,8 @@ RSpec.describe SolrDocument do
         document.scale
       end
 
-      it "will return an empty array" do
-        expect(scale_value).to eq []
+      it "will return nil" do
+        expect(scale_value).to be_nil
       end
     end
   end
@@ -441,8 +441,8 @@ RSpec.describe SolrDocument do
         document.isbn
       end
 
-      it "will return an empty array" do
-        expect(isbn_value).to eq []
+      it "will return nil" do
+        expect(isbn_value).to be_nil
       end
     end
 
@@ -511,8 +511,8 @@ RSpec.describe SolrDocument do
         document.invalid_isbn
       end
 
-      it "will return an empty array" do
-        expect(invalid_isbn_value).to eq []
+      it "will return nil" do
+        expect(invalid_isbn_value).to be_nil
       end
     end
 
@@ -551,8 +551,8 @@ RSpec.describe SolrDocument do
         document.invalid_issn
       end
 
-      it "will return an empty array" do
-        expect(invalid_issn_value).to eq []
+      it "will return nil" do
+        expect(invalid_issn_value).to be_nil
       end
     end
   end
@@ -575,8 +575,8 @@ RSpec.describe SolrDocument do
         document.invalid_issn
       end
 
-      it "will return an empty array" do
-        expect(invalid_issn_value).to eq []
+      it "will return nil" do
+        expect(invalid_issn_value).to be_nil
       end
     end
   end
@@ -599,8 +599,8 @@ RSpec.describe SolrDocument do
         document.ismn
       end
 
-      it "will return an empty array" do
-        expect(ismn_value).to eq []
+      it "will return nil" do
+        expect(ismn_value).to be_nil
       end
     end
   end
@@ -613,7 +613,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will return the invalid ISMN" do
-        expect(invalid_ismn_value).not_to eq []
+        expect(invalid_ismn_value).not_to be_nil
       end
     end
 
@@ -634,8 +634,8 @@ RSpec.describe SolrDocument do
         document.invalid_ismn
       end
 
-      it "will return an empty array" do
-        expect(invalid_ismn_value).to eq []
+      it "will return nil" do
+        expect(invalid_ismn_value).to be_nil
       end
     end
   end
@@ -658,8 +658,8 @@ RSpec.describe SolrDocument do
         document.printer
       end
 
-      it "will return an empty array" do
-        expect(printer_value).to eq []
+      it "will return nil" do
+        expect(printer_value).to be_nil
       end
     end
   end
@@ -695,8 +695,8 @@ RSpec.describe SolrDocument do
         document.technical_details
       end
 
-      it "will return an empty array" do
-        expect(technical_details_value).to eq []
+      it "will return nil" do
+        expect(technical_details_value).to be_nil
       end
     end
   end
@@ -730,8 +730,8 @@ RSpec.describe SolrDocument do
         document.summary
       end
 
-      it "will return an empty array" do
-        expect(summary_value).to eq []
+      it "will return nil" do
+        expect(summary_value).to be_nil
       end
     end
   end
@@ -754,8 +754,8 @@ RSpec.describe SolrDocument do
         document.partial_contents
       end
 
-      it "will return an empty array" do
-        expect(partial_contents_value).to eq []
+      it "will return nil" do
+        expect(partial_contents_value).to be_nil
       end
     end
   end
@@ -778,8 +778,8 @@ RSpec.describe SolrDocument do
         document.incomplete_contents
       end
 
-      it "will return an empty array" do
-        expect(incomplete_contents_value).to eq []
+      it "will return nil" do
+        expect(incomplete_contents_value).to be_nil
       end
     end
   end
@@ -802,8 +802,8 @@ RSpec.describe SolrDocument do
         document.credits
       end
 
-      it "will return an empty array" do
-        expect(credits_value).to eq []
+      it "will return nil" do
+        expect(credits_value).to be_nil
       end
     end
   end
@@ -826,8 +826,8 @@ RSpec.describe SolrDocument do
         document.performers
       end
 
-      it "will return an empty array" do
-        expect(performers_value).to eq []
+      it "will return nil" do
+        expect(performers_value).to be_nil
       end
     end
   end
@@ -850,8 +850,8 @@ RSpec.describe SolrDocument do
         document.biography_history
       end
 
-      it "will return an empty array" do
-        expect(biography_history_value).to eq []
+      it "will return nil" do
+        expect(biography_history_value).to be_nil
       end
     end
   end
@@ -874,8 +874,8 @@ RSpec.describe SolrDocument do
         document.numbering_note
       end
 
-      it "will return an empty array" do
-        expect(numbering_note_value).to eq []
+      it "will return nil" do
+        expect(numbering_note_value).to be_nil
       end
     end
   end
@@ -898,8 +898,8 @@ RSpec.describe SolrDocument do
         document.data_quality
       end
 
-      it "will return an empty array" do
-        expect(data_quality_value).to eq []
+      it "will return nil" do
+        expect(data_quality_value).to be_nil
       end
     end
   end
@@ -922,8 +922,8 @@ RSpec.describe SolrDocument do
         document.binding_information
       end
 
-      it "will return an empty array" do
-        expect(binding_information_value).to eq []
+      it "will return nil" do
+        expect(binding_information_value).to be_nil
       end
     end
 
@@ -957,8 +957,8 @@ RSpec.describe SolrDocument do
         document.related_material
       end
 
-      it "will return an empty array" do
-        expect(related_material_value).to eq []
+      it "will return nil" do
+        expect(related_material_value).to be_nil
       end
     end
   end
@@ -981,8 +981,8 @@ RSpec.describe SolrDocument do
         document.provenance
       end
 
-      it "will return an empty array" do
-        expect(provenance_value).to eq []
+      it "will return nil" do
+        expect(provenance_value).to be_nil
       end
     end
   end
@@ -1005,8 +1005,8 @@ RSpec.describe SolrDocument do
         document.govt_doc_number
       end
 
-      it "will return an empty array" do
-        expect(govt_doc_number_value).to eq []
+      it "will return nil" do
+        expect(govt_doc_number_value).to be_nil
       end
     end
   end
@@ -1029,8 +1029,8 @@ RSpec.describe SolrDocument do
         document.music_publisher_number
       end
 
-      it "will return an empty array" do
-        expect(music_publisher_number_value).to eq []
+      it "will return nil" do
+        expect(music_publisher_number_value).to be_nil
       end
     end
   end
@@ -1053,8 +1053,8 @@ RSpec.describe SolrDocument do
         document.exhibited
       end
 
-      it "will return an empty array" do
-        expect(exhibited_value).to eq []
+      it "will return nil" do
+        expect(exhibited_value).to be_nil
       end
     end
   end
@@ -1077,8 +1077,8 @@ RSpec.describe SolrDocument do
         document.acknowledgement
       end
 
-      it "will return an empty array" do
-        expect(acknowledgement_value).to eq []
+      it "will return nil" do
+        expect(acknowledgement_value).to be_nil
       end
     end
   end
@@ -1105,8 +1105,8 @@ RSpec.describe SolrDocument do
         document.cited_in
       end
 
-      it "will return an empty array" do
-        expect(cited_in_value).to eq []
+      it "will return nil" do
+        expect(cited_in_value).to be_nil
       end
     end
   end
@@ -1133,8 +1133,8 @@ RSpec.describe SolrDocument do
         document.reproduction
       end
 
-      it "will return an empty array" do
-        expect(reproduction_value).to eq []
+      it "will return nil" do
+        expect(reproduction_value).to be_nil
       end
     end
   end
@@ -1157,8 +1157,8 @@ RSpec.describe SolrDocument do
         document.has_subseries
       end
 
-      it "will return an empty array" do
-        expect(has_subseries_value).to eq []
+      it "will return nil" do
+        expect(has_subseries_value).to be_nil
       end
     end
   end
@@ -1181,8 +1181,8 @@ RSpec.describe SolrDocument do
         document.subseries_of
       end
 
-      it "will return an empty array" do
-        expect(subseries_of_value).to eq []
+      it "will return nil" do
+        expect(subseries_of_value).to be_nil
       end
     end
   end
@@ -1205,8 +1205,8 @@ RSpec.describe SolrDocument do
         document.available_from
       end
 
-      it "will return an empty array" do
-        expect(available_from_value).to eq []
+      it "will return nil" do
+        expect(available_from_value).to be_nil
       end
     end
   end
@@ -1229,8 +1229,8 @@ RSpec.describe SolrDocument do
         document.awards
       end
 
-      it "will return an empty array" do
-        expect(awards_value).to eq []
+      it "will return nil" do
+        expect(awards_value).to be_nil
       end
     end
   end
@@ -1253,8 +1253,8 @@ RSpec.describe SolrDocument do
         document.related_title
       end
 
-      it "will return an exmpty array" do
-        expect(related_title_value).to eq []
+      it "will return nil" do
+        expect(related_title_value).to be_nil
       end
     end
   end
@@ -1277,8 +1277,8 @@ RSpec.describe SolrDocument do
         document.issued_with
       end
 
-      it "will return an empty array" do
-        expect(issued_with_value).to eq []
+      it "will return nil" do
+        expect(issued_with_value).to be_nil
       end
     end
   end
@@ -1305,8 +1305,8 @@ RSpec.describe SolrDocument do
         document.frequency
       end
 
-      it "will return an empty array" do
-        expect(frequency_value).to eq []
+      it "will return nil" do
+        expect(frequency_value).to be_nil
       end
     end
   end
@@ -1333,8 +1333,8 @@ RSpec.describe SolrDocument do
         document.previous_frequency
       end
 
-      it "will return an empty array" do
-        expect(previous_frequency_value).to eq []
+      it "will return nil" do
+        expect(previous_frequency_value).to be_nil
       end
     end
   end
@@ -1357,8 +1357,8 @@ RSpec.describe SolrDocument do
         document.index_finding_aid_note
       end
 
-      it "will return an empty array" do
-        expect(index_finding_aid_note_value).to eq []
+      it "will return nil" do
+        expect(index_finding_aid_note_value).to be_nil
       end
     end
   end
@@ -1381,8 +1381,8 @@ RSpec.describe SolrDocument do
         document.genre
       end
 
-      it "will return an empty array" do
-        expect(genre_value).to eq []
+      it "will return nil" do
+        expect(genre_value).to be_nil
       end
     end
   end
@@ -1405,8 +1405,8 @@ RSpec.describe SolrDocument do
         document.place
       end
 
-      it "will return an empty array" do
-        expect(place_value).to eq []
+      it "will return nil" do
+        expect(place_value).to be_nil
       end
     end
   end
@@ -1429,8 +1429,8 @@ RSpec.describe SolrDocument do
         document.has_supplement
       end
 
-      it "will return an empty array" do
-        expect(supplement_value).to eq []
+      it "will return nil" do
+        expect(supplement_value).to be_nil
       end
     end
   end
@@ -1453,8 +1453,8 @@ RSpec.describe SolrDocument do
         document.supplement_to
       end
 
-      it "will return an empty array" do
-        expect(supplement_value).to eq []
+      it "will return nil" do
+        expect(supplement_value).to be_nil
       end
     end
   end
@@ -1477,8 +1477,8 @@ RSpec.describe SolrDocument do
         document.new_title
       end
 
-      it "will return an empty array" do
-        expect(title_value).to eq []
+      it "will return nil" do
+        expect(title_value).to be_nil
       end
     end
   end
@@ -1501,8 +1501,8 @@ RSpec.describe SolrDocument do
         document.old_title
       end
 
-      it "will return an empty array" do
-        expect(title_value).to eq []
+      it "will return nil" do
+        expect(title_value).to be_nil
       end
     end
   end
@@ -1525,8 +1525,8 @@ RSpec.describe SolrDocument do
         document.also_titled
       end
 
-      it "will return an empty array" do
-        expect(title_value).to eq []
+      it "will return nil" do
+        expect(title_value).to be_nil
       end
     end
   end
@@ -1549,8 +1549,8 @@ RSpec.describe SolrDocument do
         document.terms_of_use
       end
 
-      it "will return an empty array" do
-        expect(terms_value).to eq []
+      it "will return nil" do
+        expect(terms_value).to be_nil
       end
     end
   end
@@ -1608,8 +1608,8 @@ RSpec.describe SolrDocument do
         document.other_authors
       end
 
-      it "will return no other authors" do
-        expect(other_authors_value).to eq []
+      it "will return nil" do
+        expect(other_authors_value).to be_nil
       end
     end
   end

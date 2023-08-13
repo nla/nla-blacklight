@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Nla
   module Citations
     class CitationsService
@@ -14,13 +16,9 @@ module Nla
       end
 
       def cite_authors
-        cited_authors = []
-
-        @document.all_authors.each do |author|
-          cited_authors << author.to_s
+        @document.all_authors&.map do |author|
+          author.to_s
         end
-
-        cited_authors
       end
 
       def cite_pubdate

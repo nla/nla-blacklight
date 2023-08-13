@@ -142,14 +142,14 @@ group :development do
   # gem "spring"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
+  gem "rack-mini-profiler"
   # append ?pp=flamegraph to URL for flamegraphs
-  # gem "flamegraph"
-  # gem "stackprof"
+  gem "flamegraph"
+  gem "stackprof"
   # append ?pp=profile-memory to URL
   # ?pp=profile-gc to report on GC statistics
   # ?pp=analyze-memory to report on Object statistics
-  # gem "memory_profiler"
+  gem "memory_profiler"
 end
 
 group :test do

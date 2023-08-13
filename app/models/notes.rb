@@ -15,7 +15,7 @@ class Notes
     # 880 notes
     more_notes = get_more_notes
 
-    unless notes.empty? && more_notes.empty?
+    unless notes.nil? && more_notes.nil?
       {notes: notes, more_notes: more_notes}
     end
   end
@@ -37,7 +37,7 @@ class Notes
     notes << document.get_marc_derived_field("5843ab:588a", options: {alternate_script: false})
     notes << document.get_marc_derived_field("900a:995abdpy", options: {alternate_script: false})
 
-    notes.compact_blank.flatten
+    notes.compact_blank.flatten.presence
   end
 
   def get_more_notes
@@ -69,7 +69,7 @@ class Notes
     more_notes << get_related_notes_from_xml("a", "900")
     more_notes << get_related_notes_from_xml("abdpy", "995")
 
-    more_notes.compact_blank.flatten
+    more_notes.compact_blank.flatten.presence
   end
 
   def get_related_notes_from_xml(spec, qualifier)

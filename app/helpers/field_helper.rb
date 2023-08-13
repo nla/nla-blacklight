@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 module FieldHelper
   def paragraphs(document:, field:, config:, value:, context:)
-    elements = []
-
     if value.present?
+      elements = []
+
       elements << safe_join(value.map do |para|
         content_tag(:p, class: "mb-0") do
           link_urls para
         end
       end, "")
-    end
 
-    safe_join(elements, "")
+      safe_join(elements, "")
+    end
   end
 
   # Display linked items. If there is more than one item in the list
@@ -35,7 +37,7 @@ module FieldHelper
       end
     else
       link = value.first
-      elements += makelink(document: document, href: link[:href], text: link[:text], longtext: link[:text], extended_info: true)
+      elements += makelink(document: document, href: link[:href], text: link[:text], extended_info: true)
 
       if document.has_broken_links? && document.broken_links[link[:href]]
         elements << content_tag(:p, class: "small") do

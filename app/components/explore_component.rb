@@ -38,7 +38,7 @@ class ExploreComponent < ViewComponent::Base
 
   def google_books_script
     isbn_list = document.isbn_list
-    "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list.join(",")}#{isbn_list.present? ? "," : ""}#{google_isbn_list.join(",")}&callback=showGoogleBooksPreview"
+    "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list&.join(",")}#{isbn_list.present? ? "," : ""}#{google_isbn_list&.join(",")}&callback=showGoogleBooksPreview"
   end
 
   def render_online_shop?
@@ -57,27 +57,28 @@ class ExploreComponent < ViewComponent::Base
   private
 
   def get_online_shop
-    result = []
+    isbn_list = document.isbn_list&.map { |isn| isbn10_to_isbn13(isn) }
 
-    isbn_list = document.isbn_list.map { |isn| isbn10_to_isbn13(isn) }
-
-    unless isbn_list.empty?
-      res = Faraday.get("#{@nla_shop_url}?isbn13=#{isbn_list.join(",")}")
-      res_body = res.body.delete(" \t\r\n")
-      if res.status == 200 && res_body != ""
-        shop_response = JSON.parse(res.body)
-        isbn_list.each do |isn|
-          item = shop_response["InsertOnlineShop"][isn.to_s]
-          if item.present?
-            result << {thumbnail: item["thumbnail"], itemLink: item["itemLink"], price: item["price"]}
+    if isbn_list.present?
+      Rails.cache.fetch("nla_shop/#{document.id}", expires_in: 15.minutes) do
+        res = Faraday.get("#{@nla_shop_url}?isbn13=#{isbn_list.join(",")}")
+        res_body = res.body.delete(" \t\r\n")
+        if res.status == 200 && res_body != ""
+          result = []
+          shop_response = JSON.parse(res.body)
+          isbn_list.each do |isn|
+            item = shop_response["InsertOnlineShop"][isn.to_s]
+            if item.present?
+              result << {thumbnail: item["thumbnail"], itemLink: item["itemLink"], price: item["price"]}
+            end
           end
+          result
         end
       end
     end
-
-    result
-  rescue JSON::ParserError
-    result
+  rescue
+    Rails.logger.error("Error fetching online shop data for #{document.id}")
+    nil
   end
 
   def isbn10_to_isbn13(isbn)
@@ -105,36 +106,20 @@ class ExploreComponent < ViewComponent::Base
   end
 
   def lccn_list
-    result = []
-    if document.lccn.present?
-      document.lccn.each do |lccn|
-        result << lccn
-      end
+    document.lccn&.map do |lccn|
+      lccn
     end
-    result
   end
 
   def google_lccn_list
-    result = []
-
-    if lccn_list.present?
-      lccn_list.each do |lcn|
-        result << "LCCN:#{document.clean_isn(lcn)}"
-      end
+    lccn_list&.map do |lcn|
+      "LCCN:#{document.clean_isn(lcn)}"
     end
-
-    result
   end
 
   def google_isbn_list
-    result = []
-
-    if document.isbn_list.present?
-      document.isbn_list.each do |isn|
-        result << "ISBN:#{isn}"
-      end
+    document.isbn_list&.map do |isn|
+      "ISBN:#{isn}"
     end
-
-    result
   end
 end

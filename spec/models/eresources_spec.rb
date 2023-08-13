@@ -51,7 +51,7 @@ RSpec.describe Eresources do
           expect(cache.exist?("eresources_config")).to be(false)
 
           described_class.new
-          expect(cache.read("eresources_config")).to eq []
+          expect(cache.read("eresources_config")).to be_nil
         end
       end
       # rubocop:enable RSpec/NestedGroups

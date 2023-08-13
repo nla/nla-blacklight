@@ -31,6 +31,9 @@ class CatalogueServicesClient
       Rails.logger.error "Failed to retrieve request summary for #{folio_id}"
       DEFAULT_REQUEST_SUMMARY
     end
+  rescue => e
+    Rails.logger.error "get_request_summary - Failed to connect catalogue-service: #{e.message}"
+    DEFAULT_REQUEST_SUMMARY
   end
 
   def get_holdings(instance_id:)
@@ -42,13 +45,14 @@ class CatalogueServicesClient
     if res.status == 200
       if res.body.present?
         res.body["holdingsRecords"]
-      else
-        []
       end
     else
       Rails.logger.error "Failed to retrieve holdings for #{instance_id}"
       raise HoldingsRequestError.new("Failed to retrieve holdings for #{instance_id}")
     end
+  rescue => e
+    Rails.logger.error "get_holdings - Failed to connect catalogue-service: #{e.message}"
+    raise HoldingsRequestError.new("Failed to retrieve holdings for #{instance_id}")
   end
 
   def get_holding(instance_id:, holdings_id:, item_id:)
@@ -87,6 +91,9 @@ class CatalogueServicesClient
       Rails.logger.error message
       raise ItemRequestError.new(message)
     end
+  rescue => e
+    Rails.logger.error "create_request - Failed to connect catalogue-service: #{e.message}"
+    raise ItemRequestError.new("Failed to request item (#{request[:item_id]}) for requester (#{requester})")
   end
 
   def request_limit_reached?(requester:)
@@ -105,5 +112,8 @@ class CatalogueServicesClient
       # user will likely be unable to request items also (i.e. their account is broken).
       raise ItemRequestError.new(message)
     end
+  rescue => e
+    Rails.logger.error "request_limit_reached? - Failed to connect catalogue-service: #{e.message}"
+    raise ItemRequestError.new("Failed to check request limit for requester (#{requester})")
   end
 end

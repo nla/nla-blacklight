@@ -491,7 +491,7 @@ RSpec.describe FieldHelper do
       let(:value) { [] }
 
       it "does not render any paragraphs" do
-        expect(summary_value).to eq ""
+        expect(summary_value).to be_nil
       end
     end
 

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module RequestHelper
   def items_issues_in_use(holding)
     if holding["checkedOutItems"].present?
@@ -8,62 +10,45 @@ module RequestHelper
   def recent_item_issue_held(holding)
     if holding["holdingsStatements"].present?
       merge_statements_and_notes(holding["holdingsStatements"].last)
-    else
-      []
     end
   end
 
   def items_issues_held(holding)
-    merged = []
-
     # remove the last statement because it would've already been displayed as the
     # recent item/issue held
     issues = holding["holdingsStatements"].dup
     if issues.size > 1
       issues.pop
     end
-    issues.each do |statement|
-      merged << merge_statements_and_notes(statement)
+    merged_issues = issues.map do |statement|
+      merge_statements_and_notes(statement)
     end
-
-    compact_merged_array(merged)
+    compact_merged_array(merged_issues)
   end
 
   def supplements(holding)
-    merged = []
-
-    holding["holdingsStatementsForSupplements"].each do |statement|
-      merged << merge_statements_and_notes(statement)
+    sups = holding["holdingsStatementsForSupplements"].dup
+    merged_sups = sups&.map do |statement|
+      merge_statements_and_notes(statement)
     end
-
-    compact_merged_array(merged)
+    compact_merged_array(merged_sups)
   end
 
   def indexes(holding)
-    merged = []
-
-    holding["holdingsStatementsForIndexes"].each do |statement|
-      merged << merge_statements_and_notes(statement)
+    indexes = holding["holdingsStatementsForIndexes"].dup
+    merged_idx = indexes&.map do |statement|
+      merge_statements_and_notes(statement)
     end
 
-    compact_merged_array(merged)
+    compact_merged_array(merged_idx)
   end
 
   def merge_statements_and_notes(statements)
-    merged = []
-
-    merged << statements["statement"]
-    merged << statements["note"]
-
-    compact_merged_array(merged)
+    compact_merged_array([statements["statement"], statements["note"]])
   end
 
   def compact_merged_array(merged)
-    if merged.present?
-      merged.reject(&:empty?)
-    else
-      []
-    end
+    merged&.compact_blank.presence
   end
 
   def pickup_location_text(item)
