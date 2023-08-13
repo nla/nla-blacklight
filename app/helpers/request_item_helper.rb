@@ -2,8 +2,7 @@
 
 module RequestItemHelper
   def render_request?(document)
-    Flipper.enabled?(:requesting) &&
-      (!is_ned_item?(document) || has_online_copy?(document)) &&
+    (!is_ned_item?(document) || has_online_copy?(document)) &&
       !is_electronic_resource?(document)
   end
 

@@ -5,10 +5,6 @@ require "rails_helper"
 RSpec.describe CatalogueRecordActionsComponent, type: :component do
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485, format: ["Picture"]) }
 
-  before do
-    Flipper.enable(:requesting)
-  end
-
   it "renders the 'Order a copy' button" do
     render_inline(described_class.new(document: document))
 
@@ -27,19 +23,6 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
     it "does not render the 'Request' button" do
       allow(document).to receive_messages(copy_access: [], online_access: [{href: "https://nla.gov.au/nla.obj-123456789"}])
 
-      render_inline(described_class.new(document: document))
-
-      expect(page.text).not_to include("Request")
-    end
-  end
-
-  # feature flag: :requesting
-  context "when requesting is disabled" do
-    before do
-      Flipper.disable(:requesting)
-    end
-
-    it "does not render the 'Request' button" do
       render_inline(described_class.new(document: document))
 
       expect(page.text).not_to include("Request")
