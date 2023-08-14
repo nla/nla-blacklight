@@ -21,12 +21,14 @@ def scheduler.on_error(job, error)
   Rails.logger.flush
 end
 
-# This will return a CronJob model and starts 15 minutes after it's first scheduled, to allow for the system
-# to process migrations and warm up.
-scheduler.cron "59 1 * * *", name: "db:sessions:trim", overlap: false, first_at: 6.hours.from_now do |job|
-  Rails.logger.info("Starting schedule '#{job.name}': Trimming database sessions older than 30 days")
-  Rails.logger.info("Last run at #{job.previous_time}. Next run will be around #{job.next_time}.")
-  Rake::Task["db:sessions:trim"].invoke
-  Rake::Task["db:sessions:trim"].reenable
-  Rails.logger.flush
+if scheduler.up?
+  # This will return a CronJob model and starts 15 minutes after it's first scheduled, to allow for the system
+  # to process migrations and warm up.
+  scheduler.cron "59 1 * * *", name: "db:sessions:trim", overlap: false, first_at: 6.hours.from_now do |job|
+    Rails.logger.info("Starting schedule '#{job.name}': Trimming database sessions older than 30 days")
+    Rails.logger.info("Last run at #{job.previous_time}. Next run will be around #{job.next_time}.")
+    Rake::Task["db:sessions:trim"].invoke
+    Rake::Task["db:sessions:trim"].reenable
+    Rails.logger.flush
+  end
 end

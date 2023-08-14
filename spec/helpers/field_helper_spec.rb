@@ -180,10 +180,7 @@ RSpec.describe FieldHelper do
     context "when there are only non-880 notes" do
       context "with a single non-880 note" do
         let(:value) do
-          [{
-            notes: ["Non-880 note A"],
-            more_notes: []
-          }]
+          ["Non-880 note A"]
         end
 
         it "generates plain text" do
@@ -193,10 +190,7 @@ RSpec.describe FieldHelper do
 
       context "with multiple non-880 notes" do
         let(:value) do
-          [{
-            notes: ["Non-880 note A", "Non-880 note B"],
-            more_notes: []
-          }]
+          ["Non-880 note A", "Non-880 note B"]
         end
 
         it "generates an unordered list" do
@@ -208,10 +202,7 @@ RSpec.describe FieldHelper do
     context "when there are only 880 notes" do
       context "with a single 880 note" do
         let(:value) do
-          [{
-            notes: [],
-            more_notes: ["880 note A"]
-          }]
+          ["880 note A"]
         end
 
         it "generates plain text" do
@@ -221,10 +212,7 @@ RSpec.describe FieldHelper do
 
       context "with multiple 880 notes" do
         let(:value) do
-          [{
-            notes: [],
-            more_notes: ["880 note A", "880 note B"]
-          }]
+          ["880 note A", "880 note B"]
         end
 
         it "generates an unordered list" do
@@ -236,10 +224,7 @@ RSpec.describe FieldHelper do
     context "when there are both non-800 and 880 notes" do
       context "with a single non-880 note" do
         let(:value) do
-          [{
-            notes: ["non-880 Note A"],
-            more_notes: ["880 Note 1", "880 Note 2"]
-          }]
+          ["non-880 Note A", "880 Note 1", "880 Note 2"]
         end
 
         it "generates an unordered list" do
@@ -249,10 +234,7 @@ RSpec.describe FieldHelper do
 
       context "with a single 880 note" do
         let(:value) do
-          [{
-            notes: ["non-880 Note A", "non-880 Note B"],
-            more_notes: ["880 Note 1"]
-          }]
+          ["non-880 Note A", "non-880 Note B", "880 Note 1"]
         end
 
         it "generates an unordered list" do
@@ -262,10 +244,7 @@ RSpec.describe FieldHelper do
 
       context "with multiple non-880 and 880 notes" do
         let(:value) do
-          [{
-            notes: ["non-880 Note A", "non-880 Note B"],
-            more_notes: ["880 Note 1", "880 Note 2"]
-          }]
+          ["non-880 Note A", "non-880 Note B", "880 Note 1", "880 Note 2"]
         end
 
         it "generates an unordered list" do
@@ -276,7 +255,7 @@ RSpec.describe FieldHelper do
 
     context "when there is a URL in the note" do
       context "with a single note" do
-        let(:value) { [{notes: ["Online copy found at https://google.com"], more_notes: []}] }
+        let(:value) { ["Online copy found at https://google.com"] }
 
         it "generates a link to the online copy" do
           expect(notes_values).to eq "Online copy found at <a href=\"https://google.com\">https://google.com</a>"
@@ -289,10 +268,7 @@ RSpec.describe FieldHelper do
 
       context "with multiple notes" do
         let(:value) do
-          [{
-            notes: ["Online copy found at https://google.com"],
-            more_notes: ["Author website https://example.com"]
-          }]
+          ["Online copy found at https://google.com", "Author website https://example.com"]
         end
 
         it "generates an unordered list" do
@@ -301,7 +277,7 @@ RSpec.describe FieldHelper do
       end
 
       context "with a URL containing a query string" do
-        let(:value) { [{notes: ["Online copy found at https://example.com?author=Joe+Smith&title=Naming Is Hard"], more_notes: []}] }
+        let(:value) { ["Online copy found at https://example.com?author=Joe+Smith&title=Naming Is Hard"] }
 
         it "is expected to include a link to the resource" do
           expect(notes_values).to eq "Online copy found at <a href=\"https://example.com?author=Joe+Smith&title=Naming\">https://example.com?author=Joe+Smith&title=Naming</a> Is Hard"

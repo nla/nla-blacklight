@@ -115,6 +115,9 @@ gem "yabeda-puma-plugin"
 gem "yabeda-http_requests"
 gem "yabeda-prometheus"
 
+gem "derailed_benchmarks"
+gem "stackprof"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
@@ -145,7 +148,6 @@ group :development do
   gem "rack-mini-profiler"
   # append ?pp=flamegraph to URL for flamegraphs
   gem "flamegraph"
-  gem "stackprof"
   # append ?pp=profile-memory to URL
   # ?pp=profile-gc to report on GC statistics
   # ?pp=analyze-memory to report on Object statistics

@@ -67,21 +67,21 @@ class SolrDocument
   end
 
   def marc_xml
-    # Returns a REXML::Document
-    @marc_xml ||= marc_rec.to_xml
+    @marc_xml ||= Nokogiri::XML.parse(fetch("marc_ss")).remove_namespaces!
   end
 
   def get_marc_datafields_from_xml(xpath)
-    REXML::XPath.match(marc_xml, xpath)
+    marc_xml.xpath(xpath)
+    # REXML::XPath.match(marc_xml, xpath)
   end
 
   # Get data from the full marc record contained in the solr document using a Traject spec.
   def get_marc_derived_field(spec, options: {separator: " "}, merge_880: true)
     extractor = Traject::MarcExtractor.cached(spec, options)
     data = extractor.extract(marc_rec)
-    if merge_880
-      data = merge_880 data
-    end
+    # if merge_880
+    #   data = merge_880 data
+    # end
     GC.start # encourage the garbage collector to run
     data.presence
   end
@@ -94,12 +94,12 @@ class SolrDocument
   # Results which don't have linked 880 fields will not have the prefix, so we
   # return the datafields as a single dimensional array.
   def merge_880(datafields)
-    if datafields.find { |d| d.start_with? "880" }.present?
-      datafields.map do |d|
-        d[d.index(" ")...-1].strip
+    datafields.map do |d|
+      if d.start_with? "880 "
+        d[d.index("880 ")...-1].strip
+      else
+        d
       end
-    else
-      [*datafields]
     end
   end
 
@@ -556,7 +556,7 @@ class SolrDocument
   end
 
   def get_edition
-    get_marc_derived_field("250")
+    get_marc_derived_field("250ab")
   end
 
   def get_isbn(tag:, sfield:, qfield:, use_880: false)

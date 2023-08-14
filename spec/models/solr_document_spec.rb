@@ -149,7 +149,7 @@ RSpec.describe SolrDocument do
       end
 
       it "retrieves the note" do
-        expect(notes_value).to eq({notes: ["Cover title."], more_notes: nil})
+        expect(notes_value).to eq(["Cover title."])
       end
     end
 
@@ -160,13 +160,13 @@ RSpec.describe SolrDocument do
       end
 
       it "fetches non-880 and 880 notes" do
-        expect(notes_value).to eq({
-          notes: ["Originally produced as a motion picture in 1965.",
-            "Single-sided single layer; aspect ratio 16:9.",
-            "Title from disc label.",
-            "Based on the work Nippon military march by Dan Ikuma."],
-          more_notes: ["Based on the work Nippon military march by 團伊玖磨."]
-        })
+        expect(notes_value).to eq([
+          "Originally produced as a motion picture in 1965.",
+          "Single-sided single layer; aspect ratio 16:9.",
+          "Title from disc label.",
+          "Based on the work Nippon military march by Dan Ikuma.",
+          "Based on the work Nippon military march by 團伊玖磨."
+        ])
       end
     end
 
@@ -330,11 +330,11 @@ RSpec.describe SolrDocument do
       end
 
       it "will return both editions" do
-        expect(edition_value).to eq ["Chu ban", "初版"]
+        expect(edition_value).to eq ["Chu ban.", "初版."]
       end
 
       it "will return the 880 value first" do
-        expect(edition_value.first).to eq "Chu ban"
+        expect(edition_value.first).to eq "Chu ban."
       end
     end
   end

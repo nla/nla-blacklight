@@ -113,10 +113,8 @@ module FieldHelper
   # an unordered list if there are multiple notes. URLs in notes will
   # be turned into links.
   def notes(document:, field:, config:, value:, context:)
-    notes_hash = value.first
-    combined_notes = [*notes_hash[:notes], *notes_hash[:more_notes]]
-    if combined_notes.present?
-      elements = [*build_notes_list(combined_notes)]
+    if value.present?
+      elements = [*build_notes_list(value)]
       safe_join(elements.compact_blank, "\n")
     end
   end
