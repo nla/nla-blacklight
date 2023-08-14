@@ -378,6 +378,7 @@ GEM
       marc (~> 1.0)
     marcel (1.0.2)
     matrix (0.4.2)
+    memo_wise (1.7.0)
     memory_profiler (1.0.1)
     method_source (1.0.0)
     mini_histogram (0.3.1)
@@ -743,6 +744,7 @@ DEPENDENCIES
   jquery-rails
   json-jwt (~> 1.15)
   lograge
+  memo_wise
   memory_profiler
   mock_redis (~> 0.36.0)
   mysql2 (~> 0.5)

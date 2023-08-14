@@ -115,8 +115,10 @@ gem "yabeda-puma-plugin"
 gem "yabeda-http_requests"
 gem "yabeda-prometheus"
 
-gem "derailed_benchmarks"
-gem "stackprof"
+gem "derailed_benchmarks", group: :development
+gem "stackprof", group: :development
+
+gem "memo_wise"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -5,6 +5,8 @@ require "rexml/document"
 require "rexml/xpath"
 
 class SolrDocument
+  prepend MemoWise
+
   include Blacklight::Solr::Document
   include REXML
   include Blacklight::Configurable
@@ -39,28 +41,27 @@ class SolrDocument
   # handler doesn't search across shards in Solr 8.7.
   # TODO: In Solr 8.8 the request handler searches across shards and this logic should be updated when Solr is upgraded.
   def more_like_this
-    Rails.cache.fetch("mlt_#{id}", expires_in: 15.minutes) do
-      params = {
-        q: "{!mlt qf=call_number_tsim,title_tsim,author_search_tsim,subject_tsimv,published_ssim,language_ssim boost=true}#{id}",
-        fl: "id,title_tsim,format",
-        indent: "off",
-        rows: 5
-      }
-      search_repository = Blacklight.repository_class.new(blacklight_config)
-      search_response = search_repository.search(params)
+    params = {
+      q: "{!mlt qf=call_number_tsim,title_tsim,author_search_tsim,subject_tsimv,published_ssim,language_ssim boost=true}#{id}",
+      fl: "id,title_tsim,format",
+      indent: "off",
+      rows: 5
+    }
+    search_repository = Blacklight.repository_class.new(blacklight_config)
+    search_response = search_repository.search(params)
 
-      result = []
-      response = search_response["response"]
-      if response.present?
-        if response["numFound"] > 0
-          response["docs"].each do |doc|
-            result << SolrDocument.new(doc)
-          end
+    result = []
+    response = search_response["response"]
+    if response.present?
+      if response["numFound"] > 0
+        response["docs"].each do |doc|
+          result << SolrDocument.new(doc)
         end
       end
-      result
     end
+    result
   end
+  memo_wise :more_like_this
 
   def marc_rec
     @marc_rec ||= to_marc
@@ -76,31 +77,10 @@ class SolrDocument
   end
 
   # Get data from the full marc record contained in the solr document using a Traject spec.
-  def get_marc_derived_field(spec, options: {separator: " "}, merge_880: true)
-    extractor = Traject::MarcExtractor.cached(spec, options)
-    data = extractor.extract(marc_rec)
-    # if merge_880
-    #   data = merge_880 data
-    # end
-    GC.start # encourage the garbage collector to run
+  def get_marc_derived_field(spec, options: {separator: " "})
+    data = Traject::MarcExtractor.new(spec, options).extract(marc_rec)
+    # GC.start # encourage the garbage collector to run
     data.presence
-  end
-
-  # `get_marc_derived_fields` when finding linked 880 fields, will prefix the
-  # results array with the tag name and subfields.
-  # We don't want to display the tag and subfields in the UI, so this will look for the first
-  # space in the string after the prefix and strip the prefixes from all the elements in the
-  # results array.
-  # Results which don't have linked 880 fields will not have the prefix, so we
-  # return the datafields as a single dimensional array.
-  def merge_880(datafields)
-    datafields.map do |d|
-      if d.start_with? "880 "
-        d[d.index("880 ")...-1].strip
-      else
-        d
-      end
-    end
   end
 
   def title_start
@@ -108,13 +88,14 @@ class SolrDocument
   end
 
   def description
-    date_fields_array = get_marc_derived_field("2603abc:264|*0|3abc:264|*1|3abc:264|*2|3abc:264|*4|3abc")
+    date_fields_array = get_marc_derived_field("2603abc:264|*0|3abc:264|*1|3abc:264|*2|3abc:264|*4|3abc") || []
     description_fields_array = get_marc_derived_field("300abcefg:507ab:753abc:755axyz") || []
     date_fields_array&.each do |s|
       s.gsub!(/[, .\\;]*$|^[, .\/;]*/, "")
     end
-    [*date_fields_array, *description_fields_array].compact_blank.presence
+    (date_fields_array + description_fields_array).compact_blank.presence
   end
+  memo_wise :description
 
   def online_access
     get_online_access_urls
@@ -143,10 +124,12 @@ class SolrDocument
   def series
     Series.new(self).values
   end
+  memo_wise :series
 
   def notes
     Notes.new(self).values
   end
+  memo_wise :notes
 
   def copyright_status
     copyright_info ||= get_copyright_status
@@ -157,6 +140,7 @@ class SolrDocument
       copyright_info
     end
   end
+  memo_wise :copyright_status
 
   def form_of_work
     get_marc_derived_field("380a")
@@ -187,12 +171,14 @@ class SolrDocument
   def isbn
     get_isbn(tag: "020", sfield: "a", qfield: "q", use_880: true)
   end
+  memo_wise :isbn
 
   def isbn_list
     isbn&.map do |isn|
       clean_isn(isn)
     end
   end
+  memo_wise :isbn_list
 
   def invalid_isbn
     get_isbn(tag: "020", sfield: "z", qfield: "q", use_880: true)
@@ -217,15 +203,14 @@ class SolrDocument
   def related_records
     get_related_records
   end
+  memo_wise :related_records
 
   def printer
     get_marc_derived_field("260efg:264|*3|3abc")
   end
 
   def full_contents
-    data = get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
-
-    format_contents data
+    format_contents get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
   end
 
   def technical_details
@@ -237,15 +222,11 @@ class SolrDocument
   end
 
   def partial_contents
-    data = get_marc_derived_field("505|2*|agrtu")
-
-    format_contents data
+    format_contents get_marc_derived_field("505|2*|agrtu")
   end
 
   def incomplete_contents
-    data = get_marc_derived_field("505|1*|agrtu")
-
-    format_contents data
+    format_contents get_marc_derived_field("505|1*|agrtu")
   end
 
   def credits
@@ -393,9 +374,9 @@ class SolrDocument
   end
 
   def lccn
-    data = get_marc_derived_field("010a", options: {alternate_script: false})
-    data&.map { |d| d.gsub(/\s+/, "") }
+    get_marc_derived_field("010a", options: {alternate_script: false})&.map { |d| d.strip! || d }
   end
+  memo_wise :lccn
 
   def has_eresources?
     eresource_urls = []
@@ -422,6 +403,7 @@ class SolrDocument
 
     eresource_urls.present?
   end
+  memo_wise :has_eresources?
 
   def clean_isn(isn)
     isn.gsub(/[\s-]+/, '\1')
@@ -434,22 +416,24 @@ class SolrDocument
     if data.present?
       publication_place = data.join(" ")
       if publication_place.end_with?(":")
-        publication_place = publication_place.chop.strip
+        publication_place.chop!
       end
-      publication_place
+      publication_place.strip
     end
   end
+  memo_wise :publication_place
 
   def publisher
     data = get_marc_derived_field("260b", options: {alternate_script: false}) || get_marc_derived_field("264b", options: {alternate_script: false})
     if data.present?
       publisher = data.join(" ")
       if publisher.end_with?(",")
-        publisher = publisher.chop.strip
+        publisher.chop!
       end
-      publisher
+      publisher.strip
     end
   end
+  memo_wise :publisher
 
   def pi
     data = get_marc_derived_field("856u")
@@ -460,12 +444,13 @@ class SolrDocument
       end
     end
   end
+  memo_wise :pi
 
   def life_dates
     data = get_marc_derived_field("362a")
     if data.present?
       clean_dates = data.map do |date|
-        date&.chomp(".")
+        date&.chomp!(".") || date
       end
       [clean_dates.join(" ")]
     end
@@ -474,6 +459,7 @@ class SolrDocument
   def finding_aid_url
     get_marc_derived_field("856u")
   end
+  memo_wise :finding_aid_url
 
   def time_coverage
     if single_time_coverage.present?
@@ -488,9 +474,10 @@ class SolrDocument
   def publication_date
     data = get_marc_derived_field("260c", options: {alternate_script: false})
     data&.map do |date|
-      date.chomp(".")
+      date.chomp!(".") || date
     end
   end
+  memo_wise :publication_date
 
   private
 
@@ -612,13 +599,7 @@ class SolrDocument
 
   def get_related_records
     ids = get_marc_derived_field("0359")
-    collection_id = ""
-    ids&.each do |id|
-      if id.match(/\(.*\)/)
-        collection_id = id
-        break
-      end
-    end
+    collection_id = ids&.first
 
     related_records = []
 
@@ -675,14 +656,17 @@ class SolrDocument
   def single_time_coverage
     clean_time_coverage get_marc_derived_field("045|0*|b")
   end
+  memo_wise :single_time_coverage
 
   def multiple_time_coverage
     clean_time_coverage get_marc_derived_field("045|1*|b")
   end
+  memo_wise :multiple_time_coverage
 
   def ranged_time_coverage
     clean_time_coverage get_marc_derived_field("045|2*|b")
   end
+  memo_wise :ranged_time_coverage
 
   def clean_time_coverage(dates)
     dates&.map do |date|

@@ -3,6 +3,8 @@
 require "addressable/uri"
 
 class SearchLink
+  prepend MemoWise
+
   include ActiveModel::Model
 
   attr_reader :links
@@ -51,6 +53,7 @@ class SearchLink
 
     result.compact_blank.presence
   end
+  memo_wise :select_urls
 
   def build_google_query(url)
     unless url.empty?

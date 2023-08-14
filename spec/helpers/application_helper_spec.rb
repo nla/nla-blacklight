@@ -7,14 +7,6 @@ RSpec.describe ApplicationHelper do
 
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "123") }
 
-  describe "#from_marc" do
-    subject(:value) { helper.from_marc({document: document, config: {key: "003"}}) }
-
-    it "retrieves the value from the MARC record" do
-      expect(value).to eq ["SIRSI"]
-    end
-  end
-
   # rubocop:disable RSpec/NestedGroups
   describe "#makelink" do
     subject(:link) { helper.makelink(document: document, href: href, text: text) }

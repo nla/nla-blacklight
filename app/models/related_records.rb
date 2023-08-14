@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class RelatedRecords
+  prepend MemoWise
+
   include ActiveModel::Model
   include Blacklight::Configurable
 
@@ -17,10 +19,12 @@ class RelatedRecords
   def in_collection?
     (@collection_id.present? && has_children?) || @parent_id.present?
   end
+  memo_wise :in_collection?
 
   def collection_name
-    @collection_name ||= derive_collection_name
+    @collection_name = derive_collection_name
   end
+  memo_wise :collection_name
 
   def derive_collection_name
     title = []
@@ -67,7 +71,7 @@ class RelatedRecords
   end
 
   def clean_id(id)
-    id.gsub(/[[:space:]]/, "")
+    id&.gsub(/[[:space:]]/, "")
   end
 
   private
