@@ -49,7 +49,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.14.0"
+gem "hiredis-client", "~> 0.15.0"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.0"
@@ -107,13 +107,18 @@ gem "flipper-ui", "~> 0.28.0"
 gem "uri", "~> 0.12.1"
 
 # Before a release, point these gem at a tag, instead of the `main` branch.
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", tag: "0.1.5"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
 # the gems below are in the same directory. Adjust if needed to match your local dev environment.
 # gem "nla-blacklight_common", path: "../nla-blacklight_common"
 # gem "bento_search", path: "../bento_search"
+
+gem "yabeda-rails"
+gem "yabeda-puma-plugin"
+gem "yabeda-http_requests"
+gem "yabeda-prometheus"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -142,20 +147,20 @@ group :development do
   # gem "spring"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  gem "rack-mini-profiler"
+  # gem "rack-mini-profiler"
   # append ?pp=flamegraph to URL for flamegraphs
-  gem "flamegraph"
-  gem "stackprof"
+  # gem "flamegraph"
+  # gem "stackprof"
   # append ?pp=profile-memory to URL
   # ?pp=profile-gc to report on GC statistics
   # ?pp=analyze-memory to report on Object statistics
-  gem "memory_profiler"
+  # gem "memory_profiler"
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver"
+  gem "selenium-webdriver", "~> 4.11"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"

@@ -1,5 +1,62 @@
 # Changelog
 
+## [2.4.0](https://github.com/nla/nla-blacklight/compare/2.3.4...2.4.0) (2023-08-10)
+
+
+### Features
+
+* export prometheus stats via yabeda ([4733c20](https://github.com/nla/nla-blacklight/commit/4733c20bb1ed31b59e4adfecb909d0eceb063767))
+* remove rails_performance to reduce Redis usage ([f8726e0](https://github.com/nla/nla-blacklight/commit/f8726e02254428c8c0b25aa350caed2c227eb429))
+
+
+### Bug Fixes
+
+* change green text in modal to grey ([3b8d400](https://github.com/nla/nla-blacklight/commit/3b8d4007bb9f03c0bb84a0361f7260bc1743dc48))
+* override range limit template to set styles ([821f487](https://github.com/nla/nla-blacklight/commit/821f48740fbe87a78fee5b1208366516abe80db4))
+* reconfigure puma_worker_killer frequency ([67358e5](https://github.com/nla/nla-blacklight/commit/67358e55eaca8fd84ce3314c6e23a01292880a3c))
+* remove initializer for rack-mini-profiler ([f9ff012](https://github.com/nla/nla-blacklight/commit/f9ff012dc572f40a1dc057f4b6a1e5cb7f364e96))
+* remove testing code ([eeb2482](https://github.com/nla/nla-blacklight/commit/eeb2482d2ed956440cb87c4e4b34e1e11e2ff6e6))
+* remove typo ([b74127a](https://github.com/nla/nla-blacklight/commit/b74127ac81c5608f1237496a67917087bc62d0c1))
+* return value when no thumbnail returned ([a9b962c](https://github.com/nla/nla-blacklight/commit/a9b962cbad3a649687af7081627ac9e168b67a04))
+
+
+### Reverts
+
+* remove puma_worker_killer ([b091ccc](https://github.com/nla/nla-blacklight/commit/b091ccce7c606e4eb583528f60228babb4b8a924))
+
+
+### Miscellaneous
+
+* **deps:** bump hiredis-client from 0.14.1 to 0.15.0 ([9b7e14e](https://github.com/nla/nla-blacklight/commit/9b7e14e7b6797c9749694243e77c2e72c334f550))
+* prepare release ([ff3d3d4](https://github.com/nla/nla-blacklight/commit/ff3d3d4e4ad58a18f6cc73d1bc32ff8d0202de4d))
+* reconfigure puma_worker_killer ([b58e183](https://github.com/nla/nla-blacklight/commit/b58e18377cfce42eef83601b5ec8dd183c633ff1))
+* upgrade dependencies ([978efe8](https://github.com/nla/nla-blacklight/commit/978efe801e011459f24adbb0533ed2eaae02b4eb))
+
+
+### Code Refactoring
+
+* make thumbnail fetch failure a warning and move to helper ([c1b9c26](https://github.com/nla/nla-blacklight/commit/c1b9c269425b8f721784a1e54825dc1b2ae7bdf0))
+
+
+### Tests
+
+* correct rubocop errors ([c00ae21](https://github.com/nla/nla-blacklight/commit/c00ae21bdaf2d88aaed6bc7ae05afdfaf1413da1))
+
+## [2.3.4](https://github.com/nla/nla-blacklight/compare/2.3.3...2.3.4) (2023-08-08)
+
+
+### Miscellaneous
+
+* prepare hotfix ([9592718](https://github.com/nla/nla-blacklight/commit/95927189300e387b4bf07379ffbc7f072bf4e9f0))
+
+## [2.3.3](https://github.com/nla/nla-blacklight/compare/2.3.2...2.3.3) (2023-08-07)
+
+
+### Miscellaneous
+
+* prepare hotfix ([470c589](https://github.com/nla/nla-blacklight/commit/470c58949c773ab72ea5de780da95c10fe6960d7))
+* release 2.3.3 ([ada11c6](https://github.com/nla/nla-blacklight/commit/ada11c60e2515e6e0b1b5c2810f00143500917ad))
+
 ## [2.3.2](https://github.com/nla/nla-blacklight/compare/2.3.1...2.3.2) (2023-08-03)
 
 
