@@ -389,7 +389,7 @@ RSpec.describe FieldHelper do
       helper.subject_search_list(document: document, field: "subject", config: config, value: value, context: "show")
     end
 
-    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, subject: value) }
+    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, subject: value, subject_ssim: value) }
 
     context "when there is a single subject" do
       let(:value) do
