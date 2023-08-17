@@ -67,7 +67,12 @@ class SearchLink
 
       # Uses Addressable::URI because the standard URI library cannot
       # handle query strings in the URL when parsing for the file extension
-      uri = Addressable::URI.parse(url) || nil
+      begin
+        uri = Addressable::URI.parse(url) || nil
+      rescue Addressable::URI::InvalidURIError
+        uri = nil
+      end
+
       unless uri.nil?
         file_extension = uri.extname
         unless file_extension.nil?
@@ -90,8 +95,11 @@ class SearchLink
   def extract_domain(url)
     result = ""
     unless url.empty?
-      host = Addressable::URI.parse(url).host || ""
-
+      begin
+        host = Addressable::URI.parse(url).host || ""
+      rescue Addressable::URI::InvalidURIError
+        host = ""
+      end
       if host.present?
         segments = host.split(".").reverse
 
