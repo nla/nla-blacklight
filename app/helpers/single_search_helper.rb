@@ -58,7 +58,12 @@ module SingleSearchHelper
   end
 
   def is_catalogued?(url)
-    uri = Addressable::URI.parse(url) || nil
+    begin
+      uri = Addressable::URI.parse(url) || nil
+    rescue Addressable::URI::InvalidURIError
+      uri = nil
+    end
+
     if uri.nil?
       false
     else
