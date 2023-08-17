@@ -6,16 +6,18 @@ class MapSearchService
   FORMAT = "Map"
 
   def determine_url(id:, format:)
-    unless id.nil? || format.nil?
-      config = Rails.application.config_for(:catalogue)
+    Rails.cache.fetch("map_search_url/#{id}#{format}", expires_in: 1.hour, skip_nil: true) do
+      unless id.nil? || format.nil?
+        config = Rails.application.config_for(:catalogue)
 
-      mapsearch_url = config.mapsearch[:search_url]
-      if mapsearch_url.present? && format.include?(FORMAT)
-        response = Faraday.get("#{mapsearch_url}#{id}")
-        unless response.status != 200
-          body = JSON.parse(response.body)
-          if body["results"]["response"]["numFound"] > 0
-            "#{config.mapsearch[:url]}#{id}"
+        mapsearch_url = config.mapsearch[:search_url]
+        if mapsearch_url.present? && format.include?(FORMAT)
+          response = Faraday.get("#{mapsearch_url}#{id}")
+          unless response.status != 200
+            body = JSON.parse(response.body)
+            if body["results"]["response"]["numFound"] > 0
+              "#{config.mapsearch[:url]}#{id}"
+            end
           end
         end
       end

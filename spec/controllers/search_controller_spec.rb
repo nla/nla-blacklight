@@ -1,11 +1,8 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-require_relative "../shared_examples/bento_query_concern_spec"
 
 RSpec.describe SearchController do
-  it_behaves_like "BentoQueryConcern", described_class
-
   describe "GET index" do
     context "when no query is provided" do
       it "returns http success" do

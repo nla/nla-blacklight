@@ -201,8 +201,8 @@ RSpec.describe SolrDocument do
         )
         .to_return(status: 200, body: IO.read("spec/files/copyright/service_response.xml").to_s, headers: {})
 
-      expect(copyright_info_value.info).not_to be_nil
-      expect(copyright_info_value.info["contextMsg"]).to eq "1.1"
+      expect(copyright_info_value).not_to be_nil
+      expect(copyright_info_value["contextMsg"]).to eq "1.1"
     end
 
     context "when no copyright info is returned by the SOA" do

@@ -3,15 +3,15 @@
 class CopyrightStatusComponent < ViewComponent::Base
   include CopyrightStatusHelper
 
-  def initialize(copyright:)
+  def initialize(copyright)
     @copyright = copyright
   end
 
   def info
-    @copyright.info
+    @copyright
   end
 
   def render?
-    @copyright.present? && info.present? && info["contextMsg"].present?
+    @copyright.present? && @copyright["contextMsg"].present?
   end
 end

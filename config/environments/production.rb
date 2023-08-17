@@ -56,17 +56,17 @@ Rails.application.configure do
   config.log_tags = [:request_id]
 
   # Use a different cache store in production.
-  # config.cache_store = :null_store
-  config.cache_store = :redis_cache_store, {
-    driver: :hiredis,
-    url: ENV["REDIS_URL"],
-    timeout: 30,
-    reconnect_attempts: 1,
-    expires_in: 1.hour,
-    namespace: "blacklight",
-    pool_size: 5,
-    pool_timeout: 5
-  }
+  config.cache_store = :null_store
+  # config.cache_store = :redis_cache_store, {
+  #   driver: :hiredis,
+  #   url: ENV["REDIS_URL"],
+  #   timeout: 30,
+  #   reconnect_attempts: 1,
+  #   expires_in: 1.hour,
+  #   namespace: "blacklight",
+  #   pool_size: 5,
+  #   pool_timeout: 5
+  # }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter     = :resque

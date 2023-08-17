@@ -77,7 +77,7 @@ RSpec.describe ExploreComponent, type: :component do
       end
 
       it "separates the ISBNs with 'OR'" do
-        expect(trove_query_value).to include "+OR+"
+        expect(trove_query_value).to include "%20OR%20"
       end
     end
 
@@ -89,7 +89,7 @@ RSpec.describe ExploreComponent, type: :component do
       let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485", lc_callnum_ssim: ["mc SUDOC Y 1.1/7:107-19"]) }
 
       it "includes the callnumber in the Trove URL" do
-        expect(trove_query_value).to include "%22mc+SUDOC+Y+1.1%2F7%3A107-19%22"
+        expect(trove_query_value).to include "%22mc%20SUDOC%20Y%201.1%2F7%3A107-19%22"
       end
     end
 
@@ -101,7 +101,7 @@ RSpec.describe ExploreComponent, type: :component do
       let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485", lc_callnum_ssim: ["mc SUDOC Y 1.1/7:107-19", "PIC Drawer 2251 #S2492"]) }
 
       it "separates the callnumbers with 'OR'" do
-        expect(trove_query_value).to include "%22mc+SUDOC+Y+1.1%2F7%3A107-19%22+OR+%22PIC+Drawer+2251+%23S2492%22"
+        expect(trove_query_value).to include "%22mc%20SUDOC%20Y%201.1%2F7%3A107-19%22%20OR%20%22PIC%20Drawer%202251%20%23S2492%22"
       end
     end
   end

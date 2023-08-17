@@ -62,10 +62,10 @@ module ApplicationHelper
   def error_feedback_url(id)
     url = ENV.fetch("FEEDBACK_ERROR_URL", "#")
     if url != "#"
-      url = "#{url}&qnudftb17=#{request.original_url}&qnudftb11=#{id}"
+      "#{url}&qnudftb17=#{request.original_url}&qnudftb11=#{id}"
+    else
+      url
     end
-
-    url
   end
 
   private

@@ -22,7 +22,7 @@ class SolrDocument
   end
 
   field_semantics.merge!(
-    title: "title_ssm",
+    title: "title_tsim",
     author: "author_ssm",
     language: "language_ssim",
     format: "format"
@@ -50,16 +50,16 @@ class SolrDocument
     search_repository = Blacklight.repository_class.new(blacklight_config)
     search_response = search_repository.search(params)
 
-    result = []
     response = search_response["response"]
     if response.present?
       if response["numFound"] > 0
+        result = []
         response["docs"].each do |doc|
-          result << SolrDocument.new(doc)
+          result << {id: doc["id"], title: doc["title_tsim"].first}
         end
+        result
       end
     end
-    result
   end
   memo_wise :more_like_this
 
@@ -72,12 +72,11 @@ class SolrDocument
   end
 
   def get_marc_datafields_from_xml(xpath)
-    marc_xml.xpath(xpath)
-    # REXML::XPath.match(marc_xml, xpath)
+    marc_xml.xpath(xpath).presence
   end
 
   # Get data from the full marc record contained in the solr document using a Traject spec.
-  def get_marc_derived_field(spec, options: {separator: " "})
+  def get_marc_derived_field(spec, options: {})
     data = Traject::MarcExtractor.new(spec, options).extract(marc_rec)
     # GC.start # encourage the garbage collector to run
     data.presence
@@ -88,12 +87,19 @@ class SolrDocument
   end
 
   def description
-    date_fields_array = get_marc_derived_field("2603abc:264|*0|3abc:264|*1|3abc:264|*2|3abc:264|*4|3abc") || []
-    description_fields_array = get_marc_derived_field("300abcefg:507ab:753abc:755axyz") || []
-    date_fields_array&.each do |s|
-      s.gsub!(/[, .\\;]*$|^[, .\/;]*/, "")
+    date_fields_array = get_marc_derived_field("2603abc:264|*0|3abc:264|*1|3abc:264|*2|3abc:264|*4|3abc")
+    description_fields_array = get_marc_derived_field("300abcefg:507ab:753abc:755axyz")
+    if date_fields_array.present?
+      date_fields_array.map do |s|
+        s.gsub!(/[, .\\;]*$|^[, .\/;]*/, "") || s
+      end
+      if description_fields_array.present?
+        date_fields_array.concat(description_fields_array)
+      end
+      date_fields_array.compact_blank.presence
+    elsif description_fields_array.present?
+      description_fields_array.compact_blank.presence
     end
-    (date_fields_array + description_fields_array).compact_blank.presence
   end
   memo_wise :description
 
@@ -136,9 +142,7 @@ class SolrDocument
 
     # If no copyright info returned from the SOA
     # don't show the component.
-    if copyright_info.info.present?
-      copyright_info
-    end
+    copyright_info.presence
   end
   memo_wise :copyright_status
 
@@ -174,9 +178,10 @@ class SolrDocument
   memo_wise :isbn
 
   def isbn_list
-    isbn&.map do |isn|
+    list = isbn&.map do |isn|
       clean_isn(isn)
     end
+    list&.compact_blank.presence
   end
   memo_wise :isbn_list
 
@@ -374,7 +379,11 @@ class SolrDocument
   end
 
   def lccn
-    get_marc_derived_field("010a", options: {alternate_script: false})&.map { |d| d.strip! || d }
+    lccn = get_marc_derived_field("010a", options: {alternate_script: false})
+    lccn = lccn&.map do |d|
+      clean_isn(d)
+    end
+    lccn&.compact_blank.presence
   end
   memo_wise :lccn
 
@@ -382,7 +391,7 @@ class SolrDocument
     eresource_urls = []
 
     online_access_urls = get_online_access_urls
-    online_access_urls.each do |url|
+    online_access_urls&.each do |url|
       eresource_urls << url if Eresources.new.known_url(url[:href]).present?
     end
 
@@ -392,23 +401,23 @@ class SolrDocument
     end
 
     copy_urls = get_copy_urls
-    copy_urls.each do |url|
+    copy_urls&.each do |url|
       eresource_urls << url if Eresources.new.known_url(url[:href]).present?
     end
 
     related_urls = get_related_urls
-    related_urls.each do |url|
+    related_urls&.each do |url|
       eresource_urls << url if Eresources.new.known_url(url[:href]).present?
     end
 
-    eresource_urls.present?
+    eresource_urls.compact_blank.present?
   end
   memo_wise :has_eresources?
 
   def clean_isn(isn)
-    isn.gsub(/[\s-]+/, '\1')
-      .gsub(/^.*?([0-9]+).*?$/, '\1')
-      .gsub(/\s+/, "")
+    isn = isn.gsub(/[\s-]+/, '\1')
+    isn = isn.gsub(/^.*?([0-9]+).*?$/, '\1')
+    isn.gsub(/\s+/, "")
   end
 
   def publication_place
@@ -507,23 +516,25 @@ class SolrDocument
   end
 
   def make_url(elements)
-    urls = []
-    elements.each do |el|
-      url_hash = {text: "", href: ""}
-      el.children.each do |subfield|
-        subfield_code = subfield.attribute("code").value
-        if subfield_code == "3" || subfield_code == "z"
-          url_hash[:text] = subfield.text if url_hash[:text].empty?
-        elsif subfield_code == "u"
-          url_hash[:href] = subfield.text
+    if elements.present?
+      urls = []
+      elements.each do |el|
+        url_hash = {}
+        el.children.each do |subfield|
+          subfield_code = subfield.attribute("code").value
+          if subfield_code == "3" || subfield_code == "z"
+            url_hash[:text] = subfield.text if url_hash[:text].nil?
+          elsif subfield_code == "u"
+            url_hash[:href] = subfield.text
+          end
         end
+        if url_hash[:text].nil?
+          url_hash[:text] = url_hash[:href]
+        end
+        urls << url_hash unless url_hash[:href].nil?
       end
-      if url_hash[:text].empty?
-        url_hash[:text] = url_hash[:href]
-      end
-      urls << url_hash unless url_hash[:href].empty?
+      urls.compact_blank.presence
     end
-    urls
   end
 
   def get_search_links
@@ -531,7 +542,7 @@ class SolrDocument
   end
 
   def get_copyright_status
-    CopyrightStatus.new(self)
+    CopyrightStatus.new(self).value
   end
 
   def has_copyright?

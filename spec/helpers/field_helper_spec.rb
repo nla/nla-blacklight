@@ -314,8 +314,7 @@ RSpec.describe FieldHelper do
       view.lookup_context.view_paths.push "#{Rails.root}/app/components/"
     end
 
-    let(:copyright) { object_double(CopyrightStatus.new(document), info: copyright_response_hash) }
-    let(:value) { [copyright] }
+    let(:value) { [copyright_response_hash] }
 
     it "renders the copyright component" do
       stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
@@ -330,8 +329,6 @@ RSpec.describe FieldHelper do
           }
         )
         .to_return(status: 200, body: "", headers: {})
-
-      allow(copyright).to receive_messages(document: document, info: copyright_response_hash)
 
       expect(copyright_component).to include "In Copyright"
     end
@@ -352,8 +349,6 @@ RSpec.describe FieldHelper do
             }
           )
           .to_return(status: 200, body: "", headers: {})
-
-        allow(copyright).to receive_messages(document: document, info: copyright_response_hash)
 
         expect(copyright_component).to be_nil
       end

@@ -17,23 +17,32 @@ class ExploreComponent < ViewComponent::Base
   end
 
   def trove_query
-    query = ""
-    if document.isbn_list.present?
-      isbn_list = document.isbn_list
-      isbn_list.each do |isn|
-        query += "isbn:#{document.clean_isn isn}#{(isn != isbn_list.last) ? " OR " : ""}"
-      end
-    else
-      query += document.id.to_s
-      if document.callnumber.present?
-        query += " OR "
-        document.callnumber.each do |callnumber|
-          query += "\"#{callnumber}\"#{(callnumber != document.callnumber.last) ? " OR " : ""}"
+    Rails.cache.fetch("trove_query/#{document.id}", expires_in: 1.hour) do
+      query = ""
+      if document.isbn_list.present?
+        isbn_list = document.isbn_list
+        isbn_list.each do |isn|
+          query += "isbn:#{isn}#{(isn != isbn_list.last) ? " OR " : ""}"
+        end
+      else
+        query += document.id.to_s
+        if document.callnumber.present?
+          query += " OR "
+          document.callnumber.each do |callnumber|
+            query += "\"#{callnumber}\"#{(callnumber != document.callnumber.last) ? " OR " : ""}"
+          end
         end
       end
-    end
 
-    "https://trove.nla.gov.au/search?keyword=ANL AND (#{CGI.escape(query)}) AND title:%22#{CGI.escape(document.title_start.tr('"', ""))}%22"
+      trove_query = "https://trove.nla.gov.au/search?keyword=ANL"
+      if query.present?
+        trove_query += " AND (#{ERB::Util.u(query)})"
+      end
+      if document.title_start.present?
+        trove_query += " AND title:%22#{ERB::Util.u(document.title_start.tr('"', ""))}%22"
+      end
+      trove_query
+    end
   end
 
   def google_books_script
@@ -106,14 +115,12 @@ class ExploreComponent < ViewComponent::Base
   end
 
   def lccn_list
-    document.lccn&.map do |lccn|
-      lccn
-    end
+    document.lccn
   end
 
   def google_lccn_list
     lccn_list&.map do |lcn|
-      "LCCN:#{document.clean_isn(lcn)}"
+      "LCCN:#{lcn}"
     end
   end
 

@@ -15,8 +15,10 @@ GIT
       rails-controller-testing
       summon
 
-PATH
-  remote: ../nla-blacklight_common
+GIT
+  remote: https://github.com/nla/nla-blacklight_common
+  revision: b7952f06ad63fcd6e5e382088d519ef1a77d04ba
+  branch: fix/blac-512-mem-leak
   specs:
     nla-blacklight_common (0.1.5)
       activerecord-session_store (~> 2.0)

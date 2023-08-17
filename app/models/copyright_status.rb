@@ -30,10 +30,14 @@ class CopyrightStatus
     FORMAT_TO_CATEGORY[document.format.last] || DEFAULT_CATEGORY
   end
 
+  def value
+    @info
+  end
+
   private
 
   def fetch
-    Rails.cache.fetch("copyright/#{document.id}", expires_in: 1.hour) do
+    Rails.cache.fetch("copyright/#{document.id}", expires_in: 15.minutes) do
       res = Faraday.get(ENV["COPYRIGHT_SERVICE_URL"] % [document.id])
       unless res.status != 200
         doc = Nokogiri::XML(res.body)

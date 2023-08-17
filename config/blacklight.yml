@@ -2,12 +2,20 @@ load_defaults: 7.28.0
 development:
   adapter: <%= (ENV["ZK_HOST"].present? && ENV["SOLR_COLLECTION"].present?) ? 'solr_cloud' : 'solr' %>
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
+  zk_host: <%= ENV["ZK_HOST"] || "localhost:2181" %>
+  collection: <%= ENV["SOLR_COLLECTION"] || "blacklight" %>
 test: &test
   adapter: <%= (ENV["ZK_HOST"].present? && ENV["SOLR_COLLECTION"].present?) ? 'solr_cloud' : 'solr' %>
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
+  zk_host: <%= ENV["ZK_HOST"] || "localhost:2181" %>
+  collection: <%= ENV["SOLR_COLLECTION"] || "blacklight" %>
 staging:
   adapter: <%= (ENV["ZK_HOST"].present? && ENV["SOLR_COLLECTION"].present?) ? 'solr_cloud' : 'solr' %>
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
+  zk_host: <%= ENV["ZK_HOST"] || "localhost:2181" %>
+  collection: <%= ENV["SOLR_COLLECTION"] || "blacklight" %>
 production:
   adapter: <%= (ENV["ZK_HOST"].present? && ENV["SOLR_COLLECTION"].present?) ? 'solr_cloud' : 'solr' %>
   url: <%= ENV['SOLR_URL'] || "http://127.0.0.1:8983/solr/blacklight-core" %>
+  zk_host: <%= ENV["ZK_HOST"] || "localhost:2181" %>
+  collection: <%= ENV["SOLR_COLLECTION"] || "blacklight" %>
