@@ -1,13 +1,5 @@
 #!/bin/bash
 
-redis_cache_clear() {
-  keys=$(redis-cli -n 0 KEYS "blacklight:*")
-
-  if [[ $keys ]]; then
-    redis-cli -n 0 DEL $keys
-  fi
-}
-
 ORIGDIR=$(pwd)
 export ORIGDIR
 source ~/.bashrc
@@ -61,7 +53,7 @@ mkdir -p "$BLACKLIGHT_TMP_PATH"/pids
 # Using file cache, so tmp:clear will also clear the cache
 RAILS_ENV=$RAILS_ENV bundle exec rails log:clear tmp:clear
 # Clear the Redis cache
-redis_cache_clear
+redis-cli -n 0 KEYS "blacklight:*" | xargs redis-cli -n 0 DEL
 
 # Remove a potentially pre-existing server.pid for Rails.
 rm -f "$PIDFILE"
