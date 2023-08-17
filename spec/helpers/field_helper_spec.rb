@@ -386,10 +386,10 @@ RSpec.describe FieldHelper do
 
   describe "#subject_search_list" do
     subject(:subject_search_list_value) do
-      helper.subject_search_list(document: document, field: "subject_ssim", config: config, value: value, context: "show")
+      helper.subject_search_list(document: document, field: "subject", config: config, value: value, context: "show")
     end
 
-    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, subject_ssim: value) }
+    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, subject: value, subject_ssim: value) }
 
     context "when there is a single subject" do
       let(:value) do
@@ -401,7 +401,7 @@ RSpec.describe FieldHelper do
       it "does not render a list" do
         expect(subject_search_list_value).not_to include "ul"
         expect(subject_search_list_value).not_to include "li"
-        expect(subject_search_list_value).to include "search_field=subject_ssim"
+        expect(subject_search_list_value).to include "search_field=subject"
         expect(subject_search_list_value).to include "q=%22Band+music%2C+Arranged+--+Scores+and+parts%22"
         expect(subject_search_list_value).to include "Band music, Arranged -- Scores and parts"
       end
@@ -419,7 +419,7 @@ RSpec.describe FieldHelper do
         expect(subject_search_list_value).to include "ul"
         expect(subject_search_list_value).to include "li"
         expect(subject_search_list_value).to include "list-unstyled"
-        expect(subject_search_list_value).to include "search_field=subject_ssim"
+        expect(subject_search_list_value).to include "search_field=subject"
         expect(subject_search_list_value).to include "q=%22Band+music%2C+Arranged+--+Scores+and+parts%22"
         expect(subject_search_list_value).to include "Band music, Arranged -- Scores and parts"
         expect(subject_search_list_value).to include "q=%22Marches+%28Band%29%2C+Arranged+--+Scores+and+parts%22"

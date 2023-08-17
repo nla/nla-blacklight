@@ -136,7 +136,7 @@ module FieldHelper
 
   def subject_search_list(document:, field:, config:, value:, context:)
     if value.present?
-      catalogue_search_list(value, field)
+      catalogue_search_list(value, "subject", bulleted: false, search_values: document.fetch("subject_ssim"))
     end
   rescue KeyError
     Rails.logger.info "Record #{document.id} has no '#{field}'"
