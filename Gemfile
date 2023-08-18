@@ -117,7 +117,6 @@ gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 gem "yabeda-rails"
 gem "yabeda-puma-plugin"
-gem "yabeda-http_requests"
 gem "yabeda-prometheus"
 
 group :development, :test do
