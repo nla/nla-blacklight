@@ -92,4 +92,15 @@ module RequestHelper
       concatenated.strip
     end
   end
+
+  def request_item_link(item, document)
+    holdings_id = item["holdingsRecordId"]
+    item_id = item["id"]
+
+    if item["displayStatus"] == "In use"
+      button_to I18n.t("requesting.btn_in_use"), "#", target: "_top", class: "btn btn-primary", disabled: true
+    elsif item["requestable"]
+      link_to I18n.t("requesting.btn_select"), solr_document_request_new_path(solr_document_id: document.id, holdings: holdings_id, item: item_id), class: "btn btn-primary", target: "_top"
+    end
+  end
 end

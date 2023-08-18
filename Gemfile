@@ -126,6 +126,7 @@ group :development, :test do
   gem "standard", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
+  gem "rubocop-performance", require: false
   gem "solr_wrapper", ">= 0.3"
 
   gem "rspec-rails", "~> 6.0"

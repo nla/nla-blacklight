@@ -76,7 +76,7 @@ class SearchLink
       unless uri.nil?
         file_extension = uri.extname
         unless file_extension.nil?
-          query << "pdf" if file_extension.downcase == "pdf"
+          query << "pdf" if file_extension.casecmp("pdf").zero?
         end
       end
 

@@ -59,10 +59,10 @@ class CatalogueServicesClient
     all_holdings = get_holdings(instance_id: instance_id)
 
     # find holdings record
-    holding = all_holdings.select { |h| h["id"] == holdings_id }.first
+    holding = all_holdings.find { |h| h["id"] == holdings_id }
 
     # find item record
-    item = holding["itemRecords"].select { |i| i["id"] == item_id }.first
+    item = holding["itemRecords"].find { |i| i["id"] == item_id }
 
     [holding, item]
   end
@@ -103,7 +103,7 @@ class CatalogueServicesClient
 
     res = conn.get("/catalogue-services/folio/user/#{requester}/requestLimitReached")
     if res.status == 200
-      res.body["requestLimitReached"].to_s.downcase == "true"
+      res.body["requestLimitReached"].to_s.casecmp("true").zero?
     else
       message = "Failed to check request limit for requester (#{requester})"
       Rails.logger.error message

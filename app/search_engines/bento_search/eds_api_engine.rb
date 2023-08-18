@@ -86,7 +86,7 @@ module BentoSearch
     end
 
     def construct_query(args)
-      args[:query].gsub(",", " ")
+      args[:query].tr(",", " ")
     end
 
     def prepare_ebsco_eds_payload(str, html_safe = false)

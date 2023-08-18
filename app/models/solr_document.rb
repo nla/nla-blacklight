@@ -41,27 +41,28 @@ class SolrDocument
   # handler doesn't search across shards in Solr 8.7.
   # TODO: In Solr 8.8 the request handler searches across shards and this logic should be updated when Solr is upgraded.
   def more_like_this
-    params = {
-      q: "{!mlt qf=call_number_tsim,title_tsim,author_search_tsim,subject_tsimv,published_ssim,language_ssim boost=true}#{id}",
-      fl: "id,title_tsim,format",
-      indent: "off",
-      rows: 5
-    }
-    search_repository = Blacklight.repository_class.new(blacklight_config)
-    search_response = search_repository.search(params)
+    Rails.cache.fetch("mlt/#{id}", expires_in: 1.day) do
+      params = {
+        q: "{!mlt qf=call_number_tsim,title_tsim,author_search_tsim,subject_tsimv,published_ssim,language_ssim boost=true}#{id}",
+        fl: "id,title_tsim,format",
+        indent: "off",
+        rows: 5
+      }
+      search_repository = Blacklight.repository_class.new(blacklight_config)
+      search_response = search_repository.search(params)
 
-    response = search_response["response"]
-    if response.present?
-      if response["numFound"] > 0
-        result = []
-        response["docs"].each do |doc|
-          result << {id: doc["id"], title: doc["title_tsim"].first}
+      response = search_response["response"]
+      if response.present?
+        if response["numFound"] > 0
+          result = []
+          response["docs"].each do |doc|
+            result << {id: doc["id"], title: doc["title_tsim"].first}
+          end
+          result
         end
-        result
       end
     end
   end
-  memo_wise :more_like_this
 
   def marc_rec
     @marc_rec ||= to_marc
@@ -448,7 +449,7 @@ class SolrDocument
     data = get_marc_derived_field("856u")
     if data.present?
       pi = data.first
-      if pi.match(/^https?:\/\/nla\.gov\.au\/(.*)$/)
+      if /^https?:\/\/nla\.gov\.au\/(.*)$/.match?(pi)
         pi
       end
     end

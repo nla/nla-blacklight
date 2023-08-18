@@ -762,6 +762,7 @@ DEPENDENCIES
   repost (~> 0.4.1)
   rsolr (>= 1.0, < 3)
   rspec-rails (~> 6.0)
+  rubocop-performance
   rubocop-rails
   rubocop-rspec
   rufus-scheduler (~> 3.8)

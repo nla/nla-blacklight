@@ -1,5 +1,5 @@
 <% content_for(:page_header) {t("headings.search") } %>
-<% cache "search_home" do %>
+<%= cache do %>
   <section class="collection-search mb-5">
     <p class="h5"><%= t('blacklight.collection_search.description.p1') %></p>
     <p class="h5 mb-3"><%= t('blacklight.collection_search.description.p2') %></p>
