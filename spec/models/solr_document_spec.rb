@@ -854,6 +854,18 @@ RSpec.describe SolrDocument do
         expect(biography_history_value).to eq []
       end
     end
+
+    context "when there is a url in the biography or history" do
+      subject(:biography_history_value) do
+        document = described_class.new(marc_ss: biography_history_with_url)
+        document.biography_history
+      end
+
+      it "will return the url" do
+        expect(biography_history_value.size).to eq 1
+        expect(biography_history_value.first).to include("http://trove.nla.gov.au/people/617455")
+      end
+    end
   end
 
   describe "#numbering_note" do
@@ -1852,6 +1864,10 @@ RSpec.describe SolrDocument do
 
   def biography_history
     load_marc_from_file 5497731
+  end
+
+  def biography_history_with_url
+    load_marc_from_file 1856161
   end
 
   def numbering_note
