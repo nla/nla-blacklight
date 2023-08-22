@@ -107,7 +107,7 @@ gem "flipper-ui", "~> 0.28.0"
 gem "uri", "~> 0.12.1"
 
 # Before a release, point these gem at a tag, instead of the `main` branch.
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", tag: "0.1.5"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
@@ -117,7 +117,6 @@ gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 gem "yabeda-rails"
 gem "yabeda-puma-plugin"
-gem "yabeda-http_requests"
 gem "yabeda-prometheus"
 
 group :development, :test do

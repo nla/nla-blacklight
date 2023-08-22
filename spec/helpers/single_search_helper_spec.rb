@@ -43,6 +43,10 @@ RSpec.describe SingleSearchHelper do
     it "returns false if the url is nil" do
       expect(helper.is_catalogued?(nil)).to be false
     end
+
+    it "returns false if the url is invalid" do
+      expect(helper.is_catalogued?("Full text available from Masterfile Premier: 01/01/1990 to present")).to be false
+    end
   end
 
   describe "#ss_uri_encode" do

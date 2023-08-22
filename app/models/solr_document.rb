@@ -258,7 +258,7 @@ class SolrDocument
   end
 
   def biography_history
-    get_marc_derived_field("545ab", options: {alternate_script: false})
+    get_marc_derived_field("545abu", options: {alternate_script: false})
   end
 
   def numbering_note
