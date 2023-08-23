@@ -1710,13 +1710,28 @@ RSpec.describe SolrDocument do
   end
 
   describe "#publication_date" do
-    subject(:publication_date_value) do
-      document = described_class.new(marc_ss: publication_date)
-      document.publication_date
+    context "when publication date" do
+      subject(:publication_date_value) do
+        document = described_class.new(marc_ss: publication_date)
+        document.publication_date
+      end
+
+      it "returns the publication date" do
+        expect(publication_date_value).to eq ["[1976] c1975"]
+        expect(publication_date_value.size).to eq 1
+      end
     end
 
-    it "returns the publication date" do
-      expect(publication_date_value).to eq ["[1976] c1975"]
+    context "when alternate publication date" do
+      subject(:publication_date_value) do
+        document = described_class.new(marc_ss: alternate_publication_date)
+        document.publication_date
+      end
+
+      it "returns the alternate publication date" do
+        expect(publication_date_value).to eq ["2012"]
+        expect(publication_date_value.size).to eq 1
+      end
     end
   end
 
@@ -2016,5 +2031,9 @@ RSpec.describe SolrDocument do
 
   def publication_date
     load_marc_from_file 744313
+  end
+
+  def alternate_publication_date
+    load_marc_from_file 5976915
   end
 end
