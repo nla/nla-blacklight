@@ -482,7 +482,10 @@ class SolrDocument
   end
 
   def publication_date
-    data = get_marc_derived_field("260c", options: {alternate_script: false})
+    data = get_marc_derived_field("264|*1|c", options: {alternate_script: false})
+    if data.blank?
+      data = get_marc_derived_field("260c", options: {alternate_script: false})
+    end
     data&.map do |date|
       date.chomp!(".") || date
     end
