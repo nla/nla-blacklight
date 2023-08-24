@@ -7,8 +7,8 @@ module Nla
         @document = document
       end
 
-      def self.cite(*args)
-        new(*args).export
+      def self.cite(*)
+        new(*).export
       end
 
       # Override this in subclasses to provide the citation format

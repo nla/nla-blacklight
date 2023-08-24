@@ -38,6 +38,8 @@ class ApplicationController < ActionController::Base
   def store_user_location!
     # :user is the scope we are authenticating
     store_location_for(:user, request.fullpath)
+  rescue
+    Rails.logger.debug { "Unable to store location for user: #{request.fullpath}" }
   end
 
   def authorize_profile

@@ -94,8 +94,8 @@ module BentoSearch
         str = HTMLEntities.new.decode str
 
         if configuration.highlighting
-          str.gsub!(/<highlight>/, "<b class='bento_search_highlight'>")
-          str.gsub!(/<\/hilight>/, "</b>")
+          str.gsub!("<highlight>", "<b class='bento_search_highlight'>")
+          str.gsub!("</hilight>", "</b>")
         elsif html_safe
           # rubocop:disable Rails/OutputSafety
           str = str.html_safe
