@@ -618,7 +618,7 @@ GEM
       rubocop-performance (~> 1.18.0)
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
-    strong_migrations (1.6.0)
+    strong_migrations (1.6.1)
       activerecord (>= 5.2)
     summon (2.0.5)
       json
@@ -769,7 +769,7 @@ DEPENDENCIES
   stackprof
   standard
   stimulus-rails
-  strong_migrations (~> 1.4)
+  strong_migrations (~> 1.6)
   turbo-rails
   twitter-typeahead-rails (= 0.11.1)
   tzinfo-data
