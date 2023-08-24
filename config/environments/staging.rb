@@ -8,5 +8,6 @@ Rails.application.configure do
 
   # allow requests to
   config.hosts.clear
+  config.hosts << "localhost"
   config.hosts << ".nla.gov.au"
 end
