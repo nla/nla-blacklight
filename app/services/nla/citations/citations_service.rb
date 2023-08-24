@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Nla
   module Citations
     class CitationsService
@@ -14,13 +16,9 @@ module Nla
       end
 
       def cite_authors
-        cited_authors = []
-
-        @document.all_authors.each do |author|
-          cited_authors << author.to_s
+        @document.all_authors&.map do |author|
+          author.to_s
         end
-
-        cited_authors
       end
 
       def cite_pubdate
@@ -30,30 +28,19 @@ module Nla
       end
 
       def cite_url
-        url = ""
-
-        copy_access = @document.copy_access.first
-        if copy_access.present?
-          url += copy_access[:href].to_s
+        if @document.copy_access.present?
+          @document.copy_access.first[:href].presence
         end
-
-        url
       end
 
       def cite_publisher
-        cited_publisher = ""
-
-        publisher = @document.publisher
-        if publisher.present?
-          publication_place = @document.publication_place
-          cited_publisher += if publication_place.present?
-            "#{publisher} #{publication_place}"
+        if @document.publisher.present?
+          if @document.publication_place.present?
+            "#{@document.publisher} #{@document.publication_place}"
           else
-            publisher
+            @document.publisher
           end
         end
-
-        cited_publisher
       end
     end
   end

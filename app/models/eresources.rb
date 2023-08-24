@@ -24,8 +24,7 @@ class Eresources
     result = {}
     @entries&.each do |entry|
       entry["urlstem"].each do |stem|
-        stem = stem.gsub(/\/+$/, "")
-        if url.start_with?(stem)
+        if url.start_with?(stem.strip)
           result = if entry["remoteurl"].blank?
             {type: "ezproxy", url: url, entry: entry}
           else
@@ -43,7 +42,7 @@ class Eresources
   def fetch_latest_config
     Rails.logger.info "Fetching latest eResources config"
 
-    config = []
+    config = nil
     begin
       tempfile = Down.download(ENV["ERESOURCES_CONFIG_URL"], headers: {"User-Agent" => "nla-blacklight/#{Rails.configuration.version}"})
       if tempfile.present? && tempfile.status.include?("200") && valid_json?(tempfile)
@@ -69,7 +68,7 @@ class Eresources
       Rails.logger.error "Failed to retrieve latest eResources config. Keeping current config."
     ensure
       if File.exist? current_config_path
-        config = JSON.parse read_current_config
+        config = JSON.parse File.read(current_config_path)
       end
     end
 
@@ -85,10 +84,6 @@ class Eresources
   end
 
   def current_config_path
-    "#{ENV["BLACKLIGHT_TMP_PATH"]}/cache/eresources.cfg"
-  end
-
-  def read_current_config
-    File.read(current_config_path)
+    "#{ENV.fetch("BLACKLIGHT_TMP_PATH", "./tmp")}/cache/eresources.cfg"
   end
 end

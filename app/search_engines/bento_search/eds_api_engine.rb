@@ -44,10 +44,8 @@ module BentoSearch
           item.link_is_fulltext = true
 
           item.title = (record.eds_title.presence || I18n.t("bento_search.eds.record_not_available"))
-          item.title = prepare_ebsco_eds_payload(item.title, true)
 
           item.abstract = record.eds_abstract
-          item.abstract = prepare_ebsco_eds_payload(item.abstract, true)
 
           item.unique_id = record.id
           authors = record.eds_authors
@@ -88,13 +86,13 @@ module BentoSearch
     end
 
     def construct_query(args)
-      args[:query].gsub(",", " ")
+      args[:query].tr(",", " ")
     end
 
     def prepare_ebsco_eds_payload(str, html_safe = false)
-      str = HTMLEntities.new.decode str
-
       if str.present?
+        str = HTMLEntities.new.decode str
+
         if configuration.highlighting
           str.gsub!(/<highlight>/, "<b class='bento_search_highlight'>")
           str.gsub!(/<\/hilight>/, "</b>")
@@ -103,9 +101,9 @@ module BentoSearch
           str = str.html_safe
           # rubocop:enable Rails/OutputSafety
         end
-      end
 
-      str
+        str
+      end
     end
   end
 end

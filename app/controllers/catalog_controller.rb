@@ -216,7 +216,7 @@ class CatalogController < ApplicationController
     config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_status, helper_method: :render_copyright_component, if: ->(_controller, _config, document) do
       value = document.copyright_status
       # if there is no contextMsg, there is no rights information from the copyright service
-      value.present? && value.info.present? && value.info["contextMsg"].present?
+      value.present? && value["contextMsg"].present?
     end
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"

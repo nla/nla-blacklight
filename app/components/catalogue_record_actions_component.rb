@@ -29,8 +29,7 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def render_request?
-    Flipper.enabled?(:requesting) &&
-      (!is_ned_item?(@document) || has_online_copy?(@document)) &&
+    (!is_ned_item?(@document) || has_online_copy?(@document)) &&
       !is_electronic_resource?(@document)
   end
 end

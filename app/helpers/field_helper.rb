@@ -1,16 +1,18 @@
+# frozen_string_literal: true
+
 module FieldHelper
   def paragraphs(document:, field:, config:, value:, context:)
-    elements = []
-
     if value.present?
+      elements = []
+
       elements << safe_join(value.map do |para|
         content_tag(:p, class: "mb-0") do
           link_urls para
         end
       end, "")
-    end
 
-    safe_join(elements, "")
+      safe_join(elements, "")
+    end
   end
 
   # Display linked items. If there is more than one item in the list
@@ -35,7 +37,7 @@ module FieldHelper
       end
     else
       link = value.first
-      elements += makelink(document: document, href: link[:href], text: link[:text], longtext: link[:text], extended_info: true)
+      elements += makelink(document: document, href: link[:href], text: link[:text], extended_info: true)
 
       if document.has_broken_links? && document.broken_links[link[:href]]
         elements << content_tag(:p, class: "small") do
@@ -111,10 +113,8 @@ module FieldHelper
   # an unordered list if there are multiple notes. URLs in notes will
   # be turned into links.
   def notes(document:, field:, config:, value:, context:)
-    notes_hash = value.first
-    combined_notes = [*notes_hash[:notes], *notes_hash[:more_notes]]
-    if combined_notes.present?
-      elements = [*build_notes_list(combined_notes)]
+    if value.present?
+      elements = [*build_notes_list(value)]
       safe_join(elements.compact_blank, "\n")
     end
   end
@@ -129,8 +129,8 @@ module FieldHelper
   end
 
   def render_copyright_component(document:, field:, config:, value:, context:)
-    if value.present? && value.first.info.present? && value.first.info["contextMsg"].present?
-      render CopyrightStatusComponent.new(copyright: value.first)
+    if value.present? && value.first.present? && value.first["contextMsg"].present?
+      render CopyrightStatusComponent.new(value.first)
     end
   end
 
@@ -204,30 +204,24 @@ module FieldHelper
   end
 
   def link_urls(value)
-    result = value
-
-    unless value.empty?
+    if value.present?
       # rubocop:disable Rails/OutputSafety
-      result = value.gsub(URI::DEFAULT_PARSER.make_regexp(%w[http https]), '<a href="\0">\0</a>').html_safe
+      value.gsub(URI::DEFAULT_PARSER.make_regexp(%w[http https]), '<a href="\0">\0</a>').html_safe
       # rubocop:enable Rails/OutputSafety
     end
-
-    result
   end
 
   def catalogue_search_list(values, search_field, bulleted: false, search_values: nil)
-    elements = []
-
     if values.empty?
       return nil
     end
 
+    elements = []
     elements << if search_values.nil?
       build_catalogue_search_link(values, search_field, bulleted)
     else
       build_catalogue_search_link_with_search_value(values, search_values, search_field, bulleted)
     end
-
     safe_join(elements, "\n")
   end
 

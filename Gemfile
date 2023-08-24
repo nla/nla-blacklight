@@ -98,16 +98,11 @@ gem "htmlentities"
 gem "openurl"
 gem "faraday-http-cache"
 
-# feature flags
-gem "flipper", "~> 0.28.0"
-gem "flipper-active_record", "~> 0.28.0"
-gem "flipper-ui", "~> 0.28.0"
-
 # Fixes CVE-2023-28755
 gem "uri", "~> 0.12.1"
 
 # Before a release, point these gem at a tag, instead of the `main` branch.
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "fix/blac-512-mem-leak"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
@@ -119,12 +114,18 @@ gem "yabeda-rails"
 gem "yabeda-puma-plugin"
 gem "yabeda-prometheus"
 
+gem "derailed_benchmarks", group: :development
+gem "stackprof", group: :development
+
+gem "memo_wise"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "standard", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
+  gem "rubocop-performance", require: false
   gem "solr_wrapper", ">= 0.3"
 
   gem "rspec-rails", "~> 6.0"
@@ -146,14 +147,13 @@ group :development do
   # gem "spring"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
+  gem "rack-mini-profiler"
   # append ?pp=flamegraph to URL for flamegraphs
-  # gem "flamegraph"
-  # gem "stackprof"
+  gem "flamegraph"
   # append ?pp=profile-memory to URL
   # ?pp=profile-gc to report on GC statistics
   # ?pp=analyze-memory to report on Object statistics
-  # gem "memory_profiler"
+  gem "memory_profiler"
 end
 
 group :test do

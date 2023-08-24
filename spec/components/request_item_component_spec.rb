@@ -6,7 +6,6 @@ RSpec.describe RequestItemComponent, type: :component do
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485", folio_instance_id_ssim: ["93fe53ff-ffcf-5602-a9c1-be246cfadc5e"]) }
 
   before do
-    Flipper.enable(:requesting)
     stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_CLIENT" => "catalogue-services"))
     stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_SECRET" => "254241c8-1e99-4855-a0ae-52b04702c3e5"))
     stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_REALM" => "example-realm"))

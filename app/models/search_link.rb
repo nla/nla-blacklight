@@ -3,7 +3,11 @@
 require "addressable/uri"
 
 class SearchLink
+  prepend MemoWise
+
   include ActiveModel::Model
+
+  attr_reader :links
 
   GOOGLE_BASE_URL = "https://www.google.com.au/search?q=%s"
   TROVE_BASE_URL = "https://webarchive.nla.gov.au/awa"
@@ -11,20 +15,15 @@ class SearchLink
 
   def initialize(document)
     @document = document
-  end
-
-  def links
     @links ||= generate_links
   end
 
   private
 
   def generate_links
-    urls = select_urls
-
     result = {}
 
-    urls.each do |url|
+    select_urls&.each do |url|
       result[url] = {
         google: build_google_query(url),
         trove: build_wayback_query(TROVE_BASE_URL, url),
@@ -32,7 +31,7 @@ class SearchLink
       }
     end
 
-    result
+    result.presence
   end
 
   def select_urls
@@ -42,18 +41,19 @@ class SearchLink
 
     result = []
 
-    urls.each do |url|
+    urls&.each do |url|
+      if is_nla_url?(url)
+        return nil
+      end
+
       if eresources.known_url(url).empty?
         result << url
       end
-
-      if is_nla_url?(url)
-        return []
-      end
     end
 
-    result
+    result.compact_blank.presence
   end
+  memo_wise :select_urls
 
   def build_google_query(url)
     unless url.empty?
@@ -61,7 +61,7 @@ class SearchLink
       query = [phrase_query(title_start), extract_domain(url)]
 
       cited_authors = @document.get_marc_derived_field("100a:110a:111a:700a:710a:711a")
-      cited_authors.each do |author|
+      cited_authors&.each do |author|
         query << process_author(author)
       end
 
@@ -76,7 +76,7 @@ class SearchLink
       unless uri.nil?
         file_extension = uri.extname
         unless file_extension.nil?
-          query << "pdf" if file_extension.downcase == "pdf"
+          query << "pdf" if file_extension.casecmp("pdf").zero?
         end
       end
 

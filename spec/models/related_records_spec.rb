@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe RelatedRecords do
-  subject(:record) { described_class.new(document, collection_id) }
+  subject(:record) { described_class.new(document, collection_id, nil, nil) }
 
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "123") }
   let(:collection_id) { "" }
@@ -78,8 +78,8 @@ RSpec.describe RelatedRecords do
     end
 
     context "when the MARCXML does not contain the collection name" do
-      it "returns an empty string" do
-        expect(record.collection_name).to eq ""
+      it "returns nil" do
+        expect(record.collection_name).to be_nil
       end
     end
   end
@@ -194,7 +194,7 @@ RSpec.describe RelatedRecords do
         )
         .to_return(status: 200, body: count_response, headers: {})
 
-      expect(record.sibling_count).to be 8
+      expect(record.sibling_count).to eq 8
     end
 
     it "returns 0 when there is no response" do
@@ -207,7 +207,7 @@ RSpec.describe RelatedRecords do
         )
         .to_return(status: 200, body: no_count_response, headers: {})
 
-      expect(record.sibling_count).to be 0
+      expect(record.sibling_count).to eq 0
     end
   end
 

@@ -35,7 +35,9 @@ Rails.application.configure do
     timeout: 30,
     reconnect_attempts: 1,
     expires_in: 1.hour,
-    namespace: "blacklight"
+    namespace: "blacklight",
+    pool_size: 5,
+    pool_timeout: 5
   }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).

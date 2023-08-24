@@ -11,7 +11,7 @@ module Nla
         result << cite_authors
         result << cite_pubdate
         result << "<em>#{@document.first("title_tsim")}</em>."
-        if format.present? && format.downcase == "book"
+        if format.present? && format.casecmp("book").zero?
           result << cite_publisher
         end
         result << cite_url
