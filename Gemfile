@@ -76,7 +76,7 @@ gem "bootsnap", require: false
 gem "blacklight", "~> 7.32", "< 8"
 gem "blacklight_advanced_search", "~> 7.0", "< 8"
 gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
-gem "bootstrap", "~> 4.0"
+gem "bootstrap", "~> 5.3"
 gem "jquery-rails"
 gem "rsolr", ">= 1.0", "< 3"
 gem "twitter-typeahead-rails", "0.11.1"
