@@ -1,5 +1,37 @@
 # Changelog
 
+## [2.5.0](https://github.com/nla/nla-blacklight/compare/2.4.0...2.5.0) (2023-08-25)
+
+
+### Features
+
+* remove http-requests from prometheus stats ([0965e3f](https://github.com/nla/nla-blacklight/commit/0965e3f514b7d2b068af8eb4e1fa9a9c5412e4d9))
+
+
+### Bug Fixes
+
+* add 545 u subfield ([79d37ec](https://github.com/nla/nla-blacklight/commit/79d37ec56bef0f7cc9e3de66090386a773cbd98a))
+* add caching and performance improvements ([d67e82e](https://github.com/nla/nla-blacklight/commit/d67e82e65c00dd069eede4527eaa7f76c4789cd4))
+* address memory bloat ([a821d63](https://github.com/nla/nla-blacklight/commit/a821d636d088ea0185993266e2bcc65672c751ce))
+* fix notes, use Nokogiri, fix scheduler ([40640c6](https://github.com/nla/nla-blacklight/commit/40640c6312b24d7a1e6eb2158fa891c6c26136be))
+* integrate auth changes in nla-blacklight_common ([8dc16c2](https://github.com/nla/nla-blacklight/commit/8dc16c29eb13c3e222c984f3f49b4da3d9fef953))
+* map alternate publication date ([d6ea2a4](https://github.com/nla/nla-blacklight/commit/d6ea2a4952b0e0790cc29bfeab8ca9e8674dd962))
+* memoise expensive or properties called more than once ([f827df4](https://github.com/nla/nla-blacklight/commit/f827df4b530aad3033bac5b5d84c1995d2727acb))
+* mock subject_ssim ([5228f4b](https://github.com/nla/nla-blacklight/commit/5228f4be34f0b40c7bcf23d50f37ad91d7b5cdaf))
+* more memory leak changes ([7e4a427](https://github.com/nla/nla-blacklight/commit/7e4a4277680a5b5f7be4616fcd8a18d11db905ac))
+* remove Flipper and move scheduler ([225a465](https://github.com/nla/nla-blacklight/commit/225a46553a6fbf7339d1f4fbfd8712695a3d1dae))
+* turn off force_ssl and add "localhost" to hosts in staging/prod ([131236e](https://github.com/nla/nla-blacklight/commit/131236e2dcbcffa5d55a702aabd0061c034beee1))
+
+
+### Miscellaneous
+
+* add db number to delete cmd for redis clearout ([97c6cd6](https://github.com/nla/nla-blacklight/commit/97c6cd6918e02e3ccb5af24d364de358cdf9a0c5))
+* clear redis using xargs to handle when large number of keys ([81c9b65](https://github.com/nla/nla-blacklight/commit/81c9b65602c17d129c610ebd66740c9a7ac356f3))
+* merge changes from main branch ([1037892](https://github.com/nla/nla-blacklight/commit/1037892a9b5d6b4ea3cf5eb44c7af49b5be6af2d))
+* merge changes from main branch ([92d392d](https://github.com/nla/nla-blacklight/commit/92d392de66915342944400e8e87eeff47bb393e3))
+* prepae release ([32fb535](https://github.com/nla/nla-blacklight/commit/32fb535b455a530103f98a6ce31816ddd6b59b2b))
+* upgrade dependencies ([ac208c5](https://github.com/nla/nla-blacklight/commit/ac208c5cdae6031f0b13ffe84539d6afaf1234e7))
+
 ## [2.4.0](https://github.com/nla/nla-blacklight/compare/2.3.4...2.4.0) (2023-08-10)
 
 
