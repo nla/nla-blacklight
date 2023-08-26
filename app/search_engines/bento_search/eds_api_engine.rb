@@ -56,12 +56,6 @@ module BentoSearch
 
           item.format_str = record.eds_publication_type
           item.doi = record.eds_document_doi
-          if record.eds_page_start.present?
-            item.start_page = record.eds_page_start.to_s
-            if record.eds_page_count.present?
-              item.end_page = (record.eds_page_start.to_i + record.eds_page_count.to_i - 1).to_s
-            end
-          end
           date = record.eds_publication_date
           if date.present?
             ymd = date.split("-").map(&:to_i)
@@ -87,23 +81,6 @@ module BentoSearch
 
     def construct_query(args)
       args[:query].tr(",", " ")
-    end
-
-    def prepare_ebsco_eds_payload(str, html_safe = false)
-      if str.present?
-        str = HTMLEntities.new.decode str
-
-        if configuration.highlighting
-          str.gsub!("<highlight>", "<b class='bento_search_highlight'>")
-          str.gsub!("</hilight>", "</b>")
-        elsif html_safe
-          # rubocop:disable Rails/OutputSafety
-          str = str.html_safe
-          # rubocop:enable Rails/OutputSafety
-        end
-
-        str
-      end
     end
   end
 end

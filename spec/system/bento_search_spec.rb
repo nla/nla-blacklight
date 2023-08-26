@@ -44,6 +44,26 @@ RSpec.describe "Bento Search" do
     end
   end
 
+  context "when EDS search returns an error" do
+    before do
+      WebMock.stub_request(:post, /eds-api.ebscohost.com\/edsapi\/rest\/Search/)
+        .with(
+          body: "{\"SearchCriteria\":{\"Queries\":[{\"Term\":\"hydrogen\"}],\"SearchMode\":\"bool\",\"IncludeFacets\":\"n\",\"FacetFilters\":[],\"Limiters\":[],\"Sort\":\"relevance\",\"PublicationId\":null,\"RelatedContent\":[\"emp\"],\"AutoSuggest\":\"y\",\"Expanders\":[\"fulltext\"],\"AutoCorrect\":\"n\"},\"RetrievalCriteria\":{\"View\":\"brief\",\"ResultsPerPage\":3,\"PageNumber\":1,\"Highlight\":false,\"IncludeImageQuickView\":false},\"Actions\":[\"GoToPage(1)\"],\"Comment\":\"\"}",
+          headers: {
+            "Accept" => "application/json",
+            "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
+            "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
+          }
+        )
+        .to_raise(StandardError)
+    end
+
+    it "displays an error message" do
+      visit bento_single_search_path(q: "hydrogen", engine: "ebsco_eds_keyword")
+      expect(page).to have_content("Sorry! An error occurred and results could not be retrieved.")
+    end
+  end
+
   def cat_response
     IO.read("spec/files/bento_search/cat_search.json")
   end
