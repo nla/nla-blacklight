@@ -54,7 +54,27 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe "#map_search", :vcr do
+  describe "#map_search" do
+    context "when map search service can't be reached" do
+      subject(:map_search_value) do
+        document = described_class.new(marc_ss: map_search, id: 113030, format: "Map")
+        document.map_search
+      end
+
+      it "does not generate a link to Map Search" do
+        stub_request(:get, "https://mapsearch.nla.gov.au/search/search?type=map&text=113030")
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_raise(StandardError)
+
+        expect(map_search_value).to be_nil
+      end
+    end
+
     context "when there is a record in Map Search" do
       subject(:map_search_value) do
         document = described_class.new(marc_ss: map_search, id: 113030, format: "Map")

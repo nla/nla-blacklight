@@ -47,7 +47,9 @@ module BlacklightHelper
 
     # the content_tag will escape special characters as HTML entities again, so we need to decode them first
     clean_heading = HTMLEntities.new.decode(document_presenter(document).heading)
-    content_tag(tag, clean_heading, itemprop: "name", class: "h3 col")
+    # rubocop:disable Rails/OutputSafety
+    content_tag(tag, clean_heading.html_safe, itemprop: "name", class: "h3 col")
+    # rubocop:enable Rails/OutputSafety
   end
   deprecation_deprecate render_document_heading: "Removed without replacement"
   # rubocop:enable Rails/HelperInstanceVariable

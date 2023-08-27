@@ -47,6 +47,8 @@ module BentoSearch
           json_item["attributes"].each do |attr|
             if attr[0] == "title"
               title = HTMLEntities.new.decode(attr[1])
+              titles = title.split("<br>".freeze)
+              title = titles.lazy.map { |l| l.truncate(105, separator: " ") }.to_a.join("<br>")
               item.title = title
             else
               value = attr[1]["attributes"]["value"]

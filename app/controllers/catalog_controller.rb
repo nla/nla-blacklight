@@ -11,6 +11,17 @@ class CatalogController < ApplicationController
   include Blacklight::Marc::Catalog
   include BentoSessionResetConcern
 
+  before_action do
+    Blacklight::Rendering::Pipeline.operations = [
+      # from the default pipeline:
+      Blacklight::Rendering::HelperMethod,
+      Blacklight::Rendering::LinkToFacet,
+      Blacklight::Rendering::Microdata,
+      # Blacklight::Rendering::Join
+      NlaJoin
+    ]
+  end
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
@@ -50,7 +61,7 @@ class CatalogController < ApplicationController
     # config.per_page = [10,20,50,100]
 
     # solr field configuration for search results/index views
-    config.index.title_field = "title_tsim"
+    config.index.title_field = "title_tsim" # CHANGE THIS FIELD IN nla_join.rb ALSO!!!
     config.index.display_type_field = "format"
     # thumbnail_method is defined in ThumbnailHelper
     config.index.thumbnail_method = :render_thumbnail
@@ -73,7 +84,7 @@ class CatalogController < ApplicationController
     config.add_nav_action(:help, partial: "shared/nav/help")
 
     # solr field configuration for document/show views
-    config.show.title_field = "title_tsim"
+    config.show.title_field = "title_tsim" # CHANGE THIS FIELD IN nla_join.rb ALSO!!!
     config.show.display_type_field = "format"
 
     # configure additional partials for the document/show view
