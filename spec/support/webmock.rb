@@ -12,7 +12,7 @@ RSpec.configure do |config|
     WebMock.stub_request(:get, "http://eresource-manager.example.com/")
       .with(
         headers: {
-          "Accept" => "*/*",
+          "Accept" => "application/json",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
@@ -21,7 +21,7 @@ RSpec.configure do |config|
     WebMock.stub_request(:get, "http://eresource-manager.example.com/service-fail")
       .with(
         headers: {
-          "Accept" => "*/*",
+          "Accept" => "application/json",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
