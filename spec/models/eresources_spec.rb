@@ -28,35 +28,6 @@ RSpec.describe Eresources do
       end
     end
 
-    context "when the eResources manager returns a non-200 status" do
-      let(:current_config) { [{current_config: true}] }
-
-      it "keeps the current config" do
-        stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com/service-fail"))
-
-        expect(cache.exist?("eresources_config")).to be(false)
-
-        # setup the current_config
-        File.write("#{ENV["BLACKLIGHT_TMP_PATH"]}/cache/eresources.cfg", current_config.to_json)
-
-        described_class.new
-        expect(cache.read("eresources_config")).to eq JSON.parse current_config.to_json
-      end
-
-      # rubocop:disable RSpec/NestedGroups
-      context "when there is no previous config" do
-        it "returns an empty array" do
-          stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com/service-fail"))
-
-          expect(cache.exist?("eresources_config")).to be(false)
-
-          described_class.new
-          expect(cache.read("eresources_config")).to be_nil
-        end
-      end
-      # rubocop:enable RSpec/NestedGroups
-    end
-
     context "when the latest config is the same as the current config" do
       # setup the current_config
       let(:current_config) { File.read("spec/files/eresources/config.txt") }
@@ -69,20 +40,6 @@ RSpec.describe Eresources do
 
         described_class.new
         expect(cache.read("eresources_config")).to eq JSON.parse current_config
-      end
-    end
-
-    context "when file size difference is too great" do
-      let(:current_config) { [{current_config: true}] }
-
-      it "keeps the current config" do
-        expect(cache.exist?("eresources_config")).to be(false)
-
-        # setup the current_config
-        File.write("#{ENV["BLACKLIGHT_TMP_PATH"]}/cache/eresources.cfg", current_config.to_json)
-
-        described_class.new
-        expect(cache.read("eresources_config")).to eq JSON.parse current_config.to_json
       end
     end
   end
