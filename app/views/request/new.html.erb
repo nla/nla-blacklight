@@ -8,9 +8,11 @@
 <div class="row mt-4 mb-4">
   <% if @request_form == "manuscripts" %>
     <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt").html_safe %></p>
-    <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt_2", finding_aid: @finding_aids_link, contact_us: Rails.application.config_for(:catalogue).contact_us_url).html_safe %></p>
+    <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt_2") %></p>
+    <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt_3", finding_aid: @finding_aids_link, contact_us: Rails.application.config_for(:catalogue).contact_us_url).html_safe %></p>
   <% elsif @request_form == "serials" %>
-    <p class="col-12 col-lg-8"><%= t("requesting.prompt") %></p>
+    <p class="col-12 col-lg-8"><%= t("requesting.prompt").html_safe %></p>
+    <p class="col-12 col-lg-8"><%= t("requesting.prompt_2", contact_us: Rails.application.config_for(:catalogue).contact_us_url).html_safe %></p>
   <% elsif @request_form == "maps" %>
     <p class="col-12 col-lg-8"><%= t("requesting.map_prompt").html_safe %></p>
   <% end %>
