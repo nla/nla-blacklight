@@ -67,6 +67,24 @@ RSpec.describe RequestTableRowComponent, type: :component do
     expect(page).to have_css("small.text-muted", text: "06:36:33pm")
   end
 
+  it "renders the year in the notes column" do
+    render_inline(described_class.new(request_data))
+
+    expect(page).to have_css("p", text: "1909")
+  end
+
+  it "renders the enumeration in the notes column" do
+    render_inline(described_class.new(request_data))
+
+    expect(page).to have_css("p", text: "pbk")
+  end
+
+  it "renders the chronology in the notes column" do
+    render_inline(described_class.new(request_data))
+
+    expect(page).to have_css("p", text: "June, July")
+  end
+
   def request_data
     data = IO.read("spec/files/account/single_request.json")
     {request: JSON.parse(data)}
