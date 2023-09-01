@@ -77,7 +77,10 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
-        expect(page).to have_css("p", text: I18n.t("requesting.prompt"))
+        expect(page).to have_css("strong", text: "You are requesting an issue of a journal, magazine, newspaper, annual report or other multi-part item. Please use the fields below to tell our staff which issues you would like to request.")
+        expect(page).to have_css("p", text: "You can use one request for consecutive parts. A separate request must be placed for non-sequential years/volumes or days/months. Requests for large amounts of material may be partially supplied. If you need assistance with this please contact us.")
+
+        expect(page).to have_link(href: Rails.application.config_for(:catalogue).contact_us_url, text: "contact us")
       end
 
       it "renders the journals form" do
@@ -122,7 +125,11 @@ RSpec.describe "Requests" do
           holdings: holdings_id,
           item: item_id
         )
-        expect(page).to have_css("strong", text: "You have requested a multiple box collection. Please use the fields below to tell our staff which box or boxes you would like to request.")
+        expect(page).to have_css("strong", text: "You are requesting a multiple box collection. Please use the fields below to tell our staff which box or boxes you would like to request.")
+        expect(page).to have_css("p", text: "You can use one request for up to five consecutive boxes. Use a separate request for non-consecutive boxes/series/folders/items.")
+        expect(page).to have_css("p", text: "If available, use the collection finding aid to select your box number, or a series/folder/item number and enter them below. If you need assistance with this please contact us.")
+
+        expect(page).to have_link(href: Rails.application.config_for(:catalogue).contact_us_url, text: "contact us")
       end
 
       it "renders the contact us link" do
