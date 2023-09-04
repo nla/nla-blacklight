@@ -18,7 +18,7 @@ gem "bundler-audit"
 gem "lograge"
 
 # stores user session in the database rather than the browser cookie
-gem "activerecord-session_store", "~> 2.0"
+gem "activerecord-session_store", "~> 2.1"
 
 # in Rails scheduler
 gem "rufus-scheduler", "~> 3.8"
