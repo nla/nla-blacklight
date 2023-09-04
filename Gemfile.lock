@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/yetti/nla-blacklight_common
-  revision: 7c25fb65f15d86a0b67fd9284af3f802fe531d61
+  revision: 7532e294e1339380b9de2fd93f89bf8673383bdd
   branch: feat/upgrade
   specs:
     nla-blacklight_common (0.1.5)
@@ -32,7 +32,7 @@ GIT
       omniauth-keycloak (~> 1.4)
       omniauth-rails_csrf_protection (~> 1.0)
       rails (~> 7.0.4)
-      rsolr
+      rsolr (>= 1.0, < 3)
       zk (~> 1.10)
 
 GEM
@@ -117,6 +117,8 @@ GEM
     anyway_config (2.5.2)
       ruby-next-core (>= 0.14.0)
     ast (2.4.2)
+    autoprefixer-rails (10.4.13.0)
+      execjs (~> 2)
     awesome_print (1.9.2)
     base64 (0.1.1)
     bcrypt (3.1.19)
@@ -137,8 +139,19 @@ GEM
       ostruct (>= 0.3.2)
       rails (>= 6.1, < 8)
       view_component (>= 2.66, < 3.1)
+    blacklight-marc (8.1.0)
+      blacklight (>= 7.11, < 9)
+      library_stdnums
+      marc (>= 0.4.3, < 2.0)
+      marc-fastxmlwriter
+      rails
+      traject (~> 3.0)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
+    bootstrap (5.3.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 2.11.8, < 3)
+      sassc-rails (>= 2.0.0)
     brakeman (6.0.1)
     builder (3.2.4)
     bundler-audit (0.9.1)
@@ -190,16 +203,21 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-guests (0.8.1)
+      devise
     diff-lcs (1.5.0)
     docile (1.4.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dot-properties (0.1.4)
+      bundler (>= 2.2.33)
     dotenv (2.8.1)
     dotenv-rails (2.8.1)
       dotenv (= 2.8.1)
       railties (>= 3.2)
     dry-initializer (3.1.1)
     erubi (1.12.0)
+    execjs (2.8.1)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -277,6 +295,7 @@ GEM
     kaminari-core (1.2.2)
     language_list (1.2.1)
     language_server-protocol (3.17.0.3)
+    library_stdnums (1.6.0)
     lint_roller (1.1.0)
     llhttp-ffi (0.4.0)
       ffi-compiler (~> 1.0)
@@ -298,6 +317,8 @@ GEM
       rexml
       scrub_rb (>= 1.0.1, < 2)
       unf
+    marc-fastxmlwriter (1.1.0)
+      marc (~> 1.0)
     marcel (1.0.2)
     matrix (0.4.2)
     memo_wise (1.7.0)
@@ -355,6 +376,7 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
+    popper_js (2.11.8)
     prometheus-client (4.2.1)
     psych (5.1.0)
       stringio
@@ -473,6 +495,14 @@ GEM
     ruby-statistics (3.0.2)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     scrub_rb (1.0.1)
     selenium-webdriver (4.12.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -489,6 +519,7 @@ GEM
       json
       simplecov
     simplecov_json_formatter (0.1.4)
+    slop (4.10.1)
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
@@ -525,7 +556,19 @@ GEM
     summon (2.0.5)
       json
     thor (1.2.2)
+    tilt (2.2.0)
     timeout (0.4.0)
+    traject (3.8.1)
+      concurrent-ruby (>= 0.8.0)
+      dot-properties (>= 0.1.1)
+      hashie (>= 3.1, < 6)
+      http (>= 3.0, < 6)
+      httpclient (~> 2.5)
+      marc (~> 1.0)
+      marc-fastxmlwriter (~> 1.0)
+      nokogiri (~> 1.9)
+      slop (~> 4.0)
+      yell
     turbo-rails (1.4.0)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
@@ -576,6 +619,7 @@ GEM
       anyway_config (>= 1.3, < 3)
       railties
       yabeda (~> 0.8)
+    yell (2.2.2)
     zeitwerk (2.6.11)
     zk (1.10.0)
       zookeeper (~> 1.5.0)
@@ -590,7 +634,10 @@ DEPENDENCIES
   bento_search!
   better_errors
   binding_of_caller
+  blacklight (>= 8.0.0, < 9)
+  blacklight-marc (~> 8.0)
   bootsnap
+  bootstrap (~> 5.1)
   brakeman
   bundler-audit
   capybara
@@ -598,6 +645,8 @@ DEPENDENCIES
   cuprite
   debug
   derailed_benchmarks
+  devise
+  devise-guests (~> 0.8)
   dotenv-rails
   factory_bot_rails
   faker
@@ -617,10 +666,12 @@ DEPENDENCIES
   rails (~> 7.0.7, >= 7.0.7.2)
   rails-controller-testing (~> 1.0, >= 1.0.5)
   redis (~> 4.0)
+  rsolr (>= 1.0, < 3)
   rspec-rails (~> 6.0)
   rubocop-performance
   rubocop-rails
   rubocop-rspec
+  sassc-rails (~> 2.1)
   selenium-webdriver (~> 4.11)
   shoulda-matchers
   simplecov (~> 0.22.0)

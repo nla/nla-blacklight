@@ -142,3 +142,6 @@ group :test do
 
   gem "mock_redis", "~> 0.37.0"
 end
+
+gem "blacklight", ">= 8.0.0", "< 9"
+gem "blacklight-marc", "~> 8.0"
