@@ -14,7 +14,7 @@ RSpec.describe FieldHelper do
       let(:value) { [{text: "Text version:", href: "http://purl.access.gpo.gov/GPO/LPS9877"}] }
 
       it "generates a link to the item" do
-        expect(list).to include '<a href="http://purl.access.gpo.gov/GPO/LPS9877">Text version:</a>'
+        expect(list).to include '<a class="text-break" href="http://purl.access.gpo.gov/GPO/LPS9877">Text version:</a>'
       end
     end
 
@@ -293,7 +293,7 @@ RSpec.describe FieldHelper do
     let(:value) { ["https://mapsearch.nla.gov.au/?type=map&mapClassifications=all&geolocation=all&text=113030"] }
 
     it "generates a link to Map Search" do
-      expect(map_search_value).to eq "<a href=\"https://mapsearch.nla.gov.au/?type=map&mapClassifications=all&geolocation=all&text=113030\">View this map in Map Search</a>"
+      expect(map_search_value).to eq '<a class="text-break" href="https://mapsearch.nla.gov.au/?type=map&mapClassifications=all&geolocation=all&text=113030">View this map in Map Search</a>'
     end
 
     context "when there is no value" do

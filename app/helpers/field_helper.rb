@@ -123,7 +123,7 @@ module FieldHelper
   def map_search(document:, field:, config:, value:, context:)
     if value.present?
       # rubocop:disable Rails/OutputSafety
-      link_to("View this map in Map Search", value.first.html_safe)
+      link_to("View this map in Map Search", value.first.html_safe, class: "text-break")
       # rubocop:enable Rails/OutputSafety
     end
   end
