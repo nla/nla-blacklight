@@ -54,3 +54,9 @@
     }
   }
 }
+
+.holding {
+  &:hover {
+    box-shadow: 3px 3px 6px 0 rgba(112,57,150,0.1);
+  }
+}
