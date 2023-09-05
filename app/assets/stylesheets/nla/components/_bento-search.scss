@@ -24,9 +24,9 @@
   .card-title {
     background: color("purple");
     color: color("white");
-    margin-left: -1.25rem;
-    margin-right: -1.25rem;
-    margin-top: -1.25rem;
+    margin-left: calc(-1.25rem - 1px);
+    margin-right: calc(-1.25rem - 1px);
+    margin-top: calc(-1.25rem - 1px);
     
     .h5 {
       font-family: $font-family-sans-serif;
