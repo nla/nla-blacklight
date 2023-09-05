@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/yetti/nla-blacklight_common
-  revision: 7532e294e1339380b9de2fd93f89bf8673383bdd
+  revision: 59856ced4b2c6ad2e79f01a751c5110a81ac6854
   branch: feat/upgrade
   specs:
     nla-blacklight_common (0.1.5)
@@ -117,8 +117,6 @@ GEM
     anyway_config (2.5.2)
       ruby-next-core (>= 0.14.0)
     ast (2.4.2)
-    autoprefixer-rails (10.4.13.0)
-      execjs (~> 2)
     awesome_print (1.9.2)
     base64 (0.1.1)
     bcrypt (3.1.19)
@@ -127,6 +125,8 @@ GEM
       erubi (>= 1.0.0)
       rack (>= 0.9.0)
       rouge (>= 1.0.0)
+    bibtex-ruby (6.0.0)
+      latex-decode (~> 0.0)
     bindata (2.4.15)
     bindex (0.8.1)
     binding_of_caller (1.0.0)
@@ -146,12 +146,11 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
+    blacklight_advanced_search (8.0.0.alpha2)
+      blacklight (>= 7.15, < 9)
+      parslet
     bootsnap (1.16.0)
       msgpack (~> 1.2)
-    bootstrap (5.3.1)
-      autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 2.11.8, < 3)
-      sassc-rails (>= 2.0.0)
     brakeman (6.0.1)
     builder (3.2.4)
     bundler-audit (0.9.1)
@@ -167,6 +166,11 @@ GEM
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
     cgi (0.3.6)
+    citeproc (1.0.10)
+      namae (~> 1.0)
+    citeproc-ruby (1.1.13)
+      citeproc (~> 1.0, >= 1.0.9)
+      csl (~> 1.5)
     concurrent-ruby (1.2.2)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
@@ -174,6 +178,10 @@ GEM
     crack (0.4.5)
       rexml
     crass (1.0.6)
+    csl (1.5.2)
+      namae (~> 1.0)
+    csl-styles (1.0.1.11)
+      csl (~> 1.0)
     cssbundling-rails (1.2.0)
       railties (>= 6.0.0)
     cuprite (0.14.3)
@@ -203,8 +211,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    devise-guests (0.8.1)
-      devise
     diff-lcs (1.5.0)
     docile (1.4.0)
     domain_name (0.5.20190701)
@@ -216,8 +222,19 @@ GEM
       dotenv (= 2.8.1)
       railties (>= 3.2)
     dry-initializer (3.1.1)
+    ebsco-eds (1.1.5)
+      activesupport (>= 5.2)
+      bibtex-ruby (>= 5.1.0, < 7.0)
+      citeproc (>= 1.0.4, < 2.0)
+      citeproc-ruby (~> 1.0, >= 1.0.2)
+      csl (>= 1.4.0, < 1.6)
+      csl-styles (~> 1.0, >= 1.0.1.5)
+      faraday (< 2.0)
+      faraday-detailed_logger (~> 2.0)
+      faraday_middleware (~> 1.0)
+      net-http-persistent (>= 3.1, < 5)
+      public_suffix (~> 4.0)
     erubi (1.12.0)
-    execjs (2.8.1)
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -225,12 +242,33 @@ GEM
       railties (>= 5.0.0)
     faker (3.2.1)
       i18n (>= 1.8.11, < 2)
-    faraday (2.7.10)
-      faraday-net_http (>= 2.0, < 3.1)
+    faraday (1.10.3)
+      faraday-em_http (~> 1.0)
+      faraday-em_synchrony (~> 1.0)
+      faraday-excon (~> 1.1)
+      faraday-httpclient (~> 1.0)
+      faraday-multipart (~> 1.0)
+      faraday-net_http (~> 1.0)
+      faraday-net_http_persistent (~> 1.0)
+      faraday-patron (~> 1.0)
+      faraday-rack (~> 1.0)
+      faraday-retry (~> 1.0)
       ruby2_keywords (>= 0.0.4)
-    faraday-follow_redirects (0.3.0)
-      faraday (>= 1, < 3)
-    faraday-net_http (3.0.2)
+    faraday-detailed_logger (2.5.0)
+      faraday (>= 0.16, < 3)
+    faraday-em_http (1.0.0)
+    faraday-em_synchrony (1.0.0)
+    faraday-excon (1.1.0)
+    faraday-httpclient (1.0.1)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (1.0.1)
+    faraday-net_http_persistent (1.2.0)
+    faraday-patron (1.0.0)
+    faraday-rack (1.0.0)
+    faraday-retry (1.0.3)
+    faraday_middleware (1.2.0)
+      faraday (~> 1.0)
     ferrum (0.13)
       addressable (~> 2.5)
       concurrent-ruby (~> 1.1)
@@ -241,9 +279,12 @@ GEM
       ffi (>= 1.0.0)
       rake
     flamegraph (0.9.5)
+    fuubar (2.5.1)
+      rspec-core (~> 3.0)
+      ruby-progressbar (~> 1.4)
     get_process_mem (0.2.7)
       ffi (~> 1.0)
-    globalid (1.2.0)
+    globalid (1.2.1)
       activesupport (>= 6.1)
     hashdiff (1.0.1)
     hashie (4.1.0)
@@ -265,21 +306,20 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
-    irb (1.8.0)
-      rdoc (~> 6.5)
-      reline (>= 0.3.6)
+    irb (1.8.1)
+      rdoc
+      reline (>= 0.3.8)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jsbundling-rails (1.1.2)
       railties (>= 6.0.0)
     json (2.6.3)
-    json-jwt (1.16.3)
+    json-jwt (1.15.3)
       activesupport (>= 4.2)
       aes_key_wrap
       bindata
-      faraday (~> 2.0)
-      faraday-follow_redirects
+      httpclient
     jwt (2.7.1)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -295,6 +335,7 @@ GEM
     kaminari-core (1.2.2)
     language_list (1.2.1)
     language_server-protocol (3.17.0.3)
+    latex-decode (0.4.0)
     library_stdnums (1.6.0)
     lint_roller (1.1.0)
     llhttp-ffi (0.4.0)
@@ -327,12 +368,16 @@ GEM
     mini_histogram (0.3.1)
     mini_mime (1.1.5)
     minitar (0.9)
-    minitest (5.19.0)
+    minitest (5.20.0)
     mock_redis (0.37.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
+    multipart-post (2.3.0)
     mysql2 (0.5.5)
+    namae (1.1.1)
+    net-http-persistent (4.0.2)
+      connection_pool (~> 2.2)
     net-imap (0.3.7)
       date
       net-protocol
@@ -376,11 +421,11 @@ GEM
     parser (3.2.2.3)
       ast (~> 2.4.1)
       racc
-    popper_js (2.11.8)
+    parslet (2.0.0)
     prometheus-client (4.2.1)
     psych (5.1.0)
       stringio
-    public_suffix (5.0.3)
+    public_suffix (4.0.7)
     puma (5.6.7)
       nio4r (~> 2.0)
     racc (1.7.1)
@@ -495,14 +540,6 @@ GEM
     ruby-statistics (3.0.2)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    sassc (2.4.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     scrub_rb (1.0.1)
     selenium-webdriver (4.12.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -528,7 +565,7 @@ GEM
       minitar
       retriable
       ruby-progressbar
-    sprockets (4.2.0)
+    sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
     sprockets-rails (3.4.2)
@@ -556,7 +593,6 @@ GEM
     summon (2.0.5)
       json
     thor (1.2.2)
-    tilt (2.2.0)
     timeout (0.4.0)
     traject (3.8.1)
       concurrent-ruby (>= 0.8.0)
@@ -586,7 +622,7 @@ GEM
       method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    web-console (4.2.0)
+    web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
@@ -636,8 +672,8 @@ DEPENDENCIES
   binding_of_caller
   blacklight (>= 8.0.0, < 9)
   blacklight-marc (~> 8.0)
+  blacklight_advanced_search (= 8.0.0.alpha2)
   bootsnap
-  bootstrap (~> 5.1)
   brakeman
   bundler-audit
   capybara
@@ -645,12 +681,12 @@ DEPENDENCIES
   cuprite
   debug
   derailed_benchmarks
-  devise
-  devise-guests (~> 0.8)
   dotenv-rails
+  ebsco-eds (~> 1.1, >= 1.1.5)
   factory_bot_rails
   faker
   flamegraph
+  fuubar
   hiredis (~> 0.6.3)
   hiredis-client (~> 0.15.0)
   jbuilder
@@ -666,12 +702,10 @@ DEPENDENCIES
   rails (~> 7.0.7, >= 7.0.7.2)
   rails-controller-testing (~> 1.0, >= 1.0.5)
   redis (~> 4.0)
-  rsolr (>= 1.0, < 3)
   rspec-rails (~> 6.0)
   rubocop-performance
   rubocop-rails
   rubocop-rspec
-  sassc-rails (~> 2.1)
   selenium-webdriver (~> 4.11)
   shoulda-matchers
   simplecov (~> 0.22.0)

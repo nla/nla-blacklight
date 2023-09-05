@@ -1,0 +1,39 @@
+development:
+  mapsearch:
+    url: "https://mapsearch.nla.gov.au?type=map&mapClassifications=all&geolocation=all&text="
+    search_url: "https://mapsearch.nla.gov.au/search/search?type=map&text="
+
+  nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
+  contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian
+  staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
+  data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97
+
+test:
+  mapsearch:
+    url: "https://mapsearch.nla.gov.au?type=map&mapClassifications=all&geolocation=all&text="
+    search_url: "https://mapsearch.nla.gov.au/search/search?type=map&text="
+
+  nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
+  contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian
+  staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
+  data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97
+
+staging:
+  mapsearch:
+    url: "https://mapsearch.nla.gov.au?type=map&mapClassifications=all&geolocation=all&text="
+    search_url: "https://mapsearch.nla.gov.au/search/search?type=map&text="
+
+  nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
+  contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian
+  staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
+  data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97
+
+production:
+  mapsearch:
+    url: "https://mapsearch.nla.gov.au?type=map&mapClassifications=all&geolocation=all&text="
+    search_url: "https://mapsearch.nla.gov.au/search/search?type=map&text="
+
+  nla_shop_url: https://bookshop.nla.gov.au/api/jsonDetails.do
+  contact_us_url: https://www.nla.gov.au/using-library/getting-started/ask-librarian
+  staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
+  data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97

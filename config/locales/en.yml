@@ -30,4 +30,129 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
-  hello: "Hello world"
+  loading: "Loading..."
+  headings:
+    search: "Search"
+  collection:
+    parent: "This is a collection-level record."
+    child: "This record belongs in a collection."
+    parent_child: "This record belongs in a collection and is also a collection-level record."
+    nav:
+      up: "See collection record (go up)"
+      down: "See records in this collection (go down)"
+      sideways: "See records in related collections (go sideways)"
+  eresource:
+    remote_access:
+      logged_in: "You are logged in and can access this resource"
+      logged_out: "Login with your Library card to access this resource"
+    offsite: "You can access this resource if you visit the National Library building"
+    onsite: "You can access this resource because you are inside the National Library building"
+  offsite:
+    invalid_url: "%{url} is not a valid url"
+    ebsco: "Login to eResources with your National Library card"
+    other: "To access %{title}, login with your National Library card details."
+    onsite_only:
+      header: "Sorry!"
+      message: '<p>%{original_url} is a subscription service that is only available within the National Library of Australia building in Canberra.</p><p>To %{return_link} please %{click_link}.</p>'
+  requesting:
+    heading: "Request this item"
+    message: "Request this item to view in the Library's reading room using your library card."
+    success:
+      heading: "Request complete"
+      message: "Thank you for your request. We will email you when it is being processed or if there are any issues with delivery."
+      collection: 'Please check collection <a href="https://www.nla.gov.au/using-library/collection-delivery-service/collection-delivery-times">delivery times</a> and <a href="https://www.nla.gov.au/visit-us/opening-hours">opening hours</a>.'
+      scrr: 'To prepare for your visit, and find out more about use of and access to our special collections, view our Research Guide on <a href="https://www.nla.gov.au/research-guides/using-the-special-collections-reading-room">Using the Special Collections Reading Room</a>.'
+    metadata:
+      item_requested: "Item Requested:"
+      collect_from: "Collect From:"
+      call_number: "Call Number:"
+      status: "Status:"
+      access_conditions: "Access Conditions:"
+      notes: "Notes:"
+      items_in_use: "Items/Issues In Use:"
+      recent_items: "Recent Items/Issues Held:"
+      items_held: "Items/Issues Held:"
+      supplements: "Supplements:"
+      indexes: "Indexes:"
+      delivery_conditions: "Delivery Conditions:"
+    prompt: "<strong>You are requesting an issue of a journal, magazine, newspaper, annual report or other multi-part item. Please use the fields below to tell our staff which issues you would like to request.</strong>"
+    prompt_2: "You can use one request for consecutive parts. A separate request must be placed for non-sequential years/volumes or days/months. Requests for large amounts of material may be partially supplied. If you need assistance with this please <a href=\"%{contact_us}\">contact us.</a>"
+    multi_box_prompt: "<strong>You are requesting a multiple box collection. Please use the fields below to tell our staff which box or boxes you would like to request.</strong>"
+    multi_box_prompt_2: "You can use one request for up to five consecutive boxes. Use a separate request for non-consecutive boxes/series/folders/items."
+    multi_box_prompt_3: "If available, use the %{finding_aid} to select your box number, or a series/folder/item number and enter them below. If you need assistance with this please <a href=\"%{contact_us}\">contact us.</a>"
+    map_prompt: "<strong>You have requested a map series containing many map sheets. Please use the fields below to tell our staff which map sheet or sheets you would like to request. If you do not know which sheet, enter a place name.</strong>"
+    collection_finding_aid: "collection finding aid"
+    btn_request: "Request"
+    btn_select: "Select"
+    btn_in_use: "In use"
+    label:
+      year: "Year (YYYY):"
+      volume: "Volume/No:"
+      enumeration: "Day or month:"
+      notes: "Notes:"
+      box_number: "Box number:"
+      series_number: "Series number:"
+      folder_item_number: "Folder/Item number:"
+      map_name: "Map Sheet No. or Name:"
+    help:
+      year: "20 character limit"
+      volume: "80 character limit"
+      enumeration: "80 character limit"
+      notes: "< 100 characters"
+      need_help: "Need help? <a href=\"%{contact_us}\">Contact us</a>."
+    collect_from:
+      base: "%{link}%{location}"
+    request_limit_error:
+      sol: '<p>Your request limit has been reached. You are unable to make any further Staff Official Loan requests until you have returned some items. Please read the borrowing conditions for <a href="%{staff_borrowing}">Staff Official Loans</a>.</p><p>For assistance, please contact Data Systems via the <a href="%{enquiry_form}">Data Systems Enquiry Form</a>.</p>'
+      spl: '<p>Your request limit has been reached. You are unable to make any further Staff Personal Loan requests until you have returned some items. The borrowing limit for Staff Personal Loans is two (2) items only. Please read the borrowing conditions for <a href="%{staff_borrowing}">Staff Personal Loans</a>.</p><p>For assistance, please contact Reading Room Operations on <a href="mailto:readingroomissues@nla.gov.au">readingroomissues@nla.gov.au</a></p>'
+      tol: '<p>Your request limit has been reached. You are unable to make any further Team Official Loan requests until you have returned some items. Please read the borrowing conditions for <a href="%{staff_borrowing}">Team Official Loans</a>.</p><p>For assistance, please contact Data Systems via the <a href="%{enquiry_form}">Data Systems Enquiry Form</a>.</p>'
+      patron: '<p>Your request limit has been reached and you are unable to make any further requests until you have returned some items.</p><p>For further assistance please see desk staff in our reading rooms or <a href="%{url}">Ask a Librarian</a>.</p><p><a href="https://nla.gov.au">National Library of Australia</a></p>'
+  bento_search:
+    search_error: "Sorry! An error occurred and results could not be retrieved."
+  citation:
+    persistent_id: "Catalogue persistent identifier"
+    copied: "Copied"
+    copy_to_clipboard: "Copy to clipboard"
+    harvard: "Australian/Harvard"
+    wikipedia:
+      title: "Wikipedia"
+      help: "<p>Please see <a href=\"https://en.wikipedia.org/wiki/Template:Citation\">Wikipedia's template documentation</a> for further citation fields that may be required.</p>"
+    test: "Test"
+  related_records:
+    parent_collection: "This is a collection."
+    child_collection: "This belongs to the <a href=\"%{url}\" class=\"parent\" data-related-records-target=\"link\">%{collection_name}</a>."
+    parent_child_collection: "This is part of the <a href=\"%{url}\" class=\"parent\" data-related-records-target=\"link\">%{collection_name}</a>."
+    related_collection_total: "There are <a href=\"%{url}\" class=\"sibling\" data-related-records-target=\"link\">%{total} related collections</a>."
+    collection_total: "This collection contains <a href=\"%{url}\" class=\"child\" data-related-records-target=\"link\">%{total} records</a>."
+  account:
+    requests:
+      heading: "Your Requests"
+      menu: "Requests"
+      num_remaining:
+        one: "You can request 1 more item."
+        other: "You can request %{count} more items."
+      no_request_message: "There are no requests."
+      table_headings:
+        ready: "Ready for collection"
+        requested: "Items requested"
+        not_available: "Not available"
+        previous: "Previous requests"
+        checked_out: "Checked out"
+      table_column_headings:
+        title: "Title"
+        location: "Pickup location"
+        notes: "Notes"
+        request_date: "Requested on"
+  explore:
+    title: "Explore"
+    find_in_trove: "Find in other libraries at Trove"
+    map_search: "Australian maps at map search"
+    nla_shop: "Buy at our online shop"
+  home:
+    p1: "Search the Catalogue to find books, pictures, maps, oral history interviews, manuscripts and more. Some items can be viewed online but most can be requested to view at the Library."
+    p2: "If you need help then try our <a href=\"https://www.nla.gov.au/research-guides\">research guides</a>. They cover a variety of topics, and are where you'll find research advice, key resources and featured collection items."
+    p3: "Have a question? Take a look at our <a href=\"https://www.nla.gov.au/faq\">frequently asked questions</a> page. You can also <a href=\"https://www.nla.gov.au/using-library/getting-started/ask-librarian\">Ask a Librarian</a>."
+  feedback:
+    title: "Feedback"
+    report_error: "Report an error"
+    culturally_sensitive: "Report culturally sensitive content"

@@ -1,0 +1,73 @@
+@charset "UTF-8";
+@import "variables";
+@import "nla-custom-bootstrap";
+@import "bootstrap/scss/mixins";
+
+.collection-search {
+  .h5 {
+    color: $gray-medium;
+    font-weight: 500;
+  }
+  
+  .collection-search-box {
+    background-color: $purple;
+    
+    h2 {
+      color: $white;
+    }
+    
+    .search-q {
+      background-color: $white !important;
+    }
+  }
+  
+  .submit-search-text {
+    // hide 'search' label at very small screens
+    @media screen and (max-width: breakpoint-max(md)) {
+      @if mixin-exists(visually-hidden) {
+        @include visually-hidden();
+      }
+    }
+  }
+
+}
+
+.catalogue-search,
+.eresources-search,
+.finding-aids-search {
+  border: none;
+  
+  &:focus,
+  &:hover {
+    box-shadow: 3px 3px 6px 0 rgba(112,57,150,0.1);
+  }
+  
+  .image-container {
+    overflow: hidden;
+  }
+  
+  .card-img-top {
+    transition: transform .1s ease-in-out;
+  }
+  
+  .card-title a {
+    color: $purple;
+    text-decoration: none;
+    
+    &:hover,
+    &:focus {
+      color: $purple;
+      text-decoration: underline;
+    }
+  }
+  
+  &:hover {
+    .card-img-top {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.library-card {
+  background-color: $white;
+}

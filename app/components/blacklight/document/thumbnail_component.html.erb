@@ -1,0 +1,11 @@
+<% value = presenter.thumbnail.render(@image_options) %>
+
+<% if value %>
+  <div class="document-thumbnail">
+    <% if presenter.thumbnail.is_catalogue_record_page? %>
+      <%= helpers.link_to value, presenter.thumbnail.link_value, aria: { hidden: true }, tabindex: -1, class: "text-break" %>
+    <% else %>
+      <%= helpers.link_to_document(presenter.document, value, 'aria-hidden': true, tabindex: -1, counter: @counter) %>
+    <% end %>
+  </div>
+<% end %>

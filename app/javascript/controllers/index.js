@@ -4,5 +4,17 @@
 
 import { application } from "./application"
 
+import BentoSearchResultsController from "./bento_search_results_controller"
+application.register("bento-search-results", BentoSearchResultsController)
+
+import BentoSearchTotalsController from "./bento_search_totals_controller"
+application.register("bento-search-totals", BentoSearchTotalsController)
+
+import ClipboardController from "./clipboard_controller"
+application.register("clipboard", ClipboardController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import RelatedRecordsController from "./related_records_controller"
+application.register("related-records", RelatedRecordsController)

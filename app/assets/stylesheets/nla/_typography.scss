@@ -1,0 +1,17 @@
+@charset "UTF-8";
+@import "variables";
+@import "nla-custom-bootstrap";
+
+@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;700&display=swap');
+
+
+a:hover {
+  color: $blue;
+  text-decoration: none;
+}
+
+a:active,
+a:focus {
+  color: $light-blue;
+  text-decoration: underline;
+}

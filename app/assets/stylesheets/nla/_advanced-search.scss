@@ -1,0 +1,41 @@
+@charset "UTF-8";
+@import "variables";
+@import "nla-custom-bootstrap";
+
+.advanced-search-form {
+  .input-criteria {
+    .query-criteria {
+      margin-bottom: 3rem;
+    }
+    
+    .limit-criteria {
+      margin-bottom: 1.5rem;
+      
+      .advanced-facet-limits {
+        .blacklight-advanced-facet-select {
+          .facet-checkbox {
+            width: 1rem;
+          }
+          
+          .label-and-count {
+            padding-left: 0.5rem;
+            
+            .facet-label {
+              padding-left: 0;
+              padding-bottom: 0;
+              text-indent: 0;
+            }
+            
+            .facet-count {
+              color: $gray-500;
+              font-size: 0.875rem;
+              width: auto;
+              vertical-align: inherit;
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<div id="catalogue-record-actions" class="col-12 sticky-top pt-2 pb-3">
+  <div class="justify-content-start">
+    <% if render_online? %>
+      <a href="<%= online_url %>" class="btn btn-primary mb-2 mr-2 mr-lg-4 px-4"><%= online_label %></a>
+    <% end %>
+    <% if render_request? %>
+      <a href="#request-details" id="request-btn" class="btn btn-primary mb-2 mr-2 mr-lg-4 px-4">Request</a>
+    <% end %>
+    <%= link_to "Order a copy", "javascript:;", class: "btn btn-primary mb-2 mr-2 mr-lg-4 px-4", onclick: "document.getElementById('copiesdirect_addcart').submit();".html_safe %>
+  </div>
+</div>

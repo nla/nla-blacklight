@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@import "variables";
+@import "nla-custom-bootstrap";
+
+.footer {
+  color: $white;
+  
+  a {
+    color: $white;
+    text-decoration: none;
+    
+    &:focus,
+    &:hover {
+      color: $white;
+      text-decoration: underline;
+    }
+  }
+  .connect .list-inline-item a {
+    &:focus,
+    &:hover {
+      color: $orange;
+    }
+  }
+  
+  h2 {
+    &.h4 {
+      color: $white;
+    }
+    
+    &.h6 {
+      font-family: $font-family-sans-serif;
+      color: $white;
+    }
+  }
+  
+  hr {
+    border-top-color: $white;
+  }
+}

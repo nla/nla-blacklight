@@ -1,0 +1,91 @@
+@charset "UTF-8";
+@import "variables";
+@import "nla-custom-bootstrap";
+
+.btn {
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  
+  &.arrow-before {
+    position: relative;
+    padding-left: 3rem;
+    padding-right: 2rem;
+    
+    &::after {
+      color: $orange;
+      content: "\F177";
+      font: var(--fa-font-regular);
+      position: absolute;
+      font-weight: 400;
+      left: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    &:hover::after,
+    &:focus::after {
+      left: 1.25rem;
+      color: $white;
+    }
+  }
+  
+  &.arrow-after {
+    position: relative;
+    padding-left: 2rem;
+    padding-right: 3rem;
+    
+    &::after {
+      color: $orange;
+      content: "\F178";
+      font: var(--fa-font-regular);
+      position: absolute;
+      font-weight: 400;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    &:hover::after,
+    &:focus::after {
+      right: 1.25rem;
+      color: $white;
+    }
+  }
+  
+  &.clear-bookmarks {
+    position: relative;
+    padding-left: 2rem;
+    padding-right: 3rem;
+    
+    &::after {
+      color: $orange;
+      content: "\f1f8";
+      font: var(--fa-font-regular);
+      position: absolute;
+      font-weight: 400;
+      right: 1.5rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    
+    &:hover::after,
+    &:focus::after {
+      font: var(--fa-font-solid);
+      color: $white;
+    }
+  }
+}
+
+.btn-primary:focus,
+.btn-primary:hover,
+.btn-primary:active {
+  background: $light-purple;
+  border-color: $light-purple;
+  background: $light-purple;
+}
+
+.btn-outline-primary,
+.btn-outline-secondary {
+  background: $white;
+}
+

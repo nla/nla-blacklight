@@ -1,0 +1,35 @@
+<%= render RequestLimitMessageComponent.new(current_user, CatalogueServicesClient.new) do |component| %>
+  <% component.with_limit_reached.with_content(@met_request_limit) %>
+<% end %>
+
+<h1 class="h3"><%= t("requesting.success.heading") %></h1>
+
+<h2 class="h3 mt-4"><%= @document.first("title_tsim") %></h2>
+
+<div class="row">
+  <p class="col-12 col-lg-8"><%= t("requesting.success.message") %></p>
+  <p class="col-12 col-lg-8"><%= t("requesting.success.collection").html_safe %></p>
+  <%- if @show_scrr %>
+    <p class="col-12 col-lg-8"><%= t("requesting.success.scrr").html_safe %></p>
+  <%- end %>
+</div>
+
+<div class="row mt-4">
+  <div class="col-12 col-lg-8">
+    <dl class="document-metadata row mb-0">
+      <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.item_requested") %></dt>
+      <dd class="col col-md-9"><%= @document.first("title_tsim") %></dd>
+
+      <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.collect_from") %></dt>
+      <dd class="col col-md-9">
+        <p><%= pickup_location_text(@item).html_safe %></p>
+      </dd>
+    </dl>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-8">
+    <%= pickup_location_img(@item) %>
+  </div>
+</div>

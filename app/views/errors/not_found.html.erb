@@ -1,0 +1,6 @@
+<h2>Oops...</h2>
+<% if @exception.is_a?(Blacklight::Exceptions::RecordNotFound) %>
+  <p>Sorry, we couldn't find the record you requested on our system...</p>
+<% else %>
+  <p>That page does not exist on this server.</p>
+<% end %>

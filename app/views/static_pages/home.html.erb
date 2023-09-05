@@ -1,0 +1,67 @@
+<% content_for(:page_header) {t("headings.search") } %>
+<%= cache do %>
+  <section class="collection-search mb-5">
+    <p class="h5"><%= t('blacklight.collection_search.description.p1') %></p>
+    <p class="h5 mb-3"><%= t('blacklight.collection_search.description.p2') %></p>
+    <div class="collection-search-box px-4 py-5">
+      <h2><%= t('blacklight.collection_search.title') %></h2>
+      <%= render "search/home_search_form" %>
+    </div>
+  </section>
+  <div class="row row-cols-1 row-cols-md-3 gy-3">
+    <div class="col">
+      <section class="card catalogue-search">
+        <div class="image-container"><%= image_tag "catalogue.jpg", class: "card-img-top", alt: "Books" %></div>
+        <div class="card-body">
+          <h2 class="card-title h4"><%= link_to t("blacklight.catalogue.title"), "/catalog", class: "stretched-link" %></h2>
+          <p class="card-text"><%= t('blacklight.catalogue.description') %></p>
+        </div>
+      </section>
+    </div>
+    <div class="col">
+      <section class="card eresources-search">
+        <div class="image-container"><%= image_tag "eresources.jpg", class: "card-img-top", alt: "Lady using computer" %></div>
+        <div class="card-body">
+          <h2 class="card-title h4"><%= link_to t("blacklight.eresources.title"), "https://www.nla.gov.au/eresources", class: "stretched-link" %></h2>
+          <p class="card-text"><%= t('blacklight.eresources.description') %></p>
+        </div>
+      </section>
+    </div>
+    <div class="col">
+      <section class="card finding-aids-search">
+        <div class="image-container"><%= image_tag "finding-aids.jpg", class: "card-img-top", alt: "Trolley with manuscript boxes" %></div>
+        <div class="card-body">
+          <h2 class="card-title h4"><%= link_to t("blacklight.finding_aids.title"), "/finding-aids", class: "stretched-link" %></h2>
+          <p class="card-text"><%= t('blacklight.finding_aids.description') %></p>
+        </div>
+      </section>
+    </div>
+  </div>
+  <section class="library-card row g-0 my-5">
+    <div class="col-lg-6">
+      <div>
+        <%= image_tag "national-library-wattle-card.jpg", class: "w-100", alt: "Library card" %>
+      </div>
+    </div>
+    <div class="col-lg-6 px-3">
+      <h2 class="mt-3 h4"><%= t('blacklight.library_card.title') %></h2>
+
+      <p><%= t('blacklight.library_card.intro') %></p>
+      <p><%= link_to t("blacklight.library_card.button"), "https://www.nla.gov.au/getalibrarycard/registration", class: "btn btn-outline-secondary arrow-after" %></p>
+    </div>
+  </section>
+
+  <%# This is the same panel shown in the Rails welcome template %>
+  <% if Rails.env.development? || Rails.env.test? %>
+    <div id="about" class="card">
+      <h6 class="card-header collapsed collapse-toggle" data-bs-toggle="collapse" data-bs-target="#about-content"><a href="/rails/info/properties">About this application environment</a></h6>
+      <div id="about-content" class="card-body collapse"></div>
+    </div>
+  <% end %>
+
+  <script defer>
+    $('#about .card-header').one('click', function() {
+      $($(this).data('bs-target')).load($(this).find('a').attr('href'));
+    });
+  </script>
+<% end %>

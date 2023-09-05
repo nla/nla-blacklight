@@ -64,7 +64,7 @@ gem "redis", "~> 4.0"
 # gem "bcrypt", "~> 3.1.7"
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem "tzinfo-data", platforms: %i[ mingw mswin x64_mingw jruby ]
+gem "tzinfo-data", platforms: %i[mingw mswin x64_mingw jruby]
 
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
@@ -85,6 +85,11 @@ gem "yabeda-prometheus"
 gem "derailed_benchmarks", group: :development
 gem "stackprof", group: :development
 
+gem "blacklight", ">= 8.0.0", "< 9"
+gem "blacklight-marc", "~> 8.0"
+gem "blacklight_advanced_search", "8.0.0.alpha2"
+gem "ebsco-eds", "~> 1.1", ">= 1.1.5"
+
 gem "nla-blacklight_common", git: "https://github.com/yetti/nla-blacklight_common", branch: "feat/upgrade"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 # For local development, comment out above ⤴️ and uncomment below ⤵️
@@ -93,7 +98,7 @@ gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
-  gem "debug", platforms: %i[ mri mingw x64_mingw ]
+  gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "standard", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
@@ -101,6 +106,7 @@ group :development, :test do
   gem "solr_wrapper", ">= 0.3"
 
   gem "rspec-rails", "~> 6.0"
+  gem "fuubar"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
   gem "faker"
@@ -142,6 +148,3 @@ group :test do
 
   gem "mock_redis", "~> 0.37.0"
 end
-
-gem "blacklight", ">= 8.0.0", "< 9"
-gem "blacklight-marc", "~> 8.0"

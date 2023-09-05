@@ -1,0 +1,39 @@
+@charset "UTF-8";
+@import "variables";
+@import "nla-custom-bootstrap";
+
+.modal {
+  .modal-header {
+    border-bottom: none;
+  
+    .modal-title {
+      font-family: "Roboto condensed", sans-serif;
+      font-size: 1.375rem;
+      text-transform: uppercase;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: $orange;
+      opacity: 1;
+    }
+  }
+
+  .citation-details {
+    .h5 {
+      margin-bottom: 0;
+      font-family: "Roboto condensed", sans-serif;
+      font-size: 1.125rem;
+      text-transform: uppercase;
+    }
+    
+    [data-clipboard-target="button"] {
+      color: $light-purple;
+      
+      &:hover,
+      &:focus {
+        color: $purple;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<% if @error.present? %>
+  <div class="alert alert-danger">
+    <%= @error %>
+  </div>
+<% else %>
+  <div class="row">
+    <div class="col-12">
+      <% if holdings.present? %>
+        <%= render partial: "/request_item/holding", collection: holdings, locals: {document: @document}, cached: true %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

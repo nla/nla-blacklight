@@ -1,0 +1,60 @@
+<section class="item" id="<%= key %>">
+  <div class="card mb-3">
+    <div class="card-body">
+      <% if result %>
+      <div class="card-title sticky-top mb-4 d-flex justify-content-between align-items-baseline px-3 py-2">
+        <h2 class="h5 mb-0"><%= BentoSearch.get_engine(key).configuration.title %></h2>
+        <% if result %>
+          <% if result.total_items > 1 %>
+            <div class="view-all-results text-nowrap">
+              <%= link_to bento_all_results_link(key) do %>
+                View <%= number_with_delimiter(result.total_items) %> results <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
+              <% end %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <% else %>
+        <h2 class="search-source"><%= BentoSearch.get_engine(key).configuration.title %></h2>
+      <% end %>
+
+      <% if result %>
+        <%= bento_search result %>
+
+        <% if result.total_items > 0 %>
+          <div class="view-all">
+            <% if key.start_with?("ebsco_eds_") && result.total_items > 1 %>
+              <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm arrow-after" do %>
+                View
+                <span id="<%= key %>_total"><%= number_with_delimiter(result.total_items) %></span>
+                eResources results
+              <% end %>
+            <% else %>
+              <% if result.total_items > 1 %>
+                <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm arrow-after" do %>
+                  View
+                  <span id="<%= key %>_total"><%= number_with_delimiter(result.total_items) %></span>
+                  <% BentoSearch.get_engine(key).configuration.title %>
+                  <% if key == "catalogue" %>
+                    Catalogue
+                  <% else %>
+                    Finding Aids
+                  <% end %>
+                  results
+                <% end %>
+              <% end %>
+              <% if is_catalog_pane?(BentoSearch.get_engine(key).configuration.title) == true%>
+                <div class="bento_pane_advanced">
+                  <% qp2 = "all_fields=#{ss_uri_encode(params[:q]).gsub('&','%26')}&search_field=advanced" %>
+                  or use <%= link_to "advanced search", advanced_search_link(key, params[:q])  %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</section>
+<!-- Force next columns to break to new line -->
+<div class="w-100 clearfix"></div>

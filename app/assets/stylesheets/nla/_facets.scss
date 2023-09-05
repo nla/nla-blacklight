@@ -1,0 +1,82 @@
+@charset "UTF-8";
+@import "variables";
+@import "nla-custom-bootstrap";
+
+// Facets
+.page-sidebar .facets,
+.page-sidebar .advanced-facet-limits {
+  
+  .facets-heading {
+    font-family: "Roboto condensed", sans-serif;
+    font-size: 1.375rem;
+    color: $purple;
+    font-weight: bold;
+    text-shadow: 0 1px 0 $white;
+    text-transform: uppercase;
+    margin-left: 0;
+  }
+  .card {
+    .card-header {
+      background: $white;
+    }
+  }
+  
+  h3 {
+    font-family: $font-family-sans-serif;
+  }
+  
+  .facet-field-heading {
+    .btn:after {
+      float: none;
+      display: inline-block;
+    }
+    .btn:not(.collapsed):after {
+      transform: rotate(90deg);
+      transition: transform 0.15s ease-in-out;
+    }
+  }
+  
+  .facet-label {
+    padding-left: 0;
+    text-indent: 0;
+  }
+  
+  .facet-select {
+    text-decoration: none;
+    
+    &:hover,
+    &:focus {
+      color: $blue;
+      text-decoration: underline;
+    }
+  }
+  
+  .facet-limit-active {
+    border-color: rgba(0,0,0,0.125) !important;
+    
+    .card {
+      .card-header {
+        background: $white !important;
+
+        .btn {
+          color: $black;
+        }
+      }
+    }
+    
+    .selected {
+      color: $gray-medium !important;
+    }
+    
+    .remove {
+      .remove-icon {
+        font-weight: normal;
+        color: rgba(70,71,74,0.3);
+        
+        &:hover {
+          color: $orange;
+        }
+      }
+    }
+  }
+}
