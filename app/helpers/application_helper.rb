@@ -15,9 +15,9 @@ module ApplicationHelper
     if text.present? && href.present?
       # if an eResources link, route to offsite handler
       result << if entry.present?
-        link_to(text, offsite_catalog_path(id: document.id, url: href))
+        link_to(text, offsite_catalog_path(id: document.id, url: href), class: "text-break")
       else
-        link_to(text, href)
+        link_to(text, href, class: "text-break")
       end
     end
 
