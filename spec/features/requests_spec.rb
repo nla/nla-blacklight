@@ -77,7 +77,7 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
-        expect(page).to have_css("strong", text: "You are requesting an issue of a journal, magazine, newspaper, annual report or other multi-part item. Please use the fields below to tell our staff which issues you would like to request.")
+        expect(page).to have_css("strong", text: "You are requesting a journal, magazine, newspaper, annual report or other multi-part item. Please use the fields below to tell our staff which issues you would like to request.")
         expect(page).to have_css("p", text: "You can use one request for consecutive parts. A separate request must be placed for non-sequential years/volumes or days/months. Requests for large amounts of material may be partially supplied. If you need assistance with this please contact us.")
 
         expect(page).to have_link(href: Rails.application.config_for(:catalogue).contact_us_url, text: "contact us")
