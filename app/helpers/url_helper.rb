@@ -34,7 +34,7 @@ module UrlHelper
     Deprecation.silence(Blacklight::UrlHelperBehavior) do
       # rubocop:disable Rails/OutputSafety
       clean_label = HTMLEntities.new.decode(label)
-      link_to clean_label.html_safe, url_for_document(doc), document_link_params(doc, opts)
+      link_to clean_label.html_safe, url_for_document(doc), document_link_params(doc, opts.merge({class: "text-break"}))
       # rubocop:enable Rails/OutputSafety
     end
   end
