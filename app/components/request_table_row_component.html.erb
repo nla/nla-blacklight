@@ -2,15 +2,6 @@
   <td><%= link_to_record %></td>
   <td><%= @request_details.pickupServicePoint %></td>
   <td>
-    <%- if @request_details.yearCaption %>
-      <p><%= @request_details.yearCaption %></p>
-    <%- end %>
-    <%- if @request_details.enumeration %>
-      <p><%= @request_details.enumeration %></p>
-    <%- end %>
-    <%- if @request_details.chronology %>
-      <p><%= @request_details.chronology %></p>
-    <%- end %>
     <%- if @request_details.patronComments %>
       <p><%= @request_details.patronComments %></p>
     <%- end %>
