@@ -420,11 +420,14 @@ class CatalogController < ApplicationController
 
     if @eresource.present?
       if helpers.user_type == :local || helpers.user_type == :staff
+        CatalogueServicesClient.new.post_stats EresourcesStats.new(@eresource, helpers.user_type)
         # let them straight through
         return redirect_to url, allow_other_host: true
       elsif @eresource[:entry]["remoteaccess"] == "yes"
         # already logged in
         if current_user.present?
+          CatalogueServicesClient.new.post_stats EresourcesStats.new(@eresource, helpers.user_type)
+
           return redirect_to @eresource[:url], allow_other_host: true if @eresource[:type] == "remoteurl"
 
           # sorry for this.  EZProxy really needs a URL rewrite function.
