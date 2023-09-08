@@ -116,23 +116,4 @@ class CatalogueServicesClient
     Rails.logger.error "request_limit_reached? - Failed to connect catalogue-service: #{e.message}"
     raise ItemRequestError.new("Failed to check request limit for requester (#{requester})")
   end
-
-  def post_stats(stats)
-    conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.response :json
-    end
-
-    res = conn.post("/catalogue-services/log/message", stats.to_json, "Content-Type" => "application/json") do |req|
-      req.headers["Content-Type"] = "application/json"
-      req.body = stats.payload
-    end
-    if res.status != 200
-      message = "Failed to post stats to eResources stats service: #{stats.payload}"
-      Rails.logger.error message
-      nil
-    end
-  rescue
-    Rails.logger.error "Failed to connect to eResources stats service: #{stats.payload}"
-    nil
-  end
 end

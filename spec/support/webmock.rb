@@ -18,15 +18,6 @@ RSpec.configure do |config|
       )
       .to_return(status: 200, body: eresource_config, headers: {})
 
-    WebMock.stub_request(:get, "http://eresource-manager.example.com/service-error")
-      .with(
-        headers: {
-          "Accept" => "application/json",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-        }
-      )
-      .to_return(status: 500, body: "", headers: {})
-
     WebMock.stub_request(:get, "http://eresource-manager.example.com/service-fail")
       .with(
         headers: {
@@ -34,7 +25,7 @@ RSpec.configure do |config|
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
-      .to_raise(StandardError)
+      .to_return(status: 500, body: "", headers: {})
 
     WebMock.stub_request(:get, /solr:8983/)
       .with(
@@ -247,15 +238,5 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: "{\"requestLimitReached\": \"false\"}", headers: {})
-
-    WebMock.stub_request(:post, /catservices.test\/catalogue-services\/log\/message/)
-      .with(
-        headers: {
-          "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "Content-Type" => "application/json"
-        }
-      )
-      .to_return(status: 200, body: "", headers: {})
   end
 end
