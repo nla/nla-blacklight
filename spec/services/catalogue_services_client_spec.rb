@@ -74,46 +74,4 @@ RSpec.describe CatalogueServicesClient, type: :request do
       end
     end
   end
-
-  describe "#post_stats" do
-    context "when unable to post stats" do
-      before do
-        WebMock.stub_request(:post, /catservices.test\/catalogue-services\/log\/message/)
-          .with(
-            headers: {
-              "Accept" => "*/*",
-              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-              "Content-Type" => "application/json"
-            }
-          )
-          .to_raise(StandardError)
-      end
-
-      let(:stats) { EresourcesStats.new({entry: {"remoteaccess" => "yes", "title" => "test title"}}, "external") }
-
-      it "returns nil" do
-        expect { service.post_stats(stats) }.not_to raise_error
-      end
-    end
-
-    context "when non-200 response" do
-      before do
-        WebMock.stub_request(:post, /catservices.test\/catalogue-services\/log\/message/)
-          .with(
-            headers: {
-              "Accept" => "*/*",
-              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-              "Content-Type" => "application/json"
-            }
-          )
-          .to_return(status: 501, body: "", headers: {})
-      end
-
-      let(:stats) { EresourcesStats.new({entry: {"remoteaccess" => "yes", "title" => "test title"}}, "external") }
-
-      it "returns nil" do
-        expect { service.post_stats(stats) }.not_to raise_error
-      end
-    end
-  end
 end
