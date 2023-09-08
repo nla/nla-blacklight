@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 6b0b7ec019f84338770c6f14f77493261f32f63b
-  branch: main
+  revision: 7d20dd9a3436c3405e34bfe729e2688518f7842d
+  tag: 0.1.7
   specs:
-    nla-blacklight_common (0.1.6)
+    nla-blacklight_common (0.1.7)
       activerecord-session_store (~> 2.0)
       annotaterb
       brakeman
@@ -90,12 +90,13 @@ GEM
     activerecord (7.0.7.2)
       activemodel (= 7.0.7.2)
       activesupport (= 7.0.7.2)
-    activerecord-session_store (2.0.0)
-      actionpack (>= 5.2.4.1)
-      activerecord (>= 5.2.4.1)
+    activerecord-session_store (2.1.0)
+      actionpack (>= 6.1)
+      activerecord (>= 6.1)
+      cgi (>= 0.3.6)
       multi_json (~> 1.11, >= 1.11.2)
-      rack (>= 2.0.8, < 3)
-      railties (>= 5.2.4.1)
+      rack (>= 2.0.8, < 4)
+      railties (>= 6.1)
     activestorage (7.0.7.2)
       actionpack (= 7.0.7.2)
       activejob (= 7.0.7.2)
@@ -115,7 +116,7 @@ GEM
     anyway_config (2.5.2)
       ruby-next-core (>= 0.14.0)
     ast (2.4.2)
-    autoprefixer-rails (10.4.13.0)
+    autoprefixer-rails (10.4.15.0)
       execjs (~> 2)
     awesome_print (1.9.2)
     base64 (0.1.1)
@@ -174,6 +175,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    cgi (0.3.6)
     citeproc (1.0.10)
       namae (~> 1.0)
     citeproc-ruby (1.1.13)
@@ -299,8 +301,8 @@ GEM
       raabro (~> 1.4)
     get_process_mem (0.2.7)
       ffi (~> 1.0)
-    globalid (1.1.0)
-      activesupport (>= 5.0)
+    globalid (1.2.1)
+      activesupport (>= 6.1)
     hashdiff (1.0.1)
     hashie (4.1.0)
     heapy (0.2.0)
@@ -324,8 +326,9 @@ GEM
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
     io-console (0.6.0)
-    irb (1.7.4)
-      reline (>= 0.3.6)
+    irb (1.8.1)
+      rdoc
+      reline (>= 0.3.8)
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
@@ -387,7 +390,7 @@ GEM
     mini_histogram (0.3.1)
     mini_mime (1.1.5)
     minitar (0.9)
-    minitest (5.19.0)
+    minitest (5.20.0)
     mock_redis (0.37.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
@@ -447,6 +450,8 @@ GEM
     parslet (2.0.0)
     popper_js (1.16.1)
     prometheus-client (4.2.1)
+    psych (5.1.0)
+      stringio
     public_suffix (4.0.7)
     puma (6.3.1)
       nio4r (~> 2.0)
@@ -493,6 +498,8 @@ GEM
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
     rake (13.0.6)
+    rdoc (6.5.0)
+      psych (>= 4.0.0)
     redis (5.0.7)
       redis-client (>= 0.9.0)
     redis-client (0.16.0)
@@ -529,7 +536,7 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
-    rubocop (1.56.1)
+    rubocop (1.56.2)
       base64 (~> 0.1.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -574,7 +581,7 @@ GEM
       sprockets-rails
       tilt
     scrub_rb (1.0.1)
-    selenium-webdriver (4.11.0)
+    selenium-webdriver (4.12.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -598,7 +605,7 @@ GEM
       minitar
       retriable
       ruby-progressbar
-    sprockets (4.2.0)
+    sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
     sprockets-rails (3.4.2)
@@ -620,6 +627,7 @@ GEM
       rubocop-performance (~> 1.19.0)
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
+    stringio (3.0.8)
     strong_migrations (1.6.1)
       activerecord (>= 5.2)
     summon (2.0.5)
@@ -660,12 +668,12 @@ GEM
       method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
-    web-console (4.2.0)
+    web-console (4.2.1)
       actionview (>= 6.0.0)
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webmock (3.19.0)
+    webmock (3.19.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
