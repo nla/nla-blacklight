@@ -1,45 +1,26 @@
 # frozen_string_literal: true
 
 require "rails_helper"
-require "caching/eresources_cache"
 
 RSpec.describe Eresources do
   let(:document) { SolrDocument.new(marc_ss: sample_marc) }
-  let(:file_cache) { ActiveSupport::Cache.lookup_store(:file_store, file_caching_path) }
-  let(:cache) { Caching::EresourcesCache.instance }
 
   describe "#initialize" do
-    before do
-      allow(Rails).to receive(:cache).and_return(file_cache)
-    end
-
     context "when the eResources manager return a 200 status" do
-      let(:current_config) { [] }
-
-      let(:mock_config) { File.read("spec/files/eresources/config.txt") }
-
       it "caches the current config" do
         stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com/"))
 
-        expect(cache.exist?("eresources_config")).to be(false)
-
         described_class.new
-        expect(cache.exist?("eresources_config")).to be(true)
+        expect(Rails.cache.fetch("eresources_config")).not_to be_blank
       end
     end
 
-    context "when the latest config is the same as the current config" do
-      # setup the current_config
-      let(:current_config) { File.read("spec/files/eresources/config.txt") }
-
+    context "when the eResources manager return a non-200 status" do
       it "keeps the current config" do
-        expect(cache.exist?("eresources_config")).to be(false)
-
-        # setup the current_config
-        File.write("#{ENV["BLACKLIGHT_TMP_PATH"]}/cache/eresources.cfg", current_config)
+        stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com/service-fail"))
 
         described_class.new
-        expect(cache.read("eresources_config")).to eq JSON.parse current_config
+        expect(Rails.cache.fetch("eresources_config")).to be_nil
       end
     end
   end
