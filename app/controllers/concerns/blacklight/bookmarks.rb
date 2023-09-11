@@ -134,10 +134,12 @@ module Blacklight::Bookmarks
   private
 
   def verify_user
+    # rubocop:disable Style/UnlessLogicalOperators
     unless current_or_guest_user || (params[:action] == "index" && token_or_current_or_guest_user)
       flash[:notice] = I18n.t("blacklight.bookmarks.need_login")
       raise Blacklight::Exceptions::AccessDenied
     end
+    # rubocop:enable Style/UnlessLogicalOperators
   end
 
   def start_new_search_session?
