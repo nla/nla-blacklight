@@ -82,7 +82,7 @@ module Blacklight::Bookmarks
     end
 
     if request.xhr?
-      success ? render(json: {bookmarks: {count: current_or_guest_user.bookmarks.count}}) : render(json: current_or_guest_user.errors.full_messages, status: "500")
+      success ? render(json: {bookmarks: {count: current_or_guest_user.bookmarks.count}}) : render(json: current_or_guest_user.errors.full_messages, status: :internal_server_error)
     else
       if @bookmarks.any? && success
         flash[:notice] = I18n.t("blacklight.bookmarks.add.success", count: @bookmarks.length)
@@ -134,12 +134,14 @@ module Blacklight::Bookmarks
   private
 
   def verify_user
-    # rubocop:disable Style/UnlessLogicalOperators
-    unless current_or_guest_user || (params[:action] == "index" && token_or_current_or_guest_user)
+    unless is_logged_in_user?
       flash[:notice] = I18n.t("blacklight.bookmarks.need_login")
       raise Blacklight::Exceptions::AccessDenied
     end
-    # rubocop:enable Style/UnlessLogicalOperators
+  end
+
+  def is_logged_in_user?
+    current_or_guest_user || (params[:action] == "index" && token_or_current_or_guest_user)
   end
 
   def start_new_search_session?
