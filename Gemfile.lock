@@ -308,8 +308,8 @@ GEM
     heapy (0.2.0)
       thor
     hiredis (0.6.3)
-    hiredis-client (0.16.0)
-      redis-client (= 0.16.0)
+    hiredis-client (0.17.0)
+      redis-client (= 0.17.0)
     htmlentities (4.3.4)
     http (5.1.1)
       addressable (~> 2.8)
@@ -502,7 +502,7 @@ GEM
       psych (>= 4.0.0)
     redis (5.0.7)
       redis-client (>= 0.9.0)
-    redis-client (0.16.0)
+    redis-client (0.17.0)
       connection_pool
     regexp_parser (2.8.1)
     reline (0.3.8)
@@ -742,7 +742,7 @@ DEPENDENCIES
   faraday-http-cache
   flamegraph
   hiredis (~> 0.6.3)
-  hiredis-client (~> 0.16.0)
+  hiredis-client (~> 0.17.0)
   htmlentities
   httpclient
   importmap-rails
