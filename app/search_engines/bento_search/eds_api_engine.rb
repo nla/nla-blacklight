@@ -27,7 +27,10 @@ module BentoSearch
           query: q,
           results_per_page: args[:per_page],
           highlight: false,
-          include_facets: false
+          include_facets: false,
+          limiters: ["FT1:y"],
+          expanders: ["fulltext"],
+          auto_suggest: false
         }
 
         if args[:search_field]
