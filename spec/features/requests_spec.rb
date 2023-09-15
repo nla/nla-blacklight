@@ -237,6 +237,17 @@ RSpec.describe "Requests" do
     let(:solr_document_id) { "1595553" }
     let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["National Geographic"], format: ["Journal"]) }
 
+    it "renders the 'Back to item' button" do
+      visit solr_document_request_success_path(
+        solr_document_id: solr_document_id,
+        instance: instance_id,
+        holdings: holdings_id,
+        item: item_id
+      )
+
+      expect(page).to have_link(I18n.t("requesting.btn_back_to_item"), href: "javascript:history.back()")
+    end
+
     context "when user has reached their request limit" do
       it "renders the request limit error" do
         WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
