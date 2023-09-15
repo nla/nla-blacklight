@@ -68,6 +68,16 @@ module ApplicationHelper
     end
   end
 
+  # Used to find users who have made too many requests to a resource
+  def log_eresources_offsite_access(url)
+    message = if current_user.present?
+      "eResources %s access by user %s: %s" % [user_type, current_user.id, url]
+    else
+      "eResources %s access: %s" % [user_type, url]
+    end
+    Rails.logger.info message
+  end
+
   private
 
   def makelink_eresource(href)
