@@ -421,12 +421,19 @@ class CatalogController < ApplicationController
     if @eresource.present?
       if helpers.user_type == :local || helpers.user_type == :staff
         CatalogueServicesClient.new.post_stats EresourcesStats.new(@eresource, helpers.user_type)
+
+        # This is used to find users who have made too many requests to a resource
+        helpers.log_eresources_offsite_access(url)
+
         # let them straight through
         return redirect_to url, allow_other_host: true
       elsif @eresource[:entry]["remoteaccess"] == "yes"
         # already logged in
         if current_user.present?
           CatalogueServicesClient.new.post_stats EresourcesStats.new(@eresource, helpers.user_type)
+
+          # This is used to find users who have made too many requests to a resource
+          helpers.log_eresources_offsite_access(url)
 
           return redirect_to @eresource[:url], allow_other_host: true if @eresource[:type] == "remoteurl"
 
