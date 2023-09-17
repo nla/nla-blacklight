@@ -139,11 +139,9 @@ class SolrDocument
   memo_wise :notes
 
   def copyright_status
-    copyright_info ||= get_copyright_status
-
     # If no copyright info returned from the SOA
     # don't show the component.
-    copyright_info.presence
+    get_copyright_status.presence
   end
   memo_wise :copyright_status
 
@@ -365,6 +363,10 @@ class SolrDocument
 
   def terms_of_use
     get_marc_derived_field("5403abcd", options: {alternate_script: false})
+  end
+
+  def copyright_info
+    get_marc_derived_field("542abcdefghijkmnopqrsu368", options: {alternate_script: false})
   end
 
   def other_authors

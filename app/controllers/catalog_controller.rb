@@ -217,6 +217,7 @@ class CatalogController < ApplicationController
     config.add_show_field "other_authors", label: "Other authors/contributors", accessor: :other_authors, helper_method: :other_author_search_list
     config.add_show_field "also_titled", label: "Also Titled", accessor: :also_titled, helper_method: :list
     config.add_show_field "terms_of_use", label: "Terms of Use", accessor: :terms_of_use, helper_method: :emphasized_list
+    config.add_show_field "copyright_info", label: "Copyright Information", accessor: :copyright_info, helper_method: :emphasized_list
     config.add_show_field "available_from", label: "Available From", accessor: :available_from, helper_method: :unstyled_list
     config.add_show_field "acknowledgement", label: "Acknowledgement", accessor: :acknowledgement, helper_method: :unstyled_list
     config.add_show_field "exhibited", label: "Exhibited", accessor: :exhibited, helper_method: :list
@@ -224,7 +225,7 @@ class CatalogController < ApplicationController
     config.add_show_field "music_publisher_number", label: "Music Publisher Number", accessor: :music_publisher_number, helper_method: :list
     config.add_show_field "related_records", label: "Related Records", accessor: :related_records, helper_method: :render_related_records_component
     config.add_show_field "rights_information", label: "Rights information", accessor: :rights_information, helper_method: :url_list, component: StaffOnlyComponent
-    config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_status, helper_method: :render_copyright_component, if: ->(_controller, _config, document) do
+    config.add_show_field "copyright", label: "Copyright", accessor: :copyright_status, helper_method: :render_copyright_component, if: ->(_controller, _config, document) do
       value = document.copyright_status
       # if there is no contextMsg, there is no rights information from the copyright service
       value.present? && value["contextMsg"].present?
