@@ -27,10 +27,8 @@ jobs:
 
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
-
-      - name: Install gems
-        run: |
-          bundle install
+        with:
+          bundler-cache: true
 
       - name: RuboCop
         run: |
@@ -71,10 +69,8 @@ jobs:
 
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
-
-      - name: Install gems
-        run: |
-          bundle install
+        with:
+          bundler-cache: true
 
       - name: Set up MySQL
         run: |
