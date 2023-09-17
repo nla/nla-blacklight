@@ -248,6 +248,38 @@ RSpec.describe "Requests" do
       expect(page).to have_link(I18n.t("requesting.btn_back_to_item"), href: "javascript:history.back()")
     end
 
+    context "when a catalogue search has been performed" do
+      let(:current_search) { Search.create(query_params: {q: ""}) }
+
+      before do
+        allow_any_instance_of(RequestController).to receive(:current_search_session).and_return(current_search)
+      end
+
+      it "renders the 'Back to search' button" do
+        visit solr_document_request_success_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_link(I18n.t("blacklight.back_to_search", href: "/catalog"))
+      end
+    end
+
+    context "when a catalogue search has not been performed" do
+      it "does not render the 'Back to search' button" do
+        visit solr_document_request_success_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).not_to have_link(I18n.t("blacklight.back_to_search"))
+      end
+    end
+
     context "when user has reached their request limit" do
       it "renders the request limit error" do
         WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)

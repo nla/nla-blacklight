@@ -17,6 +17,9 @@
 <div class="row mt-4">
   <div class="col-12">
     <ul class="list-unstyled">
+      <% if current_search_session %>
+        <li class="mb-2"><%= link_back_to_catalog class: 'btn btn-outline-secondary btn-sm back-to-results arrow-before' %></li>
+      <% end %>
       <li class="mb-2"><%= link_to t("requesting.btn_back_to_item"), :back, class: "btn btn-outline-secondary btn-sm arrow-before" %></li>
     </ul>
   </div>
