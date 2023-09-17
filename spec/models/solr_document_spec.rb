@@ -202,8 +202,8 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe "#copyright_info" do
-    subject(:copyright_info_value) do
+  describe "#copyright_status" do
+    subject(:copyright_status) do
       document.copyright_status
     end
 
@@ -221,8 +221,8 @@ RSpec.describe SolrDocument do
         )
         .to_return(status: 200, body: IO.read("spec/files/copyright/service_response.xml").to_s, headers: {})
 
-      expect(copyright_info_value).not_to be_nil
-      expect(copyright_info_value["contextMsg"]).to eq "1.1"
+      expect(copyright_status).not_to be_nil
+      expect(copyright_status["contextMsg"]).to eq "1.1"
     end
 
     context "when no copyright info is returned by the SOA" do
@@ -238,7 +238,7 @@ RSpec.describe SolrDocument do
           )
           .to_return(status: 502, body: "", headers: {})
 
-        expect(copyright_info_value).to be_nil
+        expect(copyright_status).to be_nil
       end
     end
   end
@@ -1755,6 +1755,30 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#copyright_info" do
+    context "when there is copyright information" do
+      subject(:copyright_info_value) do
+        document = described_class.new(marc_ss: copyright_info)
+        document.copyright_info
+      end
+
+      it "returns the copyright information" do
+        expect(copyright_info_value).to eq ["Copyright held by the National Library of Australia."]
+      end
+    end
+
+    context "when there is no copyright information" do
+      subject(:copyright_info_value) do
+        document = described_class.new(marc_ss: publication_date)
+        document.copyright_info
+      end
+
+      it "returns nil" do
+        expect(copyright_info_value).to be_nil
+      end
+    end
+  end
+
   private
 
   def single_series
@@ -2055,5 +2079,9 @@ RSpec.describe SolrDocument do
 
   def alternate_publication_date
     load_marc_from_file 5976915
+  end
+
+  def copyright_info
+    load_marc_from_file 8663054
   end
 end
