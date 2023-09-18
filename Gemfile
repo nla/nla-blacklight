@@ -129,6 +129,7 @@ group :development, :test do
   gem "solr_wrapper", ">= 0.3"
 
   gem "rspec-rails", "~> 6.0"
+  gem "fuubar"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
   gem "faker"

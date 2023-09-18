@@ -245,7 +245,7 @@ RSpec.describe "Requests" do
         item: item_id
       )
 
-      expect(page).to have_link(I18n.t("requesting.btn_back_to_item"), href: "javascript:history.back()")
+      expect(page).to have_link(I18n.t("requesting.btn_back_to_item"), href: "/catalog/1595553")
     end
 
     context "when a catalogue search has been performed" do

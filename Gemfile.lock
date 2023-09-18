@@ -299,6 +299,9 @@ GEM
     fugit (1.8.1)
       et-orbi (~> 1, >= 1.2.7)
       raabro (~> 1.4)
+    fuubar (2.5.1)
+      rspec-core (~> 3.0)
+      ruby-progressbar (~> 1.4)
     get_process_mem (0.2.7)
       ffi (~> 1.0)
     globalid (1.2.1)
@@ -741,6 +744,7 @@ DEPENDENCIES
   faker
   faraday-http-cache
   flamegraph
+  fuubar
   hiredis (~> 0.6.3)
   hiredis-client (~> 0.17.0)
   htmlentities
