@@ -24,7 +24,7 @@ gem "activerecord-session_store", "~> 2.0"
 gem "strong_migrations", "~> 1.6"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.7", ">= 7.0.7.2"
+gem "rails", "~> 7.0"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -52,7 +52,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.15.0"
+gem "hiredis-client", "~> 0.17.0"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"

@@ -3,7 +3,6 @@
 require "blacklight/solr_cloud/repository"
 require "blacklight/solr_cloud/not_enough_nodes"
 
-# Blacklight controller that handles searches and document requests
 class CatalogController < ApplicationController
   include Blacklight::Catalog
   include Blacklight::Marc::Catalog
@@ -53,7 +52,7 @@ class CatalogController < ApplicationController
     # config.logo_link = root_path
     #
     ## Should the raw solr document endpoint (e.g. /catalog/:id/raw) be enabled
-    # config.raw_endpoint.enabled = false
+    config.raw_endpoint.enabled = false
 
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
@@ -72,9 +71,9 @@ class CatalogController < ApplicationController
     # config.per_page = [10,20,50,100]
 
     # solr field configuration for search results/index views
-    config.index.title_field = "title_tsim"
-    # config.index.display_type_field = "format"
-    # config.index.thumbnail_field = 'thumbnail_path_ss'
+    config.index.title_field = "title_tsim" # CHANGE THIS FIELD IN nla_join.rb ALSO!!!
+    config.index.display_type_field = "format"
+    # thumbnail_method is defined in ThumbnailHelper
     config.index.thumbnail_method = :render_thumbnail
     config.index.thumbnail_presenter = NlaThumbnailPresenter
 
@@ -410,11 +409,21 @@ class CatalogController < ApplicationController
 
     if @eresource.present?
       if helpers.user_type == :local || helpers.user_type == :staff
+        CatalogueServicesClient.new.post_stats EresourcesStats.new(@eresource, helpers.user_type)
+
+        # This is used to find users who have made too many requests to a resource
+        helpers.log_eresources_offsite_access(url)
+
         # let them straight through
         return redirect_to url, allow_other_host: true
       elsif @eresource[:entry]["remoteaccess"] == "yes"
         # already logged in
         if current_user.present?
+          CatalogueServicesClient.new.post_stats EresourcesStats.new(@eresource, helpers.user_type)
+
+          # This is used to find users who have made too many requests to a resource
+          helpers.log_eresources_offsite_access(url)
+
           return redirect_to @eresource[:url], allow_other_host: true if @eresource[:type] == "remoteurl"
 
           # sorry for this.  EZProxy really needs a URL rewrite function.

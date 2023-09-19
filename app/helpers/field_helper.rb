@@ -197,11 +197,11 @@ module FieldHelper
   def build_broken_link(broken_link)
     broken_el = []
     broken_el << "Broken link? let us search "
-    broken_el << link_to("Trove", broken_link[:trove])
+    broken_el << link_to("Trove", broken_link[:trove], class: "text-break")
     broken_el << ", the "
-    broken_el << link_to("Wayback Machine", broken_link[:wayback])
+    broken_el << link_to("Wayback Machine", broken_link[:wayback], class: "text-break")
     broken_el << ", or "
-    broken_el << link_to("Google", broken_link[:google])
+    broken_el << link_to("Google", broken_link[:google], class: "text-break")
     broken_el << " for you."
     safe_join(broken_el, "\n")
   end
@@ -227,7 +227,7 @@ module FieldHelper
   def link_urls(value)
     if value.present?
       # rubocop:disable Rails/OutputSafety
-      value.gsub(URI::DEFAULT_PARSER.make_regexp(%w[http https]), '<a href="\0">\0</a>').html_safe
+      value.gsub(URI::DEFAULT_PARSER.make_regexp(%w[http https]), '<a href="\0" class="text-break">\0</a>').html_safe
       # rubocop:enable Rails/OutputSafety
     end
   end
@@ -253,12 +253,12 @@ module FieldHelper
       content_tag(:ul, class: (bulleted ? "" : "list-unstyled").to_s) do
         safe_join(values.map do |val|
           content_tag(:li) do
-            link_to val, search_catalog_path({search_field: search_field, q: "\"#{val}\""})
+            link_to val, search_catalog_path({search_field: search_field, q: "\"#{val}\""}), class: "text-break"
           end
         end, "\n")
       end
     else
-      link_to values.first, search_catalog_path({search_field: search_field, q: "\"#{values.first}\""})
+      link_to values.first, search_catalog_path({search_field: search_field, q: "\"#{values.first}\""}), class: "text-break"
     end
   end
 
@@ -270,12 +270,12 @@ module FieldHelper
       content_tag(:ul, class: (bulleted ? "" : "list-unstyled").to_s) do
         safe_join(zipped_values.map do |val, search_val|
           content_tag(:li) do
-            link_to val, search_catalog_path({search_field: search_field, q: "\"#{search_val}\""})
+            link_to val, search_catalog_path({search_field: search_field, q: "\"#{search_val}\""}), class: "text-break"
           end
         end, "\n")
       end
     else
-      link_to values.first, search_catalog_path({search_field: search_field, q: "\"#{search_values.first}\""})
+      link_to values.first, search_catalog_path({search_field: search_field, q: "\"#{search_values.first}\""}), class: "text-break"
     end
   end
 end

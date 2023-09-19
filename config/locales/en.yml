@@ -75,7 +75,7 @@ en:
       supplements: "Supplements:"
       indexes: "Indexes:"
       delivery_conditions: "Delivery Conditions:"
-    prompt: "<strong>You are requesting an issue of a journal, magazine, newspaper, annual report or other multi-part item. Please use the fields below to tell our staff which issues you would like to request.</strong>"
+    prompt: "<strong>You are requesting a journal, magazine, newspaper, annual report or other multi-part item. Please use the fields below to tell our staff which issues you would like to request.</strong>"
     prompt_2: "You can use one request for consecutive parts. A separate request must be placed for non-sequential years/volumes or days/months. Requests for large amounts of material may be partially supplied. If you need assistance with this please <a href=\"%{contact_us}\">contact us.</a>"
     multi_box_prompt: "<strong>You are requesting a multiple box collection. Please use the fields below to tell our staff which box or boxes you would like to request.</strong>"
     multi_box_prompt_2: "You can use one request for up to five consecutive boxes. Use a separate request for non-consecutive boxes/series/folders/items."
@@ -85,6 +85,7 @@ en:
     btn_request: "Request"
     btn_select: "Select"
     btn_in_use: "In use"
+    btn_back_to_item: "Back to item"
     label:
       year: "Year (YYYY):"
       volume: "Volume/No:"

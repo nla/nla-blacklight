@@ -1,5 +1,42 @@
 # Changelog
 
+## [2.6.0](https://github.com/nla/nla-blacklight/compare/2.5.0...2.6.0) (2023-09-08)
+
+
+### Features
+
+* cache eresources config in Redis ([ba9f080](https://github.com/nla/nla-blacklight/commit/ba9f08076cb6ee3d4746823def90d02fbc339dc3))
+* post eresources stats and refactor eresources config ([7ee8405](https://github.com/nla/nla-blacklight/commit/7ee8405b95359597604cc7e46b5a608f9d274b55))
+* split titles into separate lines ([ae206fa](https://github.com/nla/nla-blacklight/commit/ae206fa3e5ac2bcac9bfe362ed42f64a8beaf99d))
+
+
+### Bug Fixes
+
+* add text-break class to more links ([43375dc](https://github.com/nla/nla-blacklight/commit/43375dc914de9e2982be2b8f2c02f7206c1c497a))
+* add thumbnail width to cache key ([5e89bdc](https://github.com/nla/nla-blacklight/commit/5e89bdc0692b7e009dad291211e5cb8b41e23cdd))
+* add yearCaption, enumeration and chronology to request notes ([41e3bcd](https://github.com/nla/nla-blacklight/commit/41e3bcdc1eb2062fca61444a52fbcf4c6b1b1b56))
+* break long url text in map search link and url lists ([ef4dab5](https://github.com/nla/nla-blacklight/commit/ef4dab52347c62de1d7ff95b69b97f6f955ee7bb))
+* change request prompt ([4968ea7](https://github.com/nla/nla-blacklight/commit/4968ea7ddabaf853934f56be0fafb33577240a1b))
+* change requesting prompts ([83d5818](https://github.com/nla/nla-blacklight/commit/83d5818905eea0fd45aa06261629a492cf323100))
+* define further gray colours ([09a5053](https://github.com/nla/nla-blacklight/commit/09a5053bfd286c7246c093293c74a1e872035fa8))
+* styles for card borders ([58d3d63](https://github.com/nla/nla-blacklight/commit/58d3d63341d3bd3cf1994d3e7a6159060c6fd279))
+
+
+### Reverts
+
+* revert display of year, enumeration and chronology ([2683ce2](https://github.com/nla/nla-blacklight/commit/2683ce20032d9296557df73131dc1647b1e699b5))
+
+
+### Miscellaneous
+
+* change session cookie security ([d39c352](https://github.com/nla/nla-blacklight/commit/d39c3521a39fe5aab90d44ed300ee24fea408f4f))
+* **deps-dev:** bump mock_redis from 0.36.0 to 0.37.0 ([86c666b](https://github.com/nla/nla-blacklight/commit/86c666ba44f087c7c0ea72a3ab35eb2448978de3))
+* **deps-dev:** bump webmock from 3.18.1 to 3.19.0 ([581846b](https://github.com/nla/nla-blacklight/commit/581846bf9b1879ca329589a9f71d4cec3c3b387a))
+* **deps:** bump hiredis-client from 0.15.0 to 0.16.0 ([19c6ac3](https://github.com/nla/nla-blacklight/commit/19c6ac346603672f10489a80bff4eb7bfa153347))
+* fix miniprofiler storage in remote dev env ([be8aec7](https://github.com/nla/nla-blacklight/commit/be8aec78c055b94ae9479fd642d07f45e52e0b0b))
+* prepare next version ([87addf0](https://github.com/nla/nla-blacklight/commit/87addf0e486aebc5812295ff9aad3a2f1b9b85cf))
+* prepare release ([dadce02](https://github.com/nla/nla-blacklight/commit/dadce0278634fa11a683432cdfbe618adc1e0246))
+
 ## [2.5.0](https://github.com/nla/nla-blacklight/compare/2.4.0...2.5.0) (2023-08-25)
 
 
