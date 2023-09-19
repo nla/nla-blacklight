@@ -32,6 +32,7 @@
 
     <dynamicField name="*_tiv" type="text" stored="false" indexed="true" multiValued="false" termVectors="true" termPositions="true" termOffsets="true"/>
     <dynamicField name="*_timv" type="text" stored="false" indexed="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
+    <dynamicField name="*_stimv" type="s_text" stored="false" indexed="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
 
     <dynamicField name="*_tsiv" type="text" stored="true" indexed="true" multiValued="false" termVectors="true" termPositions="true" termOffsets="true"/>
     <dynamicField name="*_tsimv" type="text" stored="true" indexed="true" multiValued="true" termVectors="true" termPositions="true" termOffsets="true"/>
@@ -214,6 +215,11 @@
   <copyField source="*_ssim" dest="all_text_timv" maxChars="3000"/>
   <copyField source="*_si" dest="all_text_timv" maxChars="3000"/>
 
+  <copyField source="*_tsim" dest="all_text_stimv" maxChars="3000"/>
+  <copyField source="*_tesim" dest="all_text_stimv" maxChars="3000"/>
+  <copyField source="*_ssim" dest="all_text_stimv" maxChars="3000"/>
+  <copyField source="*_si" dest="all_text_stimv" maxChars="3000"/>
+
   <!-- create stemmed text fields -->
   <copyField source="*_tsim" dest="*_stim"/>
   <copyField source="*_tsi" dest="*_sti"/>
@@ -296,6 +302,7 @@
         <tokenizer class="solr.ICUTokenizerFactory"/>
         <filter class="solr.ICUFoldingFilterFactory"/>  <!-- NFKC, case folding, diacritics removed -->
         <filter class="solr.TrimFilterFactory"/>
+        <filter class="solr.RemoveDuplicatesTokenFilterFactory"/>
       </analyzer>
     </fieldType>
 

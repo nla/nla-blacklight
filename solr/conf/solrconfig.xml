@@ -36,7 +36,7 @@
             autowarmCount="0"/>
   </query>
 
-  <statsCache class="org.apache.solr.search.stats.LocalStatsCache"/>
+  <statsCache class="org.apache.solr.search.stats.ExactStatsCache"/>
 
 
   <requestHandler name="search" class="solr.SearchHandler" default="true">
