@@ -17,8 +17,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 7d20dd9a3436c3405e34bfe729e2688518f7842d
-  tag: 0.1.7
+  revision: f70c92e0eded1cc1a0e999365843301974fab6c5
+  branch: main
   specs:
     nla-blacklight_common (0.1.7)
       activerecord-session_store (~> 2.0)
@@ -112,7 +112,7 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     aes_key_wrap (1.1.0)
-    annotaterb (4.4.0)
+    annotaterb (4.4.1)
     anyway_config (2.5.2)
       ruby-next-core (>= 0.14.0)
     ast (2.4.2)
