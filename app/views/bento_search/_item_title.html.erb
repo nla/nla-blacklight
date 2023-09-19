@@ -18,7 +18,7 @@
   #
   # %>
   <h3 class="bento-item-title col-12">
-    <%= link_to_unless(item.link.blank?, item.complete_title.truncate(175, separator: " "), item.link) %>
+    <%= link_to_unless(item.link.blank?, item.complete_title.html_safe, item.link) %>
 
     <% if item.display_language.present? %>
 

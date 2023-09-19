@@ -8,7 +8,7 @@ RSpec.describe ThumbnailHelper do
       let(:document) { SolrDocument.new(id: 123, marc_ss: sample_marc, nlaobjid_ss: "nla.obj-123") }
 
       it "returns an image tag" do
-        WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?isbnList=&lccnList=&nlaObjId=nla.obj-123&width=123/)
+        WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?id=123&isbnList=&lccnList=&nlaObjId=nla.obj-123&width=123/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -25,7 +25,7 @@ RSpec.describe ThumbnailHelper do
       let(:document) { SolrDocument.new(id: 123, marc_ss: sample_marc) }
 
       it "returns an image tag" do
-        WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?isbnList=8559378&lccnList=&nlaObjId=&width=123/)
+        WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?id=123&isbnList=8559378&lccnList=&nlaObjId=&width=123/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -44,7 +44,7 @@ RSpec.describe ThumbnailHelper do
       let(:document) { SolrDocument.new(id: 123, marc_ss: sample_marc) }
 
       it "returns an image tag" do
-        WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?isbnList=&lccnList=93002529&nlaObjId=&width=123/)
+        WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?id=123&isbnList=&lccnList=93002529&nlaObjId=&width=123/)
           .with(
             headers: {
               "Accept" => "*/*",

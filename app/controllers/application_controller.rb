@@ -23,7 +23,8 @@ class ApplicationController < ActionController::Base
     request.get? &&
       is_navigational_format? &&
       (is_a_storable_controller_action? && !devise_controller?) &&
-      !request.xhr?
+      !request.xhr? &&
+      !turbo_frame_request?
   end
 
   # Some parts of the application are not suitable for storing the location
@@ -38,6 +39,8 @@ class ApplicationController < ActionController::Base
   def store_user_location!
     # :user is the scope we are authenticating
     store_location_for(:user, request.fullpath)
+  rescue
+    Rails.logger.debug { "Unable to store location for user: #{request.fullpath}" }
   end
 
   def authorize_profile

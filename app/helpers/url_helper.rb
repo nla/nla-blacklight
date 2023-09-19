@@ -4,11 +4,14 @@ module UrlHelper
   include Blacklight::UrlHelperBehavior
 
   def link_to_document(doc, field_or_opts = nil, opts = {counter: nil})
+    fetched_heading = false
     # :nocov:
     label = case field_or_opts
     when NilClass
+      fetched_heading = true
       document_presenter(doc).heading
     when Hash
+      fetched_heading = true
       opts = field_or_opts
       document_presenter(doc).heading
     when Proc, Symbol
@@ -21,10 +24,18 @@ module UrlHelper
     end
     # :nocov:
 
-    label = truncate_title(label)
+    if fetched_heading
+      labels = label.split("<br>")
+      label = labels.lazy.map { |l| truncate_title(l) }.to_a.join("<br>")
+    else
+      label = truncate_title(label)
+    end
 
     Deprecation.silence(Blacklight::UrlHelperBehavior) do
-      link_to label, url_for_document(doc), document_link_params(doc, opts)
+      # rubocop:disable Rails/OutputSafety
+      clean_label = HTMLEntities.new.decode(label)
+      link_to clean_label.html_safe, url_for_document(doc), document_link_params(doc, opts.merge({class: "text-break"}))
+      # rubocop:enable Rails/OutputSafety
     end
   end
 

@@ -27,7 +27,10 @@ module BentoSearch
           query: q,
           results_per_page: args[:per_page],
           highlight: false,
-          include_facets: false
+          include_facets: false,
+          limiters: ["FT1:y"],
+          expanders: ["fulltext"],
+          auto_suggest: false
         }
 
         if args[:search_field]
@@ -44,10 +47,8 @@ module BentoSearch
           item.link_is_fulltext = true
 
           item.title = (record.eds_title.presence || I18n.t("bento_search.eds.record_not_available"))
-          item.title = prepare_ebsco_eds_payload(item.title, true)
 
           item.abstract = record.eds_abstract
-          item.abstract = prepare_ebsco_eds_payload(item.abstract, true)
 
           item.unique_id = record.id
           authors = record.eds_authors
@@ -58,12 +59,6 @@ module BentoSearch
 
           item.format_str = record.eds_publication_type
           item.doi = record.eds_document_doi
-          if record.eds_page_start.present?
-            item.start_page = record.eds_page_start.to_s
-            if record.eds_page_count.present?
-              item.end_page = (record.eds_page_start.to_i + record.eds_page_count.to_i - 1).to_s
-            end
-          end
           date = record.eds_publication_date
           if date.present?
             ymd = date.split("-").map(&:to_i)
@@ -88,24 +83,7 @@ module BentoSearch
     end
 
     def construct_query(args)
-      args[:query].gsub(",", " ")
-    end
-
-    def prepare_ebsco_eds_payload(str, html_safe = false)
-      str = HTMLEntities.new.decode str
-
-      if str.present?
-        if configuration.highlighting
-          str.gsub!(/<highlight>/, "<b class='bento_search_highlight'>")
-          str.gsub!(/<\/hilight>/, "</b>")
-        elsif html_safe
-          # rubocop:disable Rails/OutputSafety
-          str = str.html_safe
-          # rubocop:enable Rails/OutputSafety
-        end
-      end
-
-      str
+      args[:query].tr(",", " ")
     end
   end
 end

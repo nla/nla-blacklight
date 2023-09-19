@@ -1,4 +1,8 @@
+# frozen_string_literal: true
+
 class Series
+  prepend MemoWise
+
   include ActiveModel::Model
 
   attr_accessor :document
@@ -11,22 +15,17 @@ class Series
     series = []
 
     if non_800_exists?
-      series << document.get_marc_derived_field("490avx").flatten
+      series += document.get_marc_derived_field("490avx") || []
     end
 
-    series << document.get_marc_derived_field("440anpvx").flatten
-    series << document.get_marc_derived_field("800abcdknpqtvx").flatten
-    series << document.get_marc_derived_field("810abcdknptvx").flatten
-    series << document.get_marc_derived_field("811acdefklnpqtvx").flatten
-    series << document.get_marc_derived_field("830anpvx").flatten
+    series += document.get_marc_derived_field("440anpvx:800abcdknpqtvx:810abcdknptvx:811acdefklnpqtvx:830anpvx") || []
 
-    value = series.compact_blank.flatten
-    value.presence
+    series.compact_blank.flatten.presence
   end
 
   private
 
   def non_800_exists?
-    document.get_marc_derived_field("490|1*|").empty?
+    document.get_marc_derived_field("490|1*|").blank?
   end
 end

@@ -11,6 +11,17 @@ class CatalogController < ApplicationController
   include Blacklight::Marc::Catalog
   include BentoSessionResetConcern
 
+  before_action do
+    Blacklight::Rendering::Pipeline.operations = [
+      # from the default pipeline:
+      Blacklight::Rendering::HelperMethod,
+      Blacklight::Rendering::LinkToFacet,
+      Blacklight::Rendering::Microdata,
+      # Blacklight::Rendering::Join
+      NlaJoin
+    ]
+  end
+
   configure_blacklight do |config|
     # default advanced config values
     config.advanced_search ||= Blacklight::OpenStructWithHashAccess.new
@@ -50,7 +61,7 @@ class CatalogController < ApplicationController
     # config.per_page = [10,20,50,100]
 
     # solr field configuration for search results/index views
-    config.index.title_field = "title_tsim"
+    config.index.title_field = "title_tsim" # CHANGE THIS FIELD IN nla_join.rb ALSO!!!
     config.index.display_type_field = "format"
     # thumbnail_method is defined in ThumbnailHelper
     config.index.thumbnail_method = :render_thumbnail
@@ -73,7 +84,7 @@ class CatalogController < ApplicationController
     config.add_nav_action(:help, partial: "shared/nav/help")
 
     # solr field configuration for document/show views
-    config.show.title_field = "title_tsim"
+    config.show.title_field = "title_tsim" # CHANGE THIS FIELD IN nla_join.rb ALSO!!!
     config.show.display_type_field = "format"
 
     # configure additional partials for the document/show view
@@ -206,6 +217,7 @@ class CatalogController < ApplicationController
     config.add_show_field "other_authors", label: "Other authors/contributors", accessor: :other_authors, helper_method: :other_author_search_list
     config.add_show_field "also_titled", label: "Also Titled", accessor: :also_titled, helper_method: :list
     config.add_show_field "terms_of_use", label: "Terms of Use", accessor: :terms_of_use, helper_method: :emphasized_list
+    config.add_show_field "copyright_info", label: "Copyright Information", accessor: :copyright_info, helper_method: :emphasized_list
     config.add_show_field "available_from", label: "Available From", accessor: :available_from, helper_method: :unstyled_list
     config.add_show_field "acknowledgement", label: "Acknowledgement", accessor: :acknowledgement, helper_method: :unstyled_list
     config.add_show_field "exhibited", label: "Exhibited", accessor: :exhibited, helper_method: :list
@@ -213,10 +225,10 @@ class CatalogController < ApplicationController
     config.add_show_field "music_publisher_number", label: "Music Publisher Number", accessor: :music_publisher_number, helper_method: :list
     config.add_show_field "related_records", label: "Related Records", accessor: :related_records, helper_method: :render_related_records_component
     config.add_show_field "rights_information", label: "Rights information", accessor: :rights_information, helper_method: :url_list, component: StaffOnlyComponent
-    config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_status, helper_method: :render_copyright_component, if: ->(_controller, _config, document) do
+    config.add_show_field "copyright", label: "Copyright", accessor: :copyright_status, helper_method: :render_copyright_component, if: ->(_controller, _config, document) do
       value = document.copyright_status
       # if there is no contextMsg, there is no rights information from the copyright service
-      value.present? && value.info.present? && value.info["contextMsg"].present?
+      value.present? && value["contextMsg"].present?
     end
     # config.add_show_field "title_tsim", label: "Title"
     # config.add_show_field "title_vern_ssim", label: "Title"
@@ -409,11 +421,21 @@ class CatalogController < ApplicationController
 
     if @eresource.present?
       if helpers.user_type == :local || helpers.user_type == :staff
+        CatalogueServicesClient.new.post_stats EresourcesStats.new(@eresource, helpers.user_type)
+
+        # This is used to find users who have made too many requests to a resource
+        helpers.log_eresources_offsite_access(url)
+
         # let them straight through
         return redirect_to url, allow_other_host: true
       elsif @eresource[:entry]["remoteaccess"] == "yes"
         # already logged in
         if current_user.present?
+          CatalogueServicesClient.new.post_stats EresourcesStats.new(@eresource, helpers.user_type)
+
+          # This is used to find users who have made too many requests to a resource
+          helpers.log_eresources_offsite_access(url)
+
           return redirect_to @eresource[:url], allow_other_host: true if @eresource[:type] == "remoteurl"
 
           # sorry for this.  EZProxy really needs a URL rewrite function.

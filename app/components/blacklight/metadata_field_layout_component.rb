@@ -22,8 +22,8 @@ module Blacklight
       @value_class = value_class
     end
 
-    def value(*args, **kwargs, &block)
-      return set_slot(:values, nil, *args, **kwargs, &block) if block
+    def value(*, **, &block)
+      return set_slot(:values, nil, *, **, &block) if block
 
       Deprecation.warn(Blacklight::MetadataFieldLayoutComponent, "The `value` content area is deprecated; render from the values slot instead")
 

@@ -10,8 +10,8 @@ module Caching
       @file_store = ActiveSupport::Cache::FileStore.new "#{ENV["BLACKLIGHT_TMP_PATH"]}/cache"
     end
 
-    def method_missing(m, *args, &block)
-      @file_store.send(m, *args, &block)
+    def method_missing(m, *, &block)
+      @file_store.send(m, *, &block)
     end
 
     # :nocov:

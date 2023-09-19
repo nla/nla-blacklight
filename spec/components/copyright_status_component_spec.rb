@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe CopyrightStatusComponent, type: :component do
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485) }
 
-  let(:copyright) { object_double(CopyrightStatus.new(document), info: {}) }
+  let(:copyright) { service_response_hash }
 
   before do
     stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
@@ -19,12 +19,10 @@ RSpec.describe CopyrightStatusComponent, type: :component do
         }
       )
       .to_return(status: 200, body: "", headers: {})
-
-    allow(copyright).to receive_messages(document: document, info: service_response_hash)
   end
 
   it "renders the 'Contact us' link" do
-    render_inline(described_class.new(copyright: copyright))
+    render_inline(described_class.new(copyright))
 
     expect(page.text).to include "Contact us"
     expect(page).to have_xpath("//a[@href='https://example.com/contact-us']")
@@ -32,47 +30,44 @@ RSpec.describe CopyrightStatusComponent, type: :component do
 
   context "when there is a copyright status" do
     it "renders the copyright status" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "In Copyright"
     end
   end
 
   context "when there is no copyright status" do
-    before do
-      rights_response = no_copyright_status_response_hash
-      allow(copyright).to receive(:info).and_return(rights_response)
-    end
+    let(:copyright) { no_copyright_status_response_hash }
 
     it "renders the copyright status" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).not_to include "In Copyright"
     end
   end
 
   context "when status context message is 1.1" do
-    before do
+    let(:copyright) do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "1.1"
-      allow(copyright).to receive(:info).and_return(rights_response)
+      rights_response
     end
 
     it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "Copies Direct"
       expect(page).to have_xpath("//a[@href='javascript:;']")
     end
 
     it "renders the 'fair dealing' as text" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "fair dealing"
       expect(page).not_to have_xpath("//a[text()='fair dealing']")
@@ -80,20 +75,20 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   end
 
   context "when status context message is 1.2" do
-    before do
+    let(:copyright) do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "1.2"
-      allow(copyright).to receive(:info).and_return(rights_response)
+      rights_response
     end
 
     it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "Copies Direct"
       expect(page).to have_xpath("//a[@href='javascript:;']")
@@ -101,27 +96,27 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   end
 
   context "when status context message is 1.3" do
-    before do
+    let(:copyright) do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "1.3"
-      allow(copyright).to receive(:info).and_return(rights_response)
+      rights_response
     end
 
     it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "Copies Direct"
       expect(page).to have_xpath("//a[@href='javascript:;']")
     end
 
     it "renders the 'fair dealing' as text" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "fair dealing"
       expect(page).not_to have_xpath("//a[text()='fair dealing']")
@@ -129,20 +124,20 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   end
 
   context "when status context message is 2.1" do
-    before do
+    let(:copyright) do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "2.1"
-      allow(copyright).to receive(:info).and_return(rights_response)
+      rights_response
     end
 
     it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "render the Copies Direct link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "Copies Direct"
       expect(page).to have_xpath("//a[@href='javascript:;']")
@@ -150,20 +145,20 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   end
 
   context "when status context message is 2.2" do
-    before do
+    let(:copyright) do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "2.2"
-      allow(copyright).to receive(:info).and_return(rights_response)
+      rights_response
     end
 
     it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "Copies Direct"
       expect(page).to have_xpath("//a[@href='javascript:;']")
@@ -171,27 +166,27 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   end
 
   context "when status context message is 3" do
-    before do
+    let(:copyright) do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "3"
-      allow(copyright).to receive(:info).and_return(rights_response)
+      rights_response
     end
 
     it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "does not render the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).not_to include "Copies Direct"
       expect(page).not_to have_xpath("//a[@href='javascript:;']")
     end
 
     it "renders a lowercase contact us link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "contact us"
       expect(page).to have_xpath("//a[@href='https://example.com/contact-us']")
@@ -199,27 +194,27 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   end
 
   context "when status context message is 4" do
-    before do
+    let(:copyright) do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "4"
-      allow(copyright).to receive(:info).and_return(rights_response)
+      rights_response
     end
 
     it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "does not render the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).not_to include "Copies Direct"
       expect(page).not_to have_xpath("//a[@href='javascript:;']")
     end
 
     it "renders a lowercase contact us link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "contact us"
       expect(page).to have_xpath("//a[@href='https://example.com/contact-us']")
@@ -227,20 +222,20 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   end
 
   context "when status context message is 5" do
-    before do
+    let(:copyright) do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "5"
-      allow(copyright).to receive(:info).and_return(rights_response)
+      rights_response
     end
 
     it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "Copies Direct"
       expect(page).to have_xpath("//a[@href='javascript:;']")
@@ -248,20 +243,20 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   end
 
   context "when status context message is 6" do
-    before do
+    let(:copyright) do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "6"
-      allow(copyright).to receive(:info).and_return(rights_response)
+      rights_response
     end
 
     it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "does not render the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).not_to include "Copies Direct"
       expect(page).not_to have_xpath("//a[@href='javascript:;']")
@@ -269,20 +264,20 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   end
 
   context "when status context message is 7" do
-    before do
+    let(:copyright) do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "7"
-      allow(copyright).to receive(:info).and_return(rights_response)
+      rights_response
     end
 
     it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "does not render the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).not_to include "Copies Direct"
       expect(page).not_to have_xpath("//a[@href='javascript:;']")
@@ -290,20 +285,20 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   end
 
   context "when status context message is 8" do
-    before do
+    let(:copyright) do
       rights_response = service_response_hash
       rights_response["contextMsg"] = "8"
-      allow(copyright).to receive(:info).and_return(rights_response)
+      rights_response
     end
 
     it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page).not_to have_css "form[id='copiesdirect_addcart']"
     end
 
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright: copyright))
+      render_inline(described_class.new(copyright))
 
       expect(page.text).to include "Copies Direct"
       expect(page).to have_xpath("//a[@href='javascript:;']")

@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Document exports" do
   let(:document) { SolrDocument.new(marc_ss: marc_xml) }
-  let(:copyright) { object_double(CopyrightStatus.new(document)) }
+  let(:copyright) { copyright_response_hash }
   let(:catalogue_services) { object_double(CatalogueServicesClient.new) }
   let(:request_item_component) { object_double(RequestItemComponent.new(document: document)) }
 

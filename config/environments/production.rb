@@ -46,7 +46,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ "http://example.com", /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  config.force_ssl = true
+  # config.force_ssl = true
 
   # Include generic and useful information about system operation, but avoid logging too much
   # information to avoid inadvertent exposure of personally identifiable information (PII).
@@ -56,13 +56,16 @@ Rails.application.configure do
   config.log_tags = [:request_id]
 
   # Use a different cache store in production.
+  # config.cache_store = :null_store
   config.cache_store = :redis_cache_store, {
     driver: :hiredis,
     url: ENV["REDIS_URL"],
     timeout: 30,
     reconnect_attempts: 1,
     expires_in: 1.hour,
-    namespace: "blacklight"
+    namespace: "blacklight",
+    pool_size: 45,
+    pool_timeout: 5
   }
 
   # Use a real queuing backend for Active Job (and separate queues per environment).
@@ -94,5 +97,6 @@ Rails.application.configure do
 
   # allow requests to
   config.hosts.clear
+  config.hosts << "localhost"
   config.hosts << ".nla.gov.au"
 end

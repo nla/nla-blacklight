@@ -10,6 +10,7 @@ $light-yellow: #FFF3CD;
 $cyan: #00afc4;
 $yellow: #f2e95c;
 $gray-very-light: #f4f5f6;
+$gray-light: #E1E3E5;
 $gray-medium-light: #677078;
 $gray-medium: #46474A;
 
@@ -24,6 +25,7 @@ $colors: (
   "light-blue": $light-blue,
   "purple": $purple,
   "gray-very-light": $gray-very-light,
+  "gray-light": $gray-light,
   "gray-medium-light": $gray-medium-light,
   "gray-medium": $gray-medium,
 );
@@ -55,7 +57,7 @@ $border-radius-sm: 0;
 
   // Typography
 $font-family-sans-serif: "Roboto condensed", sans-serif;
-
+$text-muted: $gray-medium-light;
 
 $font-weight-semi-bold: 500;
 
@@ -81,7 +83,8 @@ $btn-font-weight: 700;
 
 
 // Form inputs
-
+$input-border-color: $gray-light;
+$input-placeholder-color: $gray-medium-light;
 $component-active-bg: $purple;
 
 
@@ -104,6 +107,10 @@ $pagination-hover-border-color:     $purple;
 
 $pagination-disabled-bg:            transparent;
 $pagination-disabled-border-color:  transparent;
+
+// Cards
+$card-border-color: transparent;
+$card-border-radius: 0;
 
 // Tables
 $table-bg: $white;

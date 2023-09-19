@@ -27,8 +27,8 @@ RSpec.describe RequestHelper do
     context "when there are no statements or notes" do
       subject(:statements) { helper.merge_statements_and_notes({"statement" => "", "note" => ""}) }
 
-      it "returns an empty array" do
-        expect(statements).to eq []
+      it "returns nil" do
+        expect(statements).to be_nil
       end
     end
   end

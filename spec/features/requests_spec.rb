@@ -77,7 +77,10 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
-        expect(page).to have_css("p", text: I18n.t("requesting.prompt"))
+        expect(page).to have_css("strong", text: "You are requesting a journal, magazine, newspaper, annual report or other multi-part item. Please use the fields below to tell our staff which issues you would like to request.")
+        expect(page).to have_css("p", text: "You can use one request for consecutive parts. A separate request must be placed for non-sequential years/volumes or days/months. Requests for large amounts of material may be partially supplied. If you need assistance with this please contact us.")
+
+        expect(page).to have_link(href: Rails.application.config_for(:catalogue).contact_us_url, text: "contact us")
       end
 
       it "renders the journals form" do
@@ -122,7 +125,11 @@ RSpec.describe "Requests" do
           holdings: holdings_id,
           item: item_id
         )
-        expect(page).to have_css("strong", text: "You have requested a multiple box collection. Please use the fields below to tell our staff which box or boxes you would like to request.")
+        expect(page).to have_css("strong", text: "You are requesting a multiple box collection. Please use the fields below to tell our staff which box or boxes you would like to request.")
+        expect(page).to have_css("p", text: "You can use one request for up to five consecutive boxes. Use a separate request for non-consecutive boxes/series/folders/items.")
+        expect(page).to have_css("p", text: "If available, use the collection finding aid to select your box number, or a series/folder/item number and enter them below. If you need assistance with this please contact us.")
+
+        expect(page).to have_link(href: Rails.application.config_for(:catalogue).contact_us_url, text: "contact us")
       end
 
       it "renders the contact us link" do
@@ -229,6 +236,49 @@ RSpec.describe "Requests" do
     let(:item_id) { "60ae1cf9-5b4c-5fac-9a38-2cb195cdb7b2" }
     let(:solr_document_id) { "1595553" }
     let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["National Geographic"], format: ["Journal"]) }
+
+    it "renders the 'Back to item' button" do
+      visit solr_document_request_success_path(
+        solr_document_id: solr_document_id,
+        instance: instance_id,
+        holdings: holdings_id,
+        item: item_id
+      )
+
+      expect(page).to have_link(I18n.t("requesting.btn_back_to_item"), href: "/catalog/1595553")
+    end
+
+    context "when a catalogue search has been performed" do
+      let(:current_search) { Search.create(query_params: {q: ""}) }
+
+      before do
+        allow_any_instance_of(RequestController).to receive(:current_search_session).and_return(current_search)
+      end
+
+      it "renders the 'Back to search' button" do
+        visit solr_document_request_success_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_link(I18n.t("blacklight.back_to_search", href: "/catalog"))
+      end
+    end
+
+    context "when a catalogue search has not been performed" do
+      it "does not render the 'Back to search' button" do
+        visit solr_document_request_success_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).not_to have_link(I18n.t("blacklight.back_to_search"))
+      end
+    end
 
     context "when user has reached their request limit" do
       it "renders the request limit error" do

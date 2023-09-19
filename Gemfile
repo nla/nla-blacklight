@@ -24,7 +24,7 @@ gem "activerecord-session_store", "~> 2.0"
 gem "rufus-scheduler", "~> 3.8"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.4"
+gem "rails", "~> 7.0.8"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -49,7 +49,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.15.0"
+gem "hiredis-client", "~> 0.17.0"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.0"
@@ -85,7 +85,7 @@ gem "blacklight_range_limit"
 gem "nokogiri", ">= 1.13.9"
 gem "addressable", "~> 2.8"
 gem "repost", "~> 0.4.1"
-gem "strong_migrations", "~> 1.4"
+gem "strong_migrations", "~> 1.6"
 gem "view_component", "~> 2.82"
 gem "zk", "~> 1.10"
 gem "down", "~> 5.0"
@@ -98,16 +98,11 @@ gem "htmlentities"
 gem "openurl"
 gem "faraday-http-cache"
 
-# feature flags
-gem "flipper", "~> 0.28.0"
-gem "flipper-active_record", "~> 0.28.0"
-gem "flipper-ui", "~> 0.28.0"
-
 # Fixes CVE-2023-28755
 gem "uri", "~> 0.12.1"
 
 # Before a release, point these gem at a tag, instead of the `main` branch.
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", tag: "0.1.7"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
@@ -119,15 +114,22 @@ gem "yabeda-rails"
 gem "yabeda-puma-plugin"
 gem "yabeda-prometheus"
 
+gem "derailed_benchmarks", group: :development
+gem "stackprof", group: :development
+
+gem "memo_wise"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "standard", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
+  gem "rubocop-performance", require: false
   gem "solr_wrapper", ">= 0.3"
 
   gem "rspec-rails", "~> 6.0"
+  gem "fuubar"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
   gem "faker"
@@ -146,14 +148,13 @@ group :development do
   # gem "spring"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
+  gem "rack-mini-profiler"
   # append ?pp=flamegraph to URL for flamegraphs
-  # gem "flamegraph"
-  # gem "stackprof"
+  gem "flamegraph"
   # append ?pp=profile-memory to URL
   # ?pp=profile-gc to report on GC statistics
   # ?pp=analyze-memory to report on Object statistics
-  # gem "memory_profiler"
+  gem "memory_profiler"
 end
 
 group :test do
@@ -167,5 +168,5 @@ group :test do
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-json", "~> 0.2.3"
 
-  gem "mock_redis", "~> 0.36.0"
+  gem "mock_redis", "~> 0.37.0"
 end

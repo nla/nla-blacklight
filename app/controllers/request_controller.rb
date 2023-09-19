@@ -4,6 +4,7 @@ require "faraday"
 
 class RequestController < ApplicationController
   include Blacklight::Searchable
+  include Blacklight::SearchContext
 
   before_action :authenticate_user!, only: [:new, :create, :success]
   before_action :request_params
@@ -48,7 +49,7 @@ class RequestController < ApplicationController
     item_id = request_params[:request][:item_id]
 
     new_request = request_params[:request].to_h
-    new_request.merge!({instance_id: instance_id})
+    new_request[:instance_id] = instance_id
 
     cat_services_client = CatalogueServicesClient.new
     _holding, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)

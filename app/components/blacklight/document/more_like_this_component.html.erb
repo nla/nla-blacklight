@@ -4,7 +4,7 @@
     <ul class="list-unstyled">
       <% @document.more_like_this.each do |document| %>
         <li class="more_like_this_document">
-          <span class="mlt_title"><%= link_to_document document %></span>
+          <span class="mlt_title"><%= link_to document[:title], solr_document_path(id: document[:id]) %></span>
         </li>
       <% end %>
     </ul>

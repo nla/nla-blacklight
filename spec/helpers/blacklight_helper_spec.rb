@@ -15,17 +15,15 @@ RSpec.describe BlacklightHelper do
     end
 
     context "when in development environment" do
-      before { ENV["RAILS_ENV"] = "development" }
-
       it "prepends '[DEV]' to the title" do
+        allow(Rails.env).to receive(:development?).and_return(true)
         expect(helper.render_page_title).to eq "[DEV] #{helper.application_name}"
       end
     end
 
     context "when in staging environment" do
-      before { ENV["RAILS_ENV"] = "staging" }
-
       it "prepends '[TEST]' to the title" do
+        allow(Rails.env).to receive(:staging?).and_return(true)
         expect(helper.render_page_title).to eq "[TEST] #{helper.application_name}"
       end
     end
@@ -42,7 +40,7 @@ RSpec.describe BlacklightHelper do
       end
 
       it "converts them to standard apostrophes" do
-        expect(helper.render_document_heading).to eq "<h4 itemprop=\"name\" class=\"h3 col\">Mayor&#39;s Stone</h4>"
+        expect(helper.render_document_heading).to eq "<h4 itemprop=\"name\" class=\"h3 col\">Mayor's Stone</h4>"
       end
     end
   end

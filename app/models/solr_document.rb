@@ -4,9 +4,9 @@ require "traject"
 require "rexml/document"
 require "rexml/xpath"
 
-require Rails.root.join("lib", "mapsearch", "map_search")
-
 class SolrDocument
+  prepend MemoWise
+
   include Blacklight::Solr::Document
   include REXML
   include Blacklight::Configurable
@@ -22,7 +22,7 @@ class SolrDocument
   end
 
   field_semantics.merge!(
-    title: "title_ssm",
+    title: "title_tsim",
     author: "author_ssm",
     language: "language_ssim",
     format: "format"
@@ -41,57 +41,46 @@ class SolrDocument
   # handler doesn't search across shards in Solr 8.7.
   # TODO: In Solr 8.8 the request handler searches across shards and this logic should be updated when Solr is upgraded.
   def more_like_this
-    params = {
-      q: "{!mlt qf=call_number_tsim,title_tsim,author_search_tsim,subject_tsimv,published_ssim,language_ssim boost=true}#{id}",
-      fl: "id,title_tsim,format",
-      indent: "off",
-      rows: 5
-    }
-    search_repository = Blacklight.repository_class.new(blacklight_config)
-    search_response = search_repository.search(params)
+    Rails.cache.fetch("mlt/#{id}", expires_in: 1.day) do
+      params = {
+        q: "{!mlt qf=call_number_tsim,title_tsim,author_search_tsim,subject_tsimv,published_ssim,language_ssim boost=true}#{id}",
+        fl: "id,title_tsim,format",
+        indent: "off",
+        rows: 5
+      }
+      search_repository = Blacklight.repository_class.new(blacklight_config)
+      search_response = search_repository.search(params)
 
-    result = []
-    response = search_response["response"]
-    if response.present?
-      if response["numFound"] > 0
-        response["docs"].each do |doc|
-          result << SolrDocument.new(doc)
+      response = search_response["response"]
+      if response.present?
+        if response["numFound"] > 0
+          result = []
+          response["docs"].each do |doc|
+            result << {id: doc["id"], title: doc["title_tsim"].first}
+          end
+          result
         end
       end
     end
-    result
   end
 
-  # Get data from the full marc record contained in the solr document using a Traject spec.
-  def get_marc_derived_field(spec, options: {separator: " "}, merge_880: true)
+  def marc_rec
     @marc_rec ||= to_marc
-    extractor = Traject::MarcExtractor.cached(spec, options)
-    data = extractor.extract(@marc_rec)
-    if merge_880
-      data = merge_880 data
-    end
-    data
-  end
-
-  # `get_marc_derived_fields` when finding linked 880 fields, will prefix the
-  # results array with the tag name and subfields.
-  # We don't want to display the tag and subfields in the UI, so this will look for the first
-  # space in the string after the prefix and strip the prefixes from all the elements in the
-  # results array.
-  # Results which don't have linked 880 fields will not have the prefix, so we
-  # return the datafields as a single dimensional array.
-  def merge_880(datafields)
-    if datafields.find { |d| d.start_with? "880" }.present?
-      datafields.map do |d|
-        d[d.index(" ")...-1].strip
-      end
-    else
-      [*datafields]
-    end
   end
 
   def marc_xml
-    @marc_xml ||= to_marc_xml
+    @marc_xml ||= Nokogiri::XML.parse(fetch("marc_ss")).remove_namespaces!
+  end
+
+  def get_marc_datafields_from_xml(xpath)
+    marc_xml.xpath(xpath).presence
+  end
+
+  # Get data from the full marc record contained in the solr document using a Traject spec.
+  def get_marc_derived_field(spec, options: {})
+    data = Traject::MarcExtractor.new(spec, options).extract(marc_rec)
+    # GC.start # encourage the garbage collector to run
+    data.presence
   end
 
   def title_start
@@ -101,11 +90,19 @@ class SolrDocument
   def description
     date_fields_array = get_marc_derived_field("2603abc:264|*0|3abc:264|*1|3abc:264|*2|3abc:264|*4|3abc")
     description_fields_array = get_marc_derived_field("300abcefg:507ab:753abc:755axyz")
-    date_fields_array.each do |s|
-      s.gsub!(/[, .\\;]*$|^[, .\/;]*/, "")
+    if date_fields_array.present?
+      date_fields_array.map do |s|
+        s.gsub!(/[, .\\;]*$|^[, .\/;]*/, "") || s
+      end
+      if description_fields_array.present?
+        date_fields_array.concat(description_fields_array)
+      end
+      date_fields_array.compact_blank.presence
+    elsif description_fields_array.present?
+      description_fields_array.compact_blank.presence
     end
-    [*date_fields_array, *description_fields_array]
   end
+  memo_wise :description
 
   def online_access
     get_online_access_urls
@@ -131,27 +128,22 @@ class SolrDocument
     get_map_search_url
   end
 
-  def get_marc_datafields_from_xml(xpath, xml_doc = marc_xml)
-    REXML::XPath.match(xml_doc, xpath)
-  end
-
   def series
     Series.new(self).values
   end
+  memo_wise :series
 
   def notes
     Notes.new(self).values
   end
+  memo_wise :notes
 
   def copyright_status
-    copyright_info ||= get_copyright_status
-
     # If no copyright info returned from the SOA
     # don't show the component.
-    if copyright_info.info.present?
-      copyright_info
-    end
+    get_copyright_status.presence
   end
+  memo_wise :copyright_status
 
   def form_of_work
     get_marc_derived_field("380a")
@@ -170,9 +162,7 @@ class SolrDocument
   end
 
   def access_conditions
-    if has_eresources?
-      []
-    else
+    unless has_eresources?
       get_marc_derived_field("506a3bcde", options: {alternate_script: false})
     end
   end
@@ -184,16 +174,15 @@ class SolrDocument
   def isbn
     get_isbn(tag: "020", sfield: "a", qfield: "q", use_880: true)
   end
+  memo_wise :isbn
 
   def isbn_list
-    result = []
-    if isbn.present?
-      isbn.each do |isn|
-        result << clean_isn(isn)
-      end
+    list = isbn&.map do |isn|
+      clean_isn(isn)
     end
-    result
+    list&.compact_blank.presence
   end
+  memo_wise :isbn_list
 
   def invalid_isbn
     get_isbn(tag: "020", sfield: "z", qfield: "q", use_880: true)
@@ -218,15 +207,14 @@ class SolrDocument
   def related_records
     get_related_records
   end
+  memo_wise :related_records
 
   def printer
     get_marc_derived_field("260efg:264|*3|3abc")
   end
 
   def full_contents
-    data = get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
-
-    format_contents data
+    format_contents get_marc_derived_field("505|0*|agrtu:505|8*|agrtu")
   end
 
   def technical_details
@@ -238,15 +226,11 @@ class SolrDocument
   end
 
   def partial_contents
-    data = get_marc_derived_field("505|2*|agrtu")
-
-    format_contents data
+    format_contents get_marc_derived_field("505|2*|agrtu")
   end
 
   def incomplete_contents
-    data = get_marc_derived_field("505|1*|agrtu")
-
-    format_contents data
+    format_contents get_marc_derived_field("505|1*|agrtu")
   end
 
   def credits
@@ -381,28 +365,36 @@ class SolrDocument
     get_marc_derived_field("5403abcd", options: {alternate_script: false})
   end
 
+  def copyright_info
+    get_marc_derived_field("542abcdefghijkmnopqrsu368", options: {alternate_script: false})
+  end
+
   def other_authors
-    fetch("additional_author_with_relator_ssim")
+    fetch("additional_author_with_relator_ssim", nil)
   rescue KeyError
-    []
+    nil
   end
 
   def all_authors
-    fetch("author_search_tsim")
+    fetch("author_search_tsim", nil)
   rescue KeyError
-    []
+    nil
   end
 
   def lccn
-    data = get_marc_derived_field("010a", options: {alternate_script: false})
-    data.map { |d| d.gsub(/\s+/, "") }
+    lccn = get_marc_derived_field("010a", options: {alternate_script: false})
+    lccn = lccn&.map do |d|
+      clean_isn(d)
+    end
+    lccn&.compact_blank.presence
   end
+  memo_wise :lccn
 
   def has_eresources?
     eresource_urls = []
 
     online_access_urls = get_online_access_urls
-    online_access_urls.each do |url|
+    online_access_urls&.each do |url|
       eresource_urls << url if Eresources.new.known_url(url[:href]).present?
     end
 
@@ -412,17 +404,18 @@ class SolrDocument
     end
 
     copy_urls = get_copy_urls
-    copy_urls.each do |url|
+    copy_urls&.each do |url|
       eresource_urls << url if Eresources.new.known_url(url[:href]).present?
     end
 
     related_urls = get_related_urls
-    related_urls.each do |url|
+    related_urls&.each do |url|
       eresource_urls << url if Eresources.new.known_url(url[:href]).present?
     end
 
-    eresource_urls.present?
+    eresource_urls.compact_blank.present?
   end
+  memo_wise :has_eresources?
 
   def clean_isn(isn)
     isn = isn.gsub(/[\s-]+/, '\1')
@@ -435,48 +428,50 @@ class SolrDocument
     if data.present?
       publication_place = data.join(" ")
       if publication_place.end_with?(":")
-        publication_place = publication_place.chop.strip
+        publication_place.chop!
       end
-      publication_place
+      publication_place.strip
     end
   end
+  memo_wise :publication_place
 
   def publisher
     data = get_marc_derived_field("260b", options: {alternate_script: false}) || get_marc_derived_field("264b", options: {alternate_script: false})
     if data.present?
       publisher = data.join(" ")
       if publisher.end_with?(",")
-        publisher = publisher.chop.strip
+        publisher.chop!
       end
-      publisher
+      publisher.strip
     end
   end
+  memo_wise :publisher
 
   def pi
     data = get_marc_derived_field("856u")
     if data.present?
       pi = data.first
-      if pi.match(/^https?:\/\/nla\.gov\.au\/(.*)$/)
+      if /^https?:\/\/nla\.gov\.au\/(.*)$/.match?(pi)
         pi
       end
     end
   end
+  memo_wise :pi
 
   def life_dates
     data = get_marc_derived_field("362a")
     if data.present?
       clean_dates = data.map do |date|
-        date&.chomp(".")
+        date&.chomp!(".") || date
       end
       [clean_dates.join(" ")]
-    else
-      []
     end
   end
 
   def finding_aid_url
     get_marc_derived_field("856u")
   end
+  memo_wise :finding_aid_url
 
   def time_coverage
     if single_time_coverage.present?
@@ -485,17 +480,19 @@ class SolrDocument
       [multiple_time_coverage.join(", ")]
     elsif ranged_time_coverage.present?
       [ranged_time_coverage.join("-")]
-    else
-      []
     end
   end
 
   def publication_date
-    data = get_marc_derived_field("260c", options: {alternate_script: false})
-    data.map do |date|
-      date.chomp(".")
+    data = get_marc_derived_field("264|*1|c", options: {alternate_script: false})
+    if data.blank?
+      data = get_marc_derived_field("260c", options: {alternate_script: false})
+    end
+    data&.map do |date|
+      date.chomp!(".") || date
     end
   end
+  memo_wise :publication_date
 
   private
 
@@ -515,40 +512,35 @@ class SolrDocument
   end
 
   def get_map_search_url
-    url = MapSearch.new.determine_url(id: id, format: fetch("format"))
+    url = MapSearchService.new.determine_url(id: id, format: fetch("format"))
     if url.present?
       [url]
-    else
-      []
     end
   rescue KeyError
     Rails.logger.info "Record #{id} has no 'format'"
-    []
-  end
-
-  def to_marc_xml
-    @marc_rec ||= to_marc
-    @marc_rec.to_xml
+    nil
   end
 
   def make_url(elements)
-    urls = []
-    elements.each do |el|
-      url_hash = {text: "", href: ""}
-      el.children.each do |subfield|
-        subfield_code = subfield.attribute("code").value
-        if subfield_code == "3" || subfield_code == "z"
-          url_hash[:text] = subfield.text if url_hash[:text].empty?
-        elsif subfield_code == "u"
-          url_hash[:href] = subfield.text
+    if elements.present?
+      urls = []
+      elements.each do |el|
+        url_hash = {}
+        el.children.each do |subfield|
+          subfield_code = subfield.attribute("code").value
+          if subfield_code == "3" || subfield_code == "z"
+            url_hash[:text] = subfield.text if url_hash[:text].nil?
+          elsif subfield_code == "u"
+            url_hash[:href] = subfield.text
+          end
         end
+        if url_hash[:text].nil?
+          url_hash[:text] = url_hash[:href]
+        end
+        urls << url_hash unless url_hash[:href].nil?
       end
-      if url_hash[:text].empty?
-        url_hash[:text] = url_hash[:href]
-      end
-      urls << url_hash unless url_hash[:href].empty?
+      urls.compact_blank.presence
     end
-    urls
   end
 
   def get_search_links
@@ -556,7 +548,7 @@ class SolrDocument
   end
 
   def get_copyright_status
-    CopyrightStatus.new(self)
+    CopyrightStatus.new(self).value
   end
 
   def has_copyright?
@@ -568,7 +560,7 @@ class SolrDocument
   end
 
   def get_edition
-    get_marc_derived_field("250")
+    get_marc_derived_field("250ab")
   end
 
   def get_isbn(tag:, sfield:, qfield:, use_880: false)
@@ -578,7 +570,7 @@ class SolrDocument
       elements_880 = get_marc_datafields_from_xml("//datafield[@tag='880' and subfield[@code='6' and starts-with(.,'#{tag}-')]]")
       isbn += [*extract_isbn(elements: elements_880, tag: tag, sfield: sfield, qfield: qfield)]
     end
-    isbn.compact_blank
+    isbn.compact_blank.presence
   end
 
   # Extracts ISBNs from MARC. The MARCXML must be read sequentially, where a single 020 tag may contain subfields like:
@@ -619,49 +611,35 @@ class SolrDocument
         isbn << text.join(" ")
       end
       isbn
-    else
-      []
     end
   end
 
   def get_related_records
     ids = get_marc_derived_field("0359")
-    collection_id = ""
-    if ids.present?
-      ids.each do |id|
-        if id.match(/\(.*\)/)
-          collection_id = id
-          break
-        end
-      end
-    end
+    collection_id = ids&.first
 
     related_records = []
 
     # Check for related collections in the 773 subfield
     related_773_records = []
     related_773 = get_marc_derived_field("773w")
-    related_773.each do |r|
-      rec = RelatedRecords.new(self, collection_id)
-      rec.subfield = "773"
-      rec.parent_id = r
+    related_773&.each do |r|
+      rec = RelatedRecords.new(self, collection_id, "773", r)
       related_773_records << rec if rec.in_collection?
     end
 
     # Check for related collections in the 973 subfield
     related_973_records = []
     related_973 = get_marc_derived_field("973w")
-    related_973.each do |r|
-      rec = RelatedRecords.new(self, collection_id)
-      rec.subfield = "973"
-      rec.parent_id = r
+    related_973&.each do |r|
+      rec = RelatedRecords.new(self, collection_id, "973", r)
       related_973_records << rec if rec.in_collection?
     end
 
     # If there are no 973 or 773 records, but there is a collection ID, then this could be a
     # parent collection.
     if related_773_records.blank? && related_973_records.blank?
-      related_records << RelatedRecords.new(self, collection_id)
+      related_records << RelatedRecords.new(self, collection_id, nil, nil)
     else
       related_records += related_773_records
       related_records += related_973_records
@@ -670,48 +648,45 @@ class SolrDocument
     if related_records.present?
       # Check if any of any of the collections this record belongs to is really a collection,
       # because it's possible for a parent collection not to have any children.
-      visible = false
-      related_records.each do |rec|
-        if rec.in_collection?
-          visible = true
-          break
-        end
-      end
+      visible = !related_records.find { |rec| rec.in_collection? }.nil?
 
       # There is at least one collection, so let's render the Related Records section
-      if visible
-        return related_records
-      end
+      return related_records if visible
     end
 
     # Record is not part of any collection, return an empty array
-    []
+    nil
   end
 
   def format_contents(data)
     contents = []
 
     data&.each do |content|
-      contents += content.split("--").map(&:strip)
+      content.split("--").map(&:strip).map do |c|
+        contents << c
+      end
     end
 
-    contents
+    contents.compact_blank.presence
   end
 
   def single_time_coverage
     clean_time_coverage get_marc_derived_field("045|0*|b")
   end
+  memo_wise :single_time_coverage
 
   def multiple_time_coverage
     clean_time_coverage get_marc_derived_field("045|1*|b")
   end
+  memo_wise :multiple_time_coverage
 
   def ranged_time_coverage
     clean_time_coverage get_marc_derived_field("045|2*|b")
   end
+  memo_wise :ranged_time_coverage
 
   def clean_time_coverage(dates)
-    dates.map do |date|
+    dates&.map do |date|
       date&.delete_prefix("d")&.[](0..3)
     end
   end

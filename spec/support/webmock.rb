@@ -12,20 +12,29 @@ RSpec.configure do |config|
     WebMock.stub_request(:get, "http://eresource-manager.example.com/")
       .with(
         headers: {
-          "Accept" => "*/*",
+          "Accept" => "application/json",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 200, body: eresource_config, headers: {})
 
-    WebMock.stub_request(:get, "http://eresource-manager.example.com/service-fail")
+    WebMock.stub_request(:get, "http://eresource-manager.example.com/service-error")
       .with(
         headers: {
-          "Accept" => "*/*",
+          "Accept" => "application/json",
           "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 500, body: "", headers: {})
+
+    WebMock.stub_request(:get, "http://eresource-manager.example.com/service-fail")
+      .with(
+        headers: {
+          "Accept" => "application/json",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+        }
+      )
+      .to_raise(StandardError)
 
     WebMock.stub_request(:get, /solr:8983/)
       .with(
@@ -68,72 +77,6 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: fa_search_mock, headers: {"Content-Type" => "application/json"})
-
-    eds_auth_mock = IO.read("spec/files/bento_search/ebsco/uidauth.json")
-
-    WebMock.stub_request(:post, /eds-api.ebscohost.com\/authservice\/rest\/uidauth/)
-      .with(
-        body: "      {\n        \"UserId\":\"test\",\n        \"Password\":\"test\"\n      }\n",
-        headers: {
-          "Accept" => "application/json",
-          "Content-Type" => "application/json"
-        }
-      )
-      .to_return(status: 200, body: eds_auth_mock, headers: {"Content-Type" => "application/json"})
-
-    eds_session_mock = IO.read("spec/files/bento_search/ebsco/session.xml")
-
-    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/createsession\?guest=n&profile=edsapi/)
-      .with(
-        headers: {
-          "Accept" => "application/xml",
-          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0"
-        }
-      )
-      .to_return(status: 200, body: eds_session_mock, headers: {})
-
-    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/endsession/)
-      .with(
-        headers: {
-          "Accept" => "application/xml",
-          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0"
-        }
-      )
-      .to_return(status: 200, body: "", headers: {})
-
-    eds_search_mock = IO.read("spec/files/bento_search/ebsco/search.xml")
-
-    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/search\?highlight=n&query=AND,hydrogen&resultsperpage=3&searchmode=all&view=detailed/)
-      .with(
-        headers: {
-          "Accept" => "application/xml",
-          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
-          "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
-        }
-      )
-      .to_return(status: 200, body: eds_search_mock, headers: {})
-
-    WebMock.stub_request(:get, /eds-api.ebscohost.com\/edsapi\/rest\/search\?highlight=n&query=AND,TI:hydrogen&resultsperpage=3&searchmode=all&view=detailed/)
-      .with(
-        headers: {
-          "Accept" => "application/xml",
-          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
-          "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
-        }
-      )
-      .to_return(status: 200, body: eds_search_mock, headers: {})
-
-    eds_publication_search_mock = IO.read("spec/files/bento_search/ebsco/publication_search.xml")
-
-    stub_request(:get, /eds-api.ebscohost.com\/edsapi\/publication\/search\?highlight=n&query=AND,hydrogen&resultsperpage=3&view=detailed/)
-      .with(
-        headers: {
-          "Accept" => "application/xml",
-          "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
-          "X-Sessiontoken" => "17e7115f-5c8a-495b-98bc-61f5c330d71a.+D51EefNZ/p2kEbaEIqJRQ=="
-        }
-      )
-      .to_return(status: 200, body: eds_publication_search_mock, headers: {})
 
     WebMock.stub_request(:get, /test.nla.gov.au\/catalogue-message\/(1|1234)/)
       .with(
@@ -214,7 +157,7 @@ RSpec.configure do |config|
 
     WebMock.stub_request(:post, /eds-api.ebscohost.com\/edsapi\/rest\/Search/)
       .with(
-        body: "{\"SearchCriteria\":{\"Queries\":[{\"Term\":\"hydrogen\"}],\"SearchMode\":\"bool\",\"IncludeFacets\":\"n\",\"FacetFilters\":[],\"Limiters\":[],\"Sort\":\"relevance\",\"PublicationId\":null,\"RelatedContent\":[\"emp\"],\"AutoSuggest\":\"y\",\"Expanders\":[\"fulltext\"],\"AutoCorrect\":\"n\"},\"RetrievalCriteria\":{\"View\":\"brief\",\"ResultsPerPage\":3,\"PageNumber\":1,\"Highlight\":false,\"IncludeImageQuickView\":false},\"Actions\":[\"GoToPage(1)\"],\"Comment\":\"\"}",
+        body: "{\"SearchCriteria\":{\"Queries\":[{\"Term\":\"hydrogen\"}],\"SearchMode\":\"bool\",\"IncludeFacets\":\"n\",\"FacetFilters\":[],\"Limiters\":[{\"Id\":\"FT1\",\"Values\":[\"y\"]}],\"Sort\":\"relevance\",\"PublicationId\":null,\"RelatedContent\":[\"emp\"],\"AutoSuggest\":\"n\",\"Expanders\":[\"fulltext\"],\"AutoCorrect\":\"n\"},\"RetrievalCriteria\":{\"View\":\"brief\",\"ResultsPerPage\":3,\"PageNumber\":1,\"Highlight\":false,\"IncludeImageQuickView\":false},\"Actions\":[\"GoToPage(1)\"],\"Comment\":\"\"}",
         headers: {
           "Accept" => "application/json",
           "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
@@ -227,7 +170,7 @@ RSpec.configure do |config|
 
     WebMock.stub_request(:post, /eds-api.ebscohost.com\/edsapi\/rest\/Search/)
       .with(
-        body: "{\"SearchCriteria\":{\"Queries\":[{\"FieldCode\":\"TI\",\"Term\":\"hydrogen\"}],\"SearchMode\":\"bool\",\"IncludeFacets\":\"n\",\"FacetFilters\":[],\"Limiters\":[],\"Sort\":\"relevance\",\"PublicationId\":null,\"RelatedContent\":[\"emp\"],\"AutoSuggest\":\"y\",\"Expanders\":[\"fulltext\"],\"AutoCorrect\":\"n\"},\"RetrievalCriteria\":{\"View\":\"brief\",\"ResultsPerPage\":3,\"PageNumber\":1,\"Highlight\":false,\"IncludeImageQuickView\":false},\"Actions\":[\"GoToPage(1)\"],\"Comment\":\"\"}",
+        body: "{\"SearchCriteria\":{\"Queries\":[{\"FieldCode\":\"TI\",\"Term\":\"hydrogen\"}],\"SearchMode\":\"bool\",\"IncludeFacets\":\"n\",\"FacetFilters\":[],\"Limiters\":[{\"Id\":\"FT1\",\"Values\":[\"y\"]}],\"Sort\":\"relevance\",\"PublicationId\":null,\"RelatedContent\":[\"emp\"],\"AutoSuggest\":\"n\",\"Expanders\":[\"fulltext\"],\"AutoCorrect\":\"n\"},\"RetrievalCriteria\":{\"View\":\"brief\",\"ResultsPerPage\":3,\"PageNumber\":1,\"Highlight\":false,\"IncludeImageQuickView\":false},\"Actions\":[\"GoToPage(1)\"],\"Comment\":\"\"}",
         headers: {
           "Accept" => "application/json",
           "X-Authenticationtoken" => "AGPGzYCzk-NO9_ueZr4gxTl-MP2cQWQ1zUR7IkN1c3RvbWVySWQiOiJzODQyMzUxNiIsIkdyb3VwSWQiOiJtYWluIn0",
@@ -304,5 +247,15 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: "{\"requestLimitReached\": \"false\"}", headers: {})
+
+    WebMock.stub_request(:post, /catservices.test\/catalogue-services\/log\/message/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "Content-Type" => "application/json"
+        }
+      )
+      .to_return(status: 200, body: "", headers: {})
   end
 end

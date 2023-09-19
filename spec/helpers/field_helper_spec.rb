@@ -14,7 +14,7 @@ RSpec.describe FieldHelper do
       let(:value) { [{text: "Text version:", href: "http://purl.access.gpo.gov/GPO/LPS9877"}] }
 
       it "generates a link to the item" do
-        expect(list).to include '<a href="http://purl.access.gpo.gov/GPO/LPS9877">Text version:</a>'
+        expect(list).to include '<a class="text-break" href="http://purl.access.gpo.gov/GPO/LPS9877">Text version:</a>'
       end
     end
 
@@ -47,15 +47,15 @@ RSpec.describe FieldHelper do
       end
 
       it "includes a link to Trove" do
-        expect(list).to include "<a href=\"https://webarchive.nla.gov.au/awa/*/http://purl.access.gpo.gov/GPO/LPS9878\">Trove</a>"
+        expect(list).to include "<a class=\"text-break\" href=\"https://webarchive.nla.gov.au/awa/*/http://purl.access.gpo.gov/GPO/LPS9878\">Trove</a>"
       end
 
       it "includes a link to the Wayback Machine" do
-        expect(list).to include "<a href=\"https://web.archive.org/web/*/http://purl.access.gpo.gov/GPO/LPS9878\">Wayback Machine</a>"
+        expect(list).to include "<a class=\"text-break\" href=\"https://web.archive.org/web/*/http://purl.access.gpo.gov/GPO/LPS9878\">Wayback Machine</a>"
       end
 
       it "includes a link to Google" do
-        expect(list).to include "<a href=\"https://www.google.com.au/search?q=&quot;Protocol amending 1949 Convention of Inter-American Tropical Tuna Commission&quot; gpo.gov united states united states united states\">Google</a>"
+        expect(list).to include "<a class=\"text-break\" href=\"https://www.google.com.au/search?q=&quot;Protocol amending 1949 Convention of Inter-American Tropical Tuna Commission&quot; gpo.gov united states united states united states\">Google</a>"
       end
     end
 
@@ -108,7 +108,7 @@ RSpec.describe FieldHelper do
       let(:value) { ["Example: https://google.com/test.pdf"] }
 
       it "generates a link around the URL" do
-        expect(value_list).to eq "Example: <a href=\"https://google.com/test.pdf\">https://google.com/test.pdf</a>"
+        expect(value_list).to eq "Example: <a href=\"https://google.com/test.pdf\" class=\"text-break\">https://google.com/test.pdf</a>"
       end
     end
   end
@@ -138,7 +138,7 @@ RSpec.describe FieldHelper do
       let(:value) { ["Example: https://google.com/test.pdf"] }
 
       it "generates a link around the URL" do
-        expect(value_list).to eq "Example: <a href=\"https://google.com/test.pdf\">https://google.com/test.pdf</a>"
+        expect(value_list).to eq "Example: <a href=\"https://google.com/test.pdf\" class=\"text-break\">https://google.com/test.pdf</a>"
       end
     end
   end
@@ -168,7 +168,7 @@ RSpec.describe FieldHelper do
       let(:value) { ["Example: https://google.com/test.pdf"] }
 
       it "generates a link around the URL" do
-        expect(value_list).to eq "<strong>Example: <a href=\"https://google.com/test.pdf\">https://google.com/test.pdf</a></strong>"
+        expect(value_list).to eq "<strong>Example: <a href=\"https://google.com/test.pdf\" class=\"text-break\">https://google.com/test.pdf</a></strong>"
       end
     end
   end
@@ -180,10 +180,7 @@ RSpec.describe FieldHelper do
     context "when there are only non-880 notes" do
       context "with a single non-880 note" do
         let(:value) do
-          [{
-            notes: ["Non-880 note A"],
-            more_notes: []
-          }]
+          ["Non-880 note A"]
         end
 
         it "generates plain text" do
@@ -193,10 +190,7 @@ RSpec.describe FieldHelper do
 
       context "with multiple non-880 notes" do
         let(:value) do
-          [{
-            notes: ["Non-880 note A", "Non-880 note B"],
-            more_notes: []
-          }]
+          ["Non-880 note A", "Non-880 note B"]
         end
 
         it "generates an unordered list" do
@@ -208,10 +202,7 @@ RSpec.describe FieldHelper do
     context "when there are only 880 notes" do
       context "with a single 880 note" do
         let(:value) do
-          [{
-            notes: [],
-            more_notes: ["880 note A"]
-          }]
+          ["880 note A"]
         end
 
         it "generates plain text" do
@@ -221,10 +212,7 @@ RSpec.describe FieldHelper do
 
       context "with multiple 880 notes" do
         let(:value) do
-          [{
-            notes: [],
-            more_notes: ["880 note A", "880 note B"]
-          }]
+          ["880 note A", "880 note B"]
         end
 
         it "generates an unordered list" do
@@ -236,10 +224,7 @@ RSpec.describe FieldHelper do
     context "when there are both non-800 and 880 notes" do
       context "with a single non-880 note" do
         let(:value) do
-          [{
-            notes: ["non-880 Note A"],
-            more_notes: ["880 Note 1", "880 Note 2"]
-          }]
+          ["non-880 Note A", "880 Note 1", "880 Note 2"]
         end
 
         it "generates an unordered list" do
@@ -249,10 +234,7 @@ RSpec.describe FieldHelper do
 
       context "with a single 880 note" do
         let(:value) do
-          [{
-            notes: ["non-880 Note A", "non-880 Note B"],
-            more_notes: ["880 Note 1"]
-          }]
+          ["non-880 Note A", "non-880 Note B", "880 Note 1"]
         end
 
         it "generates an unordered list" do
@@ -262,10 +244,7 @@ RSpec.describe FieldHelper do
 
       context "with multiple non-880 and 880 notes" do
         let(:value) do
-          [{
-            notes: ["non-880 Note A", "non-880 Note B"],
-            more_notes: ["880 Note 1", "880 Note 2"]
-          }]
+          ["non-880 Note A", "non-880 Note B", "880 Note 1", "880 Note 2"]
         end
 
         it "generates an unordered list" do
@@ -276,10 +255,10 @@ RSpec.describe FieldHelper do
 
     context "when there is a URL in the note" do
       context "with a single note" do
-        let(:value) { [{notes: ["Online copy found at https://google.com"], more_notes: []}] }
+        let(:value) { ["Online copy found at https://google.com"] }
 
         it "generates a link to the online copy" do
-          expect(notes_values).to eq "Online copy found at <a href=\"https://google.com\">https://google.com</a>"
+          expect(notes_values).to eq "Online copy found at <a href=\"https://google.com\" class=\"text-break\">https://google.com</a>"
         end
 
         it "message starts with 'Online copy found at'" do
@@ -289,22 +268,19 @@ RSpec.describe FieldHelper do
 
       context "with multiple notes" do
         let(:value) do
-          [{
-            notes: ["Online copy found at https://google.com"],
-            more_notes: ["Author website https://example.com"]
-          }]
+          ["Online copy found at https://google.com", "Author website https://example.com"]
         end
 
         it "generates an unordered list" do
-          expect(notes_values).to eq "<ul><li>Online copy found at <a href=\"https://google.com\">https://google.com</a></li><li>Author website <a href=\"https://example.com\">https://example.com</a></li></ul>"
+          expect(notes_values).to eq "<ul><li>Online copy found at <a href=\"https://google.com\" class=\"text-break\">https://google.com</a></li><li>Author website <a href=\"https://example.com\" class=\"text-break\">https://example.com</a></li></ul>"
         end
       end
 
       context "with a URL containing a query string" do
-        let(:value) { [{notes: ["Online copy found at https://example.com?author=Joe+Smith&title=Naming Is Hard"], more_notes: []}] }
+        let(:value) { ["Online copy found at https://example.com?author=Joe+Smith&title=Naming Is Hard"] }
 
         it "is expected to include a link to the resource" do
-          expect(notes_values).to eq "Online copy found at <a href=\"https://example.com?author=Joe+Smith&title=Naming\">https://example.com?author=Joe+Smith&title=Naming</a> Is Hard"
+          expect(notes_values).to eq "Online copy found at <a href=\"https://example.com?author=Joe+Smith&title=Naming\" class=\"text-break\">https://example.com?author=Joe+Smith&title=Naming</a> Is Hard"
         end
       end
     end
@@ -317,7 +293,7 @@ RSpec.describe FieldHelper do
     let(:value) { ["https://mapsearch.nla.gov.au/?type=map&mapClassifications=all&geolocation=all&text=113030"] }
 
     it "generates a link to Map Search" do
-      expect(map_search_value).to eq "<a href=\"https://mapsearch.nla.gov.au/?type=map&mapClassifications=all&geolocation=all&text=113030\">View this map in Map Search</a>"
+      expect(map_search_value).to eq '<a class="text-break" href="https://mapsearch.nla.gov.au/?type=map&mapClassifications=all&geolocation=all&text=113030">View this map in Map Search</a>'
     end
 
     context "when there is no value" do
@@ -338,8 +314,7 @@ RSpec.describe FieldHelper do
       view.lookup_context.view_paths.push "#{Rails.root}/app/components/"
     end
 
-    let(:copyright) { object_double(CopyrightStatus.new(document), info: copyright_response_hash) }
-    let(:value) { [copyright] }
+    let(:value) { [copyright_response_hash] }
 
     it "renders the copyright component" do
       stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
@@ -354,8 +329,6 @@ RSpec.describe FieldHelper do
           }
         )
         .to_return(status: 200, body: "", headers: {})
-
-      allow(copyright).to receive_messages(document: document, info: copyright_response_hash)
 
       expect(copyright_component).to include "In Copyright"
     end
@@ -376,8 +349,6 @@ RSpec.describe FieldHelper do
             }
           )
           .to_return(status: 200, body: "", headers: {})
-
-        allow(copyright).to receive_messages(document: document, info: copyright_response_hash)
 
         expect(copyright_component).to be_nil
       end
@@ -491,7 +462,7 @@ RSpec.describe FieldHelper do
       let(:value) { [] }
 
       it "does not render any paragraphs" do
-        expect(summary_value).to eq ""
+        expect(summary_value).to be_nil
       end
     end
 
@@ -499,7 +470,7 @@ RSpec.describe FieldHelper do
       let(:value) { ["Example: https://google.com/test.pdf"] }
 
       it "generates a link around the URL" do
-        expect(summary_value).to eq "<p class=\"mb-0\">Example: <a href=\"https://google.com/test.pdf\">https://google.com/test.pdf</a></p>"
+        expect(summary_value).to eq "<p class=\"mb-0\">Example: <a href=\"https://google.com/test.pdf\" class=\"text-break\">https://google.com/test.pdf</a></p>"
       end
     end
   end

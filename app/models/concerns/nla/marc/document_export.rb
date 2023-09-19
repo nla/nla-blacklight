@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # Override #register_export_formats to remove Refworks export link
 module Nla::Marc::DocumentExport
   include Blacklight::Marc::DocumentExport

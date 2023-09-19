@@ -1,15 +1,6 @@
-module ApplicationHelper
-  ##
-  # Get a display value from embedded marc record rather than a solr index field.
-  #
-  # example for catalog_controller:
-  #     config.add_show_field '020aq', label: 'ISBN', field: 'id', helper_method: :from_marc
-  #
-  # field: can be any existing solr field. Needs to be included to force display of the results
-  def from_marc(options = {})
-    options[:document].get_marc_derived_field(options[:config][:key])
-  end
+# frozen_string_literal: true
 
+module ApplicationHelper
   def makelink(document:, href:, text:, classes: "", extended_info: false, longtext: "")
     entry = nil
     caption = ""
@@ -24,9 +15,9 @@ module ApplicationHelper
     if text.present? && href.present?
       # if an eResources link, route to offsite handler
       result << if entry.present?
-        link_to(text, offsite_catalog_path(id: document.id, url: href))
+        link_to(text, offsite_catalog_path(id: document.id, url: href), class: "text-break")
       else
-        link_to(text, href)
+        link_to(text, href, class: "text-break")
       end
     end
 
@@ -71,10 +62,20 @@ module ApplicationHelper
   def error_feedback_url(id)
     url = ENV.fetch("FEEDBACK_ERROR_URL", "#")
     if url != "#"
-      url = "#{url}&qnudftb17=#{request.original_url}&qnudftb11=#{id}"
+      "#{url}&qnudftb17=#{request.original_url}&qnudftb11=#{id}"
+    else
+      url
     end
+  end
 
-    url
+  # Used to find users who have made too many requests to a resource
+  def log_eresources_offsite_access(url)
+    message = if current_user.present?
+      "eResources %s access by user %s: %s" % [user_type, current_user.id, url]
+    else
+      "eResources %s access: %s" % [user_type, url]
+    end
+    Rails.logger.info message
   end
 
   private
