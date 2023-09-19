@@ -8,10 +8,10 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
   end
 
   def link_value
-    if document.online_access.present?
-      document.online_access.first[:href]
-    elsif document.copy_access.present?
-      document.copy_access.first[:href]
+    if document.online_access_urls.present?
+      document.online_access_urls.first[:href]
+    elsif document.copy_access_urls.present?
+      document.copy_access_urls.first[:href]
     end
   end
 
@@ -22,7 +22,7 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
   private
 
   def thumbnail_value(image_options = nil)
-    image_options = image_options&.merge({alt: alt_title_from_document, onerror: "this.style.display='none'", class: thumbnail_classes, data: {"scroll-reveal-target": "item", delay: "150ms"}})
+    image_options = image_options&.merge({alt: alt_title_from_document, onerror: "this.style.display='none'", class: "thumbnail", loading: "lazy"})
     if image_options.nil?
       default_thumbnail_value(image_options)
     elsif thumbnail_method
@@ -31,10 +31,6 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
       image_url = thumbnail_value_from_document
       view_context.image_tag image_url, image_options if image_url.present?
     end
-  end
-
-  def thumbnail_classes
-    is_catalogue_record_page? ? "thumbnail" : "w-100 thumbnail"
   end
 
   def alt_title_from_document

@@ -15,6 +15,7 @@
 @import "catalog_sidebar";
 @import "skeleton";
 @import "modal";
+@import "pagination";
 
 // Components
 @import "./components/copyright-info";
@@ -24,3 +25,4 @@
 @import "./components/catalogue-record-actions";
 @import "./components/request_details";
 @import "./components/bookmarks";
+@import "./components/citations";

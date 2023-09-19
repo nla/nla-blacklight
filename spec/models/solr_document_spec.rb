@@ -19,7 +19,7 @@ RSpec.describe SolrDocument do
 
     context "when there is an online resource" do
       subject(:online_access_value) do
-        document.online_access
+        document.online_access_urls
       end
 
       it "generates links to the online resources" do
@@ -34,7 +34,7 @@ RSpec.describe SolrDocument do
     let(:document) { described_class.new(marc_ss: online_access) }
 
     context "when there is an online copy" do
-      subject(:copy_access_value) { document.copy_access }
+      subject(:copy_access_value) { document.copy_access_urls }
 
       it "generates links to the online copy" do
         expect(copy_access_value).to eq [{href: "http://nla.gov.au/nla.arc-139469", text: "Archived at ANL (2012-2016)"}]
@@ -46,7 +46,7 @@ RSpec.describe SolrDocument do
     let(:document) { described_class.new(marc_ss: online_access) }
 
     context "when there are related resources" do
-      subject(:related_access_value) { document.related_access }
+      subject(:related_access_value) { document.related_access_urls }
 
       it "generates links to the related resources" do
         expect(related_access_value).to eq [{href: "https://nla.gov.au/nla.obj-600301366-t", text: "Thumbnail"}]
@@ -58,7 +58,7 @@ RSpec.describe SolrDocument do
     context "when map search service can't be reached" do
       subject(:map_search_value) do
         document = described_class.new(marc_ss: map_search, id: 113030, format: "Map")
-        document.map_search
+        document.map_search_urls
       end
 
       it "does not generate a link to Map Search" do
@@ -78,7 +78,7 @@ RSpec.describe SolrDocument do
     context "when there is a record in Map Search" do
       subject(:map_search_value) do
         document = described_class.new(marc_ss: map_search, id: 113030, format: "Map")
-        document.map_search
+        document.map_search_urls
       end
 
       let(:mock_response) { IO.read("spec/files/map_search/113030.json") }
@@ -100,7 +100,7 @@ RSpec.describe SolrDocument do
     context "when there is no record in Map Search" do
       subject(:map_search_value) do
         document = described_class.new(marc_ss: no_map_search, id: 3647081, format: "Map")
-        document.map_search
+        document.map_search_urls
       end
 
       let(:mock_response) { IO.read("spec/files/map_search/3647081.json") }
@@ -122,7 +122,7 @@ RSpec.describe SolrDocument do
     context "when there is no 'format'" do
       subject(:map_search_value) do
         document = described_class.new(marc_ss: no_format)
-        document.map_search
+        document.map_search_urls
       end
 
       it "does not generate a link to Map Search" do

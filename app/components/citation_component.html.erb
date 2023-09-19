@@ -6,7 +6,7 @@
   </div>
 
   <% @formats.each do |i18n_key, citation_method| %>
-    <% if citation_method != :export_as_nla_wikipedia_citation_txt %>
+    <% if citation_method != :export_as_wikipedia_citation_txt %>
       <h2 class="h5"><%= t(i18n_key) %></h2>
       <div id="<%= "#{t(i18n_key).downcase.tr("/", '_')}_citation" %>" data-controller="clipboard" data-clipboard-success-content-value="<%= t("citation.copied") %>">
         <p><%= @document.send(citation_method).html_safe %>
@@ -19,7 +19,7 @@
   <%= t("citation.wikipedia.help").html_safe %>
   <div id="<%= "#{t("citation.wikipedia.title").downcase}_citation" %>" class="card">
     <div class="card-body" data-controller="clipboard overflow-auto" data-clipboard-success-content-value="<%= t("citation.copied") %>">
-      <pre data-clipboard-target="source" class="p-1 m-0"><%= @document.send(:export_as_nla_wikipedia_citation_txt).html_safe %></pre>
+      <pre data-clipboard-target="source" class="p-1 m-0"><%= @document.send(:export_as_wikipedia_citation_txt).html_safe %></pre>
       <a href="#" data-action="clipboard#copy" data-clipboard-target="button" title="<%= t("citation.copy_to_clipboard") %>" class="text-decoration-none position-absolute" style="top: 1rem; right: 1rem;"><i class="fa-regular fa-copy" aria-hidden="true"></i></a>
     </div>
   </div>

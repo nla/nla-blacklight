@@ -22,15 +22,11 @@ module Nla
       end
 
       def cite_pubdate
-        if @document.first("date_lower_isi").present?
-          @document.first("date_lower_isi").to_s
-        end
+        @document.fetch("date_lower_isi", nil)
       end
 
       def cite_url
-        if @document.copy_access.present?
-          @document.copy_access.first[:href].presence
-        end
+        @document.copy_access_urls&.first[:href]&.presence
       end
 
       def cite_publisher

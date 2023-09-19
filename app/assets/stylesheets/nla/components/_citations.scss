@@ -1,0 +1,9 @@
+.citation-details {
+  .card {
+    border: var(--bs-card-border-width) solid var(--bs-body-bg);
+
+    .card-body {
+      background-color: var(--bs-body-bg);
+    }
+  }
+}

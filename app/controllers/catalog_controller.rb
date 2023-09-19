@@ -49,8 +49,8 @@ class CatalogController < ApplicationController
     # config.response_model = Blacklight::Solr::Response
     #
     ## The destination for the link around the logo in the header
-    # config.logo_link = root_path
-    #
+    config.logo_link = "https://www.nla.gov.au"
+
     ## Should the raw solr document endpoint (e.g. /catalog/:id/raw) be enabled
     config.raw_endpoint.enabled = false
 
@@ -59,8 +59,7 @@ class CatalogController < ApplicationController
       rows: 10,
       qf: "id^2 title_tsim^250 title_stim^300 title3_tsi^100 title5_tsi^70 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
       pf: "id title_tsim title_addl_tsim author_search_tsim subject_tsimv",
-      mm: "1<100% 3<75% 6<60%",
-      add_boost_query: true
+      mm: "1<100% 3<75% 6<60%"
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -105,7 +104,7 @@ class CatalogController < ApplicationController
 
     # solr field configuration for document/show views
     config.show.title_field = "title_tsim"
-    # config.show.display_type_field = "format"
+    config.show.display_type_field = "format"
     # config.show.thumbnail_field = 'thumbnail_path_ss'
     #
     # The presenter is a view-model class for the page
@@ -172,10 +171,10 @@ class CatalogController < ApplicationController
     config.add_show_field "author_with_relator_ssim", label: "Author", helper_method: :author_search_list
     config.add_show_field "translated_title_ssim", label: "Translated Title"
     config.add_show_field "uniform_title_ssim", label: "Uniform Title"
-    config.add_show_field "online_access", label: "Online Access", accessor: :online_access, helper_method: :url_list
-    config.add_show_field "map_search", label: "Online Version", accessor: :map_search, helper_method: :map_search
-    config.add_show_field "copy_access", label: "Online Version", accessor: :copy_access, helper_method: :url_list
-    config.add_show_field "related_access", label: "Related Online Resources", accessor: :related_access, helper_method: :url_list
+    config.add_show_field "online_access", label: "Online Access", accessor: :online_access_urls, helper_method: :url_list
+    config.add_show_field "map_search", label: "Online Version", accessor: :map_search_urls, helper_method: :map_search
+    config.add_show_field "copy_access", label: "Online Version", accessor: :copy_access_urls, helper_method: :url_list
+    config.add_show_field "related_access", label: "Related Online Resources", accessor: :related_access_urls, helper_method: :url_list
     config.add_show_field "edition_tsim", label: "Edition", helper_method: :list
     config.add_show_field "access_conditions_ssim", label: "Access Conditions", helper_method: :emphasized_list, if: ->(_controller, _config, document) do
       !document.has_eresources?
@@ -183,7 +182,7 @@ class CatalogController < ApplicationController
     config.add_show_field "scale_tsim", label: "Scale"
     config.add_show_field "printer_tsim", label: "Printer", helper_method: :unstyled_list
     config.add_show_field "description", label: "Description", accessor: :description, helper_method: :unstyled_list
-    config.add_show_field "isbn_display_ssim", label: "ISBN", helper_method: :unstyled_list
+    config.add_show_field "isbn_tsim", label: "ISBN", helper_method: :unstyled_list
     config.add_show_field "invalid_isbn", label: "Invalid ISBN", accessor: :invalid_isbn, helper_method: :unstyled_list
     config.add_show_field "issn_display_ssim", label: "ISSN"
     config.add_show_field "invalid_issn_ssim", label: "Invalid ISSN", helper_method: :unstyled_list
@@ -227,6 +226,7 @@ class CatalogController < ApplicationController
     config.add_show_field "additional_author_with_relator_ssim", label: "Other authors/contributors", helper_method: :other_author_search_list
     config.add_show_field "also_titled_tsim", label: "Also Titled", helper_method: :list
     config.add_show_field "terms_of_use_tsim", label: "Terms of Use", helper_method: :emphasized_list
+    config.add_show_field "copyright_ssim", label: "Copyright Information", helper_method: :emphasized_list
     config.add_show_field "available_from_tsim", label: "Available From", helper_method: :unstyled_list
     config.add_show_field "acknowledgement_tsim", label: "Acknowledgement", helper_method: :unstyled_list
     config.add_show_field "exhibited_tsim", label: "Exhibited", helper_method: :list

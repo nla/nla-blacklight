@@ -4,37 +4,19 @@
   data-bento-search-results-url-value="<%= @url %>">
 
   <div data-bento-search-results-target="output">
-    <div class="placeholder-glow">
-      <section class="item">
-        <div class="card mb-3">
-          <div class="card-body">
-            <div class="card-title sticky-top mb-4 d-flex justify-content-between align-items-baseline px-3 py-2">
-              <h2 class="h5 mb-0"><%= BentoSearch.get_engine(@engine).configuration.title %></h2>
-            </div>
-            <div class="bento-item mb-4 row">
-              <h5 class="col-12"><span class="placeholder col-7">Search result title</span></h5>
-              <div class="col">
-                <dl class="document-metadata dl-invert row">
-                  <dt class="col-12 col-md-3"><span class="placeholder placeholder-sm" style="width: 75px;">Metadata</span></dt>
-                  <dd class="col col-sm-9"><span class="placeholder placeholder-sm col-5">placeholder</span></dd>
-                </dl>
-                <dl class="document-metadata dl-invert row">
-                  <dt class="col-12 col-md-3"><span class="placeholder placeholder-sm" style="width: 65px;">Metadata</span></dt>
-                  <dd class="col col-sm-9"><span class="placeholder placeholder-sm col-7">placeholder</span></dd>
-                </dl>
-                <dl class="document-metadata dl-invert row">
-                  <dt class="col-12 col-md-3"><span class="placeholder placeholder-sm" style="width: 90px;">Metadata</span></dt>
-                  <dd class="col col-sm-9"><span class="placeholder placeholder-sm col-3">placeholder</span></dd>
-                </dl>
-                <dl class="document-metadata dl-invert row">
-                  <dt class="col-12 col-md-3"><span class="placeholder placeholder-sm" style="width: 85px;">Metadata</span></dt>
-                  <dd class="col col-sm-9"><span class="placeholder placeholder-sm col-4">placeholder</span></dd>
-                </dl>
-              </div>
+    <div class="loading-skeleton">
+      <div class="card">
+        <div class="card-body">
+          <div class="card-title sticky-top mb-4 d-flex justify-content-between align-items-baseline px-3 py-2">
+            <h2 class="h5 mb-0"><%= t("loading") %></h2>
+          </div>
+          <div class="d-flex justify-content-center">
+            <div class="spinner-border" role="status">
+              <span class="sr-only"><%= t("loading") %></span>
             </div>
           </div>
         </div>
-      </section>
+      </div>
     </div>
   </div>
 </div>

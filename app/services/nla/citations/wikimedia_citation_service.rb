@@ -109,7 +109,7 @@ module Nla
       def build_pi
         pi = @document.pi
         if pi.present?
-          " | url=#{pi.first}\n"
+          " | url=https://nla.gov.au/#{pi}\n"
         end
       end
     end

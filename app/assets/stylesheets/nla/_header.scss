@@ -26,6 +26,10 @@
       &.active {
         border-bottom-color: $orange;
       }
+
+      &:focus {
+        text-decoration: none;
+      }
     }
     
     .dropdown-menu {

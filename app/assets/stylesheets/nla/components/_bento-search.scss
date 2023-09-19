@@ -12,6 +12,10 @@
 }
 
 .bento-search-results {
+  .placeholder {
+    border-radius: 0.25em;
+  }
+
   .card {
     border-color: $white;
     break-inside: avoid-column;

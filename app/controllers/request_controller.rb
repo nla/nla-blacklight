@@ -53,7 +53,7 @@ class RequestController < ApplicationController
 
     cat_services_client = CatalogueServicesClient.new
     _holding, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
-    cat_services_client.create_request(requester: current_user.folio_id, request: new_request)
+    # cat_services_client.create_request(requester: current_user.folio_id, request: new_request)
 
     redirect_to action: :success, holdings: holdings_id, item: item_id
   end

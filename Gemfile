@@ -75,9 +75,6 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# Simple wrapper around memoisation
-gem "memo_wise"
-
 gem "yabeda-rails"
 gem "yabeda-puma-plugin"
 gem "yabeda-prometheus"

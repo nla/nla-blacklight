@@ -4,12 +4,6 @@
 
   <div class="bento-item clearfix mb-4 row" <%= dbid %> data-unique-id="<%= item.unique_id %>">
     <%= render :partial => "bento_search/item_title", :object => item, :as => 'item', :locals => {index: (item_counter + 1)} %>
-
-    <% if item.engine_id == "catalogue" %>
-      <turbo-frame id="<%= item.unique_id %>_thumb" src="<%= show_thumbnail_path(id: item.unique_id) %>" loading="lazy" class="document-thumbnail mr-4 order-2" target="_top">
-      </turbo-frame>
-    <% end %>
-
     <div class="col">
       <dl class="document-metadata dl-invert row">
         <% if item.authors.reject(&:empty?).present? %>
@@ -71,5 +65,10 @@
         <% end %>
       </dl>
     </div>
+    <% if item.engine_id == "catalogue" %>
+      <turbo-frame id="<%= item.unique_id %>_thumb" src="<%= show_thumbnail_path(id: item.unique_id) %>" loading="lazy" class="document-thumbnail mr-4" target="_top">
+
+      </turbo-frame>
+    <% end %>
   </div>
 <% end %>

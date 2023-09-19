@@ -4,7 +4,7 @@ require "cgi"
 require "faraday"
 
 class ExploreComponent < ViewComponent::Base
-  attr_reader :document, :nla_shop, :map_search
+  attr_reader :document, :nla_shop
 
   def initialize(document)
     @document = document
@@ -38,7 +38,7 @@ class ExploreComponent < ViewComponent::Base
         trove_query += " AND (#{ERB::Util.u(query)})"
       end
       if document.title_start.present?
-        trove_query += " AND title:%22#{ERB::Util.u(document.title_start.tr('"', ""))}%22"
+        trove_query += " AND title:%22#{ERB::Util.u(document.title_start.first.tr('"', ""))}%22"
       end
       trove_query
     end

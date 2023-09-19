@@ -13,4 +13,20 @@ module Nla::Marc::DocumentExport
     document.will_export_as(:openurl_ctx_kev, "application/x-openurl-ctx-kev")
     document.will_export_as(:endnote, "application/x-endnote-refer")
   end
+
+  def export_as_apa_citation_txt
+    Nla::Citations::ApaCitationService.cite(self)
+  end
+
+  def export_as_mla_citation_txt
+    Nla::Citations::MlaCitationService.cite(self)
+  end
+
+  def export_as_harvard_citation_txt
+    Nla::Citations::HarvardCitationService.cite(self)
+  end
+
+  def export_as_wikipedia_citation_txt
+    Nla::Citations::WikimediaCitationService.cite(self)
+  end
 end
