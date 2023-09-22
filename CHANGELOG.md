@@ -1,5 +1,48 @@
 # Changelog
 
+## [2.7.0](https://github.com/nla/nla-blacklight/compare/2.6.0...2.7.0) (2023-09-22)
+
+
+### Features
+
+* add button to return back to item requested ([0dfeb37](https://github.com/nla/nla-blacklight/commit/0dfeb379b0efd0540b1bf99158dde7dc7d8f1d48))
+* add button to return to search from request ([3c0e6f6](https://github.com/nla/nla-blacklight/commit/3c0e6f68766c3a0ea425a8dcf095725d1a96b83f))
+* adds copyright info ([d148d2a](https://github.com/nla/nla-blacklight/commit/d148d2ab56f7c9d6f6fa520e28f8b51651eb5c41))
+* log eResources user access ([375462d](https://github.com/nla/nla-blacklight/commit/375462d5ff1af03e5d75d3f1674405df6f584831))
+
+
+### Bug Fixes
+
+* change limiters and expanders params for EDS API ([4f8b3f2](https://github.com/nla/nla-blacklight/commit/4f8b3f238847095867f8b4082326267ec0e39e06))
+* fix rubocop offenses in Blacklight code ([d6880cd](https://github.com/nla/nla-blacklight/commit/d6880cd06181b5ae5d4b2ab4bf571e8766aa527e))
+* return to catalogue record instead of holdings item ([9b41cf8](https://github.com/nla/nla-blacklight/commit/9b41cf8f167f6128ffdca618fbfd024404a2ec04))
+
+
+### Miscellaneous
+
+* **deps-dev:** bump rubocop-performance from 1.19.0 to 1.19.1 ([6f94a14](https://github.com/nla/nla-blacklight/commit/6f94a14ecbd23ba568dfe25a31525958cc88c0da))
+* **deps-dev:** bump rubocop-rails from 2.20.2 to 2.21.0 ([8ed49dc](https://github.com/nla/nla-blacklight/commit/8ed49dc02230a91f5577ada4ce4fd00049c620f1))
+* **deps-dev:** bump rubocop-rails from 2.21.0 to 2.21.1 ([31db190](https://github.com/nla/nla-blacklight/commit/31db19001728321503bb8a0cd0d8f039ee061696))
+* **deps-dev:** bump rubocop-rspec from 2.23.2 to 2.24.0 ([ce85cc0](https://github.com/nla/nla-blacklight/commit/ce85cc0ceb83d1dded98d97dcd58b652bb044655))
+* **deps-dev:** bump standard from 1.31.0 to 1.31.1 ([883a365](https://github.com/nla/nla-blacklight/commit/883a365b3b09ce5f2f38503ef53c3bca6ffde596))
+* **deps:** bump actions/checkout from 3 to 4 ([65eda91](https://github.com/nla/nla-blacklight/commit/65eda9188fde828ded0e3a346d03558e34c91c3c))
+* **deps:** bump hiredis-client from 0.16.0 to 0.17.0 ([dd53467](https://github.com/nla/nla-blacklight/commit/dd53467b597f4c1e5715321425019047e2947bb4))
+* **deps:** bump rails from 7.0.7.2 to 7.0.8 ([7405ddc](https://github.com/nla/nla-blacklight/commit/7405ddc0b84020368705f294e721dc927fcb2f2e))
+* **deps:** bump strong_migrations from 1.6.1 to 1.6.2 ([fdc363a](https://github.com/nla/nla-blacklight/commit/fdc363a46677e5c23e230dcabf20ceedb781e322))
+* ignore style error ([5d4a45f](https://github.com/nla/nla-blacklight/commit/5d4a45fa6fe3218b83d8e92baecb8a9b7d31c7c5))
+* prepare release ([413c1f2](https://github.com/nla/nla-blacklight/commit/413c1f2b1af1528dff93795fad0dfc1ecda85f31))
+* update solr config ([e583c6f](https://github.com/nla/nla-blacklight/commit/e583c6f9a2d01350a5db06174a0f93dbb855b559))
+
+
+### Build System
+
+* update nla-blacklight_common dependency ([8100dfd](https://github.com/nla/nla-blacklight/commit/8100dfd4c0346169be314a239874a9f054efc075))
+
+
+### Continuous Integration
+
+* cache bundled gems in GitHub verify workflow ([18f415f](https://github.com/nla/nla-blacklight/commit/18f415f2b0bde0d669ce9f62478f4c6d97c32c97))
+
 ## [2.6.0](https://github.com/nla/nla-blacklight/compare/2.5.0...2.6.0) (2023-09-08)
 
 
