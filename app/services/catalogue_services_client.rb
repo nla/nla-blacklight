@@ -11,11 +11,11 @@ class CatalogueServicesClient
 
   # rubocop:disable Lint/SymbolConversion
   DEFAULT_REQUEST_SUMMARY = {
-    "readyForCollection": [],
-    "itemsRequested": [],
-    "notAvailable": [],
-    "previousRequests": [],
-    "numRequestsRemaining": 999
+    "readyForCollection" => [],
+    "itemsRequested" => [],
+    "notAvailable" => [],
+    "previousRequests" => [],
+    "numRequestsRemaining" => 999
   }
   # rubocop:enable Lint/SymbolConversion
 
