@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: f70c92e0eded1cc1a0e999365843301974fab6c5
-  branch: main
+  revision: 6ccd8722e3e4e8d9fd5597a951f3547dfe46e9b0
+  tag: 0.1.8
   specs:
-    nla-blacklight_common (0.1.7)
+    nla-blacklight_common (0.1.8)
       activerecord-session_store (~> 2.0)
       annotaterb
       brakeman
@@ -410,7 +410,7 @@ GEM
       net-protocol
     net-protocol (0.2.1)
       timeout
-    net-smtp (0.3.3)
+    net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.4-arm64-darwin)
