@@ -144,6 +144,8 @@ en:
         location: "Pickup location"
         notes: "Notes"
         request_date: "Requested on"
+      details:
+        heading: "Request Details"
   explore:
     title: "Explore"
     find_in_trove: "Find in other libraries at Trove"

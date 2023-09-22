@@ -1,17 +1,30 @@
 <tr>
   <td><%= link_to_record %></td>
   <td><%= @request_details.pickupServicePoint %></td>
-  <td>
-    <%- if @request_details.patronComments %>
-      <p><%= @request_details.patronComments %></p>
-    <%- end %>
-    <%- if @request_details.cancellationReason.present? %>
-      <p><%= @request_details.cancellationReason %></p>
-    <%- end %>
-    <%- if @request_details.cancellationComment.present? %>
-      <p><%= @request_details.cancellationComment %></p>
-    <%- end %>
-  </td>
   <td><%= @request_details.request_date %> <small class="text-muted"><%= @request_details.request_time %></small></td>
+<!--  <td>-->
+    <%#= render RequestDetailsModalComponent.new(@request_details) do |component| %>
+      <%# component.with_trigger do %>
+<!--        <button id="#bib<%#= @request_details.record_id %>_label" type="button" class="btn btn-link" data-toggle="modal" data-target="#bib<%#= @request_details.record_id %>">-->
+<!--          <i class="fa-solid fa-circle-info"></i>-->
+<!--        </button>-->
+      <%# end %>
+      <%# component.with_modal do %>
+<!--        <div class="modal fade" id="bib<%#= @request_details.record_id %>" tabindex="-1" aria-labelledby="bib<%#= @request_details.record_id %>_label" aria-hidden="true">-->
+<!--          <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">-->
+<!--            <div class="modal-content">-->
+<!--              <div class="modal-header">-->
+<!--                <h1 class="modal-title fs-5" id="exampleModalLabel"><%#= t("account.requests.details.heading") %></h1>-->
+<!--                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+<!--              </div>-->
+<!--              <div class="modal-body">-->
+<!--                ...-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+      <%# end %>
+    <%# end %>
+<!--  </td>-->
 </tr>
 
