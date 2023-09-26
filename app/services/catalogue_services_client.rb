@@ -6,6 +6,8 @@ class HoldingsRequestError < StandardError; end
 
 class ItemRequestError < StandardError; end
 
+class RequestDetailsError < StandardError; end
+
 class CatalogueServicesClient
   MAX_TOKEN_RETRIES = 3
 
@@ -20,9 +22,7 @@ class CatalogueServicesClient
   # rubocop:enable Lint/SymbolConversion
 
   def get_request_summary(folio_id:)
-    conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.response :json
-    end
+    conn = setup_connection
 
     res = conn.get("/catalogue-services/folio/user/#{folio_id}/myRequests")
     if res.status == 200
@@ -37,9 +37,7 @@ class CatalogueServicesClient
   end
 
   def get_holdings(instance_id:)
-    conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.response :json
-    end
+    conn = setup_connection
 
     res = conn.get("/catalogue-services/folio/instance/#{instance_id}")
     if res.status == 200
@@ -68,9 +66,7 @@ class CatalogueServicesClient
   end
 
   def create_request(requester:, request:)
-    conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.response :json
-    end
+    conn = setup_connection
 
     request_body = JSON.generate(requesterId: requester,
       instanceId: request[:instance_id],
@@ -96,10 +92,25 @@ class CatalogueServicesClient
     raise ItemRequestError.new("Failed to request item (#{request[:item_id]}) for requester (#{requester})")
   end
 
-  def request_limit_reached?(requester:)
-    conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.response :json
+  def request_details(request_id:)
+    conn = setup_connection
+
+    res = conn.get("/catalogue-services/folio/request/#{request_id}")
+    if res.status == 200
+      if res.body.present?
+        JSON.parse(res.body.to_json, object_class: OpenStruct)
+      else
+        {}
+      end
+    else
+      message = "Failed to retrieve request details for #{request_id}"
+      Rails.logger.error message
+      raise RequestDetailsError.new(message)
     end
+  end
+
+  def request_limit_reached?(requester:)
+    conn = setup_connection
 
     res = conn.get("/catalogue-services/folio/user/#{requester}/requestLimitReached")
     if res.status == 200
@@ -118,9 +129,7 @@ class CatalogueServicesClient
   end
 
   def post_stats(stats)
-    conn = Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.response :json
-    end
+    conn = setup_connection
 
     res = conn.post("/catalogue-services/log/message", stats.to_json, "Content-Type" => "application/json") do |req|
       req.headers["Content-Type"] = "application/json"
@@ -134,5 +143,13 @@ class CatalogueServicesClient
   rescue
     Rails.logger.error "Failed to connect to eResources stats service: #{stats.payload}"
     nil
+  end
+
+  private
+
+  def setup_connection
+    Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
+      f.response :json
+    end
   end
 end

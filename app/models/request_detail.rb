@@ -6,7 +6,7 @@ class RequestDetail
 
   attr_reader :details, :record_id, :date
 
-  delegate :requestDate, :title, :patronComments, :instanceId, :yearCaption, :enumeration, :chronology, :callNumber, :status, :pickupServicePoint, :cancellationComment, :cancellationReason, to: :details
+  delegate :requestId, :requestDate, :title, :patronComments, :instanceId, :yearCaption, :enumeration, :chronology, :callNumber, :status, :pickupServicePoint, :cancellationComment, :cancellationReason, :itemCategory, to: :details
 
   def initialize(details)
     @details = details
@@ -15,12 +15,23 @@ class RequestDetail
   end
 
   def request_date
-    # requestDate.strftime("%FT%T")
     @date.strftime("%-d %B %Y")
   end
 
   def request_time
     @date.strftime("%I:%M:%S%P")
+  end
+
+  def partial_name
+    if itemCategory == "manuscript"
+      "manuscripts"
+    elsif itemCategory == "journal"
+      "serials"
+    elsif itemCategory == "map"
+      "maps"
+    else
+      "monographs"
+    end
   end
 
   private

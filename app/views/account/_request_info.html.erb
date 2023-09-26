@@ -1,5 +1,0 @@
-<%= render Blacklight::System::ModalComponent.new do |component| %>
-  <% component.title { t('account.requests.details.heading') } %>
-
-  <%= render CitationComponent.with_collection(@documents) if @documents.present? %>
-<% end %>
