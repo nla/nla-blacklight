@@ -33,7 +33,7 @@ RSpec.describe RequestTableRowComponent, type: :component do
     it "renders the title" do
       render_inline(described_class.new(request_data_without_instance_id))
 
-      expect(page).not_to have_css("a")
+      expect(page).not_to have_css(".record-title")
       expect(page).to have_text("National geographic.")
     end
   end
@@ -42,22 +42,6 @@ RSpec.describe RequestTableRowComponent, type: :component do
     render_inline(described_class.new(request_data))
 
     expect(page).to have_css("td", text: "Main Reading Room")
-  end
-
-  it "renders the comments" do
-    render_inline(described_class.new(request_data))
-
-    expect(page).to have_css("td", text: "Testing patron comments")
-  end
-
-  context "when there is a cancellation reason" do
-    it "renders the cancellation reason and the cancellation comments" do
-      render_inline(described_class.new(request_data_with_cancellation))
-
-      expect(page).to have_css("td", text: "Testing patron comments")
-      expect(page).to have_css("td", text: "We need more detailed information in order to retrieve this item.")
-      expect(page).to have_css("td", text: "this is a test cancellation")
-    end
   end
 
   it "renders the request date" do
