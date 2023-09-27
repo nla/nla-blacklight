@@ -92,10 +92,10 @@ class CatalogueServicesClient
     raise ItemRequestError.new("Failed to request item (#{request[:item_id]}) for requester (#{requester})")
   end
 
-  def request_details(request_id:)
+  def request_details(request_id:, loan:)
     conn = setup_connection
 
-    res = conn.get("/catalogue-services/folio/request/#{request_id}")
+    res = conn.get("/catalogue-services/folio/request/#{request_id}?loan=#{loan}")
     if res.status == 200
       if res.body.present?
         JSON.parse(res.body.to_json, object_class: OpenStruct)

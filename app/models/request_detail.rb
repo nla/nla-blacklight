@@ -6,7 +6,7 @@ class RequestDetail
 
   attr_reader :details, :record_id, :date
 
-  delegate :requestId, :requestDate, :title, :patronComments, :instanceId, :yearCaption, :enumeration, :chronology, :callNumber, :status, :pickupServicePoint, :cancellationComment, :cancellationReason, :itemCategory, to: :details
+  delegate :requestId, :loan, :requestDate, :title, :patronComments, :instanceId, :yearCaption, :enumeration, :chronology, :callNumber, :status, :pickupServicePoint, :cancellationComment, :cancellationReason, :itemCategory, to: :details
 
   def initialize(details)
     @details = details

@@ -11,13 +11,13 @@ class AccountController < ApplicationController
   end
 
   def request_details
-    res = CatalogueServicesClient.new.request_details(request_id: params[:request_id])
+    res = CatalogueServicesClient.new.request_details(request_id: params[:request_id], loan: params[:loan])
     @details = RequestDetail.new(res)
   end
 
   private
 
   def request_detail_params
-    params.permit(:request_id)
+    params.permit(:request_id, :loan)
   end
 end
