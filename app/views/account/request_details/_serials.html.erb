@@ -1,0 +1,20 @@
+<% if details.yearCaption.present? %>
+  <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.label.year") %></dt>
+  <dd class="col col-md-8">
+    <ul class="list-inline">
+      <% details.yearCaption.each do |year| %>
+        <li class="list-inline-item"><%= year %></li>
+      <% end %>
+    </ul>
+  </dd>
+<% end %>
+
+<% if details.enumeration.present? %>
+  <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.label.volume") %></dt>
+  <dd class="col col-md-8"><%= details.enumeration %></dd>
+<% end %>
+
+<% if details.chronology.present? %>
+  <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.label.enumeration") %></dt>
+  <dd class="col col-md-8"><%= details.chronology %></dd>
+<% end %>

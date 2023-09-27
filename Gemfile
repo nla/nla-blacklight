@@ -20,6 +20,9 @@ gem "lograge"
 # stores user session in the database rather than the browser cookie
 gem "activerecord-session_store", "~> 2.0"
 
+# in Rails scheduler
+gem "rufus-scheduler", "~> 3.8"
+
 # catch unsafe migrations
 gem "strong_migrations", "~> 1.6"
 
@@ -33,7 +36,7 @@ gem "sprockets-rails"
 gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 5.0"
+gem "puma", "~> 6.4"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
@@ -55,7 +58,7 @@ gem "hiredis", "~> 0.6.3"
 gem "hiredis-client", "~> 0.17.0"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 4.0"
+gem "redis", "~> 5.0"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

@@ -2,7 +2,7 @@
 # When the release pull request is merged into 'main', it will automatically create and tag a new
 # release version.
 
-name: Release automation from 'main' branch
+name: Release automation from 'hotfix' branch
 on:
   push:
     branches: [hotfix/2.3.4]

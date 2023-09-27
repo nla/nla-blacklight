@@ -16,11 +16,11 @@ GIT
       summon
 
 GIT
-  remote: https://github.com/yetti/nla-blacklight_common
-  revision: 9d9e053a3b53cfe3a9b8d595102909a525d5a10c
-  branch: feat/upgrade
+  remote: https://github.com/nla/nla-blacklight_common
+  revision: 6ccd8722e3e4e8d9fd5597a951f3547dfe46e9b0
+  tag: 0.1.8
   specs:
-    nla-blacklight_common (0.1.7)
+    nla-blacklight_common (0.1.8)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 9)
@@ -31,8 +31,8 @@ GIT
       dotenv-rails
       omniauth-keycloak (~> 1.4)
       omniauth-rails_csrf_protection (~> 1.0)
-      rails (>= 7.0, < 7.1)
-      rsolr (>= 1.0, < 3)
+      rails (~> 7.0.4)
+      rsolr
       zk (~> 1.10)
 
 GEM
@@ -384,7 +384,7 @@ GEM
       net-protocol
     net-protocol (0.2.1)
       timeout
-    net-smtp (0.3.3)
+    net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.4-arm64-darwin)
@@ -425,7 +425,7 @@ GEM
     psych (5.1.0)
       stringio
     public_suffix (4.0.7)
-    puma (5.6.7)
+    puma (6.4.0)
       nio4r (~> 2.0)
     racc (1.7.1)
     rack (2.2.8)
@@ -530,7 +530,7 @@ GEM
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
-    rubocop-rspec (2.24.0)
+    rubocop-rspec (2.24.1)
       rubocop (~> 1.33)
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
@@ -587,7 +587,7 @@ GEM
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
     stringio (3.0.8)
-    strong_migrations (1.6.2)
+    strong_migrations (1.6.3)
       activerecord (>= 5.2)
     summon (2.0.5)
       json
@@ -661,7 +661,12 @@ GEM
     zookeeper (1.5.5)
 
 PLATFORMS
+  arm64-darwin-21
   arm64-darwin-22
+  x86_64-darwin-20
+  x86_64-darwin-21
+  x86_64-darwin-22
+  x86_64-linux
 
 DEPENDENCIES
   activerecord-session_store (~> 2.0)
@@ -695,7 +700,10 @@ DEPENDENCIES
   mock_redis (~> 0.37.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
-  puma (~> 5.0)
+  nokogiri (>= 1.13.9)
+  oauth2 (~> 2.0)
+  openurl
+  puma (~> 6.4)
   rack-mini-profiler
   rails (~> 7.0)
   rails-controller-testing (~> 1.0, >= 1.0.5)
