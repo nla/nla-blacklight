@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 7d20dd9a3436c3405e34bfe729e2688518f7842d
-  tag: 0.1.7
+  revision: 6ccd8722e3e4e8d9fd5597a951f3547dfe46e9b0
+  tag: 0.1.8
   specs:
-    nla-blacklight_common (0.1.7)
+    nla-blacklight_common (0.1.8)
       activerecord-session_store (~> 2.0)
       annotaterb
       brakeman
@@ -112,7 +112,7 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     aes_key_wrap (1.1.0)
-    annotaterb (4.4.0)
+    annotaterb (4.4.1)
     anyway_config (2.5.2)
       ruby-next-core (>= 0.14.0)
     ast (2.4.2)
@@ -410,7 +410,7 @@ GEM
       net-protocol
     net-protocol (0.2.1)
       timeout
-    net-smtp (0.3.3)
+    net-smtp (0.4.0)
       net-protocol
     nio4r (2.5.9)
     nokogiri (1.15.4-arm64-darwin)
@@ -456,7 +456,7 @@ GEM
     psych (5.1.0)
       stringio
     public_suffix (4.0.7)
-    puma (6.3.1)
+    puma (6.4.0)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.7.1)
@@ -553,18 +553,18 @@ GEM
       unicode-display_width (>= 2.4.0, < 3.0)
     rubocop-ast (1.29.0)
       parser (>= 3.2.1.0)
-    rubocop-capybara (2.18.0)
+    rubocop-capybara (2.19.0)
       rubocop (~> 1.41)
-    rubocop-factory_bot (2.23.1)
+    rubocop-factory_bot (2.24.0)
       rubocop (~> 1.33)
-    rubocop-performance (1.19.0)
+    rubocop-performance (1.19.1)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.21.0)
+    rubocop-rails (2.21.1)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
-    rubocop-rspec (2.24.0)
+    rubocop-rspec (2.24.1)
       rubocop (~> 1.33)
       rubocop-capybara (~> 2.17)
       rubocop-factory_bot (~> 2.22)
@@ -631,7 +631,7 @@ GEM
     stimulus-rails (1.2.2)
       railties (>= 6.0.0)
     stringio (3.0.8)
-    strong_migrations (1.6.2)
+    strong_migrations (1.6.3)
       activerecord (>= 5.2)
     summon (2.0.5)
       json
@@ -762,7 +762,7 @@ DEPENDENCIES
   nokogiri (>= 1.13.9)
   oauth2 (~> 2.0)
   openurl
-  puma (~> 6.0)
+  puma (~> 6.4)
   rack-mini-profiler
   rails (~> 7.0.8)
   rails-controller-testing (~> 1.0, >= 1.0.5)

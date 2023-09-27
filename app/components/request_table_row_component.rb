@@ -17,7 +17,7 @@ class RequestTableRowComponent < ViewComponent::Base
   def link_to_record
     record_id = @request_details.record_id
     if record_id.present?
-      helpers.link_to record_link_text, helpers.solr_document_path(record_id)
+      helpers.link_to record_link_text, helpers.solr_document_path(record_id), class: "record-title"
     else
       # this should never happen, but in case a record is deleted from the index
       # :nocov:

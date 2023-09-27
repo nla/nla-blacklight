@@ -38,6 +38,7 @@ Rails.application.routes.draw do
   end
 
   get "/account/requests", to: "account#requests", as: "account_requests"
+  get "/account/requests/:request_id", to: "account#request_details", as: "request_details"
 
   get "/thumbnail/:id", to: "thumbnail#thumbnail", as: "thumbnail"
 
