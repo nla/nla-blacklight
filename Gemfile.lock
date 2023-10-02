@@ -16,11 +16,11 @@ GIT
       summon
 
 GIT
-  remote: https://github.com/nla/nla-blacklight_common
-  revision: 6ccd8722e3e4e8d9fd5597a951f3547dfe46e9b0
-  tag: 0.1.8
+  remote: https://github.com/yetti/nla-blacklight_common
+  revision: 9d9e053a3b53cfe3a9b8d595102909a525d5a10c
+  branch: feat/upgrade
   specs:
-    nla-blacklight_common (0.1.8)
+    nla-blacklight_common (0.1.7)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 9)
@@ -31,8 +31,8 @@ GIT
       dotenv-rails
       omniauth-keycloak (~> 1.4)
       omniauth-rails_csrf_protection (~> 1.0)
-      rails (~> 7.0.4)
-      rsolr
+      rails (>= 7.0, < 7.1)
+      rsolr (>= 1.0, < 3)
       zk (~> 1.10)
 
 GEM
@@ -235,6 +235,8 @@ GEM
       net-http-persistent (>= 3.1, < 5)
       public_suffix (~> 4.0)
     erubi (1.12.0)
+    et-orbi (1.2.7)
+      tzinfo
     factory_bot (6.2.1)
       activesupport (>= 5.0.0)
     factory_bot_rails (6.2.0)
@@ -274,11 +276,14 @@ GEM
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
       websocket-driver (>= 0.6, < 0.8)
-    ffi (1.15.5)
+    ffi (1.16.2)
     ffi-compiler (1.0.1)
       ffi (>= 1.0.0)
       rake
     flamegraph (0.9.5)
+    fugit (1.8.1)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
     fuubar (2.5.1)
       rspec-core (~> 3.0)
       ruby-progressbar (~> 1.4)
@@ -389,6 +394,10 @@ GEM
     nio4r (2.5.9)
     nokogiri (1.15.4-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.15.4-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.15.4-x86_64-linux)
+      racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
       jwt (>= 1.0, < 3.0)
@@ -427,6 +436,7 @@ GEM
     public_suffix (4.0.7)
     puma (6.4.0)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.7.1)
     rack (2.2.8)
     rack-mini-profiler (3.1.1)
@@ -471,7 +481,8 @@ GEM
     rake (13.0.6)
     rdoc (6.5.0)
       psych (>= 4.0.0)
-    redis (4.8.1)
+    redis (5.0.7)
+      redis-client (>= 0.9.0)
     redis-client (0.17.0)
       connection_pool
     regexp_parser (2.8.1)
@@ -539,8 +550,10 @@ GEM
     ruby-statistics (3.0.2)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
+    rufus-scheduler (3.9.1)
+      fugit (~> 1.1, >= 1.1.6)
     scrub_rb (1.0.1)
-    selenium-webdriver (4.12.0)
+    selenium-webdriver (4.13.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -655,7 +668,7 @@ GEM
       railties
       yabeda (~> 0.8)
     yell (2.2.2)
-    zeitwerk (2.6.11)
+    zeitwerk (2.6.12)
     zk (1.10.0)
       zookeeper (~> 1.5.0)
     zookeeper (1.5.5)
@@ -700,18 +713,16 @@ DEPENDENCIES
   mock_redis (~> 0.37.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
-  nokogiri (>= 1.13.9)
-  oauth2 (~> 2.0)
-  openurl
   puma (~> 6.4)
   rack-mini-profiler
   rails (~> 7.0)
   rails-controller-testing (~> 1.0, >= 1.0.5)
-  redis (~> 4.0)
+  redis (~> 5.0)
   rspec-rails (~> 6.0)
   rubocop-performance
   rubocop-rails
   rubocop-rspec
+  rufus-scheduler (~> 3.8)
   selenium-webdriver (~> 4.11)
   shoulda-matchers
   simplecov (~> 0.22.0)

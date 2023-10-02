@@ -1,0 +1,1860 @@
+{
+  "links": {
+    "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth",
+    "next": "https://catalogue-devel.nla.gov.au/catalog.json?page=2\u0026per_page=10\u0026q=smooth",
+    "last": "https://catalogue-devel.nla.gov.au/catalog.json?page=52\u0026per_page=10\u0026q=smooth"
+  },
+  "meta": {
+    "pages": {
+      "current_page": 1,
+      "next_page": 2,
+      "prev_page": null,
+      "total_pages": 52,
+      "limit_value": 10,
+      "offset_value": 0,
+      "total_count": 513,
+      "first_page?": true,
+      "last_page?": false
+    }
+  },
+  "data": [
+    {
+      "id": "1944537",
+      "type": "Book",
+      "attributes": {
+        "title": "The child of nature : a poem  / by Ephraim Smooth",
+        "title_tsim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/1944537#title_tsim",
+          "type": "document_value",
+          "attributes": {
+            "value": "The child of nature : a poem  / by Ephraim Smooth",
+            "label": "Title"
+          }
+        },
+        "author_with_relator_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/1944537#author_with_relator_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Smooth, Ephraim",
+            "label": "Author"
+          }
+        },
+        "format": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/1944537#format",
+          "type": "document_value",
+          "attributes": {
+            "value": "Book",
+            "label": "Format"
+          }
+        },
+        "language_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/1944537#language_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "English",
+            "label": "Language"
+          }
+        },
+        "call_number_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/1944537#call_number_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "RB EC 6685",
+            "label": "Call number"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/1944537"
+      }
+    },
+    {
+      "id": "6220404",
+      "type": "Book",
+      "attributes": {
+        "title": "Sizzle / Katherine Garbera. Smooth sailing / Lori Wilde",
+        "title_tsim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/6220404#title_tsim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Sizzle / Katherine Garbera. Smooth sailing / Lori Wilde",
+            "label": "Title"
+          }
+        },
+        "author_with_relator_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/6220404#author_with_relator_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Garbera, Katherine, author",
+            "label": "Author"
+          }
+        },
+        "format": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/6220404#format",
+          "type": "document_value",
+          "attributes": {
+            "value": "Book",
+            "label": "Format"
+          }
+        },
+        "language_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/6220404#language_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "English",
+            "label": "Language"
+          }
+        },
+        "call_number_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/6220404#call_number_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "MAB 2013-204",
+            "label": "Call number"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/6220404"
+      }
+    },
+    {
+      "id": "893205",
+      "type": "Book",
+      "attributes": {
+        "title": "Cerebral vascular smooth muscle and its control",
+        "title_tsim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/893205#title_tsim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Cerebral vascular smooth muscle and its control",
+            "label": "Title"
+          }
+        },
+        "author_with_relator_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/893205#author_with_relator_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Symposium on the Control of Cerebral Vascular Smooth Muscle (1977 :, London, England)",
+            "label": "Author"
+          }
+        },
+        "format": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/893205#format",
+          "type": "document_value",
+          "attributes": {
+            "value": "Book",
+            "label": "Format"
+          }
+        },
+        "language_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/893205#language_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "English",
+            "label": "Language"
+          }
+        },
+        "call_number_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/893205#call_number_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "612.824 S989",
+            "label": "Call number"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/893205"
+      }
+    },
+    {
+      "id": "7336800",
+      "type": "Book",
+      "attributes": {
+        "title": "Smooth \u0026#39;n\u0026#39; sensible : delicious recipes to make the most of easy-to-use, low fat \u0026#39;Perfect\u0026#39; smooth ricotta cheese : it\u0026#39;s Perfect anytime",
+        "title_tsim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/7336800#title_tsim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Smooth \u0026#39;n\u0026#39; sensible : delicious recipes to make the most of easy-to-use, low fat \u0026#39;Perfect\u0026#39; smooth ricotta cheese : it\u0026#39;s Perfect anytime",
+            "label": "Title"
+          }
+        },
+        "format": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/7336800#format",
+          "type": "document_value",
+          "attributes": {
+            "value": "Book",
+            "label": "Format"
+          }
+        },
+        "language_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/7336800#language_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "English",
+            "label": "Language"
+          }
+        },
+        "call_number_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/7336800#call_number_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "NP 2017-331",
+            "label": "Call number"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/7336800"
+      }
+    },
+    {
+      "id": "1769760",
+      "type": "Book",
+      "attributes": {
+        "title": "Physiology of smooth muscle / edited by Edith Bulbring, M. F. Shuba",
+        "title_tsim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/1769760#title_tsim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Physiology of smooth muscle / edited by Edith Bulbring, M. F. Shuba",
+            "label": "Title"
+          }
+        },
+        "author_with_relator_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/1769760#author_with_relator_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Symposium on the Physiology of Smooth Muscles, Kiev, 1974",
+            "label": "Author"
+          }
+        },
+        "format": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/1769760#format",
+          "type": "document_value",
+          "attributes": {
+            "value": "Book",
+            "label": "Format"
+          }
+        },
+        "language_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/1769760#language_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "English",
+            "label": "Language"
+          }
+        },
+        "call_number_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/1769760#call_number_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "599.01852 S989",
+            "label": "Call number"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/1769760"
+      }
+    },
+    {
+      "id": "3086284",
+      "type": "Journal",
+      "attributes": {
+        "title": "Journal of smooth muscle research. Japanese section : Nihon Heikatsukin Gakkai kikanshi and Journal of smooth muscle research. Japanese section : 日本平滑筋学会機関誌",
+        "title_tsim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3086284#title_tsim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Journal of smooth muscle research. Japanese section : Nihon Heikatsukin Gakkai kikanshi and Journal of smooth muscle research. Japanese section : 日本平滑筋学会機関誌",
+            "label": "Title"
+          }
+        },
+        "format": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3086284#format",
+          "type": "document_value",
+          "attributes": {
+            "value": "Journal",
+            "label": "Format"
+          }
+        },
+        "language_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3086284#language_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Japanese",
+            "label": "Language"
+          }
+        },
+        "call_number_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3086284#call_number_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "OJS 7901 6513",
+            "label": "Call number"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/3086284"
+      }
+    },
+    {
+      "id": "3086283",
+      "type": "Journal",
+      "attributes": {
+        "title": "Nihon Heikatsukin Gakkai zasshi and 日本平滑筋学会雑誌",
+        "title_tsim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3086283#title_tsim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Nihon Heikatsukin Gakkai zasshi and 日本平滑筋学会雑誌",
+            "label": "Title"
+          }
+        },
+        "format": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3086283#format",
+          "type": "document_value",
+          "attributes": {
+            "value": "Journal",
+            "label": "Format"
+          }
+        },
+        "language_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3086283#language_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Japanese",
+            "label": "Language"
+          }
+        },
+        "call_number_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3086283#call_number_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "OJS 7901 6513",
+            "label": "Call number"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/3086283"
+      }
+    },
+    {
+      "id": "5977885",
+      "type": "Book",
+      "attributes": {
+        "title": "Smooth moves",
+        "title_tsim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/5977885#title_tsim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Smooth moves",
+            "label": "Title"
+          }
+        },
+        "format": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/5977885#format",
+          "type": "document_value",
+          "attributes": {
+            "value": "Book",
+            "label": "Format"
+          }
+        },
+        "language_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/5977885#language_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "English",
+            "label": "Language"
+          }
+        },
+        "call_number_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/5977885#call_number_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "NQ 2012-1746",
+            "label": "Call number"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/5977885"
+      }
+    },
+    {
+      "id": "106444",
+      "type": "Journal",
+      "attributes": {
+        "title": "Smooth",
+        "title_tsim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/106444#title_tsim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Smooth",
+            "label": "Title"
+          }
+        },
+        "format": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/106444#format",
+          "type": "document_value",
+          "attributes": {
+            "value": "Journal",
+            "label": "Format"
+          }
+        },
+        "language_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/106444#language_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "English",
+            "label": "Language"
+          }
+        },
+        "call_number_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/106444#call_number_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "741.599405 SMO and HILL 166",
+            "label": "Call number"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/106444"
+      }
+    },
+    {
+      "id": "3808286",
+      "type": "Book",
+      "attributes": {
+        "title": "Approved NSW \u0026amp; national recovery plan : Davidsonia johnsonii (Smooth Davidsonia)",
+        "title_tsim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3808286#title_tsim",
+          "type": "document_value",
+          "attributes": {
+            "value": "Approved NSW \u0026amp; national recovery plan : Davidsonia johnsonii (Smooth Davidsonia)",
+            "label": "Title"
+          }
+        },
+        "format": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3808286#format",
+          "type": "document_value",
+          "attributes": {
+            "value": "Book",
+            "label": "Format"
+          }
+        },
+        "language_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3808286#language_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "English",
+            "label": "Language"
+          }
+        },
+        "call_number_ssim": {
+          "id": "https://catalogue-devel.nla.gov.au/catalog/3808286#call_number_ssim",
+          "type": "document_value",
+          "attributes": {
+            "value": "NPF 583.7209944 A652 NPF",
+            "label": "Call number"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/3808286"
+      }
+    }
+  ],
+  "included": [
+    {
+      "type": "facet",
+      "id": "format",
+      "attributes": {
+        "label": "Format",
+        "items": [
+          {
+            "attributes": {
+              "label": "Book",
+              "value": "Book",
+              "hits": 452
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bformat%5D%5B%5D=Book\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Microform",
+              "value": "Microform",
+              "hits": 107
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bformat%5D%5B%5D=Microform\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Map",
+              "value": "Map",
+              "hits": 21
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bformat%5D%5B%5D=Map\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Music",
+              "value": "Music",
+              "hits": 15
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bformat%5D%5B%5D=Music\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Journal",
+              "value": "Journal",
+              "hits": 9
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bformat%5D%5B%5D=Journal\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Picture",
+              "value": "Picture",
+              "hits": 9
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bformat%5D%5B%5D=Picture\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Manuscript",
+              "value": "Manuscript",
+              "hits": 8
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bformat%5D%5B%5D=Manuscript\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/format.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "pub_date_ssim",
+      "attributes": {
+        "label": "Publication Year",
+        "items": [
+          {
+            "attributes": {
+              "label": "2004",
+              "value": "2004",
+              "hits": 12
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bpub_date_ssim%5D%5B%5D=2004\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1988",
+              "value": "1988",
+              "hits": 11
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bpub_date_ssim%5D%5B%5D=1988\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1991",
+              "value": "1991",
+              "hits": 11
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bpub_date_ssim%5D%5B%5D=1991\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1650",
+              "value": "1650",
+              "hits": 9
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bpub_date_ssim%5D%5B%5D=1650\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1992",
+              "value": "1992",
+              "hits": 9
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bpub_date_ssim%5D%5B%5D=1992\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1996",
+              "value": "1996",
+              "hits": 9
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bpub_date_ssim%5D%5B%5D=1996\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1997",
+              "value": "1997",
+              "hits": 9
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bpub_date_ssim%5D%5B%5D=1997\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1998",
+              "value": "1998",
+              "hits": 9
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bpub_date_ssim%5D%5B%5D=1998\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1993",
+              "value": "1993",
+              "hits": 8
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bpub_date_ssim%5D%5B%5D=1993\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1995",
+              "value": "1995",
+              "hits": 8
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bpub_date_ssim%5D%5B%5D=1995\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/pub_date_ssim.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "author_ssim",
+      "attributes": {
+        "label": "Author",
+        "items": [
+          {
+            "attributes": {
+              "label": "Camtas International",
+              "value": "Camtas International",
+              "hits": 10
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bauthor_ssim%5D%5B%5D=Camtas+International\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Barton, William, 1598?-1678",
+              "value": "Barton, William, 1598?-1678",
+              "hits": 8
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bauthor_ssim%5D%5B%5D=Barton%2C+William%2C+1598%3F-1678\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Church of Scotland",
+              "value": "Church of Scotland",
+              "hits": 6
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bauthor_ssim%5D%5B%5D=Church+of+Scotland\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Bradshaw, Ellis",
+              "value": "Bradshaw, Ellis",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bauthor_ssim%5D%5B%5D=Bradshaw%2C+Ellis\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Maritime Safety Queensland",
+              "value": "Maritime Safety Queensland",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bauthor_ssim%5D%5B%5D=Maritime+Safety+Queensland\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Pryor, Geoff, 1944-",
+              "value": "Pryor, Geoff, 1944-",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bauthor_ssim%5D%5B%5D=Pryor%2C+Geoff%2C+1944-\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Hill, John, Gent",
+              "value": "Hill, John, Gent",
+              "hits": 3
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bauthor_ssim%5D%5B%5D=Hill%2C+John%2C+Gent\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Barger, Raymond L",
+              "value": "Barger, Raymond L",
+              "hits": 2
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bauthor_ssim%5D%5B%5D=Barger%2C+Raymond+L\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Baxter, Richard, 1615-1691",
+              "value": "Baxter, Richard, 1615-1691",
+              "hits": 2
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bauthor_ssim%5D%5B%5D=Baxter%2C+Richard%2C+1615-1691\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Campbell, A., Mrs",
+              "value": "Campbell, A., Mrs",
+              "hits": 2
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bauthor_ssim%5D%5B%5D=Campbell%2C+A.%2C+Mrs\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Camtas (Firm)",
+              "value": "Camtas (Firm)",
+              "hits": 2
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bauthor_ssim%5D%5B%5D=Camtas+%28Firm%29\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/author_ssim.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "subject_ssim",
+      "attributes": {
+        "label": "Subject",
+        "items": [
+          {
+            "attributes": {
+              "label": "Bible. Psalms -- Paraphrases, English",
+              "value": "Bible. Psalms -- Paraphrases, English",
+              "hits": 53
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Bible.+Psalms+--+Paraphrases%2C+English\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Psalters",
+              "value": "Psalters",
+              "hits": 44
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Psalters\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Australian",
+              "value": "Australian",
+              "hits": 40
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Australian\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Bible. O.T. Psalms -- Paraphrases, English",
+              "value": "Bible. O.T. Psalms -- Paraphrases, English",
+              "hits": 34
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Bible.+O.T.+Psalms+--+Paraphrases%2C+English\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Bible. O.T. Psalms -- Paraphrases, English -- Early works to 1800",
+              "value": "Bible. O.T. Psalms -- Paraphrases, English -- Early works to 1800",
+              "hits": 20
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Bible.+O.T.+Psalms+--+Paraphrases%2C+English+--+Early+works+to+1800\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Psalters -- Scotland -- 17th century",
+              "value": "Psalters -- Scotland -- 17th century",
+              "hits": 13
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Psalters+--+Scotland+--+17th+century\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Fishes -- Australia -- Maps",
+              "value": "Fishes -- Australia -- Maps",
+              "hits": 6
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Fishes+--+Australia+--+Maps\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Smooth muscle",
+              "value": "Smooth muscle",
+              "hits": 6
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Smooth+muscle\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Smooth muscle -- Congresses",
+              "value": "Smooth muscle -- Congresses",
+              "hits": 6
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Smooth+muscle+--+Congresses\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Fishes -- Queensland -- Maps",
+              "value": "Fishes -- Queensland -- Maps",
+              "hits": 5
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Fishes+--+Queensland+--+Maps\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Hymns, English",
+              "value": "Hymns, English",
+              "hits": 5
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Hymns%2C+English\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Muscle contraction -- Congresses",
+              "value": "Muscle contraction -- Congresses",
+              "hits": 5
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Muscle+contraction+--+Congresses\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Psalters -- Early works to 1800",
+              "value": "Psalters -- Early works to 1800",
+              "hits": 5
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Psalters+--+Early+works+to+1800\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Vascular smooth muscle -- Congresses",
+              "value": "Vascular smooth muscle -- Congresses",
+              "hits": 5
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Vascular+smooth+muscle+--+Congresses\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Church polity -- Early works to 1800",
+              "value": "Church polity -- Early works to 1800",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Church+polity+--+Early+works+to+1800\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Force and energy -- Study and teaching (Primary)",
+              "value": "Force and energy -- Study and teaching (Primary)",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Force+and+energy+--+Study+and+teaching+%28Primary%29\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Literacy -- Study and teaching (Primary)",
+              "value": "Literacy -- Study and teaching (Primary)",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Literacy+--+Study+and+teaching+%28Primary%29\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Pastoral poetry",
+              "value": "Pastoral poetry",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Pastoral+poetry\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Psalters -- Scotland -- Early works to 1800",
+              "value": "Psalters -- Scotland -- Early works to 1800",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Psalters+--+Scotland+--+Early+works+to+1800\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Smooth muscle -- Periodicals",
+              "value": "Smooth muscle -- Periodicals",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Smooth+muscle+--+Periodicals\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Vascular smooth muscle",
+              "value": "Vascular smooth muscle",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bsubject_ssim%5D%5B%5D=Vascular+smooth+muscle\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/subject_ssim.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "language_ssim",
+      "attributes": {
+        "label": "Language",
+        "items": [
+          {
+            "attributes": {
+              "label": "English",
+              "value": "English",
+              "hits": 497
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Blanguage_ssim%5D%5B%5D=English\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Japanese",
+              "value": "Japanese",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Blanguage_ssim%5D%5B%5D=Japanese\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "French",
+              "value": "French",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Blanguage_ssim%5D%5B%5D=French\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Korean",
+              "value": "Korean",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Blanguage_ssim%5D%5B%5D=Korean\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Unknown language",
+              "value": "Unknown language",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Blanguage_ssim%5D%5B%5D=Unknown+language\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/language_ssim.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "geographic_name_ssim",
+      "attributes": {
+        "label": "Geographic",
+        "items": [
+          {
+            "attributes": {
+              "label": "Australia",
+              "value": "Australia",
+              "hits": 8
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bgeographic_name_ssim%5D%5B%5D=Australia\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Great Britain",
+              "value": "Great Britain",
+              "hits": 7
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bgeographic_name_ssim%5D%5B%5D=Great+Britain\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Great Barrier Reef (Qld.)",
+              "value": "Great Barrier Reef (Qld.)",
+              "hits": 3
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bgeographic_name_ssim%5D%5B%5D=Great+Barrier+Reef+%28Qld.%29\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "United States",
+              "value": "United States",
+              "hits": 3
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bgeographic_name_ssim%5D%5B%5D=United+States\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Australian Capital Territory",
+              "value": "Australian Capital Territory",
+              "hits": 2
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bgeographic_name_ssim%5D%5B%5D=Australian+Capital+Territory\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Cairns Region (Qld.)",
+              "value": "Cairns Region (Qld.)",
+              "hits": 2
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bgeographic_name_ssim%5D%5B%5D=Cairns+Region+%28Qld.%29\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Caloundra Region (Qld.)",
+              "value": "Caloundra Region (Qld.)",
+              "hits": 2
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bgeographic_name_ssim%5D%5B%5D=Caloundra+Region+%28Qld.%29\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "China",
+              "value": "China",
+              "hits": 2
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bgeographic_name_ssim%5D%5B%5D=China\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Developing countries",
+              "value": "Developing countries",
+              "hits": 2
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bgeographic_name_ssim%5D%5B%5D=Developing+countries\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Great Sandy Strait (Qld.)",
+              "value": "Great Sandy Strait (Qld.)",
+              "hits": 2
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bgeographic_name_ssim%5D%5B%5D=Great+Sandy+Strait+%28Qld.%29\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Great Sandy Strait Region (Qld.)",
+              "value": "Great Sandy Strait Region (Qld.)",
+              "hits": 2
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bgeographic_name_ssim%5D%5B%5D=Great+Sandy+Strait+Region+%28Qld.%29\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/geographic_name_ssim.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "series_ssim",
+      "attributes": {
+        "label": "Series",
+        "items": [
+          {
+            "attributes": {
+              "label": "Early English books online",
+              "value": "Early English books online",
+              "hits": 83
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bseries_ssim%5D%5B%5D=Early+English+books+online\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Early English books, 1641-1700",
+              "value": "Early English books, 1641-1700",
+              "hits": 32
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bseries_ssim%5D%5B%5D=Early+English+books%2C+1641-1700\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Early American imprints",
+              "value": "Early American imprints",
+              "hits": 15
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bseries_ssim%5D%5B%5D=Early+American+imprints\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "NASA contractor report",
+              "value": "NASA contractor report",
+              "hits": 13
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bseries_ssim%5D%5B%5D=NASA+contractor+report\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Advances in experimental medicine and biology",
+              "value": "Advances in experimental medicine and biology",
+              "hits": 8
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bseries_ssim%5D%5B%5D=Advances+in+experimental+medicine+and+biology\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "NASA technical memorandum",
+              "value": "NASA technical memorandum",
+              "hits": 8
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bseries_ssim%5D%5B%5D=NASA+technical+memorandum\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Boating safety chart",
+              "value": "Boating safety chart",
+              "hits": 6
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bseries_ssim%5D%5B%5D=Boating+safety+chart\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Eighteenth century collections online",
+              "value": "Eighteenth century collections online",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bseries_ssim%5D%5B%5D=Eighteenth+century+collections+online\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "NASA technical paper",
+              "value": "NASA technical paper",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bseries_ssim%5D%5B%5D=NASA+technical+paper\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Primary connections",
+              "value": "Primary connections",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bseries_ssim%5D%5B%5D=Primary+connections\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Pryor collection of cartoons and drawings",
+              "value": "Pryor collection of cartoons and drawings",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bseries_ssim%5D%5B%5D=Pryor+collection+of+cartoons+and+drawings\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/series_ssim.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "access_ssim",
+      "attributes": {
+        "label": "Access",
+        "items": [
+          {
+            "attributes": {
+              "label": "National Library (physical item)",
+              "value": "National Library (physical item)",
+              "hits": 513
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Baccess_ssim%5D%5B%5D=National+Library+%28physical+item%29\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Online",
+              "value": "Online",
+              "hits": 211
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Baccess_ssim%5D%5B%5D=Online\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/access_ssim.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "decade_isim",
+      "attributes": {
+        "label": "Decade",
+        "items": [
+          {
+            "attributes": {
+              "label": "1988",
+              "value": "1988",
+              "hits": 15
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026range%5Bdecade_isim%5D%5B%5D=1988"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1992",
+              "value": "1992",
+              "hits": 14
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026range%5Bdecade_isim%5D%5B%5D=1992"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1995",
+              "value": "1995",
+              "hits": 14
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026range%5Bdecade_isim%5D%5B%5D=1995"
+            }
+          },
+          {
+            "attributes": {
+              "label": "2004",
+              "value": "2004",
+              "hits": 14
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026range%5Bdecade_isim%5D%5B%5D=2004"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1991",
+              "value": "1991",
+              "hits": 13
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026range%5Bdecade_isim%5D%5B%5D=1991"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1994",
+              "value": "1994",
+              "hits": 12
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026range%5Bdecade_isim%5D%5B%5D=1994"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1997",
+              "value": "1997",
+              "hits": 12
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026range%5Bdecade_isim%5D%5B%5D=1997"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1989",
+              "value": "1989",
+              "hits": 11
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026range%5Bdecade_isim%5D%5B%5D=1989"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1993",
+              "value": "1993",
+              "hits": 11
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026range%5Bdecade_isim%5D%5B%5D=1993"
+            }
+          },
+          {
+            "attributes": {
+              "label": "1996",
+              "value": "1996",
+              "hits": 11
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026range%5Bdecade_isim%5D%5B%5D=1996"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/decade_isim.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "example_query_facet_field",
+      "attributes": {
+        "label": "Publish Date",
+        "items": [
+          {
+            "attributes": {
+              "label": "within 5 Years",
+              "value": "years_5",
+              "hits": 17
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bexample_query_facet_field%5D%5B%5D=years_5\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "within 10 Years",
+              "value": "years_10",
+              "hits": 40
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bexample_query_facet_field%5D%5B%5D=years_10\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "within 25 Years",
+              "value": "years_25",
+              "hits": 129
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bexample_query_facet_field%5D%5B%5D=years_25\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/example_query_facet_field.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "parent_id_ssim",
+      "attributes": {
+        "label": "In Collection",
+        "items": [
+          {
+            "attributes": {
+              "label": "(AKIN)22668350",
+              "value": "(AKIN)22668350",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AKIN%2922668350\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AKIN)11546686",
+              "value": "(AKIN)11546686",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AKIN%2911546686\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNL)3258550",
+              "value": "(AuCNL)3258550",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%293258550\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNL)3563487",
+              "value": "(AuCNL)3563487",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%293563487\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNL)4492592",
+              "value": "(AuCNL)4492592",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%294492592\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNL)4503218",
+              "value": "(AuCNL)4503218",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%294503218\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNL)5728060",
+              "value": "(AuCNL)5728060",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%295728060\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNL)6810316",
+              "value": "(AuCNL)6810316",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28AuCNL%296810316\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(SUSA)585230",
+              "value": "(SUSA)585230",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bparent_id_ssim%5D%5B%5D=%28SUSA%29585230\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/parent_id_ssim.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "collection_id_ssim",
+      "attributes": {
+        "label": "Collection",
+        "items": [
+          {
+            "attributes": {
+              "label": "(AuCNLDY)1040155",
+              "value": "(AuCNLDY)1040155",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291040155\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNLDY)1056770",
+              "value": "(AuCNLDY)1056770",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291056770\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNLDY)11168",
+              "value": "(AuCNLDY)11168",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%2911168\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNLDY)114183",
+              "value": "(AuCNLDY)114183",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%29114183\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNLDY)1147092",
+              "value": "(AuCNLDY)1147092",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291147092\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNLDY)1153985",
+              "value": "(AuCNLDY)1153985",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291153985\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNLDY)1168664",
+              "value": "(AuCNLDY)1168664",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291168664\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNLDY)1179181",
+              "value": "(AuCNLDY)1179181",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291179181\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNLDY)1196384",
+              "value": "(AuCNLDY)1196384",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291196384\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNLDY)1219659",
+              "value": "(AuCNLDY)1219659",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291219659\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "(AuCNLDY)1229840",
+              "value": "(AuCNLDY)1229840",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/catalog.json?f%5Bcollection_id_ssim%5D%5B%5D=%28AuCNLDY%291229840\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog/facet/collection_id_ssim.json?per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "all_fields",
+      "attributes": {
+        "label": "All Fields"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026search_field=all_fields"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "title",
+      "attributes": {
+        "label": "Title"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026search_field=title"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "author",
+      "attributes": {
+        "label": "Author"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026search_field=author"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "subject_ssim",
+      "attributes": {
+        "label": "Subject"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026search_field=subject_ssim"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "call_number",
+      "attributes": {
+        "label": "Call Number"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026search_field=call_number"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "isbn",
+      "attributes": {
+        "label": "ISBN/ISSN"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026search_field=isbn"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "id",
+      "attributes": {
+        "label": "Bib Id"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026search_field=id"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "occupation",
+      "attributes": {
+        "label": "Occupation"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026search_field=occupation"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "genre",
+      "attributes": {
+        "label": "Genre"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026search_field=genre"
+      }
+    },
+    {
+      "type": "sort",
+      "id": "score desc, pub_date_ssim desc, title_ssim asc",
+      "attributes": {
+        "label": "relevance"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026sort=score+desc%2C+pub_date_ssim+desc%2C+title_ssim+asc"
+      }
+    },
+    {
+      "type": "sort",
+      "id": "pub_date_ssim desc, title_ssim asc",
+      "attributes": {
+        "label": "year"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026sort=pub_date_ssim+desc%2C+title_ssim+asc"
+      }
+    },
+    {
+      "type": "sort",
+      "id": "author_si asc, title_ssim asc",
+      "attributes": {
+        "label": "author"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026sort=author_si+asc%2C+title_ssim+asc"
+      }
+    },
+    {
+      "type": "sort",
+      "id": "title_ssim asc, pub_date_ssim desc",
+      "attributes": {
+        "label": "title"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/catalog.json?per_page=10\u0026q=smooth\u0026sort=title_ssim+asc%2C+pub_date_ssim+desc"
+      }
+    }
+  ]
+}

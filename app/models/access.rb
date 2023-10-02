@@ -1,28 +1,27 @@
 # frozen_string_literal: true
 
 class Access
-
   def initialize(document)
     @document = document
   end
 
-  def copy_access_urls(*_args)
+  def copy_access_urls
     @copy_access_urls ||= get_copy_access_urls
   end
 
-  def map_search_urls(*_args)
+  def map_search_urls
     @map_search_urls ||= get_map_search_urls
   end
 
-  def online_access_urls(*_args)
+  def online_access_urls
     @online_access_urls ||= get_online_access_urls
   end
 
-  def related_access_urls(*_args)
+  def related_access_urls
     @related_access_urls ||= get_related_access_urls
   end
 
-  def has_eresources?(*_args)
+  def has_eresources?
     @has_eresources ||= determine_has_eresources
   end
 

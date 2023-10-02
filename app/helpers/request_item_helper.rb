@@ -20,8 +20,7 @@ module RequestItemHelper
   end
 
   def is_electronic_resource?(document)
-    callnumber = document.fetch("call_number_tsim")
-    callnumber.include?("ELECTRONIC RESOURCE") || callnumber.include?("INTERNET")
+    document.callnumber.include?("ELECTRONIC RESOURCE") || document.callnumber.include?("INTERNET")
   rescue
     false
   end

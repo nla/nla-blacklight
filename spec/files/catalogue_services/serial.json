@@ -1,0 +1,461 @@
+{
+  "instanceId": "08aed703-3648-54d0-80ef-fddb3c635731",
+  "holdingsRecords": [
+    {
+      "id": "37fbc2dd-3b37-58b8-b447-b538ba7265b9",
+      "instanceId": "08aed703-3648-54d0-80ef-fddb3c635731",
+      "permanentLocationId": "7b4822a2-9aa7-442d-8ed5-8da3cc8c01a2",
+      "effectiveLocationId": "7b4822a2-9aa7-442d-8ed5-8da3cc8c01a2",
+      "callNumber": "NKA 1132",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Vol. 148, no. 5 (Nov. 1975)-vol. 148, no. 6 (Dec. 1975)",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "60ae1cf9-5b4c-5fac-9a38-2cb195cdb7b2",
+          "holdingsRecordId": "37fbc2dd-3b37-58b8-b447-b538ba7265b9",
+          "barcode": "31508021167700",
+          "effectiveLocationId": "7b4822a2-9aa7-442d-8ed5-8da3cc8c01a2",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "NKA 1132"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-07-18T05:51:36.620+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 7,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "permanentLocationId": "7b4822a2-9aa7-442d-8ed5-8da3cc8c01a2",
+          "yearCaption": [],
+          "itemCategory": "monograph",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": []
+    },
+    {
+      "id": "fc59f835-c340-5ea4-978d-4bfe4193cee0",
+      "instanceId": "08aed703-3648-54d0-80ef-fddb3c635731",
+      "permanentLocationId": "4ac9fcf1-8288-41b5-ac14-e15648f97158",
+      "effectiveLocationId": "4ac9fcf1-8288-41b5-ac14-e15648f97158",
+      "callNumber": "HSW 2071",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Vol. 118, no. 2 (Aug. 1960); v. 118, no. 6 (Dec. 1960); v. 121, no. 1 (Jan. 1962); v. 126, no. 4 (Oct. 1964)-v. 126, no. 5 (Nov. 1964); v. 131, no. 2 (Feb. 1967); v. 132, no. 3 (Sept. 1967); v. 134, no. 6 (Dec. 1968)-v. 135, no. 1 (Jan. 1969); v. 135, no. 3 (March 1969)-v. 135, no. 4 (April 1969); v. 136, no. 3 (Sept. 1969); v. 137, no. 3 (March 1970); v. 138, no. 5 (Nov. 1970); v. 140, no. 1 (July 1971); v. 149, no. 6 (June 1976); v. 152, no. 6 (Dec. 1977)",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "95d87c3b-ef17-5440-9dbb-befcc2b7670b",
+          "holdingsRecordId": "fc59f835-c340-5ea4-978d-4bfe4193cee0",
+          "barcode": "31508019674725",
+          "effectiveLocationId": "4ac9fcf1-8288-41b5-ac14-e15648f97158",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "HSW 2071"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-03-25T02:09:52.977+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 7,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "permanentLocationId": "4ac9fcf1-8288-41b5-ac14-e15648f97158",
+          "yearCaption": [],
+          "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
+          "itemCategory": "journal",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": [
+        {
+          "yearCaption": "1977"
+        }
+      ]
+    },
+    {
+      "id": "44e5936d-0bd9-5df5-a86a-5091d04bd84d",
+      "instanceId": "08aed703-3648-54d0-80ef-fddb3c635731",
+      "permanentLocationId": "14b466b6-86b3-499b-9ddb-262fa0ac56ce",
+      "effectiveLocationId": "14b466b6-86b3-499b-9ddb-262fa0ac56ce",
+      "callNumberPrefix": "N",
+      "callNumber": "919.4 NAT",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "N pbk",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "52209e0d-00bd-5f19-91e8-55e1314ef637",
+          "holdingsRecordId": "44e5936d-0bd9-5df5-a86a-5091d04bd84d",
+          "barcode": "78000000225462",
+          "effectiveLocationId": "14b466b6-86b3-499b-9ddb-262fa0ac56ce",
+          "effectiveLocationDisplayName": "Main Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "N 919.4 NAT"
+          },
+          "status": {
+            "name": "Paged",
+            "date": "2023-07-13T23:01:56.573+00:00"
+          },
+          "pickupLocation": {
+            "id": "325aea8b-f5f2-4160-88ca-63d803856a70",
+            "name": "Main Reading Room",
+            "code": "MRR-SP",
+            "discoveryDisplayName": "Main Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 7,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "permanentLocationId": "14b466b6-86b3-499b-9ddb-262fa0ac56ce",
+          "yearCaption": [],
+          "enumeration": "N pbk",
+          "itemCategory": "monograph",
+          "discoverySuppress": false,
+          "requestable": false,
+          "displayStatus": "In use"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": []
+    },
+    {
+      "id": "d6c97d9e-dfe6-5faa-9f0b-020b2bddbf8c",
+      "instanceId": "08aed703-3648-54d0-80ef-fddb3c635731",
+      "permanentLocationId": "e041308f-c160-48b6-b6e7-cd5d0d582122",
+      "effectiveLocationId": "e041308f-c160-48b6-b6e7-cd5d0d582122",
+      "callNumberPrefix": "NL",
+      "callNumber": "919.4 NAT",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "v. 124, no. 3 (Sept. 1963)",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "7460acfb-72b9-5dba-9089-603921fb47c7",
+          "holdingsRecordId": "d6c97d9e-dfe6-5faa-9f0b-020b2bddbf8c",
+          "barcode": "78000000214089",
+          "effectiveLocationId": "e041308f-c160-48b6-b6e7-cd5d0d582122",
+          "effectiveLocationDisplayName": "Main Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "NL 919.4 NAT"
+          },
+          "status": {
+            "name": "Paged",
+            "date": "2023-07-13T23:01:30.563+00:00"
+          },
+          "pickupLocation": {
+            "id": "325aea8b-f5f2-4160-88ca-63d803856a70",
+            "name": "Main Reading Room",
+            "code": "MRR-SP",
+            "discoveryDisplayName": "Main Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 7,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "permanentLocationId": "e041308f-c160-48b6-b6e7-cd5d0d582122",
+          "yearCaption": [],
+          "enumeration": "NL pbk",
+          "itemCategory": "monograph",
+          "discoverySuppress": false,
+          "requestable": false,
+          "displayStatus": "In use"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": []
+    },
+    {
+      "id": "fe525746-5142-5b54-8c89-c6ed7a9c6196",
+      "instanceId": "08aed703-3648-54d0-80ef-fddb3c635731",
+      "permanentLocationId": "11c74e44-110d-4e53-8418-cf4bad1e314a",
+      "effectiveLocationId": "11c74e44-110d-4e53-8418-cf4bad1e314a",
+      "callNumberPrefix": "S",
+      "callNumber": "910.5 NAT",
+      "holdingsStatements": [
+        {
+          "statement": "v.116:no.6 (1959:Dec.) - v.218:no.1 (2010:July),",
+          "note": "",
+          "staffNote": ""
+        },
+        {
+          "statement": "v.218:no.4 (2010:Oct.) - v.222:no.2 (2012:Aug.)",
+          "note": "",
+          "staffNote": ""
+        },
+        {
+          "statement": "v.222:no.4 (2012:Oct.) - v.242:no.3 (2022:Sep.)",
+          "note": "",
+          "staffNote": ""
+        },
+        {
+          "statement": "v. 242, no. 4 (2022 Oct.)",
+          "note": "",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [
+        {
+          "statement": "",
+          "note": "Cumulative index",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "1888-1988",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "1989-1998",
+          "staffNote": ""
+        },
+        {
+          "statement": "2001",
+          "note": "",
+          "staffNote": ""
+        },
+        {
+          "statement": "2003",
+          "note": "",
+          "staffNote": ""
+        },
+        {
+          "statement": "2008",
+          "note": "",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForSupplements": [
+        {
+          "statement": "",
+          "note": "Maps of the United States and the world and cartography at the National Geographic Society, 1888-1988",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "Energy (Feb 1981)",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "Traveler's map of Germany (Sept 1991)",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "Native American heritage: a visitors guide (Oct 1991)",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "Water (v.184 ,no. 5A, 1993)",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "Millennium Supplement: Population (Oct 1998)",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "Supplement: Millennium in maps: cultures (Aug 1999)",
+          "staffNote": ""
+        },
+        {
+          "statement": "",
+          "note": "Special millennium issue (Jan 2000)",
+          "staffNote": ""
+        }
+      ],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "0f17532a-2fcf-5c72-a0c9-751fc459481f",
+          "holdingsRecordId": "fe525746-5142-5b54-8c89-c6ed7a9c6196",
+          "barcode": "31508002260425",
+          "effectiveLocationId": "11c74e44-110d-4e53-8418-cf4bad1e314a",
+          "effectiveLocationDisplayName": "Main Reading Room - Most pre 2005 held offsite",
+          "effectiveCallNumberComponents": {
+            "callNumber": "S 910.5 NAT"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-03-25T01:29:35.005+00:00"
+          },
+          "pickupLocation": {
+            "id": "325aea8b-f5f2-4160-88ca-63d803856a70",
+            "name": "Main Reading Room",
+            "code": "MRR-SP",
+            "discoveryDisplayName": "Main Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 7,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "permanentLocationId": "11c74e44-110d-4e53-8418-cf4bad1e314a",
+          "yearCaption": [],
+          "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
+          "itemCategory": "journal",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        },
+        {
+          "id": "e9d2cf15-a219-565a-8ec1-9bc914364c87",
+          "holdingsRecordId": "fe525746-5142-5b54-8c89-c6ed7a9c6196",
+          "barcode": "2524166",
+          "effectiveLocationId": "11c74e44-110d-4e53-8418-cf4bad1e314a",
+          "effectiveLocationDisplayName": "Main Reading Room - Most pre 2005 held offsite",
+          "effectiveCallNumberComponents": {
+            "callNumber": "S 910.5 NAT"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-03-25T02:23:47.983+00:00"
+          },
+          "pickupLocation": {
+            "id": "325aea8b-f5f2-4160-88ca-63d803856a70",
+            "name": "Main Reading Room",
+            "code": "MRR-SP",
+            "discoveryDisplayName": "Main Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 7,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "914a615b-c79c-46ad-a7f3-ab4c795240c3",
+          "permanentLocationId": "11c74e44-110d-4e53-8418-cf4bad1e314a",
+          "yearCaption": [
+            "1953"
+          ],
+          "enumeration": "January",
+          "itemCategory": "monograph",
+          "discoverySuppress": false,
+          "requestable": false,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": [
+        {
+          "chronology": "Dec",
+          "yearCaption": "1939"
+        },
+        {
+          "chronology": "Dec",
+          "yearCaption": "1990"
+        },
+        {
+          "chronology": "March, April, May",
+          "yearCaption": "2022"
+        },
+        {
+          "chronology": "May, June, July",
+          "yearCaption": "2008"
+        },
+        {
+          "chronology": "March, April, May",
+          "yearCaption": "2022"
+        },
+        {
+          "chronology": "May, June, July",
+          "yearCaption": "2008"
+        },
+        {
+          "chronology": "June, July, August",
+          "yearCaption": "2008"
+        },
+        {
+          "yearCaption": "1939"
+        },
+        {
+          "yearCaption": "1959"
+        },
+        {
+          "yearCaption": "1962"
+        },
+        {
+          "yearCaption": "1966"
+        },
+        {
+          "yearCaption": "1972"
+        },
+        {
+          "chronology": "June, July",
+          "yearCaption": "2009"
+        },
+        {
+          "chronology": "June,July",
+          "yearCaption": "2008"
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class PublicationPlace
-
   def initialize(document)
     @document = document
   end

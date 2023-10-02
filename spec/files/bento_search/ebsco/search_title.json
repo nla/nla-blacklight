@@ -1,0 +1,2387 @@
+{
+  "SearchRequest": {
+    "SearchCriteria": {
+      "Queries": [
+        {
+          "BooleanOperator": "AND",
+          "Term": "TI smooth"
+        }
+      ],
+      "SearchMode": "bool",
+      "IncludeFacets": "y",
+      "Expanders": [
+        "fulltext"
+      ],
+      "Sort": "relevance",
+      "RelatedContent": [
+        "emp"
+      ],
+      "AutoSuggest": "y",
+      "AutoCorrect": "n"
+    },
+    "RetrievalCriteria": {
+      "View": "brief",
+      "ResultsPerPage": 3,
+      "PageNumber": 1,
+      "Highlight": "y",
+      "IncludeImageQuickView": "false"
+    },
+    "SearchCriteriaWithActions": {
+      "QueriesWithAction": [
+        {
+          "Query": {
+            "BooleanOperator": "AND",
+            "Term": "TI smooth"
+          },
+          "RemoveAction": "removequery(1)"
+        }
+      ],
+      "ExpandersWithAction": [
+        {
+          "Id": "fulltext",
+          "RemoveAction": "removeexpander(fulltext)"
+        }
+      ]
+    }
+  },
+  "SearchResult": {
+    "Statistics": {
+      "TotalHits": 111111,
+      "TotalSearchTime": 271,
+      "Databases": [
+        {
+          "Id": "edssic",
+          "Label": "Indigenous Australia",
+          "Status": "0",
+          "Hits": 4
+        },
+        {
+          "Id": "edsfar",
+          "Label": "Far North Queensland Collection",
+          "Status": "0",
+          "Hits": 0
+        },
+        {
+          "Id": "edsmih",
+          "Label": "Australasian Military History Database",
+          "Status": "0",
+          "Hits": 0
+        },
+        {
+          "Id": "edshiv",
+          "Label": "HIV/AIDS Database",
+          "Status": "0",
+          "Hits": 1
+        },
+        {
+          "Id": "edsaia",
+          "Label": "Indigenous Studies Bibliography",
+          "Status": "0",
+          "Hits": 2
+        },
+        {
+          "Id": "edssag",
+          "Label": "Science And Geography Education",
+          "Status": "0",
+          "Hits": 48
+        },
+        {
+          "Id": "edsrur",
+          "Label": "Rural and Remote Health Database",
+          "Status": "0",
+          "Hits": 0
+        },
+        {
+          "Id": "edsmsc",
+          "Label": "Media Scan",
+          "Status": "0",
+          "Hits": 66
+        },
+        {
+          "Id": "edssni",
+          "Label": "Searchable Networked Intellectual Property Electronic Resource",
+          "Status": "0",
+          "Hits": 1
+        },
+        {
+          "Id": "edsscf",
+          "Label": "SCANfile",
+          "Status": "0",
+          "Hits": 4
+        },
+        {
+          "Id": "edsati",
+          "Label": "Australian Transport Index",
+          "Status": "0",
+          "Hits": 43
+        },
+        {
+          "Id": "edstab",
+          "Label": "Australian Taxation Abstracts Database",
+          "Status": "0",
+          "Hits": 1
+        },
+        {
+          "Id": "edsmai",
+          "Label": "Multicultural Australia and Immigration Studies",
+          "Status": "0",
+          "Hits": 3
+        },
+        {
+          "Id": "edsgnc",
+          "Label": "Nineteenth Century Collections Online",
+          "Status": "0",
+          "Hits": 10
+        },
+        {
+          "Id": "edsbps",
+          "Label": "BrillOnline Primary Source",
+          "Status": "0",
+          "Hits": 0
+        },
+        {
+          "Id": "edsgec",
+          "Label": "Eighteenth Century Collections Online",
+          "Status": "0",
+          "Hits": 63
+        },
+        {
+          "Id": "edsgmw",
+          "Label": "Making of the Modern World",
+          "Status": "0",
+          "Hits": 0
+        },
+        {
+          "Id": "edsgtd",
+          "Label": "Times Digital Archive",
+          "Status": "0",
+          "Hits": 918
+        },
+        {
+          "Id": "edsktv",
+          "Label": "Kikuzo II - 聞蔵Ⅱ",
+          "Status": "0",
+          "Hits": 3
+        },
+        {
+          "Id": "edsihs",
+          "Label": "Informit Humanities \\u0026 Social Sciences Collection",
+          "Status": "0",
+          "Hits": 34
+        },
+        {
+          "Id": "edsilc",
+          "Label": "Informit Literature \\u0026 Culture Collection",
+          "Status": "0",
+          "Hits": 4
+        },
+        {
+          "Id": "edsebo",
+          "Label": "Britannica Online",
+          "Status": "0",
+          "Hits": 5
+        },
+        {
+          "Id": "eric",
+          "Label": "ERIC",
+          "Status": "0",
+          "Hits": 112
+        },
+        {
+          "Id": "f5h",
+          "Label": "MasterFILE Premier",
+          "Status": "0",
+          "Hits": 5675
+        },
+        {
+          "Id": "lxh",
+          "Label": "Library, Information Science \\u0026 Technology Abstracts",
+          "Status": "0",
+          "Hits": 167
+        },
+        {
+          "Id": "a9h",
+          "Label": "Academic Search Complete",
+          "Status": "0",
+          "Hits": 26832
+        },
+        {
+          "Id": "nlabk",
+          "Label": "Audiobook Collection (EBSCOhost)",
+          "Status": "0",
+          "Hits": 0
+        },
+        {
+          "Id": "nlebk",
+          "Label": "eBook Collection (EBSCOhost)",
+          "Status": "0",
+          "Hits": 0
+        },
+        {
+          "Id": "llf",
+          "Label": "Library Literature \\u0026 Information Science Full Text (H.W. Wilson)",
+          "Status": "0",
+          "Hits": 147
+        },
+        {
+          "Id": "edskis",
+          "Label": "Korean Studies Information Service System",
+          "Status": "0",
+          "Hits": 433
+        },
+        {
+          "Id": "edo",
+          "Label": "Supplemental Index",
+          "Status": "0",
+          "Hits": 25346
+        },
+        {
+          "Id": "bsx",
+          "Label": "Business Source Index",
+          "Status": "0",
+          "Hits": 5728
+        },
+        {
+          "Id": "edb",
+          "Label": "Complementary Index",
+          "Status": "0",
+          "Hits": 41823
+        },
+        {
+          "Id": "edsoad",
+          "Label": "American National Biography Online",
+          "Status": "0",
+          "Hits": 0
+        },
+        {
+          "Id": "edsodb",
+          "Label": "Oxford Dictionary of National Biography",
+          "Status": "0",
+          "Hits": 1
+        },
+        {
+          "Id": "edsoro",
+          "Label": "Oxford Reference",
+          "Status": "0",
+          "Hits": 170
+        },
+        {
+          "Id": "edsomo",
+          "Label": "Grove Music Online",
+          "Status": "0",
+          "Hits": 3
+        },
+        {
+          "Id": "edsarl",
+          "Label": "Airiti Library eBooks \\u0026 Journals - 華藝線上圖書館",
+          "Status": "0",
+          "Hits": 452
+        },
+        {
+          "Id": "edsebk",
+          "Label": "eBook Index",
+          "Status": "0",
+          "Hits": 197
+        },
+        {
+          "Id": "edspmu",
+          "Label": "ProjectMUSE",
+          "Status": "0",
+          "Hits": 83
+        },
+        {
+          "Id": "edsami",
+          "Label": "Australasian Medical Index",
+          "Status": "0",
+          "Hits": 222
+        },
+        {
+          "Id": "edsdru",
+          "Label": "Drug Database",
+          "Status": "0",
+          "Hits": 13
+        },
+        {
+          "Id": "edsree",
+          "Label": "Great Barrier Reef Marine Park Province Database",
+          "Status": "0",
+          "Hits": 0
+        },
+        {
+          "Id": "edsgvr",
+          "Label": "Gale eBooks",
+          "Status": "0",
+          "Hits": 197
+        },
+        {
+          "Id": "ers",
+          "Label": "Research Starters",
+          "Status": "0",
+          "Hits": 0
+        },
+        {
+          "Id": "edsjsr",
+          "Label": "JSTOR Journals",
+          "Status": "0",
+          "Hits": 2182
+        },
+        {
+          "Id": "edsjkn",
+          "Label": "JapanKnowledge",
+          "Status": "0",
+          "Hits": 108
+        },
+        {
+          "Id": "edsoec",
+          "Label": "OECD iLibrary",
+          "Status": "0",
+          "Hits": 2
+        },
+        {
+          "Id": "edsrdx",
+          "Label": "ReadEx",
+          "Status": "0",
+          "Hits": 8
+        }
+      ]
+    },
+    "Data": {
+      "RecordFormat": "EP Display",
+      "Records": [
+        {
+          "ResultId": 1,
+          "Header": {
+            "DbId": "edsebk",
+            "DbLabel": "eBook Index",
+            "An": "3278660",
+            "RelevancyScore": "2148",
+            "PubType": "eBook",
+            "PubTypeId": "ebook"
+          },
+          "PLink": "https://catalogue.nla.gov.au/Record/000000/Offsite?url=https%3a%2f%2fsearch.ebscohost.com%2flogin.aspx%3fdirect%3dtrue%26site%3deds-live%26db%3dedsebk%26AN%3d3278660",
+          "FullText": {
+            "Text": {
+              "Availability": "0"
+            }
+          },
+          "Items": [
+            {
+              "Name": "Title",
+              "Label": "Title",
+              "Group": "Ti",
+              "Data": "\\u0026lt;highlight\\u0026gt;Smooth\\u0026lt;/highlight\\u0026gt; Sailing : An Ethnographic and Socio-semiotic Analysis of Tourism and Ocean Cruising"
+            },
+            {
+              "Name": "Author",
+              "Label": "Authors",
+              "Group": "Au",
+              "Data": "\\u0026lt;searchLink fieldCode=\\u0026quot;AR\\u0026quot; term=\\u0026quot;%22Arthur+Asa+Berger%22\\u0026quot;\\u0026gt;Arthur Asa Berger\\u0026lt;/searchLink\\u0026gt;"
+            },
+            {
+              "Name": "TypePub",
+              "Label": "Resource Type",
+              "Group": "TypPub",
+              "Data": "eBook."
+            },
+            {
+              "Name": "Subject",
+              "Label": "Subjects",
+              "Group": "Su",
+              "Data": "\\u0026lt;searchLink fieldCode=\\u0026quot;DE\\u0026quot; term=\\u0026quot;%22Tourism%22\\u0026quot;\\u0026gt;Tourism\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;DE\\u0026quot; term=\\u0026quot;%22Ocean+travel%22\\u0026quot;\\u0026gt;Ocean travel\\u0026lt;/searchLink\\u0026gt;"
+            },
+            {
+              "Name": "SubjectBISAC",
+              "Label": "Categories",
+              "Group": "Su",
+              "Data": "\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22SOCIAL+SCIENCE+%2F+Popular+Culture%22\\u0026quot;\\u0026gt;SOCIAL SCIENCE / Popular Culture\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22BUSINESS+%26+ECONOMICS+%2F+Industries+%2F+Hospitality%2C+Travel+%26+Tourism%22\\u0026quot;\\u0026gt;BUSINESS \\u0026amp; ECONOMICS / Industries / Hospitality, Travel \\u0026amp; Tourism\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22LANGUAGE+ARTS+%26+DISCIPLINES+%2F+Communication+Studies%22\\u0026quot;\\u0026gt;LANGUAGE ARTS \\u0026amp; DISCIPLINES / Communication Studies\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22LANGUAGE+ARTS+%26+DISCIPLINES+%2F+Linguistics+%2F+General%22\\u0026quot;\\u0026gt;LANGUAGE ARTS \\u0026amp; DISCIPLINES / Linguistics / General\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22SOCIAL+SCIENCE+%2F+Anthropology+%2F+General%22\\u0026quot;\\u0026gt;SOCIAL SCIENCE / Anthropology / General\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22SOCIAL+SCIENCE+%2F+Anthropology+%2F+Cultural+%26+Social%22\\u0026quot;\\u0026gt;SOCIAL SCIENCE / Anthropology / Cultural \\u0026amp; Social\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22SOCIAL+SCIENCE+%2F+Sociology+%2F+General%22\\u0026quot;\\u0026gt;SOCIAL SCIENCE / Sociology / General\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22SPORTS+%26+RECREATION+%2F+General%22\\u0026quot;\\u0026gt;SPORTS \\u0026amp; RECREATION / General\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22TRAVEL+%2F+Food%2C+Lodging+%26+Transportation+%2F+Cruises%22\\u0026quot;\\u0026gt;TRAVEL / Food, Lodging \\u0026amp; Transportation / Cruises\\u0026lt;/searchLink\\u0026gt;"
+            }
+          ],
+          "RecordInfo": {
+            "BibRecord": {
+              "BibEntity": {
+                "Classifications": [
+                  {
+                    "Code": "910.45",
+                    "Scheme": "ddc",
+                    "Type": "prePub"
+                  }
+                ],
+                "Languages": [
+                  {
+                    "Code": "eng",
+                    "Text": "English"
+                  }
+                ],
+                "Subjects": [
+                  {
+                    "SubjectFull": "Tourism",
+                    "Type": "general"
+                  },
+                  {
+                    "SubjectFull": "Ocean travel",
+                    "Type": "general"
+                  }
+                ],
+                "Titles": [
+                  {
+                    "TitleFull": "Smooth Sailing : An Ethnographic and Socio-semiotic Analysis of Tourism and Ocean Cruising",
+                    "Type": "main"
+                  }
+                ]
+              },
+              "BibRelationships": {
+                "HasContributorRelationships": [
+                  {
+                    "PersonEntity": {
+                      "Name": {
+                        "NameFull": "Arthur Asa Berger"
+                      }
+                    }
+                  },
+                  {
+                    "PersonEntity": {
+                      "Name": {
+                        "NameFull": "Arthur Asa Berger"
+                      }
+                    }
+                  }
+                ],
+                "IsPartOfRelationships": [
+                  {
+                    "BibEntity": {
+                      "Dates": [
+                        {
+                          "D": "01",
+                          "M": "01",
+                          "Type": "published",
+                          "Y": "2022"
+                        },
+                        {
+                          "D": "03",
+                          "M": "06",
+                          "Type": "profile",
+                          "Y": "2022"
+                        }
+                      ],
+                      "Identifiers": [
+                        {
+                          "Type": "isbn-print",
+                          "Value": "9789004506275"
+                        },
+                        {
+                          "Type": "isbn-electronic",
+                          "Value": "9789004506268"
+                        }
+                      ],
+                      "Titles": [
+                        {
+                          "TitleFull": "Smooth Sailing : An Ethnographic and Socio-semiotic Analysis of Tourism and Ocean Cruising",
+                          "Type": "main"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "IllustrationInfo": {}
+        },
+        {
+          "ResultId": 2,
+          "Header": {
+            "DbId": "edsebk",
+            "DbLabel": "eBook Index",
+            "An": "3088741",
+            "RelevancyScore": "2140",
+            "PubType": "eBook",
+            "PubTypeId": "ebook"
+          },
+          "PLink": "https://catalogue.nla.gov.au/Record/000000/Offsite?url=https%3a%2f%2fsearch.ebscohost.com%2flogin.aspx%3fdirect%3dtrue%26site%3deds-live%26db%3dedsebk%26AN%3d3088741",
+          "FullText": {
+            "Text": {
+              "Availability": "0"
+            }
+          },
+          "Items": [
+            {
+              "Name": "Title",
+              "Label": "Title",
+              "Group": "Ti",
+              "Data": "\\u0026lt;highlight\\u0026gt;Smooth\\u0026lt;/highlight\\u0026gt; Operator : The Life and Times of Cyril Lakin, Editor, Broadcaster and Politician"
+            },
+            {
+              "Name": "Author",
+              "Label": "Authors",
+              "Group": "Au",
+              "Data": "\\u0026lt;searchLink fieldCode=\\u0026quot;AR\\u0026quot; term=\\u0026quot;%22Geoff+Andrews%22\\u0026quot;\\u0026gt;Geoff Andrews\\u0026lt;/searchLink\\u0026gt;"
+            },
+            {
+              "Name": "TypePub",
+              "Label": "Resource Type",
+              "Group": "TypPub",
+              "Data": "eBook."
+            },
+            {
+              "Name": "Subject",
+              "Label": "Subjects",
+              "Group": "Su",
+              "Data": "\\u0026lt;searchLink fieldCode=\\u0026quot;DE\\u0026quot; term=\\u0026quot;%22Newspaper+editors--Great+Britain--Biography%22\\u0026quot;\\u0026gt;Newspaper editors--Great Britain--Biography\\u0026lt;/searchLink\\u0026gt;"
+            },
+            {
+              "Name": "SubjectBISAC",
+              "Label": "Categories",
+              "Group": "Su",
+              "Data": "\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22BIOGRAPHY+%26+AUTOBIOGRAPHY+%2F+Historical%22\\u0026quot;\\u0026gt;BIOGRAPHY \\u0026amp; AUTOBIOGRAPHY / Historical\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22BIOGRAPHY+%26+AUTOBIOGRAPHY+%2F+Political%22\\u0026quot;\\u0026gt;BIOGRAPHY \\u0026amp; AUTOBIOGRAPHY / Political\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22BIOGRAPHY+%26+AUTOBIOGRAPHY+%2F+Editors%2C+Journalists%2C+Publishers%22\\u0026quot;\\u0026gt;BIOGRAPHY \\u0026amp; AUTOBIOGRAPHY / Editors, Journalists, Publishers\\u0026lt;/searchLink\\u0026gt;"
+            }
+          ],
+          "RecordInfo": {
+            "BibRecord": {
+              "BibEntity": {
+                "Classifications": [
+                  {
+                    "Code": "070.41092",
+                    "Scheme": "ddc",
+                    "Type": "prePub"
+                  }
+                ],
+                "Languages": [
+                  {
+                    "Code": "eng",
+                    "Text": "English"
+                  }
+                ],
+                "Subjects": [
+                  {
+                    "SubjectFull": "Newspaper editors--Great Britain--Biography",
+                    "Type": "general"
+                  }
+                ],
+                "Titles": [
+                  {
+                    "TitleFull": "Smooth Operator : The Life and Times of Cyril Lakin, Editor, Broadcaster and Politician",
+                    "Type": "main"
+                  }
+                ]
+              },
+              "BibRelationships": {
+                "HasContributorRelationships": [
+                  {
+                    "PersonEntity": {
+                      "Name": {
+                        "NameFull": "Geoff Andrews"
+                      }
+                    }
+                  },
+                  {
+                    "PersonEntity": {
+                      "Name": {
+                        "NameFull": "Geoff Andrews"
+                      }
+                    }
+                  }
+                ],
+                "IsPartOfRelationships": [
+                  {
+                    "BibEntity": {
+                      "Dates": [
+                        {
+                          "D": "01",
+                          "M": "01",
+                          "Type": "published",
+                          "Y": "2021"
+                        },
+                        {
+                          "D": "29",
+                          "M": "07",
+                          "Type": "profile",
+                          "Y": "2022"
+                        }
+                      ],
+                      "Identifiers": [
+                        {
+                          "Type": "isbn-print",
+                          "Value": "9781913640187"
+                        },
+                        {
+                          "Type": "isbn-electronic",
+                          "Value": "9781913640859"
+                        }
+                      ],
+                      "Titles": [
+                        {
+                          "TitleFull": "Smooth Operator : The Life and Times of Cyril Lakin, Editor, Broadcaster and Politician",
+                          "Type": "main"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "IllustrationInfo": {}
+        },
+        {
+          "ResultId": 3,
+          "Header": {
+            "DbId": "edsebk",
+            "DbLabel": "eBook Index",
+            "An": "2552921",
+            "RelevancyScore": "2132",
+            "PubType": "eBook",
+            "PubTypeId": "ebook"
+          },
+          "PLink": "https://catalogue.nla.gov.au/Record/000000/Offsite?url=https%3a%2f%2fsearch.ebscohost.com%2flogin.aspx%3fdirect%3dtrue%26site%3deds-live%26db%3dedsebk%26AN%3d2552921",
+          "FullText": {
+            "Text": {
+              "Availability": "0"
+            }
+          },
+          "Items": [
+            {
+              "Name": "Title",
+              "Label": "Title",
+              "Group": "Ti",
+              "Data": "\\u0026lt;highlight\\u0026gt;Smooth\\u0026lt;/highlight\\u0026gt; Manifolds"
+            },
+            {
+              "Name": "Author",
+              "Label": "Authors",
+              "Group": "Au",
+              "Data": "\\u0026lt;searchLink fieldCode=\\u0026quot;AR\\u0026quot; term=\\u0026quot;%22Claudio+Gorodski%22\\u0026quot;\\u0026gt;Claudio Gorodski\\u0026lt;/searchLink\\u0026gt;"
+            },
+            {
+              "Name": "TypePub",
+              "Label": "Resource Type",
+              "Group": "TypPub",
+              "Data": "eBook."
+            },
+            {
+              "Name": "Subject",
+              "Label": "Subjects",
+              "Group": "Su",
+              "Data": "\\u0026lt;searchLink fieldCode=\\u0026quot;DE\\u0026quot; term=\\u0026quot;%22Global+analysis+%28Mathematics%29%22\\u0026quot;\\u0026gt;Global analysis (Mathematics)\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;DE\\u0026quot; term=\\u0026quot;%22Manifolds+%28Mathematics%29%22\\u0026quot;\\u0026gt;Manifolds (Mathematics)\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;DE\\u0026quot; term=\\u0026quot;%22Topological+groups%22\\u0026quot;\\u0026gt;Topological groups\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;DE\\u0026quot; term=\\u0026quot;%22Lie+groups%22\\u0026quot;\\u0026gt;Lie groups\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;DE\\u0026quot; term=\\u0026quot;%22Geometry%2C+Differential%22\\u0026quot;\\u0026gt;Geometry, Differential\\u0026lt;/searchLink\\u0026gt;"
+            },
+            {
+              "Name": "SubjectBISAC",
+              "Label": "Categories",
+              "Group": "Su",
+              "Data": "\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22MATHEMATICS+%2F+Mathematical+Analysis%22\\u0026quot;\\u0026gt;MATHEMATICS / Mathematical Analysis\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22MATHEMATICS+%2F+Geometry+%2F+Differential%22\\u0026quot;\\u0026gt;MATHEMATICS / Geometry / Differential\\u0026lt;/searchLink\\u0026gt;\\u0026lt;br /\\u0026gt;\\u0026lt;searchLink fieldCode=\\u0026quot;ZK\\u0026quot; term=\\u0026quot;%22MATHEMATICS+%2F+Group+Theory%22\\u0026quot;\\u0026gt;MATHEMATICS / Group Theory\\u0026lt;/searchLink\\u0026gt;"
+            }
+          ],
+          "RecordInfo": {
+            "BibRecord": {
+              "BibEntity": {
+                "Classifications": [
+                  {
+                    "Code": "514.74",
+                    "Scheme": "ddc",
+                    "Type": "prePub"
+                  }
+                ],
+                "Languages": [
+                  {
+                    "Code": "eng",
+                    "Text": "English"
+                  }
+                ],
+                "Subjects": [
+                  {
+                    "SubjectFull": "Global analysis (Mathematics)",
+                    "Type": "general"
+                  },
+                  {
+                    "SubjectFull": "Manifolds (Mathematics)",
+                    "Type": "general"
+                  },
+                  {
+                    "SubjectFull": "Topological groups",
+                    "Type": "general"
+                  },
+                  {
+                    "SubjectFull": "Lie groups",
+                    "Type": "general"
+                  },
+                  {
+                    "SubjectFull": "Geometry, Differential",
+                    "Type": "general"
+                  }
+                ],
+                "Titles": [
+                  {
+                    "TitleFull": "Smooth Manifolds",
+                    "Type": "main"
+                  }
+                ]
+              },
+              "BibRelationships": {
+                "HasContributorRelationships": [
+                  {
+                    "PersonEntity": {
+                      "Name": {
+                        "NameFull": "Claudio Gorodski"
+                      }
+                    }
+                  },
+                  {
+                    "PersonEntity": {
+                      "Name": {
+                        "NameFull": "Claudio Gorodski"
+                      }
+                    }
+                  }
+                ],
+                "IsPartOfRelationships": [
+                  {
+                    "BibEntity": {
+                      "Dates": [
+                        {
+                          "D": "01",
+                          "M": "01",
+                          "Type": "published",
+                          "Y": "2020"
+                        },
+                        {
+                          "D": "04",
+                          "M": "08",
+                          "Type": "profile",
+                          "Y": "2020"
+                        }
+                      ],
+                      "Identifiers": [
+                        {
+                          "Type": "isbn-print",
+                          "Value": "9783030497743"
+                        },
+                        {
+                          "Type": "isbn-electronic",
+                          "Value": "9783030497750"
+                        }
+                      ],
+                      "Titles": [
+                        {
+                          "TitleFull": "Smooth Manifolds",
+                          "Type": "main"
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          },
+          "IllustrationInfo": {}
+        }
+      ]
+    },
+    "AvailableFacets": [
+      {
+        "Id": "SourceType",
+        "Label": "Source Type",
+        "AvailableFacetValues": [
+          {
+            "Value": "Academic Journals",
+            "Count": 63700,
+            "AddAction": "addfacetfilter(SourceType:Academic Journals)"
+          },
+          {
+            "Value": "Magazines",
+            "Count": 31224,
+            "AddAction": "addfacetfilter(SourceType:Magazines)"
+          },
+          {
+            "Value": "News",
+            "Count": 3915,
+            "AddAction": "addfacetfilter(SourceType:News)"
+          },
+          {
+            "Value": "Trade Publications",
+            "Count": 3298,
+            "AddAction": "addfacetfilter(SourceType:Trade Publications)"
+          },
+          {
+            "Value": "Conference Materials",
+            "Count": 2187,
+            "AddAction": "addfacetfilter(SourceType:Conference Materials)"
+          },
+          {
+            "Value": "Books",
+            "Count": 1424,
+            "AddAction": "addfacetfilter(SourceType:Books)"
+          },
+          {
+            "Value": "Reports",
+            "Count": 538,
+            "AddAction": "addfacetfilter(SourceType:Reports)"
+          },
+          {
+            "Value": "Reviews",
+            "Count": 477,
+            "AddAction": "addfacetfilter(SourceType:Reviews)"
+          },
+          {
+            "Value": "Dissertations",
+            "Count": 210,
+            "AddAction": "addfacetfilter(SourceType:Dissertations)"
+          },
+          {
+            "Value": "eBooks",
+            "Count": 197,
+            "AddAction": "addfacetfilter(SourceType:eBooks)"
+          },
+          {
+            "Value": "Biographies",
+            "Count": 14,
+            "AddAction": "addfacetfilter(SourceType:Biographies)"
+          },
+          {
+            "Value": "Electronic Resources",
+            "Count": 12,
+            "AddAction": "addfacetfilter(SourceType:Electronic Resources)"
+          }
+        ]
+      },
+      {
+        "Id": "SubjectEDS",
+        "Label": "Subject",
+        "AvailableFacetValues": [
+          {
+            "Value": "smooth muscle",
+            "Count": 12064,
+            "AddAction": "addfacetfilter(SubjectEDS:smooth muscle)"
+          },
+          {
+            "Value": "muscle cells",
+            "Count": 7373,
+            "AddAction": "addfacetfilter(SubjectEDS:muscle cells)"
+          },
+          {
+            "Value": "vascular smooth muscle",
+            "Count": 6596,
+            "AddAction": "addfacetfilter(SubjectEDS:vascular smooth muscle)"
+          },
+          {
+            "Value": "cell proliferation",
+            "Count": 2273,
+            "AddAction": "addfacetfilter(SubjectEDS:cell proliferation)"
+          },
+          {
+            "Value": "atherosclerosis",
+            "Count": 1898,
+            "AddAction": "addfacetfilter(SubjectEDS:atherosclerosis)"
+          },
+          {
+            "Value": "vascular smooth muscle cells",
+            "Count": 1620,
+            "AddAction": "addfacetfilter(SubjectEDS:vascular smooth muscle cells)"
+          },
+          {
+            "Value": "gene expression",
+            "Count": 1572,
+            "AddAction": "addfacetfilter(SubjectEDS:gene expression)"
+          },
+          {
+            "Value": "smoothness of functions",
+            "Count": 1307,
+            "AddAction": "addfacetfilter(SubjectEDS:smoothness of functions)"
+          },
+          {
+            "Value": "physiology",
+            "Count": 1298,
+            "AddAction": "addfacetfilter(SubjectEDS:physiology)"
+          },
+          {
+            "Value": "asthma",
+            "Count": 1252,
+            "AddAction": "addfacetfilter(SubjectEDS:asthma)"
+          },
+          {
+            "Value": "smooth muscle cells",
+            "Count": 1202,
+            "AddAction": "addfacetfilter(SubjectEDS:smooth muscle cells)"
+          },
+          {
+            "Value": "proliferation",
+            "Count": 1140,
+            "AddAction": "addfacetfilter(SubjectEDS:proliferation)"
+          },
+          {
+            "Value": "apoptosis",
+            "Count": 1116,
+            "AddAction": "addfacetfilter(SubjectEDS:apoptosis)"
+          },
+          {
+            "Value": "phosphorylation",
+            "Count": 1000,
+            "AddAction": "addfacetfilter(SubjectEDS:phosphorylation)"
+          },
+          {
+            "Value": "cell migration",
+            "Count": 981,
+            "AddAction": "addfacetfilter(SubjectEDS:cell migration)"
+          },
+          {
+            "Value": "laboratory rats",
+            "Count": 968,
+            "AddAction": "addfacetfilter(SubjectEDS:laboratory rats)"
+          },
+          {
+            "Value": "muscle contraction",
+            "Count": 960,
+            "AddAction": "addfacetfilter(SubjectEDS:muscle contraction)"
+          },
+          {
+            "Value": "charts, diagrams, etc.",
+            "Count": 937,
+            "AddAction": "addfacetfilter(SubjectEDS:charts\\\\, diagrams\\\\, etc.)"
+          },
+          {
+            "Value": "vascular smooth muscle cell",
+            "Count": 891,
+            "AddAction": "addfacetfilter(SubjectEDS:vascular smooth muscle cell)"
+          },
+          {
+            "Value": "cellular signal transduction",
+            "Count": 879,
+            "AddAction": "addfacetfilter(SubjectEDS:cellular signal transduction)"
+          },
+          {
+            "Value": "protein kinases",
+            "Count": 842,
+            "AddAction": "addfacetfilter(SubjectEDS:protein kinases)"
+          },
+          {
+            "Value": "jazz",
+            "Count": 828,
+            "AddAction": "addfacetfilter(SubjectEDS:jazz)"
+          },
+          {
+            "Value": "inflammation",
+            "Count": 827,
+            "AddAction": "addfacetfilter(SubjectEDS:inflammation)"
+          },
+          {
+            "Value": "blood vessels",
+            "Count": 803,
+            "AddAction": "addfacetfilter(SubjectEDS:blood vessels)"
+          },
+          {
+            "Value": "calcium",
+            "Count": 791,
+            "AddAction": "addfacetfilter(SubjectEDS:calcium)"
+          },
+          {
+            "Value": "nitric oxide",
+            "Count": 785,
+            "AddAction": "addfacetfilter(SubjectEDS:nitric oxide)"
+          },
+          {
+            "Value": "airway (anatomy)",
+            "Count": 754,
+            "AddAction": "addfacetfilter(SubjectEDS:airway \\\\(anatomy\\\\))"
+          },
+          {
+            "Value": "actin",
+            "Count": 720,
+            "AddAction": "addfacetfilter(SubjectEDS:actin)"
+          },
+          {
+            "Value": "algorithms",
+            "Count": 719,
+            "AddAction": "addfacetfilter(SubjectEDS:algorithms)"
+          },
+          {
+            "Value": "hypertension",
+            "Count": 701,
+            "AddAction": "addfacetfilter(SubjectEDS:hypertension)"
+          },
+          {
+            "Value": "myosin",
+            "Count": 696,
+            "AddAction": "addfacetfilter(SubjectEDS:myosin)"
+          },
+          {
+            "Value": "smooth muscle physiology",
+            "Count": 677,
+            "AddAction": "addfacetfilter(SubjectEDS:smooth muscle physiology)"
+          },
+          {
+            "Value": "angiotensin ii",
+            "Count": 667,
+            "AddAction": "addfacetfilter(SubjectEDS:angiotensin ii)"
+          },
+          {
+            "Value": "smooth muscle cell",
+            "Count": 654,
+            "AddAction": "addfacetfilter(SubjectEDS:smooth muscle cell)"
+          },
+          {
+            "Value": "pulmonary artery",
+            "Count": 651,
+            "AddAction": "addfacetfilter(SubjectEDS:pulmonary artery)"
+          },
+          {
+            "Value": "cells",
+            "Count": 639,
+            "AddAction": "addfacetfilter(SubjectEDS:cells)"
+          },
+          {
+            "Value": "phenotypes",
+            "Count": 628,
+            "AddAction": "addfacetfilter(SubjectEDS:phenotypes)"
+          },
+          {
+            "Value": "research article",
+            "Count": 609,
+            "AddAction": "addfacetfilter(SubjectEDS:research article)"
+          },
+          {
+            "Value": "extracellular matrix",
+            "Count": 607,
+            "AddAction": "addfacetfilter(SubjectEDS:extracellular matrix)"
+          },
+          {
+            "Value": "platelet-derived growth factor",
+            "Count": 606,
+            "AddAction": "addfacetfilter(SubjectEDS:platelet-derived growth factor)"
+          },
+          {
+            "Value": "rats",
+            "Count": 606,
+            "AddAction": "addfacetfilter(SubjectEDS:rats)"
+          },
+          {
+            "Value": "proteins",
+            "Count": 596,
+            "AddAction": "addfacetfilter(SubjectEDS:proteins)"
+          },
+          {
+            "Value": "migration",
+            "Count": 592,
+            "AddAction": "addfacetfilter(SubjectEDS:migration)"
+          },
+          {
+            "Value": "muscles",
+            "Count": 587,
+            "AddAction": "addfacetfilter(SubjectEDS:muscles)"
+          },
+          {
+            "Value": "pulmonary hypertension",
+            "Count": 583,
+            "AddAction": "addfacetfilter(SubjectEDS:pulmonary hypertension)"
+          },
+          {
+            "Value": "cytokines",
+            "Count": 576,
+            "AddAction": "addfacetfilter(SubjectEDS:cytokines)"
+          },
+          {
+            "Value": "eye movements",
+            "Count": 570,
+            "AddAction": "addfacetfilter(SubjectEDS:eye movements)"
+          },
+          {
+            "Value": "messenger rna",
+            "Count": 569,
+            "AddAction": "addfacetfilter(SubjectEDS:messenger rna)"
+          },
+          {
+            "Value": "cell differentiation",
+            "Count": 555,
+            "AddAction": "addfacetfilter(SubjectEDS:cell differentiation)"
+          },
+          {
+            "Value": "endothelial cells",
+            "Count": 536,
+            "AddAction": "addfacetfilter(SubjectEDS:endothelial cells)"
+          }
+        ]
+      },
+      {
+        "Id": "RangeLexile",
+        "Label": "Lexile Range",
+        "AvailableFacetValues": [
+          {
+            "Value": "1301-1500+",
+            "Count": 3455,
+            "AddAction": "addfacetfilter(RangeLexile:1301-1500+)"
+          },
+          {
+            "Value": "1101-1300",
+            "Count": 2538,
+            "AddAction": "addfacetfilter(RangeLexile:1101-1300)"
+          },
+          {
+            "Value": "901-1100",
+            "Count": 1037,
+            "AddAction": "addfacetfilter(RangeLexile:901-1100)"
+          },
+          {
+            "Value": "701-900",
+            "Count": 278,
+            "AddAction": "addfacetfilter(RangeLexile:701-900)"
+          },
+          {
+            "Value": "401-700",
+            "Count": 45,
+            "AddAction": "addfacetfilter(RangeLexile:401-700)"
+          },
+          {
+            "Value": "0-400",
+            "Count": 5,
+            "AddAction": "addfacetfilter(RangeLexile:0-400)"
+          }
+        ]
+      },
+      {
+        "Id": "Publisher",
+        "Label": "Publisher",
+        "AvailableFacetValues": [
+          {
+            "Value": "springer nature",
+            "Count": 10266,
+            "AddAction": "addfacetfilter(Publisher:springer nature)"
+          },
+          {
+            "Value": "elsevier b.v.",
+            "Count": 7731,
+            "AddAction": "addfacetfilter(Publisher:elsevier b.v.)"
+          },
+          {
+            "Value": "wiley-blackwell",
+            "Count": 6311,
+            "AddAction": "addfacetfilter(Publisher:wiley-blackwell)"
+          },
+          {
+            "Value": "american physiological society",
+            "Count": 5812,
+            "AddAction": "addfacetfilter(Publisher:american physiological society)"
+          },
+          {
+            "Value": "lippincott williams \\u0026 wilkins",
+            "Count": 3595,
+            "AddAction": "addfacetfilter(Publisher:lippincott williams \\u0026 wilkins)"
+          },
+          {
+            "Value": "taylor \\u0026 francis ltd",
+            "Count": 2738,
+            "AddAction": "addfacetfilter(Publisher:taylor \\u0026 francis ltd)"
+          },
+          {
+            "Value": "ieee",
+            "Count": 2561,
+            "AddAction": "addfacetfilter(Publisher:ieee)"
+          },
+          {
+            "Value": "john wiley \\u0026 sons, inc.",
+            "Count": 2387,
+            "AddAction": "addfacetfilter(Publisher:john wiley \\u0026 sons\\\\, inc.)"
+          },
+          {
+            "Value": "oxford university press / usa",
+            "Count": 2335,
+            "AddAction": "addfacetfilter(Publisher:oxford university press / usa)"
+          },
+          {
+            "Value": "mrc media, llc",
+            "Count": 1281,
+            "AddAction": "addfacetfilter(Publisher:mrc media\\\\, llc)"
+          },
+          {
+            "Value": "times newspapers limited",
+            "Count": 918,
+            "AddAction": "addfacetfilter(Publisher:times newspapers limited)"
+          },
+          {
+            "Value": "meredith corporation",
+            "Count": 678,
+            "AddAction": "addfacetfilter(Publisher:meredith corporation)"
+          },
+          {
+            "Value": "new york times",
+            "Count": 622,
+            "AddAction": "addfacetfilter(Publisher:new york times)"
+          },
+          {
+            "Value": "endeavor business media",
+            "Count": 582,
+            "AddAction": "addfacetfilter(Publisher:endeavor business media)"
+          },
+          {
+            "Value": "dow jones \\u0026 company inc",
+            "Count": 536,
+            "AddAction": "addfacetfilter(Publisher:dow jones \\u0026 company inc)"
+          },
+          {
+            "Value": "penton media, inc.",
+            "Count": 518,
+            "AddAction": "addfacetfilter(Publisher:penton media\\\\, inc.)"
+          },
+          {
+            "Value": "sage publications inc.",
+            "Count": 512,
+            "AddAction": "addfacetfilter(Publisher:sage publications inc.)"
+          },
+          {
+            "Value": "united business media",
+            "Count": 440,
+            "AddAction": "addfacetfilter(Publisher:united business media)"
+          },
+          {
+            "Value": "hearst magazines, a division of hearst communications, inc.",
+            "Count": 436,
+            "AddAction": "addfacetfilter(Publisher:hearst magazines\\\\, a division of hearst communications\\\\, inc.)"
+          },
+          {
+            "Value": "future publishing ltd.",
+            "Count": 425,
+            "AddAction": "addfacetfilter(Publisher:future publishing ltd.)"
+          },
+          {
+            "Value": "crain communications inc. (mi)",
+            "Count": 389,
+            "AddAction": "addfacetfilter(Publisher:crain communications inc. \\\\(mi\\\\))"
+          },
+          {
+            "Value": "bloomberg, l.p.",
+            "Count": 360,
+            "AddAction": "addfacetfilter(Publisher:bloomberg\\\\, l.p.)"
+          },
+          {
+            "Value": "euromoney trading limited / gulf publishing company",
+            "Count": 335,
+            "AddAction": "addfacetfilter(Publisher:euromoney trading limited / gulf publishing company)"
+          },
+          {
+            "Value": "idg communications, inc.",
+            "Count": 312,
+            "AddAction": "addfacetfilter(Publisher:idg communications\\\\, inc.)"
+          },
+          {
+            "Value": "bnp media",
+            "Count": 291,
+            "AddAction": "addfacetfilter(Publisher:bnp media)"
+          },
+          {
+            "Value": "american society of mechanical engineers",
+            "Count": 288,
+            "AddAction": "addfacetfilter(Publisher:american society of mechanical engineers)"
+          },
+          {
+            "Value": "association for computing machinery",
+            "Count": 250,
+            "AddAction": "addfacetfilter(Publisher:association for computing machinery)"
+          },
+          {
+            "Value": "de gruyter",
+            "Count": 232,
+            "AddAction": "addfacetfilter(Publisher:de gruyter)"
+          },
+          {
+            "Value": "conde nast publications",
+            "Count": 230,
+            "AddAction": "addfacetfilter(Publisher:conde nast publications)"
+          },
+          {
+            "Value": "questex media group",
+            "Count": 196,
+            "AddAction": "addfacetfilter(Publisher:questex media group)"
+          },
+          {
+            "Value": "oxford university press",
+            "Count": 168,
+            "AddAction": "addfacetfilter(Publisher:oxford university press)"
+          },
+          {
+            "Value": "nine publishing, successor in interest to fairfax media management pty ltd",
+            "Count": 119,
+            "AddAction": "addfacetfilter(Publisher:nine publishing\\\\, successor in interest to fairfax media management pty ltd)"
+          },
+          {
+            "Value": "mark allen holdings limited",
+            "Count": 112,
+            "AddAction": "addfacetfilter(Publisher:mark allen holdings limited)"
+          },
+          {
+            "Value": "tsl education limited",
+            "Count": 112,
+            "AddAction": "addfacetfilter(Publisher:tsl education limited)"
+          },
+          {
+            "Value": "pwxyz llc",
+            "Count": 105,
+            "AddAction": "addfacetfilter(Publisher:pwxyz llc)"
+          },
+          {
+            "Value": "media source, inc.",
+            "Count": 83,
+            "AddAction": "addfacetfilter(Publisher:media source\\\\, inc.)"
+          },
+          {
+            "Value": "springer",
+            "Count": 66,
+            "AddAction": "addfacetfilter(Publisher:springer)"
+          },
+          {
+            "Value": "korean society for biochemistry and molecular biology",
+            "Count": 62,
+            "AddAction": "addfacetfilter(Publisher:korean society for biochemistry and molecular biology)"
+          },
+          {
+            "Value": "생화학분자생물학회",
+            "Count": 62,
+            "AddAction": "addfacetfilter(Publisher:생화학분자생물학회)"
+          },
+          {
+            "Value": "gale, cengage learning",
+            "Count": 52,
+            "AddAction": "addfacetfilter(Publisher:gale\\\\, cengage learning)"
+          },
+          {
+            "Value": "american library association",
+            "Count": 46,
+            "AddAction": "addfacetfilter(Publisher:american library association)"
+          },
+          {
+            "Value": "johns hopkins university press",
+            "Count": 38,
+            "AddAction": "addfacetfilter(Publisher:johns hopkins university press)"
+          },
+          {
+            "Value": "university of wisconsin press",
+            "Count": 33,
+            "AddAction": "addfacetfilter(Publisher:university of wisconsin press)"
+          },
+          {
+            "Value": "british library",
+            "Count": 31,
+            "AddAction": "addfacetfilter(Publisher:british library)"
+          },
+          {
+            "Value": "kirkus media, llc",
+            "Count": 24,
+            "AddAction": "addfacetfilter(Publisher:kirkus media\\\\, llc)"
+          },
+          {
+            "Value": "princeton university press",
+            "Count": 10,
+            "AddAction": "addfacetfilter(Publisher:princeton university press)"
+          },
+          {
+            "Value": "encyclopedia britannica, inc.",
+            "Count": 5,
+            "AddAction": "addfacetfilter(Publisher:encyclopedia britannica\\\\, inc.)"
+          },
+          {
+            "Value": "editions ocde",
+            "Count": 2,
+            "AddAction": "addfacetfilter(Publisher:editions ocde)"
+          },
+          {
+            "Value": "oecd publishing",
+            "Count": 2,
+            "AddAction": "addfacetfilter(Publisher:oecd publishing)"
+          },
+          {
+            "Value": "university of queensland. department of civil engineering",
+            "Count": 2,
+            "AddAction": "addfacetfilter(Publisher:university of queensland. department of civil engineering)"
+          }
+        ]
+      },
+      {
+        "Id": "Journal",
+        "Label": "Publication",
+        "AvailableFacetValues": [
+          {
+            "Value": "american journal of physiology: cell physiology",
+            "Count": 1335,
+            "AddAction": "addfacetfilter(Journal:american journal of physiology\\\\: cell physiology)"
+          },
+          {
+            "Value": "billboard",
+            "Count": 1252,
+            "AddAction": "addfacetfilter(Journal:billboard)"
+          },
+          {
+            "Value": "american journal of physiology: lung cellular \\u0026 molecular physiology",
+            "Count": 1206,
+            "AddAction": "addfacetfilter(Journal:american journal of physiology\\\\: lung cellular \\u0026 molecular physiology)"
+          },
+          {
+            "Value": "journal of biological chemistry",
+            "Count": 1168,
+            "AddAction": "addfacetfilter(Journal:journal of biological chemistry)"
+          },
+          {
+            "Value": "american journal of physiology: heart \\u0026 circulatory physiology",
+            "Count": 1130,
+            "AddAction": "addfacetfilter(Journal:american journal of physiology\\\\: heart \\u0026 circulatory physiology)"
+          },
+          {
+            "Value": "circulation research",
+            "Count": 1082,
+            "AddAction": "addfacetfilter(Journal:circulation research)"
+          },
+          {
+            "Value": "journal of physiology",
+            "Count": 1046,
+            "AddAction": "addfacetfilter(Journal:journal of physiology)"
+          },
+          {
+            "Value": "the times",
+            "Count": 918,
+            "AddAction": "addfacetfilter(Journal:the times)"
+          },
+          {
+            "Value": "plos one",
+            "Count": 891,
+            "AddAction": "addfacetfilter(Journal:plos one)"
+          },
+          {
+            "Value": "british journal of pharmacology",
+            "Count": 864,
+            "AddAction": "addfacetfilter(Journal:british journal of pharmacology)"
+          },
+          {
+            "Value": "pflugers archiv european journal of physiology",
+            "Count": 850,
+            "AddAction": "addfacetfilter(Journal:pflugers archiv european journal of physiology)"
+          },
+          {
+            "Value": "cardiovascular research",
+            "Count": 825,
+            "AddAction": "addfacetfilter(Journal:cardiovascular research)"
+          },
+          {
+            "Value": "journal of cardiovascular pharmacology",
+            "Count": 801,
+            "AddAction": "addfacetfilter(Journal:journal of cardiovascular pharmacology)"
+          },
+          {
+            "Value": "faseb journal",
+            "Count": 689,
+            "AddAction": "addfacetfilter(Journal:faseb journal)"
+          },
+          {
+            "Value": "american journal of physiology",
+            "Count": 675,
+            "AddAction": "addfacetfilter(Journal:american journal of physiology)"
+          },
+          {
+            "Value": "proceedings of the national academy of sciences of the united states of america",
+            "Count": 599,
+            "AddAction": "addfacetfilter(Journal:proceedings of the national academy of sciences of the united states of america)"
+          },
+          {
+            "Value": "new york times",
+            "Count": 590,
+            "AddAction": "addfacetfilter(Journal:new york times)"
+          },
+          {
+            "Value": "european journal of pharmacology",
+            "Count": 539,
+            "AddAction": "addfacetfilter(Journal:european journal of pharmacology)"
+          },
+          {
+            "Value": "journal of cellular physiology",
+            "Count": 492,
+            "AddAction": "addfacetfilter(Journal:journal of cellular physiology)"
+          },
+          {
+            "Value": "proceedings of the american mathematical society",
+            "Count": 359,
+            "AddAction": "addfacetfilter(Journal:proceedings of the american mathematical society)"
+          },
+          {
+            "Value": "febs letters",
+            "Count": 349,
+            "AddAction": "addfacetfilter(Journal:febs letters)"
+          },
+          {
+            "Value": "nature",
+            "Count": 328,
+            "AddAction": "addfacetfilter(Journal:nature)"
+          },
+          {
+            "Value": "the journal of cell biology",
+            "Count": 321,
+            "AddAction": "addfacetfilter(Journal:the journal of cell biology)"
+          },
+          {
+            "Value": "transactions of the american mathematical society",
+            "Count": 319,
+            "AddAction": "addfacetfilter(Journal:transactions of the american mathematical society)"
+          },
+          {
+            "Value": "wall street journal - eastern edition",
+            "Count": 294,
+            "AddAction": "addfacetfilter(Journal:wall street journal - eastern edition)"
+          },
+          {
+            "Value": "machine design",
+            "Count": 164,
+            "AddAction": "addfacetfilter(Journal:machine design)"
+          },
+          {
+            "Value": "science",
+            "Count": 149,
+            "AddAction": "addfacetfilter(Journal:science)"
+          },
+          {
+            "Value": "new scientist",
+            "Count": 117,
+            "AddAction": "addfacetfilter(Journal:new scientist)"
+          },
+          {
+            "Value": "proceedings of the australian physiological and pharmacological society",
+            "Count": 96,
+            "AddAction": "addfacetfilter(Journal:proceedings of the australian physiological and pharmacological society)"
+          },
+          {
+            "Value": "wall street journal - online edition",
+            "Count": 92,
+            "AddAction": "addfacetfilter(Journal:wall street journal - online edition)"
+          },
+          {
+            "Value": "wall street journal (online)",
+            "Count": 92,
+            "AddAction": "addfacetfilter(Journal:wall street journal \\\\(online\\\\))"
+          },
+          {
+            "Value": "time magazine",
+            "Count": 86,
+            "AddAction": "addfacetfilter(Journal:time magazine)"
+          },
+          {
+            "Value": "mediators of inflammation",
+            "Count": 79,
+            "AddAction": "addfacetfilter(Journal:mediators of inflammation)"
+          },
+          {
+            "Value": "publishers weekly",
+            "Count": 67,
+            "AddAction": "addfacetfilter(Journal:publishers weekly)"
+          },
+          {
+            "Value": "eighteenth century collections online",
+            "Count": 58,
+            "AddAction": "addfacetfilter(Journal:eighteenth century collections online)"
+          },
+          {
+            "Value": "videohound's golden movie retriever",
+            "Count": 54,
+            "AddAction": "addfacetfilter(Journal:videohound's golden movie retriever)"
+          },
+          {
+            "Value": "times higher education supplement",
+            "Count": 42,
+            "AddAction": "addfacetfilter(Journal:times higher education supplement)"
+          },
+          {
+            "Value": "ランダムハウス英和大辞典",
+            "Count": 38,
+            "AddAction": "addfacetfilter(Journal:ランダムハウス英和大辞典)"
+          },
+          {
+            "Value": "korean journal of anesthesiology(구 대한마취과학회지)",
+            "Count": 35,
+            "AddAction": "addfacetfilter(Journal:korean journal of anesthesiology\\\\(구 대한마취과학회지\\\\))"
+          },
+          {
+            "Value": "library journal",
+            "Count": 35,
+            "AddAction": "addfacetfilter(Journal:library journal)"
+          },
+          {
+            "Value": "淡江大學財務金融學系碩士班學位論文",
+            "Count": 27,
+            "AddAction": "addfacetfilter(Journal:淡江大學財務金融學系碩士班學位論文)"
+          },
+          {
+            "Value": "american journal of mathematics",
+            "Count": 23,
+            "AddAction": "addfacetfilter(Journal:american journal of mathematics)"
+          },
+          {
+            "Value": "booklist",
+            "Count": 22,
+            "AddAction": "addfacetfilter(Journal:booklist)"
+          },
+          {
+            "Value": "instyle",
+            "Count": 21,
+            "AddAction": "addfacetfilter(Journal:instyle)"
+          },
+          {
+            "Value": "a dictionary of zoology",
+            "Count": 19,
+            "AddAction": "addfacetfilter(Journal:a dictionary of zoology)"
+          },
+          {
+            "Value": "ecological restoration",
+            "Count": 16,
+            "AddAction": "addfacetfilter(Journal:ecological restoration)"
+          },
+          {
+            "Value": "professional beauty",
+            "Count": 10,
+            "AddAction": "addfacetfilter(Journal:professional beauty)"
+          },
+          {
+            "Value": "transportation research record",
+            "Count": 8,
+            "AddAction": "addfacetfilter(Journal:transportation research record)"
+          },
+          {
+            "Value": "brain and cognition",
+            "Count": 7,
+            "AddAction": "addfacetfilter(Journal:brain and cognition)"
+          },
+          {
+            "Value": "alcoholism : clinical and experimental research",
+            "Count": 6,
+            "AddAction": "addfacetfilter(Journal:alcoholism \\\\: clinical and experimental research)"
+          }
+        ]
+      },
+      {
+        "Id": "Language",
+        "Label": "Language",
+        "AvailableFacetValues": [
+          {
+            "Value": "english",
+            "Count": 89556,
+            "AddAction": "addfacetfilter(Language:english)"
+          },
+          {
+            "Value": "chinese",
+            "Count": 396,
+            "AddAction": "addfacetfilter(Language:chinese)"
+          },
+          {
+            "Value": "korean",
+            "Count": 351,
+            "AddAction": "addfacetfilter(Language:korean)"
+          },
+          {
+            "Value": "英文",
+            "Count": 258,
+            "AddAction": "addfacetfilter(Language:英文)"
+          },
+          {
+            "Value": "繁體中文",
+            "Count": 194,
+            "AddAction": "addfacetfilter(Language:繁體中文)"
+          },
+          {
+            "Value": "german",
+            "Count": 169,
+            "AddAction": "addfacetfilter(Language:german)"
+          },
+          {
+            "Value": "french",
+            "Count": 29,
+            "AddAction": "addfacetfilter(Language:french)"
+          },
+          {
+            "Value": "japanese",
+            "Count": 29,
+            "AddAction": "addfacetfilter(Language:japanese)"
+          },
+          {
+            "Value": "spanish",
+            "Count": 25,
+            "AddAction": "addfacetfilter(Language:spanish)"
+          },
+          {
+            "Value": "turkish",
+            "Count": 25,
+            "AddAction": "addfacetfilter(Language:turkish)"
+          },
+          {
+            "Value": "russian",
+            "Count": 20,
+            "AddAction": "addfacetfilter(Language:russian)"
+          },
+          {
+            "Value": "ukrainian",
+            "Count": 16,
+            "AddAction": "addfacetfilter(Language:ukrainian)"
+          },
+          {
+            "Value": "persian",
+            "Count": 15,
+            "AddAction": "addfacetfilter(Language:persian)"
+          },
+          {
+            "Value": "portuguese",
+            "Count": 13,
+            "AddAction": "addfacetfilter(Language:portuguese)"
+          },
+          {
+            "Value": "undetermined",
+            "Count": 9,
+            "AddAction": "addfacetfilter(Language:undetermined)"
+          },
+          {
+            "Value": "polish",
+            "Count": 6,
+            "AddAction": "addfacetfilter(Language:polish)"
+          },
+          {
+            "Value": "czech",
+            "Count": 5,
+            "AddAction": "addfacetfilter(Language:czech)"
+          },
+          {
+            "Value": "multiple languages",
+            "Count": 5,
+            "AddAction": "addfacetfilter(Language:multiple languages)"
+          },
+          {
+            "Value": "arabic",
+            "Count": 2,
+            "AddAction": "addfacetfilter(Language:arabic)"
+          },
+          {
+            "Value": "bosnian",
+            "Count": 2,
+            "AddAction": "addfacetfilter(Language:bosnian)"
+          },
+          {
+            "Value": "dutch/flemish",
+            "Count": 2,
+            "AddAction": "addfacetfilter(Language:dutch/flemish)"
+          },
+          {
+            "Value": "italian",
+            "Count": 2,
+            "AddAction": "addfacetfilter(Language:italian)"
+          },
+          {
+            "Value": "welsh",
+            "Count": 2,
+            "AddAction": "addfacetfilter(Language:welsh)"
+          },
+          {
+            "Value": "afrikaans",
+            "Count": 1,
+            "AddAction": "addfacetfilter(Language:afrikaans)"
+          },
+          {
+            "Value": "croatian",
+            "Count": 1,
+            "AddAction": "addfacetfilter(Language:croatian)"
+          },
+          {
+            "Value": "danish",
+            "Count": 1,
+            "AddAction": "addfacetfilter(Language:danish)"
+          },
+          {
+            "Value": "hebrew",
+            "Count": 1,
+            "AddAction": "addfacetfilter(Language:hebrew)"
+          },
+          {
+            "Value": "indonesian",
+            "Count": 1,
+            "AddAction": "addfacetfilter(Language:indonesian)"
+          },
+          {
+            "Value": "latin",
+            "Count": 1,
+            "AddAction": "addfacetfilter(Language:latin)"
+          },
+          {
+            "Value": "modern greek",
+            "Count": 1,
+            "AddAction": "addfacetfilter(Language:modern greek)"
+          },
+          {
+            "Value": "slovenian",
+            "Count": 1,
+            "AddAction": "addfacetfilter(Language:slovenian)"
+          }
+        ]
+      },
+      {
+        "Id": "SubjectGeographic",
+        "Label": "Geography",
+        "AvailableFacetValues": [
+          {
+            "Value": "united states",
+            "Count": 1575,
+            "AddAction": "addfacetfilter(SubjectGeographic:united states)"
+          },
+          {
+            "Value": "united kingdom",
+            "Count": 280,
+            "AddAction": "addfacetfilter(SubjectGeographic:united kingdom)"
+          },
+          {
+            "Value": "china",
+            "Count": 165,
+            "AddAction": "addfacetfilter(SubjectGeographic:china)"
+          },
+          {
+            "Value": "california",
+            "Count": 128,
+            "AddAction": "addfacetfilter(SubjectGeographic:california)"
+          },
+          {
+            "Value": "australia",
+            "Count": 125,
+            "AddAction": "addfacetfilter(SubjectGeographic:australia)"
+          },
+          {
+            "Value": "canada",
+            "Count": 89,
+            "AddAction": "addfacetfilter(SubjectGeographic:canada)"
+          },
+          {
+            "Value": "india",
+            "Count": 85,
+            "AddAction": "addfacetfilter(SubjectGeographic:india)"
+          },
+          {
+            "Value": "japan",
+            "Count": 56,
+            "AddAction": "addfacetfilter(SubjectGeographic:japan)"
+          },
+          {
+            "Value": "new zealand",
+            "Count": 39,
+            "AddAction": "addfacetfilter(SubjectGeographic:new zealand)"
+          },
+          {
+            "Value": "georgia",
+            "Count": 21,
+            "AddAction": "addfacetfilter(SubjectGeographic:georgia)"
+          }
+        ]
+      },
+      {
+        "Id": "Category",
+        "Label": "Category",
+        "AvailableFacetValues": [
+          {
+            "Value": "mathematics / mathematical analysis",
+            "Count": 25,
+            "AddAction": "addfacetfilter(Category:mathematics / mathematical analysis)"
+          },
+          {
+            "Value": "mathematics / topology",
+            "Count": 18,
+            "AddAction": "addfacetfilter(Category:mathematics / topology)"
+          },
+          {
+            "Value": "medical / physiology",
+            "Count": 17,
+            "AddAction": "addfacetfilter(Category:medical / physiology)"
+          },
+          {
+            "Value": "medical / pharmacology",
+            "Count": 13,
+            "AddAction": "addfacetfilter(Category:medical / pharmacology)"
+          },
+          {
+            "Value": "mathematics / applied",
+            "Count": 12,
+            "AddAction": "addfacetfilter(Category:mathematics / applied)"
+          },
+          {
+            "Value": "mathematics / calculus",
+            "Count": 10,
+            "AddAction": "addfacetfilter(Category:mathematics / calculus)"
+          },
+          {
+            "Value": "mathematics / differential equations / general",
+            "Count": 10,
+            "AddAction": "addfacetfilter(Category:mathematics / differential equations / general)"
+          },
+          {
+            "Value": "mathematics / functional analysis",
+            "Count": 10,
+            "AddAction": "addfacetfilter(Category:mathematics / functional analysis)"
+          },
+          {
+            "Value": "young adult fiction / comics \\u0026 graphic novels / action \\u0026 adventure",
+            "Count": 10,
+            "AddAction": "addfacetfilter(Category:young adult fiction / comics \\u0026 graphic novels / action \\u0026 adventure)"
+          },
+          {
+            "Value": "young adult fiction / comics \\u0026 graphic novels / humorous",
+            "Count": 10,
+            "AddAction": "addfacetfilter(Category:young adult fiction / comics \\u0026 graphic novels / humorous)"
+          }
+        ]
+      },
+      {
+        "Id": "PublicationYear",
+        "Label": "Publication Year",
+        "AvailableFacetValues": [
+          {
+            "Value": "2014",
+            "Count": 1272,
+            "AddAction": "addfacetfilter(PublicationYear:2014)"
+          },
+          {
+            "Value": "2013",
+            "Count": 1262,
+            "AddAction": "addfacetfilter(PublicationYear:2013)"
+          },
+          {
+            "Value": "2012",
+            "Count": 1240,
+            "AddAction": "addfacetfilter(PublicationYear:2012)"
+          },
+          {
+            "Value": "2022",
+            "Count": 1183,
+            "AddAction": "addfacetfilter(PublicationYear:2022)"
+          },
+          {
+            "Value": "2011",
+            "Count": 1179,
+            "AddAction": "addfacetfilter(PublicationYear:2011)"
+          },
+          {
+            "Value": "2015",
+            "Count": 1174,
+            "AddAction": "addfacetfilter(PublicationYear:2015)"
+          },
+          {
+            "Value": "2021",
+            "Count": 1158,
+            "AddAction": "addfacetfilter(PublicationYear:2021)"
+          },
+          {
+            "Value": "2010",
+            "Count": 1142,
+            "AddAction": "addfacetfilter(PublicationYear:2010)"
+          },
+          {
+            "Value": "2018",
+            "Count": 1130,
+            "AddAction": "addfacetfilter(PublicationYear:2018)"
+          },
+          {
+            "Value": "2019",
+            "Count": 1130,
+            "AddAction": "addfacetfilter(PublicationYear:2019)"
+          },
+          {
+            "Value": "2016",
+            "Count": 1129,
+            "AddAction": "addfacetfilter(PublicationYear:2016)"
+          },
+          {
+            "Value": "2008",
+            "Count": 1121,
+            "AddAction": "addfacetfilter(PublicationYear:2008)"
+          },
+          {
+            "Value": "2020",
+            "Count": 1116,
+            "AddAction": "addfacetfilter(PublicationYear:2020)"
+          },
+          {
+            "Value": "2007",
+            "Count": 1111,
+            "AddAction": "addfacetfilter(PublicationYear:2007)"
+          },
+          {
+            "Value": "2009",
+            "Count": 1079,
+            "AddAction": "addfacetfilter(PublicationYear:2009)"
+          },
+          {
+            "Value": "2017",
+            "Count": 1072,
+            "AddAction": "addfacetfilter(PublicationYear:2017)"
+          },
+          {
+            "Value": "2006",
+            "Count": 1042,
+            "AddAction": "addfacetfilter(PublicationYear:2006)"
+          },
+          {
+            "Value": "2005",
+            "Count": 1012,
+            "AddAction": "addfacetfilter(PublicationYear:2005)"
+          },
+          {
+            "Value": "2004",
+            "Count": 950,
+            "AddAction": "addfacetfilter(PublicationYear:2004)"
+          },
+          {
+            "Value": "2003",
+            "Count": 914,
+            "AddAction": "addfacetfilter(PublicationYear:2003)"
+          },
+          {
+            "Value": "2002",
+            "Count": 730,
+            "AddAction": "addfacetfilter(PublicationYear:2002)"
+          },
+          {
+            "Value": "2001",
+            "Count": 463,
+            "AddAction": "addfacetfilter(PublicationYear:2001)"
+          },
+          {
+            "Value": "2000",
+            "Count": 447,
+            "AddAction": "addfacetfilter(PublicationYear:2000)"
+          },
+          {
+            "Value": "1999",
+            "Count": 435,
+            "AddAction": "addfacetfilter(PublicationYear:1999)"
+          },
+          {
+            "Value": "1998",
+            "Count": 431,
+            "AddAction": "addfacetfilter(PublicationYear:1998)"
+          },
+          {
+            "Value": "1997",
+            "Count": 388,
+            "AddAction": "addfacetfilter(PublicationYear:1997)"
+          },
+          {
+            "Value": "2023",
+            "Count": 364,
+            "AddAction": "addfacetfilter(PublicationYear:2023)"
+          },
+          {
+            "Value": "1996",
+            "Count": 256,
+            "AddAction": "addfacetfilter(PublicationYear:1996)"
+          },
+          {
+            "Value": "1995",
+            "Count": 215,
+            "AddAction": "addfacetfilter(PublicationYear:1995)"
+          },
+          {
+            "Value": "1994",
+            "Count": 176,
+            "AddAction": "addfacetfilter(PublicationYear:1994)"
+          },
+          {
+            "Value": "1993",
+            "Count": 108,
+            "AddAction": "addfacetfilter(PublicationYear:1993)"
+          },
+          {
+            "Value": "1992",
+            "Count": 42,
+            "AddAction": "addfacetfilter(PublicationYear:1992)"
+          },
+          {
+            "Value": "1991",
+            "Count": 41,
+            "AddAction": "addfacetfilter(PublicationYear:1991)"
+          },
+          {
+            "Value": "1990",
+            "Count": 31,
+            "AddAction": "addfacetfilter(PublicationYear:1990)"
+          },
+          {
+            "Value": "1989",
+            "Count": 27,
+            "AddAction": "addfacetfilter(PublicationYear:1989)"
+          },
+          {
+            "Value": "1988",
+            "Count": 22,
+            "AddAction": "addfacetfilter(PublicationYear:1988)"
+          },
+          {
+            "Value": "1986",
+            "Count": 17,
+            "AddAction": "addfacetfilter(PublicationYear:1986)"
+          },
+          {
+            "Value": "1984",
+            "Count": 14,
+            "AddAction": "addfacetfilter(PublicationYear:1984)"
+          },
+          {
+            "Value": "1979",
+            "Count": 10,
+            "AddAction": "addfacetfilter(PublicationYear:1979)"
+          },
+          {
+            "Value": "1985",
+            "Count": 10,
+            "AddAction": "addfacetfilter(PublicationYear:1985)"
+          },
+          {
+            "Value": "1987",
+            "Count": 9,
+            "AddAction": "addfacetfilter(PublicationYear:1987)"
+          },
+          {
+            "Value": "1975",
+            "Count": 8,
+            "AddAction": "addfacetfilter(PublicationYear:1975)"
+          },
+          {
+            "Value": "1976",
+            "Count": 8,
+            "AddAction": "addfacetfilter(PublicationYear:1976)"
+          },
+          {
+            "Value": "1977",
+            "Count": 8,
+            "AddAction": "addfacetfilter(PublicationYear:1977)"
+          },
+          {
+            "Value": "1982",
+            "Count": 7,
+            "AddAction": "addfacetfilter(PublicationYear:1982)"
+          },
+          {
+            "Value": "1981",
+            "Count": 6,
+            "AddAction": "addfacetfilter(PublicationYear:1981)"
+          },
+          {
+            "Value": "1974",
+            "Count": 5,
+            "AddAction": "addfacetfilter(PublicationYear:1974)"
+          },
+          {
+            "Value": "1983",
+            "Count": 5,
+            "AddAction": "addfacetfilter(PublicationYear:1983)"
+          },
+          {
+            "Value": "1973",
+            "Count": 4,
+            "AddAction": "addfacetfilter(PublicationYear:1973)"
+          },
+          {
+            "Value": "1980",
+            "Count": 4,
+            "AddAction": "addfacetfilter(PublicationYear:1980)"
+          }
+        ]
+      },
+      {
+        "Id": "ContentProvider",
+        "Label": "Content Provider",
+        "AvailableFacetValues": [
+          {
+            "Value": "Complementary Index",
+            "Count": 41823,
+            "AddAction": "addfacetfilter(ContentProvider:Complementary Index)"
+          },
+          {
+            "Value": "Academic Search Complete",
+            "Count": 26832,
+            "AddAction": "addfacetfilter(ContentProvider:Academic Search Complete)"
+          },
+          {
+            "Value": "Supplemental Index",
+            "Count": 25346,
+            "AddAction": "addfacetfilter(ContentProvider:Supplemental Index)"
+          },
+          {
+            "Value": "Business Source Index",
+            "Count": 5728,
+            "AddAction": "addfacetfilter(ContentProvider:Business Source Index)"
+          },
+          {
+            "Value": "MasterFILE Premier",
+            "Count": 5675,
+            "AddAction": "addfacetfilter(ContentProvider:MasterFILE Premier)"
+          },
+          {
+            "Value": "JSTOR Journals",
+            "Count": 2182,
+            "AddAction": "addfacetfilter(ContentProvider:JSTOR Journals)"
+          },
+          {
+            "Value": "Times Digital Archive",
+            "Count": 918,
+            "AddAction": "addfacetfilter(ContentProvider:Times Digital Archive)"
+          },
+          {
+            "Value": "Airiti Library eBooks \\u0026 Journals - 華藝線上圖書館",
+            "Count": 452,
+            "AddAction": "addfacetfilter(ContentProvider:Airiti Library eBooks \\u0026 Journals - 華藝線上圖書館)"
+          },
+          {
+            "Value": "Korean Studies Information Service System",
+            "Count": 433,
+            "AddAction": "addfacetfilter(ContentProvider:Korean Studies Information Service System)"
+          },
+          {
+            "Value": "Australasian Medical Index",
+            "Count": 222,
+            "AddAction": "addfacetfilter(ContentProvider:Australasian Medical Index)"
+          },
+          {
+            "Value": "eBook Index",
+            "Count": 197,
+            "AddAction": "addfacetfilter(ContentProvider:eBook Index)"
+          },
+          {
+            "Value": "Gale eBooks",
+            "Count": 197,
+            "AddAction": "addfacetfilter(ContentProvider:Gale eBooks)"
+          },
+          {
+            "Value": "Oxford Reference",
+            "Count": 170,
+            "AddAction": "addfacetfilter(ContentProvider:Oxford Reference)"
+          },
+          {
+            "Value": "Library, Information Science \\u0026 Technology Abstracts",
+            "Count": 167,
+            "AddAction": "addfacetfilter(ContentProvider:Library\\\\, Information Science \\u0026 Technology Abstracts)"
+          },
+          {
+            "Value": "Library Literature \\u0026 Information Science Full Text (H.W. Wilson)",
+            "Count": 147,
+            "AddAction": "addfacetfilter(ContentProvider:Library Literature \\u0026 Information Science Full Text \\\\(H.W. Wilson\\\\))"
+          },
+          {
+            "Value": "ERIC",
+            "Count": 112,
+            "AddAction": "addfacetfilter(ContentProvider:ERIC)"
+          },
+          {
+            "Value": "JapanKnowledge",
+            "Count": 108,
+            "AddAction": "addfacetfilter(ContentProvider:JapanKnowledge)"
+          },
+          {
+            "Value": "ProjectMUSE",
+            "Count": 83,
+            "AddAction": "addfacetfilter(ContentProvider:ProjectMUSE)"
+          },
+          {
+            "Value": "Media Scan",
+            "Count": 66,
+            "AddAction": "addfacetfilter(ContentProvider:Media Scan)"
+          },
+          {
+            "Value": "Eighteenth Century Collections Online",
+            "Count": 63,
+            "AddAction": "addfacetfilter(ContentProvider:Eighteenth Century Collections Online)"
+          },
+          {
+            "Value": "Science And Geography Education",
+            "Count": 48,
+            "AddAction": "addfacetfilter(ContentProvider:Science And Geography Education)"
+          },
+          {
+            "Value": "Australian Transport Index",
+            "Count": 43,
+            "AddAction": "addfacetfilter(ContentProvider:Australian Transport Index)"
+          },
+          {
+            "Value": "Informit Humanities \\u0026 Social Sciences Collection",
+            "Count": 34,
+            "AddAction": "addfacetfilter(ContentProvider:Informit Humanities \\u0026 Social Sciences Collection)"
+          },
+          {
+            "Value": "Drug Database",
+            "Count": 13,
+            "AddAction": "addfacetfilter(ContentProvider:Drug Database)"
+          },
+          {
+            "Value": "Nineteenth Century Collections Online",
+            "Count": 10,
+            "AddAction": "addfacetfilter(ContentProvider:Nineteenth Century Collections Online)"
+          },
+          {
+            "Value": "ReadEx",
+            "Count": 8,
+            "AddAction": "addfacetfilter(ContentProvider:ReadEx)"
+          },
+          {
+            "Value": "Britannica Online",
+            "Count": 5,
+            "AddAction": "addfacetfilter(ContentProvider:Britannica Online)"
+          },
+          {
+            "Value": "Informit Literature \\u0026 Culture Collection",
+            "Count": 4,
+            "AddAction": "addfacetfilter(ContentProvider:Informit Literature \\u0026 Culture Collection)"
+          },
+          {
+            "Value": "SCANfile",
+            "Count": 4,
+            "AddAction": "addfacetfilter(ContentProvider:SCANfile)"
+          },
+          {
+            "Value": "Indigenous Australia",
+            "Count": 4,
+            "AddAction": "addfacetfilter(ContentProvider:Indigenous Australia)"
+          },
+          {
+            "Value": "Grove Music Online",
+            "Count": 3,
+            "AddAction": "addfacetfilter(ContentProvider:Grove Music Online)"
+          },
+          {
+            "Value": "Kikuzo II - 聞蔵Ⅱ",
+            "Count": 3,
+            "AddAction": "addfacetfilter(ContentProvider:Kikuzo II - 聞蔵Ⅱ)"
+          },
+          {
+            "Value": "Multicultural Australia and Immigration Studies",
+            "Count": 3,
+            "AddAction": "addfacetfilter(ContentProvider:Multicultural Australia and Immigration Studies)"
+          },
+          {
+            "Value": "Indigenous Studies Bibliography",
+            "Count": 2,
+            "AddAction": "addfacetfilter(ContentProvider:Indigenous Studies Bibliography)"
+          },
+          {
+            "Value": "OECD iLibrary",
+            "Count": 2,
+            "AddAction": "addfacetfilter(ContentProvider:OECD iLibrary)"
+          },
+          {
+            "Value": "Oxford Dictionary of National Biography",
+            "Count": 1,
+            "AddAction": "addfacetfilter(ContentProvider:Oxford Dictionary of National Biography)"
+          },
+          {
+            "Value": "Australian Taxation Abstracts Database",
+            "Count": 1,
+            "AddAction": "addfacetfilter(ContentProvider:Australian Taxation Abstracts Database)"
+          },
+          {
+            "Value": "Searchable Networked Intellectual Property Electronic Resource",
+            "Count": 1,
+            "AddAction": "addfacetfilter(ContentProvider:Searchable Networked Intellectual Property Electronic Resource)"
+          },
+          {
+            "Value": "HIV/AIDS Database",
+            "Count": 1,
+            "AddAction": "addfacetfilter(ContentProvider:HIV/AIDS Database)"
+          }
+        ]
+      }
+    ],
+    "AvailableCriteria": {
+      "DateRange": {
+        "MinDate": "1649-01",
+        "MaxDate": "2024-01"
+      }
+    }
+  }
+}

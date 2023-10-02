@@ -182,12 +182,12 @@ class CatalogController < ApplicationController
     config.add_show_field "scale_tsim", label: "Scale"
     config.add_show_field "printer_tsim", label: "Printer", helper_method: :unstyled_list
     config.add_show_field "description", label: "Description", accessor: :description, helper_method: :unstyled_list
-    config.add_show_field "isbn_tsim", label: "ISBN", helper_method: :unstyled_list
+    config.add_show_field "isbn_tsim", label: "ISBN", accessor: :valid_isbn, helper_method: :unstyled_list
     config.add_show_field "invalid_isbn", label: "Invalid ISBN", accessor: :invalid_isbn, helper_method: :unstyled_list
     config.add_show_field "issn_display_ssim", label: "ISSN"
     config.add_show_field "invalid_issn_ssim", label: "Invalid ISSN", helper_method: :unstyled_list
-    config.add_show_field "ismn_ssim", label: "ISMN"
-    config.add_show_field "invalid_ismn_ssim", label: "Invalid ISMN", helper_method: :unstyled_list
+    config.add_show_field "ismn_ssim", label: "ISMN", accessor: :ismn, helper_method: :unstyled_list
+    config.add_show_field "invalid_ismn_ssim", label: "Invalid ISMN", accessor: :invalid_ismn, helper_method: :unstyled_list
     config.add_show_field "series_tsim", label: "Series", helper_method: :list
     config.add_show_field "technical_details_tsim", label: "Technical Details", helper_method: :unstyled_list
     config.add_show_field "summary_tsim", label: "Summary", helper_method: :paragraphs
@@ -205,7 +205,11 @@ class CatalogController < ApplicationController
     config.add_show_field "provenance_tsim", label: "Source of Acquisition", helper_method: :unstyled_list
     config.add_show_field "cited_in_tsim", label: "Cited In", helper_method: :unstyled_list
     config.add_show_field "reproduction_tsim", label: "Reproduction", helper_method: :unstyled_list
-    config.add_show_field "life_dates_tsim", label: "Life Dates"
+    config.add_show_field "life_dates_tsim", label: "Life Dates", separator_options: {
+      two_words_connector: " ",
+      words_connector: " ",
+      last_word_connector: " "
+    }
     config.add_show_field "has_supplement_tsim", label: "Has Supplement", helper_method: :unstyled_list
     config.add_show_field "supplement_to_tsim", label: "Supplement To", helper_method: :unstyled_list
     config.add_show_field "has_subseries_tsim", label: "Has Sub-series", helper_method: :list

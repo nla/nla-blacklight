@@ -73,6 +73,7 @@ RSpec.configure do |config|
     allow(Redis).to receive(:new).and_return(mock_redis)
   end
 
+  config.include MarcHelpers
   config.include ViewComponent::TestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
 

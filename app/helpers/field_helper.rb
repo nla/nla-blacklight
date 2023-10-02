@@ -87,6 +87,10 @@ module FieldHelper
     safe_join(elements, "\n")
   end
 
+  def split_unstyled_list(document:, field:, config:, value:, context:)
+    unstyled_list(document: document, field: field, config: config, value: value&.split!(" "), context: context)
+  end
+
   def emphasized_list(document:, field:, config:, value:, context:)
     elements = []
 

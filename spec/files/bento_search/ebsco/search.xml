@@ -1,0 +1,2420 @@
+<SearchResponseMessageGet xmlns="http://epnet.com/webservices/EbscoApi/Contracts"
+  xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+  <SearchRequestGet>
+    <QueryString>query-1=AND,hydrogen&amp;sort=relevance&amp;includefacets=y&amp;searchmode=all&amp;autosuggest=n&amp;autocorrect=n&amp;view=detailed&amp;resultsperpage=3&amp;pagenumber=1&amp;highlight=n&amp;includeimagequickview=n</QueryString>
+    <SearchCriteriaWithActions>
+      <QueriesWithAction>
+        <QueryWithAction>
+          <Query>
+            <BooleanOperator>AND</BooleanOperator>
+            <Term>hydrogen</Term>
+          </Query>
+          <RemoveAction>removequery(1)</RemoveAction>
+        </QueryWithAction>
+      </QueriesWithAction>
+    </SearchCriteriaWithActions>
+  </SearchRequestGet>
+  <SearchResult>
+    <Statistics>
+      <TotalHits>645736</TotalHits>
+      <TotalSearchTime>541</TotalSearchTime>
+      <Databases>
+        <Database>
+          <Id>e872sww</Id>
+          <Label>Consumer Health Reference eBook Collection</Label>
+          <Status>0</Status>
+          <Hits>0</Hits>
+        </Database>
+        <Database>
+          <Id>edsgeh</Id>
+          <Label>Economist Historical Archive</Label>
+          <Status>0</Status>
+          <Hits>11</Hits>
+        </Database>
+        <Database>
+          <Id>edsgnc</Id>
+          <Label>Nineteenth Century Collections Online</Label>
+          <Status>0</Status>
+          <Hits>27</Hits>
+        </Database>
+        <Database>
+          <Id>edsgec</Id>
+          <Label>Eighteenth Century Collections Online</Label>
+          <Status>0</Status>
+          <Hits>1</Hits>
+        </Database>
+        <Database>
+          <Id>edsgmw</Id>
+          <Label>Making of the Modern World</Label>
+          <Status>0</Status>
+          <Hits>1</Hits>
+        </Database>
+        <Database>
+          <Id>edsgtd</Id>
+          <Label>Times Digital Archive</Label>
+          <Status>0</Status>
+          <Hits>329</Hits>
+        </Database>
+        <Database>
+          <Id>f5h</Id>
+          <Label>MasterFILE Premier</Label>
+          <Status>0</Status>
+          <Hits>15033</Hits>
+        </Database>
+        <Database>
+          <Id>a9h</Id>
+          <Label>Academic Search Complete</Label>
+          <Status>0</Status>
+          <Hits>486704</Hits>
+        </Database>
+        <Database>
+          <Id>edsnbk</Id>
+          <Label>NewsBank</Label>
+          <Status>0</Status>
+          <Hits>64919</Hits>
+        </Database>
+        <Database>
+          <Id>edsihs</Id>
+          <Label>Informit Humanities &amp; Social Sciences Collection</Label>
+          <Status>0</Status>
+          <Hits>81</Hits>
+        </Database>
+        <Database>
+          <Id>edsind</Id>
+          <Label>Informit Indigenous Collection</Label>
+          <Status>0</Status>
+          <Hits>0</Hits>
+        </Database>
+        <Database>
+          <Id>edsebo</Id>
+          <Label>Britannica Online</Label>
+          <Status>0</Status>
+          <Hits>253</Hits>
+        </Database>
+        <Database>
+          <Id>nlabk</Id>
+          <Label>Audiobook Collection (EBSCOhost)</Label>
+          <Status>0</Status>
+          <Hits>0</Hits>
+        </Database>
+        <Database>
+          <Id>nlebk</Id>
+          <Label>eBook Collection (EBSCOhost)</Label>
+          <Status>0</Status>
+          <Hits>4</Hits>
+        </Database>
+        <Database>
+          <Id>llf</Id>
+          <Label>Library Literature &amp; Information Science Full Text (H.W. Wilson)</Label>
+          <Status>0</Status>
+          <Hits>203</Hits>
+        </Database>
+        <Database>
+          <Id>edsaup</Id>
+          <Label>Australian Public Affairs Full Text / APAIS Index</Label>
+          <Status>0</Status>
+          <Hits>150</Hits>
+        </Database>
+        <Database>
+          <Id>edsomo</Id>
+          <Label>Grove Music Online</Label>
+          <Status>0</Status>
+          <Hits>2</Hits>
+        </Database>
+        <Database>
+          <Id>edsarl</Id>
+          <Label>Airiti Library eBooks &amp; Journals - 華藝線上圖書館</Label>
+          <Status>0</Status>
+          <Hits>4734</Hits>
+        </Database>
+        <Database>
+          <Id>edsodb</Id>
+          <Label>Oxford Dictionary of National Biography</Label>
+          <Status>0</Status>
+          <Hits>1</Hits>
+        </Database>
+        <Database>
+          <Id>edsoro</Id>
+          <Label>Oxford Reference</Label>
+          <Status>0</Status>
+          <Hits>1933</Hits>
+        </Database>
+        <Database>
+          <Id>edspmu</Id>
+          <Label>ProjectMUSE</Label>
+          <Status>0</Status>
+          <Hits>384</Hits>
+        </Database>
+        <Database>
+          <Id>edsgvr</Id>
+          <Label>Gale eBooks</Label>
+          <Status>0</Status>
+          <Hits>4403</Hits>
+        </Database>
+        <Database>
+          <Id>edsjsr</Id>
+          <Label>JSTOR Journals</Label>
+          <Status>0</Status>
+          <Hits>23058</Hits>
+        </Database>
+        <Database>
+          <Id>edsoec</Id>
+          <Label>OECD iLibrary</Label>
+          <Status>0</Status>
+          <Hits>30</Hits>
+        </Database>
+        <Database>
+          <Id>cat07626a</Id>
+          <Label>HLM MARC update catalogue</Label>
+          <Status>0</Status>
+          <Hits>52</Hits>
+        </Database>
+        <Database>
+          <Id>azh</Id>
+          <Label>Australia/New Zealand Reference Centre Plus</Label>
+          <Status>0</Status>
+          <Hits>18922</Hits>
+        </Database>
+        <Database>
+          <Id>bth</Id>
+          <Label>Business Source Complete</Label>
+          <Status>0</Status>
+          <Hits>24458</Hits>
+        </Database>
+        <Database>
+          <Id>edsgau</Id>
+          <Label>Archives Unbound</Label>
+          <Status>0</Status>
+          <Hits>43</Hits>
+        </Database>
+      </Databases>
+    </Statistics>
+    <Data>
+      <RecordFormat>EP Display</RecordFormat>
+      <Records>
+        <Record>
+          <ResultId>1</ResultId>
+          <Header>
+            <DbId>cat07626a</DbId>
+            <DbLabel>HLM MARC update catalogue</DbLabel>
+            <An>nla.ebs27483820e</An>
+            <RelevancyScore>2585</RelevancyScore>
+            <PubType>Periodical</PubType>
+            <PubTypeId>serialPeriodical</PubTypeId>
+          </Header>
+          <PLink>
+            https://catalogue.nla.gov.au/Record/000000/Offsite?url=https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;db=cat07626a&amp;AN=nla.ebs27483820e&amp;groupid=main&amp;profile=eds_test
+          </PLink>
+          <FullText>
+            <Text>
+              <Availability>0</Availability>
+            </Text>
+            <CustomLinks>
+              <CustomLink>
+                <Url>https://resolver.ebscohost.com/openurl?sid=EBSCO:cat07626a&amp;genre=article&amp;issn=26734141&amp;ISBN=&amp;volume=&amp;issue=&amp;date=20200101&amp;spage=&amp;pages=&amp;title=DOAJ:
+                  Directory of Open Access Journals&amp;atitle=Hydrogen.%20%5Belectronic%20resource%5D.&amp;aulast=&amp;id=DOI:
+                </Url>
+                <Name>Full Text Finder</Name>
+                <Category>fullText</Category>
+                <Text>Full Text Finder</Text>
+                <Icon>https://imageserver.ebscohost.com/branding/images/FTF.gif</Icon>
+                <MouseOverText>Full Text Finder</MouseOverText>
+              </CustomLink>
+            </CustomLinks>
+          </FullText>
+          <Items>
+            <Item>
+              <Name>Title</Name>
+              <Label>Title</Label>
+              <Group>Ti</Group>
+              <Data>Hydrogen [electronic resource].</Data>
+            </Item>
+            <Item>
+              <Name>TitleSource</Name>
+              <Label>Publication</Label>
+              <Group>Src</Group>
+              <Data>DOAJ: Directory of Open Access Journals</Data>
+            </Item>
+            <Item>
+              <Name>TypePub</Name>
+              <Label>Publication Type</Label>
+              <Group>TypPub</Group>
+              <Data>Periodical</Data>
+            </Item>
+            <Item>
+              <Name>Subject</Name>
+              <Label>Subject Terms</Label>
+              <Group>Su</Group>
+              <Data>&lt;searchLink fieldCode="DE" term="%22Hydrogen+--+Periodicals%22"&gt;Hydrogen
+                --
+                Periodicals&lt;/searchLink&gt;
+              </Data>
+            </Item>
+            <Item>
+              <Name>TitleAlt</Name>
+              <Label>Other Titles</Label>
+              <Group>TiAlt</Group>
+              <Data>&lt;searchLink fieldCode="TI" term="%22Hydrogen+%28Online%29%22"&gt;Hydrogen
+                (Online)&lt;/searchLink&gt;
+              </Data>
+            </Item>
+            <Item>
+              <Name>URL</Name>
+              <Label>Online Access</Label>
+              <Group>URL</Group>
+              <Data>&lt;link linkTarget="URL"
+                linkTerm="https://resolver.ebscohost.com/Redirect/PRL?EPPackageLocationID=642.27483820.80768436&amp;epcustomerid=s8423516"
+                linkWindow="_blank"&gt;Full Text available from DOAJ: Directory of Open Access
+                Journals:
+                2020 to present&lt;/link&gt;
+              </Data>
+            </Item>
+          </Items>
+          <RecordInfo>
+            <BibRecord>
+              <BibEntity>
+                <Languages>
+                  <Language>
+                    <Text>English</Text>
+                  </Language>
+                </Languages>
+                <Subjects>
+                  <Subject>
+                    <SubjectFull>Hydrogen -- Periodicals</SubjectFull>
+                    <Type>general</Type>
+                  </Subject>
+                </Subjects>
+                <Titles>
+                  <Title>
+                    <TitleFull>Hydrogen. [electronic resource].</TitleFull>
+                    <Type>main</Type>
+                  </Title>
+                </Titles>
+              </BibEntity>
+              <BibRelationships>
+                <IsPartOfRelationships>
+                  <IsPartOf>
+                    <BibEntity>
+                      <Dates>
+                        <Date>
+                          <D>01</D>
+                          <M>01</M>
+                          <Type>published</Type>
+                          <Y>2020</Y>
+                        </Date>
+                      </Dates>
+                      <Identifiers>
+                        <Identifier>
+                          <Type>issn-print</Type>
+                          <Value>26734141</Value>
+                        </Identifier>
+                      </Identifiers>
+                      <Titles>
+                        <Title>
+                          <TitleFull>DOAJ: Directory of Open Access Journals</TitleFull>
+                          <Type>main</Type>
+                        </Title>
+                        <Title>
+                          <TitleFull>Hydrogen [electronic resource].</TitleFull>
+                          <Type>main</Type>
+                        </Title>
+                      </Titles>
+                    </BibEntity>
+                  </IsPartOf>
+                </IsPartOfRelationships>
+              </BibRelationships>
+            </BibRecord>
+          </RecordInfo>
+          <IllustrationInfo/>
+        </Record>
+        <Record>
+          <ResultId>2</ResultId>
+          <Header>
+            <DbId>cat07626a</DbId>
+            <DbLabel>HLM MARC update catalogue</DbLabel>
+            <An>nla.ebs438903e</An>
+            <RelevancyScore>2292</RelevancyScore>
+            <PubType>Book</PubType>
+            <PubTypeId>book</PubTypeId>
+          </Header>
+          <PLink>
+            https://catalogue.nla.gov.au/Record/000000/Offsite?url=https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;db=cat07626a&amp;AN=nla.ebs438903e&amp;groupid=main&amp;profile=eds_test
+          </PLink>
+          <CustomLinks>
+            <CustomLink>
+              <Url>https://copiesdirect.nla.gov.au/items/import?&amp;sourcevalue=general&amp;source=la&amp;title=Nuclear%20production%20of%20hydrogen.%20%5Belectronic%20resource%5D%20%3A%20Third%20Information%20Exchange%20Meeting%2C%20Oarai%2C%20Japan%2C%205-7%20October%202005%2C%20including%20the%20Second%20HTTR%20Workshop%20on%20Hydrogen%20Production%20Technologies.&amp;author=&amp;issue=2006-01-01&amp;item=OECD-iLibrary%20Books%20%26%20Papers&amp;pageno=&amp;addinfo=Available%20for%20document%20delivery%20-%20standard%20copyright%20restrictions%20apply%20https%3A%2F%2Fresolver.ebscohost.com%2FRedirect%2FPRL%3FEPPackageLocationID%3D1022.438903.58616614%26epcustomerid%3Ds8423516</Url>
+              <Name>NLA Standard ILL</Name>
+              <Category>ill</Category>
+              <Text>Available for document delivery - standard copyright restrictions apply</Text>
+              <Icon>https://gss.ebscohost.com/cwu/customers/nla/copiesdirect_logo.gif</Icon>
+            </CustomLink>
+          </CustomLinks>
+          <FullText>
+            <Text>
+              <Availability>0</Availability>
+            </Text>
+            <CustomLinks>
+              <CustomLink>
+                <Url>https://resolver.ebscohost.com/openurl?sid=EBSCO:cat07626a&amp;genre=book&amp;issn=&amp;ISBN=9781280607271&amp;volume=&amp;issue=&amp;date=&amp;spage=&amp;pages=&amp;title=OECD-iLibrary
+                  Books &amp; Papers&amp;atitle=Nuclear%20production%20of%20hydrogen.%20%5Belectronic%20resource%5D%20%3A%20Third%20Information%20Exchange%20Meeting%2C%20Oarai%2C%20Japan%2C%205-7%20October%202005%2C%20including%20the%20Second%20HTTR%20Workshop%20on%20Hydrogen%20Production%20Technologies.&amp;aulast=&amp;id=DOI:
+                </Url>
+                <Name>Full Text Finder</Name>
+                <Category>fullText</Category>
+                <Text>Full Text Finder</Text>
+                <Icon>https://imageserver.ebscohost.com/branding/images/FTF.gif</Icon>
+                <MouseOverText>Full Text Finder</MouseOverText>
+              </CustomLink>
+            </CustomLinks>
+          </FullText>
+          <Items>
+            <Item>
+              <Name>Title</Name>
+              <Label>Title</Label>
+              <Group>Ti</Group>
+              <Data>Nuclear production of hydrogen [electronic resource] : Third Information
+                Exchange
+                Meeting, Oarai, Japan, 5-7 October 2005, including the Second HTTR Workshop on
+                Hydrogen
+                Production Technologies / co-organised by the Japan Atomic Energy Agency (JAEA).
+              </Data>
+            </Item>
+            <Item>
+              <Name>TitleSource</Name>
+              <Label>Publication</Label>
+              <Group>Src</Group>
+              <Data>OECD-iLibrary Books &amp; Papers; OECD-iLibrary Nuclear Energy; OECD-iLibrary
+                Books,
+                Papers &amp; Statistics
+              </Data>
+            </Item>
+            <Item>
+              <Name>TypePub</Name>
+              <Label>Publication Type</Label>
+              <Group>TypPub</Group>
+              <Data>Book</Data>
+            </Item>
+            <Item>
+              <Name>Subject</Name>
+              <Label>Subject Terms</Label>
+              <Group>Su</Group>
+              <Data>&lt;searchLink fieldCode="DE" term="%22Hydrogen+--+Research+--+Congresses%22"&gt;Hydrogen
+                -- Research -- Congresses&lt;/searchLink&gt;&lt;br /&gt;&lt;searchLink
+                fieldCode="DE"
+                term="%22Hydrogen+as+fuel+--+Research+--+Congresses%22"&gt;Hydrogen as fuel --
+                Research
+                -- Congresses&lt;/searchLink&gt;&lt;br /&gt;&lt;searchLink fieldCode="DE"
+                term="%22Nuclear+engineering+--+Congresses%22"&gt;Nuclear engineering -- Congresses&lt;/searchLink&gt;
+              </Data>
+            </Item>
+            <Item>
+              <Name>Author</Name>
+              <Label>Other Authors</Label>
+              <Group>Au</Group>
+              <Data>&lt;searchLink fieldCode="AR" term="%22OECD+Nuclear+Energy+Agency%2E%22"&gt;OECD
+                Nuclear Energy Agency.&lt;/searchLink&gt;
+              </Data>
+            </Item>
+            <Item>
+              <Name>Author</Name>
+              <Label>Other Authors</Label>
+              <Group>Au</Group>
+              <Data>&lt;searchLink fieldCode="AR" term="%22Japan%2E+Atomic+Energy+Agency%2E%22"&gt;Japan.
+                Atomic Energy Agency.&lt;/searchLink&gt;
+              </Data>
+            </Item>
+            <Item>
+              <Name>Author</Name>
+              <Label>Other Authors</Label>
+              <Group>Au</Group>
+              <Data>&lt;searchLink fieldCode="AR"
+                term="%22High-temperature+Engineering+Test+Reactor+Workshop+on+Hydrogen+Production+Technologies+%282nd+%3A+2005+Oaria%2C+Japan%29%22"&gt;High-temperature
+                Engineering Test Reactor Workshop on Hydrogen Production Technologies (2nd : 2005
+                Oaria,
+                Japan)&lt;/searchLink&gt;
+              </Data>
+            </Item>
+            <Item>
+              <Name>TitleAlt</Name>
+              <Label>Other Titles</Label>
+              <Group>TiAlt</Group>
+              <Data>Nuclear Production of Hydrogen: Third Information Exchange Meeting, Oarai,
+                Japan,
+                5-7 October 2005.&lt;br /&gt;&lt;searchLink fieldCode="TI"
+                term="%22Nuclear+production+of+hydrogen+%28Online%29%22"&gt;Nuclear production of
+                hydrogen (Online)&lt;/searchLink&gt;
+              </Data>
+            </Item>
+            <Item>
+              <Name>URL</Name>
+              <Label>Online Access</Label>
+              <Group>URL</Group>
+              <Data>&lt;link linkTarget="URL"
+                linkTerm="https://resolver.ebscohost.com/Redirect/PRL?EPPackageLocationID=1022.438903.58616614&amp;epcustomerid=s8423516"
+                linkWindow="_blank"&gt;Full Text available from OECD-iLibrary Books &amp; Papers:
+                2006&lt;/link&gt;&lt;br
+                /&gt;&lt;link linkTarget="URL"
+                linkTerm="https://resolver.ebscohost.com/Redirect/PRL?EPPackageLocationID=1968054.438903.45468628&amp;epcustomerid=s8423516"
+                linkWindow="_blank"&gt;Full Text available from OECD-iLibrary Nuclear Energy: 2006&lt;/link&gt;&lt;br
+                /&gt;&lt;link linkTarget="URL"
+                linkTerm="https://resolver.ebscohost.com/Redirect/PRL?EPPackageLocationID=3949.438903.2279641&amp;epcustomerid=s8423516"
+                linkWindow="_blank"&gt;Full Text available from OECD-iLibrary Books, Papers &amp;
+                Statistics: 2006&lt;/link&gt;
+              </Data>
+            </Item>
+          </Items>
+          <RecordInfo>
+            <BibRecord>
+              <BibEntity>
+                <Languages>
+                  <Language>
+                    <Text>English</Text>
+                  </Language>
+                </Languages>
+                <Subjects>
+                  <Subject>
+                    <SubjectFull>Hydrogen -- Research -- Congresses</SubjectFull>
+                    <Type>general</Type>
+                  </Subject>
+                  <Subject>
+                    <SubjectFull>Hydrogen as fuel -- Research -- Congresses</SubjectFull>
+                    <Type>general</Type>
+                  </Subject>
+                  <Subject>
+                    <SubjectFull>Nuclear engineering -- Congresses</SubjectFull>
+                    <Type>general</Type>
+                  </Subject>
+                </Subjects>
+                <Titles>
+                  <Title>
+                    <TitleFull>Nuclear production of hydrogen. [electronic resource] : Third
+                      Information
+                      Exchange Meeting, Oarai, Japan, 5-7 October 2005, including the Second HTTR
+                      Workshop on Hydrogen Production Technologies.
+                    </TitleFull>
+                    <Type>main</Type>
+                  </Title>
+                </Titles>
+              </BibEntity>
+              <BibRelationships>
+                <IsPartOfRelationships>
+                  <IsPartOf>
+                    <BibEntity>
+                      <Dates>
+                        <Date>
+                          <D>01</D>
+                          <M>01</M>
+                          <Type>published</Type>
+                          <Y>2006</Y>
+                        </Date>
+                      </Dates>
+                      <Identifiers>
+                        <Identifier>
+                          <Type>isbn-print</Type>
+                          <Value>9781280607271</Value>
+                        </Identifier>
+                        <Identifier>
+                          <Type>isbn-print</Type>
+                          <Value>9789264016606</Value>
+                        </Identifier>
+                        <Identifier>
+                          <Type>isbn-print</Type>
+                          <Value>9789264026308</Value>
+                        </Identifier>
+                      </Identifiers>
+                      <Titles>
+                        <Title>
+                          <TitleFull>OECD-iLibrary Books &amp; Papers</TitleFull>
+                          <Type>main</Type>
+                        </Title>
+                        <Title>
+                          <TitleFull>Nuclear production of hydrogen [electronic resource] : Third
+                            Information Exchange Meeting, Oarai, Japan, 5-7 October 2005, including
+                            the
+                            Second HTTR Workshop on Hydrogen Production Technologies / co-organised
+                            by
+                            the Japan Atomic Energy Agency (JAEA).
+                          </TitleFull>
+                          <Type>main</Type>
+                        </Title>
+                      </Titles>
+                    </BibEntity>
+                  </IsPartOf>
+                </IsPartOfRelationships>
+              </BibRelationships>
+            </BibRecord>
+          </RecordInfo>
+          <IllustrationInfo/>
+        </Record>
+        <Record>
+          <ResultId>3</ResultId>
+          <Header>
+            <DbId>cat07626a</DbId>
+            <DbLabel>HLM MARC update catalogue</DbLabel>
+            <An>nla.ebs170583e</An>
+            <RelevancyScore>2276</RelevancyScore>
+            <PubType>Book</PubType>
+            <PubTypeId>book</PubTypeId>
+          </Header>
+          <PLink>
+            https://catalogue.nla.gov.au/Record/000000/Offsite?url=https://search.ebscohost.com/login.aspx?direct=true&amp;site=eds-live&amp;db=cat07626a&amp;AN=nla.ebs170583e&amp;groupid=main&amp;profile=eds_test
+          </PLink>
+          <CustomLinks>
+            <CustomLink>
+              <Url>https://copiesdirect.nla.gov.au/items/import?&amp;sourcevalue=general&amp;source=la&amp;title=Hydrogen%20%26%20fuel%20cells.%20%5Belectronic%20resource%5D%20%3A%20review%20of%20national%20R%26D%20programs.&amp;author=&amp;issue=2004-01-01&amp;item=OECD-iLibrary%20Books%20%26%20Papers&amp;pageno=&amp;addinfo=Available%20for%20document%20delivery%20-%20standard%20copyright%20restrictions%20apply%20https%3A%2F%2Fresolver.ebscohost.com%2FRedirect%2FPRL%3FEPPackageLocationID%3D1022.170583.68758855%26epcustomerid%3Ds8423516</Url>
+              <Name>NLA Standard ILL</Name>
+              <Category>ill</Category>
+              <Text>Available for document delivery - standard copyright restrictions apply</Text>
+              <Icon>https://gss.ebscohost.com/cwu/customers/nla/copiesdirect_logo.gif</Icon>
+            </CustomLink>
+          </CustomLinks>
+          <FullText>
+            <Text>
+              <Availability>0</Availability>
+            </Text>
+            <CustomLinks>
+              <CustomLink>
+                <Url>https://resolver.ebscohost.com/openurl?sid=EBSCO:cat07626a&amp;genre=book&amp;issn=&amp;ISBN=9781280172786&amp;volume=&amp;issue=&amp;date=&amp;spage=&amp;pages=&amp;title=OECD-iLibrary
+                  Books &amp; Papers&amp;atitle=Hydrogen%20%26%20fuel%20cells.%20%5Belectronic%20resource%5D%20%3A%20review%20of%20national%20R%26D%20programs.&amp;aulast=&amp;id=DOI:
+                </Url>
+                <Name>Full Text Finder</Name>
+                <Category>fullText</Category>
+                <Text>Full Text Finder</Text>
+                <Icon>https://imageserver.ebscohost.com/branding/images/FTF.gif</Icon>
+                <MouseOverText>Full Text Finder</MouseOverText>
+              </CustomLink>
+            </CustomLinks>
+          </FullText>
+          <Items>
+            <Item>
+              <Name>Title</Name>
+              <Label>Title</Label>
+              <Group>Ti</Group>
+              <Data>Hydrogen &amp; fuel cells [electronic resource] : review of national R&amp;D
+                programs.
+              </Data>
+            </Item>
+            <Item>
+              <Name>TitleSource</Name>
+              <Label>Publication</Label>
+              <Group>Src</Group>
+              <Data>OECD-iLibrary Books &amp; Papers; OECD-iLibrary Energy; OECD-iLibrary Books,
+                Papers
+                &amp; Statistics
+              </Data>
+            </Item>
+            <Item>
+              <Name>TypePub</Name>
+              <Label>Publication Type</Label>
+              <Group>TypPub</Group>
+              <Data>Book</Data>
+            </Item>
+            <Item>
+              <Name>Subject</Name>
+              <Label>Subject Terms</Label>
+              <Group>Su</Group>
+              <Data>&lt;searchLink fieldCode="DE" term="%22Hydrogen+as+fuel+--+Research%22"&gt;Hydrogen
+                as fuel -- Research&lt;/searchLink&gt;&lt;br /&gt;&lt;searchLink fieldCode="DE"
+                term="%22Fuel+cells+--+Research%22"&gt;Fuel cells -- Research&lt;/searchLink&gt;
+              </Data>
+            </Item>
+            <Item>
+              <Name>Author</Name>
+              <Label>Other Authors</Label>
+              <Group>Au</Group>
+              <Data>&lt;searchLink fieldCode="AR" term="%22International+Energy+Agency%2E%22"&gt;International
+                Energy Agency.&lt;/searchLink&gt;
+              </Data>
+            </Item>
+            <Item>
+              <Name>Author</Name>
+              <Label>Other Authors</Label>
+              <Group>Au</Group>
+              <Data>&lt;searchLink fieldCode="AR"
+                term="%22Organisation+for+Economic+Co-operation+and+Development%2E%22"&gt;Organisation
+                for Economic Co-operation and Development.&lt;/searchLink&gt;
+              </Data>
+            </Item>
+            <Item>
+              <Name>TitleAlt</Name>
+              <Label>Other Titles</Label>
+              <Group>TiAlt</Group>
+              <Data>Hydrogen and fuel cells. Hydrogen and Fuel Cells: Review of National R&amp;D
+                Programs.&lt;br /&gt;&lt;searchLink fieldCode="TI"
+                term="%22Hydrogen+%26+fuel+cells+%28Online%29%22"&gt;Hydrogen &amp; fuel cells
+                (Online)&lt;/searchLink&gt;
+              </Data>
+            </Item>
+            <Item>
+              <Name>URL</Name>
+              <Label>Online Access</Label>
+              <Group>URL</Group>
+              <Data>&lt;link linkTarget="URL"
+                linkTerm="https://resolver.ebscohost.com/Redirect/PRL?EPPackageLocationID=1022.170583.68758855&amp;epcustomerid=s8423516"
+                linkWindow="_blank"&gt;Full Text available from OECD-iLibrary Books &amp; Papers:
+                2004&lt;/link&gt;&lt;br
+                /&gt;&lt;link linkTarget="URL"
+                linkTerm="https://resolver.ebscohost.com/Redirect/PRL?EPPackageLocationID=1968110.170583.18434202&amp;epcustomerid=s8423516"
+                linkWindow="_blank"&gt;Full Text available from OECD-iLibrary Energy: 2004&lt;/link&gt;&lt;br
+                /&gt;&lt;link linkTarget="URL"
+                linkTerm="https://resolver.ebscohost.com/Redirect/PRL?EPPackageLocationID=3949.170583.2279184&amp;epcustomerid=s8423516"
+                linkWindow="_blank"&gt;Full Text available from OECD-iLibrary Books, Papers &amp;
+                Statistics: 2004&lt;/link&gt;
+              </Data>
+            </Item>
+          </Items>
+          <RecordInfo>
+            <BibRecord>
+              <BibEntity>
+                <Languages>
+                  <Language>
+                    <Text>English</Text>
+                  </Language>
+                </Languages>
+                <Subjects>
+                  <Subject>
+                    <SubjectFull>Hydrogen as fuel -- Research</SubjectFull>
+                    <Type>general</Type>
+                  </Subject>
+                  <Subject>
+                    <SubjectFull>Fuel cells -- Research</SubjectFull>
+                    <Type>general</Type>
+                  </Subject>
+                </Subjects>
+                <Titles>
+                  <Title>
+                    <TitleFull>Hydrogen &amp; fuel cells. [electronic resource] : review of national
+                      R&amp;D
+                      programs.
+                    </TitleFull>
+                    <Type>main</Type>
+                  </Title>
+                </Titles>
+              </BibEntity>
+              <BibRelationships>
+                <IsPartOfRelationships>
+                  <IsPartOf>
+                    <BibEntity>
+                      <Dates>
+                        <Date>
+                          <D>01</D>
+                          <M>01</M>
+                          <Type>published</Type>
+                          <Y>2004</Y>
+                        </Date>
+                      </Dates>
+                      <Identifiers>
+                        <Identifier>
+                          <Type>isbn-print</Type>
+                          <Value>9781280172786</Value>
+                        </Identifier>
+                        <Identifier>
+                          <Type>isbn-print</Type>
+                          <Value>9789264108844</Value>
+                        </Identifier>
+                      </Identifiers>
+                      <Titles>
+                        <Title>
+                          <TitleFull>OECD-iLibrary Books &amp; Papers</TitleFull>
+                          <Type>main</Type>
+                        </Title>
+                        <Title>
+                          <TitleFull>Hydrogen &amp; fuel cells [electronic resource] : review of
+                            national R&amp;D programs.
+                          </TitleFull>
+                          <Type>main</Type>
+                        </Title>
+                      </Titles>
+                    </BibEntity>
+                  </IsPartOf>
+                </IsPartOfRelationships>
+              </BibRelationships>
+            </BibRecord>
+          </RecordInfo>
+          <IllustrationInfo/>
+        </Record>
+      </Records>
+    </Data>
+    <AvailableFacets>
+      <AvailableFacet>
+        <Id>SourceType</Id>
+        <Label>Source Type</Label>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>Academic Journals</Value>
+            <Count>509822</Count>
+            <AddAction>addfacetfilter(SourceType:Academic Journals)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>News</Value>
+            <Count>79692</Count>
+            <AddAction>addfacetfilter(SourceType:News)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Magazines</Value>
+            <Count>21019</Count>
+            <AddAction>addfacetfilter(SourceType:Magazines)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Trade Publications</Value>
+            <Count>12810</Count>
+            <AddAction>addfacetfilter(SourceType:Trade Publications)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Books</Value>
+            <Count>7095</Count>
+            <AddAction>addfacetfilter(SourceType:Books)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Dissertations</Value>
+            <Count>3355</Count>
+            <AddAction>addfacetfilter(SourceType:Dissertations)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Reports</Value>
+            <Count>561</Count>
+            <AddAction>addfacetfilter(SourceType:Reports)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Reviews</Value>
+            <Count>477</Count>
+            <AddAction>addfacetfilter(SourceType:Reviews)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Biographies</Value>
+            <Count>85</Count>
+            <AddAction>addfacetfilter(SourceType:Biographies)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Electronic Resources</Value>
+            <Count>61</Count>
+            <AddAction>addfacetfilter(SourceType:Electronic Resources)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Primary Source Documents</Value>
+            <Count>44</Count>
+            <AddAction>addfacetfilter(SourceType:Primary Source Documents)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Conference Materials</Value>
+            <Count>9</Count>
+            <AddAction>addfacetfilter(SourceType:Conference Materials)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>eBooks</Value>
+            <Count>4</Count>
+            <AddAction>addfacetfilter(SourceType:eBooks)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+      <AvailableFacet>
+        <Id>SubjectEDS</Id>
+        <Label>Subject</Label>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>hydrogen</Value>
+            <Count>80561</Count>
+            <AddAction>addfacetfilter(SubjectEDS:hydrogen)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hydrogen bonding</Value>
+            <Count>57776</Count>
+            <AddAction>addfacetfilter(SubjectEDS:hydrogen bonding)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hydrogen-ion concentration</Value>
+            <Count>39172</Count>
+            <AddAction>addfacetfilter(SubjectEDS:hydrogen-ion concentration)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hydrogen peroxide</Value>
+            <Count>32708</Count>
+            <AddAction>addfacetfilter(SubjectEDS:hydrogen peroxide)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hydrogen production</Value>
+            <Count>24754</Count>
+            <AddAction>addfacetfilter(SubjectEDS:hydrogen production)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>crystal structure</Value>
+            <Count>16510</Count>
+            <AddAction>addfacetfilter(SubjectEDS:crystal structure)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hydrogen evolution reactions</Value>
+            <Count>16280</Count>
+            <AddAction>addfacetfilter(SubjectEDS:hydrogen evolution reactions)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hydrogen as fuel</Value>
+            <Count>14713</Count>
+            <AddAction>addfacetfilter(SubjectEDS:hydrogen as fuel)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>fuel cells</Value>
+            <Count>13940</Count>
+            <AddAction>addfacetfilter(SubjectEDS:fuel cells)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>oxidation</Value>
+            <Count>12824</Count>
+            <AddAction>addfacetfilter(SubjectEDS:oxidation)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>chemical reactions</Value>
+            <Count>12768</Count>
+            <AddAction>addfacetfilter(SubjectEDS:chemical reactions)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>catalysts</Value>
+            <Count>12732</Count>
+            <AddAction>addfacetfilter(SubjectEDS:catalysts)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>x-ray diffraction</Value>
+            <Count>12283</Count>
+            <AddAction>addfacetfilter(SubjectEDS:x-ray diffraction)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>molecular structure</Value>
+            <Count>11461</Count>
+            <AddAction>addfacetfilter(SubjectEDS:molecular structure)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hydrogen sulfide</Value>
+            <Count>10885</Count>
+            <AddAction>addfacetfilter(SubjectEDS:hydrogen sulfide)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>molecular dynamics</Value>
+            <Count>10843</Count>
+            <AddAction>addfacetfilter(SubjectEDS:molecular dynamics)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>density functional theory</Value>
+            <Count>10048</Count>
+            <AddAction>addfacetfilter(SubjectEDS:density functional theory)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>adsorption</Value>
+            <Count>9943</Count>
+            <AddAction>addfacetfilter(SubjectEDS:adsorption)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>oxygen</Value>
+            <Count>9190</Count>
+            <AddAction>addfacetfilter(SubjectEDS:oxygen)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>molecules</Value>
+            <Count>8942</Count>
+            <AddAction>addfacetfilter(SubjectEDS:molecules)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hydrogen storage</Value>
+            <Count>8838</Count>
+            <AddAction>addfacetfilter(SubjectEDS:hydrogen storage)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>oxidative stress</Value>
+            <Count>8733</Count>
+            <AddAction>addfacetfilter(SubjectEDS:oxidative stress)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>atoms</Value>
+            <Count>8695</Count>
+            <AddAction>addfacetfilter(SubjectEDS:atoms)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>catalysis</Value>
+            <Count>8512</Count>
+            <AddAction>addfacetfilter(SubjectEDS:catalysis)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>nanoparticles</Value>
+            <Count>8509</Count>
+            <AddAction>addfacetfilter(SubjectEDS:nanoparticles)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>spectrum analysis</Value>
+            <Count>8117</Count>
+            <AddAction>addfacetfilter(SubjectEDS:spectrum analysis)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>temperature effect</Value>
+            <Count>7621</Count>
+            <AddAction>addfacetfilter(SubjectEDS:temperature effect)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>physical &amp; theoretical chemistry</Value>
+            <Count>7585</Count>
+            <AddAction>addfacetfilter(SubjectEDS:physical &amp; theoretical chemistry)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hydrogenation</Value>
+            <Count>7291</Count>
+            <AddAction>addfacetfilter(SubjectEDS:hydrogenation)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>carbon dioxide</Value>
+            <Count>7173</Count>
+            <AddAction>addfacetfilter(SubjectEDS:carbon dioxide)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>organic compounds</Value>
+            <Count>7172</Count>
+            <AddAction>addfacetfilter(SubjectEDS:organic compounds)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>carbon</Value>
+            <Count>7057</Count>
+            <AddAction>addfacetfilter(SubjectEDS:carbon)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>photocatalysis</Value>
+            <Count>6979</Count>
+            <AddAction>addfacetfilter(SubjectEDS:photocatalysis)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>methane</Value>
+            <Count>6883</Count>
+            <AddAction>addfacetfilter(SubjectEDS:methane)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>reactive oxygen species</Value>
+            <Count>6868</Count>
+            <AddAction>addfacetfilter(SubjectEDS:reactive oxygen species)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>ligands</Value>
+            <Count>6797</Count>
+            <AddAction>addfacetfilter(SubjectEDS:ligands)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>solution (chemistry)</Value>
+            <Count>6610</Count>
+            <AddAction>addfacetfilter(SubjectEDS:solution \(chemistry\))</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>catalytic activity</Value>
+            <Count>6362</Count>
+            <AddAction>addfacetfilter(SubjectEDS:catalytic activity)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>fourier transform infrared spectroscopy</Value>
+            <Count>6328</Count>
+            <AddAction>addfacetfilter(SubjectEDS:fourier transform infrared spectroscopy)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hydrogen bonds</Value>
+            <Count>6148</Count>
+            <AddAction>addfacetfilter(SubjectEDS:hydrogen bonds)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>water</Value>
+            <Count>5960</Count>
+            <AddAction>addfacetfilter(SubjectEDS:water)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>thermodynamics</Value>
+            <Count>5883</Count>
+            <AddAction>addfacetfilter(SubjectEDS:thermodynamics)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>proton exchange membrane fuel cells</Value>
+            <Count>5678</Count>
+            <AddAction>addfacetfilter(SubjectEDS:proton exchange membrane fuel cells)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>thin films</Value>
+            <Count>5590</Count>
+            <AddAction>addfacetfilter(SubjectEDS:thin films)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>crystallography</Value>
+            <Count>5562</Count>
+            <AddAction>addfacetfilter(SubjectEDS:crystallography)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>chemical kinetics</Value>
+            <Count>5546</Count>
+            <AddAction>addfacetfilter(SubjectEDS:chemical kinetics)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>carbon-hydrogen bonds</Value>
+            <Count>5453</Count>
+            <AddAction>addfacetfilter(SubjectEDS:carbon-hydrogen bonds)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>oxygen evolution reactions</Value>
+            <Count>5448</Count>
+            <AddAction>addfacetfilter(SubjectEDS:oxygen evolution reactions)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>electrocatalysis</Value>
+            <Count>5424</Count>
+            <AddAction>addfacetfilter(SubjectEDS:electrocatalysis)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>nitrogen</Value>
+            <Count>5415</Count>
+            <AddAction>addfacetfilter(SubjectEDS:nitrogen)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+      <AvailableFacet>
+        <Id>RangeLexile</Id>
+        <Label>Lexile Range</Label>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>1301-1500+</Value>
+            <Count>82990</Count>
+            <AddAction>addfacetfilter(RangeLexile:1301-1500+)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1101-1300</Value>
+            <Count>20512</Count>
+            <AddAction>addfacetfilter(RangeLexile:1101-1300)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>901-1100</Value>
+            <Count>4193</Count>
+            <AddAction>addfacetfilter(RangeLexile:901-1100)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>701-900</Value>
+            <Count>851</Count>
+            <AddAction>addfacetfilter(RangeLexile:701-900)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>401-700</Value>
+            <Count>133</Count>
+            <AddAction>addfacetfilter(RangeLexile:401-700)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>0-400</Value>
+            <Count>19</Count>
+            <AddAction>addfacetfilter(RangeLexile:0-400)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+      <AvailableFacet>
+        <Id>Publisher</Id>
+        <Label>Publisher</Label>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>elsevier b.v.</Value>
+            <Count>214436</Count>
+            <AddAction>addfacetfilter(Publisher:elsevier b.v.)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>american chemical society</Value>
+            <Count>40122</Count>
+            <AddAction>addfacetfilter(Publisher:american chemical society)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>springer nature</Value>
+            <Count>40041</Count>
+            <AddAction>addfacetfilter(Publisher:springer nature)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>wiley-blackwell</Value>
+            <Count>30497</Count>
+            <AddAction>addfacetfilter(Publisher:wiley-blackwell)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>taylor &amp; francis ltd</Value>
+            <Count>17367</Count>
+            <AddAction>addfacetfilter(Publisher:taylor &amp; francis ltd)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>oxford university press / usa</Value>
+            <Count>6406</Count>
+            <AddAction>addfacetfilter(Publisher:oxford university press / usa)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>american association for the advancement of science</Value>
+            <Count>4510</Count>
+            <AddAction>addfacetfilter(Publisher:american association for the advancement of science)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>de gruyter</Value>
+            <Count>2414</Count>
+            <AddAction>addfacetfilter(Publisher:de gruyter)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>oxford university press</Value>
+            <Count>1897</Count>
+            <AddAction>addfacetfilter(Publisher:oxford university press)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>ihs markit ltd.</Value>
+            <Count>1764</Count>
+            <AddAction>addfacetfilter(Publisher:ihs markit ltd.)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>crain communications inc. (mi)</Value>
+            <Count>1641</Count>
+            <AddAction>addfacetfilter(Publisher:crain communications inc. \(mi\))</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>new scientist ltd.</Value>
+            <Count>1470</Count>
+            <AddAction>addfacetfilter(Publisher:new scientist ltd.)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>bloomberg, l.p.</Value>
+            <Count>1446</Count>
+            <AddAction>addfacetfilter(Publisher:bloomberg\, l.p.)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>euromoney trading limited / gulf publishing company</Value>
+            <Count>1360</Count>
+            <AddAction>addfacetfilter(Publisher:euromoney trading limited / gulf publishing company)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>society for science &amp; the public</Value>
+            <Count>1200</Count>
+            <AddAction>addfacetfilter(Publisher:society for science &amp; the public)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>gale, cengage learning</Value>
+            <Count>1179</Count>
+            <AddAction>addfacetfilter(Publisher:gale\, cengage learning)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>endeavor business media</Value>
+            <Count>1126</Count>
+            <AddAction>addfacetfilter(Publisher:endeavor business media)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>penton media, inc.</Value>
+            <Count>1087</Count>
+            <AddAction>addfacetfilter(Publisher:penton media\, inc.)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>sage publications inc.</Value>
+            <Count>1026</Count>
+            <AddAction>addfacetfilter(Publisher:sage publications inc.)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>kalmbach media</Value>
+            <Count>880</Count>
+            <AddAction>addfacetfilter(Publisher:kalmbach media)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>new york times</Value>
+            <Count>659</Count>
+            <AddAction>addfacetfilter(Publisher:new york times)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>scientific american</Value>
+            <Count>624</Count>
+            <AddAction>addfacetfilter(Publisher:scientific american)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>dow jones &amp; company inc</Value>
+            <Count>613</Count>
+            <AddAction>addfacetfilter(Publisher:dow jones &amp; company inc)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>bnp media</Value>
+            <Count>570</Count>
+            <AddAction>addfacetfilter(Publisher:bnp media)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>columbia university press</Value>
+            <Count>550</Count>
+            <AddAction>addfacetfilter(Publisher:columbia university press)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hearst magazines, a division of hearst communications, inc.</Value>
+            <Count>546</Count>
+            <AddAction>addfacetfilter(Publisher:hearst magazines\, a division of hearst
+              communications\,
+              inc.)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>time usa, llc</Value>
+            <Count>458</Count>
+            <AddAction>addfacetfilter(Publisher:time usa\, llc)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>csiro publishing</Value>
+            <Count>425</Count>
+            <AddAction>addfacetfilter(Publisher:csiro publishing)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>times newspapers limited</Value>
+            <Count>329</Count>
+            <AddAction>addfacetfilter(Publisher:times newspapers limited)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>encyclopedia britannica, inc.</Value>
+            <Count>253</Count>
+            <AddAction>addfacetfilter(Publisher:encyclopedia britannica\, inc.)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>mit technology review</Value>
+            <Count>222</Count>
+            <AddAction>addfacetfilter(Publisher:mit technology review)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>world future society</Value>
+            <Count>133</Count>
+            <AddAction>addfacetfilter(Publisher:world future society)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>tsl education limited</Value>
+            <Count>122</Count>
+            <AddAction>addfacetfilter(Publisher:tsl education limited)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>us news &amp; world report, l.p.</Value>
+            <Count>122</Count>
+            <AddAction>addfacetfilter(Publisher:us news &amp; world report\, l.p.)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>cornell university press</Value>
+            <Count>94</Count>
+            <AddAction>addfacetfilter(Publisher:cornell university press)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>the mit press</Value>
+            <Count>91</Count>
+            <AddAction>addfacetfilter(Publisher:the mit press)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>media source, inc.</Value>
+            <Count>66</Count>
+            <AddAction>addfacetfilter(Publisher:media source\, inc.)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>royal australian chemical institute</Value>
+            <Count>64</Count>
+            <AddAction>addfacetfilter(Publisher:royal australian chemical institute)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>pwxyz llc</Value>
+            <Count>46</Count>
+            <AddAction>addfacetfilter(Publisher:pwxyz llc)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>national archives (united states)</Value>
+            <Count>41</Count>
+            <AddAction>addfacetfilter(Publisher:national archives \(united states\))</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>oecd publishing</Value>
+            <Count>31</Count>
+            <AddAction>addfacetfilter(Publisher:oecd publishing)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>editions ocde</Value>
+            <Count>26</Count>
+            <AddAction>addfacetfilter(Publisher:editions ocde)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>british library</Value>
+            <Count>16</Count>
+            <AddAction>addfacetfilter(Publisher:british library)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>mdpi ag</Value>
+            <Count>15</Count>
+            <AddAction>addfacetfilter(Publisher:mdpi ag)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>national library of medicine, national institutes of health</Value>
+            <Count>11</Count>
+            <AddAction>addfacetfilter(Publisher:national library of medicine\, national institutes
+              of
+              health)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>the economist newspaper limited</Value>
+            <Count>11</Count>
+            <AddAction>addfacetfilter(Publisher:the economist newspaper limited)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>crc press</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Publisher:crc press)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>kress library of business and economics, harvard university</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Publisher:kress library of business and economics\, harvard
+              university)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>routledge</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Publisher:routledge)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>wiley</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Publisher:wiley)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+      <AvailableFacet>
+        <Id>Journal</Id>
+        <Label>Publication</Label>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>international journal of hydrogen energy</Value>
+            <Count>36514</Count>
+            <AddAction>addfacetfilter(Journal:international journal of hydrogen energy)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>science</Value>
+            <Count>6806</Count>
+            <AddAction>addfacetfilter(Journal:science)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>proceedings of the national academy of sciences of the united states of america
+            </Value>
+            <Count>5528</Count>
+            <AddAction>addfacetfilter(Journal:proceedings of the national academy of sciences of the
+              united states of america)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>scientific american</Value>
+            <Count>3165</Count>
+            <AddAction>addfacetfilter(Journal:scientific american)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>environmental science &amp; technology</Value>
+            <Count>2938</Count>
+            <AddAction>addfacetfilter(Journal:environmental science &amp; technology)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>journal of cleaner production</Value>
+            <Count>2382</Count>
+            <AddAction>addfacetfilter(Journal:journal of cleaner production)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>nature</Value>
+            <Count>2295</Count>
+            <AddAction>addfacetfilter(Journal:nature)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>chemical &amp; engineering news</Value>
+            <Count>1959</Count>
+            <AddAction>addfacetfilter(Journal:chemical &amp; engineering news)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>chemical week</Value>
+            <Count>1749</Count>
+            <AddAction>addfacetfilter(Journal:chemical week)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>new scientist</Value>
+            <Count>1471</Count>
+            <AddAction>addfacetfilter(Journal:new scientist)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>bloomberg.com</Value>
+            <Count>1347</Count>
+            <AddAction>addfacetfilter(Journal:bloomberg.com)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>science news</Value>
+            <Count>1283</Count>
+            <AddAction>addfacetfilter(Journal:science news)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>automotive news</Value>
+            <Count>1104</Count>
+            <AddAction>addfacetfilter(Journal:automotive news)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>times, the (united kingdom)</Value>
+            <Count>968</Count>
+            <AddAction>addfacetfilter(Journal:times\, the \(united kingdom\))</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>acronyms, initialisms &amp; abbreviations dictionary</Value>
+            <Count>829</Count>
+            <AddAction>addfacetfilter(Journal:acronyms\, initialisms &amp; abbreviations dictionary)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>current science</Value>
+            <Count>640</Count>
+            <AddAction>addfacetfilter(Journal:current science)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>aviation week &amp; space technology</Value>
+            <Count>489</Count>
+            <AddAction>addfacetfilter(Journal:aviation week &amp; space technology)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>a dictionary of chemistry</Value>
+            <Count>396</Count>
+            <AddAction>addfacetfilter(Journal:a dictionary of chemistry)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>the times</Value>
+            <Count>329</Count>
+            <AddAction>addfacetfilter(Journal:the times)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>britannica online</Value>
+            <Count>253</Count>
+            <AddAction>addfacetfilter(Journal:britannica online)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>臺灣大學化學研究所學位論文</Value>
+            <Count>210</Count>
+            <AddAction>addfacetfilter(Journal:臺灣大學化學研究所學位論文)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>wall street journal - online edition</Value>
+            <Count>189</Count>
+            <AddAction>addfacetfilter(Journal:wall street journal - online edition)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>chemistry in australia</Value>
+            <Count>170</Count>
+            <AddAction>addfacetfilter(Journal:chemistry in australia)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>autoweek</Value>
+            <Count>162</Count>
+            <AddAction>addfacetfilter(Journal:autoweek)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>technology review</Value>
+            <Count>138</Count>
+            <AddAction>addfacetfilter(Journal:technology review)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>time magazine</Value>
+            <Count>132</Count>
+            <AddAction>addfacetfilter(Journal:time magazine)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>futurist</Value>
+            <Count>90</Count>
+            <AddAction>addfacetfilter(Journal:futurist)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>time.com</Value>
+            <Count>84</Count>
+            <AddAction>addfacetfilter(Journal:time.com)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>u.s. news &amp; world report</Value>
+            <Count>81</Count>
+            <AddAction>addfacetfilter(Journal:u.s. news &amp; world report)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>time international (south pacific edition)</Value>
+            <Count>72</Count>
+            <AddAction>addfacetfilter(Journal:time international \(south pacific edition\))
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>newsweek</Value>
+            <Count>66</Count>
+            <AddAction>addfacetfilter(Journal:newsweek)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>drawing physics : 2,600 years of discovery from thales to higgs</Value>
+            <Count>65</Count>
+            <AddAction>addfacetfilter(Journal:drawing physics \: 2\,600 years of discovery from
+              thales
+              to higgs)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>wall street journal (online)</Value>
+            <Count>57</Count>
+            <AddAction>addfacetfilter(Journal:wall street journal \(online\))</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>maclean's</Value>
+            <Count>54</Count>
+            <AddAction>addfacetfilter(Journal:maclean's)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>bioscience</Value>
+            <Count>52</Count>
+            <AddAction>addfacetfilter(Journal:bioscience)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>times higher education supplement</Value>
+            <Count>51</Count>
+            <AddAction>addfacetfilter(Journal:times higher education supplement)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>ecos</Value>
+            <Count>42</Count>
+            <AddAction>addfacetfilter(Journal:ecos)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>publishers weekly</Value>
+            <Count>33</Count>
+            <AddAction>addfacetfilter(Journal:publishers weekly)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>doab directory of open access books</Value>
+            <Count>32</Count>
+            <AddAction>addfacetfilter(Journal:doab directory of open access books)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>library journal</Value>
+            <Count>28</Count>
+            <AddAction>addfacetfilter(Journal:library journal)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>booklist</Value>
+            <Count>25</Count>
+            <AddAction>addfacetfilter(Journal:booklist)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>the economist</Value>
+            <Count>11</Count>
+            <AddAction>addfacetfilter(Journal:the economist)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>the retrospect of practical medicine and surgery</Value>
+            <Count>10</Count>
+            <AddAction>addfacetfilter(Journal:the retrospect of practical medicine and surgery)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>iea energy technology rd&amp;d statistics</Value>
+            <Count>9</Count>
+            <AddAction>addfacetfilter(Journal:iea energy technology rd&amp;d statistics)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>greece: records of the u.s. department of state, 1950-1963 : records of the
+              department of state relating to internal affairs: greece 1960-63
+            </Value>
+            <Count>4</Count>
+            <AddAction>addfacetfilter(Journal:greece\: records of the u.s. department of state\,
+              1950-1963 \: records of the department of state relating to internal affairs\: greece
+              1960-63)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>democracy in turkey, 1950-1959: records of the u.s. state department classified
+              files
+              : records of the department of state relating to internal affairs: turkey, 1955-1959
+            </Value>
+            <Count>3</Count>
+            <AddAction>addfacetfilter(Journal:democracy in turkey\, 1950-1959\: records of the u.s.
+              state department classified files \: records of the department of state relating to
+              internal affairs\: turkey\, 1955-1959)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>thailand: records of the u.s. department of state relating to internal affairs,
+              1955-1963 : records of the department of state relating to internal affairs: thailand,
+              1955-1963
+            </Value>
+            <Count>3</Count>
+            <AddAction>addfacetfilter(Journal:thailand\: records of the u.s. department of state
+              relating to internal affairs\, 1955-1963 \: records of the department of state
+              relating to
+              internal affairs\: thailand\, 1955-1963)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>oxford music online</Value>
+            <Count>2</Count>
+            <AddAction>addfacetfilter(Journal:oxford music online)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>eighteenth century collections online</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Journal:eighteenth century collections online)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>making of the modern world</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Journal:making of the modern world)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+      <AvailableFacet>
+        <Id>Language</Id>
+        <Label>Language</Label>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>english</Value>
+            <Count>559684</Count>
+            <AddAction>addfacetfilter(Language:english)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>繁體中文</Value>
+            <Count>3143</Count>
+            <AddAction>addfacetfilter(Language:繁體中文)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>英文</Value>
+            <Count>1606</Count>
+            <AddAction>addfacetfilter(Language:英文)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>chinese</Value>
+            <Count>1348</Count>
+            <AddAction>addfacetfilter(Language:chinese)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>german</Value>
+            <Count>744</Count>
+            <AddAction>addfacetfilter(Language:german)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>spanish</Value>
+            <Count>459</Count>
+            <AddAction>addfacetfilter(Language:spanish)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>turkish</Value>
+            <Count>171</Count>
+            <AddAction>addfacetfilter(Language:turkish)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>persian</Value>
+            <Count>129</Count>
+            <AddAction>addfacetfilter(Language:persian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>portuguese</Value>
+            <Count>127</Count>
+            <AddAction>addfacetfilter(Language:portuguese)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>ukrainian</Value>
+            <Count>124</Count>
+            <AddAction>addfacetfilter(Language:ukrainian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>french</Value>
+            <Count>119</Count>
+            <AddAction>addfacetfilter(Language:french)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>russian</Value>
+            <Count>87</Count>
+            <AddAction>addfacetfilter(Language:russian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>undetermined</Value>
+            <Count>44</Count>
+            <AddAction>addfacetfilter(Language:undetermined)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>polish</Value>
+            <Count>42</Count>
+            <AddAction>addfacetfilter(Language:polish)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>multiple languages</Value>
+            <Count>34</Count>
+            <AddAction>addfacetfilter(Language:multiple languages)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>italian</Value>
+            <Count>25</Count>
+            <AddAction>addfacetfilter(Language:italian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>croatian</Value>
+            <Count>23</Count>
+            <AddAction>addfacetfilter(Language:croatian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>lithuanian</Value>
+            <Count>23</Count>
+            <AddAction>addfacetfilter(Language:lithuanian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>romanian</Value>
+            <Count>22</Count>
+            <AddAction>addfacetfilter(Language:romanian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>arabic</Value>
+            <Count>21</Count>
+            <AddAction>addfacetfilter(Language:arabic)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>japanese</Value>
+            <Count>18</Count>
+            <AddAction>addfacetfilter(Language:japanese)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>slovak</Value>
+            <Count>16</Count>
+            <AddAction>addfacetfilter(Language:slovak)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>czech</Value>
+            <Count>11</Count>
+            <AddAction>addfacetfilter(Language:czech)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>korean</Value>
+            <Count>8</Count>
+            <AddAction>addfacetfilter(Language:korean)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>indonesian</Value>
+            <Count>7</Count>
+            <AddAction>addfacetfilter(Language:indonesian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>slovenian</Value>
+            <Count>7</Count>
+            <AddAction>addfacetfilter(Language:slovenian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>bosnian</Value>
+            <Count>6</Count>
+            <AddAction>addfacetfilter(Language:bosnian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>spanish; castilian</Value>
+            <Count>6</Count>
+            <AddAction>addfacetfilter(Language:spanish; castilian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>azerbaijani</Value>
+            <Count>4</Count>
+            <AddAction>addfacetfilter(Language:azerbaijani)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>afrikaans</Value>
+            <Count>3</Count>
+            <AddAction>addfacetfilter(Language:afrikaans)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>bulgarian</Value>
+            <Count>3</Count>
+            <AddAction>addfacetfilter(Language:bulgarian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>latin</Value>
+            <Count>3</Count>
+            <AddAction>addfacetfilter(Language:latin)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>serbian</Value>
+            <Count>3</Count>
+            <AddAction>addfacetfilter(Language:serbian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>dutch/flemish</Value>
+            <Count>2</Count>
+            <AddAction>addfacetfilter(Language:dutch/flemish)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>macedonian</Value>
+            <Count>2</Count>
+            <AddAction>addfacetfilter(Language:macedonian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>armenian</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Language:armenian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>catalan</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Language:catalan)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>esperanto</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Language:esperanto)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>estonian</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Language:estonian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>hungarian</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Language:hungarian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>modern greek</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Language:modern greek)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>norwegian</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Language:norwegian)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>tajik</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Language:tajik)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>日文</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Language:日文)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>簡體中文</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Language:簡體中文)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>葡萄牙文</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Language:葡萄牙文)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+      <AvailableFacet>
+        <Id>SubjectGeographic</Id>
+        <Label>Geography</Label>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>united states</Value>
+            <Count>3284</Count>
+            <AddAction>addfacetfilter(SubjectGeographic:united states)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>china</Value>
+            <Count>1669</Count>
+            <AddAction>addfacetfilter(SubjectGeographic:china)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>japan</Value>
+            <Count>715</Count>
+            <AddAction>addfacetfilter(SubjectGeographic:japan)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>australia</Value>
+            <Count>360</Count>
+            <AddAction>addfacetfilter(SubjectGeographic:australia)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>south korea</Value>
+            <Count>296</Count>
+            <AddAction>addfacetfilter(SubjectGeographic:south korea)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>brazil</Value>
+            <Count>272</Count>
+            <AddAction>addfacetfilter(SubjectGeographic:brazil)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>turkey</Value>
+            <Count>218</Count>
+            <AddAction>addfacetfilter(SubjectGeographic:turkey)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>russia</Value>
+            <Count>205</Count>
+            <AddAction>addfacetfilter(SubjectGeographic:russia)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>indonesia</Value>
+            <Count>91</Count>
+            <AddAction>addfacetfilter(SubjectGeographic:indonesia)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>thailand</Value>
+            <Count>83</Count>
+            <AddAction>addfacetfilter(SubjectGeographic:thailand)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+      <AvailableFacet>
+        <Id>Category</Id>
+        <Label>Category</Label>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>technology &amp; engineering / power resources / general</Value>
+            <Count>2</Count>
+            <AddAction>addfacetfilter(Category:technology &amp; engineering / power resources /
+              general)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>biography &amp; autobiography / science &amp; technology</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Category:biography &amp; autobiography / science &amp;
+              technology)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>history / military / nuclear warfare</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Category:history / military / nuclear warfare)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>nature / ecology</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Category:nature / ecology)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>political science / international relations / arms control</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Category:political science / international relations / arms
+              control)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>political science / international relations / treaties</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Category:political science / international relations /
+              treaties)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>political science / public policy / environmental policy</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Category:political science / public policy / environmental
+              policy)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>science / chemistry / industrial &amp; technical</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Category:science / chemistry / industrial &amp; technical)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>science / earth sciences / seismology &amp; volcanism</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Category:science / earth sciences / seismology &amp;
+              volcanism)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>science / energy</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(Category:science / energy)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+      <AvailableFacet>
+        <Id>PublicationYear</Id>
+        <Label>Publication Year</Label>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>2022</Value>
+            <Count>35327</Count>
+            <AddAction>addfacetfilter(PublicationYear:2022)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2021</Value>
+            <Count>32826</Count>
+            <AddAction>addfacetfilter(PublicationYear:2021)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2020</Value>
+            <Count>29093</Count>
+            <AddAction>addfacetfilter(PublicationYear:2020)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2017</Value>
+            <Count>26897</Count>
+            <AddAction>addfacetfilter(PublicationYear:2017)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2019</Value>
+            <Count>26769</Count>
+            <AddAction>addfacetfilter(PublicationYear:2019)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2018</Value>
+            <Count>26647</Count>
+            <AddAction>addfacetfilter(PublicationYear:2018)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2016</Value>
+            <Count>25969</Count>
+            <AddAction>addfacetfilter(PublicationYear:2016)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2015</Value>
+            <Count>25082</Count>
+            <AddAction>addfacetfilter(PublicationYear:2015)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2014</Value>
+            <Count>24324</Count>
+            <AddAction>addfacetfilter(PublicationYear:2014)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2013</Value>
+            <Count>23785</Count>
+            <AddAction>addfacetfilter(PublicationYear:2013)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2012</Value>
+            <Count>22652</Count>
+            <AddAction>addfacetfilter(PublicationYear:2012)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2007</Value>
+            <Count>22154</Count>
+            <AddAction>addfacetfilter(PublicationYear:2007)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2011</Value>
+            <Count>21722</Count>
+            <AddAction>addfacetfilter(PublicationYear:2011)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2009</Value>
+            <Count>19737</Count>
+            <AddAction>addfacetfilter(PublicationYear:2009)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2010</Value>
+            <Count>19523</Count>
+            <AddAction>addfacetfilter(PublicationYear:2010)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2008</Value>
+            <Count>19365</Count>
+            <AddAction>addfacetfilter(PublicationYear:2008)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2006</Value>
+            <Count>19184</Count>
+            <AddAction>addfacetfilter(PublicationYear:2006)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2005</Value>
+            <Count>17526</Count>
+            <AddAction>addfacetfilter(PublicationYear:2005)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2023</Value>
+            <Count>17276</Count>
+            <AddAction>addfacetfilter(PublicationYear:2023)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2004</Value>
+            <Count>14093</Count>
+            <AddAction>addfacetfilter(PublicationYear:2004)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2003</Value>
+            <Count>11197</Count>
+            <AddAction>addfacetfilter(PublicationYear:2003)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2002</Value>
+            <Count>7701</Count>
+            <AddAction>addfacetfilter(PublicationYear:2002)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2001</Value>
+            <Count>2850</Count>
+            <AddAction>addfacetfilter(PublicationYear:2001)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>2000</Value>
+            <Count>2508</Count>
+            <AddAction>addfacetfilter(PublicationYear:2000)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1999</Value>
+            <Count>2039</Count>
+            <AddAction>addfacetfilter(PublicationYear:1999)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1998</Value>
+            <Count>1684</Count>
+            <AddAction>addfacetfilter(PublicationYear:1998)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1997</Value>
+            <Count>1653</Count>
+            <AddAction>addfacetfilter(PublicationYear:1997)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1996</Value>
+            <Count>1532</Count>
+            <AddAction>addfacetfilter(PublicationYear:1996)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1994</Value>
+            <Count>1484</Count>
+            <AddAction>addfacetfilter(PublicationYear:1994)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1995</Value>
+            <Count>1461</Count>
+            <AddAction>addfacetfilter(PublicationYear:1995)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1993</Value>
+            <Count>1141</Count>
+            <AddAction>addfacetfilter(PublicationYear:1993)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1992</Value>
+            <Count>731</Count>
+            <AddAction>addfacetfilter(PublicationYear:1992)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1991</Value>
+            <Count>722</Count>
+            <AddAction>addfacetfilter(PublicationYear:1991)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1990</Value>
+            <Count>700</Count>
+            <AddAction>addfacetfilter(PublicationYear:1990)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1989</Value>
+            <Count>531</Count>
+            <AddAction>addfacetfilter(PublicationYear:1989)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1988</Value>
+            <Count>470</Count>
+            <AddAction>addfacetfilter(PublicationYear:1988)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1987</Value>
+            <Count>466</Count>
+            <AddAction>addfacetfilter(PublicationYear:1987)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1986</Value>
+            <Count>462</Count>
+            <AddAction>addfacetfilter(PublicationYear:1986)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1985</Value>
+            <Count>401</Count>
+            <AddAction>addfacetfilter(PublicationYear:1985)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1984</Value>
+            <Count>156</Count>
+            <AddAction>addfacetfilter(PublicationYear:1984)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1975</Value>
+            <Count>94</Count>
+            <AddAction>addfacetfilter(PublicationYear:1975)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1983</Value>
+            <Count>90</Count>
+            <AddAction>addfacetfilter(PublicationYear:1983)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1982</Value>
+            <Count>88</Count>
+            <AddAction>addfacetfilter(PublicationYear:1982)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1980</Value>
+            <Count>87</Count>
+            <AddAction>addfacetfilter(PublicationYear:1980)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1978</Value>
+            <Count>82</Count>
+            <AddAction>addfacetfilter(PublicationYear:1978)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1976</Value>
+            <Count>78</Count>
+            <AddAction>addfacetfilter(PublicationYear:1976)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1979</Value>
+            <Count>77</Count>
+            <AddAction>addfacetfilter(PublicationYear:1979)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1981</Value>
+            <Count>71</Count>
+            <AddAction>addfacetfilter(PublicationYear:1981)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1977</Value>
+            <Count>63</Count>
+            <AddAction>addfacetfilter(PublicationYear:1977)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>1974</Value>
+            <Count>62</Count>
+            <AddAction>addfacetfilter(PublicationYear:1974)</AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+      <AvailableFacet>
+        <Id>ContentProvider</Id>
+        <Label>Content Provider</Label>
+        <AvailableFacetValues>
+          <AvailableFacetValue>
+            <Value>Academic Search Complete</Value>
+            <Count>486704</Count>
+            <AddAction>addfacetfilter(ContentProvider:Academic Search Complete)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>NewsBank</Value>
+            <Count>64919</Count>
+            <AddAction>addfacetfilter(ContentProvider:NewsBank)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Business Source Complete</Value>
+            <Count>24458</Count>
+            <AddAction>addfacetfilter(ContentProvider:Business Source Complete)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>JSTOR Journals</Value>
+            <Count>23058</Count>
+            <AddAction>addfacetfilter(ContentProvider:JSTOR Journals)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Australia/New Zealand Reference Centre Plus</Value>
+            <Count>18922</Count>
+            <AddAction>addfacetfilter(ContentProvider:Australia/New Zealand Reference Centre Plus)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>MasterFILE Premier</Value>
+            <Count>15033</Count>
+            <AddAction>addfacetfilter(ContentProvider:MasterFILE Premier)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Airiti Library eBooks &amp; Journals - 華藝線上圖書館</Value>
+            <Count>4734</Count>
+            <AddAction>addfacetfilter(ContentProvider:Airiti Library eBooks &amp; Journals -
+              華藝線上圖書館)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Gale eBooks</Value>
+            <Count>4403</Count>
+            <AddAction>addfacetfilter(ContentProvider:Gale eBooks)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Oxford Reference</Value>
+            <Count>1933</Count>
+            <AddAction>addfacetfilter(ContentProvider:Oxford Reference)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>ProjectMUSE</Value>
+            <Count>384</Count>
+            <AddAction>addfacetfilter(ContentProvider:ProjectMUSE)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Times Digital Archive</Value>
+            <Count>329</Count>
+            <AddAction>addfacetfilter(ContentProvider:Times Digital Archive)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Britannica Online</Value>
+            <Count>253</Count>
+            <AddAction>addfacetfilter(ContentProvider:Britannica Online)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Library Literature &amp; Information Science Full Text (H.W. Wilson)</Value>
+            <Count>203</Count>
+            <AddAction>addfacetfilter(ContentProvider:Library Literature &amp; Information Science
+              Full
+              Text \(H.W. Wilson\))
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Australian Public Affairs Full Text / APAIS Index</Value>
+            <Count>150</Count>
+            <AddAction>addfacetfilter(ContentProvider:Australian Public Affairs Full Text / APAIS
+              Index)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Informit Humanities &amp; Social Sciences Collection</Value>
+            <Count>81</Count>
+            <AddAction>addfacetfilter(ContentProvider:Informit Humanities &amp; Social Sciences
+              Collection)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>HLM MARC update catalogue</Value>
+            <Count>52</Count>
+            <AddAction>addfacetfilter(ContentProvider:HLM MARC update catalogue)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Archives Unbound</Value>
+            <Count>43</Count>
+            <AddAction>addfacetfilter(ContentProvider:Archives Unbound)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>OECD iLibrary</Value>
+            <Count>30</Count>
+            <AddAction>addfacetfilter(ContentProvider:OECD iLibrary)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Nineteenth Century Collections Online</Value>
+            <Count>27</Count>
+            <AddAction>addfacetfilter(ContentProvider:Nineteenth Century Collections Online)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Economist Historical Archive</Value>
+            <Count>11</Count>
+            <AddAction>addfacetfilter(ContentProvider:Economist Historical Archive)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>eBook Collection (EBSCOhost)</Value>
+            <Count>4</Count>
+            <AddAction>addfacetfilter(ContentProvider:eBook Collection \(EBSCOhost\))</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Grove Music Online</Value>
+            <Count>2</Count>
+            <AddAction>addfacetfilter(ContentProvider:Grove Music Online)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Making of the Modern World</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(ContentProvider:Making of the Modern World)</AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Eighteenth Century Collections Online</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(ContentProvider:Eighteenth Century Collections Online)
+            </AddAction>
+          </AvailableFacetValue>
+          <AvailableFacetValue>
+            <Value>Oxford Dictionary of National Biography</Value>
+            <Count>1</Count>
+            <AddAction>addfacetfilter(ContentProvider:Oxford Dictionary of National Biography)
+            </AddAction>
+          </AvailableFacetValue>
+        </AvailableFacetValues>
+      </AvailableFacet>
+    </AvailableFacets>
+    <AvailableCriteria>
+      <DateRange>
+        <MinDate>1797-01</MinDate>
+        <MaxDate>2023-12</MaxDate>
+      </DateRange>
+    </AvailableCriteria>
+  </SearchResult>
+</SearchResponseMessageGet>

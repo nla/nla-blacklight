@@ -26,7 +26,7 @@ module Nla
       end
 
       def cite_url
-        @document.copy_access_urls&.first[:href]&.presence
+        @document.copy_access_urls&.first&.[](:href)&.presence
       end
 
       def cite_publisher

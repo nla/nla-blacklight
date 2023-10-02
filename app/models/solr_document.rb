@@ -68,7 +68,9 @@ class SolrDocument
     @marc_xml ||= Nokogiri::XML.parse(fetch("marc_ss")).remove_namespaces!
   end
 
-  attribute :access_conditions, :array, "access_conditions_ssim"
+  delegate :related_access_urls, :copy_access_urls, :online_access_urls, :map_search_urls, :has_eresources?, to: :access
+  delegate :valid_isbn, :invalid_isbn, to: :isbn
+
   attribute :acknowledgement, :array, "acknowledgement_tsim"
   attribute :all_authors, :array, "author_search_tsim"
   attribute :also_titled, :array, "also_titled_tsim"
@@ -77,9 +79,10 @@ class SolrDocument
   attribute :awards, :array, "awards_tsim"
   attribute :binding_information, :array, "binding_tsim"
   attribute :biography_history, :array, "biography_history_tsim"
-  attribute :callnumber, :array, "lc_callnum_ssim"
+  attribute :callnumber, :array, "call_number_tsim"
   attribute :cited_authors, :array, "cited_authors_tsim"
   attribute :cited_in, :array, "cited_in_tsim"
+  attribute :copyright_info, :array, "copyright_ssim"
   attribute :credits, :array, "credits_tsim"
   attribute :data_quality, :array, "data_quality_tsim"
   attribute :description_date, :array, "description_date_tsim"
@@ -89,18 +92,17 @@ class SolrDocument
   attribute :finding_aid_url, :string, "finding_aid_url_ssim"
   attribute :form_of_work, :array, "form_of_work_tsim"
   attribute :frequency, :array, "frequency_tsim"
+  attribute :full_contents, :array, "full_contents_tsim"
   attribute :genre, :array, "genre_tsim"
   attribute :govt_doc_number, :array, "govt_doc_number_tsim"
   attribute :has_subseries, :array, "has_subseries_tsim"
   attribute :has_supplement, :array, "has_supplement_tsim"
-  attribute :indexing_finding_aid_note, :array, "index_finding_aid_note_tsim"
+  attribute :incomplete_contents, :array, "incomplete_contents_tsim"
+  attribute :index_finding_aid_note, :array, "index_finding_aid_note_tsim"
   attribute :invalid_issn, :array, "invalid_issn_ssim"
-  attribute :invalid_ismn_ssim, :array, "invalid_ismn_ssim"
   attribute :isbn, :array, "isbn_tsim"
-  attribute :ismn, :array, "ismn_ssim"
   attribute :issn, :array, "issn_display_ssim"
   attribute :issued_with, :array, "issued_with_tsim"
-  attribute :lccn, :array, "lccn_ssim"
   attribute :life_dates, :array, "life_dates_tsim"
   attribute :music_publisher_number, :array, "music_publisher_number_tsim"
   attribute :new_title, :array, "new_title_tsim"
@@ -109,13 +111,14 @@ class SolrDocument
   attribute :occupation, :array, "occupation_ssim"
   attribute :old_title, :array, "old_title_tsim"
   attribute :other_authors, :array, "additional_author_with_relator_ssim"
+  attribute :partial_contents, :array, "partial_contents_tsim"
   attribute :performers, :array, "performers_tsim"
   attribute :pi, :string, "nlaobjid_ss"
   attribute :place, :array, "place_tsim"
   attribute :previous_frequency, :array, "previous_frequency_tsim"
   attribute :printer, :array, "printer_tsim"
   attribute :provenance, :array, "provenance_tsim"
-  attribute :publication_date, :array, "pub_date_ssim"
+  attribute :publication_date, :array, "display_publication_date_ssim"
   attribute :publication_place, :array, "display_publication_place_ssim"
   attribute :publisher, :array, "publisher_tsim"
   attribute :related_material, :array, "related_material_tsim"
@@ -126,6 +129,7 @@ class SolrDocument
   attribute :subseries_of, :array, "subseries_of_tsim"
   attribute :summary, :array, "summary_tsim"
   attribute :supplement_to, :array, "supplement_to_tsim"
+  attribute :system_control_number, :array, "system_control_number_tsim"
   attribute :technical_details, :array, "technical_details_tsim"
   attribute :terms_of_use, :array, "terms_of_use_tsim"
   attribute :time_coverage_multiple, :array, "time_coverage_multiple_ssim"
@@ -135,10 +139,14 @@ class SolrDocument
   attribute :translated_title, :array, "translated_title_ssim"
   attribute :uniform_title, :array, "uniform_title_ssim"
 
-  delegate :related_access_urls, :copy_access_urls, :online_access_urls, :map_search_urls, :has_eresources?, to: :access
-
   def access
     @access ||= Access.new(self)
+  end
+
+  def access_conditions
+    unless has_eresources?
+      fetch("access_conditions_ssim", nil)
+    end
   end
 
   def broken_links
@@ -155,8 +163,34 @@ class SolrDocument
     Description.new(self).value.presence
   end
 
-  def invalid_isbn
-    InvalidIsbn.new(marc_xml).value.presence
+  def invalid_ismn
+    values = []
+
+    fetch("invalid_ismn_ssim", nil)&.each do |ismn|
+      values += ismn.split(" ")
+    end
+
+    values.presence
+  end
+
+  def isbn
+    @isbn ||= Isbn.new(marc_xml)
+  end
+
+  def ismn
+    values = []
+
+    fetch("ismn_ssim", nil)&.each do |ismn|
+      values += ismn.split(" ")
+    end
+
+    values.presence
+  end
+
+  def lccn
+    fetch("lccn_ssim", nil)&.map do |lccn|
+      lccn.strip
+    end
   end
 
   def publication_place
@@ -173,11 +207,11 @@ class SolrDocument
 
   def time_coverage
     if time_coverage_single.present?
-      time_coverage_single
+      clean_time_coverage(time_coverage_single)
     elsif time_coverage_multiple.present?
-      [time_coverage_multiple.join(", ")]
+      [clean_time_coverage(time_coverage_multiple).join(", ")]
     elsif time_coverage_ranged.present?
-      [time_coverage_ranged.join("-")]
+      [clean_time_coverage(time_coverage_ranged).join("-")]
     end
   end
 
@@ -185,5 +219,13 @@ class SolrDocument
 
   def key_error_handler
     nil
+  end
+
+  private
+
+  def clean_time_coverage(dates)
+    dates&.map do |date|
+      date&.delete_prefix("d")&.[](0..3)
+    end
   end
 end

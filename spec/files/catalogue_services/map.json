@@ -1,0 +1,58 @@
+{
+  "instanceId": "9a5e9fea-38ff-5f0b-8515-3da168d2f370",
+  "holdingsRecords": [
+    {
+      "id": "933de73c-6ba0-5626-a663-cb928ae9de62",
+      "instanceId": "9a5e9fea-38ff-5f0b-8515-3da168d2f370",
+      "permanentLocationId": "733cd955-4b16-42b8-9c10-3587d8337e04",
+      "effectiveLocationId": "733cd955-4b16-42b8-9c10-3587d8337e04",
+      "callNumber": "MAP G3701.C5",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Sheet 1- (1961-) [Incomplete.]",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "a30c302b-c7fd-5185-a218-9759c07bfd58",
+          "holdingsRecordId": "933de73c-6ba0-5626-a663-cb928ae9de62",
+          "barcode": "990004456958",
+          "effectiveLocationId": "733cd955-4b16-42b8-9c10-3587d8337e04",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "MAP G3701.C5"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-03-25T01:31:28.408+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 7,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "permanentLocationId": "733cd955-4b16-42b8-9c10-3587d8337e04",
+          "yearCaption": [],
+          "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
+          "itemCategory": "map",
+          "discoverySuppress": false,
+          "requestable": true
+        }
+      ],
+      "notes": []
+    }
+  ]
+}

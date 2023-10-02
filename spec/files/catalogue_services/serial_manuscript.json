@@ -1,0 +1,184 @@
+{
+  "instanceId": "31a9dc35-4361-5211-a1b5-a848c40d415a",
+  "holdingsRecords": [
+    {
+      "id": "bbc3d88b-eb0d-5739-b37e-a736a265d4a2",
+      "instanceId": "31a9dc35-4361-5211-a1b5-a848c40d415a",
+      "permanentLocationId": "2b8366c0-16e2-4e9c-8968-a0ef34943a9d",
+      "effectiveLocationId": "2b8366c0-16e2-4e9c-8968-a0ef34943a9d",
+      "callNumber": "MS 9190",
+      "holdingsStatements": [],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "fbf144fc-e8ac-5e7d-8da6-69dda3adc9e9",
+          "holdingsRecordId": "bbc3d88b-eb0d-5739-b37e-a736a265d4a2",
+          "barcode": "990003178312",
+          "effectiveLocationId": "2b8366c0-16e2-4e9c-8968-a0ef34943a9d",
+          "effectiveLocationDisplayName": "Special Collections Reading Room - item/s may be unavailable",
+          "effectiveCallNumberComponents": {
+            "callNumber": "MS 9190"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-03-25T01:46:44.511+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 7,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "permanentLocationId": "2b8366c0-16e2-4e9c-8968-a0ef34943a9d",
+          "yearCaption": [],
+          "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
+          "itemCategory": "manuscript",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [
+        {
+          "note": "Part available for research; part requires permission for research until 2017 (Series 1, folder 7 and Series 6); part not available for research until 2017 (Series 14, folder 1 and Series 16, folders 11-12). Not for loan",
+          "staffOnly": false,
+          "holdingsNoteTypeId": "4b937761-3c97-48db-8641-ea0729f3615b",
+          "holdingsNoteType": "Restriction"
+        }
+      ],
+      "checkedOutItems": [
+        {
+          "chronology": "1",
+          "yearCaption": "1"
+        }
+      ]
+    },
+    {
+      "id": "cb969c16-0631-5e97-84ed-af3b1b676373",
+      "instanceId": "31a9dc35-4361-5211-a1b5-a848c40d415a",
+      "permanentLocationId": "58341093-0289-4804-84f2-23540bf94000",
+      "effectiveLocationId": "58341093-0289-4804-84f2-23540bf94000",
+      "callNumber": "MS Acc07.011",
+      "holdingsStatements": [],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "90f1e12f-511e-5a47-a8ac-2667cf2d1ac7",
+          "holdingsRecordId": "cb969c16-0631-5e97-84ed-af3b1b676373",
+          "barcode": "77000000625557",
+          "effectiveLocationId": "58341093-0289-4804-84f2-23540bf94000",
+          "effectiveLocationDisplayName": "Special Collections Reading Room - Prior notice required",
+          "effectiveCallNumberComponents": {
+            "callNumber": "MS Acc07.011"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-03-25T02:17:44.983+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 7,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "permanentLocationId": "58341093-0289-4804-84f2-23540bf94000",
+          "yearCaption": [],
+          "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
+          "itemCategory": "manuscript",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [
+        {
+          "note": "Available for research. Not for loan",
+          "staffOnly": false,
+          "holdingsNoteTypeId": "4b937761-3c97-48db-8641-ea0729f3615b",
+          "holdingsNoteType": "Restriction"
+        },
+        {
+          "note": "Unprocessed instalment 20070119 1.12 metres",
+          "staffOnly": false,
+          "holdingsNoteTypeId": "d6510242-5ec3-42ed-b593-3585d2e48fd6",
+          "holdingsNoteType": "Action note"
+        }
+      ],
+      "checkedOutItems": []
+    },
+    {
+      "id": "98c1ac7a-196d-5071-9ede-4664db00197b",
+      "instanceId": "31a9dc35-4361-5211-a1b5-a848c40d415a",
+      "permanentLocationId": "58341093-0289-4804-84f2-23540bf94000",
+      "effectiveLocationId": "58341093-0289-4804-84f2-23540bf94000",
+      "callNumber": "MS Acc14.117",
+      "holdingsStatements": [],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "df814889-bc4e-5a76-9084-79b348214833",
+          "holdingsRecordId": "98c1ac7a-196d-5071-9ede-4664db00197b",
+          "barcode": "77000000726743",
+          "effectiveLocationId": "58341093-0289-4804-84f2-23540bf94000",
+          "effectiveLocationDisplayName": "Special Collections Reading Room - Prior notice required",
+          "effectiveCallNumberComponents": {
+            "callNumber": "MS Acc14.117"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-03-25T02:21:15.591+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 7,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "permanentLocationId": "58341093-0289-4804-84f2-23540bf94000",
+          "yearCaption": [],
+          "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
+          "itemCategory": "manuscript",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [
+        {
+          "note": "Part available for research; part requires permission for research (Box 14 (part)). Not for loan",
+          "staffOnly": false,
+          "holdingsNoteTypeId": "4b937761-3c97-48db-8641-ea0729f3615b",
+          "holdingsNoteType": "Restriction"
+        }
+      ],
+      "checkedOutItems": []
+    }
+  ]
+}

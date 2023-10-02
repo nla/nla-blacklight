@@ -1,0 +1,1113 @@
+{
+  "links": {
+    "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth",
+    "last": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026page=1\u0026per_page=10\u0026q=smooth"
+  },
+  "meta": {
+    "pages": {
+      "current_page": 1,
+      "next_page": null,
+      "prev_page": null,
+      "total_pages": 1,
+      "limit_value": 10,
+      "offset_value": 0,
+      "total_count": 10,
+      "first_page?": true,
+      "last_page?": true
+    }
+  },
+  "data": [
+    {
+      "id": "MS4809aspace_e78ecc816710588c9f2c7de98ba6c6ce",
+      "type": "File",
+      "attributes": {
+        "title": "Smoothing the pillow",
+        "unitid_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS4809aspace_e78ecc816710588c9f2c7de98ba6c6ce#unitid_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "575",
+            "label": "Unit ID"
+          }
+        },
+        "repository_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS4809aspace_e78ecc816710588c9f2c7de98ba6c6ce#repository_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "National Library of Australia",
+            "label": "Repository"
+          }
+        },
+        "collection_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS4809aspace_e78ecc816710588c9f2c7de98ba6c6ce#collection_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Papers of Humphrey McQueen, 1964-2021",
+            "label": "Collection Title"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS4809aspace_e78ecc816710588c9f2c7de98ba6c6ce"
+      }
+    },
+    {
+      "id": "Moffattaspace_90ab23801e1eba38ae9b3f5a70b6f264",
+      "type": "Item",
+      "attributes": {
+        "title": "Article by Miriam Cosic - Smooth Operators - The Australian Magazine 28 February 1998 on the sharp new breed of opera directors, 1998",
+        "repository_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/Moffattaspace_90ab23801e1eba38ae9b3f5a70b6f264#repository_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "National Library of Australia",
+            "label": "Repository"
+          }
+        },
+        "normalized_date_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/Moffattaspace_90ab23801e1eba38ae9b3f5a70b6f264#normalized_date_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "1998",
+            "label": "Date"
+          }
+        },
+        "collection_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/Moffattaspace_90ab23801e1eba38ae9b3f5a70b6f264#collection_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Papers of Moffatt Oxenbould and Graeme Ewer, 1890-2016, 1890-2016",
+            "label": "Collection Title"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/Moffattaspace_90ab23801e1eba38ae9b3f5a70b6f264"
+      }
+    },
+    {
+      "id": "P887aspace_8dd0045063e2bc005b58d0c5cfc6e647",
+      "type": "Item",
+      "attributes": {
+        "title": "Surface of a smooth barked eucalyptus tree eaten into and marked by bush snails, Booti Booti, Cape Hawke, New South Wales, 1922",
+        "unitid_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P887aspace_8dd0045063e2bc005b58d0c5cfc6e647#unitid_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "P887/620",
+            "label": "Unit ID"
+          }
+        },
+        "repository_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P887aspace_8dd0045063e2bc005b58d0c5cfc6e647#repository_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "National Library of Australia",
+            "label": "Repository"
+          }
+        },
+        "creator_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P887aspace_8dd0045063e2bc005b58d0c5cfc6e647#creator_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Jackson, Sidney William",
+            "label": "Creator"
+          }
+        },
+        "extent_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P887aspace_8dd0045063e2bc005b58d0c5cfc6e647#extent_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "1 Item",
+            "label": "Physical Description"
+          }
+        },
+        "collection_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P887aspace_8dd0045063e2bc005b58d0c5cfc6e647#collection_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Collection of photographs of birds, 1891-1932",
+            "label": "Collection Title"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P887aspace_8dd0045063e2bc005b58d0c5cfc6e647"
+      }
+    },
+    {
+      "id": "P783aspace_95cacade18976de1f4ebd3b7b0e4fe26",
+      "type": "Item",
+      "attributes": {
+        "title": "Three men, one wearing an officer style hat, squatting on a beach smoothing stone ornaments, Squally [Emirau] Island, St. Matthias Island group, Papua New Guinea, 1925",
+        "unitid_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P783aspace_95cacade18976de1f4ebd3b7b0e4fe26#unitid_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "P783/992",
+            "label": "Unit ID"
+          }
+        },
+        "repository_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P783aspace_95cacade18976de1f4ebd3b7b0e4fe26#repository_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "National Library of Australia",
+            "label": "Repository"
+          }
+        },
+        "normalized_date_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P783aspace_95cacade18976de1f4ebd3b7b0e4fe26#normalized_date_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "1925",
+            "label": "Date"
+          }
+        },
+        "scopecontent_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P783aspace_95cacade18976de1f4ebd3b7b0e4fe26#scopecontent_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Original reference number: PIC/8394/H25-C992. Nitrate reference no: PIC Nitrate Store Box 39 #PIC/8394/992. Acetate reference number: PIC Cold Store #P783 folder 5.",
+            "label": "Scope Content"
+          }
+        },
+        "collection_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P783aspace_95cacade18976de1f4ebd3b7b0e4fe26#collection_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Chinnery Collection, New Guinea, 1912-1937",
+            "label": "Collection Title"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/P783aspace_95cacade18976de1f4ebd3b7b0e4fe26"
+      }
+    },
+    {
+      "id": "EPHT1aspace_6ad12ed0b559601d529a1d5104b5cc96",
+      "type": null,
+      "attributes": {
+        "title": "Clannad",
+        "repository_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/EPHT1aspace_6ad12ed0b559601d529a1d5104b5cc96#repository_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "National Library of Australia",
+            "label": "Repository"
+          }
+        },
+        "scopecontent_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/EPHT1aspace_6ad12ed0b559601d529a1d5104b5cc96#scopecontent_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Irish band founded 1970, who have performed in a number of genres, including folk, new-age, traditional Irish and smooth jazz. Their line-up (in 2021) is Ciarán Brennan, Moya Brennan, Noel Duggan and Pól Brennan. Link to catalogue record.",
+            "label": "Scope Content"
+          }
+        },
+        "collection_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/EPHT1aspace_6ad12ed0b559601d529a1d5104b5cc96#collection_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Australian Performing Arts Programs and Ephemera (PROMPT) Collections in the National Library of Australia, 1880-2019",
+            "label": "Collection Title"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/EPHT1aspace_6ad12ed0b559601d529a1d5104b5cc96"
+      }
+    },
+    {
+      "id": "MS6640aspace_7bdf7bfa50c435745fb42d35371dd460",
+      "type": "File",
+      "attributes": {
+        "title": "Notebook, Late 1980s-1999",
+        "repository_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_7bdf7bfa50c435745fb42d35371dd460#repository_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "National Library of Australia",
+            "label": "Repository"
+          }
+        },
+        "normalized_date_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_7bdf7bfa50c435745fb42d35371dd460#normalized_date_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Late 1980s-1999",
+            "label": "Date"
+          }
+        },
+        "scopecontent_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_7bdf7bfa50c435745fb42d35371dd460#scopecontent_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Pt 1 of Smooth black Daler 3405 notebook [215 x 155]. \"Quote Unquote Critical Notices\" \"Literary Lapses\" \"Personal [?]\" \"[Douglas] Houston's Poems (recommended)\" [a listing] \"Peculiar Proverbs\" [puns and Spoonerisms] \"Poems For Madrid\" [preparation for a reading] \"Arts Council Writers Bursaries, 1992\" [committee notes on each category and applicants evolving to elimination selection]; \"To Be Read In Norwich\" [list of PP poems]; editing notes on Strauss and Mahler; \"Ghazal For Peter Rose's 40th Birthday\" outline of structure for PP's Oxford Book Of Modern Australian Verse; notes on poems for BBC \"Best Words\" \"Mutant Proverbs\" \"Poems For New OUP Collection Spring/Summer 1997\" [working checklist of poems written] \"Possible Titles (A Great Reckoning In A Little Room)\" \"Cats\" \"Chocolate Gatto\" [drawings of cats with humorous captions) \"Ewart Memorial Reading\" \"Iconic Images For Dragons In Their Pleasant Places\" \"Acknowledgments\" (for Dragons) \"Ewart Memorial Reading R.S.L 21/11/'96\" \"Echt Deutsch (A Suite Of German Lieder Put Into English)\" \"Klage an das Volk (Schubert)\" [working English translation] \"Der Arme Peter (Heine)\" [working English translation] \"Mein Wagen [?] Langsam (Heine)\" [working English translation] Da Unten Im Tale (set by Brahms)\" [working English translation] \"Merike Der Gartner\" [working English translation] \"Halle des Lebens\" [working English translation] \"Die Gotter Griechenlands (Schiller)\" [working English translation] \"die Stille (Eichendorff)\" [working English translation] \"Music Choice\" [programme notes]",
+            "label": "Scope Content"
+          }
+        },
+        "collection_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_7bdf7bfa50c435745fb42d35371dd460#collection_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Papers of Peter Porter, 1947-2010",
+            "label": "Collection Title"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_7bdf7bfa50c435745fb42d35371dd460"
+      }
+    },
+    {
+      "id": "MS6640aspace_f0ef3ff2a319ebf77f62ce9ef00c527e",
+      "type": "File",
+      "attributes": {
+        "title": "Notebook, c1995-[2004?]",
+        "repository_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_f0ef3ff2a319ebf77f62ce9ef00c527e#repository_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "National Library of Australia",
+            "label": "Repository"
+          }
+        },
+        "normalized_date_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_f0ef3ff2a319ebf77f62ce9ef00c527e#normalized_date_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "c1995-[2004?]",
+            "label": "Date"
+          }
+        },
+        "scopecontent_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_f0ef3ff2a319ebf77f62ce9ef00c527e#scopecontent_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Pt 1 of Smooth blue covered notebook [cream laid endpapers] label removal shadow on upper 210 x 145. \"A Short Ballad of Unbelief\" \"Artemisiana\" \"What Worries Me About American Poetry\" [notes on a serious concern] \"Ex Libris Sen Pococurante\" \"Both Ends Against The Middle (cf Wilbur)\" \"The Shellfish Gene\" \"Leaving Mantua\" \"Brains On Your Shoes\" \"A Skin Which That Shrills\" \"Page Rage\" \"Something To Do After Dying\" \"Money A Cautionary Canticle\" \"Front Loaded\" \"Wayside Streetside Poppies\" \"Reinventing The Wheel\" \"Magica Sympathia\" \"Terror/Dreams Etc - 'You've Still Got The Virus' - 'Time's Existence'\" \"A Short Secular (Sectarian) Ode For St.Cecelia's Day\" \"Sir Oran Hast - Ton On Forest Preservation Conservation\" [dream notes ?] \"Rubens's Grave St [Jakobskirche] Buy One Get One Free\" \"They're There\" \"Grave Shortage Of Approachable Cats\" \"The Sydney Spiders\" \"Coming Alongside\" \"The Lost Watch\" \"(Return To Kerguelen\" \"Streamers\" \"And On The Beach Undid His Corded Bales\" [this extended prose reflection headed with a note on/to [John] Ashbery, and titled with a line from Arnold's \"Gypsy Scholar\" commences: \"Who was it that led/misled us into overvaluing overestimate the New\"] \"Two Photographs\" \"Goodbye To All Cats\" \"A Personal Obituary For Mordecai Richler\" [just that, and more being also something of a reflection on obituaries themselves as well as recalling when they first arrived in London in the 1950's] \"Scordatura - A Few Musical Retunings\" [musical notes] \"On Being Irritated At Reading 'The Penguin Book Of The Sonnet'\" \"Time's Improvements\" \"Garnishee\" \"Parnassian Plain Dealing\" \"Short Sonata For Words Alone\" \"Burning Fiery Furnace\" \"With Blinds Pulled Down\"",
+            "label": "Scope Content"
+          }
+        },
+        "collection_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_f0ef3ff2a319ebf77f62ce9ef00c527e#collection_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Papers of Peter Porter, 1947-2010",
+            "label": "Collection Title"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_f0ef3ff2a319ebf77f62ce9ef00c527e"
+      }
+    },
+    {
+      "id": "MS6640aspace_fa5cb02ec17c9bb08bb2330b9c4ac47c",
+      "type": "File",
+      "attributes": {
+        "title": "Notebook, Late 1980s-1999",
+        "repository_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_fa5cb02ec17c9bb08bb2330b9c4ac47c#repository_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "National Library of Australia",
+            "label": "Repository"
+          }
+        },
+        "normalized_date_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_fa5cb02ec17c9bb08bb2330b9c4ac47c#normalized_date_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Late 1980s-1999",
+            "label": "Date"
+          }
+        },
+        "scopecontent_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_fa5cb02ec17c9bb08bb2330b9c4ac47c#scopecontent_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Pt 2 of Smooth black Daler 3405 notebook [215 x 155]. \"Burns's Poems - Words For Glossary\" [for the Aurum Press edition edited by PP] \"Coleridge For Aurum\" [notes for the Aurum Press edition edited by PP]; draft of PP biographical note for Aurum editions; four pages of limericks involving composers\"; musical programme notes; \"Possible Books For The British Council\" \"Winds: Further Thoughts On Penny's Listings\" \"Possible Direction Of Programme\" (extensive notes on radio broadcast with a wind theme in music \"Wind: A Feature\")\"Shapechanger Extraordinary Untamed Tamer\" \"A Symphony Of Wind Sounds\" [further extensive notes for this programme] \"Wind On The Couch Or Voices In The Wind Tunnel\" \"Winds As Numinous Presences\" \"Comicality of Wind\" \"Postcards - A Handful Of Postcards (short poems in draft with card themes] \"Last Words\" \"Poems For Victorian Opera Season\" \"Modus Operandi\" \"Four Operatic Clerihews\" \"Serse\" \"Don Giovanni\" \"Aida\" \"Inspired Translations\" \"You Beaut, The King, or A Long Night At The Acmeida\" \"Index on Censorship: Spender Memorial Issue\" (notes for theme and contributions; notes on Min Lu, Goran, Simic, Mandelstam and others) \"Turkish Poems\" \"Arab Creation Myth\" (notes) \"Possible Titles\" (a list \"What has become Of Us\") \"Shadon Worlds\" \"Osip Mandelstam (notes) \"Mutant Proverbs Revisited\" \"Seven Out Of Eight: Scenes From The Life Of St Francis of Assisi by Sassetta\" (PP's English rendering of the libretto) \"Mutant Proverbs Revisited (2)\" \"Notions For Lineua Franca\" \"Memorability\" \"Aphorisms, Maxims, epigrams, Proverbs\" \"The 'Liturgical' Power Of Jargon\" \"Style Versus Democratic Ease of Understanding\" (thoughts on books and music) \"Leopardi - The Calm Following The Storm\" (PP's English versions in evolving drafts) \"Opera In Action: The Poet | Philosopher | Cynic\" [notes for music broadcast] \"My Other Aria\" [musical notes]",
+            "label": "Scope Content"
+          }
+        },
+        "collection_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_fa5cb02ec17c9bb08bb2330b9c4ac47c#collection_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Papers of Peter Porter, 1947-2010",
+            "label": "Collection Title"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_fa5cb02ec17c9bb08bb2330b9c4ac47c"
+      }
+    },
+    {
+      "id": "MS6640aspace_d862e3644642c9debe1e341163188bae",
+      "type": "File",
+      "attributes": {
+        "title": "Notebook, c1995-[2004?]",
+        "repository_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_d862e3644642c9debe1e341163188bae#repository_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "National Library of Australia",
+            "label": "Repository"
+          }
+        },
+        "normalized_date_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_d862e3644642c9debe1e341163188bae#normalized_date_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "c1995-[2004?]",
+            "label": "Date"
+          }
+        },
+        "scopecontent_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_d862e3644642c9debe1e341163188bae#scopecontent_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Pt 2 of Smooth blue covered notebook [cream laid endpapers] label removal shadow on upper 210 x 145. \"The Air Of Another Planet\" \"What Do You Mean Unprepossessing ?\" \"Three Otrantos\" \"God: Filling In The Form\" \"Paper Music\" \"Sara Tara Parker Tomlinson - Thoughts On The Latest Forthcoming Election\" \"The Daughters Remember The Fathers\" \"Two Part Invention\" \"Prelims\" \"Recitative For The End Of Time The Man With The Blue Catarrh - A Real Visible Material Happiness\" \"Old Friends\" \"Epigram A Bridge Too Far\" \"Come Close My Eyes\" \"The Man With The Blue Catarrh\" [a play on the work by Wallace Stevens]\" \"Kipling's Donkeys\" A Splay Foot Pleaching\" \"History of The World In A Choice Of Sounds\" \"The Last Hours Of Cassiodorus\" \"State Of The Art\" \"So Ys Emprented – So Is Imprinted\" \"Isaiah's Knee\" \"The Deeds Creature\" \"Deutero-Thanatos\" \"Paradise, The Director's Cut\" \"Compression\" \"Avant-Garde Examination Paper\" \"Folk Lore Of Baroque Rococo County\" \"The Deeds Creature\" \"A Strange Resolution\" \"The Passion Fruit Takes The Oath Of Allegiance\" \"Grido Invalidated\"; \"The Air Of Another Planet\" \"What Do You Mean Unprepossessing ?\" \"Three Otrantos\" \"God: Filling In The Form\" \"Paper Music\" \"Sara Tara Parker Tomlinson - Thoughts On The Latest Forthcoming Election\" \"The Daughters Remember The Fathers\" \"Two Part Invention\" \"Prelims\" \"Recitative For The End Of Time The Man With The Blue Catarrh - A Real Visible Material Happiness\" \"Old Friends\" \"Epigram A Bridge Too Far\" \"Come Close My Eyes\" \"The Man With The Blue Catarrh\" [a play on the work by Wallace Stevens]\" \"Kipling's Donkeys\" A Splay Foot Pleaching\" \"History of The World In A Choice Of Sounds\" \"The Last Hours Of Cassiodorus\" \"State Of The Art\" \"So Ys Emprented – So Is Imprinted\" \"Isaiah's Knee\" \"The Deeds Creature\" \"Deutero-Thanatos\" \"Paradise, The Director's Cut\" \"Compression\" \"Avant-Garde Examination Paper\" \"Folk Lore Of Baroque Rococo County\" \"The Deeds Creature\" \"A Strange Resolution\" \"The Passion Fruit Takes The Oath Of Allegiance\" \"Grido Invalidated\"",
+            "label": "Scope Content"
+          }
+        },
+        "collection_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_d862e3644642c9debe1e341163188bae#collection_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Papers of Peter Porter, 1947-2010",
+            "label": "Collection Title"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/MS6640aspace_d862e3644642c9debe1e341163188bae"
+      }
+    },
+    {
+      "id": "ms1871aspace_b5d775f9c8227d93a823106983b2b6cd",
+      "type": "Item",
+      "attributes": {
+        "title": "A Chant of Doom Angus  Robertson Ltd. Sydney, 1918",
+        "unitid_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/ms1871aspace_b5d775f9c8227d93a823106983b2b6cd#unitid_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "22-26",
+            "label": "Unit ID"
+          }
+        },
+        "repository_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/ms1871aspace_b5d775f9c8227d93a823106983b2b6cd#repository_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "National Library of Australia",
+            "label": "Repository"
+          }
+        },
+        "normalized_date_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/ms1871aspace_b5d775f9c8227d93a823106983b2b6cd#normalized_date_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "1918",
+            "label": "Date"
+          }
+        },
+        "scopecontent_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/ms1871aspace_b5d775f9c8227d93a823106983b2b6cd#scopecontent_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "\u003cp\u003eOrdinary edition. Grey boards. Linen spine. Sq. 8vo. Portrait of Brennan by Sir Lionel Lindsay, who also etched the device upon cover. Two copies.\u003c/p\u003e\u003cp\u003eInscribed on end paper \u0026quot;Dear Harry, G.R. [George Robertson] collared me one day and said I must draw Chris, for the \u0026#39;Chant\u0026#39;. I had flu at \u0026quot;the time and in no state to draw, but I got Chris, along to Norwich Chambers and as usual he could never sit still. I told him he must. \u0026#39;Give me that nude to look at\u0026#39;, he said (a small oil by Mahony) and that kept him quiet. Lionel Lindsay.\u0026quot;\u003c/p\u003e\u003cp\u003eInserted: Autograph letter from Philip Lindsay to his brother Jack, n.d. Written at the time he was preparing a book about contemporary Australian poetry. \u0026quot;...I agree about Brennan being a great poet, but he wrote a hell of a lot of muck. I remember some years ago picking up a volume in the Charing Cross Road, and it was quite unreadable...a collection of war poems, with lines here and there, but frightfully sluggish. Nevertheless he had greatness in him, and had he been in any other country might have developed into a genius...\u0026quot; He then outlines the plan for his book and the various poets about whom he proposes to write. \u0026quot;...When they\u0026#39;re done I\u0026#39;m going to expand them into a fat book and then Brennan\u0026#39;ll get the space he deserves...\u0026quot;\u003c/p\u003e\u003cp\u003eInserted: Autograph letter from Brennan to Lionel Lindsay, written from Mosman, but undated. \u0026quot;Dear Lionel, I hope you won\u0026#39;t think it shabby of me if after all I put you off for next Saturday.\u0026quot; Brennan then explains that due to household storms he allowed himself to be betrayed into behavior which he doesn\u0026#39;t think right for him. He has the feeling that it will be best for him to dwell within himself and see no-one for a week \u0026quot;so that the disturbed waters may grow smooth again. You will understand, Thine ever, C.B.\u0026quot;\u003c/p\u003e\u003cp\u003eLimited issue of 50 copies on larger hand-made paper, numbered and signed by the author. In boards similar to ordinary edition, with device on cover. Parchment spine, with lettering in gilt. The cover, dust-jacket and title-page all agree; the reading being A Chant of Doom. Three copies.\u003c/p\u003e\u003cp\u003eNo. 13. Inscribed by George Robertson: \u0026quot;Mr Shenstone with the publisher\u0026#39;s compliments\u0026quot;. Inserted: Autograph letter from Mary Gilmore to Hugh McCrae, 3 September 1946, 2pp. She writes of a visit to her from a mutual acquaintance, in badly intoxicated condition, and of her unpleasant experience. Continues: \u0026quot;But what a tragic waste of good material...What a contrast to Chris. Brennan, in that. I never heard one foul or dirty word from Brennan, yet he could be as drunk as this man. But he had a mind that soared. A man who roomed next door to Brennan said that, and that night after night he would wake up and hear Brennan all night reciting poetry to himself...\u0026quot; Then follows a long reference to Louis Stone, and the report that he had called C.J. Dennis a \u0026quot;scoundrel\u0026quot; for plagiarising his work. This was refuted by Mrs Stone, and when Mary Gilmore suggested that she should publicly correct the statement, Mrs Stone replied, \u0026quot;No, they are all dead now, and will not feel it\u0026quot;. A long and interesting letter, in Mary Gilmore\u0026#39;s ebullient style.\u003c/p\u003e\u003cp\u003eNo.20. Inscribed by George Robertson: \u0026quot;To J. Le Gay Brereton Esq., with the publishers compliments\u0026quot;. Inserted: Autograph letter from Brennan to Brereton. \u0026amp;gt;Brereton has dated this letter as received on 16 October 1912.\u003c/p\u003e\u003cp\u003eNo.32. Inscribed: \u0026quot;For Geoffrey Bennett at Greenwich, 9.v.1924, Chris: Brennan\u0026quot;. Inserted in this copy is a series of biographical notes, 3pp, upon Brennan, written by his brother Philip, to whom this volume was dedicated. Philip Brennan was a sergeant in the 2nd Australian Machine-gun Battalion, of the first A.I.F. Philip gives some details of his brother\u0026#39;s life and of his last days in the Lewisham Hospital. With this is letter from Philip Brennan to H.F.C., sending the script.\u003c/p\u003e\u003cp\u003eBrennan\u0026#39;s reading of the German Hymn of Hate provoked him to the composition of this series of war poems. In a manuscript in this collection Lionel Lindsay writes: \u0026quot;I remember during the First World War when the \u0026#39;Hymn of Hate\u0026#39; was much advertised Chris, telling me that he could not get the original, and had translated the Translation into German. Then with high disdain: \u0026#39;And my German was better than the original\u0026#39;, which he had just received.\u0026quot; Brennan always regretted that he had never been in France and once told Lionel Lindsay: \u0026quot;In Germany you are a cipher; a number, not a man!\u0026quot;\u003c/p\u003e\u003cp\u003eGeoffrey Bennett was a Sydney journalist. He was once in possession of the letters written by Mallarmé to Brennan - present whereabouts unknown. Brennan presented his friend with an inscribed copy of Poems 1913. In May 1964 it was, together with other Brennan material, sold by auction at Sotheby\u0026#39;s Limited, London. It was purchased by Maggs Brothers for £10.10.0 (sterling), possibly for the Mitchell Library.\u003c/p\u003e\u003cp\u003eNote: In this limited edition Brennan made minor changes in the text. One line of each of the poems, \u0026quot;Kitchener\u0026quot; and \u0026quot;Doom\u0026quot;, have been altered, and in the final poem, a lower-case letter has been changed into a capital.\u003c/p\u003e",
+            "label": "Scope Content"
+          }
+        },
+        "collection_ssm": {
+          "id": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/ms1871aspace_b5d775f9c8227d93a823106983b2b6cd#collection_ssm",
+          "type": "document_value",
+          "attributes": {
+            "value": "Papers of Christopher Brennan, 1897-1963",
+            "label": "Collection Title"
+          }
+        }
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/ms1871aspace_b5d775f9c8227d93a823106983b2b6cd"
+      }
+    }
+  ],
+  "included": [
+    {
+      "type": "facet",
+      "id": "collection_sim",
+      "attributes": {
+        "label": "Collection",
+        "items": [
+          {
+            "attributes": {
+              "label": "Papers of Peter Porter, 1947-2010",
+              "value": "Papers of Peter Porter, 1947-2010",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bcollection_sim%5D%5B%5D=Papers+of+Peter+Porter%2C+1947-2010\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Australian Performing Arts Programs and Ephemera (PROMPT) Collections in the National Library of Australia, 1880-2019",
+              "value": "Australian Performing Arts Programs and Ephemera (PROMPT) Collections in the National Library of Australia, 1880-2019",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bcollection_sim%5D%5B%5D=Australian+Performing+Arts+Programs+and+Ephemera+%28PROMPT%29+Collections+in+the+National+Library+of+Australia%2C+1880-2019\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Chinnery Collection, New Guinea, 1912-1937",
+              "value": "Chinnery Collection, New Guinea, 1912-1937",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bcollection_sim%5D%5B%5D=Chinnery+Collection%2C+New+Guinea%2C+1912-1937\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Collection of photographs of birds, 1891-1932",
+              "value": "Collection of photographs of birds, 1891-1932",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bcollection_sim%5D%5B%5D=Collection+of+photographs+of+birds%2C+1891-1932\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Papers of Christopher Brennan, 1897-1963",
+              "value": "Papers of Christopher Brennan, 1897-1963",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bcollection_sim%5D%5B%5D=Papers+of+Christopher+Brennan%2C+1897-1963\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Papers of Humphrey McQueen, 1964-2021",
+              "value": "Papers of Humphrey McQueen, 1964-2021",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bcollection_sim%5D%5B%5D=Papers+of+Humphrey+McQueen%2C+1964-2021\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Papers of Moffatt Oxenbould and Graeme Ewer, 1890-2016, 1890-2016",
+              "value": "Papers of Moffatt Oxenbould and Graeme Ewer, 1890-2016, 1890-2016",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bcollection_sim%5D%5B%5D=Papers+of+Moffatt+Oxenbould+and+Graeme+Ewer%2C+1890-2016%2C+1890-2016\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/facet/collection_sim.json?grouped=false\u0026per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "creator_ssim",
+      "attributes": {
+        "label": "Creator",
+        "items": [
+          {
+            "attributes": {
+              "label": "Jackson, Sidney William",
+              "value": "Jackson, Sidney William",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bcreator_ssim%5D%5B%5D=Jackson%2C+Sidney+William\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/facet/creator_ssim.json?grouped=false\u0026per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "creators_ssim",
+      "attributes": {
+        "label": "Creator",
+        "items": [
+          {
+            "attributes": {
+              "label": "Jackson, Sidney William",
+              "value": "Jackson, Sidney William",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bcreators_ssim%5D%5B%5D=Jackson%2C+Sidney+William\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/facet/creators_ssim.json?grouped=false\u0026per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "date_range_sim",
+      "attributes": {
+        "label": "Date range",
+        "items": [
+          {
+            "attributes": {
+              "label": "1925",
+              "value": "1925",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026range%5Bdate_range_sim%5D%5B%5D=1925"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/facet/date_range_sim.json?grouped=false\u0026per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "level_sim",
+      "attributes": {
+        "label": "Level",
+        "items": [
+          {
+            "attributes": {
+              "label": "File",
+              "value": "File",
+              "hits": 5
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Blevel_sim%5D%5B%5D=File\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Item",
+              "value": "Item",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Blevel_sim%5D%5B%5D=Item\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/facet/level_sim.json?grouped=false\u0026per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "repository_sim",
+      "attributes": {
+        "label": "Repository",
+        "items": [
+          {
+            "attributes": {
+              "label": "National Library of Australia",
+              "value": "National Library of Australia",
+              "hits": 10
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Brepository_sim%5D%5B%5D=National+Library+of+Australia\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/facet/repository_sim.json?grouped=false\u0026per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "access_subjects_ssim",
+      "attributes": {
+        "label": "Subject",
+        "items": [
+          {
+            "attributes": {
+              "label": "",
+              "value": "",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Baccess_subjects_ssim%5D%5B%5D=\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Arts",
+              "value": "Arts",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Baccess_subjects_ssim%5D%5B%5D=Arts\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Literature",
+              "value": "Literature",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Baccess_subjects_ssim%5D%5B%5D=Literature\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/facet/access_subjects_ssim.json?grouped=false\u0026per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "component_level_isim",
+      "attributes": {
+        "label": "Component Level Isim",
+        "items": [
+          {
+            "attributes": {
+              "label": "3",
+              "value": "3",
+              "hits": 6
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bcomponent_level_isim%5D%5B%5D=3\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "2",
+              "value": "2",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bcomponent_level_isim%5D%5B%5D=2\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/facet/component_level_isim.json?grouped=false\u0026per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "parent_ssim",
+      "attributes": {
+        "label": "Parent Ssim",
+        "items": [
+          {
+            "attributes": {
+              "label": "MS6640",
+              "value": "MS6640",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=MS6640\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_4ad5c18a76aae72a876ee49f6d60ea2a",
+              "value": "aspace_4ad5c18a76aae72a876ee49f6d60ea2a",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=aspace_4ad5c18a76aae72a876ee49f6d60ea2a\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_776d2d548d50ebc0fbe94697dafdbef9",
+              "value": "aspace_776d2d548d50ebc0fbe94697dafdbef9",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=aspace_776d2d548d50ebc0fbe94697dafdbef9\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "EPHT1",
+              "value": "EPHT1",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=EPHT1\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "MS4809",
+              "value": "MS4809",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=MS4809\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "Moffatt",
+              "value": "Moffatt",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=Moffatt\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "P783",
+              "value": "P783",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=P783\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "P887",
+              "value": "P887",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=P887\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_2b89e5a8b258c227bd9793faaf7e91c2",
+              "value": "aspace_2b89e5a8b258c227bd9793faaf7e91c2",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=aspace_2b89e5a8b258c227bd9793faaf7e91c2\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_309a6bb321a7d3c8f140a8bb681cc015",
+              "value": "aspace_309a6bb321a7d3c8f140a8bb681cc015",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=aspace_309a6bb321a7d3c8f140a8bb681cc015\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_34eba231f665186a3d07aabb789f9a4b",
+              "value": "aspace_34eba231f665186a3d07aabb789f9a4b",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=aspace_34eba231f665186a3d07aabb789f9a4b\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_51634c1439bed5144dbee40a392f6ac7",
+              "value": "aspace_51634c1439bed5144dbee40a392f6ac7",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=aspace_51634c1439bed5144dbee40a392f6ac7\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_b43479281533647d4e3808a6cdf5d61e",
+              "value": "aspace_b43479281533647d4e3808a6cdf5d61e",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=aspace_b43479281533647d4e3808a6cdf5d61e\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_c84c6b4dfc7ed9e4bb3b03798cccd938",
+              "value": "aspace_c84c6b4dfc7ed9e4bb3b03798cccd938",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=aspace_c84c6b4dfc7ed9e4bb3b03798cccd938\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_d960b8a89fbb815cddc44991306206cd",
+              "value": "aspace_d960b8a89fbb815cddc44991306206cd",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=aspace_d960b8a89fbb815cddc44991306206cd\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_da0025303b8491c525c9489a10f06059",
+              "value": "aspace_da0025303b8491c525c9489a10f06059",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=aspace_da0025303b8491c525c9489a10f06059\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "ms1871",
+              "value": "ms1871",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssim%5D%5B%5D=ms1871\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/facet/parent_ssim.json?grouped=false\u0026per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "facet",
+      "id": "parent_ssi",
+      "attributes": {
+        "label": "Parent Ssi",
+        "items": [
+          {
+            "attributes": {
+              "label": "aspace_4ad5c18a76aae72a876ee49f6d60ea2a",
+              "value": "aspace_4ad5c18a76aae72a876ee49f6d60ea2a",
+              "hits": 4
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssi%5D%5B%5D=aspace_4ad5c18a76aae72a876ee49f6d60ea2a\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_2b89e5a8b258c227bd9793faaf7e91c2",
+              "value": "aspace_2b89e5a8b258c227bd9793faaf7e91c2",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssi%5D%5B%5D=aspace_2b89e5a8b258c227bd9793faaf7e91c2\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_34eba231f665186a3d07aabb789f9a4b",
+              "value": "aspace_34eba231f665186a3d07aabb789f9a4b",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssi%5D%5B%5D=aspace_34eba231f665186a3d07aabb789f9a4b\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_51634c1439bed5144dbee40a392f6ac7",
+              "value": "aspace_51634c1439bed5144dbee40a392f6ac7",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssi%5D%5B%5D=aspace_51634c1439bed5144dbee40a392f6ac7\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_b43479281533647d4e3808a6cdf5d61e",
+              "value": "aspace_b43479281533647d4e3808a6cdf5d61e",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssi%5D%5B%5D=aspace_b43479281533647d4e3808a6cdf5d61e\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_c84c6b4dfc7ed9e4bb3b03798cccd938",
+              "value": "aspace_c84c6b4dfc7ed9e4bb3b03798cccd938",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssi%5D%5B%5D=aspace_c84c6b4dfc7ed9e4bb3b03798cccd938\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          },
+          {
+            "attributes": {
+              "label": "aspace_da0025303b8491c525c9489a10f06059",
+              "value": "aspace_da0025303b8491c525c9489a10f06059",
+              "hits": 1
+            },
+            "links": {
+              "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?f%5Bparent_ssi%5D%5B%5D=aspace_da0025303b8491c525c9489a10f06059\u0026grouped=false\u0026per_page=10\u0026q=smooth"
+            }
+          }
+        ]
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids/catalog/facet/parent_ssi.json?grouped=false\u0026per_page=10\u0026q=smooth"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "all_fields",
+      "attributes": {
+        "label": "All Fields"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026search_field=all_fields"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "keyword",
+      "attributes": {
+        "label": "Keyword"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026search_field=keyword"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "name",
+      "attributes": {
+        "label": "Name"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026search_field=name"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "place",
+      "attributes": {
+        "label": "Place"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026search_field=place"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "subject",
+      "attributes": {
+        "label": "Subject"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026search_field=subject"
+      }
+    },
+    {
+      "type": "search_field",
+      "id": "title",
+      "attributes": {
+        "label": "Title"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026search_field=title"
+      }
+    },
+    {
+      "type": "sort",
+      "id": "score desc, title_sort asc",
+      "attributes": {
+        "label": "relevance"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026sort=score+desc%2C+title_sort+asc"
+      }
+    },
+    {
+      "type": "sort",
+      "id": "date_sort asc",
+      "attributes": {
+        "label": "date (ascending)"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026sort=date_sort+asc"
+      }
+    },
+    {
+      "type": "sort",
+      "id": "date_sort desc",
+      "attributes": {
+        "label": "date (descending)"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026sort=date_sort+desc"
+      }
+    },
+    {
+      "type": "sort",
+      "id": "creator_sort asc",
+      "attributes": {
+        "label": "creator (A-Z)"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026sort=creator_sort+asc"
+      }
+    },
+    {
+      "type": "sort",
+      "id": "creator_sort desc",
+      "attributes": {
+        "label": "creator (Z-A)"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026sort=creator_sort+desc"
+      }
+    },
+    {
+      "type": "sort",
+      "id": "title_sort asc",
+      "attributes": {
+        "label": "title (A-Z)"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026sort=title_sort+asc"
+      }
+    },
+    {
+      "type": "sort",
+      "id": "title_sort desc",
+      "attributes": {
+        "label": "title (Z-A)"
+      },
+      "links": {
+        "self": "https://catalogue-devel.nla.gov.au/finding-aids.json?grouped=false\u0026per_page=10\u0026q=smooth\u0026sort=title_sort+desc"
+      }
+    }
+  ]
+}
