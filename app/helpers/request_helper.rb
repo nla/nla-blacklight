@@ -7,19 +7,8 @@ module RequestHelper
     end
   end
 
-  def recent_item_issue_held(holding)
-    if holding["holdingsStatements"].present?
-      merge_statements_and_notes(holding["holdingsStatements"].last)
-    end
-  end
-
   def items_issues_held(holding)
-    # remove the last statement because it would've already been displayed as the
-    # recent item/issue held
     issues = holding["holdingsStatements"].dup
-    if issues.size > 1
-      issues.pop
-    end
     merged_issues = issues.map do |statement|
       merge_statements_and_notes(statement)
     end
