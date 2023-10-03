@@ -16,11 +16,11 @@ GIT
       summon
 
 GIT
-  remote: https://github.com/yetti/nla-blacklight_common
-  revision: 9d9e053a3b53cfe3a9b8d595102909a525d5a10c
+  remote: https://github.com/nla/nla-blacklight_common
+  revision: 7be347abdce0e2625aacc34ffe5cb9c245804b62
   branch: feat/upgrade
   specs:
-    nla-blacklight_common (0.1.7)
+    nla-blacklight_common (0.1.8)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 9)
@@ -516,7 +516,7 @@ GEM
       rspec-mocks (~> 3.12)
       rspec-support (~> 3.12)
     rspec-support (3.12.1)
-    rubocop (1.56.3)
+    rubocop (1.56.4)
       base64 (~> 0.1.1)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -537,7 +537,7 @@ GEM
     rubocop-performance (1.19.1)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.21.1)
+    rubocop-rails (2.21.2)
       activesupport (>= 4.2.0)
       rack (>= 1.1)
       rubocop (>= 1.33.0, < 2.0)
@@ -626,7 +626,7 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
-    unicode-display_width (2.4.2)
+    unicode-display_width (2.5.0)
     version_gem (1.1.3)
     view_component (3.0.0)
       activesupport (>= 5.2.0, < 8.0)
@@ -723,7 +723,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   rufus-scheduler (~> 3.8)
-  selenium-webdriver (~> 4.11)
+  selenium-webdriver (~> 4.13)
   shoulda-matchers
   simplecov (~> 0.22.0)
   simplecov-json (~> 0.2.3)
