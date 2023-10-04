@@ -1,0 +1,88 @@
+# This workflow runs the unit and system tests, as well as static code analysis
+# and dependecy vulnerability checks.
+#
+# It uses the default MySQL database included in the runner (usually ubuntu-latest).
+name: "Tests and code quality"
+on:
+  push:
+    branches:
+      - "feat/upgrade"
+  pull_request:
+    branches:
+      - "feat/upgrade"
+jobs:
+  linters:
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}-lint
+      cancel-in-progress: true
+    name: Linters
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: RuboCop
+        run: |
+          bundle exec rubocop --parallel
+
+      - name: Brakeman code scanning
+        run: |
+          bundle exec brakeman --format github --no-pager --no-exit-on-warn
+
+      - name: Bundler Audit check
+        run: |
+          bundle exec bundle audit check --update
+
+  tests:
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}-test
+      cancel-in-progress: true
+    name: Tests
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+      DB_DATABASE: blacklight_test
+      DB_USER: root
+      DB_PASSWORD: root
+      RAILS_ENV: test
+      DATABASE_URL: "mysql2://root:root@localhost:3306/blacklight_test"
+      PATRONS_DB_URL: "mysql2://root:root@localhost:3306/blacklight_test"
+      REDIS_URL: redis://localhost:6379/0
+    services:
+      redis:
+        image: redis:alpine
+        ports:
+          - 6379:6379
+        options: --entrypoint redis-server
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up MySQL
+        run: |
+          pwd
+          sudo /etc/init.d/mysql start
+          mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
+
+      - name: RSpec tests
+        uses: coactions/setup-xvfb@v1.0.1
+        with:
+          run: |
+            bundle exec rspec
+
+      - name: Simplecov Report
+        uses: aki77/simplecov-report-action@v1
+        with:
+          failedThreshold: 80
+          token: ${{ secrets.GITHUB_TOKEN }}
+        if: ${{ github.actor != 'dependabot[bot]' }}
