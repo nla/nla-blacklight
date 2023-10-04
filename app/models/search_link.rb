@@ -86,8 +86,8 @@ class SearchLink
     "#{base_url}/*/#{url}" unless url.empty?
   end
 
-  def phrase_query(url)
-    "\"#{trim_garbage(url.delete('"'))}\"" unless url.empty?
+  def phrase_query(phrase)
+    "\"#{trim_garbage(phrase.delete('"'))}\"" if phrase.present?
   end
 
   def extract_domain(url)
