@@ -19,9 +19,9 @@ class ExploreComponent < ViewComponent::Base
   def trove_query
     Rails.cache.fetch("trove_query/#{document.id}", expires_in: 1.hour) do
       query = ""
-      if document.isbn.present?
-        document.isbn.each do |isn|
-          query += "isbn:#{isn}#{(isn != document.isbn.last) ? " OR " : ""}"
+      if document.isbn_list.present?
+        document.isbn_list.each do |isn|
+          query += "isbn:#{isn}#{(isn != document.isbn_list.last) ? " OR " : ""}"
         end
       else
         query += document.id.to_s
@@ -45,7 +45,7 @@ class ExploreComponent < ViewComponent::Base
   end
 
   def google_books_script
-    "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list&.join(",")}#{document.isbn.present? ? "," : ""}#{google_isbn_list&.join(",")}&callback=showGoogleBooksPreview"
+    "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list&.join(",")}#{document.isbn_list.present? ? "," : ""}#{google_isbn_list&.join(",")}&callback=showGoogleBooksPreview"
   end
 
   def render_online_shop?
@@ -64,7 +64,7 @@ class ExploreComponent < ViewComponent::Base
   private
 
   def get_online_shop
-    isbn_list = document.isbn&.map { |isn| isbn10_to_isbn13(isn) }
+    isbn_list = document.isbn_list&.map { |isn| isbn10_to_isbn13(isn) }
 
     if isbn_list.present?
       Rails.cache.fetch("nla_shop/#{document.id}", expires_in: 15.minutes) do
@@ -123,7 +123,7 @@ class ExploreComponent < ViewComponent::Base
   end
 
   def google_isbn_list
-    document.isbn&.map do |isn|
+    document.isbn_list&.map do |isn|
       "ISBN:#{isn}"
     end
   end

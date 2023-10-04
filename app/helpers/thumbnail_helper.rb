@@ -8,7 +8,7 @@ module ThumbnailHelper
 
     service_options = {
       nlaObjId: document.first(NLA_OBJ_ID_FIELD),
-      isbnList: document.isbn&.join(","),
+      isbnList: document.valid_isbn&.join(","),
       lccnList: document.lccn&.join(","),
       width: thumbnail_image_width(document),
       id: document.first("id")

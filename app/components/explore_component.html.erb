@@ -46,6 +46,6 @@
     }
   }
 </script>
-<% if document.isbn.present? || document.lccn.present? %>
+<% if document.valid_isbn.present? || document.lccn.present? %>
 <script defer src="<%= google_books_script %>"></script>
 <% end %>

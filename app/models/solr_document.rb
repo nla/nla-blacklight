@@ -69,7 +69,7 @@ class SolrDocument
   end
 
   delegate :related_access_urls, :copy_access_urls, :online_access_urls, :map_search_urls, :has_eresources?, to: :access
-  delegate :valid_isbn, :invalid_isbn, to: :isbn
+  delegate :valid_isbn, :invalid_isbn, :isbn_list, to: :isbn
 
   attribute :acknowledgement, :array, "acknowledgement_tsim"
   attribute :all_authors, :array, "author_search_tsim"
@@ -101,6 +101,7 @@ class SolrDocument
   attribute :index_finding_aid_note, :array, "index_finding_aid_note_tsim"
   attribute :invalid_issn, :array, "invalid_issn_ssim"
   attribute :isbn, :array, "isbn_tsim"
+  attribute :isbn_list, :array, "isbn_tsim"
   attribute :issn, :array, "issn_display_ssim"
   attribute :issued_with, :array, "issued_with_tsim"
   attribute :life_dates, :array, "life_dates_tsim"
@@ -119,7 +120,6 @@ class SolrDocument
   attribute :printer, :array, "printer_tsim"
   attribute :provenance, :array, "provenance_tsim"
   attribute :publication_date, :array, "display_publication_date_ssim"
-  attribute :publication_place, :array, "display_publication_place_ssim"
   attribute :publisher, :array, "publisher_tsim"
   attribute :related_material, :array, "related_material_tsim"
   attribute :related_title, :array, "related_title_tsim"
@@ -138,10 +138,6 @@ class SolrDocument
   attribute :title_start, :array, "title_start_tsim"
   attribute :translated_title, :array, "translated_title_ssim"
   attribute :uniform_title, :array, "uniform_title_ssim"
-
-  def access
-    @access ||= Access.new(self)
-  end
 
   def access_conditions
     unless has_eresources?
@@ -171,10 +167,6 @@ class SolrDocument
     end
 
     values.presence
-  end
-
-  def isbn
-    @isbn ||= Isbn.new(marc_xml)
   end
 
   def ismn
@@ -222,6 +214,14 @@ class SolrDocument
   end
 
   private
+
+  def access
+    @access ||= Access.new(self)
+  end
+
+  def isbn
+    @isbn ||= Isbn.new(self)
+  end
 
   def clean_time_coverage(dates)
     dates&.map do |date|

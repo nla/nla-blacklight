@@ -32,9 +32,9 @@ module Nla
       def cite_publisher
         if @document.publisher.present?
           if @document.publication_place.present?
-            "#{@document.publisher} #{@document.publication_place}"
+            "#{@document.publisher.first} #{@document.publication_place}"
           else
-            @document.publisher
+            @document.publisher.first
           end
         end
       end

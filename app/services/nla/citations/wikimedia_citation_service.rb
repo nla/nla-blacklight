@@ -91,7 +91,7 @@ module Nla
       end
 
       def build_isbns
-        isbns = @document.isbn
+        isbns = @document.valid_isbn
         if isbns.present?
           " | isbn=#{isbns.first}\n"
         end

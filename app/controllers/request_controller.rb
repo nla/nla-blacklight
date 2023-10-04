@@ -33,7 +33,7 @@ class RequestController < ApplicationController
     end
 
     @finding_aids_link = if @document.finding_aid_url.present?
-      helpers.link_to I18n.t("requesting.collection_finding_aid"), @document.finding_aid_url.first, target: "_blank", rel: "noopener noreferrer"
+      helpers.link_to I18n.t("requesting.collection_finding_aid"), @document.finding_aid_url, target: "_blank", rel: "noopener noreferrer"
     else
       I18n.t("requesting.collection_finding_aid")
     end

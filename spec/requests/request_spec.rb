@@ -10,7 +10,13 @@ RSpec.describe "Requests" do
   let(:instance_id) { "08aed703-3648-54d0-80ef-fddb3c635731" }
   let(:holdings_id) { "37fbc2dd-3b37-58b8-b447-b538ba7265b9" }
   let(:item_id) { "60ae1cf9-5b4c-5fac-9a38-2cb195cdb7b2" }
-  let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_marc, title_tsim: ["National Geographic"], format: ["Journal"]) }
+  let(:document) do
+    SolrDocument.new(id: solr_document_id,
+      marc_ss: serial_marc,
+      title_tsim: ["National Geographic"],
+      format: ["Journal"],
+      folio_instance_id_ssim: ["08aed703-3648-54d0-80ef-fddb3c635731"])
+  end
 
   describe "GET /new" do
     context "when user is not logged in" do
@@ -34,7 +40,7 @@ RSpec.describe "Requests" do
       let(:item_id) { "0f17532a-2fcf-5c72-a0c9-751fc459481f" }
 
       it "redirects to the error page" do
-        allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return([nil, document])
+        allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return(document)
         allow_any_instance_of(CatalogueServicesClient).to receive(:get_holding).and_raise(ServiceTokenError)
 
         expect {
@@ -55,7 +61,7 @@ RSpec.describe "Requests" do
     let(:item_id) { "0f17532a-2fcf-5c72-a0c9-751fc459481f" }
 
     it "returns http success" do
-      allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return([nil, document])
+      allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return(document)
 
       post solr_document_request_path(
         solr_document_id: solr_document_id,
@@ -77,7 +83,7 @@ RSpec.describe "Requests" do
 
     context "when a catalogue services error occurs" do
       it "redirects to the error page" do
-        allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return([nil, document])
+        allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return(document)
         allow_any_instance_of(CatalogueServicesClient).to receive(:get_holding).and_raise(ServiceTokenError)
 
         expect {

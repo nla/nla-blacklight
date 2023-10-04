@@ -6,7 +6,7 @@ class PublicationPlace
   end
 
   def value
-    data = @document.publication_place
+    data = @document.fetch("display_publication_place_ssim", nil)
     if data.present?
       publication_place = data.join(" ")
       if publication_place.end_with?(":")

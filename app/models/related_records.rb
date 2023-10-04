@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "blacklight"
+
 class RelatedRecords
   include ActiveModel::Model
   include Blacklight::Configurable
@@ -32,16 +34,16 @@ class RelatedRecords
 
   def parent
     @parent ||= if @parent_id.present?
-      Nla::RelatedRecordsService.new.fetch_parent(clean_id(@parent_id), blacklight_config)
+      RelatedRecordsService.new.fetch_parent(clean_id(@parent_id), blacklight_config)
     end
   end
 
   def child_count
-    @child_count ||= Nla::RelatedRecordsService.new.fetch_count(clean_id(@collection_id), blacklight_config)
+    @child_count ||= RelatedRecordsService.new.fetch_count(clean_id(@collection_id), blacklight_config)
   end
 
   def sibling_count
-    @sibling_count ||= Nla::RelatedRecordsService.new.fetch_count(clean_id(@parent_id), blacklight_config)
+    @sibling_count ||= RelatedRecordsService.new.fetch_count(clean_id(@parent_id), blacklight_config)
   end
 
   def clean_id(id)

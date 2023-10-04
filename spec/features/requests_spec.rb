@@ -5,7 +5,7 @@ RSpec.describe "Requests" do
     user = create(:user)
     sign_in user
 
-    allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return([nil, document])
+    allow_any_instance_of(Blacklight::SearchService).to receive(:fetch).with(any_args).and_return(document)
   end
 
   let(:config) { Rails.application.config_for(:catalogue) }
@@ -103,7 +103,7 @@ RSpec.describe "Requests" do
       let(:holdings_id) { "bbc3d88b-eb0d-5739-b37e-a736a265d4a2" }
       let(:item_id) { "fbf144fc-e8ac-5e7d-8da6-69dda3adc9e9" }
       let(:solr_document_id) { "2761" }
-      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_manuscript_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["Papers of Mem Fox, 1961-2006 [manuscript]"], format: ["Manuscript"]) }
+      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_manuscript_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["Papers of Mem Fox, 1961-2006 [manuscript]"], format: ["Manuscript"], finding_aid_url_ssim: ["https://nla.gov.au/nla.obj-306101104/findingaid"]) }
 
       before do
         holdings_response = IO.read("spec/files/catalogue_services/serial_manuscript.json")
@@ -129,7 +129,7 @@ RSpec.describe "Requests" do
         expect(page).to have_css("p", text: "You can use one request for up to five consecutive boxes. Use a separate request for non-consecutive boxes/series/folders/items.")
         expect(page).to have_css("p", text: "If available, use the collection finding aid to select your box number, or a series/folder/item number and enter them below. If you need assistance with this please contact us.")
 
-        expect(page).to have_link(href: Rails.application.config_for(:catalogue).contact_us_url, text: "contact us")
+        expect(page).to have_link("contact us", href: Rails.application.config_for(:catalogue).contact_us_url)
       end
 
       it "renders the contact us link" do
@@ -139,7 +139,7 @@ RSpec.describe "Requests" do
           holdings: holdings_id,
           item: item_id
         )
-        expect(page).to have_link(href: Rails.application.config_for(:catalogue).contact_us_url, text: "contact us")
+        expect(page).to have_link("contact us", href: Rails.application.config_for(:catalogue).contact_us_url)
       end
 
       context "when there is a finding aid url" do
@@ -150,7 +150,7 @@ RSpec.describe "Requests" do
             holdings: holdings_id,
             item: item_id
           )
-          expect(page).to have_link(href: "https://nla.gov.au/nla.obj-306101104/findingaid", text: "collection finding aid")
+          expect(page).to have_link("collection finding aid", href: "https://nla.gov.au/nla.obj-306101104/findingaid")
         end
       end
 
@@ -235,7 +235,13 @@ RSpec.describe "Requests" do
     let(:holdings_id) { "37fbc2dd-3b37-58b8-b447-b538ba7265b9" }
     let(:item_id) { "60ae1cf9-5b4c-5fac-9a38-2cb195cdb7b2" }
     let(:solr_document_id) { "1595553" }
-    let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["National Geographic"], format: ["Journal"]) }
+    let(:document) do
+      SolrDocument.new(id: solr_document_id,
+        marc_ss: serial_marc,
+        folio_instance_id_ssim: [instance_id],
+        title_tsim: ["National Geographic"],
+        format: ["Journal"])
+    end
 
     it "renders the 'Back to item' button" do
       visit solr_document_request_success_path(

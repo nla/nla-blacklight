@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "blacklight"
+
 class Collection
   def initialize(marc_rec)
     @marc_rec = marc_rec

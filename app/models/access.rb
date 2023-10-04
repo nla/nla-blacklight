@@ -5,23 +5,23 @@ class Access
     @document = document
   end
 
-  def copy_access_urls
+  def copy_access_urls(*_args)
     @copy_access_urls ||= get_copy_access_urls
   end
 
-  def map_search_urls
+  def map_search_urls(*_args)
     @map_search_urls ||= get_map_search_urls
   end
 
-  def online_access_urls
+  def online_access_urls(*_args)
     @online_access_urls ||= get_online_access_urls
   end
 
-  def related_access_urls
+  def related_access_urls(*_args)
     @related_access_urls ||= get_related_access_urls
   end
 
-  def has_eresources?
+  def has_eresources?(*_args)
     @has_eresources ||= determine_has_eresources
   end
 
