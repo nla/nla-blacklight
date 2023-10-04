@@ -1,5 +1,3 @@
-<%#= @details.to_json %>
-
 <%= render Blacklight::System::ModalComponent.new do |component| %>
   <% component.title { t('account.requests.details.heading') } %>
 
@@ -15,9 +13,19 @@
           <% end %>
           <dt class="col-12 col-md-4 text-md-right"><%= t("account.requests.table_column_headings.request_date") %></dt>
           <dd class="col col-md-8"><%= @details.request_date %><br /><small class="text-muted"><%= @details.request_time %></small></dd>
-          <% if @details.patronComments.present? %>
+          <% if @details.patronComments.present? || @details.cancellationReason.present? || @details.cancellationComment.present? %>
             <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.label.notes") %></dt>
-            <dd class="col col-md-8"><%= @details.patronComments %></dd>
+            <dd class="col col-md-8">
+              <% if @details.patronComments.present? %>
+                <p><%= @details.patronComments %></p>
+              <% end %>
+              <% if @details.cancellationReason.present? %>
+                <p><%= @details.cancellationReason %></p>
+              <% end %>
+              <% if @details.cancellationComment.present? %>
+                <p><%= @details.cancellationComment %></p>
+              <% end %>
+            </dd>
           <% end %>
         </dl>
       </div>
