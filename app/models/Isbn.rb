@@ -17,7 +17,7 @@ class Isbn
   end
 
   def isbn_list(*_args)
-    @isbn_list ||= @document.fetch("isbn_tsim", [])&.map { |isbn| clean_isn(isbn) }
+    @isbn_list ||= @document.fetch("isbn_tsim", nil)&.map { |isbn| clean_isn(isbn) }
   end
 
   private

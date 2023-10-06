@@ -12,6 +12,14 @@
       margin-bottom: 1.5rem;
       
       .advanced-facet-limits {
+        .facet-field-heading {
+          background-color: var(--bs-white);
+
+          button::after {
+            float: none;
+          }
+        }
+
         .blacklight-advanced-facet-select {
           .facet-checkbox {
             width: 1rem;

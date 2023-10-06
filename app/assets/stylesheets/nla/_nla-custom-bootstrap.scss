@@ -62,6 +62,7 @@ $border-radius-sm: 0;
 
   // Typography
 $font-family-sans-serif: "Roboto condensed", sans-serif;
+$btn-font-family: "Roboto condensed", sans-serif;
 $text-muted: $gray-medium-light;
 
 $font-weight-semi-bold: 500;
@@ -114,10 +115,6 @@ $pagination-hover-border-color:     $purple;
 $pagination-disabled-bg:            transparent;
 $pagination-disabled-border-color:  transparent;
 
-// Cards
-$card-border-color: transparent;
-$card-border-radius: 0;
-
 // Tables
 $table-bg: $white;
 $table-caption-color: $purple;
@@ -126,18 +123,8 @@ $table-caption-color: $purple;
 $card-bg: $white;
 $card-border-color: transparent;
 $card-border-radius: 0;
+$card-cap-bg: rgba($white, .03);
 
 // Dropdowns
 $dropdown-bg: $white;
 $dropdown-border-color: $white;
-
-// Focus ring
-$focus-ring-color: rgba($purple, $focus-ring-opacity);
-$focus-ring-box-shadow: 0 0 $focus-ring-blur $focus-ring-width $focus-ring-color;
-$input-focus-box-shadow: $focus-ring-box-shadow;
-$input-btn-focus-box-shadow: $focus-ring-box-shadow;
-$form-select-focus-box-shadow: $focus-ring-box-shadow;
-$form-check-input-focus-box-shadow: $focus-ring-box-shadow;
-$nav-link-focus-box-shadow: $focus-ring-box-shadow;
-$pagination-focus-box-shadow: $focus-ring-box-shadow;
-$btn-close-focus-shadow: $focus-ring-box-shadow;

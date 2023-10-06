@@ -923,6 +923,19 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#isbn_list" do
+    context "when there is an ISBN" do
+      subject(:isbn_value) do
+        document = described_class.new(marc_ss: isbn, isbn_tsim: ["9781740457590 :", "1740457595", "9781740457590"])
+        document.isbn_list
+      end
+
+      it "will return the ISBNs as numbers only" do
+        expect(isbn_value).to eq %w[9781740457590 1740457595 9781740457590]
+      end
+    end
+  end
+
   describe "#ismn" do
     context "when there is an ISMN" do
       subject(:ismn_value) do

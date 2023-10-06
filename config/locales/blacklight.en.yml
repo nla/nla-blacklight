@@ -296,3 +296,5 @@ en:
 
     advanced_search:
       more_options: Advanced Search
+      form:
+        query_criteria_heading_html: "Find items that match %{select_menu} of"

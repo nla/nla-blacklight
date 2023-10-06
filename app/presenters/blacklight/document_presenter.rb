@@ -50,7 +50,7 @@ module Blacklight
       f = fields.lazy.map { |field| field_config(field) }.detect { |field_config| field_presenter(field_config).any? }
       heading = f ? field_value(f, except_operations: [Rendering::HelperMethod]) : ""
       # rubocop:disable Rails/OutputSafety
-      heading.split("<br>").map { |t| (@view_context.action_name == "show") ? t : t.truncate(175, separator: " ") }.join("<br>").html_safe
+      heading.split("<br>").map { |t| (view_context.action_name == "show") ? t : t.truncate(175, separator: " ") }.join("<br>").html_safe
       # rubocop:enable Rails/OutputSafety
     end
 

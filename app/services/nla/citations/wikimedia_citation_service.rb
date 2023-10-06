@@ -86,21 +86,21 @@ module Nla
       def build_publisher
         publisher = @document.publisher
         if publisher.present?
-          " | publisher=#{publisher}\n"
+          " | publisher=#{publisher.first}\n"
         end
       end
 
       def build_isbns
-        isbns = @document.valid_isbn
+        isbns = @document.isbn_list
         if isbns.present?
           " | isbn=#{isbns.first}\n"
         end
       end
 
       def build_language
-        language = @document.first("language_ssim")
+        language = @document.language
         if language.present?
-          " | language=#{language}\n"
+          " | language=#{language.first}\n"
         else
           " | language=No linguistic content\n"
         end
@@ -109,7 +109,7 @@ module Nla
       def build_pi
         pi = @document.pi
         if pi.present?
-          " | url=https://nla.gov.au/#{pi}\n"
+          " | url=#{pi.first}\n"
         end
       end
     end
