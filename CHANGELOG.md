@@ -1,5 +1,40 @@
 # Changelog
 
+## [2.8.0](https://github.com/nla/nla-blacklight/compare/2.7.0...2.8.0) (2023-10-04)
+
+
+### Features
+
+* add link to request summary on success page ([85318d2](https://github.com/nla/nla-blacklight/commit/85318d2ca6cb745751bbc149d4cfb57c1d5c7562))
+* display cancellation reason/comment in notes ([f9f7a1b](https://github.com/nla/nla-blacklight/commit/f9f7a1b29a8ab3478562a9d1de309084e0543bf2))
+* move request details to a modal window ([7d0b091](https://github.com/nla/nla-blacklight/commit/7d0b091188a0cffbe53d5264e43d71182ed84aa3))
+* pass "loan" param to catalogue-services ([9823bbd](https://github.com/nla/nla-blacklight/commit/9823bbd4d4a0e8338a6c6e83a83cbc7923b1854e))
+* remove recent item/issues held ([50ffe76](https://github.com/nla/nla-blacklight/commit/50ffe761cd22197ba68ddf2beb3d9ce9cf409e3a))
+
+
+### Bug Fixes
+
+* fix instantiation of default request summary to match service ([e3e0cf6](https://github.com/nla/nla-blacklight/commit/e3e0cf60c8f536f4c229e7ec7bcc3ad95640db81))
+
+
+### Miscellaneous
+
+* **deps-dev:** bump rubocop-rails from 2.21.1 to 2.21.2 ([9733842](https://github.com/nla/nla-blacklight/commit/9733842d4e75325e3a674168680de13ee98e89be))
+* **deps-dev:** bump rubocop-rspec from 2.24.0 to 2.24.1 ([09a7f63](https://github.com/nla/nla-blacklight/commit/09a7f63d7e6cbb606adaaccd53123a0d367081a8))
+* **deps-dev:** bump selenium-webdriver from 4.12.0 to 4.13.1 ([fa09654](https://github.com/nla/nla-blacklight/commit/fa09654bf1bc8897743333625d14c1ddaca81f19))
+* **deps:** bump puma from 6.3.1 to 6.4.0 ([23d7c02](https://github.com/nla/nla-blacklight/commit/23d7c0297d8abf4ad712ec4e20317620db2a24dc))
+* **deps:** bump strong_migrations from 1.6.2 to 1.6.3 ([0ade61b](https://github.com/nla/nla-blacklight/commit/0ade61b62482be802e89ab75e68f1ac5dd6f822b))
+
+
+### Tests
+
+* fix tests ([e5e23ac](https://github.com/nla/nla-blacklight/commit/e5e23ace331a43c8627902d64cc2442ff60666ae))
+
+
+### Continuous Integration
+
+* rename hotfix workflow ([8c28bd7](https://github.com/nla/nla-blacklight/commit/8c28bd704ff933d7633769f8318228a5a0e13fd2))
+
 ## [2.7.0](https://github.com/nla/nla-blacklight/compare/2.6.0...2.7.0) (2023-09-22)
 
 
