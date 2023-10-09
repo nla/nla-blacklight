@@ -38,7 +38,7 @@ class SearchController < ApplicationController
   private
 
   def set_per_page
-    @cat_per_page = search_params["cat_per_page"] || 10
+    @cat_per_page = search_params["cat_per_page"] || 5
     @eds_per_page = search_params["eds_per_page"] || 3
     @fa_per_page = search_params["fa_per_page"] || 5
   end

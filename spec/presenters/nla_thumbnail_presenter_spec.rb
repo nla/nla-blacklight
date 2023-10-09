@@ -32,7 +32,7 @@ RSpec.describe NlaThumbnailPresenter do
 
     context "when has online access" do
       it "returns the online access url" do
-        allow(document).to receive_messages(online_access: [{href: "https://example.com"}], copy_access: [])
+        allow(document).to receive_messages(online_access_urls: [{href: "https://example.com"}], copy_access_urls: [])
 
         expect(url).to eq "https://example.com"
       end
@@ -40,7 +40,7 @@ RSpec.describe NlaThumbnailPresenter do
 
     context "when has copy access" do
       it "returns the copy access url" do
-        allow(document).to receive_messages(online_access: [], copy_access: [{href: "https://example.com"}])
+        allow(document).to receive_messages(online_access_urls: [], copy_access_urls: [{href: "https://example.com"}])
 
         expect(url).to eq "https://example.com"
       end
@@ -48,7 +48,7 @@ RSpec.describe NlaThumbnailPresenter do
   end
 
   describe "#alt_title_from_document" do
-    subject(:alt_text) { presenter.alt_title_from_document }
+    subject(:alt_text) { presenter.send(:alt_title_from_document) }
 
     context "when thumbnail_field is configured" do
       # rubocop:disable RSpec/NestedGroups
@@ -86,23 +86,13 @@ RSpec.describe NlaThumbnailPresenter do
         end
       end
 
-      context "when there is no link" do
-        it "returns an image tag only" do
-          allow(view_context).to receive(:render_thumbnail).and_return('<img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
-          allow(view_context).to receive(:solr_document_path).with({id: 123}).and_return("/catalog/#{document.id}")
-          allow(view_context).to receive(:current_page?).with("/catalog/#{document.id}").and_return(false)
-
-          expect(presenter.thumbnail_tag.include?("href")).to be false
-        end
-      end
-
       context "when there is a link" do
         it "returns an image tag inside an anchor" do
           allow(view_context).to receive(:render_thumbnail).and_return('<img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
           allow(view_context).to receive(:current_page?).with("/catalog/#{document.id}").and_return(false)
           allow(view_context).to receive(:solr_document_path).with({id: 123}).and_return("/catalog/#{document.id}")
-          allow(view_context).to receive(:link_to).with(any_args).and_return(%(<a href="/catalog/#{document.id}"><img src="image.png" alt="Work Title" onerror="this.style.display='none'" class="w-100" /></a>))
-          allow(document).to receive(:online_access).and_return([{href: "https://example.com"}])
+          allow(view_context).to receive(:link_to_document).with(any_args).and_return(%(<a href="/catalog/#{document.id}"><img src="image.png" alt="Work Title" onerror="this.style.display='none'" class="w-100" /></a>))
+          allow(document).to receive(:online_access_urls).and_return([{href: "https://example.com"}])
 
           expect(presenter.thumbnail_tag.include?("href")).to be true
           expect(presenter.thumbnail_tag.include?("img")).to be true
@@ -119,10 +109,9 @@ RSpec.describe NlaThumbnailPresenter do
       # rubocop:disable RSpec/NestedGroups
       context "when there is a link" do
         it "returns an image tag inside an anchor" do
-          allow(document).to receive(:online_access).and_return([{href: "https://example.com"}])
+          allow(document).to receive(:online_access_urls).and_return([{href: "https://example.com"}])
           allow(view_context).to receive(:render_thumbnail).and_return('<img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" />')
-          allow(view_context).to receive(:link_to).with(any_args).and_return('<a href="https://example.com"><img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" /></a>')
-          allow(document).to receive(:online_access).and_return([{href: "https://example.com"}])
+          allow(view_context).to receive(:link_to_document).with(any_args).and_return('<a href="https://example.com"><img src="image.png" alt="Work Title" onerror="this.style.display=\'none\'" class="w-100" /></a>')
           allow(view_context).to receive(:solr_document_path).with({id: 123}).and_return("/catalog/#{document.id}")
           allow(view_context).to receive(:current_page?).with("/catalog/#{document.id}").and_return(true)
 

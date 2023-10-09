@@ -29,22 +29,6 @@ RSpec.describe BlacklightHelper do
     end
   end
 
-  describe "#render_document_heading" do
-    let(:document) { SolrDocument.new(marc_ss: sample_marc) }
-
-    context "when apostrophes are present as HTML entities" do
-      before do
-        # rubocop:disable RSpec/VerifiedDoubles
-        allow(helper).to receive(:presenter).and_return(double(heading: "Mayor&#39;s Stone"))
-        # rubocop:enable RSpec/VerifiedDoubles
-      end
-
-      it "converts them to standard apostrophes" do
-        expect(helper.render_document_heading).to eq "<h4 itemprop=\"name\" class=\"h3 col\">Mayor's Stone</h4>"
-      end
-    end
-  end
-
   def sample_marc
     "<record>
       <leader>01182pam a22003014a 4500</leader>

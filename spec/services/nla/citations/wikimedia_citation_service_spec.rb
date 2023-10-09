@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Nla::Citations::WikimediaCitationService do
-  let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher: "Publisher", publication_place: "Publication Place") }
+  let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"]) }
   let(:service) { described_class.new(document) }
 
   describe "#build_title" do
@@ -20,7 +20,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
     end
 
     context "when there is no format" do
-      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", date_lower_isi: "2019", publisher: "Publisher", publication_place: "Publication Place", marc_ss: book_marc) }
+      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"], marc_ss: book_marc) }
 
       it "returns the title without additional fields" do
         expect(service.export).to include(" | title=Title\n")
@@ -30,7 +30,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
 
   describe "#build_authors" do
     context "when there is only a single author" do
-      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher: "Publisher", publication_place: "Publication Place", author_search_tsim: ["Author, A."]) }
+      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"], author_search_tsim: ["Author, A."]) }
 
       it "returns the author" do
         expect(service.build_authors).to eq(" | author1=Author, A.\n")
@@ -38,7 +38,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
     end
 
     context "when there are multiple authors" do
-      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher: "Publisher", publication_place: "Publication Place", author_search_tsim: ["Author, A.", "Author, B."]) }
+      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"], author_search_tsim: ["Author, A.", "Author, B."]) }
 
       it "returns the author" do
         expect(service.build_authors).to eq(" | author1=Author, A.\n | author2=Author, B.\n")
@@ -66,7 +66,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
 
   describe "#build_publisher" do
     context "when there is a publisher" do
-      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
+      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"], publisher_tsim: ["Murdoch"]) }
 
       it "returns the publisher" do
         expect(service.build_publisher).to eq(" | publisher=Murdoch\n")
@@ -86,7 +86,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
 
   describe "#build_isbns" do
     context "when there is an isbn" do
-      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
+      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"], isbn_tsim: ["9781740457590 :", "1740457595", "9781740457590"]) }
 
       it "returns the isbn" do
         expect(service.build_isbns).to eq(" | isbn=9781740457590\n")
@@ -94,11 +94,10 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
     end
 
     context "when there is no isbn" do
-      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
+      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"], isbn: isbn) }
+      let(:isbn) { instance_double(Isbn, isbn_list: nil) }
 
       it "returns nil" do
-        allow(document).to receive(:isbn_list).and_return(nil)
-
         expect(service.build_isbns).to be_nil
       end
     end

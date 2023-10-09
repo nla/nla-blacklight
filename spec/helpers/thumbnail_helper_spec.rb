@@ -34,7 +34,7 @@ RSpec.describe ThumbnailHelper do
           )
           .to_return(status: 200, body: isbn_image.to_json, headers: {"content-type": "image/jpeg"})
 
-        allow(document).to receive(:isbn).and_return(["8559378"])
+        allow(document).to receive(:valid_isbn).and_return(["8559378"])
 
         expect(helper.render_thumbnail(document, {})).to match(/img/)
       end

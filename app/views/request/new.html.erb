@@ -5,6 +5,7 @@
 <% end %>
 
 <%- unless @met_request_limit %>
+  <%= @request_form %>
 <div class="row mt-4 mb-4">
   <% if @request_form == "manuscripts" %>
     <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt").html_safe %></p>

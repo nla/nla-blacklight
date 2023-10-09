@@ -1,14 +1,12 @@
 <% content_for(:content) do %>
   <% if content_for? :sidebar %>
-    <section id="content" class="<%= main_content_classes %> mt-5" aria-label="<%= t('blacklight.search.documents.aria.search_results') %>">
+    <section id="content" class="<%= main_content_classes %> mt-5 order-first" aria-label="<%= t('blacklight.search.documents.aria.search_results') %>">
       <%= yield %>
     </section>
 
-    <%# if show_facets_sidebar? %>
-        <section id="sidebar" class="<%= sidebar_classes %> mt-5" aria-label="<%= t('blacklight.search.documents.aria.limit_search') %>">
-          <%= content_for(:sidebar) %>
-        </section>
-    <%# end %>
+    <section id="sidebar" class="<%= sidebar_classes %> mt-5 order-last" aria-label="<%= t('blacklight.search.documents.aria.limit_search') %>">
+      <%= content_for(:sidebar) %>
+    </section>
   <% else %>
     <section class="col-md-12">
       <%= yield %>

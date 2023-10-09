@@ -7,11 +7,11 @@ module RequestItemHelper
   end
 
   def has_online_copy?(document)
-    document.copy_access.present? && document.copy_access.first[:href].include?("nla.gov.au")
+    document.copy_access_urls.present? && document.copy_access_urls.first[:href].include?("nla.gov.au")
   end
 
   def has_online_access?(document)
-    document.online_access.present? && document.online_access.first[:href].include?("nla.gov.au")
+    document.online_access_urls.present? && document.online_access_urls.first[:href].include?("nla.gov.au")
   end
 
   def is_ned_item?(document)
@@ -20,8 +20,7 @@ module RequestItemHelper
   end
 
   def is_electronic_resource?(document)
-    callnumber = document.fetch("call_number_tsim")
-    callnumber.include?("ELECTRONIC RESOURCE") || callnumber.include?("INTERNET")
+    document.callnumber.include?("ELECTRONIC RESOURCE") || document.callnumber.include?("INTERNET")
   rescue
     false
   end

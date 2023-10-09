@@ -1,40 +1,45 @@
 #!/usr/bin/env ruby
 require "fileutils"
 
+# path to your application root.
+APP_ROOT = File.expand_path("..", __dir__)
+
 def setup
-  log "== Installing dependencies =="
-  # Only do bundle install if the much-faster
-  # bundle check indicates we need to
-  system! "gem install bundler --conservative"
-  system! "bundle config set --local path vendor/bundle"
-  system! "bundle config set --local jobs 3"
-  system! "bundle config set --local retry 3"
-  system("bundle check") || system!("bundle install")
-  system! "bundle clean --force"
+  FileUtils.chdir APP_ROOT do
+    log "== Installing dependencies =="
+    # Only do bundle install if the much-faster
+    # bundle check indicates we need to
+    system! "gem install bundler --conservative"
+    system! "bundle config set --local path vendor/bundle"
+    system! "bundle config set --local jobs 3"
+    system! "bundle config set --local retry 3"
+    system("bundle check") || system!("bundle install")
+    system! "bundle clean --force"
 
-  log "== Installing migrations from dependencies =="
-  # Copies migrations that don't already exist into the `db` directory
-  system! "bin/rails generate nla:blacklight_common:install"
+    log "== Installing migrations from dependencies =="
+    # Copies migrations that don't already exist into the `db` directory
+    system! "bin/rails generate nla:blacklight_common:install"
 
-  log "== Dropping & recreating the development database =="
-  # Note that the very first time this runs, db:reset
-  # will fail, but this failure is fixed by
-  # doing a db:migrate
-  system! "bin/rails db:reset || bin/rails db:migrate"
+    log "== Dropping & recreating the development database =="
+    # Note that the very first time this runs, db:reset
+    # will fail, but this failure is fixed by
+    # doing a db:migrate
+    system! "bin/rails db:reset || bin/rails db:migrate"
 
-  log "== Clearing old logs and temp files =="
-  # Clears up any caches in the /tmp directory
-  system! "bin/rails log:clear tmp:clear"
+    log "== Clearing old logs and temp files =="
+    # Clears up any caches in the /tmp directory
+    system! "bin/rails log:clear tmp:clear"
 
-  log "== Restarting application server =="
-  system! "bin/rails restart"
+    log "== Restarting application server =="
+    system! "bin/rails restart"
 
-  log "== All set up. Have a nice day! =="
-  log ""
-  log "To see commonly-needed commands, run:"
-  log ""
-  log "    bin/setup help"
-  log ""
+    log "== All set up. Have a nice day! =="
+    log ""
+    log "To see commonly-needed commands, run:"
+    log ""
+    log "    bin/setup help"
+    log ""
+  end
 end
 
 def help

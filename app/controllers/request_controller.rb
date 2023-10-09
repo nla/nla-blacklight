@@ -33,7 +33,7 @@ class RequestController < ApplicationController
     end
 
     @finding_aids_link = if @document.finding_aid_url.present?
-      helpers.link_to I18n.t("requesting.collection_finding_aid"), @document.finding_aid_url.first, target: "_blank", rel: "noopener noreferrer"
+      helpers.link_to I18n.t("requesting.collection_finding_aid"), @document.finding_aid_url, target: "_blank", rel: "noopener noreferrer"
     else
       I18n.t("requesting.collection_finding_aid")
     end
@@ -53,7 +53,7 @@ class RequestController < ApplicationController
 
     cat_services_client = CatalogueServicesClient.new
     _holding, @item = cat_services_client.get_holding(instance_id: instance_id, holdings_id: holdings_id, item_id: item_id)
-    cat_services_client.create_request(requester: current_user.folio_id, request: new_request)
+    # cat_services_client.create_request(requester: current_user.folio_id, request: new_request)
 
     redirect_to action: :success, holdings: holdings_id, item: item_id
   end
@@ -73,7 +73,7 @@ class RequestController < ApplicationController
   private
 
   def set_document
-    _deprecated_response, @document = search_service.fetch(request_params[:solr_document_id])
+    @document = search_service.fetch(request_params[:solr_document_id])
   end
 
   def request_params

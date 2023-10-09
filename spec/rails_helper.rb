@@ -9,10 +9,10 @@ require "rspec/rails"
 require "webmock/rspec"
 require "view_component/test_helpers"
 require "capybara/rspec"
-require "simplecov_helper"
 require "mock_redis"
-require "caching/eresources_cache"
 require "factory_bot_rails"
+
+require "blacklight"
 
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
@@ -34,15 +34,11 @@ Dir[Rails.root.join("spec", "support", "**", "*.rb")].sort.each { |f| require f 
 begin
   ActiveRecord::Migration.maintain_test_schema!
 rescue ActiveRecord::PendingMigrationError => e
-  puts e.to_s.strip
-  exit 1
+  abort e.to_s.strip
 end
 RSpec.configure do |config|
-  config.include MarcHelpers
-  config.include CachingHelpers
-
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
-  config.fixture_path = Rails.root.join("spec", "fixtures")
+  # config.fixture_path = "#{::Rails.root}/spec/fixtures"
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
@@ -64,28 +60,35 @@ RSpec.configure do |config|
   #     end
   #
   # The different available types are documented in the features, such as in
-  # https://relishapp.com/rspec/rspec-rails/docs
+  # https://rspec.info/features/6-0/rspec-rails
   config.infer_spec_type_from_file_location!
 
   # Filter lines from Rails gems in backtraces.
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
-  #
+
   config.before do
     Rails.cache.clear
-    Caching::EresourcesCache.instance.clear
 
     mock_redis = MockRedis.new
     allow(Redis).to receive(:new).and_return(mock_redis)
   end
 
+  config.include MarcHelpers
   config.include ViewComponent::TestHelpers, type: :component
+  config.include ViewComponent::SystemTestHelpers, type: :component
   config.include Capybara::RSpecMatchers, type: :component
 
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :feature
   config.extend DeviseMacros
+
+  config.include(ControllerLevelHelpers, type: :helper)
+  config.before(:each, type: :helper) { initialize_controller_helpers(helper) }
+
+  config.include(ControllerLevelHelpers, type: :view)
+  config.before(:each, type: :view) { initialize_controller_helpers(view) }
 end
 
 Shoulda::Matchers.configure do |config|

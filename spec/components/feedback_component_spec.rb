@@ -6,6 +6,6 @@ RSpec.describe FeedbackComponent, type: :component do
   it "renders the error reporting link" do
     render_inline(described_class.new("123"))
 
-    expect(rendered_component).to have_link(I18n.t("feedback.report_error"))
+    expect(rendered_content).to have_link(I18n.t("feedback.report_error"))
   end
 end

@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe RelatedRecords do
-  subject(:record) { described_class.new(document, collection_id, nil, nil) }
+  subject(:record) { described_class.new(document.marc_rec, collection_id, nil, nil) }
 
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "123") }
   let(:collection_id) { "" }
@@ -124,7 +124,7 @@ RSpec.describe RelatedRecords do
       let(:document) { SolrDocument.new(marc_ss: child_marc) }
 
       it "returns the parent record" do
-        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22.*%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+        WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22.*%22&rows=1&sort=score%20desc,%20pub_date_si%20desc&wt=json/)
           .with(
             headers: {
               "Accept" => "*/*",

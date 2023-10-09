@@ -3,11 +3,7 @@
 require "addressable/uri"
 
 class SearchLink
-  prepend MemoWise
-
   include ActiveModel::Model
-
-  attr_reader :links
 
   GOOGLE_BASE_URL = "https://www.google.com.au/search?q=%s"
   TROVE_BASE_URL = "https://webarchive.nla.gov.au/awa"
@@ -15,7 +11,10 @@ class SearchLink
 
   def initialize(document)
     @document = document
-    @links ||= generate_links
+  end
+
+  def value
+    generate_links
   end
 
   private
@@ -35,7 +34,7 @@ class SearchLink
   end
 
   def select_urls
-    urls = @document.get_marc_derived_field("856u")
+    urls = MarcDerivedField.instance.derive(@document.marc_rec, "856u", {alternate_script: false})
 
     eresources = Eresources.new
 
@@ -53,14 +52,13 @@ class SearchLink
 
     result.compact_blank.presence
   end
-  memo_wise :select_urls
 
   def build_google_query(url)
     unless url.empty?
-      title_start = @document.get_marc_derived_field("245a").first
+      title_start = @document.title_start.first
       query = [phrase_query(title_start), extract_domain(url)]
 
-      cited_authors = @document.get_marc_derived_field("100a:110a:111a:700a:710a:711a")
+      cited_authors = @document.cited_authors
       cited_authors&.each do |author|
         query << process_author(author)
       end
@@ -76,7 +74,7 @@ class SearchLink
       unless uri.nil?
         file_extension = uri.extname
         unless file_extension.nil?
-          query << "pdf" if file_extension.casecmp("pdf").zero?
+          query << "pdf" if file_extension.casecmp?("pdf")
         end
       end
 
@@ -88,8 +86,8 @@ class SearchLink
     "#{base_url}/*/#{url}" unless url.empty?
   end
 
-  def phrase_query(url)
-    "\"#{trim_garbage(url.delete('"'))}\"" unless url.empty?
+  def phrase_query(phrase)
+    "\"#{trim_garbage(phrase.delete('"'))}\"" if phrase.present?
   end
 
   def extract_domain(url)

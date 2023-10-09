@@ -1,0 +1,23 @@
+@charset "UTF-8";
+@import "variables";
+@import "nla-custom-bootstrap";
+
+.page-link {
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: $purple;
+    border: 1px solid transparent;
+    color: $white;
+  }
+
+  &:focus {
+    text-decoration: none;
+  }
+}
+
+.page-link.active,
+.active > .page-link {
+  background-color: $purple;
+  border: 1px solid transparent;
+}

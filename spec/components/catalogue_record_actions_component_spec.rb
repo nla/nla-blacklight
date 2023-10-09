@@ -12,7 +12,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
   end
 
   it "renders the 'Request' button" do
-    allow(document).to receive(:copy_access).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
+    allow(document).to receive(:copy_access_urls).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
 
     render_inline(described_class.new(document: document))
 
@@ -21,7 +21,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
 
   context "when item is a NED item" do
     it "does not render the 'Request' button" do
-      allow(document).to receive_messages(copy_access: [], system_control_number: ["(AU-CaNED)NED248338P743467"])
+      allow(document).to receive_messages(copy_access_urls: [], system_control_number: ["(AU-CaNED)NED248338P743467"])
 
       render_inline(described_class.new(document: document))
 
@@ -31,7 +31,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
 
   context "when available online" do
     it "renders the 'View at library' button" do
-      allow(document).to receive(:copy_access).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
+      allow(document).to receive(:copy_access_urls).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
 
       render_inline(described_class.new(document: document))
 
@@ -42,7 +42,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
       let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485, format: ["Audio"]) }
 
       it "renders the 'Listen' button" do
-        allow(document).to receive(:copy_access).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
+        allow(document).to receive(:copy_access_urls).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
 
         render_inline(described_class.new(document: document))
 
@@ -55,7 +55,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
     let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485, format: ["Book"]) }
 
     it "does not render the 'View online' button" do
-      allow(document).to receive(:copy_access).and_return([])
+      allow(document).to receive(:copy_access_urls).and_return([])
 
       render_inline(described_class.new(document: document))
 
@@ -66,7 +66,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
       let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485, format: ["Audio"]) }
 
       it "renders the 'Listen' button" do
-        allow(document).to receive(:copy_access).and_return([])
+        allow(document).to receive(:copy_access_urls).and_return([])
 
         render_inline(described_class.new(document: document))
 

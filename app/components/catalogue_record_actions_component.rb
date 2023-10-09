@@ -21,10 +21,10 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def online_url
-    if @document.online_access.present?
-      @document.online_access.first[:href]
-    elsif @document.copy_access.present?
-      @document.copy_access.first[:href]
+    if @document.online_access_urls.present?
+      @document.online_access_urls.first[:href]
+    elsif @document.copy_access_urls.present?
+      @document.copy_access_urls.first[:href]
     end
   end
 

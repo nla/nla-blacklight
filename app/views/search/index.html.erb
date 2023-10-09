@@ -11,7 +11,7 @@
 
       <%= render BentoSearchTotalsComponent.new(%w[catalogue ebsco_eds_keyword ebsco_eds_title finding_aids]) %>
 
-      <div class="card-columns clearfix mt-0 mb-2">
+      <div class="card-columns mt-0 mb-2">
         <%= render BentoSearchResultsComponent.new("catalogue", bento_single_search_path(engine: "catalogue", q: @query)) %>
         <%= render BentoSearchResultsComponent.new("ebsco_eds_keyword", bento_single_search_path(engine: "ebsco_eds_keyword", q: @query)) %>
         <%= render BentoSearchResultsComponent.new("ebsco_eds_title", bento_single_search_path(engine: "ebsco_eds_title", q: @query, search_field: "TI")) %>

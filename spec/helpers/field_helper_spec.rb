@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe FieldHelper do
-  let(:document) { SolrDocument.new(marc_ss: sample_marc) }
+  let(:document) { SolrDocument.new(marc_ss: sample_marc, title_start_tsim: ["Protocol amending 1949 Convention of Inter-American Tropical Tuna Commission"], cited_authors_tsim: ["United States."]) }
   let(:view_context) { instance_double(ActionView::Base) }
   let(:config) { Blacklight::Configuration.new.view_config(:show) }
 
@@ -39,7 +39,7 @@ RSpec.describe FieldHelper do
       end
 
       it "generates broken links text" do
-        expect(document).to have_broken_links
+        expect(document.broken_links).not_to be_nil
       end
 
       it "starts with the text 'Broken link?'" do
@@ -55,17 +55,17 @@ RSpec.describe FieldHelper do
       end
 
       it "includes a link to Google" do
-        expect(list).to include "<a class=\"text-break\" href=\"https://www.google.com.au/search?q=&quot;Protocol amending 1949 Convention of Inter-American Tropical Tuna Commission&quot; gpo.gov united states united states united states\">Google</a>"
+        expect(list).to include "<a class=\"text-break\" href=\"https://www.google.com.au/search?q=&quot;Protocol amending 1949 Convention of Inter-American Tropical Tuna Commission&quot; gpo.gov united states\">Google</a>"
       end
     end
 
     context "when there are no broken links" do
       let(:value) { nil }
 
-      let(:document) { SolrDocument.new(marc_ss: no_broken_links_marc) }
+      let(:document) { SolrDocument.new(marc_ss: no_broken_links_marc, title_start_tsim: ["Canberra"]) }
 
       it "does not generate broken links text" do
-        expect(document).not_to have_broken_links
+        expect(document.broken_links).to be_nil
       end
     end
 
@@ -77,7 +77,7 @@ RSpec.describe FieldHelper do
         }]
       }
 
-      let(:document) { SolrDocument.new(marc_ss: some_broken_links_marc) }
+      let(:document) { SolrDocument.new(marc_ss: some_broken_links_marc, title_start_tsim: ["Washington monthly local climatological data"]) }
 
       it "does not generate broken links text" do
         expect(document.broken_links[value.first[:href]]).to be_nil

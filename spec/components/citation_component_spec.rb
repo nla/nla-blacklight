@@ -33,7 +33,7 @@ RSpec.describe CitationComponent, type: :component do
   end
 
   context "when citing a book" do
-    let(:document) { SolrDocument.new(marc_ss: book_marc, id: 3601830, format: "Book") }
+    let(:document) { SolrDocument.new(marc_ss: book_marc, id: 3601830, format: "Book", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"]) }
 
     it "renders the persistent identifier" do
       render_inline(described_class.new(document: document))

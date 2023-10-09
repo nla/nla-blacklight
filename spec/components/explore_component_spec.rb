@@ -35,12 +35,12 @@ RSpec.describe ExploreComponent, type: :component do
         .to_return(status: 200, body: response, headers: {})
     end
 
-    let(:document) { SolrDocument.new(marc_ss: bookshop_marc, id: "8680859", format: ["Book"]) }
+    let(:document) { SolrDocument.new(marc_ss: bookshop_marc, id: "8680859", format: ["Book"], isbn_tsim: %w[9781922507372 1922507377]) }
 
     it "renders the online shop link" do
       render_inline(described_class.new(document))
 
-      expect(page).to have_link(text: I18n.t("explore.nla_shop"))
+      expect(page).to have_link(I18n.t("explore.nla_shop"))
     end
   end
 
@@ -70,7 +70,7 @@ RSpec.describe ExploreComponent, type: :component do
         described_class.new(document).trove_query
       end
 
-      let(:document) { SolrDocument.new(marc_ss: sample_marc_isbn, id: "1868021") }
+      let(:document) { SolrDocument.new(marc_ss: sample_marc_isbn, id: "1868021", isbn_tsim: %w[0855507322 0855507403]) }
 
       it "includes the ISBNs in the Trove URL" do
         expect(trove_query_value).to include "isbn%3A"
@@ -86,7 +86,7 @@ RSpec.describe ExploreComponent, type: :component do
         described_class.new(document).trove_query
       end
 
-      let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485", lc_callnum_ssim: ["mc SUDOC Y 1.1/7:107-19"]) }
+      let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485", call_number_tsim: ["mc SUDOC Y 1.1/7:107-19"]) }
 
       it "includes the callnumber in the Trove URL" do
         expect(trove_query_value).to include "%22mc%20SUDOC%20Y%201.1%2F7%3A107-19%22"
@@ -98,7 +98,7 @@ RSpec.describe ExploreComponent, type: :component do
         described_class.new(document).trove_query
       end
 
-      let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485", lc_callnum_ssim: ["mc SUDOC Y 1.1/7:107-19", "PIC Drawer 2251 #S2492"]) }
+      let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485", call_number_tsim: ["mc SUDOC Y 1.1/7:107-19", "PIC Drawer 2251 #S2492"]) }
 
       it "separates the callnumbers with 'OR'" do
         expect(trove_query_value).to include "%22mc%20SUDOC%20Y%201.1%2F7%3A107-19%22%20OR%20%22PIC%20Drawer%202251%20%23S2492%22"
@@ -122,7 +122,7 @@ RSpec.describe ExploreComponent, type: :component do
         described_class.new(document).google_books_script
       end
 
-      let(:document) { SolrDocument.new(marc_ss: sample_marc_lccn, id: "213391") }
+      let(:document) { SolrDocument.new(marc_ss: sample_marc_lccn, id: "213391", isbn_tsim: ["0902907468"]) }
 
       it "prefixes the ISBN list with 'ISBN:'" do
         expect(google_books_script_value).to include "ISBN:0902907468"
@@ -144,7 +144,7 @@ RSpec.describe ExploreComponent, type: :component do
         described_class.new(document).google_books_script
       end
 
-      let(:document) { SolrDocument.new(marc_ss: sample_marc_lccn, id: "213391") }
+      let(:document) { SolrDocument.new(marc_ss: sample_marc_lccn, id: "213391", isbn_tsim: ["0902907468"], lccn_ssim: ["74190336"]) }
 
       it "prefixes the LCCN list with 'LCCN:'" do
         expect(google_books_script_value).to include "LCCN:74190336"

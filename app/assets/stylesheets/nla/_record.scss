@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "variables";
+@import "nla-custom-bootstrap";
 
 .document-thumbnail {
   &.col-12 a {
@@ -12,7 +13,7 @@
         -webkit-font-smoothing: antialiased;
         font: var(--fa-font-regular);
         content: '\f00e';
-        color: color("white");
+        color: $white;
         position: absolute;
         top: 0.5em;
         left: 0.5em;
@@ -37,7 +38,7 @@
 
 .document {
   .dl-invert dt {
-    color: color("gray-medium-light");
+    color: $gray-medium-light;
   }
 }
 

@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "blacklight"
+require "blacklight/solr_cloud/repository"
+
 class RequestDetail
   include ActiveModel::Model
   include Blacklight::Configurable

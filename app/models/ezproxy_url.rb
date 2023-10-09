@@ -4,8 +4,6 @@ require "digest"
 require "erb"
 
 class EzproxyUrl
-  include ActiveModel::Model
-
   attr_reader :url
 
   def initialize(url)

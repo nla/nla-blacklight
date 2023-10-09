@@ -2,20 +2,29 @@
   label {
     cursor: pointer;
     min-width: auto;
-  }
-  
-  input[type=checkbox] { 
-    display:none; 
+    color: $light-purple;
   }
 
-  input[type=checkbox] + span:before { 
-    font: var(--fa-font-light);
-    content: "\e100"; 
-    margin-right: 0.5rem;
-    }
-  
-  input[type=checkbox]:checked + span:before { 
-    font: var(--fa-font-solid);
-    content: "\e100"; 
+  input[type=checkbox] {
+    display:none;
   }
+
+  input[type=checkbox] + span:before {
+    font: var(--fa-font-light);
+    content: "\e100";
+    margin-right: 0.5rem;
+  }
+
+  input[type=checkbox]:checked + span:before {
+    font: var(--fa-font-solid);
+    content: "\e100";
+  }
+
+  .blacklight-icons {
+    display: none;
+  }
+}
+
+.list-group-item.bookmark {
+  background-color: transparent;
 }

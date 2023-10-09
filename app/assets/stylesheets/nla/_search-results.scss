@@ -1,6 +1,6 @@
 @charset "UTF-8";
 @import "variables";
-
+@import "nla-custom-bootstrap";
 
 .constraints-container {
   margin-top: 1rem;
@@ -19,8 +19,8 @@
       
       &:hover,
       &:focus {
-        background-color: color("white");
-        color: color("purple");
+        background-color: $white;
+        color: $purple;
         cursor: default;
       }
     }
@@ -38,9 +38,9 @@
       &:not(:disabled):not(.disabled):hover,
       &:not(:disabled):not(.disabled):focus,
       &:not(:disabled):not(.disabled):active {
-        background: color("white");
-        color: color("orange");
-        border-color: color("purple");
+        background: $white;
+        color: $orange;
+        border-color: $purple;
         cursor: pointer;
         text-decoration: none;
       }
@@ -66,7 +66,7 @@
     
     &:focus,
     &:hover {
-      background: color("white");
+      background: $white;
       box-shadow: 3px 3px 6px 0 rgba(112,57,150,0.1);
     }
     
@@ -78,7 +78,7 @@
     }
     
     .toggle-bookmark {
-      color: color("light-purple");
+      color: $light-purple;
     }
   }
 }

@@ -6,7 +6,7 @@
   },
   itemscope: true,
   itemtype: @document.itemtype,
-  class: classes.flatten.join(' ') do %>
+  class: "#{classes.flatten.join(' ')}" do %>
   <%= header %>
   <% if body.present? %>
     <%= body %>
@@ -18,6 +18,10 @@
       <%= metadata %>
       <% metadata_sections.each do |section| %>
         <%= section %>
+      <% end %>
+
+      <% partials.each do |partial| %>
+        <%= partial %>
       <% end %>
     </div>
 

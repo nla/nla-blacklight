@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# note that while this is mostly restful routing, the #update and #destroy actions
+# NOTE: that while this is mostly restful routing, the #update and #destroy actions
 # take the Solr document ID as the :id, NOT the id of the actual Bookmark action.
 module Blacklight::Bookmarks
   extend ActiveSupport::Concern
@@ -15,12 +15,13 @@ module Blacklight::Bookmarks
 
     before_action :verify_user
 
-    blacklight_config.track_search_session = false
+    blacklight_config.track_search_session.storage = false
     blacklight_config.http_method = Blacklight::Engine.config.blacklight.bookmarks_http_method
     blacklight_config.add_results_collection_tool(:clear_bookmarks_widget)
 
     blacklight_config.show.document_actions[:bookmark].if = false if blacklight_config.show.document_actions[:bookmark]
     blacklight_config.show.document_actions[:sms].if = false if blacklight_config.show.document_actions[:sms]
+    blacklight_config.search_builder_class = Blacklight::BookmarksSearchBuilder
   end
 
   def action_documents
@@ -39,11 +40,14 @@ module Blacklight::Bookmarks
     search_catalog_url(*)
   end
 
+  # @return [Hash] a hash of context information to pass through to the search service
+  def search_service_context
+    {bookmarks: @bookmarks}
+  end
+
   def index
     @bookmarks = token_or_current_or_guest_user.bookmarks
-    bookmark_ids = @bookmarks.collect { |b| b.document_id.to_s }
-    @response, deprecated_document_list = search_service.fetch(bookmark_ids)
-    @document_list = ActiveSupport::Deprecation::DeprecatedObjectProxy.new(deprecated_document_list, "The @document_list instance variable is now deprecated and will be removed in Blacklight 8.0")
+    @response = search_service.search_results
 
     respond_to do |format|
       format.html {}

@@ -86,7 +86,7 @@ module Nla
       def build_publisher
         publisher = @document.publisher
         if publisher.present?
-          " | publisher=#{publisher}\n"
+          " | publisher=#{publisher.first}\n"
         end
       end
 
@@ -98,9 +98,9 @@ module Nla
       end
 
       def build_language
-        language = @document.first("language_ssim")
+        language = @document.language
         if language.present?
-          " | language=#{language}\n"
+          " | language=#{language.first}\n"
         else
           " | language=No linguistic content\n"
         end

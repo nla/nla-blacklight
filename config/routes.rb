@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   mount Yabeda::Prometheus::Exporter => "/metrics"
 
   concern :exportable, Blacklight::Routes::Exportable.new
-  concern :searchable, Blacklight::Routes::Searchable.new
   concern :marc_viewable, Blacklight::Marc::Routes::MarcViewable.new
-  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
+  concern :searchable, Blacklight::Routes::Searchable.new
 
   concern :offsite do
     get ":id/offsite", action: "offsite", as: "offsite"
@@ -21,12 +20,13 @@ Rails.application.routes.draw do
 
   resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable
-    concerns :range_searchable
     concerns :offsite
   end
 
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
-    concerns [:exportable, :marc_viewable, :requestable]
+    concerns :exportable
+    concerns :marc_viewable
+    concerns :requestable
   end
 
   resources :bookmarks do
@@ -40,7 +40,11 @@ Rails.application.routes.draw do
   get "/account/requests", to: "account#requests", as: "account_requests"
   get "/account/requests/:request_id", to: "account#request_details", as: "request_details"
 
-  get "/thumbnail/:id", to: "thumbnail#thumbnail", as: "thumbnail"
+  resource :thumbnail, only: [:thumbnail], path: "/thumbnail", controller: "thumbnail" do
+    concerns :searchable
+
+    get "/:id", to: "thumbnail#thumbnail", as: "show"
+  end
 
   # bento search
   get "/search", to: "search#index", as: "bento_search_index"

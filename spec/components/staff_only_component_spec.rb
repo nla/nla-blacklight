@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe StaffOnlyComponent, type: :component do
   let(:document) { SolrDocument.new(marc_ss: sample_marc) }
-  let(:view_context) { controller.view_context }
+  let(:view_context) { vc_test_controller.view_context }
   let(:field_config) { Blacklight::Configuration::Field.new(key: "rights_information", label: "Rights information", accessor: :rights_information, helper_method: :url_list, component: described_class) }
   let(:field) do
     Blacklight::FieldPresenter.new(view_context, document, field_config)
@@ -11,7 +11,7 @@ RSpec.describe StaffOnlyComponent, type: :component do
   describe "#render?" do
     context "when request is from onsite IP" do
       before do
-        request.env["REMOTE_ADDR"] = "200.2.40.0"
+        vc_test_request.env["REMOTE_ADDR"] = "200.2.40.0"
       end
 
       it "returns true" do
@@ -25,7 +25,7 @@ RSpec.describe StaffOnlyComponent, type: :component do
 
     context "when request is from external IP" do
       before do
-        request.env["REMOTE_ADDR"] = "127.0.0.1"
+        vc_test_request.env["REMOTE_ADDR"] = "127.0.0.1"
       end
 
       it "returns false" do
