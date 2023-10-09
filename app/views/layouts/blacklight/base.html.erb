@@ -50,14 +50,14 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <% if Rails.env.development? || Rails.env.staging? %>
-    <div class="bg-danger text-white text-center p-2">
+    <div class="bg-warning text-dark text-center p-2">
       [ <% if Rails.env.development? %>
-        DEVELOPMENT
+        DEVELOPMENT (BL 8)
       <% elsif Rails.env.staging? %>
-        TEST
+        TEST (BL 8)
       <% end %> ]
     </div>
-  <% end %>
+    <% end %>
 
     <nav id="skip-link" role="navigation" aria-label="<%= t('blacklight.skip_links.label') %>">
       <%= link_to t('blacklight.skip_links.search_field'), '#search_field', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
