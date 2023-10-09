@@ -21,7 +21,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
 
   context "when item is a NED item" do
     it "does not render the 'Request' button" do
-      allow(document).to receive_messages(copy_access: [], online_access: [{href: "https://nla.gov.au/nla.obj-123456789"}])
+      allow(document).to receive_messages(copy_access: [], system_control_number: ["(AU-CaNED)NED248338P743467"])
 
       render_inline(described_class.new(document: document))
 

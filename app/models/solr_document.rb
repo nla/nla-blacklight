@@ -375,6 +375,12 @@ class SolrDocument
     nil
   end
 
+  def system_control_number
+    fetch("system_control_number_tsim", nil)
+  rescue KeyError
+    nil
+  end
+
   def all_authors
     fetch("author_search_tsim", nil)
   rescue KeyError

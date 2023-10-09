@@ -71,7 +71,7 @@ RSpec.describe "Requests" do
       follow_redirect!
 
       expect(response).to have_http_status(:success)
-      expect(response.body).to include(I18n.t("requesting.success.message"))
+      expect(response.body).to include(I18n.t("requesting.success.message", request_summary_url: account_requests_path))
       expect(response.body).to include(I18n.t("requesting.success.collection"))
     end
 

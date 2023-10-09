@@ -59,7 +59,7 @@ en:
     message: "Request this item to view in the Library's reading room using your library card."
     success:
       heading: "Request complete"
-      message: "Thank you for your request. We will email you when it is being processed or if there are any issues with delivery."
+      message: "Thank you for your request. We will email you when it is being processed or if there are any issues with delivery. You can also track the status of your requests by visiting your <a href=\"%{request_summary_url}\">Request page</a>."
       collection: 'Please check collection <a href="https://www.nla.gov.au/using-library/collection-delivery-service/collection-delivery-times">delivery times</a> and <a href="https://www.nla.gov.au/visit-us/opening-hours">opening hours</a>.'
       scrr: 'To prepare for your visit, and find out more about use of and access to our special collections, view our Research Guide on <a href="https://www.nla.gov.au/research-guides/using-the-special-collections-reading-room">Using the Special Collections Reading Room</a>.'
     metadata:

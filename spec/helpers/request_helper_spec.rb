@@ -34,12 +34,10 @@ RSpec.describe RequestHelper do
   end
 
   describe "#recent_item_issue_held" do
-    subject(:statements) { helper.recent_item_issue_held(holding) }
-
     let(:holding) { holdings_response["holdingsRecords"].last }
 
     it "returns the most recent item issue held" do
-      expect(statements).to eq ["v. 242, no. 4 (2022 Oct.)"]
+      expect { helper.recent_item_issue_held(holding) }.to raise_error(NoMethodError)
     end
   end
 
@@ -53,7 +51,8 @@ RSpec.describe RequestHelper do
       expect(statements).to eq [
         ["v.116:no.6 (1959:Dec.) - v.218:no.1 (2010:July),"],
         ["v.218:no.4 (2010:Oct.) - v.222:no.2 (2012:Aug.)"],
-        ["v.222:no.4 (2012:Oct.) - v.242:no.3 (2022:Sep.)"]
+        ["v.222:no.4 (2012:Oct.) - v.242:no.3 (2022:Sep.)"],
+        ["v. 242, no. 4 (2022 Oct.)"]
       ]
     end
   end

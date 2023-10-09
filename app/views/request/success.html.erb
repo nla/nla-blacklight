@@ -7,7 +7,7 @@
 <h2 class="h3 mt-4"><%= @document.first("title_tsim") %></h2>
 
 <div class="row">
-  <p class="col-12 col-lg-8"><%= t("requesting.success.message") %></p>
+  <p class="col-12 col-lg-8"><%= t("requesting.success.message", request_summary_url: account_requests_path).html_safe %></p>
   <p class="col-12 col-lg-8"><%= t("requesting.success.collection").html_safe %></p>
   <%- if @show_scrr %>
     <p class="col-12 col-lg-8"><%= t("requesting.success.scrr").html_safe %></p>
