@@ -57,9 +57,11 @@ class CatalogController < ApplicationController
     ## Default parameters to send to solr for all search-like requests. See also SearchBuilder#processed_parameters
     config.default_solr_params = {
       rows: 10,
-      qf: "id^2 title_tsim^250 title_stim^300 title3_tsi^100 title5_tsi^70 title_addl_tsim author_search_tsim subject_tsimv call_number_tsim all_text_timv",
-      pf: "id title_tsim title_addl_tsim author_search_tsim subject_tsimv",
-      mm: "1<100% 3<75% 6<60%"
+      qf: "id^2 title_stim^20 title_tsim^20 title_addl_tsim author_search_tsim subject_tsimv allfields_stimv",
+      pf: "id title_stim^30 title_tsim^30 title_addl_tsim author_search_tsim subject_tsimv title_only_tsim^40 call_number_tsim^20",
+      mm: "0",
+      "q.op": "AND",
+      add_boost_query: false
     }
 
     # solr path which will be added to solr base url before the other solr params.
@@ -271,8 +273,8 @@ class CatalogController < ApplicationController
       # solr_parameters hash are sent to Solr as ordinary url query params.
       field.solr_parameters = {
         "spellcheck.dictionary": "title",
-        qf: "title_tsim^10 title_addl_tsim title_stim^5",
-        pf: "title_tsim title_addl_tsim"
+        qf: "title_stim^20 title_tsim^20 title_addl_tsim",
+        pf: "title_stim^30 title_tsim^30 title_addl_tsim title_only_tsim^40"
       }
       field.clause_params = {
         edismax: field.solr_parameters.dup
