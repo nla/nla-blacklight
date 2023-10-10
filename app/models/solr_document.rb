@@ -535,7 +535,7 @@ class SolrDocument
         el.children.each do |subfield|
           subfield_code = subfield.attribute("code").value
           if subfield_code == "3" || subfield_code == "z"
-            url_hash[:text] = subfield.text if url_hash[:text].nil?
+            url_hash[:text] = subfield.text.gsub(/:$/, "") if url_hash[:text].nil?
           elsif subfield_code == "u"
             url_hash[:href] = subfield.text
           end
