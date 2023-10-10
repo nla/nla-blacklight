@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 7be347abdce0e2625aacc34ffe5cb9c245804b62
+  revision: 4cb0254f7d208af4e6df9b6f2a6fb061cf8a6d0b
   branch: feat/upgrade
   specs:
     nla-blacklight_common (0.1.8)
@@ -382,7 +382,7 @@ GEM
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.3.7)
+    net-imap (0.4.1)
       date
       net-protocol
     net-pop (0.1.2)
