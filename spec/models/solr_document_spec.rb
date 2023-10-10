@@ -15,17 +15,29 @@ RSpec.describe SolrDocument do
   end
 
   describe "#online_access" do
-    let(:document) { described_class.new(marc_ss: online_access) }
-
     context "when there is an online resource" do
       subject(:online_access_value) do
         document.online_access
       end
 
+      let(:document) { described_class.new(marc_ss: online_access) }
+
       it "generates links to the online resources" do
         expect(online_access_value).to eq [{href: "https://nla.gov.au/nla.obj-600301366", text: "National edeposit"},
           {href: "http://epress.anu.edu.au/AH33_citation.html", text: "http://epress.anu.edu.au/AH33_citation.html"},
           {href: "http://epress.anu.edu.au/titles/aboriginal-history-journal", text: "Publisher site"}]
+      end
+    end
+
+    context "when there is a colon at the end of the link title" do
+      subject(:online_access_value) do
+        document.online_access
+      end
+
+      let(:document) { described_class.new(marc_ss: online_access_with_colon) }
+
+      it "removes the colon" do
+        expect(document.online_access.first[:text]).not_to include(":")
       end
     end
   end
@@ -1803,6 +1815,10 @@ RSpec.describe SolrDocument do
 
   def online_access
     load_marc_from_file 4806783
+  end
+
+  def online_access_with_colon
+    load_marc_from_file 7578923
   end
 
   def map_search
