@@ -261,7 +261,7 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe "#copy_access" do
+  describe "#copy_access_urls" do
     let(:document) { described_class.new(marc_ss: online_access) }
 
     context "when there is an online copy" do
@@ -855,7 +855,7 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe "#isbn" do
+  describe "#valid_isbn" do
     context "when there is an ISBN" do
       subject(:isbn_value) do
         document = described_class.new(marc_ss: isbn)
@@ -1064,7 +1064,7 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe "#map_search" do
+  describe "#map_search_urls" do
     context "when map search service can't be reached" do
       subject(:map_search_value) do
         document = described_class.new(marc_ss: map_search, id: 113030, format: "Map")
@@ -1306,7 +1306,7 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe "#online_access" do
+  describe "#online_access_urls" do
     let(:document) { described_class.new(marc_ss: online_access) }
 
     context "when there is an online resource" do
@@ -1620,7 +1620,7 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe "#related_access" do
+  describe "#related_access_urls" do
     let(:document) { described_class.new(marc_ss: online_access) }
 
     context "when there are related resources" do
