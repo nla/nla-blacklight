@@ -1320,6 +1320,18 @@ RSpec.describe SolrDocument do
           {href: "http://epress.anu.edu.au/titles/aboriginal-history-journal", text: "Publisher site"}]
       end
     end
+
+    context "when there is a colon at the end of the link title" do
+      subject(:online_access_value) do
+        document.online_access_urls
+      end
+
+      let(:document) { described_class.new(marc_ss: online_access_with_colon) }
+
+      it "removes the colon" do
+        expect(online_access_value.first[:text]).not_to include(":")
+      end
+    end
   end
 
   describe "#other_authors" do
@@ -2245,6 +2257,10 @@ RSpec.describe SolrDocument do
 
   def online_access
     load_marc_from_file 4806783
+  end
+
+  def online_access_with_colon
+    load_marc_from_file 7578923
   end
 
   def other_authors
