@@ -11,6 +11,10 @@ class AccountController < ApplicationController
   end
 
   def request_details
+    if params[:loan].blank?
+      return render "errors/internal_server", status: :bad_request
+    end
+
     res = CatalogueServicesClient.new.request_details(request_id: params[:request_id], loan: params[:loan])
     @details = RequestDetail.new(res)
   end

@@ -93,6 +93,12 @@ class CatalogueServicesClient
   end
 
   def request_details(request_id:, loan:)
+    if loan.blank?
+      message = "Failed to retrieve request details for (#{request_id}) - Loan param is required"
+      Rails.logger.error "request_details - #{message}"
+      raise RequestDetailsError.new(message)
+    end
+
     conn = setup_connection
 
     res = conn.get("/catalogue-services/folio/request/#{request_id}?loan=#{loan}")
