@@ -3,7 +3,11 @@
 <% if value %>
   <div class="document-thumbnail">
     <% if presenter.thumbnail.is_catalogue_record_page? %>
-      <%= helpers.link_to value, presenter.thumbnail.link_value, aria: { hidden: true }, tabindex: -1, class: "text-break" %>
+      <% if presenter.thumbnail.link_value.present? %>
+        <%= helpers.link_to value, presenter.thumbnail.link_value, aria: { hidden: true }, tabindex: -1 %>
+      <% else %>
+        <%= value %>
+      <% end %>
     <% else %>
       <%= helpers.link_to_document(presenter.document, value, 'aria-hidden': true, tabindex: -1, counter: @counter) %>
     <% end %>
