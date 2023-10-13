@@ -59,7 +59,7 @@
                 </dd>
               <% end %>
 
-              <% if items_issues_held(holding).present? %>
+              <% if item["itemCategory"] != "monograph" && items_issues_held(holding).present? %>
                 <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.items_held") %></dt>
                 <dd class="col-12 col-lg-8">
                   <ul class="list-unstyled">

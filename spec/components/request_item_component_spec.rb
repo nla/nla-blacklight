@@ -18,6 +18,33 @@ RSpec.describe RequestItemComponent, type: :component do
     expect(page).to have_css("div.holding")
   end
 
+  context "when the item is a monograph" do
+    before do
+      WebMock.stub_request(:get, "http://catservices.test/catalogue-services/folio/instance/93fe53ff-ffcf-5602-a9c1-be246cfadc5e")
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          }
+        )
+        .to_return(status: 200, body: monograph_response, headers: {})
+    end
+
+    it "does not display 'Items/Issues Held:'" do
+      render_inline(described_class.new(document: document))
+
+      expect(page).not_to have_content("Items/Issues Held:")
+    end
+  end
+
+  context "when the item is not a monograph" do
+    it "does display 'Items/Issues Held:'" do
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_content("Items/Issues Held:")
+    end
+  end
+
   context "when there are no holdings for instance" do
     before do
       WebMock.stub_request(:get, "http://catservices.test/catalogue-services/folio/instance/93fe53ff-ffcf-5602-a9c1-be246cfadc5e")
@@ -58,6 +85,10 @@ RSpec.describe RequestItemComponent, type: :component do
 
   def sample_marc
     load_marc_from_file 4157458
+  end
+
+  def monograph_response
+    IO.read("spec/files/catalogue_services/monograph.json")
   end
 
   def holdings_response

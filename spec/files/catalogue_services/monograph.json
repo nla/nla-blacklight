@@ -1,109 +1,44 @@
 {
-  "instanceId": "63b516a9-f080-5a3b-af7f-950025077e26",
+  "instanceId": "93fe53ff-ffcf-5602-a9c1-be246cfadc5e",
   "holdingsRecords": [
     {
-      "id": "5c4999f0-8b7b-5d1b-8837-a835a9f86eb6",
-      "instanceId": "63b516a9-f080-5a3b-af7f-950025077e26",
-      "permanentLocationId": "14b466b6-86b3-499b-9ddb-262fa0ac56ce",
-      "effectiveLocationId": "14b466b6-86b3-499b-9ddb-262fa0ac56ce",
-      "callNumberPrefix": "N A",
-      "callNumber": "823.3 W793cl",
-      "holdingsStatements": [
-        {
-          "statement": "",
-          "note": "N copy",
-          "staffNote": ""
-        }
-      ],
+      "id": "2ff876ef-894b-5e0c-8898-e587e728933a",
+      "instanceId": "93fe53ff-ffcf-5602-a9c1-be246cfadc5e",
+      "permanentLocationId": "4caed9c1-0f2d-45b8-a779-d4f70d36e7dc",
+      "effectiveLocationId": "4caed9c1-0f2d-45b8-a779-d4f70d36e7dc",
+      "callNumber": "mc SUDOC Y 1.1/7:107-19",
+      "holdingsStatements": [],
       "holdingsStatementsForIndexes": [],
       "holdingsStatementsForSupplements": [],
       "discoverySuppress": false,
       "itemRecords": [
         {
-          "id": "4ea9ee16-5adc-52b3-9f5d-f3849fb1cbf2",
-          "holdingsRecordId": "5c4999f0-8b7b-5d1b-8837-a835a9f86eb6",
-          "barcode": "990001921402",
-          "effectiveLocationId": "14b466b6-86b3-499b-9ddb-262fa0ac56ce",
-          "effectiveLocationDisplayName": "Main Reading Room",
+          "id": "0b5da8f1-6b43-5975-9521-4503451c2d34",
+          "holdingsRecordId": "2ff876ef-894b-5e0c-8898-e587e728933a",
+          "barcode": "78000000002444",
+          "effectiveLocationId": "4caed9c1-0f2d-45b8-a779-d4f70d36e7dc",
+          "effectiveLocationDisplayName": "Main Reading Room - Newspapers and Family History",
           "effectiveCallNumberComponents": {
-            "callNumber": "N A 823.3 W793cl"
+            "callNumber": "mc SUDOC Y 1.1/7:107-19"
           },
           "status": {
             "name": "Available",
-            "date": "2023-03-25T01:40:14.177+00:00"
+            "date": "2023-06-28T03:56:37.531+00:00"
           },
           "pickupLocation": {
-            "id": "325aea8b-f5f2-4160-88ca-63d803856a70",
-            "name": "Main Reading Room",
-            "code": "MRR-SP",
-            "discoveryDisplayName": "Main Reading Room",
+            "id": "86774d56-9167-4217-939f-97c307504c37",
+            "name": "Main Reading Room - Newspapers and Family History",
+            "code": "NMRR-SP",
+            "discoveryDisplayName": "Main Reading Room - Newspapers and Family History",
             "pickupLocation": true,
             "holdShelfExpiryPeriod": {
-              "duration": 7,
+              "duration": 6,
               "intervalId": "Days"
             }
           },
           "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
           "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
-          "permanentLocationId": "14b466b6-86b3-499b-9ddb-262fa0ac56ce",
           "yearCaption": [],
-          "enumeration": "N copy",
-          "itemCategory": "monograph",
-          "discoverySuppress": false,
-          "requestable": true,
-          "displayStatus": "Available"
-        }
-      ],
-      "notes": [],
-      "checkedOutItems": []
-    },
-    {
-      "id": "5efa2e80-6620-522b-95a7-6f7f7c8e42b7",
-      "instanceId": "63b516a9-f080-5a3b-af7f-950025077e26",
-      "permanentLocationId": "e041308f-c160-48b6-b6e7-cd5d0d582122",
-      "effectiveLocationId": "e041308f-c160-48b6-b6e7-cd5d0d582122",
-      "callNumberPrefix": "NL A",
-      "callNumber": "823.3 W793cl",
-      "holdingsStatements": [
-        {
-          "statement": "",
-          "note": "NL copy",
-          "staffNote": ""
-        }
-      ],
-      "holdingsStatementsForIndexes": [],
-      "holdingsStatementsForSupplements": [],
-      "discoverySuppress": false,
-      "itemRecords": [
-        {
-          "id": "c13f51a6-65fb-5692-83e0-d0f51829ccd4",
-          "holdingsRecordId": "5efa2e80-6620-522b-95a7-6f7f7c8e42b7",
-          "barcode": "31508005863779",
-          "effectiveLocationId": "e041308f-c160-48b6-b6e7-cd5d0d582122",
-          "effectiveLocationDisplayName": "Main Reading Room",
-          "effectiveCallNumberComponents": {
-            "callNumber": "NL A 823.3 W793cl"
-          },
-          "status": {
-            "name": "Available",
-            "date": "2023-03-25T01:40:14.177+00:00"
-          },
-          "pickupLocation": {
-            "id": "325aea8b-f5f2-4160-88ca-63d803856a70",
-            "name": "Main Reading Room",
-            "code": "MRR-SP",
-            "discoveryDisplayName": "Main Reading Room",
-            "pickupLocation": true,
-            "holdShelfExpiryPeriod": {
-              "duration": 7,
-              "intervalId": "Days"
-            }
-          },
-          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
-          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
-          "permanentLocationId": "e041308f-c160-48b6-b6e7-cd5d0d582122",
-          "yearCaption": [],
-          "enumeration": "NL copy",
           "itemCategory": "monograph",
           "discoverySuppress": false,
           "requestable": true,
