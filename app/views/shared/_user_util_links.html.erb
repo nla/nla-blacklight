@@ -9,7 +9,9 @@
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to t("account.requests.menu"), account_requests_path, class: "dropdown-item" %>
           <%= render partial: "blacklight/nav/bookmark" %>
+          <% if ENV["KC_PATRON_REALM"] %>
           <%= link_to t("account.settings.menu"), account_settings_path, class: "dropdown-item" %>
+          <% end %>
           <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete, data: { turbo_method: :delete } %>
         </div>
       </li>
