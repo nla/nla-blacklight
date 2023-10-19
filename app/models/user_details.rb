@@ -3,6 +3,9 @@
 class UserDetails
   include ActiveModel::Model
 
+  EDITABLE_ATTRIBUTES = %w[first_name last_name email password phone mobile_phone post_code]
+  PATRON_EDITABLE_ATTRIBUTES = %w[email password phone mobile_phone post_code]
+
   attr_reader :last_name, :first_name, :email, :phone, :mobile_phone, :post_code
 
   def initialize(folio_details, current_user)

@@ -4,27 +4,15 @@
   <div class="row mt-4">
     <div class="col-12 col-lg-8">
       <dl class="document-metadata dl-invert row">
-        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.first_name.label") %></dt>
-        <dd class="col col-md-8"><%= @user_details.first_name %></dd>
-
-        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.last_name.label") %></dt>
-        <dd class="col col-md-8"><%= @user_details.last_name %></dd>
-
-        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.email.label") %></dt>
-        <dd class="col col-md-8"><%= @user_details.email %></dd>
-
-        <% if current_user.provider == "catalogue_patron" %>
-        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.password.label") %></dt>
-        <dd class="col col-md-8"><%= link_to_keycloak_password_reset.html_safe %></dd>
-
-        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.phone.label") %></dt>
-        <dd class="col col-md-8"><%= @user_details.phone || "&nbsp;".html_safe %></dd>
-
-        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.mobile_phone.label") %></dt>
-        <dd class="col col-md-8"><%= @user_details.mobile_phone || "&nbsp;".html_safe %></dd>
-
-        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.post_code.label") %></dt>
-        <dd class="col col-md-8"><%= @user_details.post_code %></dd>
+        <% UserDetails::EDITABLE_ATTRIBUTES.each do |attr| %>
+          <%# order of conditions matters here %>
+          <% if attr == "password" %>
+            <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, label: t("account.settings.#{attr}.label"), value: link_to_keycloak_password_reset.html_safe) %>
+          <% elsif current_user.provider == "catalogue_patron" && UserDetails::PATRON_EDITABLE_ATTRIBUTES.include?(attr)  %>
+            <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, label: t("account.settings.#{attr}.label"), value: @user_details.instance_values[attr]) %>
+          <% else %>
+            <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, label: t("account.settings.#{attr}.label"), value: @user_details.instance_values[attr]) %>
+          <% end %>
         <% end %>
       </dl>
     </div>

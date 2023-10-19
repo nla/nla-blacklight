@@ -147,7 +147,7 @@ en:
       details:
         heading: "Request Details"
     settings:
-      menu: "Settings"
+      menu: "My Details"
       first_name:
         label: "First name"
         change_text: "Change my first name"
