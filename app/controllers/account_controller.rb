@@ -15,6 +15,11 @@ class AccountController < ApplicationController
     @details = RequestDetail.new(res)
   end
 
+  def settings
+    folio_details = CatalogueServicesClient.new.user_folio_details(current_user.folio_id)
+    @user_details = UserDetails.new(folio_details, current_user)
+  end
+
   private
 
   def request_detail_params
