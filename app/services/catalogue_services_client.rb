@@ -8,6 +8,8 @@ class ItemRequestError < StandardError; end
 
 class RequestDetailsError < StandardError; end
 
+class UserDetailsError < StandardError; end
+
 class CatalogueServicesClient
   MAX_TOKEN_RETRIES = 3
 
@@ -107,6 +109,9 @@ class CatalogueServicesClient
       Rails.logger.error message
       raise RequestDetailsError.new(message)
     end
+  rescue => e
+    Rails.logger.error "request_details - Failed to connect catalogue-service: #{e.message}"
+    raise RequestDetailsError.new("Failed to retrieve request details for #{request_id}")
   end
 
   def request_limit_reached?(requester:)
@@ -143,6 +148,26 @@ class CatalogueServicesClient
   rescue
     Rails.logger.error "Failed to connect to eResources stats service: #{stats.payload}"
     nil
+  end
+
+  def user_folio_details(folio_id)
+    conn = setup_connection
+
+    res = conn.get("/catalogue-services/folio/user?query=id==#{folio_id}")
+    if res.status == 200
+      if res.body.present? && res.body["totalRecords"].to_i == 1
+        JSON.parse(res.body["users"].first.to_json, object_class: OpenStruct)
+      else
+        {}
+      end
+    else
+      message = "Failed to retrieve details for #{folio_id}"
+      Rails.logger.error message
+      raise UserDetailsError.new(message)
+    end
+  rescue => e
+    Rails.logger.error "user_details - Failed to connect catalogue-service: #{e.message}"
+    raise UserDetailsError.new("Failed to retrieve details for #{folio_id}")
   end
 
   private

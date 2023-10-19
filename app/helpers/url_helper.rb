@@ -46,4 +46,10 @@ module UrlHelper
       title
     end
   end
+
+  def link_to_keycloak_password_reset
+    if current_user.present?
+      link_to I18n.t("account.settings.password.change_text"), "#{session[:iss]}/account/password", data: {turbo: false}
+    end
+  end
 end
