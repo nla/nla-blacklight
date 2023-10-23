@@ -146,6 +146,32 @@ en:
         request_date: "Requested on"
       details:
         heading: "Request Details"
+    settings:
+      menu: "Settings"
+      first_name:
+        label: "First name"
+        change_text: "Change my first name"
+      last_name:
+        label: "Family name"
+        change_text: "Change my family name"
+      email:
+        label: "Email"
+        change_text: "Change my email address"
+      phone:
+        label: "Phone"
+        change_text: "Change my phone number"
+      mobile_phone:
+        label: "Mobile phone"
+        change_text: "Change my mobile phone number"
+      password:
+        label: "Password"
+        change_text: "Change my password"
+      post_code:
+        label: "Postcode"
+        change_text: "Change my postcode"
+      notifications:
+        label: "Notifications"
+        change_text: "Email me notifications when requested items are ready for collection"
   explore:
     title: "Explore"
     find_in_trove: "Find in other libraries at Trove"

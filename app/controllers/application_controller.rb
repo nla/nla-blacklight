@@ -2,6 +2,9 @@ class ApplicationController < ActionController::Base
   before_action :store_user_location!, if: :storable_location?
   before_action :authorize_profile
 
+  # defines #new_session_path(scope) to allow correct redirection when only using OmniAuth
+  include AuthSessionConcern
+
   # Adds a few additional behaviors into the application controller
   include Blacklight::Controller
   layout :determine_layout if respond_to? :layout

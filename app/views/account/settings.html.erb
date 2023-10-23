@@ -1,0 +1,32 @@
+<h2>Account settings</h2>
+
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-12 col-lg-8">
+      <dl class="document-metadata dl-invert row">
+        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.first_name.label") %></dt>
+        <dd class="col col-md-8"><%= @user_details.first_name %></dd>
+
+        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.last_name.label") %></dt>
+        <dd class="col col-md-8"><%= @user_details.last_name %></dd>
+
+        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.email.label") %></dt>
+        <dd class="col col-md-8"><%= @user_details.email %></dd>
+
+        <% if current_user.provider == "catalogue_patron" %>
+        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.password.label") %></dt>
+        <dd class="col col-md-8"><%= link_to_keycloak_password_reset.html_safe %></dd>
+
+        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.phone.label") %></dt>
+        <dd class="col col-md-8"><%= @user_details.phone || "&nbsp;".html_safe %></dd>
+
+        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.mobile_phone.label") %></dt>
+        <dd class="col col-md-8"><%= @user_details.mobile_phone || "&nbsp;".html_safe %></dd>
+
+        <dt class="col-12 col-md-4 text-md-right"><%= t("account.settings.post_code.label") %></dt>
+        <dd class="col col-md-8"><%= @user_details.post_code %></dd>
+        <% end %>
+      </dl>
+    </div>
+  </div>
+</div>

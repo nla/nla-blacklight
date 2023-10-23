@@ -33,7 +33,11 @@ module ApplicationHelper
   end
 
   def show_search_bar?
-    !current_page?(root_path) && !current_page?(advanced_search_catalog_path) && !current_page?(bento_search_index_path)
+    !current_page?(root_path) &&
+      !current_page?(advanced_search_catalog_path) &&
+      !current_page?(bento_search_index_path) &&
+      !current_page?(new_user_session_path) &&
+      params[:controller] != "account"
   end
 
   # This will exclude displaying the global message on the home page because the

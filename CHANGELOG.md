@@ -1,5 +1,28 @@
 # Changelog
 
+## [2.9.0](https://github.com/nla/nla-blacklight/compare/2.8.0...2.9.0) (2023-10-20)
+
+
+### Features
+
+* change patron login to Keycloak via OmniAuth ([f0d6482](https://github.com/nla/nla-blacklight/commit/f0d64824d1ff2256213671b089738eab752b0a54))
+* display patron details ([37c1e6d](https://github.com/nla/nla-blacklight/commit/37c1e6d98d9f40844cde2c274f4bb4b27c8073ff))
+* hide account settings behind feature flag ([2e6fa91](https://github.com/nla/nla-blacklight/commit/2e6fa916327cb921f55fb8610f16eda350ae54f8))
+* pull in changes for login page ([39659fb](https://github.com/nla/nla-blacklight/commit/39659fb41b76eb8beaf65c6aa9c9b06a1342b299))
+
+
+### Bug Fixes
+
+* hide items/issues held for monographs ([2de2717](https://github.com/nla/nla-blacklight/commit/2de2717ff991da0147e0df30dc09b418784f2ff5))
+* remove colon at the end of link text ([775d9dd](https://github.com/nla/nla-blacklight/commit/775d9dd01d4c5038bda6b4bbd5b22e84162d2f03))
+
+
+### Miscellaneous
+
+* prepare for release ([9050653](https://github.com/nla/nla-blacklight/commit/9050653ac21a10ab35a9de5fe91c8e78fc697592))
+* pull in patron Keycloak login changes ([c3764f3](https://github.com/nla/nla-blacklight/commit/c3764f3c62674bbc0b58918262806414ef0eae9d))
+* update dependencies ([b0abeab](https://github.com/nla/nla-blacklight/commit/b0abeab2547df25456d4c224ec43f5e9fa0e4385))
+
 ## [2.8.0](https://github.com/nla/nla-blacklight/compare/2.7.0...2.8.0) (2023-10-04)
 
 
