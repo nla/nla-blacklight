@@ -12,7 +12,7 @@ RSpec.describe UserDetailsFieldComponent, type: :component do
         "mobilePhone" => "0123456789",
         "addresses" => [
           {
-            "postalCode" => "AB1 2CD"
+            "postalCode" => "2100"
           }
         ]
       }

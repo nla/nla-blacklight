@@ -1,0 +1,25 @@
+{
+  "users": [
+    {
+      "patronGroup": "dc7c6428-54b2-43bb-9497-ff21cdf545d2",
+      "personal": {
+        "lastName": "Test",
+        "firstName": "Blacklight",
+        "email": "test2@example.com",
+        "mobilePhone": "04123456789",
+        "addresses": [
+          {
+            "addressTypeId": "59450b66-4cbd-48b8-811b-e7736d8d17aa",
+            "postalCode": "1200"
+          }
+        ],
+        "preferredContactTypeId": "002"
+      },
+      "id": "c202a7d5-3d30-411a-b0a7-53753801bf98",
+      "barcode": "bltest",
+      "active": true,
+      "expirationDate": "2025-09-15T00:00:00.000+00:00"
+    }
+  ],
+  "totalRecords": 1
+}

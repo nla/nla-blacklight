@@ -46,4 +46,9 @@ SimpleCov.start "rails" do
   add_group "Components", "app/components"
   add_group "Presenters", "app/presenters"
   add_group "Bento Search Engines", "app/search_engines"
+
+  unless ENV["KC_PATRON_REALM"]
+    add_filter "app/models/user_details.rb"
+    add_filter "app/components/user_details_field_component.rb"
+  end
 end
