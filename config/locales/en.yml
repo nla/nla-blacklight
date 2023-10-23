@@ -166,7 +166,7 @@ en:
       password:
         label: "Password"
         change_text: "Change my password"
-      post_code:
+      postcode:
         label: "Postcode"
         change_text: "Change my postcode"
       notifications:

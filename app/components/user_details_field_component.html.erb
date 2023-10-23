@@ -1,2 +1,7 @@
-<dt class="col-12 col-md-4 text-md-right"><%= @label %></dt>
-<dd class="col col-md-8"><%= @value || "&nbsp;".html_safe %></dd>
+<dt class="col-12 col-md-4 text-md-right" id="<%= "#{@attribute}-label" %>"><%= @label %></dt>
+<dd class="col col-md-8">
+  <%= @value || "&nbsp;".html_safe %>
+  <% if @value.present? && @editable %>
+    <%= link_to t("account.settings.#{@attribute}.change_text"), [:account_settings_edit, attribute: @attribute], class: "ml-3" %>
+  <% end %>
+</dd>

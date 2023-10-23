@@ -4,15 +4,15 @@
   <div class="row mt-4">
     <div class="col-12 col-lg-8">
       <dl class="document-metadata dl-invert row">
-        <% UserDetails::EDITABLE_ATTRIBUTES.each do |attr| %>
-          <%# order of conditions matters here %>
-          <% if attr == "password" %>
-            <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, label: t("account.settings.#{attr}.label"), value: link_to_keycloak_password_reset.html_safe) %>
-          <% elsif current_user.provider == "catalogue_patron" && UserDetails::PATRON_EDITABLE_ATTRIBUTES.include?(attr)  %>
-            <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, label: t("account.settings.#{attr}.label"), value: @user_details.instance_values[attr]) %>
-          <% else %>
-            <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, label: t("account.settings.#{attr}.label"), value: @user_details.instance_values[attr]) %>
-          <% end %>
+        <% UserDetails::ALL_ATTRIBUTES.each do |attr| %>
+            <%# order of conditions matters here %>
+            <% if attr == "password" %>
+              <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, details: @user_details, value: link_to_keycloak_password_reset.html_safe, editable: false) %>
+            <% elsif current_user.provider == "catalogue_patron" && UserDetails::PATRON_ATTRIBUTES.include?(attr)  %>
+              <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, details: @user_details, editable: UserDetails::PATRON_EDITABLE_ATTRIBUTES.include?(attr)) %>
+            <% elsif UserDetails::STAFF_ATTRIBUTES.include?(attr) %>
+              <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, details: @user_details, editable: UserDetails::STAFF_EDITABLE_ATTRIBUTES.include?(attr)) %>
+            <% end %>
         <% end %>
       </dl>
     </div>
