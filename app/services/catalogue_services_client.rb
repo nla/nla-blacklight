@@ -136,7 +136,7 @@ class CatalogueServicesClient
   def post_stats(stats)
     conn = setup_connection
 
-    res = conn.post("/catalogue-services/log/message", stats.to_json, "Content-Type" => "application/json") do |req|
+    res = conn.post("/catalogue-services/log/message") do |req|
       req.headers["Content-Type"] = "application/json"
       req.body = stats.payload
     end
@@ -156,7 +156,7 @@ class CatalogueServicesClient
     res = conn.get("/catalogue-services/folio/user?query=id==#{folio_id}")
     if res.status == 200
       if res.body.present? && res.body["totalRecords"].to_i == 1
-        JSON.parse(res.body["users"].first.to_json, object_class: OpenStruct)
+        res.body["users"]&.first
       else
         {}
       end
@@ -168,6 +168,30 @@ class CatalogueServicesClient
   rescue => e
     Rails.logger.error "user_details - Failed to connect catalogue-service: #{e.message}"
     raise UserDetailsError.new("Failed to retrieve details for #{folio_id}")
+  end
+
+  def update_user_folio_details(folio_id, params)
+    conn = setup_connection
+
+    payload = {
+      folioId: folio_id
+    }
+    params[:user_details].each do |key, value|
+      payload[key.to_s.camelize(:lower).to_sym] = value
+    end
+
+    res = conn.post("/catalogue-services/folio/user/updateDetails") do |req|
+      req.headers["Content-Type"] = "application/json"
+      req.body = payload.to_json
+    end
+    if res.status != 200
+      message = "Failed to update user details for #{folio_id}: #{payload}"
+      Rails.logger.error message
+      raise UserDetailsError.new("Failed to update details for #{folio_id}")
+    end
+  rescue => e
+    Rails.logger.error "update_user_folio_details - Failed to connect catalogue-service: #{e.message}"
+    raise UserDetailsError.new("Failed to update details for #{folio_id}")
   end
 
   private
