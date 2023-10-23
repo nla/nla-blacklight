@@ -1,0 +1,6 @@
+<%= turbo_frame_tag params[:attribute] do %>
+  <%= form_with url: account_settings_update_path, model: @user_details, method: :post, class: "form-inline" do |f| %>
+    <%= f.text_field params[:attribute].to_sym, class: "form-control mr-sm-2", aria: {labelledby: "#{params[:attribute]}_label"} %>
+    <%= f.submit "Save", class: "btn btn-primary" %>
+  <% end %>
+<% end %>
