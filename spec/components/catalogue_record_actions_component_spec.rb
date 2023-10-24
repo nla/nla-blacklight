@@ -30,12 +30,24 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
   end
 
   context "when available online" do
-    it "renders the 'View at library' button" do
+    it "renders the 'View online' button" do
       allow(document).to receive(:copy_access).and_return([{href: "https://nla.gov.au/nla.obj-123456789"}])
 
       render_inline(described_class.new(document: document))
 
       expect(page).to have_link("View online", href: "https://nla.gov.au/nla.obj-123456789")
+    end
+
+    context "when the document is an electronic resource" do
+      it "renders the 'View online' button with an ezproxy link" do
+        allow(document).to receive_messages(has_eresources?: true, online_access: [{href: "https://ancestrylibrary.proquest.com"}])
+        allow(document).to receive(:fetch).with(any_args).and_call_original
+        allow(document).to receive(:fetch).with("call_number_tsim").and_return(["ELECTRONIC RESOURCE"])
+
+        render_inline(described_class.new(document: document))
+
+        expect(page).to have_link("View online", href: "/catalog/4157485/offsite?url=https%3A%2F%2Fancestrylibrary.proquest.com")
+      end
     end
 
     context "when the document is audio" do

@@ -21,10 +21,22 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def online_url
-    if @document.online_access.present?
+    href = if @document.online_access.present?
       @document.online_access.first[:href]
     elsif @document.copy_access.present?
       @document.copy_access.first[:href]
+    end
+
+    if @document.has_eresources?
+      entry = Eresources.new.known_url(href)
+
+      if entry.present?
+        helpers.offsite_catalog_path(id: @document.id, url: href)
+      else
+        href
+      end
+    else
+      href
     end
   end
 
