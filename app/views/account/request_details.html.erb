@@ -11,7 +11,7 @@
           <% if @details.partial_name != "monographs" %>
             <%= render "account/request_details/#{@details.partial_name}", details: @details %>
           <% end %>
-          <dt class="col-12 col-md-4 text-md-right"><%= t("account.requests.table_column_headings.request_date") %></dt>
+          <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.metadata.request_date") %></dt>
           <dd class="col col-md-8"><%= @details.request_date %><br /><small class="text-muted"><%= @details.request_time %></small></dd>
           <% if @details.patronComments.present? || @details.cancellationReason.present? || @details.cancellationComment.present? %>
             <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.label.notes") %></dt>

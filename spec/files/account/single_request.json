@@ -3,7 +3,7 @@
   "title": "The Mad Max movies / Adrian Martin.",
   "patronComments": "Testing patron comments",
   "instanceId": "4a05cad3-5269-5a5e-90f6-2ab0ccce6861",
-  "yearCaption": "1909",
+  "yearCaption": ["1909"],
   "enumeration": "pbk",
   "chronology": "June, July",
   "callNumber": "N N 791.43720994 M379",
