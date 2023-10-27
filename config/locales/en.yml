@@ -162,6 +162,8 @@ en:
       update:
         heading: "Update your %{attribute}"
         change_text: "Change my %{attribute}"
+        change_btn: "Update"
+        cancel_btn: "Cancel"
         success: "Your %{attribute} has been updated."
         errors:
           email:

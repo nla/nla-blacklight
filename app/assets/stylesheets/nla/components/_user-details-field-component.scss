@@ -1,0 +1,21 @@
+.settings-label {
+  color: var(--gray-medium-light);
+}
+
+@media (min-width: 768px) {
+  .settings-label {
+    text-align: right;
+  }
+}
+
+@media (min-width: 992px) {
+  .settings-label {
+    text-align: right;
+  }
+}
+
+@media (min-width: 1200px) {
+  .settings-label {
+    text-align: right;
+  }
+}

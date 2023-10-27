@@ -1,9 +1,9 @@
-<div class="col col-md-2 text-right py-1 align-middle" id="<%= "#{@attribute}-label" %>"><%= @label %></div>
-<div class="col col-md-2 py-1 align-middle">
+<div class="col-sm-3 py-1 align-middle settings-label" id="<%= "#{@attribute}-label" %>"><%= @label %>:</div>
+<div class="col-sm-3 py-1 align-middle">
   <%= @value || "&nbsp;".html_safe %>
 </div>
 <div class="col">
   <% if @editable %>
-    <%= link_to edit_link_text, [:account_settings_edit, attribute: @attribute], class: "ml-3" %>
+    <%= link_to edit_link_text, [:account_settings_edit, attribute: @attribute] %>
   <% end %>
 </div>

@@ -48,6 +48,16 @@ module NlaBlacklight
 
     # Override default format of error messages per model
     config.active_model.i18n_customize_full_message = true
+    config.action_view.field_error_proc = proc do |html_tag, instance|
+      input_tag = Nokogiri::HTML5::DocumentFragment.parse(html_tag).at_css(".form-control")
+      if input_tag
+        # rubocop:disable Rails/OutputSafety
+        input_tag.add_class("is-invalid").to_s.html_safe
+        # rubocop:enable Rails/OutputSafety
+      else
+        html_tag
+      end
+    end
 
     if %w[staging production].include? ENV["RAILS_ENV"]
       # Use default logging formatter so that PID and timestamp are not suppressed.
