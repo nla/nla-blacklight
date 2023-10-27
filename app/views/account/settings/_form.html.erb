@@ -1,84 +1,88 @@
 <div class="row mt-4">
   <div class="col-12">
-    <%= form_with(url: [:account_settings_edit, attribute: params[:attribute]], model: user_details, method: :post, class: "edit-settings-form") do |f| %>
-      <% if user_details.errors.any? %>
-        <div class="row">
-          <div class="col-12">
-            <div class="alert alert-danger" role="alert">
-              <ul class="mb-0">
-                <% user_details.errors&.each do |error| %>
-                  <li><%= error.full_message %></li>
-                <% end %>
-              </ul>
+      <%= form_with(url: [:account_settings_edit, attribute: params[:attribute]], model: user_details, method: :post) do |f| %>
+        <% if user_details.errors.any? %>
+          <div class="row">
+            <div class="col-12">
+              <div class="alert alert-danger" role="alert">
+                <%= user_details.errors&.first&.full_message %>
+              </div>
             </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
 
-      <% if params[:attribute].eql? "email" %>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label"><%= "Current #{t("account.settings.email.change_text")}:" %></label>
-          <div class="col-sm-6 my-2">
-            <%= @current_details.email %>
+        <% if params[:attribute].eql? "email" %>
+          <div class="row">
+            <div class="col col-md-3 text-right py-1 align-middle" id="<%= "email-label" %>"><%= "Current #{t("account.settings.email.change_text")}" %></div>
+            <div class="col py-1 align-middle">
+              <%= current_details.email %>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <%= f.label :email, "New #{t("account.settings.email.change_text")}:", class: "col-sm-3 col-form-label" %>
-          <div class="col-sm-6">
-            <%= f.text_field :email, class: "form-control", maxlength: 15, autocomplete: "email" %>
+          <div class="row mt-3">
+            <div class="col col-md-3 text-right py-1 align-middle">
+              <%= f.label :email, "New #{t("account.settings.email.change_text")}" %>
+            </div>
+            <div class="col col-md-6 align-middle">
+              <%= f.text_field :email, class: "form-control", autofocus: true, autocomplete: "email" %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
 
-      <% if params[:attribute].eql? "mobile_phone" %>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label"><%= "Current #{t("account.settings.mobile_phone.change_text")}:" %></label>
-          <div class="col-sm-6 my-2">
-            <%= @current_details.mobile_phone %>
+        <% if params[:attribute].eql? "mobile_phone" %>
+          <div class="row">
+            <div class="col col-md-3 text-right py-1 align-middle" id="<%= "mobile_phone-label" %>"><%= "Current #{t("account.settings.mobile_phone.change_text")}" %></div>
+            <div class="col py-1 align-middle">
+              <%= current_details.mobile_phone %>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <%= f.label :mobile_phone, "New #{t("account.settings.mobile_phone.change_text")}:", class: "col-sm-3 col-form-label" %>
-          <div class="col-sm-6">
-            <%= f.text_field :mobile_phone, class: "form-control", maxlength: 15, autocomplete: "mobile-phone" %>
+          <div class="row mt-3">
+            <div class="col col-md-3 text-right py-1 align-middle">
+              <%= f.label :mobile_phone, "New #{t("account.settings.mobile_phone.change_text")}" %>
+            </div>
+            <div class="col col-md-2 align-middle">
+              <%= f.text_field :mobile_phone, class: "form-control", autofocus: true, maxlength: 10, autocomplete: "mobile-phone" %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
 
-      <% if params[:attribute].eql? "phone" %>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label"><%= "Current #{t("account.settings.phone.change_text")}:" %></label>
-          <div class="col-sm-6 my-2">
-            <%= @current_details.phone %>
+        <% if params[:attribute].eql? "phone" %>
+          <div class="row">
+            <div class="col col-md-3 text-right py-1 align-middle" id="<%= "phone-label" %>"><%= "Current #{t("account.settings.phone.change_text")}" %></div>
+            <div class="col py-1 align-middle">
+              <%= current_details.phone %>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <%= f.label :phone, "New #{t("account.settings.phone.change_text")}:", class: "col-sm-3 col-form-label" %>
-          <div class="col-sm-6">
-            <%= f.text_field :phone, class: "form-control", maxlength: 15, autocomplete: "phone" %>
+          <div class="row mt-3">
+            <div class="col col-md-3 text-right py-1 align-middle">
+              <%= f.label :phone, "New #{t("account.settings.phone.change_text")}" %>
+            </div>
+            <div class="col col-md-2 align-middle">
+              <%= f.text_field :phone, class: "form-control", autofocus: true, maxlength: 10, autocomplete: "phone" %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
 
-      <% if params[:attribute].eql? "postcode" %>
-        <div class="form-group row">
-          <label class="col-sm-3 col-form-label"><%= "Current #{t("account.settings.postcode.change_text")}:" %></label>
-          <div class="col-sm-6 my-2">
-            <%= @current_details.postcode %>
+        <% if params[:attribute].eql? "postcode" %>
+          <div class="row">
+            <div class="col col-md-3 text-right py-1 align-middle" id="<%= "postcode-label" %>"><%= "Current #{t("account.settings.postcode.change_text")}" %></div>
+            <div class="col py-1 align-middle">
+              <%= current_details.postcode %>
+            </div>
           </div>
-        </div>
-        <div class="form-group row">
-          <%= f.label :postcode, "New #{t("account.settings.postcode.label")}:", clasS: "col-sm-3 col-form-label" %>
-          <div class="col-sm-6">
-            <%= f.text_field :postcode, class: "form-control", maxlength: 10, autocomplete: "postcode" %>
+          <div class="row mt-3">
+            <div class="col col-md-3 text-right py-1 align-middle">
+              <%= f.label :postcode, "New #{t("account.settings.postcode.change_text")}" %>
+            </div>
+            <div class="col col-md-2 align-middle">
+              <%= f.text_field :postcode, class: "form-control", autofocus: true, maxlength: 10, autocomplete: "postcode" %>
+            </div>
           </div>
-        </div>
-      <% end %>
+        <% end %>
 
         <div class="row mt-3">
-          <div class="col offset-sm-3">
-            <%= f.submit t("account.settings.update.change_btn"), class: "btn btn-primary" %>
-            <%= link_to t("account.settings.update.cancel_btn"), account_settings_path, class: "btn btn-link" %>
+          <div class="col-md-5 offset-md-3">
+            <%= f.submit "Update #{t("account.settings.#{params[:attribute]}.change_text")}", class: "btn btn-primary" %>
+            <%= link_to "Cancel", account_settings_path, class: "btn btn-link" %>
           </div>
         </div>
       <% end %>
