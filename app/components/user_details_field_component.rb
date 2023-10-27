@@ -10,7 +10,7 @@ class UserDetailsFieldComponent < ViewComponent::Base
     @editable = editable
   end
 
-  def render?
-    @value.present?
+  def edit_link_text
+    I18n.t("account.settings.update.change_text", attribute: I18n.t("account.settings.#{@attribute}.change_text"))
   end
 end

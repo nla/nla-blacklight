@@ -219,8 +219,8 @@ RSpec.describe CatalogueServicesClient, type: :request do
       it "returns FOLIO user details" do
         details = service.user_folio_details("c202a7d5-3d30-411a-b0a7-53753801bf98")
         expect(details).not_to be_nil
-        expect(details.dig("personal", "firstName")).to eq "Blacklight"
-        expect(details.dig("personal", "lastName")).to eq "Test"
+        expect(details[:first_name]).to eq "Blacklight"
+        expect(details[:last_name]).to eq "Test"
       end
     end
 

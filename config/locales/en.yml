@@ -30,6 +30,16 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  activemodel:
+    errors:
+      models:
+        user_details:
+          format: "%{message}"
+          attributes:
+            email:
+              invalid: "This is not a valid email address."
+              taken: "Sorry, that email address cannot be used. Please use a different email address."
+              blank: "Please provide an email address."
   loading: "Loading..."
   headings:
     search: "Search"
@@ -149,27 +159,36 @@ en:
         heading: "Request Details"
     settings:
       menu: "My Details"
+      update:
+        heading: "Update your %{attribute}"
+        change_text: "Change my %{attribute}"
+        success: "Your %{attribute} has been updated."
+        errors:
+          email:
+            taken: "Sorry, that email address cannot be used. Please use a different email address."
+            failed: "Sorry, we were unable to update your email address. Please try again later."
+          failed: "Sorry, we were unable to update your %{attribute}. Please try again later."
       first_name:
         label: "First name"
-        change_text: "Change my first name"
+        change_text: "first name"
       last_name:
         label: "Family name"
-        change_text: "Change my family name"
+        change_text: "family name"
       email:
         label: "Email"
-        change_text: "Change my email address"
+        change_text: "email address"
       phone:
         label: "Phone"
-        change_text: "Change my phone number"
+        change_text: "phone number"
       mobile_phone:
         label: "Mobile phone"
-        change_text: "Change my mobile phone number"
+        change_text: "mobile phone number"
       password:
         label: "Password"
-        change_text: "Change my password"
+        change_text: "password"
       postcode:
         label: "Postcode"
-        change_text: "Change my postcode"
+        change_text: "postcode"
       notifications:
         label: "Notifications"
         change_text: "Email me notifications when requested items are ready for collection"

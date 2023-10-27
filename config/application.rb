@@ -46,6 +46,9 @@ module NlaBlacklight
     # https://discuss.rubyonrails.org/t/cve-2022-32224-possible-rce-escalation-bug-with-serialized-columns-in-active-record/81017
     config.active_record.yaml_column_permitted_classes = [ActiveSupport::HashWithIndifferentAccess]
 
+    # Override default format of error messages per model
+    config.active_model.i18n_customize_full_message = true
+
     if %w[staging production].include? ENV["RAILS_ENV"]
       # Use default logging formatter so that PID and timestamp are not suppressed.
       config.log_formatter = ::Logger::Formatter.new
