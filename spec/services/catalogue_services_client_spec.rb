@@ -75,6 +75,84 @@ RSpec.describe CatalogueServicesClient, type: :request do
     end
   end
 
+  describe "#get_request_summary" do
+    context "when 200 response" do
+      it "returns request summary" do
+        expect(service.get_request_summary(folio_id: "1111")).not_to be_nil
+      end
+    end
+
+    context "when non-200 response" do
+      it "returns a default summary" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/.*\/myRequests/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 404, body: "", headers: {})
+
+        expect(service.get_request_summary(folio_id: "1111")).to eq CatalogueServicesClient::DEFAULT_REQUEST_SUMMARY
+      end
+    end
+
+    context "when unable to connect to service" do
+      it "returns a default summary" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/.*\/myRequests/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_raise(StandardError)
+
+        expect(service.get_request_summary(folio_id: "1111")).to eq CatalogueServicesClient::DEFAULT_REQUEST_SUMMARY
+      end
+    end
+  end
+
+  describe "#request_details" do
+    context "when 200 response" do
+      it "returns request details" do
+        expect(service.request_details(request_id: "1111", loan: false)).not_to be_nil
+      end
+    end
+
+    context "when non-200 response" do
+      it "raises a RequestDetailsError" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)\?loan=(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+              "User-Agent" => "nla-blacklight/2.9.0"
+            }
+          )
+          .to_return(status: 500, body: "", headers: {})
+
+        expect { service.request_details(request_id: "1111", loan: false) }.to raise_error(RequestDetailsError)
+      end
+    end
+
+    context "when unable to connect to service" do
+      it "raises a RequestDetailsError" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)\?loan=(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+              "User-Agent" => "nla-blacklight/2.9.0"
+            }
+          )
+          .to_raise(StandardError)
+
+        expect { service.request_details(request_id: "1111", loan: false) }.to raise_error(RequestDetailsError)
+      end
+    end
+  end
+
   describe "#post_stats" do
     context "when unable to post stats" do
       before do

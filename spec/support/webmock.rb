@@ -257,5 +257,17 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: "", headers: {})
+
+    request_details = IO.read("spec/files/account/single_request.json")
+
+    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)\?loan=(.*)/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
+          "User-Agent" => "nla-blacklight/2.9.0"
+        }
+      )
+      .to_return(status: 200, body: request_details, headers: {})
   end
 end

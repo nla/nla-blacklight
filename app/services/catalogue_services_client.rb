@@ -99,11 +99,7 @@ class CatalogueServicesClient
 
     res = conn.get("/catalogue-services/folio/request/#{request_id}?loan=#{loan}")
     if res.status == 200
-      if res.body.present?
-        JSON.parse(res.body.to_json, object_class: OpenStruct)
-      else
-        {}
-      end
+      JSON.parse(res.body.to_json, object_class: OpenStruct)
     else
       message = "Failed to retrieve request details for #{request_id}"
       Rails.logger.error message

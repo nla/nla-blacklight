@@ -18,7 +18,7 @@ GIT
 GIT
   remote: https://github.com/nla/nla-blacklight_common
   revision: f8c7dcaaa09614180c8718107ab4d9a84f0bc01a
-  tag: 0.1.9
+  branch: main
   specs:
     nla-blacklight_common (0.1.9)
       activerecord-session_store (~> 2.0)
@@ -403,7 +403,7 @@ GEM
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.1)
+    net-imap (0.4.2)
       date
       net-protocol
     net-pop (0.1.2)
