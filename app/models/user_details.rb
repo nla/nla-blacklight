@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "email_validator"
-
 class UserDetails
   include ActiveModel::Model
   include ActiveModel::Serialization
@@ -10,6 +8,7 @@ class UserDetails
   validates :phone, phone: {allow_blank: true}
   validates :mobile_phone, phone: {allow_blank: true, types: [:mobile]}
   validate :any_phone, if: -> { phone.blank? && mobile_phone.blank? }
+  validates :postcode, presence: true
 
   # order of attributes in ALL_ATTRIBUTES array determines order in view
   ALL_ATTRIBUTES = %w[first_name last_name email mobile_phone phone password postcode]
