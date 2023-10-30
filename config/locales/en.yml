@@ -40,6 +40,9 @@ en:
               invalid: "This is not a valid email address."
               taken: "Sorry, that email address cannot be used. Please use a different email address."
               blank: "Please provide an email address."
+            postcode:
+              format: "%{message}"
+              blank: "Please provide a postcode."
   loading: "Loading..."
   headings:
     search: "Search"

@@ -208,4 +208,16 @@ RSpec.describe UserDetails do
       end
     end
   end
+
+  describe "#postcode" do
+    context "when postcode is blank" do
+      it "displays an error" do
+        user_details = described_class.new(postcode: "")
+
+        user_details.valid?
+
+        expect(user_details.errors[:postcode]).to include(I18n.t("activemodel.errors.models.user_details.attributes.postcode.blank"))
+      end
+    end
+  end
 end
