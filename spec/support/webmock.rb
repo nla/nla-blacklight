@@ -264,8 +264,7 @@ RSpec.configure do |config|
       .with(
         headers: {
           "Accept" => "*/*",
-          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-          "User-Agent" => "nla-blacklight/2.9.0"
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
         }
       )
       .to_return(status: 200, body: request_details, headers: {})
