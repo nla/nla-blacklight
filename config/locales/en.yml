@@ -34,9 +34,9 @@ en:
     errors:
       models:
         user_details:
-          format: "%{message}"
           attributes:
             email:
+              format: "%{message}"
               invalid: "This is not a valid email address."
               taken: "Sorry, that email address cannot be used. Please use a different email address."
               blank: "Please provide an email address."
@@ -169,6 +169,7 @@ en:
           email:
             taken: "Sorry, that email address cannot be used. Please use a different email address."
             failed: "Sorry, we were unable to update your email address. Please try again later."
+          any_phone: "Please provide at least one contact phone number."
           failed: "Sorry, we were unable to update your %{attribute}. Please try again later."
       first_name:
         label: "First name"

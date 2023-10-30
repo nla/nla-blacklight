@@ -120,6 +120,7 @@ gem "stackprof", group: :development
 gem "memo_wise"
 
 gem "email_validator", "~> 2.2"
+gem "phonelib", "~> 0.8.4"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

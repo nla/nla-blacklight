@@ -25,7 +25,7 @@
         <div class="form-group row">
           <%= f.label :email, "New #{t("account.settings.email.change_text")}:", class: "col-sm-3 col-form-label" %>
           <div class="col-sm-6">
-            <%= f.text_field :email, class: "form-control", autocomplete: "email" %>
+            <%= f.text_field :email, class: "form-control", maxlength: 15, autocomplete: "email" %>
           </div>
         </div>
       <% end %>
@@ -40,7 +40,7 @@
         <div class="form-group row">
           <%= f.label :mobile_phone, "New #{t("account.settings.mobile_phone.change_text")}:", class: "col-sm-3 col-form-label" %>
           <div class="col-sm-6">
-            <%= f.text_field :mobile_phone, class: "form-control", maxlength: 10, autocomplete: "mobile-phone" %>
+            <%= f.text_field :mobile_phone, class: "form-control", maxlength: 15, autocomplete: "mobile-phone" %>
           </div>
         </div>
       <% end %>
@@ -55,7 +55,7 @@
         <div class="form-group row">
           <%= f.label :phone, "New #{t("account.settings.phone.change_text")}:", class: "col-sm-3 col-form-label" %>
           <div class="col-sm-6">
-            <%= f.text_field :phone, class: "form-control", maxlength: 10, autocomplete: "phone" %>
+            <%= f.text_field :phone, class: "form-control", maxlength: 15, autocomplete: "phone" %>
           </div>
         </div>
       <% end %>

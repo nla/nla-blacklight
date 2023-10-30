@@ -453,6 +453,7 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
+    phonelib (0.8.4)
     popper_js (1.16.1)
     prometheus-client (4.2.1)
     psych (5.1.1)
@@ -765,6 +766,7 @@ DEPENDENCIES
   nokogiri (>= 1.13.9)
   oauth2 (~> 2.0)
   openurl
+  phonelib (~> 0.8.4)
   puma (~> 6.4)
   rack-mini-profiler
   rails (~> 7.0.8)
