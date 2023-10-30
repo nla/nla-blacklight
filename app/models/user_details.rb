@@ -7,6 +7,9 @@ class UserDetails
   include ActiveModel::Serialization
 
   validates :email, presence: true, email: {mode: :strict, require_fqdn: true}
+  validates :phone, phone: {allow_blank: true}
+  validates :mobile_phone, phone: {allow_blank: true, types: [:mobile]}
+  validate :any_phone, if: -> { phone.blank? && mobile_phone.blank? }
 
   # order of attributes in ALL_ATTRIBUTES array determines order in view
   ALL_ATTRIBUTES = %w[first_name last_name email mobile_phone phone password postcode]
@@ -30,5 +33,9 @@ class UserDetails
       "mobile_phone" => mobile_phone,
       "postcode" => postcode
     }
+  end
+
+  def any_phone
+    errors.add(:base, :mobile_phone_or_phone_blank, message: I18n.t("account.settings.update.errors.any_phone"))
   end
 end
