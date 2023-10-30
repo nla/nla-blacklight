@@ -246,6 +246,8 @@ GEM
       faraday_middleware (~> 1.0)
       net-http-persistent (>= 3.1, < 5)
       public_suffix (~> 4.0)
+    email_validator (2.2.4)
+      activemodel
     erubi (1.12.0)
     et-orbi (1.2.7)
       tzinfo
@@ -740,6 +742,7 @@ DEPENDENCIES
   dotenv-rails
   down (~> 5.0)
   ebsco-eds
+  email_validator (~> 2.2)
   factory_bot_rails
   faker
   faraday-http-cache
