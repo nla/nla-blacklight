@@ -126,8 +126,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
           .with(
             headers: {
               "Accept" => "*/*",
-              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-              "User-Agent" => "nla-blacklight/2.9.0"
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
           .to_return(status: 500, body: "", headers: {})
@@ -142,8 +141,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
           .with(
             headers: {
               "Accept" => "*/*",
-              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3",
-              "User-Agent" => "nla-blacklight/2.9.0"
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
           .to_raise(StandardError)
