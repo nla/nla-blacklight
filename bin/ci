@@ -31,9 +31,6 @@ bundle exec bundle audit check --update
 
 echo "[ bin/ci ] Done"
 
-echo "[ bin/ci ] Clobbering precompiled assets"
-bin/rails assets:clobber
-
 echo "[ bin/ci ] Unsetting HEADLESS"
 unset HEADLESS
 

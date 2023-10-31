@@ -19,7 +19,7 @@ class RequestDetail
   end
 
   def request_time
-    @date.strftime("%I:%M:%S%P")
+    @date.strftime("%I:%M%P")
   end
 
   def partial_name

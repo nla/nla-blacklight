@@ -1,6 +1,4 @@
-<%= turbo_frame_tag params[:attribute] do %>
-  <%= form_with url: account_settings_update_path, model: @user_details, method: :post, class: "form-inline" do |f| %>
-    <%= f.text_field params[:attribute].to_sym, class: "form-control mr-sm-2", aria: {labelledby: "#{params[:attribute]}_label"} %>
-    <%= f.submit "Save", class: "btn btn-primary" %>
-  <% end %>
-<% end %>
+<h2 class="h3"><%= t("account.settings.update.heading", attribute: t("account.settings.#{params[:attribute]}.change_text")) %></h2>
+
+<%= render "account/settings/form", user_details: @user_details, current_details: @current_details %>
+

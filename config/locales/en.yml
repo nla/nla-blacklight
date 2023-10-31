@@ -30,6 +30,19 @@
 # available at https://guides.rubyonrails.org/i18n.html.
 
 en:
+  activemodel:
+    errors:
+      models:
+        user_details:
+          attributes:
+            email:
+              format: "%{message}"
+              invalid: "This is not a valid email address."
+              taken: "Sorry, that email address cannot be used. Please use a different email address."
+              blank: "Please provide an email address."
+            postcode:
+              format: "%{message}"
+              blank: "Please provide a postcode."
   loading: "Loading..."
   headings:
     search: "Search"
@@ -75,6 +88,7 @@ en:
       supplements: "Supplements:"
       indexes: "Indexes:"
       delivery_conditions: "Delivery Conditions:"
+      request_date: "Date:"
     prompt: "<strong>You are requesting a journal, magazine, newspaper, annual report or other multi-part item. Please use the fields below to tell our staff which issues you would like to request.</strong>"
     prompt_2: "You can use one request for consecutive parts. A separate request must be placed for non-sequential years/volumes or days/months. Requests for large amounts of material may be partially supplied. If you need assistance with this please <a href=\"%{contact_us}\">contact us.</a>"
     multi_box_prompt: "<strong>You are requesting a multiple box collection. Please use the fields below to tell our staff which box or boxes you would like to request.</strong>"
@@ -143,32 +157,44 @@ en:
         title: "Title"
         location: "Pickup location"
         notes: "Notes"
-        request_date: "Requested on"
+        request_date: "Date"
       details:
         heading: "Request Details"
     settings:
       menu: "My Details"
+      update:
+        heading: "Update your %{attribute}"
+        change_text: "Change my %{attribute}"
+        change_btn: "Update"
+        cancel_btn: "Cancel"
+        success: "Your %{attribute} has been updated."
+        errors:
+          email:
+            taken: "Sorry, that email address cannot be used. Please use a different email address."
+            failed: "Sorry, we were unable to update your email address. Please try again later."
+          any_phone: "Please provide at least one contact phone number."
+          failed: "Sorry, we were unable to update your %{attribute}. Please try again later."
       first_name:
         label: "First name"
-        change_text: "Change my first name"
+        change_text: "first name"
       last_name:
         label: "Family name"
-        change_text: "Change my family name"
+        change_text: "family name"
       email:
         label: "Email"
-        change_text: "Change my email address"
+        change_text: "email address"
       phone:
         label: "Phone"
-        change_text: "Change my phone number"
+        change_text: "phone number"
       mobile_phone:
         label: "Mobile phone"
-        change_text: "Change my mobile phone number"
+        change_text: "mobile phone number"
       password:
         label: "Password"
-        change_text: "Change my password"
+        change_text: "password"
       postcode:
         label: "Postcode"
-        change_text: "Change my postcode"
+        change_text: "postcode"
       notifications:
         label: "Notifications"
         change_text: "Email me notifications when requested items are ready for collection"

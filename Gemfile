@@ -102,7 +102,7 @@ gem "faraday-http-cache"
 gem "uri", "~> 0.12.1"
 
 # Before a release, point these gem at a tag, instead of the `main` branch.
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", tag: "0.1.9"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
@@ -118,6 +118,9 @@ gem "derailed_benchmarks", group: :development
 gem "stackprof", group: :development
 
 gem "memo_wise"
+
+gem "email_validator", "~> 2.2"
+gem "phonelib", "~> 0.8.4"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

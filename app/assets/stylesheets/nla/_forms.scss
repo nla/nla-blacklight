@@ -1,0 +1,55 @@
+.field_with_errors {
+  margin: 0;
+
+  &::before,
+  &::after {
+    display: block;
+    clear: none;
+  }
+
+  input {
+    border: 1px solid var(--danger);
+  }
+}
+
+.edit-settings-form {
+  margin-bottom: 2rem;
+
+  .form-group {
+    margin-bottom: 0;
+
+    label {
+      color: var(--gray-medium-light);
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .edit-settings-form {
+    .form-group {
+      label {
+        text-align: right;
+      }
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .edit-settings-form {
+    .form-group {
+      label {
+        text-align: right;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .edit-settings-form {
+    .form-group {
+      label {
+        text-align: right;
+      }
+    }
+  }
+}

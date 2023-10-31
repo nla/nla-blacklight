@@ -5,17 +5,11 @@ require "rails_helper"
 RSpec.describe UserDetailsFieldComponent, type: :component do
   let(:folio_details) do
     {
-      "personal" => {
-        "firstName" => "John",
-        "lastName" => "Smith",
-        "email" => "test@example.com",
-        "mobilePhone" => "0123456789",
-        "addresses" => [
-          {
-            "postalCode" => "2100"
-          }
-        ]
-      }
+      first_name: "John",
+      last_name: "Smith",
+      email: "test@example.com",
+      mobile_phone: "0123456789",
+      postcode: "2100"
     }
   end
 
@@ -29,17 +23,7 @@ RSpec.describe UserDetailsFieldComponent, type: :component do
     render_inline(described_class.new(attribute: "last_name", details: user_details))
 
     expect(page).to have_css("#last_name-label", text: I18n.t("account.settings.last_name.label"))
-    expect(page).to have_css("dd", text: "Smith")
-  end
-
-  it "does not render the user details if there is no value" do
-    unless ENV["KC_PATRON_REALM"]
-      skip("Skipping test as KC_PATRON_REALM is not set")
-    end
-
-    render_inline(described_class.new(attribute: "phone", details: user_details))
-
-    expect(page).not_to have_css("#phone-label", text: "Phone")
+    expect(page).to have_css("div", text: "Smith")
   end
 
   context "when patron account" do
@@ -62,7 +46,7 @@ RSpec.describe UserDetailsFieldComponent, type: :component do
       render_inline(described_class.new(attribute: "last_name", details: user_details, editable: UserDetails::PATRON_EDITABLE_ATTRIBUTES.include?("last_name")))
 
       expect(page).to have_css("#last_name-label", text: I18n.t("account.settings.last_name.label"))
-      expect(page).to have_css("dd", text: "Smith")
+      expect(page).to have_css("div", text: "Smith")
       expect(page).not_to have_css("a", text: I18n.t("account.settings.last_name.change_text"))
     end
   end

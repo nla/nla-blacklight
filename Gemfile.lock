@@ -18,7 +18,7 @@ GIT
 GIT
   remote: https://github.com/nla/nla-blacklight_common
   revision: f8c7dcaaa09614180c8718107ab4d9a84f0bc01a
-  tag: 0.1.9
+  branch: main
   specs:
     nla-blacklight_common (0.1.9)
       activerecord-session_store (~> 2.0)
@@ -246,6 +246,8 @@ GEM
       faraday_middleware (~> 1.0)
       net-http-persistent (>= 3.1, < 5)
       public_suffix (~> 4.0)
+    email_validator (2.2.4)
+      activemodel
     erubi (1.12.0)
     et-orbi (1.2.7)
       tzinfo
@@ -403,7 +405,7 @@ GEM
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.1)
+    net-imap (0.4.3)
       date
       net-protocol
     net-pop (0.1.2)
@@ -451,6 +453,7 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
+    phonelib (0.8.4)
     popper_js (1.16.1)
     prometheus-client (4.2.1)
     psych (5.1.1)
@@ -500,7 +503,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
-    rake (13.0.6)
+    rake (13.1.0)
     rdoc (6.5.0)
       psych (>= 4.0.0)
     redis (5.0.7)
@@ -740,6 +743,7 @@ DEPENDENCIES
   dotenv-rails
   down (~> 5.0)
   ebsco-eds
+  email_validator (~> 2.2)
   factory_bot_rails
   faker
   faraday-http-cache
@@ -762,6 +766,7 @@ DEPENDENCIES
   nokogiri (>= 1.13.9)
   oauth2 (~> 2.0)
   openurl
+  phonelib (~> 0.8.4)
   puma (~> 6.4)
   rack-mini-profiler
   rails (~> 7.0.8)

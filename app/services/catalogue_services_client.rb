@@ -99,11 +99,7 @@ class CatalogueServicesClient
 
     res = conn.get("/catalogue-services/folio/request/#{request_id}?loan=#{loan}")
     if res.status == 200
-      if res.body.present?
-        JSON.parse(res.body.to_json, object_class: OpenStruct)
-      else
-        {}
-      end
+      JSON.parse(res.body.to_json, object_class: OpenStruct)
     else
       message = "Failed to retrieve request details for #{request_id}"
       Rails.logger.error message
@@ -156,7 +152,15 @@ class CatalogueServicesClient
     res = conn.get("/catalogue-services/folio/user?query=id==#{folio_id}")
     if res.status == 200
       if res.body.present? && res.body["totalRecords"].to_i == 1
-        res.body["users"]&.first
+        folio_details = res.body["users"]&.first
+        {
+          first_name: folio_details&.dig("personal", "firstName") || "",
+          last_name: folio_details&.dig("personal", "lastName") || "",
+          email: folio_details&.dig("personal", "email") || "",
+          phone: folio_details&.dig("personal", "phone") || "",
+          mobile_phone: folio_details&.dig("personal", "mobilePhone") || "",
+          postcode: folio_details&.dig("personal", "addresses")&.first&.[]("postalCode") || ""
+        }
       else
         {}
       end
@@ -185,10 +189,10 @@ class CatalogueServicesClient
       req.body = payload.to_json
     end
     if res.status != 200
-      message = "Failed to update user details for #{folio_id}: #{payload}"
+      message = "Failed to update user details for #{folio_id} - #{res.body["status"]}: #{payload.to_json}"
       Rails.logger.error message
-      raise UserDetailsError.new("Failed to update details for #{folio_id}")
     end
+    res.body
   rescue => e
     Rails.logger.error "update_user_folio_details - Failed to connect catalogue-service: #{e.message}"
     raise UserDetailsError.new("Failed to update details for #{folio_id}")
