@@ -4,7 +4,8 @@ class UserDetails
   include ActiveModel::Model
   include ActiveModel::Serialization
 
-  validates :email, presence: true, email: {mode: :strict, require_fqdn: true}
+  validates :email, presence: true
+  validates :email, email: {mode: :strict, require_fqdn: true}, if: -> { email.present? }
   validates :phone, phone: {allow_blank: true}
   validates :mobile_phone, phone: {allow_blank: true, types: [:mobile]}
   validate :any_phone, if: -> { phone.blank? && mobile_phone.blank? }
