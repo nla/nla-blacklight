@@ -76,8 +76,10 @@ en:
       collection: 'Please check collection <a href="https://www.nla.gov.au/using-library/collection-delivery-service/collection-delivery-times">delivery times</a> and <a href="https://www.nla.gov.au/visit-us/opening-hours">opening hours</a>.'
       scrr: 'To prepare for your visit, and find out more about use of and access to our special collections, view our Research Guide on <a href="https://www.nla.gov.au/research-guides/using-the-special-collections-reading-room">Using the Special Collections Reading Room</a>.'
     errors:
-      manuscript:
+      manuscripts:
         required: "Additional information is required to complete your request. Please provide information on either the Box Number, or Series Number or Folder/item Number that you are requesting."
+      serials:
+        required: "Additional information is required to complete your request. Please provide information on either the Year, or Volume/No or Day or Month that you are requesting."
     metadata:
       item_requested: "Item Requested:"
       collect_from: "Collect From:"

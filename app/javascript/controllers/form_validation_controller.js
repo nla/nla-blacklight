@@ -1,4 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
+import debounce from "lodash.debounce"
 
 // Connects to data-controller="form-validator"
 export default class extends Controller {
@@ -6,8 +7,10 @@ export default class extends Controller {
   static values = { message: String }
 
   connect() {
-    console.log("FormValidationController connected", this.element)
-    console.log(this.messageValue)
+  }
+
+  initialize() {
+    this.validate = debounce(this.validate, 500).bind(this)
   }
 
   validateSubmit(event) {
@@ -16,13 +19,14 @@ export default class extends Controller {
     let form = this.formTarget
 
     let allRequiredFieldsMissing = this.isAllRequiredFieldsMissing()
+    let dependentFieldsMissing = this.isDependentFieldsMissing()
 
-    if (allRequiredFieldsMissing) {
+    if (allRequiredFieldsMissing || dependentFieldsMissing) {
       this.toggleAllRequiredFieldsInvalid()
     }
 
     // If all of the required fields are empty, show the alert and prevent submit
-    if (allRequiredFieldsMissing) {
+    if (allRequiredFieldsMissing || dependentFieldsMissing) {
       this.showMessage()
     } else {
       this.hideMessage()
@@ -33,14 +37,11 @@ export default class extends Controller {
   validate(event) {
     let field = event.target
     let requiredFields = this.requiredTargets
-    let requiredMessage = this.messageValue
 
     if (field.value !== "") {
       requiredFields.forEach(function(field) {
         field.classList.remove("is-invalid")
       })
-
-      this.hideMessage()
     } else {
       let allRequiredFieldsMissing = this.isAllRequiredFieldsMissing()
 
@@ -49,12 +50,36 @@ export default class extends Controller {
         this.showMessage()
       }
     }
+
+    let dependentFieldsMissing = this.isDependentFieldsMissing()
+    if (dependentFieldsMissing) {
+      this.toggleAllRequiredFieldsInvalid()
+      this.showMessage()
+    }
   }
 
   isAllRequiredFieldsMissing() {
     let requiredFields = this.requiredTargets
 
     return requiredFields.every(field => field.value === "")
+  }
+
+  isDependentFieldsMissing() {
+    let dependentElements = []
+
+    let requiredFields = this.requiredTargets
+    requiredFields.forEach(function(field) {
+      let dependentFields = field.dataset.dependentFields
+      if (dependentFields) {
+        let dependentFieldsArray = dependentFields.split(",")
+
+        dependentFieldsArray.forEach(function(dependentField) {
+          dependentElements.push(document.getElementById(`request_${dependentField}`))
+        })
+      }
+    })
+
+    return dependentElements.length > 0 && dependentElements.every(field => field.value === "")
   }
 
   showMessage() {
