@@ -19,7 +19,7 @@
       <div class="form-group row">
         <%= f.label :year, t("requesting.label.year"), class: "col-md-3 col-form-label text-md-right" %>
         <div class="col-sm-6">
-          <%= f.text_field :year, class: "form-control", maxlength: 20, data: {"form-validation-target": "required", action: "form-validation#validate", "dependent-fields": "enumeration"} %>
+          <%= f.text_field :year, class: "form-control", maxlength: 20 %>
         </div>
         <span id="year-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.year") %></span>
       </div>
