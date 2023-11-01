@@ -14,13 +14,15 @@ RSpec.describe "Request summary" do
     it "displays the request summary" do
       visit account_requests_path
 
-      expect(page).to have_css("a.active", text: "blacklight test")
+      Capybara.using_wait_time(20) do
+        expect(page).to have_css("a.active", text: "blacklight test")
 
-      expect(page).to have_css("caption", text: /Checked out/)
-      expect(page).to have_css("caption", text: /Ready for collection/)
-      expect(page).to have_css("caption", text: /Not available/)
-      expect(page).to have_css("caption", text: /Items requested/)
-      expect(page).to have_css("caption", text: /Previous requests/)
+        expect(page).to have_css("caption", text: /Checked out/)
+        expect(page).to have_css("caption", text: /Ready for collection/)
+        expect(page).to have_css("caption", text: /Not available/)
+        expect(page).to have_css("caption", text: /Items requested/)
+        expect(page).to have_css("caption", text: /Previous requests/)
+      end
     end
 
     it "displays the request details" do

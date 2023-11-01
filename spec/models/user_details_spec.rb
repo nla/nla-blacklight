@@ -72,7 +72,7 @@ RSpec.describe UserDetails do
 
         user_details.valid?
 
-        expect(user_details.errors[:mobile_phone]).to include(I18n.t("errors.messages.invalid"))
+        expect(user_details.errors[:mobile_phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.mobile_phone.invalid"))
       end
     end
 
@@ -102,7 +102,7 @@ RSpec.describe UserDetails do
 
         user_details.valid?
 
-        expect(user_details.errors[:mobile_phone]).to include(I18n.t("errors.messages.invalid"))
+        expect(user_details.errors[:mobile_phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.mobile_phone.invalid"))
       end
     end
 
@@ -112,7 +112,7 @@ RSpec.describe UserDetails do
 
         user_details.valid?
 
-        expect(user_details.errors[:mobile_phone]).to include(I18n.t("errors.messages.invalid"))
+        expect(user_details.errors[:mobile_phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.mobile_phone.invalid"))
       end
     end
 
@@ -122,7 +122,7 @@ RSpec.describe UserDetails do
 
         user_details.valid?
 
-        expect(user_details.errors[:mobile_phone]).to include(I18n.t("errors.messages.invalid"))
+        expect(user_details.errors[:mobile_phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.mobile_phone.invalid"))
       end
     end
   end
@@ -184,7 +184,7 @@ RSpec.describe UserDetails do
 
         user_details.valid?
 
-        expect(user_details.errors[:phone]).to include(I18n.t("errors.messages.invalid"))
+        expect(user_details.errors[:phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.phone.invalid"))
       end
     end
 
@@ -194,7 +194,7 @@ RSpec.describe UserDetails do
 
         user_details.valid?
 
-        expect(user_details.errors[:phone]).to include(I18n.t("errors.messages.invalid"))
+        expect(user_details.errors[:phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.phone.invalid"))
       end
     end
 
@@ -204,7 +204,7 @@ RSpec.describe UserDetails do
 
         user_details.valid?
 
-        expect(user_details.errors[:phone]).to include(I18n.t("errors.messages.invalid"))
+        expect(user_details.errors[:phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.phone.invalid"))
       end
     end
   end
