@@ -79,12 +79,15 @@ en:
       manuscripts:
         required: "Additional information is required to complete your request. Please provide information on either the Box Number, or Series Number or Folder/item Number that you are requesting."
         dependent: ""
-      serials:
-        required: "Additional information is required to complete your request. Please provide information on either the Year, or Volume/No or Day or Month that you are requesting."
-        dependent: "Additional information is required to complete your request. Please provide information on either the Year or Volume/No that you are requesting."
       maps:
         required: "Additional information is required to complete your request. Please provide the Map Sheet No. or Name."
         dependent: "Additional information is required to complete your request. Please provide the Map Sheet No. or Name."
+      monographs:
+        required: ""
+        dependent: ""
+      serials:
+        required: "Additional information is required to complete your request. Please provide information on either the Year, or Volume/No or Day or Month that you are requesting."
+        dependent: "Additional information is required to complete your request. Please provide information on either the Year or Volume/No that you are requesting."
     metadata:
       item_requested: "Item Requested:"
       collect_from: "Collect From:"
