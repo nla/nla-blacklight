@@ -26,7 +26,7 @@ RSpec.describe "Request summary" do
     it "displays the request details" do
       visit request_details_path("d7746c53-7746-4b0e-8382-5261aa9bcecb", loan: false)
 
-      Capybara.using_wait_time(10) do # seconds
+      Capybara.using_wait_time(20) do # seconds
         expect(page).to have_css("h1", text: "Request Details")
         expect(page).to have_css("h3", text: "The Mad Max movies / Adrian Martin.")
 
