@@ -25,7 +25,7 @@ export default class extends Controller {
       this.toggleAllRequiredFieldsInvalid()
     }
 
-    // If all of the required fields are empty, show the alert and prevent submit
+    // If required fields are empty, show the alert and prevent submit
     if (allRequiredFieldsMissing || dependentFieldsMissing) {
       this.showMessage()
     } else {
