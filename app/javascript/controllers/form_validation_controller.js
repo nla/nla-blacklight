@@ -1,13 +1,17 @@
 import { Controller } from "@hotwired/stimulus"
+import debounce from "lodash.debounce"
 
 // Connects to data-controller="form-validator"
 export default class extends Controller {
   static targets = [ "form", "required", "alert", "message" ]
-  static values = { message: String }
+  static values = { message: String, dependentMessage: String }
 
   connect() {
-    console.log("FormValidationController connected", this.element)
-    console.log(this.messageValue)
+    console.log("dependentMessage", this.dependentMessageValue)
+  }
+
+  initialize() {
+    this.validate = debounce(this.validate, 500).bind(this)
   }
 
   validateSubmit(event) {
@@ -16,14 +20,17 @@ export default class extends Controller {
     let form = this.formTarget
 
     let allRequiredFieldsMissing = this.isAllRequiredFieldsMissing()
+    let dependentFieldsMissing = this.isDependentFieldsMissing()
 
-    if (allRequiredFieldsMissing) {
+    if (allRequiredFieldsMissing || dependentFieldsMissing) {
       this.toggleAllRequiredFieldsInvalid()
     }
 
-    // If all of the required fields are empty, show the alert and prevent submit
+    // If required fields are empty, show the alert and prevent submit
     if (allRequiredFieldsMissing) {
-      this.showMessage()
+      this.showMessage(this.messageValue)
+    } else if (dependentFieldsMissing) {
+      this.showMessage(this.dependentMessageValue)
     } else {
       this.hideMessage()
       form.submit()
@@ -33,20 +40,27 @@ export default class extends Controller {
   validate(event) {
     let field = event.target
     let requiredFields = this.requiredTargets
-    let requiredMessage = this.messageValue
+
+    let dependentFieldsMissing = this.isDependentFieldsMissing()
 
     if (field.value !== "") {
       requiredFields.forEach(function(field) {
         field.classList.remove("is-invalid")
       })
 
-      this.hideMessage()
+      if (dependentFieldsMissing) {
+        this.toggleAllRequiredFieldsInvalid()
+        this.showMessage(this.dependentMessageValue)
+      }
     } else {
       let allRequiredFieldsMissing = this.isAllRequiredFieldsMissing()
 
       if (allRequiredFieldsMissing) {
         this.toggleAllRequiredFieldsInvalid()
-        this.showMessage()
+        this.showMessage(this.messageValue)
+      } else if (dependentFieldsMissing) {
+        this.toggleAllRequiredFieldsInvalid()
+        this.showMessage(this.dependentMessageValue)
       }
     }
   }
@@ -57,10 +71,27 @@ export default class extends Controller {
     return requiredFields.every(field => field.value === "")
   }
 
-  showMessage() {
-    let requiredMessage = this.messageValue
+  isDependentFieldsMissing() {
+    let dependentElements = []
+
+    let requiredFields = this.requiredTargets
+    requiredFields.forEach(function(field) {
+      let dependentFields = field.dataset.dependentFields
+      if (dependentFields) {
+        let dependentFieldsArray = dependentFields.split(",")
+
+        dependentFieldsArray.forEach(function(dependentField) {
+          dependentElements.push(document.getElementById(`request_${dependentField}`))
+        })
+      }
+    })
+
+    return dependentElements.length > 0 && dependentElements.every(field => field.value === "")
+  }
+
+  showMessage(message) {
     this.alertTarget.classList.remove("d-none")
-    this.messageTarget.innerText = requiredMessage
+    this.messageTarget.innerText = message
   }
 
   hideMessage() {

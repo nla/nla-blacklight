@@ -12,7 +12,7 @@
       <div class="form-group row">
         <%= f.label :year, t("requesting.label.box_number"), class: "col-md-3 col-form-label text-md-right" %>
         <div class="col-sm-6">
-          <%= f.text_field :year, class: "form-control", maxlength: 20 %>
+          <%= f.text_field :year, class: "form-control", maxlength: 20, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
         </div>
         <span id="year-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.need_help", contact_us: "https://www.nla.gov.au/using-library/getting-started/ask-librarian").html_safe %></span>
       </div>
@@ -22,14 +22,14 @@
       <div class="form-group row">
         <%= f.label :enumeration, t("requesting.label.series_number"), class: "col-md-3 col-form-label text-md-right" %>
         <div class="col-sm-6">
-          <%= f.text_field :enumeration, class: "form-control", maxlength: 80 %>
+          <%= f.text_field :enumeration, class: "form-control", maxlength: 80, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
         </div>
         <span id="volume-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.volume") %></span>
       </div>
       <div class="form-group row">
         <%= f.label :chronology, t("requesting.label.folder_item_number"), class: "col-md-3 col-form-label text-md-right" %>
         <div class="col-sm-6">
-          <%= f.text_field :chronology, class: "form-control", maxlength: 80 %>
+          <%= f.text_field :chronology, class: "form-control", maxlength: 80, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
         </div>
         <span id="enumeration-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.enumeration") %></span>
       </div>
@@ -42,7 +42,7 @@
       </div>
 
       <div class="form-group row">
-        <div class="offset-md-3 col-sm-6 pr-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary" %></div>
+        <div class="offset-md-3 col-sm-6 pr-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary", data: {action: "form-validation#validateSubmit"} %></div>
         <div class="col-sm-3"></div>
       </div>
     <% end %>

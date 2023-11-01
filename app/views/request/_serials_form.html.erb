@@ -1,27 +1,32 @@
 <div class="row">
   <div class="col-12 col-lg-8">
-    <%= form_with url: solr_document_request_path, model: request, method: :post do |f| %>
+    <%= form_with(url: solr_document_request_path,
+                  model: request,
+                  method: :post,
+                  data: {
+                    "form-validation-target": "form"
+                  }) do |f| %>
       <%= hidden_field :request, :holdings_id %>
       <%= hidden_field :request, :item_id %>
 
       <div class="form-group row">
         <%= f.label :year, t("requesting.label.year"), class: "col-md-3 col-form-label text-md-right" %>
         <div class="col-sm-6">
-          <%= f.text_field :year, class: "form-control", maxlength: 20 %>
+          <%= f.text_field :year, class: "form-control", maxlength: 20, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
         </div>
         <span id="year-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.year") %></span>
       </div>
       <div class="form-group row">
         <%= f.label :enumeration, t("requesting.label.volume"), class: "col-md-3 col-form-label text-md-right" %>
         <div class="col-sm-6">
-          <%= f.text_field :enumeration, class: "form-control", maxlength: 80 %>
+          <%= f.text_field :enumeration, class: "form-control", maxlength: 80, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
         </div>
         <span id="volume-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.volume") %></span>
       </div>
       <div class="form-group row">
         <%= f.label :chronology, t("requesting.label.enumeration"), class: "col-md-3 col-form-label text-md-right" %>
         <div class="col-sm-6">
-          <%= f.text_field :chronology, class: "form-control", maxlength: 80 %>
+          <%= f.text_field :chronology, class: "form-control", maxlength: 80, data: {"form-validation-target": "required", action: "form-validation#validate", "dependent-fields": "year,enumeration"} %>
         </div>
         <span id="enumeration-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.enumeration") %></span>
       </div>
@@ -34,7 +39,7 @@
       </div>
 
       <div class="form-group row">
-        <div class="offset-md-3 col-sm-6 pr-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary" %></div>
+        <div class="offset-md-3 col-sm-6 pr-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary", data: {action: "form-validation#validateSubmit"} %></div>
         <div class="col-sm-3"></div>
       </div>
     <% end %>
