@@ -1,6 +1,11 @@
 <div class="row">
   <div class="col-12 col-lg-8">
-    <%= form_with url: solr_document_request_path, model: request, method: :post do |f| %>
+    <%= form_with(url: solr_document_request_path,
+                  model: request,
+                  method: :post,
+                  data: {
+                    "form-validation-target": "form"
+                  }) do |f| %>
       <%= hidden_field :request, :holdings_id %>
       <%= hidden_field :request, :item_id %>
 
