@@ -4,9 +4,10 @@ import debounce from "lodash.debounce"
 // Connects to data-controller="form-validator"
 export default class extends Controller {
   static targets = [ "form", "required", "alert", "message" ]
-  static values = { message: String }
+  static values = { message: String, dependentMessage: String }
 
   connect() {
+    console.log("dependentMessage", this.dependentMessageValue)
   }
 
   initialize() {
@@ -26,8 +27,10 @@ export default class extends Controller {
     }
 
     // If required fields are empty, show the alert and prevent submit
-    if (allRequiredFieldsMissing || dependentFieldsMissing) {
-      this.showMessage()
+    if (allRequiredFieldsMissing) {
+      this.showMessage(this.messageValue)
+    } else if (dependentFieldsMissing) {
+      this.showMessage(this.dependentMessageValue)
     } else {
       this.hideMessage()
       form.submit()
@@ -38,23 +41,27 @@ export default class extends Controller {
     let field = event.target
     let requiredFields = this.requiredTargets
 
+    let dependentFieldsMissing = this.isDependentFieldsMissing()
+
     if (field.value !== "") {
       requiredFields.forEach(function(field) {
         field.classList.remove("is-invalid")
       })
+
+      if (dependentFieldsMissing) {
+        this.toggleAllRequiredFieldsInvalid()
+        this.showMessage(this.dependentMessageValue)
+      }
     } else {
       let allRequiredFieldsMissing = this.isAllRequiredFieldsMissing()
 
       if (allRequiredFieldsMissing) {
         this.toggleAllRequiredFieldsInvalid()
-        this.showMessage()
+        this.showMessage(this.messageValue)
+      } else if (dependentFieldsMissing) {
+        this.toggleAllRequiredFieldsInvalid()
+        this.showMessage(this.dependentMessageValue)
       }
-    }
-
-    let dependentFieldsMissing = this.isDependentFieldsMissing()
-    if (dependentFieldsMissing) {
-      this.toggleAllRequiredFieldsInvalid()
-      this.showMessage()
     }
   }
 
@@ -82,10 +89,9 @@ export default class extends Controller {
     return dependentElements.length > 0 && dependentElements.every(field => field.value === "")
   }
 
-  showMessage() {
-    let requiredMessage = this.messageValue
+  showMessage(message) {
     this.alertTarget.classList.remove("d-none")
-    this.messageTarget.innerText = requiredMessage
+    this.messageTarget.innerText = message
   }
 
   hideMessage() {

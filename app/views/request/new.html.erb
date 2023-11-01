@@ -17,7 +17,10 @@
       <p class="col-12 col-lg-8"><%= t("requesting.map_prompt").html_safe %></p>
     <% end %>
   </div>
-  <section id="request-details" data-controller="form-validation" data-form-validation-message-value="<%= t("requesting.errors.#{@request_form}.required") %>">
+  <section id="request-details"
+           data-controller="form-validation"
+           data-form-validation-message-value="<%= t("requesting.errors.#{@request_form}.required") %>"
+           data-form-validation-dependent-message-value="<%= t("requesting.errors.#{@request_form}.dependent") %>">
     <div class="row d-none" data-form-validation-target="alert">
       <div class="col-12 col-lg-8">
         <div class="alert alert-danger" role="alert">
