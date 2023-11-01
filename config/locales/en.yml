@@ -40,6 +40,12 @@ en:
               invalid: "This is not a valid email address."
               taken: "Sorry, that email address cannot be used. Please use a different email address."
               blank: "Please provide an email address."
+            mobile_phone:
+              format: "%{message}"
+              invalid: "Please provide a valid mobile phone number."
+            phone:
+              format: "%{message}"
+              invalid: "Please provide a valid phone number."
             postcode:
               format: "%{message}"
               blank: "Please provide a postcode."
