@@ -49,4 +49,18 @@ $(function() {
     subtree: true
   }
   modalObserver.observe(blacklightModal[0], observerConfig);
+
+  // Override Blacklight modal failure logic
+  Blacklight.modal.onFailure = function (jqXHR, textStatus, errorThrown) {
+    if (jqXHR.status === 401) {
+      // Unauthorized, redirect to login page
+      window.location.href = document.getElementsByTagName('body')[0].dataset.loginUrl;
+      return;
+    }
+
+    console.error('Server error:', this.url, jqXHR.status, errorThrown);
+    var contents = '<div class="modal-header">' + '<div class="modal-title">There was a problem with your request.</div>' + '<button type="button" class="blacklight-modal-close btn-close close" data-dismiss="modal" aria-label="Close">' + '  <span aria-hidden="true">&times;</span>' + '</button></div>' + ' <div class="modal-body"><p>Expected a successful response from the server, but got an error</p>' + '<pre>' + this.type + ' ' + this.url + "\n" + jqXHR.status + ': ' + errorThrown + '</pre></div>';
+    $(Blacklight.modal.modalSelector).find('.modal-content').html(contents);
+    Blacklight.modal.show();
+  };
 });
