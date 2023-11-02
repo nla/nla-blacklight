@@ -57,6 +57,7 @@ jobs:
       DATABASE_URL: "mysql2://root:root@localhost:3306/blacklight_test"
       PATRONS_DB_URL: "mysql2://root:root@localhost:3306/blacklight_test"
       REDIS_URL: redis://localhost:6379/0
+      HEADLESS: true
     services:
       redis:
         image: redis:alpine
