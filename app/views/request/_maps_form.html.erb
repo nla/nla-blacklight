@@ -10,7 +10,7 @@
       <%= hidden_field :request, :item_id %>
 
       <div class="form-group row">
-        <%= f.label :enumeration, t("requesting.label.map_name"), class: "col-md-3 col-form-label text-md-right" %>
+        <%= f.label :enumeration, t("requesting.label.map_name").html_safe, class: "col-md-3 col-form-label text-md-right" %>
         <div class="col-sm-6">
           <%= f.text_field :enumeration, class: "form-control", maxlength: 80, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
         </div>
