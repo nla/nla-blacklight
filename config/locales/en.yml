@@ -127,7 +127,7 @@ en:
       box_number: "Box number:"
       series_number: "Series number:"
       folder_item_number: "Folder/Item number:"
-      map_name: "Map Sheet No. or Name:"
+      map_name: "Map Sheet No. or Name<span class=\"text-danger\">*</span>:"
     help:
       year: "20 character limit"
       volume: "80 character limit"

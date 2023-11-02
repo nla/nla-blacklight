@@ -223,7 +223,9 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
-        expect(page).to have_css("label", text: I18n.t("requesting.label.map_name"))
+        # rubocop:disable Layout/LineLength
+        expect(page).to have_css("label", text: "Map Sheet No. or Name*:")
+        # rubocop:enable Layout/LineLength
         expect(page).to have_css("label", text: I18n.t("requesting.label.year"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
       end
@@ -235,7 +237,10 @@ RSpec.describe "Requests" do
     let(:holdings_id) { "37fbc2dd-3b37-58b8-b447-b538ba7265b9" }
     let(:item_id) { "60ae1cf9-5b4c-5fac-9a38-2cb195cdb7b2" }
     let(:solr_document_id) { "1595553" }
-    let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["National Geographic"], format: ["Journal"]) }
+    let(:document) {
+      SolrDocument.new(id: solr_document_id, marc_ss: serial_marc, folio_instance_id_ssim: [instance_id],
+        title_tsim: ["National Geographic"], format: ["Journal"])
+    }
 
     it "renders the 'Back to item' button" do
       visit solr_document_request_success_path(
@@ -314,7 +319,8 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
-        expect(page).to have_css("p", text: "To prepare for your visit, and find out more about use of and access to our special collections")
+        expect(page).to have_css("p",
+          text: "To prepare for your visit, and find out more about use of and access to our special collections")
       end
     end
   end

@@ -55,8 +55,8 @@
           <dd class="col col-md-9"><%= @request.item["displayStatus"] %></dd>
 
           <% if items_issues_in_use(@request.holding).present? %>
-            <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.items_in_use") %></dt>
-            <dd class="col-12 col-lg-8">
+            <dt class="col-12 col-lg-3 text-lg-right"><%= t("requesting.metadata.items_in_use") %></dt>
+            <dd class="col-12 col-lg-9">
               <ul class="list-unstyled">
                 <% items_issues_in_use(@request.holding).each do |statement| %>
                   <li><%= statement %></li>
@@ -65,7 +65,7 @@
             </dd>
           <% end %>
 
-          <% if items_issues_held(@request.holding).present? %>
+          <% if @request.item["itemCategory"] != "monograph" && items_issues_held(@request.holding).present? %>
             <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.items_held") %></dt>
             <dd class="col col-md-9">
               <ul class="list-unstyled">
