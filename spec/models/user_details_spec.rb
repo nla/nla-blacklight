@@ -8,7 +8,7 @@ RSpec.describe UserDetails do
       it "displays an error" do
         user_details = described_class.new(email: "")
 
-        user_details.valid?
+        user_details.valid?(:email)
 
         expect(user_details.errors[:email]).to include(I18n.t("activemodel.errors.models.user_details.attributes.email.blank"))
       end
@@ -18,7 +18,7 @@ RSpec.describe UserDetails do
       it "displays an error" do
         user_details = described_class.new(email: "test.com")
 
-        user_details.valid?
+        user_details.valid?(:email)
 
         expect(user_details.errors[:email]).to include(I18n.t("activemodel.errors.models.user_details.attributes.email.invalid"))
       end
@@ -28,7 +28,7 @@ RSpec.describe UserDetails do
       it "displays an error" do
         user_details = described_class.new(email: "@test.com")
 
-        user_details.valid?
+        user_details.valid?(:email)
 
         expect(user_details.errors[:email]).to include(I18n.t("activemodel.errors.models.user_details.attributes.email.invalid"))
       end
@@ -38,9 +38,19 @@ RSpec.describe UserDetails do
       it "displays an error" do
         user_details = described_class.new(email: "test@example")
 
-        user_details.valid?
+        user_details.valid?(:email)
 
         expect(user_details.errors[:email]).to include(I18n.t("activemodel.errors.models.user_details.attributes.email.invalid"))
+      end
+    end
+
+    context "when postcode is blank" do
+      it "does not display a postcode error" do
+        user_details = described_class.new(email: "")
+
+        user_details.valid?(:email)
+
+        expect(user_details.errors[:postcode]).to eq []
       end
     end
   end
@@ -50,9 +60,10 @@ RSpec.describe UserDetails do
       it "displays an error" do
         user_details = described_class.new(mobile_phone: "", phone: "")
 
-        user_details.valid?
+        user_details.valid?(:mobile_phone)
 
         expect(user_details.errors[:base]).to include(I18n.t("account.settings.update.errors.any_phone"))
+        expect(user_details.errors[:postcode]).to eq []
       end
     end
 
@@ -60,7 +71,7 @@ RSpec.describe UserDetails do
       it "is valid" do
         user_details = described_class.new(mobile_phone: "0434567890")
 
-        user_details.valid?
+        user_details.valid?(:mobile_phone)
 
         expect(user_details.errors[:mobile_phone]).to be_empty
       end
@@ -70,7 +81,7 @@ RSpec.describe UserDetails do
       it "is invalid" do
         user_details = described_class.new(mobile_phone: "0234567890")
 
-        user_details.valid?
+        user_details.valid?(:mobile_phone)
 
         expect(user_details.errors[:mobile_phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.mobile_phone.invalid"))
       end
@@ -80,7 +91,7 @@ RSpec.describe UserDetails do
       it "is valid" do
         user_details = described_class.new(mobile_phone: "+61412345678")
 
-        user_details.valid?
+        user_details.valid?(:mobile_phone)
 
         expect(user_details.errors[:mobile_phone]).to be_empty
       end
@@ -90,7 +101,7 @@ RSpec.describe UserDetails do
       it "is valid" do
         user_details = described_class.new(phone: "043 123 4567")
 
-        user_details.valid?
+        user_details.valid?(:mobile_phone)
 
         expect(user_details.errors[:phone]).to be_empty
       end
@@ -100,7 +111,7 @@ RSpec.describe UserDetails do
       it "is invalid" do
         user_details = described_class.new(mobile_phone: "13UNICORN")
 
-        user_details.valid?
+        user_details.valid?(:mobile_phone)
 
         expect(user_details.errors[:mobile_phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.mobile_phone.invalid"))
       end
@@ -110,7 +121,7 @@ RSpec.describe UserDetails do
       it "displays an error" do
         user_details = described_class.new(mobile_phone: "12345")
 
-        user_details.valid?
+        user_details.valid?(:mobile_phone)
 
         expect(user_details.errors[:mobile_phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.mobile_phone.invalid"))
       end
@@ -120,9 +131,19 @@ RSpec.describe UserDetails do
       it "displays an error" do
         user_details = described_class.new(mobile_phone: "123456789012345678901")
 
-        user_details.valid?
+        user_details.valid?(:mobile_phone)
 
         expect(user_details.errors[:mobile_phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.mobile_phone.invalid"))
+      end
+    end
+
+    context "when postcode is blank" do
+      it "does not display a postcode error" do
+        user_details = described_class.new(mobile_phone: "", phone: "")
+
+        user_details.valid?(:mobile_phone)
+
+        expect(user_details.errors[:postcode]).to eq []
       end
     end
   end
@@ -132,9 +153,10 @@ RSpec.describe UserDetails do
       it "displays an error" do
         user_details = described_class.new(mobile_phone: "", phone: "")
 
-        user_details.valid?
+        user_details.valid?(:phone)
 
         expect(user_details.errors[:base]).to include(I18n.t("account.settings.update.errors.any_phone"))
+        expect(user_details.errors[:postcode]).to eq []
       end
     end
 
@@ -142,7 +164,7 @@ RSpec.describe UserDetails do
       it "is valid" do
         user_details = described_class.new(phone: "0434567890")
 
-        user_details.valid?
+        user_details.valid?(:phone)
 
         expect(user_details.errors[:phone]).to be_empty
       end
@@ -152,7 +174,7 @@ RSpec.describe UserDetails do
       it "is invalid" do
         user_details = described_class.new(phone: "0234567890")
 
-        user_details.valid?
+        user_details.valid?(:phone)
 
         expect(user_details.errors[:phone]).to be_empty
       end
@@ -162,7 +184,7 @@ RSpec.describe UserDetails do
       it "is valid" do
         user_details = described_class.new(phone: "+61412345678")
 
-        user_details.valid?
+        user_details.valid?(:phone)
 
         expect(user_details.errors[:phone]).to be_empty
       end
@@ -172,7 +194,7 @@ RSpec.describe UserDetails do
       it "is valid" do
         user_details = described_class.new(phone: "023 123 4567")
 
-        user_details.valid?
+        user_details.valid?(:phone)
 
         expect(user_details.errors[:phone]).to be_empty
       end
@@ -182,7 +204,7 @@ RSpec.describe UserDetails do
       it "is invalid" do
         user_details = described_class.new(phone: "13UNICORN")
 
-        user_details.valid?
+        user_details.valid?(:phone)
 
         expect(user_details.errors[:phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.phone.invalid"))
       end
@@ -192,7 +214,7 @@ RSpec.describe UserDetails do
       it "displays an error" do
         user_details = described_class.new(phone: "12345")
 
-        user_details.valid?
+        user_details.valid?(:phone)
 
         expect(user_details.errors[:phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.phone.invalid"))
       end
@@ -202,7 +224,7 @@ RSpec.describe UserDetails do
       it "displays an error" do
         user_details = described_class.new(phone: "123456789012345678901")
 
-        user_details.valid?
+        user_details.valid?(:phone)
 
         expect(user_details.errors[:phone]).to include(I18n.t("activemodel.errors.models.user_details.attributes.phone.invalid"))
       end
@@ -214,7 +236,7 @@ RSpec.describe UserDetails do
       it "displays an error" do
         user_details = described_class.new(postcode: "")
 
-        user_details.valid?
+        user_details.valid?(:postcode)
 
         expect(user_details.errors[:postcode]).to include(I18n.t("activemodel.errors.models.user_details.attributes.postcode.blank"))
       end
