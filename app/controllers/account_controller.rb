@@ -27,8 +27,16 @@ class AccountController < ApplicationController
   end
 
   def settings_update
-    @user_details = UserDetails.new(@current_details.attributes.merge(settings_update_params[:user_details].to_h))
-    if @user_details.valid?
+    # Since this is not a database backed model, we need to create a new instance using the
+    # current details as a base and then assign the updated attributes to it.
+    @user_details = UserDetails.new(@current_details.attributes)
+    @user_details.assign_attributes(settings_update_params[:user_details])
+
+    # Pass a validation context to target the specific attribute
+    # This is mainly to work around the fact that many pre-Keycloak migration patrons have no
+    # postcode in their FOLIO accounts. As such, we don't want to validate the postcode field
+    # when updating other fields and display an error message when the postcode is blank.
+    if @user_details.valid?(settings_update_params[:attribute].to_sym)
       response = CatalogueServicesClient.new.update_user_folio_details(current_user.folio_id, settings_update_params)
       if response["status"].present?
         if response["status"] == "OK"
