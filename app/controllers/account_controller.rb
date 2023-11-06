@@ -6,8 +6,8 @@ class AccountController < ApplicationController
   before_action :set_user_details, only: [:profile, :profile_edit, :profile_update]
 
   before_action :request_detail_params, only: [:request_details]
-  before_action :settings_edit_params, only: [:profile_edit]
-  before_action :settings_update_params, only: [:profile_update]
+  before_action :profile_edit_params, only: [:profile_edit]
+  before_action :profile_update_params, only: [:profile_update]
 
   def requests
     @met_request_limit = CatalogueServicesClient.new.request_limit_reached?(requester: current_user.folio_id)
@@ -69,11 +69,11 @@ class AccountController < ApplicationController
     @current_details = UserDetails.new(folio_details)
   end
 
-  def settings_edit_params
+  def profile_edit_params
     params.permit(:attribute, user_details: {}, current_details: {})
   end
 
-  def settings_update_params
+  def profile_update_params
     params.permit(:attribute, user_details: {}, current_details: {})
   end
 end
