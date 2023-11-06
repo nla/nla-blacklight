@@ -180,7 +180,8 @@ en:
       details:
         heading: "Request Details"
     settings:
-      menu: "My Details"
+      menu: "Profile"
+      title: "Your Profile"
       update:
         heading: "Update your %{attribute}"
         change_text: "Change my %{attribute}"

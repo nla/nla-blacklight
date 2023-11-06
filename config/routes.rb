@@ -40,9 +40,9 @@ Rails.application.routes.draw do
   get "/account/requests", to: "account#requests", as: "account_requests"
   get "/account/requests/:request_id", to: "account#request_details", as: "request_details"
   if ENV["KC_PATRON_REALM"]
-    get "/account/settings", to: "account#settings"
-    get "/account/settings/edit", to: "account#settings_edit"
-    post "/account/settings/edit", to: "account#settings_update"
+    get "/account/profile", to: "account#profile"
+    get "/account/profile/edit", to: "account#profile_edit"
+    post "/account/profile/edit", to: "account#profile_update"
   end
 
   get "/thumbnail/:id", to: "thumbnail#thumbnail", as: "thumbnail"
