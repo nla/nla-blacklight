@@ -18,7 +18,7 @@ if %w[development staging production].include? ENV["RAILS_ENV"]
 end
 
 module NlaBlacklight
-  VERSION = "2.9.0"
+  VERSION = "2.10.0"
 
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

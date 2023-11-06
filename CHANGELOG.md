@@ -1,5 +1,67 @@
 # Changelog
 
+## [2.10.0](https://github.com/nla/nla-blacklight/compare/2.9.0...2.10.0) (2023-11-03)
+
+
+### Features
+
+* add client-side validation for serial requests ([fe21301](https://github.com/nla/nla-blacklight/commit/fe213013da63b374c631586c967d0fc79601f2c5))
+* add client-side validation to manuscripts request form ([7a7ba99](https://github.com/nla/nla-blacklight/commit/7a7ba99a2cd628278c971b2d11e02b666097905a))
+* add validation of map request fields ([6b0e5db](https://github.com/nla/nla-blacklight/commit/6b0e5db79f4f533c822369f9315462955d9a6d61))
+* allow user to change their email address ([ee4806f](https://github.com/nla/nla-blacklight/commit/ee4806ff762c7e9fc2db3c8e6a68c00cbd0aaa03))
+* allow user to change their email address ([ed7f646](https://github.com/nla/nla-blacklight/commit/ed7f64682f05f6d1a7920d5323adb9fc4a603c99))
+* allow user to change their email address ([b1b05b7](https://github.com/nla/nla-blacklight/commit/b1b05b7615c61d2303dedf16cb6dc6f9e97fb743))
+* change error for invalid phone/mobile phone ([5d29eab](https://github.com/nla/nla-blacklight/commit/5d29eab7a4e50cc01b06763911dc46f25658e9d4))
+* make settings form layout responsive ([906e518](https://github.com/nla/nla-blacklight/commit/906e5185e25ef0404a8e83ec86b21b530c00e92a))
+* refactor user details fields into a component ([827c358](https://github.com/nla/nla-blacklight/commit/827c358a68ced299051d74f8fa7630c2f78e50f0))
+* remove seconds from timestamp and change label to "Date" ([097af3b](https://github.com/nla/nla-blacklight/commit/097af3b9ec4bf432cba8d00a000484b07cce3fce))
+* Update twitter icon to X ([e853c79](https://github.com/nla/nla-blacklight/commit/e853c7936c258d3aad22b079806f7040e07eb29f))
+* validate phone and mobile phone details ([28d3147](https://github.com/nla/nla-blacklight/commit/28d3147a7d7d099d7b83d345f1b391e74a606e88))
+* validate phone and mobile phone details ([457c1a8](https://github.com/nla/nla-blacklight/commit/457c1a82beafdc82fce81488cbb3f3d81b4fe147))
+* validate post code ([5d26c2f](https://github.com/nla/nla-blacklight/commit/5d26c2f87e9772718ef65bdc60e00efa5fe9a50b))
+
+
+### Bug Fixes
+
+* add placeholders for validation messages ([0aed38d](https://github.com/nla/nla-blacklight/commit/0aed38d707c51ed73290e4d0a08e2a2a72a68f8b))
+* align labels on tablet view ([4f519bb](https://github.com/nla/nla-blacklight/commit/4f519bbb5d9b0fde5c6f73a289c532d805215fa8))
+* change maxlength of email input field ([06ce316](https://github.com/nla/nla-blacklight/commit/06ce3160ac451d89d30e01892baa4e98748fece9))
+* display error for dependent fields of serials requests ([24fbe23](https://github.com/nla/nla-blacklight/commit/24fbe23a1d264acd7665faeb52a8ea0c50d1da01))
+* isolate validation of user settings ([1f44de6](https://github.com/nla/nla-blacklight/commit/1f44de6195c7fb03674d87e737a62bee400346a2))
+* mark mandatory field with star and reformat maps metadata ([5f5ccf9](https://github.com/nla/nla-blacklight/commit/5f5ccf9fcdb9e3c97e59e80bf0f1e20d05b797be))
+* override onFailure method of Blacklight modal ([9a71666](https://github.com/nla/nla-blacklight/commit/9a716667a3e5717c03d7ffcff6c7af257c7b61b7))
+* proxy View Online e-resources urls via EzProxy ([0eb076c](https://github.com/nla/nla-blacklight/commit/0eb076c5b6b6dda7bd2a83c4cfe6a31e7f18cca7))
+* remove mini_phone from Gemfile.lock ([58d2c2e](https://github.com/nla/nla-blacklight/commit/58d2c2e8cc9d78d7f3d04341d00070893b82e930))
+* update webmocks to remove agent header ([b42c92a](https://github.com/nla/nla-blacklight/commit/b42c92a96e5bfdf3fd3ca3bf8e2b86c18944ba21))
+
+
+### Miscellaneous
+
+* **deps:** bump hiredis-client from 0.17.0 to 0.17.1 ([ab15495](https://github.com/nla/nla-blacklight/commit/ab15495578d56a027c276acd28622f3d5f304371))
+* **deps:** bump strong_migrations from 1.6.3 to 1.6.4 ([09f5c79](https://github.com/nla/nla-blacklight/commit/09f5c7904cfc0497edb07582d9772798246609dc))
+* prepare for release ([223f82a](https://github.com/nla/nla-blacklight/commit/223f82a7e465354a1e836cf8afd3c34f65f3d992))
+* pull in changes to login page text ([1a217c4](https://github.com/nla/nla-blacklight/commit/1a217c4a0336fda9e1c6f0786be469e906e749e8))
+* reword comments ([136f3b2](https://github.com/nla/nla-blacklight/commit/136f3b20a813f60e90f198bd0f0644e92cadfbd3))
+
+
+### Code Refactoring
+
+* pull in changes to staff login button style ([cd2f659](https://github.com/nla/nla-blacklight/commit/cd2f659165be060337303bab4b3e6da71bfe0151))
+* re-order user details order and render only with value ([6635692](https://github.com/nla/nla-blacklight/commit/6635692bdcb150031f6a7ce57be3ac8be02367a7))
+
+
+### Tests
+
+* add tests for user details view ([ec9ca9d](https://github.com/nla/nla-blacklight/commit/ec9ca9d8d2a40625687bf3abef10f358af265727))
+* add wait around flaky Capybara test ([f75b4e2](https://github.com/nla/nla-blacklight/commit/f75b4e28d099a558435301c4283f2350830cd14b))
+* refactor request summary system spec ([a7174d4](https://github.com/nla/nla-blacklight/commit/a7174d4d9fc397d108eee2f338e355b00a06cbdd))
+* update mobile/phone tests ([90483ca](https://github.com/nla/nla-blacklight/commit/90483cae93a3a1ce875fe1e50f7f2413292f43c2))
+
+
+### Continuous Integration
+
+* configure GitHub actions to run RSpec with headless chrome ([014fa6c](https://github.com/nla/nla-blacklight/commit/014fa6c8dbdcbd48347616153d326d9c87712e5b))
+
 ## [2.9.0](https://github.com/nla/nla-blacklight/compare/2.8.0...2.9.0) (2023-10-20)
 
 

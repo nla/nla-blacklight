@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: f8c7dcaaa09614180c8718107ab4d9a84f0bc01a
-  branch: main
+  revision: fe30fc07d81271c3dfbf688d7addcb14576ce618
+  tag: 0.1.10
   specs:
-    nla-blacklight_common (0.1.9)
+    nla-blacklight_common (0.1.10)
       activerecord-session_store (~> 2.0)
       annotaterb
       brakeman
@@ -462,7 +462,7 @@ GEM
     puma (6.4.0)
       nio4r (~> 2.0)
     raabro (1.4.0)
-    racc (1.7.1)
+    racc (1.7.2)
     rack (2.2.8)
     rack-mini-profiler (3.1.1)
       rack (>= 1.2.0)

@@ -40,6 +40,12 @@ en:
               invalid: "This is not a valid email address."
               taken: "Sorry, that email address cannot be used. Please use a different email address."
               blank: "Please provide an email address."
+            mobile_phone:
+              format: "%{message}"
+              invalid: "Please provide a valid mobile phone number."
+            phone:
+              format: "%{message}"
+              invalid: "Please provide a valid phone number."
             postcode:
               format: "%{message}"
               blank: "Please provide a postcode."
@@ -69,12 +75,25 @@ en:
       message: '<p>%{original_url} is a subscription service that is only available within the National Library of Australia building in Canberra.</p><p>To %{return_link} please %{click_link}.</p>'
   requesting:
     heading: "Request this item"
-    message: "Request this item to view in the Library's reading room using your library card."
+    message: "Request this item to view in the Library’s reading room."
     success:
       heading: "Request complete"
       message: "Thank you for your request. We will email you when it is being processed or if there are any issues with delivery. You can also track the status of your requests by visiting your <a href=\"%{request_summary_url}\">Request page</a>."
-      collection: 'Please check collection <a href="https://www.nla.gov.au/using-library/collection-delivery-service/collection-delivery-times">delivery times</a> and <a href="https://www.nla.gov.au/visit-us/opening-hours">opening hours</a>.'
+      collection: 'Please bring your library card to collect this material. If you do not have a library card you will need to show proof of identity. Also check our collection <a href="https://www.nla.gov.au/using-library/collection-delivery-service/collection-delivery-times">delivery times</a> and <a href="https://www.nla.gov.au/visit-us/opening-hours">opening hours</a>.'
       scrr: 'To prepare for your visit, and find out more about use of and access to our special collections, view our Research Guide on <a href="https://www.nla.gov.au/research-guides/using-the-special-collections-reading-room">Using the Special Collections Reading Room</a>.'
+    errors:
+      manuscripts:
+        required: "Additional information is required to complete your request. Please provide information on either the Box Number, or Series Number or Folder/item Number that you are requesting."
+        dependent: ""
+      maps:
+        required: "Additional information is required to complete your request. Please provide the Map Sheet No. or Name."
+        dependent: "Additional information is required to complete your request. Please provide the Map Sheet No. or Name."
+      monographs:
+        required: ""
+        dependent: ""
+      serials:
+        required: "Additional information is required to complete your request. Please provide information on either the Year, or Volume/No or Day or Month that you are requesting."
+        dependent: "Additional information is required to complete your request. Please provide information on either the Year or Volume/No that you are requesting."
     metadata:
       item_requested: "Item Requested:"
       collect_from: "Collect From:"
@@ -108,7 +127,7 @@ en:
       box_number: "Box number:"
       series_number: "Series number:"
       folder_item_number: "Folder/Item number:"
-      map_name: "Map Sheet No. or Name:"
+      map_name: "Map Sheet No. or Name<span class=\"text-danger\">*</span>:"
     help:
       year: "20 character limit"
       volume: "80 character limit"
@@ -161,7 +180,8 @@ en:
       details:
         heading: "Request Details"
     settings:
-      menu: "My Details"
+      menu: "Profile"
+      title: "Your Profile"
       update:
         heading: "Update your %{attribute}"
         change_text: "Change my %{attribute}"

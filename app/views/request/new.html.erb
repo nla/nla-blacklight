@@ -5,96 +5,108 @@
 <% end %>
 
 <%- unless @met_request_limit %>
-<div class="row mt-4 mb-4">
-  <% if @request_form == "manuscripts" %>
-    <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt").html_safe %></p>
-    <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt_2") %></p>
-    <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt_3", finding_aid: @finding_aids_link, contact_us: Rails.application.config_for(:catalogue).contact_us_url).html_safe %></p>
-  <% elsif @request_form == "serials" %>
-    <p class="col-12 col-lg-8"><%= t("requesting.prompt").html_safe %></p>
-    <p class="col-12 col-lg-8"><%= t("requesting.prompt_2", contact_us: Rails.application.config_for(:catalogue).contact_us_url).html_safe %></p>
-  <% elsif @request_form == "maps" %>
-    <p class="col-12 col-lg-8"><%= t("requesting.map_prompt").html_safe %></p>
-  <% end %>
-</div>
-<section id="request-details">
-  <div class="row">
-    <div class="col-12 col-lg-8">
-      <dl class="document-metadata row mb-0">
-        <% if @request.item["pickupLocation"].present? %>
-          <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.collect_from") %></dt>
-          <dd class="col col-md-9"><%= @request.item["effectiveLocationDisplayName"] %></dd>
-        <% end %>
-
-        <% if @request.item["holdingAvailabilityUrl"].present? %>
-          <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.delivery_conditions") %></dt>
-          <dd class="col col-md-9"><%= link_to @request.item["holdingAvailabilityUrl"], @request.item["holdingAvailabilityUrl"] %></dd>
-        <% end %>
-
-        <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.call_number") %></dt>
-        <dd class="col col-md-9">
-          <p class="mb-0"><%= @request.item["effectiveCallNumberComponents"]["callNumber"] %>
-            <% if @request.item["itemCategory"] == "monograph" && @request.item["enumeration"].present? %>
-              <br>Copy: <%= @request.item["enumeration"] %>
-            <% end %></p>
-        </dd>
-
-        <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.status") %></dt>
-        <dd class="col col-md-9"><%= @request.item["displayStatus"] %></dd>
-
-        <% if items_issues_in_use(@request.holding).present? %>
-          <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.items_in_use") %></dt>
-          <dd class="col-12 col-lg-8">
-            <ul class="list-unstyled">
-              <% items_issues_in_use(@request.holding).each do |statement| %>
-                <li><%= statement %></li>
-              <% end %>
-            </ul>
-          </dd>
-        <% end %>
-
-        <% if items_issues_held(@request.holding).present? %>
-          <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.items_held") %></dt>
-          <dd class="col col-md-9">
-            <ul class="list-unstyled">
-              <% items_issues_held(@request.holding).each do |statement| %>
-                <% statement.each do |issue| %>
-                  <li><%= issue %></li>
-                <% end %>
-              <% end %>
-            </ul>
-          </dd>
-        <% end %>
-
-        <% if supplements(@request.holding).present? %>
-          <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.supplements") %></dt>
-          <dd class="col col-md-9">
-            <ul class="list-unstyled">
-              <% supplements(@request.holding).each do |statement| %>
-                <% statement.each do |supplement| %>
-                  <li><%= supplement %></li>
-                <% end %>
-              <% end %>
-            </ul>
-          </dd>
-        <% end %>
-
-        <% if indexes(@request.holding).present? %>
-          <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.indexes") %></dt>
-          <dd class="col col-md-9">
-            <ul class="list-unstyled">
-              <% indexes(@request.holding).each do |statement| %>
-                <% statement.each do |index| %>
-                  <li><%= index %></li>
-                <% end %>
-              <% end %>
-            </ul>
-          </dd>
-        <% end %>
-      </dl>
-    </div>
+  <div class="row mt-4 mb-4">
+    <% if @request_form == "manuscripts" %>
+      <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt").html_safe %></p>
+      <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt_2") %></p>
+      <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt_3", finding_aid: @finding_aids_link, contact_us: Rails.application.config_for(:catalogue).contact_us_url).html_safe %></p>
+    <% elsif @request_form == "serials" %>
+      <p class="col-12 col-lg-8"><%= t("requesting.prompt").html_safe %></p>
+      <p class="col-12 col-lg-8"><%= t("requesting.prompt_2", contact_us: Rails.application.config_for(:catalogue).contact_us_url).html_safe %></p>
+    <% elsif @request_form == "maps" %>
+      <p class="col-12 col-lg-8"><%= t("requesting.map_prompt").html_safe %></p>
+    <% end %>
   </div>
+  <section id="request-details"
+           data-controller="form-validation"
+           data-form-validation-message-value="<%= t("requesting.errors.#{@request_form}.required") %>"
+           data-form-validation-dependent-message-value="<%= t("requesting.errors.#{@request_form}.dependent") %>">
+    <div class="row d-none" data-form-validation-target="alert">
+      <div class="col-12 col-lg-8">
+        <div class="alert alert-danger" role="alert">
+          <ul class="mb-0 list-unstyled">
+            <li data-form-validation-target="message"></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <dl class="document-metadata row mb-0">
+          <% if @request.item["pickupLocation"].present? %>
+            <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.collect_from") %></dt>
+            <dd class="col col-md-9"><%= @request.item["effectiveLocationDisplayName"] %></dd>
+          <% end %>
 
-<%= render "#{@request_form}_form", request: @request %>
-</section>
+          <% if @request.item["holdingAvailabilityUrl"].present? %>
+            <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.delivery_conditions") %></dt>
+            <dd class="col col-md-9"><%= link_to @request.item["holdingAvailabilityUrl"], @request.item["holdingAvailabilityUrl"] %></dd>
+          <% end %>
+
+          <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.call_number") %></dt>
+          <dd class="col col-md-9">
+            <p class="mb-0"><%= @request.item["effectiveCallNumberComponents"]["callNumber"] %>
+              <% if @request.item["itemCategory"] == "monograph" && @request.item["enumeration"].present? %>
+                <br>Copy: <%= @request.item["enumeration"] %>
+              <% end %></p>
+          </dd>
+
+          <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.status") %></dt>
+          <dd class="col col-md-9"><%= @request.item["displayStatus"] %></dd>
+
+          <% if items_issues_in_use(@request.holding).present? %>
+            <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.items_in_use") %></dt>
+            <dd class="col col-md-9">
+              <ul class="list-unstyled">
+                <% items_issues_in_use(@request.holding).each do |statement| %>
+                  <li><%= statement %></li>
+                <% end %>
+              </ul>
+            </dd>
+          <% end %>
+
+          <% if @request.item["itemCategory"] != "monograph" && items_issues_held(@request.holding).present? %>
+            <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.items_held") %></dt>
+            <dd class="col col-md-9">
+              <ul class="list-unstyled">
+                <% items_issues_held(@request.holding).each do |statement| %>
+                  <% statement.each do |issue| %>
+                    <li><%= issue %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </dd>
+          <% end %>
+
+          <% if supplements(@request.holding).present? %>
+            <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.supplements") %></dt>
+            <dd class="col col-md-9">
+              <ul class="list-unstyled">
+                <% supplements(@request.holding).each do |statement| %>
+                  <% statement.each do |supplement| %>
+                    <li><%= supplement %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </dd>
+          <% end %>
+
+          <% if indexes(@request.holding).present? %>
+            <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.indexes") %></dt>
+            <dd class="col col-md-9">
+              <ul class="list-unstyled">
+                <% indexes(@request.holding).each do |statement| %>
+                  <% statement.each do |index| %>
+                    <li><%= index %></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </dd>
+          <% end %>
+        </dl>
+      </div>
+    </div>
+
+    <%= render "#{@request_form}_form", request: @request %>
+  </section>
 <%- end %>

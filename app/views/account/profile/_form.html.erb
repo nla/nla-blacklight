@@ -1,11 +1,11 @@
 <div class="row mt-4">
   <div class="col-12">
-    <%= form_with(url: [:account_settings_edit, attribute: params[:attribute]], model: user_details, method: :post, class: "edit-settings-form") do |f| %>
+    <%= form_with(url: [:account_profile_edit, attribute: params[:attribute]], model: user_details, method: :post, class: "edit-settings-form") do |f| %>
       <% if user_details.errors.any? %>
         <div class="row">
           <div class="col-12">
             <div class="alert alert-danger" role="alert">
-              <ul class="mb-0">
+              <ul class="mb-0 list-unstyled">
                 <% user_details.errors&.each do |error| %>
                   <li><%= error.full_message %></li>
                 <% end %>
@@ -78,7 +78,7 @@
         <div class="row mt-3">
           <div class="col offset-sm-3">
             <%= f.submit t("account.settings.update.change_btn"), class: "btn btn-primary" %>
-            <%= link_to t("account.settings.update.cancel_btn"), account_settings_path, class: "btn btn-link" %>
+            <%= link_to t("account.settings.update.cancel_btn"), account_profile_path, class: "btn btn-link" %>
           </div>
         </div>
       <% end %>

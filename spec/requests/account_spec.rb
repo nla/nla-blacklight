@@ -69,7 +69,7 @@ RSpec.describe "Accounts" do
         skip("Skipping test as KC_PATRON_REALM is not set")
       end
 
-      get account_settings_path
+      get account_profile_path
 
       expect(response).to have_http_status(:success)
     end
@@ -84,7 +84,7 @@ RSpec.describe "Accounts" do
           skip("Skipping test as KC_PATRON_REALM is not set")
         end
 
-        get account_settings_path
+        get account_profile_path
         expect(response).to redirect_to(new_user_session_path)
       end
     end
