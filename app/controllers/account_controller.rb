@@ -3,11 +3,11 @@
 class AccountController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :set_user_details, only: [:settings, :settings_edit, :settings_update]
+  before_action :set_user_details, only: [:profile, :profile_edit, :profile_update]
 
   before_action :request_detail_params, only: [:request_details]
-  before_action :settings_edit_params, only: [:settings_edit]
-  before_action :settings_update_params, only: [:settings_update]
+  before_action :profile_edit_params, only: [:profile_edit]
+  before_action :profile_update_params, only: [:profile_update]
 
   def requests
     @met_request_limit = CatalogueServicesClient.new.request_limit_reached?(requester: current_user.folio_id)
@@ -19,14 +19,14 @@ class AccountController < ApplicationController
     @details = RequestDetail.new(res)
   end
 
-  def settings
+  def profile
   end
 
-  def settings_edit
+  def profile_edit
     @user_details = settings_edit_params[:user_details] || @current_details.dup
   end
 
-  def settings_update
+  def profile_update
     # Since this is not a database backed model, we need to create a new instance using the
     # current details as a base and then assign the updated attributes to it.
     @user_details = UserDetails.new(@current_details.attributes)
@@ -40,7 +40,7 @@ class AccountController < ApplicationController
       response = CatalogueServicesClient.new.update_user_folio_details(current_user.folio_id, settings_update_params)
       if response["status"].present?
         if response["status"] == "OK"
-          return redirect_to account_settings_path
+          return redirect_to account_profile_path
         else
           service_error_message = case response["status"]
           when "EMAIL_ALREADY_EXISTS"
@@ -55,7 +55,7 @@ class AccountController < ApplicationController
       end
     end
 
-    render :settings_edit, status: :unprocessable_entity
+    render :profile_edit, status: :unprocessable_entity
   end
 
   private
@@ -69,11 +69,11 @@ class AccountController < ApplicationController
     @current_details = UserDetails.new(folio_details)
   end
 
-  def settings_edit_params
+  def profile_edit_params
     params.permit(:attribute, user_details: {}, current_details: {})
   end
 
-  def settings_update_params
+  def profile_update_params
     params.permit(:attribute, user_details: {}, current_details: {})
   end
 end
