@@ -1,0 +1,63 @@
+{
+  "provider": "keycloakopenid",
+  "uid": "603e26dd-b2d4-4a88-ad9d-406eaec31463",
+  "info": {
+    "name": "Blacklight Test",
+    "email": "test@example.com",
+    "first_name": "Blacklight",
+    "last_name": "Test"
+  },
+  "credentials": {
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6ImYyZjVmYjc3OWY4YjhhNjM2NDVlYjcxMTEzOWJhN2VhIn0.eyJleHAiOjE2NzM4NDAyOTYsImlhdCI6MTY3MzgzNjY5NiwiYXV0aF90aW1lIjoxNjczODM2Njk2LCJqdGkiOiI4ZGJmMDg4NS1kNzI3LTQ1YzQtODYwYS05ODE2YWUxOWZmNWYiLCJpc3MiOiJodHRwczovL2xvZ2luLmV4YW1wbGUuY29tL2F1dGgvcmVhbG1zL2V4YW1wbGUiLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiZjVhZmFkODEtMDZjNC00OWE2LTgyN2UtMmVmMmRkM2I4ZmRhIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoiY2F0YWxvZ3VlIiwic2Vzc2lvbl9zdGF0ZSI6IjgwMjQyNDYwLWVlMjEtNGUyYy1iZmY2LTNjZmM1M2JjOGVmYiIsImFsbG93ZWQtb3JpZ2lucyI6WyJsb2NhbGhvc3QiLCIwLjAuMC4wIiwiY2F0YWxvZ3VlLm5sYS5nb3YuYXUiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwgcm9sZXMiLCJzaWQiOiI4MDI0MjQ2MC1lZTIxLTRlMmMtYmZmNi0zY2ZjNTNiYzhlZmIiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXSwibmFtZSI6IkJsYWNrbGlnaHQgVGVzdCIsInByZWZlcnJlZF91c2VybmFtZSI6ImMyMDJhN2Q1LTNkMzAtNDExYS1iMGE3LTUzNzUzODAxYmY5OCIsImdpdmVuX25hbWUiOiJCbGFja2xpZ2h0IiwiZmFtaWx5X25hbWUiOiJUZXN0IiwiZW1haWwiOiJ0ZXN0QGV4YW1wbGUuY29tIn0.lMGOYGiMroCMtmDF9LORZoPMzkj40mKB5Ee1c_cCdCYdzZCXygeED4eSAewtCexID-Dfc8-F-CaKr4I-mXjjtn2G5FKjfhvQGLmDvQ9pnpSsfHrK7V4c3AQgpgeEHw_aiW6uXicbp9yNLhuAOWJ0nKwGjFPQRMP9MOK1uQ_KWHBmdniz5XJ-E6C_KmFib-_Tzo2QVlGZsjIcankJ-cUEkyvrVmJ0y6JfaC6Nguf2YbwBELrpJgSATrWNQLicQ-yzA_pkKjCLQwRIOqkQU7s25Ty3a2CtVAJnjxMTOgpMbKoiy79Pzw8QVC_HJyL0vXEP9fDNNA9uHJIGxcHIjdcpBw",
+    "refresh_token": "eyJhbGciOiJIUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJjNjRhZTM5OS1hYmFmLTQ0MDQtYTUwNS04MDgwZmFkM2UzZTAifQ.eyJleHAiOjE2NzQwMDk0OTYsImlhdCI6MTY3MzgzNjY5NiwianRpIjoiZDE4ODViNzctMGUxNi00MzBjLWEyOTctNGE3NTA1ZWY0ZDFmIiwiaXNzIjoiaHR0cHM6Ly9sb2dpbi1kZXZlbC5ubGEuZ292LmF1L2F1dGgvcmVhbG1zL3NoaXJlIiwiYXVkIjoiaHR0cHM6Ly9sb2dpbi1kZXZlbC5ubGEuZ292LmF1L2F1dGgvcmVhbG1zL3NoaXJlIiwic3ViIjoiZjVhZmFkODEtMDZjNC00OWE2LTgyN2UtMmVmMmRkM2I4ZmRhIiwidHlwIjoiUmVmcmVzaCIsImF6cCI6ImNhdGFsb2d1ZSIsInNlc3Npb25fc3RhdGUiOiI4MDI0MjQ2MC1lZTIxLTRlMmMtYmZmNi0zY2ZjNTNiYzhlZmIiLCJzY29wZSI6InByb2ZpbGUgZW1haWwgcm9sZXMiLCJzaWQiOiI4MDI0MjQ2MC1lZTIxLTRlMmMtYmZmNi0zY2ZjNTNiYzhlZmIifQ.q_P4zHKyeEHnhlu0FFENX9c6n_YimkaokX7AV9MC-Ag",
+    "expires_at": 1728943716,
+    "expires": true
+  },
+  "extra": {
+    "raw_info": {
+      "exp": 1728943716,
+      "iat": 1697407716,
+      "auth_time": 1673836696,
+      "jti": "8dbf0885-d727-45c4-860a-9816ae19ff5f",
+      "iss": "https://login.example.com/auth/realms/example",
+      "aud": "account",
+      "sub": "603e26dd-b2d4-4a88-ad9d-406eaec31463",
+      "typ": "Bearer",
+      "azp": "join-us",
+      "session_state": "80242460-ee21-4e2c-bff6-3cfc53bc8efb",
+      "allowed-origins": [
+        "localhost",
+        "0.0.0.0",
+        "catalogue.nla.gov.au"
+      ],
+      "realm_access": {
+        "roles": [
+          "offline_access",
+          "uma_authorization"
+        ]
+      },
+      "resource_access": {
+        "account": {
+          "roles": [
+            "manage-account",
+            "manage-account-links",
+            "view-profile"
+          ]
+        }
+      },
+      "scope": "profile email roles",
+      "sid": "80242460-ee21-4e2c-bff6-3cfc53bc8efb",
+      "email_verified": false,
+      "roles": [
+        "offline_access",
+        "uma_authorization"
+      ],
+      "name": "Blacklight Test",
+      "preferred_username": "c202a7d5-3d30-411a-b0a7-53753801bf98",
+      "given_name": "Blacklight",
+      "family_name": "Test",
+      "email": "test@example.com"
+    },
+    "id_token": null
+  }
+}

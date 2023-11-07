@@ -17,8 +17,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: fe30fc07d81271c3dfbf688d7addcb14576ce618
-  tag: 0.1.10
+  revision: e342f0764a818dbef7aacdc82ccd0b2b98d27fa3
+  branch: main
   specs:
     nla-blacklight_common (0.1.10)
       activerecord-session_store (~> 2.0)
@@ -195,7 +195,7 @@ GEM
     cuprite (0.14.3)
       capybara (~> 3.0)
       ferrum (~> 0.13.0)
-    date (3.3.3)
+    date (3.3.4)
     dead_end (4.0.0)
     debug (1.8.0)
       irb (>= 1.5.0)
@@ -405,12 +405,12 @@ GEM
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.3)
+    net-imap (0.4.4)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
-    net-protocol (0.2.1)
+    net-protocol (0.2.2)
       timeout
     net-smtp (0.4.0)
       net-protocol
@@ -462,7 +462,7 @@ GEM
     puma (6.4.0)
       nio4r (~> 2.0)
     raabro (1.4.0)
-    racc (1.7.2)
+    racc (1.7.3)
     rack (2.2.8)
     rack-mini-profiler (3.1.1)
       rack (>= 1.2.0)
