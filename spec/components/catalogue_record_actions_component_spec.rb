@@ -85,7 +85,18 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
         expect(page.text).not_to include("Listen")
       end
     end
+
+    context "when item is electronic and has physical holdings" do
+      let(:document) { SolrDocument.new(marc_ss: sample_marc, call_number_tsim: ["INTERNET", "mc SUDOC Y 1.1/4:107-2"]) }
+
+      it "renders the 'Request' button and holdings" do
+        render_inline(described_class.new(document: document))
+
+        expect(page.text).to include("Request")
+      end
+    end
   end
+
 
   def sample_marc
     load_marc_from_file 4157458
