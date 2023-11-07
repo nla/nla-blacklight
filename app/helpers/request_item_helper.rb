@@ -2,8 +2,7 @@
 
 module RequestItemHelper
   def render_request?(document)
-    (!is_ned_item?(document) || has_online_copy?(document)) &&
-      !is_electronic_resource?(document)
+    !is_ned_item?(document) && !has_no_physical_holdings?(document)
   end
 
   def has_online_copy?(document)
@@ -22,6 +21,13 @@ module RequestItemHelper
   def is_electronic_resource?(document)
     callnumber = document.fetch("call_number_tsim")
     callnumber.include?("ELECTRONIC RESOURCE") || callnumber.include?("INTERNET")
+  rescue
+    false
+  end
+
+  def has_no_physical_holdings?(document)
+    callnumber = document.fetch("call_number_tsim")
+    (callnumber.include?("ELECTRONIC RESOURCE") || callnumber.include?("INTERNET")) && callnumber.length == 1
   rescue
     false
   end

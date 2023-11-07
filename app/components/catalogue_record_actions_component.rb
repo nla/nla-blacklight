@@ -41,7 +41,6 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def render_request?
-    (!is_ned_item?(@document) || has_online_copy?(@document)) &&
-      !is_electronic_resource?(@document)
+    !is_ned_item?(@document) && !has_no_physical_holdings?(@document)
   end
 end
