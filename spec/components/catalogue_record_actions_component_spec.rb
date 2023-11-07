@@ -97,7 +97,6 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
     end
   end
 
-
   def sample_marc
     load_marc_from_file 4157458
   end
