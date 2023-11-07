@@ -23,21 +23,21 @@ class AccountController < ApplicationController
   end
 
   def profile_edit
-    @user_details = settings_edit_params[:user_details] || @current_details.dup
+    @user_details = profile_edit_params[:user_details] || @current_details.dup
   end
 
   def profile_update
     # Since this is not a database backed model, we need to create a new instance using the
     # current details as a base and then assign the updated attributes to it.
     @user_details = UserDetails.new(@current_details.attributes)
-    @user_details.assign_attributes(settings_update_params[:user_details])
+    @user_details.assign_attributes(profile_update_params[:user_details])
 
     # Pass a validation context to target the specific attribute
     # This is mainly to work around the fact that many pre-Keycloak migration patrons have no
     # postcode in their FOLIO accounts. As such, we don't want to validate the postcode field
     # when updating other fields and display an error message when the postcode is blank.
-    if @user_details.valid?(settings_update_params[:attribute].to_sym)
-      response = CatalogueServicesClient.new.update_user_folio_details(current_user.folio_id, settings_update_params)
+    if @user_details.valid?(profile_update_params[:attribute].to_sym)
+      response = CatalogueServicesClient.new.update_user_folio_details(current_user.folio_id, profile_update_params)
       if response["status"].present?
         if response["status"] == "OK"
           return redirect_to account_profile_path
@@ -48,9 +48,9 @@ class AccountController < ApplicationController
           when "EMAIL_UPDATE_FAILED"
             I18n.t("account.settings.update.errors.email.failed")
           else
-            I18n.t("account.settings.update.errors.failed", attribute: I18n.t("account.settings.#{settings_update_params[:attribute]}.change_text"))
+            I18n.t("account.settings.update.errors.failed", attribute: I18n.t("account.settings.#{profile_update_params[:attribute]}.change_text"))
           end
-          @user_details.errors.add(settings_update_params[:attribute].to_sym, service_error_message)
+          @user_details.errors.add(profile_update_params[:attribute].to_sym, service_error_message)
         end
       end
     end
