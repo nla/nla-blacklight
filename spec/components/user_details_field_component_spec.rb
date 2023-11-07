@@ -16,10 +16,6 @@ RSpec.describe UserDetailsFieldComponent, type: :component do
   let(:user_details) { UserDetails.new(folio_details) }
 
   it "renders the user details if there is a value" do
-    unless ENV["KC_PATRON_REALM"]
-      skip("Skipping test as KC_PATRON_REALM is not set")
-    end
-
     render_inline(described_class.new(attribute: "last_name", details: user_details))
 
     expect(page).to have_css("#last_name-label", text: I18n.t("account.settings.last_name.label"))
@@ -28,10 +24,6 @@ RSpec.describe UserDetailsFieldComponent, type: :component do
 
   context "when patron account" do
     it "renders the edit link if the attribute is editable" do
-      unless ENV["KC_PATRON_REALM"]
-        skip("Skipping test as KC_PATRON_REALM is not set")
-      end
-
       render_inline(described_class.new(attribute: "email", details: user_details, editable: UserDetails::PATRON_EDITABLE_ATTRIBUTES.include?("email")))
 
       expect(page).to have_css("#email-label", text: I18n.t("account.settings.email.label"))
@@ -39,10 +31,6 @@ RSpec.describe UserDetailsFieldComponent, type: :component do
     end
 
     it "does not render the edit link if the attribute is not editable" do
-      unless ENV["KC_PATRON_REALM"]
-        skip("Skipping test as KC_PATRON_REALM is not set")
-      end
-
       render_inline(described_class.new(attribute: "last_name", details: user_details, editable: UserDetails::PATRON_EDITABLE_ATTRIBUTES.include?("last_name")))
 
       expect(page).to have_css("#last_name-label", text: I18n.t("account.settings.last_name.label"))
@@ -53,10 +41,6 @@ RSpec.describe UserDetailsFieldComponent, type: :component do
 
   context "when staff account" do
     it "does not render the edit link if the attribute is not editable" do
-      unless ENV["KC_PATRON_REALM"]
-        skip("Skipping test as KC_PATRON_REALM is not set")
-      end
-
       render_inline(described_class.new(attribute: "email", details: user_details, editable: UserDetails::STAFF_EDITABLE_ATTRIBUTES.include?("email")))
 
       expect(page).to have_css("#email-label", text: I18n.t("account.settings.email.label"))
