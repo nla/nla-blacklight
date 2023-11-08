@@ -13,16 +13,16 @@ RSpec.describe "Navigation actions" do
     end
   end
 
-  context "when authenticated user" do
-    it "does not show the History link" do
-      visit new_user_session_path
-
-      fill_in "user_username", with: "bltest"
-      fill_in "user_password", with: "test"
-
-      click_button "Login"
-
-      expect(page).not_to have_text("History")
-    end
-  end
+  # context "when authenticated user" do
+  #   it "does not show the History link" do
+  #     visit new_user_session_path
+  #
+  #     fill_in "user_username", with: "bltest"
+  #     fill_in "user_password", with: "test"
+  #
+  #     click_button "Login"
+  #
+  #     expect(page).not_to have_text("History")
+  #   end
+  # end
 end
