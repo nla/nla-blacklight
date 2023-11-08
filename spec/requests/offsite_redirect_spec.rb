@@ -142,7 +142,7 @@ RSpec.describe "Offsite redirect", :request do
 
               it "displays a flash message" do
                 get "/catalog/0000/offsite?url=http://search.ebscohost.com/login.aspx?direct=true&scope=site&db=nlebk&db=nlabk&AN=658574"
-                expect(flash[:alert]).to eq "Login to eResources with your National Library card"
+                expect(flash[:alert]).to eq "Login to eResources."
               end
             end
 
