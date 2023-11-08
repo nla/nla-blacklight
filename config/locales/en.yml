@@ -63,13 +63,13 @@ en:
   eresource:
     remote_access:
       logged_in: "You are logged in and can access this resource"
-      logged_out: "Login with your Library card to access this resource"
+      logged_out: "Login to access this resource"
     offsite: "You can access this resource if you visit the National Library building"
     onsite: "You can access this resource because you are inside the National Library building"
   offsite:
     invalid_url: "%{url} is not a valid url"
-    ebsco: "Login to eResources with your National Library card"
-    other: "To access %{title}, login with your National Library card details."
+    ebsco: "Login to eResources."
+    other: "Login to access %{title}."
     onsite_only:
       header: "Sorry!"
       message: '<p>%{original_url} is a subscription service that is only available within the National Library of Australia building in Canberra.</p><p>To %{return_link} please %{click_link}.</p>'
