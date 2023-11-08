@@ -154,7 +154,7 @@ RSpec.describe "Offsite redirect", :request do
 
               it "displays a flash message" do
                 get "/catalog/0000/offsite?url=https://haynesmanualsallaccess.com/en-au/"
-                expect(flash[:alert]).to eq "To access Haynes manuals allaccess, login with your National Library card details."
+                expect(flash[:alert]).to eq "Login to access Haynes manuals allaccess."
               end
             end
           end
