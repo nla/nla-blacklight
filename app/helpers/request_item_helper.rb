@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 module RequestItemHelper
+  ELECTRONIC_RESOURCE_CALL_NUMBERS = ["ELECTRONIC RESOURCE", "INTERNET"].freeze
+
   def render_request?(document)
-    (!is_ned_item?(document) || has_online_copy?(document)) &&
-      !is_electronic_resource?(document)
+    !is_ned_item?(document) && !has_no_physical_holdings?(document)
   end
 
   def has_online_copy?(document)
@@ -20,7 +21,13 @@ module RequestItemHelper
   end
 
   def is_electronic_resource?(document)
-    document.callnumber.include?("ELECTRONIC RESOURCE") || document.callnumber.include?("INTERNET")
+    document.callnumber.any? { |n| ELECTRONIC_RESOURCE_CALL_NUMBERS.include? n }
+  rescue
+    false
+  end
+
+  def has_no_physical_holdings?(document)
+    is_electronic_resource?(document) && document.callnumber.length == 1
   rescue
     false
   end

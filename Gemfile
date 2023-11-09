@@ -90,6 +90,9 @@ gem "blacklight-marc", "~> 8.0"
 gem "blacklight_advanced_search", "8.0.0.alpha2"
 gem "ebsco-eds", "~> 1.1", ">= 1.1.5"
 
+gem "email_validator", "~> 2.2"
+gem "phonelib", "~> 0.8.4"
+
 gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "chore/merge-main-into-upgrade"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 # For local development, comment out above ⤴️ and uncomment below ⤵️

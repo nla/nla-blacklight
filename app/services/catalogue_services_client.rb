@@ -8,6 +8,8 @@ class ItemRequestError < StandardError; end
 
 class RequestDetailsError < StandardError; end
 
+class UserDetailsError < StandardError; end
+
 class CatalogueServicesClient
   MAX_TOKEN_RETRIES = 3
 
@@ -92,8 +94,8 @@ class CatalogueServicesClient
     raise ItemRequestError.new("Failed to request item (#{request[:item_id]}) for requester (#{requester})")
   end
 
-  def request_details(request_id:, loan:)
-    if loan.blank?
+  def request_details(request_id:, loan: nil)
+    if loan.nil?
       message = "Failed to retrieve request details for (#{request_id}) - Loan param is required"
       Rails.logger.error "request_details - #{message}"
       raise RequestDetailsError.new(message)
@@ -103,16 +105,15 @@ class CatalogueServicesClient
 
     res = conn.get("/catalogue-services/folio/request/#{request_id}?loan=#{loan}")
     if res.status == 200
-      if res.body.present?
-        JSON.parse(res.body.to_json, object_class: OpenStruct)
-      else
-        {}
-      end
+      JSON.parse(res.body.to_json, object_class: OpenStruct)
     else
       message = "Failed to retrieve request details for #{request_id}"
       Rails.logger.error message
       raise RequestDetailsError.new(message)
     end
+  rescue => e
+    Rails.logger.error "request_details - Failed to connect catalogue-service: #{e.message}"
+    raise RequestDetailsError.new("Failed to retrieve request details for #{request_id}")
   end
 
   def request_limit_reached?(requester:)
@@ -137,7 +138,7 @@ class CatalogueServicesClient
   def post_stats(stats)
     conn = setup_connection
 
-    res = conn.post("/catalogue-services/log/message", stats.to_json, "Content-Type" => "application/json") do |req|
+    res = conn.post("/catalogue-services/log/message") do |req|
       req.headers["Content-Type"] = "application/json"
       req.body = stats.payload
     end
@@ -149,6 +150,58 @@ class CatalogueServicesClient
   rescue
     Rails.logger.error "Failed to connect to eResources stats service: #{stats.payload}"
     nil
+  end
+
+  def user_folio_details(folio_id)
+    conn = setup_connection
+
+    res = conn.get("/catalogue-services/folio/user?query=id==#{folio_id}")
+    if res.status == 200
+      if res.body.present? && res.body["totalRecords"].to_i == 1
+        folio_details = res.body["users"]&.first
+        {
+          first_name: folio_details&.dig("personal", "firstName") || "",
+          last_name: folio_details&.dig("personal", "lastName") || "",
+          email: folio_details&.dig("personal", "email") || "",
+          phone: folio_details&.dig("personal", "phone") || "",
+          mobile_phone: folio_details&.dig("personal", "mobilePhone") || "",
+          postcode: folio_details&.dig("personal", "addresses")&.first&.[]("postalCode") || ""
+        }
+      else
+        {}
+      end
+    else
+      message = "Failed to retrieve details for #{folio_id}"
+      Rails.logger.error message
+      raise UserDetailsError.new(message)
+    end
+  rescue => e
+    Rails.logger.error "user_details - Failed to connect catalogue-service: #{e.message}"
+    raise UserDetailsError.new("Failed to retrieve details for #{folio_id}")
+  end
+
+  def update_user_folio_details(folio_id, params)
+    conn = setup_connection
+
+    payload = {
+      folioId: folio_id
+    }
+    params[:user_details].each do |key, value|
+      payload[key.to_s.camelize(:lower).to_sym] = value
+    end
+
+    res = conn.post("/catalogue-services/folio/user/updateDetails") do |req|
+      req.headers["Content-Type"] = "application/json"
+      req.body = payload.to_json
+    end
+    if res.status != 200
+      message = "Failed to update user details for #{folio_id} - #{res.body["status"]}: #{payload.to_json}"
+      Rails.logger.error message
+    end
+    res.body
+  rescue => e
+    Rails.logger.error "update_user_folio_details - Failed to connect catalogue-service: #{e.message}"
+    raise UserDetailsError.new("Failed to update details for #{folio_id}")
   end
 
   private

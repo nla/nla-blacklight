@@ -20,9 +20,10 @@
     <% elsif defined? Propshaft %>
       <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
     <% else %>
-      <%= javascript_include_tag "init_jquery", "data-turbo-track": "reload" %>
-      <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+      <%= javascript_include_tag "jquery", "data-turbo-track": "reload" %>
       <%= javascript_include_tag "blacklight/blacklight", type: 'module' %>
+      <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+      <%= javascript_include_tag "blacklight_custom", "data-turbo-track": "reload", defer: true %>
       <script type="module">
         import githubAutoCompleteElement from 'https://cdn.skypack.dev/@github/auto-complete-element';
       </script>
@@ -44,7 +45,7 @@
     })(window,document,'script','dataLayer','GTM-K8KL6FF');</script>
     <!-- End Google Tag Manager -->
   </head>
-  <body class="<%= render_body_class %> d-flex flex-column h-100">
+  <body class="<%= render_body_class %> d-flex flex-column h-100" data-login-url="<%= new_user_session_url %>">
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8KL6FF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->

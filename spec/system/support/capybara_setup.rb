@@ -2,6 +2,7 @@ Capybara.server = :puma
 Capybara.default_max_wait_time = 2
 Capybara.default_normalize_ws = true
 Capybara.save_path = ENV.fetch("CAPYBARA_ARTIFACTS", "./tmp/capybara")
+Capybara.raise_server_errors = false
 
 Capybara.register_driver(:selenium_chrome) do |app|
   options = Selenium::WebDriver::Chrome::Options.new

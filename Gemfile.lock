@@ -234,6 +234,8 @@ GEM
       faraday_middleware (~> 1.0)
       net-http-persistent (>= 3.1, < 5)
       public_suffix (~> 4.0)
+    email_validator (2.2.4)
+      activemodel
     erubi (1.12.0)
     et-orbi (1.2.7)
       tzinfo
@@ -430,6 +432,7 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
+    phonelib (0.8.5)
     prometheus-client (4.2.1)
     psych (5.1.0)
       stringio
@@ -700,6 +703,7 @@ DEPENDENCIES
   derailed_benchmarks
   dotenv-rails
   ebsco-eds (~> 1.1, >= 1.1.5)
+  email_validator (~> 2.2)
   factory_bot_rails
   faker
   flamegraph
@@ -713,6 +717,7 @@ DEPENDENCIES
   mock_redis (~> 0.37.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
+  phonelib (~> 0.8.4)
   puma (~> 6.4)
   rack-mini-profiler
   rails (~> 7.0)
@@ -745,4 +750,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.19
+   2.4.21

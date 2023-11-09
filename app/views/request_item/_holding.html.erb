@@ -1,5 +1,5 @@
 <% holding["itemRecords"].each do |item| %>
-  <% unless item["discoverySuppress"] %>
+  <% unless item["discoverySuppress"] || has_no_physical_holdings?(item) %>
     <div class="holding card w-100 mb-4">
       <div class="card-body">
         <div class="row">
@@ -59,7 +59,7 @@
                 </dd>
               <% end %>
 
-              <% if items_issues_held(holding).present? %>
+              <% if item["itemCategory"] != "monograph" && items_issues_held(holding).present? %>
                 <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.items_held") %></dt>
                 <dd class="col-12 col-lg-8">
                   <ul class="list-unstyled">

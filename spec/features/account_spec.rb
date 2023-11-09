@@ -1,4 +1,5 @@
 require "rails_helper"
+require "./app/services/catalogue_services_client"
 
 RSpec.describe "Account" do
   before do
@@ -73,7 +74,7 @@ RSpec.describe "Account" do
         expect(page).to have_css(".document-title-heading", text: "[Hurstville Light Opera Company : programs and related material collected by the National Library of Australia]")
         expect(page).to have_css(".col.col-md-8", text: "Special Collections Reading Room")
         expect(page).to have_css(".col.col-md-8", text: "18 September 2023")
-        expect(page).to have_css(".text-muted", text: "04:34:41pm")
+        expect(page).to have_css(".text-muted", text: "04:34pm")
         expect(page).to have_css(".col.col-md-8", text: "test")
       end
     end
@@ -99,7 +100,7 @@ RSpec.describe "Account" do
         expect(page).to have_css(".col.col-md-8", text: "118")
         expect(page).to have_css(".col.col-md-8", text: "August")
         expect(page).to have_css(".col.col-md-8", text: "22 September 2023")
-        expect(page).to have_css(".text-muted", text: "09:52:56am")
+        expect(page).to have_css(".text-muted", text: "09:52am")
         expect(page).to have_css(".col.col-md-8", text: "test after running number reset")
       end
     end
@@ -124,7 +125,7 @@ RSpec.describe "Account" do
         expect(page).to have_css(".col.col-md-8", text: "Shared")
         expect(page).to have_css(".col.col-md-8", text: "2")
         expect(page).to have_css(".col.col-md-8", text: "26 September 2023")
-        expect(page).to have_css(".text-muted", text: "01:21:34pm")
+        expect(page).to have_css(".text-muted", text: "01:21pm")
         expect(page).to have_css(".col.col-md-8", text: "serial test")
       end
     end
@@ -148,7 +149,7 @@ RSpec.describe "Account" do
         expect(page).to have_css(".col.col-md-8", text: "Special Collections Reading Room")
         expect(page).to have_css(".col.col-md-8", text: "1990")
         expect(page).to have_css(".col.col-md-8", text: "26 September 2023")
-        expect(page).to have_css(".text-muted", text: "01:46:34pm")
+        expect(page).to have_css(".text-muted", text: "01:46pm")
         expect(page).to have_css(".col.col-md-8", text: "map test")
       end
     end

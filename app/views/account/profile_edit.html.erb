@@ -1,0 +1,5 @@
+<h2 class="h3"><%= t("account.settings.update.heading", attribute: t("account.settings.#{params[:attribute]}.change_text")) %></h2>
+
+<%= render "account/profile/form", user_details: @user_details, current_details: @current_details %>
+
+

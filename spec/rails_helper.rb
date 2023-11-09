@@ -82,6 +82,7 @@ RSpec.configure do |config|
 
   config.include Devise::Test::IntegrationHelpers, type: :request
   config.include Devise::Test::IntegrationHelpers, type: :feature
+  config.include Devise::Test::IntegrationHelpers, type: :system
   config.extend DeviseMacros
 
   config.include(ControllerLevelHelpers, type: :helper)

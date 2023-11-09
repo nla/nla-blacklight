@@ -39,6 +39,9 @@ Rails.application.routes.draw do
 
   get "/account/requests", to: "account#requests", as: "account_requests"
   get "/account/requests/:request_id", to: "account#request_details", as: "request_details"
+  get "/account/profile", to: "account#profile"
+  get "/account/profile/edit", to: "account#profile_edit"
+  post "/account/profile/edit", to: "account#profile_update"
 
   resource :thumbnail, only: [:thumbnail], path: "/thumbnail", controller: "thumbnail" do
     concerns :searchable
