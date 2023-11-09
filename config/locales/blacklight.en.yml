@@ -56,9 +56,11 @@ en:
       title: 'Search our finding aids'
       description: 'Finding aids are descriptive lists which give an overview of the scope, content and size of a collection.'
     library_card:
-      title: 'Your National Library card'
-      intro: 'A National Library card is your ticket to access millions of items from our collections, onsite or online, wherever you are. Getting a Library card is free to all Australian residents and signing up is simple.'
-      button: 'Get a library card'
+      title: 'Join your National Library'
+      intro: 
+        p1: 'Joining the National Library gives you access to millions of items from our collections, onsite or online, wherever you are.'
+        p2: 'It’s easy to sign-up online, and it’s free for all Australian residents.'
+      button: 'Join us'
     footer:
       acknowledgement_of_country:
         title: 'Acknowledgement of Country'
