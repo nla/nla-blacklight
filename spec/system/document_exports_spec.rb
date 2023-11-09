@@ -1,4 +1,4 @@
-require "rails_helper"
+require "system_helper"
 
 RSpec.describe "Document exports" do
   let(:document) { SolrDocument.new(marc_ss: marc_xml) }

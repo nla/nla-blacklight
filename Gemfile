@@ -49,7 +49,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.17.1"
+gem "hiredis-client", "~> 0.18.0"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.0"
@@ -102,7 +102,7 @@ gem "faraday-http-cache"
 gem "uri", "~> 0.12.1"
 
 # Before a release, point these gem at a tag, instead of the `main` branch.
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", tag: "0.1.10"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
@@ -171,5 +171,5 @@ group :test do
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-json", "~> 0.2.3"
 
-  gem "mock_redis", "~> 0.37.0"
+  gem "mock_redis", "~> 0.39.0"
 end

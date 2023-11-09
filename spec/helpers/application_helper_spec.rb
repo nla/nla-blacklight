@@ -37,7 +37,7 @@ RSpec.describe ApplicationHelper do
 
           context "when not logged in" do
             it "generates a caption with the link" do
-              expect(link[1]).to include "Login with your Library card to access this resource"
+              expect(link[1]).to include "Login to access this resource"
             end
           end
 

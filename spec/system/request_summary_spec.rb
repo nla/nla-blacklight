@@ -3,19 +3,14 @@ require "system_helper"
 RSpec.describe "Request summary" do
   context "when logged in" do
     before do
-      visit root_path
-      click_link "Login"
-
-      fill_in "user_username", with: "bltest"
-      fill_in "user_password", with: "test"
-      click_button "Login"
+      sign_in create(:user)
     end
 
     it "displays the request summary" do
       visit account_requests_path
 
       Capybara.using_wait_time(30) do
-        expect(page).to have_css("a.active", text: "blacklight test")
+        expect(page).to have_css("a.active", text: "Test User")
 
         expect(page).to have_css("caption", text: /Checked out/)
         expect(page).to have_css("caption", text: /Ready for collection/)
@@ -49,9 +44,9 @@ RSpec.describe "Request summary" do
     it "redirects to the login page" do
       visit account_requests_path
 
-      expect(page).to have_content("Login")
-      expect(page).to have_content("User ID")
-      expect(page).to have_content("Family Name")
+      expect(page).to have_css("h1", text: "Login")
+      expect(page).to have_button("Login")
+      expect(page).to have_link("Upgrade Login", href: "https://test.nla.gov.au/patron/upgrade")
     end
   end
 end
