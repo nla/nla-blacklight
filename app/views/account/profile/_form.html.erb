@@ -25,7 +25,7 @@
         <div class="form-group row">
           <%= f.label :email, "New #{t("account.settings.email.change_text")}:", class: "col-sm-3 col-form-label" %>
           <div class="col-sm-6">
-            <%= f.text_field :email, class: "form-control", maxlength: 35, autocomplete: "email" %>
+            <%= f.text_field :email, class: "form-control", maxlength: 255, autocomplete: "email" %>
           </div>
         </div>
       <% end %>

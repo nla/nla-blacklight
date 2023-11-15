@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :store_user_location!, if: :storable_location?
-  before_action :authorize_profile
+  before_action :set_cache_headers
 
   # defines #new_session_path(scope) to allow correct redirection when only using OmniAuth
   include AuthSessionConcern
@@ -15,6 +15,12 @@ class ApplicationController < ActionController::Base
   append_view_path "#{Rails.root}/app/components/"
 
   private
+
+  def set_cache_headers
+    response.headers["Cache-Control"] = "no-cache, no-store"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "Mon, 01 Jan 1990 00:00:00 GMT"
+  end
 
   # Its important that the location is NOT stored if:
   # - The request method is not GET (non idempotent)
@@ -44,10 +50,6 @@ class ApplicationController < ActionController::Base
     store_location_for(:user, request.fullpath)
   rescue
     Rails.logger.debug { "Unable to store location for user: #{request.fullpath}" }
-  end
-
-  def authorize_profile
-    Rack::MiniProfiler.authorize_request if Whitelist.instance.location(request) == :staff && ENV.fetch("ENABLE_PROFILER") { "n" } == "y"
   end
   # :nocov:
 end

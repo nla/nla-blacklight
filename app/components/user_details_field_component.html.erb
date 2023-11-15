@@ -1,9 +1,13 @@
 <div class="col-sm-3 py-1 align-middle settings-label" id="<%= "#{@attribute}-label" %>"><%= @label %>:</div>
-<div class="col-sm-3 py-1 align-middle">
+<div class="col-sm-3 py-1 align-middle text-break">
   <%= @value || "&nbsp;".html_safe %>
 </div>
 <div class="col">
   <% if @editable %>
-    <%= link_to edit_link_text, [:account_profile_edit, attribute: @attribute] %>
+    <% if @attribute == "password" %>
+      <%= link_to edit_link_text, "#{session[:iss]}/account/password", data: {turbo: false}, target: "_top" %>
+    <% else %>
+      <%= link_to edit_link_text, [:account_profile_edit, attribute: @attribute] %>
+    <% end %>
   <% end %>
 </div>

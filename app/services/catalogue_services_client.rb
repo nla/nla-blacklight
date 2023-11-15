@@ -160,12 +160,12 @@ class CatalogueServicesClient
       if res.body.present? && res.body["totalRecords"].to_i == 1
         folio_details = res.body["users"]&.first
         {
-          first_name: folio_details&.dig("personal", "firstName") || "",
-          last_name: folio_details&.dig("personal", "lastName") || "",
-          email: folio_details&.dig("personal", "email") || "",
-          phone: folio_details&.dig("personal", "phone") || "",
-          mobile_phone: folio_details&.dig("personal", "mobilePhone") || "",
-          postcode: folio_details&.dig("personal", "addresses")&.first&.[]("postalCode") || ""
+          first_name: folio_details&.dig("personal", "firstName"),
+          last_name: folio_details&.dig("personal", "lastName"),
+          email: folio_details&.dig("personal", "email"),
+          phone: folio_details&.dig("personal", "phone"),
+          mobile_phone: folio_details&.dig("personal", "mobilePhone"),
+          postcode: folio_details&.dig("personal", "addresses")&.first&.[]("postalCode")
         }
       else
         {}
