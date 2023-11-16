@@ -19,4 +19,10 @@ class UserDetailsFieldComponent < ViewComponent::Base
   def edit_link_text
     I18n.t("account.settings.update.change_text", attribute: I18n.t("account.settings.#{@attribute}.change_text"))
   end
+
+  def link_to_keycloak_password_reset
+    if helpers.current_user.present?
+      link_to edit_link_text, "#{session[:iss]}/account/password", data: {turbo: false}, target: "_top"
+    end
+  end
 end

@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 7ad8e28d3cd08c132663986b33784fbd4eea104c
+  revision: 94570bd0c8b38e6947562cc9f99660ae1801e04c
   branch: feat/upgrade
   specs:
     nla-blacklight_common (0.1.10)
@@ -130,14 +130,14 @@ GEM
     bindex (0.8.1)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
-    blacklight (8.0.1)
+    blacklight (8.1.0)
       globalid
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
       rails (>= 6.1, < 8)
-      view_component (>= 2.66, < 3.1)
+      view_component (>= 2.66, < 4)
     blacklight-marc (8.1.0)
       blacklight (>= 7.11, < 9)
       library_stdnums
@@ -352,7 +352,7 @@ GEM
       activesupport (>= 4)
       railties (>= 4)
       request_store (~> 1.0)
-    loofah (2.21.4)
+    loofah (2.22.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
     mail (2.8.1)
@@ -383,7 +383,7 @@ GEM
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.4)
+    net-imap (0.4.5)
       date
       net-protocol
     net-pop (0.1.2)
@@ -629,7 +629,7 @@ GEM
     unf_ext (0.0.8.2)
     unicode-display_width (2.5.0)
     version_gem (1.1.3)
-    view_component (3.0.0)
+    view_component (3.7.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)

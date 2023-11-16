@@ -5,7 +5,7 @@ require "rails_helper"
 RSpec.describe ThumbnailHelper do
   describe "#render_thumbnail" do
     context "when an image is found via nla.obj" do
-      let(:document) { SolrDocument.new(id: 123, marc_ss: sample_marc, nlaobjid_ss: "nla.obj-123") }
+      let(:document) { SolrDocument.new(id: "123", marc_ss: sample_marc, nlaobjid_ss: "nla.obj-123") }
 
       it "returns an image tag" do
         WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?id=123&isbnList=&lccnList=&nlaObjId=nla.obj-123&width=123/)
@@ -22,7 +22,7 @@ RSpec.describe ThumbnailHelper do
     end
 
     context "when an image is found via ISBN" do
-      let(:document) { SolrDocument.new(id: 123, marc_ss: sample_marc) }
+      let(:document) { SolrDocument.new(id: "123", marc_ss: sample_marc) }
 
       it "returns an image tag" do
         WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?id=123&isbnList=8559378&lccnList=&nlaObjId=&width=123/)
@@ -41,7 +41,7 @@ RSpec.describe ThumbnailHelper do
     end
 
     context "when an image is found via LCCN" do
-      let(:document) { SolrDocument.new(id: 123, marc_ss: sample_marc) }
+      let(:document) { SolrDocument.new(id: "123", marc_ss: sample_marc) }
 
       it "returns an image tag" do
         WebMock.stub_request(:get, /thumbservices.test\/thumbnail-service\/thumbnail\/url\?id=123&isbnList=&lccnList=93002529&nlaObjId=&width=123/)
