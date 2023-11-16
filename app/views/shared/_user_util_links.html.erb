@@ -10,7 +10,7 @@
           <%= link_to t("account.requests.menu"), account_requests_path, class: "dropdown-item" %>
           <%= render partial: "blacklight/nav/bookmark" %>
           <%= link_to t("account.settings.menu"), account_profile_path, class: "dropdown-item" %>
-          <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete, data: { turbo_method: :delete } %>
+          <%= button_to t('blacklight.header_links.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete, data: { turbo: false } %>
         </div>
       </li>
     <% else %>
