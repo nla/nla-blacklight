@@ -55,7 +55,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.17.0"
+gem "hiredis-client", "~> 0.18.0"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.0"
@@ -149,5 +149,5 @@ group :test do
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-json", "~> 0.2.3"
 
-  gem "mock_redis", "~> 0.37.0"
+  gem "mock_redis", "~> 0.39.0"
 end

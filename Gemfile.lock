@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 94570bd0c8b38e6947562cc9f99660ae1801e04c
+  revision: c3157939358f3abfcc5e8a6ad3922b801ee6c115
   branch: feat/upgrade
   specs:
-    nla-blacklight_common (0.1.10)
+    nla-blacklight_common (0.1.11)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 9)
@@ -296,8 +296,8 @@ GEM
     heapy (0.2.0)
       thor
     hiredis (0.6.3)
-    hiredis-client (0.17.1)
-      redis-client (= 0.17.1)
+    hiredis-client (0.18.0)
+      redis-client (= 0.18.0)
     htmlentities (4.3.4)
     http (5.1.1)
       addressable (~> 2.8)
@@ -373,7 +373,7 @@ GEM
     mini_mime (1.1.5)
     minitar (0.9)
     minitest (5.20.0)
-    mock_redis (0.37.0)
+    mock_redis (0.39.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -484,7 +484,7 @@ GEM
       psych (>= 4.0.0)
     redis (5.0.8)
       redis-client (>= 0.17.0)
-    redis-client (0.17.1)
+    redis-client (0.18.0)
       connection_pool
     regexp_parser (2.8.2)
     reline (0.4.0)
@@ -706,12 +706,12 @@ DEPENDENCIES
   flamegraph
   fuubar
   hiredis (~> 0.6.3)
-  hiredis-client (~> 0.17.0)
+  hiredis-client (~> 0.18.0)
   jbuilder
   jsbundling-rails
   lograge
   memory_profiler
-  mock_redis (~> 0.37.0)
+  mock_redis (~> 0.39.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
   phonelib (~> 0.8.4)
@@ -747,4 +747,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.21
+   2.4.22
