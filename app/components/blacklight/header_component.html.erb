@@ -1,4 +1,7 @@
 <%= top_bar %>
+<div class="<%= helpers.container_classes %>">
+  <%= render GlobalMessageComponent.new %>
+</div>
 <%- if helpers.show_search_bar? %>
 <%= search_bar %>
 <%- end %>
