@@ -1,5 +1,51 @@
 # Changelog
 
+## [2.11.0](https://github.com/nla/nla-blacklight/compare/2.10.0...2.11.0) (2023-11-17)
+
+
+### Features
+
+* Update Join us link in primary nav ([d63037c](https://github.com/nla/nla-blacklight/commit/d63037c2fe4b2239b3643b52d6bc8d013aa843bb))
+* Update login with library card text references ([8515b50](https://github.com/nla/nla-blacklight/commit/8515b50af9cce942dc8a67df088475ed05343719))
+* Update request item text ([eb8b605](https://github.com/nla/nla-blacklight/commit/eb8b605a3b0a87b93f589df47a3c63d53d498c22))
+* Update text and image for Join library on homepage ([c7be2a2](https://github.com/nla/nla-blacklight/commit/c7be2a2e13e1a3c257697097e02e420bdacfbdaa))
+* Update text message for successful request ([3ab0db6](https://github.com/nla/nla-blacklight/commit/3ab0db679a48cbbd10ad11d4d6e989dc83efc2fb))
+
+
+### Bug Fixes
+
+* change link to join us page ([421885b](https://github.com/nla/nla-blacklight/commit/421885b53f75c8650d01d88003a4c797ee271c7a))
+* change request alert wording ([7c0c5eb](https://github.com/nla/nla-blacklight/commit/7c0c5eb0178e500e67c5a72624ba67c447253ab3))
+* fix missed renamed method calls ([fd723d1](https://github.com/nla/nla-blacklight/commit/fd723d1e9f69090464bad25cf9942aa01cbfc3b7))
+* increase email field length to max length in Keycloak ([2da5651](https://github.com/nla/nla-blacklight/commit/2da5651426bb9ed4721e2124de2c52c39607cc18))
+* set headers to not cache any pages ([e0fce88](https://github.com/nla/nla-blacklight/commit/e0fce8870001c5268c6f86da900c1d8f65c48e6a))
+* staff password is not editable ([9eac8ad](https://github.com/nla/nla-blacklight/commit/9eac8ad86e927270eac9f3ccc997a62ff8890a4b))
+
+
+### Miscellaneous
+
+* **deps-dev:** bump mock_redis from 0.37.0 to 0.39.0 ([f37e083](https://github.com/nla/nla-blacklight/commit/f37e0836bad1e598336711ef6a6bfabba4fde3c6))
+* **deps-dev:** bump rubocop-rspec from 2.24.1 to 2.25.0 ([e2bed18](https://github.com/nla/nla-blacklight/commit/e2bed185cb958a9a45789305c9204c492c614a30))
+* **deps:** bump hiredis-client from 0.17.1 to 0.18.0 ([f701a89](https://github.com/nla/nla-blacklight/commit/f701a8917f62afec13ea780d3c013e2b083e4b33))
+* **deps:** bump importmap-rails from 1.2.1 to 1.2.3 ([ac4f2b1](https://github.com/nla/nla-blacklight/commit/ac4f2b17919bdc69233010a5a45cabfcb96d346f))
+* **deps:** bump redis from 5.0.7 to 5.0.8 ([01646f4](https://github.com/nla/nla-blacklight/commit/01646f44b94bd21aea6184d5be160327b8f833d7))
+* prepare for release ([081e65b](https://github.com/nla/nla-blacklight/commit/081e65b3a04ef82130dc726d11e1641a876c98c4))
+* pull in backchannel logout changes ([08648bb](https://github.com/nla/nla-blacklight/commit/08648bbfec3fa89aa099e4eeebfa51d5bfd0e793))
+* pull in changes in common code ([f0f93ea](https://github.com/nla/nla-blacklight/commit/f0f93eaccbf6fc60345c2112464f33aadb4b7ae7))
+* pull in fixes to session_token ([e4f2013](https://github.com/nla/nla-blacklight/commit/e4f201360783e74c7f8f916985f344a1d7c229ec))
+* remove keycloak patron flag ([37c6d99](https://github.com/nla/nla-blacklight/commit/37c6d99e6ed873baec5dfc0209a7128bf685df7b))
+
+
+### Code Refactoring
+
+* rename account "settings" to 'profile" ([b0e83a6](https://github.com/nla/nla-blacklight/commit/b0e83a6074521311f70e4344788529b89c3f54ce))
+* rename profile strong params methods ([e9b0e81](https://github.com/nla/nla-blacklight/commit/e9b0e81fc077285bf1107a494c332b25558046c5))
+
+
+### Tests
+
+* fix tests ([f385ca8](https://github.com/nla/nla-blacklight/commit/f385ca8f30710639e1b3c3c438fa2b2373dd53c4))
+
 ## [2.10.0](https://github.com/nla/nla-blacklight/compare/2.9.0...2.10.0) (2023-11-03)
 
 
