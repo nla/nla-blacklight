@@ -17,8 +17,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 983e80e0406df62c9d14ead53f0d1d497fbc2716
-  tag: 0.1.11
+  revision: 688a2787e3944b1c8bb24b461f612dd628abfb8a
+  branch: main
   specs:
     nla-blacklight_common (0.1.11)
       activerecord-session_store (~> 2.0)
@@ -120,7 +120,7 @@ GEM
       execjs (~> 2)
     awesome_print (1.9.2)
     base64 (0.1.1)
-    bcrypt (3.1.19)
+    bcrypt (3.1.20)
     benchmark-ips (2.12.0)
     better_errors (2.10.1)
       erubi (>= 1.0.0)
@@ -415,12 +415,12 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.6.0)
-    nokogiri (1.15.4-arm64-darwin)
+    nio4r (2.6.1)
+    nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-darwin)
+    nokogiri (1.15.5-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-linux)
+    nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
