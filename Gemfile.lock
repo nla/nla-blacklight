@@ -17,8 +17,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 983e80e0406df62c9d14ead53f0d1d497fbc2716
-  tag: 0.1.11
+  revision: 688a2787e3944b1c8bb24b461f612dd628abfb8a
+  branch: main
   specs:
     nla-blacklight_common (0.1.11)
       activerecord-session_store (~> 2.0)
@@ -120,7 +120,7 @@ GEM
       execjs (~> 2)
     awesome_print (1.9.2)
     base64 (0.1.1)
-    bcrypt (3.1.19)
+    bcrypt (3.1.20)
     benchmark-ips (2.12.0)
     better_errors (2.10.1)
       erubi (>= 1.0.0)
@@ -132,7 +132,7 @@ GEM
     bindex (0.8.1)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
-    blacklight (7.34.0)
+    blacklight (7.35.0)
       deprecation
       globalid
       hashdiff
@@ -140,7 +140,7 @@ GEM
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
-      rails (>= 5.1, < 7.1)
+      rails (>= 5.1, < 7.2)
       view_component (>= 2.66, < 4)
     blacklight-marc (8.1.0)
       blacklight (>= 7.11, < 9)
@@ -152,10 +152,11 @@ GEM
     blacklight_advanced_search (7.0.0)
       blacklight (~> 7.0)
       parslet
-    blacklight_range_limit (8.3.0)
+    blacklight_range_limit (8.4.0)
       blacklight (>= 7.25.2, < 9)
       deprecation
-    bootsnap (1.16.0)
+      view_component (>= 2.54, < 4)
+    bootsnap (1.17.0)
       msgpack (~> 1.2)
     bootstrap (4.6.2)
       autoprefixer-rails (>= 9.1.0)
@@ -192,9 +193,9 @@ GEM
       namae (~> 1.0)
     csl-styles (1.0.1.11)
       csl (~> 1.0)
-    cuprite (0.14.3)
+    cuprite (0.15)
       capybara (~> 3.0)
-      ferrum (~> 0.13.0)
+      ferrum (~> 0.14.0)
     date (3.3.4)
     dead_end (4.0.0)
     debug (1.8.0)
@@ -288,7 +289,7 @@ GEM
     faraday-retry (1.0.3)
     faraday_middleware (1.2.0)
       faraday (~> 1.0)
-    ferrum (0.13)
+    ferrum (0.14)
       addressable (~> 2.5)
       concurrent-ruby (~> 1.1)
       webrick (~> 1.7)
@@ -415,12 +416,12 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.6.0)
-    nokogiri (1.15.4-arm64-darwin)
+    nio4r (2.6.1)
+    nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-darwin)
+    nokogiri (1.15.5-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.4-x86_64-linux)
+    nokogiri (1.15.5-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -448,7 +449,7 @@ GEM
       marc
       scrub_rb (~> 1.0)
     orm_adapter (0.5.0)
-    ostruct (0.5.5)
+    ostruct (0.6.0)
     parallel (1.23.0)
     parser (3.2.2.4)
       ast (~> 2.4.1)
@@ -588,7 +589,7 @@ GEM
       sprockets-rails
       tilt
     scrub_rb (1.0.1)
-    selenium-webdriver (4.14.0)
+    selenium-webdriver (4.15.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
@@ -729,7 +730,7 @@ DEPENDENCIES
   bento_search!
   better_errors
   binding_of_caller
-  blacklight (~> 7.32, < 8)
+  blacklight (~> 7.35)
   blacklight-marc (>= 7.0.0.rc1, < 9)
   blacklight_advanced_search (~> 7.0, < 8)
   blacklight_range_limit
@@ -780,7 +781,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   rufus-scheduler (~> 3.8)
-  selenium-webdriver (~> 4.13)
+  selenium-webdriver (~> 4.15)
   shoulda-matchers
   simplecov (~> 0.22.0)
   simplecov-json (~> 0.2.3)

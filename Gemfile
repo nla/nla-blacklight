@@ -73,7 +73,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 # Blacklight dependencies
-gem "blacklight", "~> 7.32", "< 8"
+gem "blacklight", "~> 7.35"
 gem "blacklight_advanced_search", "~> 7.0", "< 8"
 gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
 gem "bootstrap", "~> 4.0"
@@ -102,7 +102,7 @@ gem "faraday-http-cache"
 gem "uri", "~> 0.12.1"
 
 # Before a release, point these gem at a tag, instead of the `main` branch.
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", tag: "0.1.11"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 
 # For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
@@ -163,7 +163,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.13"
+  gem "selenium-webdriver", "~> 4.15"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"
