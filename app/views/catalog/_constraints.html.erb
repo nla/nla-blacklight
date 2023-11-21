@@ -3,7 +3,7 @@
 <% else %>
   <% Deprecation.warn(Blacklight::RenderConstraintsHelperBehavior, 'Constraints helpers or partials were overridden; not using components') %>
   <% if Deprecation.silence(Blacklight::RenderConstraintsHelperBehavior) { query_has_constraints? } %>
-    <div id="appliedParams" class="clearfix constraints-container">
+    <div id="appliedParams" class="clearfix constraints-container d-print-none">
       <h2 class="sr-only visually-hidden"><%= t('blacklight.search.search_constraints_header') %></h2>
 
       <div class="row w-100">
