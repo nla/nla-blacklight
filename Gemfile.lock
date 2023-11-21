@@ -155,7 +155,7 @@ GEM
     blacklight_range_limit (8.3.0)
       blacklight (>= 7.25.2, < 9)
       deprecation
-    bootsnap (1.16.0)
+    bootsnap (1.17.0)
       msgpack (~> 1.2)
     bootstrap (4.6.2)
       autoprefixer-rails (>= 9.1.0)
