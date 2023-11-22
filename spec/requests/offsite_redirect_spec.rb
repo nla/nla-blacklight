@@ -30,9 +30,7 @@ RSpec.describe "Offsite redirect", :request do
     context "when the URL is a known eResource URL" do
       context "when requested from a local subnet" do
         before do
-          # rubocop:disable RSpec/AnyInstance
           allow_any_instance_of(ActionDispatch::Request).to receive(:remote_addr).and_return("187.121.206.121")
-          # rubocop:enable RSpec/AnyInstance
         end
 
         it "redirects to the 'url'" do
@@ -58,9 +56,7 @@ RSpec.describe "Offsite redirect", :request do
 
       context "when requested from a staff subnet" do
         before do
-          # rubocop:disable RSpec/AnyInstance
           allow_any_instance_of(ActionDispatch::Request).to receive(:remote_addr).and_return("200.2.40.0")
-          # rubocop:enable RSpec/AnyInstance
         end
 
         it "redirects to the 'url'" do
@@ -86,9 +82,7 @@ RSpec.describe "Offsite redirect", :request do
 
       context "when requested from offsite" do
         before do
-          # rubocop:disable RSpec/AnyInstance
           allow_any_instance_of(ActionDispatch::Request).to receive(:remote_addr).and_return("127.0.0.1")
-          # rubocop:enable RSpec/AnyInstance
         end
 
         context "when eResource does not allow remote access" do
@@ -134,6 +128,13 @@ RSpec.describe "Offsite redirect", :request do
           end
 
           context "when user is not logged in" do
+            let(:search_service_mock) { instance_double(Blacklight::SearchService) }
+
+            before do
+              allow(Blacklight::SearchService).to receive(:new).and_return(search_service_mock)
+              allow(search_service_mock).to receive(:fetch).with(anything).and_return([nil, SolrDocument.new(id: "0000", title_tsim: ["Test Title"])])
+            end
+
             context "when eResource title is 'ebsco'" do
               it "redirects to the login page" do
                 get "/catalog/0000/offsite?url=http://search.ebscohost.com/login.aspx?direct=true&scope=site&db=nlebk&db=nlabk&AN=658574"
@@ -154,7 +155,7 @@ RSpec.describe "Offsite redirect", :request do
 
               it "displays a flash message" do
                 get "/catalog/0000/offsite?url=https://haynesmanualsallaccess.com/en-au/"
-                expect(flash[:alert]).to eq "Login to access Haynes manuals allaccess."
+                expect(flash[:alert]).to eq "Login to access Test Title."
               end
             end
           end
