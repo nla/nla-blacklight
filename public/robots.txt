@@ -1,3 +1,9 @@
 # See https://www.robotstxt.org/robotstxt.html for documentation on how to use the robots.txt file
+Disallow: /search?*
+Disallow: /catalog?*
+Disallow: /catalog/*/librarian_view
+Disallow: /catalog/*/citation
+Disallow: /catalog/*/request/*
+
 Sitemap: https://catalogue.nla.gov.au/finding-aids/sitemap.xml
 Sitemap: https://catalogue.nla.gov.au/sitemap-index.xml
