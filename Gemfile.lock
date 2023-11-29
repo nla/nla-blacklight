@@ -398,7 +398,7 @@ GEM
     mini_mime (1.1.5)
     minitar (0.9)
     minitest (5.20.0)
-    mock_redis (0.39.0)
+    mock_redis (0.40.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -762,7 +762,7 @@ DEPENDENCIES
   lograge
   memo_wise
   memory_profiler
-  mock_redis (~> 0.39.0)
+  mock_redis (~> 0.40.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
   nokogiri (>= 1.13.9)
