@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "blacklight/solr_cloud/repository"
-require "blacklight/solr_cloud/not_enough_nodes"
 
 class CatalogController < ApplicationController
   include Blacklight::Catalog
@@ -14,7 +13,7 @@ class CatalogController < ApplicationController
       Blacklight::Rendering::HelperMethod,
       Blacklight::Rendering::LinkToFacet,
       Blacklight::Rendering::Microdata,
-      # Blacklight::Rendering::Join
+      # replace Blacklight::Rendering::Join with NlaJoin to split multiple titles into separate lines
       NlaJoin
     ]
   end
@@ -147,7 +146,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "author_ssim", label: "Author", limit: true, index_range: "A".."Z"
     config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
     config.add_facet_field "austlang_ssim", label: "Aboriginal and Torres Strait Islander Language", limit: 10
-    config.add_facet_field "language_ssim", label: "Language", limit: true
+    config.add_facet_field "language_ssim", label: "Language"
     config.add_facet_field "geographic_name_ssim", label: "Geographic", limit: true, index_range: "A".."Z"
     config.add_facet_field "series_ssim", label: "Series", limit: true, index_range: "A".."Z", single: true
     config.add_facet_field "parent_id_ssim", label: "In Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
