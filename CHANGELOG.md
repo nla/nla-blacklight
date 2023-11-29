@@ -1,5 +1,24 @@
 # Changelog
 
+## [2.11.1](https://github.com/nla/nla-blacklight/compare/2.11.0...2.11.1) (2023-11-29)
+
+
+### Bug Fixes
+
+* display record title instead of eResource title ([c64de08](https://github.com/nla/nla-blacklight/commit/c64de084695c45178bbfe0384f94f1c34a25cfe1))
+* pull in change to add /logout route ([4ab5fad](https://github.com/nla/nla-blacklight/commit/4ab5fad5edfd243240f785158b9741cd6fc2e227))
+* set print styles ([7dbc483](https://github.com/nla/nla-blacklight/commit/7dbc4832a79b2103befa4ab6e962f3d19bffaa68))
+
+
+### Miscellaneous
+
+* **deps-dev:** bump cuprite from 0.14.3 to 0.15 ([b2a2e26](https://github.com/nla/nla-blacklight/commit/b2a2e26e0462c0a6d120f4d6eec48567bc5a3b51))
+* **deps-dev:** bump selenium-webdriver from 4.14.0 to 4.15.0 ([c5a762e](https://github.com/nla/nla-blacklight/commit/c5a762efbfdb532505a2279c2d8698e4a915e7fa))
+* **deps:** bump blacklight from 7.34.0 to 7.35.0 ([c6cdf4b](https://github.com/nla/nla-blacklight/commit/c6cdf4b01e657790286e1ceef84497bb5ec6f6e7))
+* **deps:** bump blacklight_range_limit from 8.3.0 to 8.4.0 ([d375a25](https://github.com/nla/nla-blacklight/commit/d375a25b60ddb23ae908a0f55487b85084f32c75))
+* **deps:** bump bootsnap from 1.16.0 to 1.17.0 ([0fb254e](https://github.com/nla/nla-blacklight/commit/0fb254e9e572c5c1e3c90536a620f1480aa42998))
+* prepare release ([10827fb](https://github.com/nla/nla-blacklight/commit/10827fb72e4ab10e1b19880f0192899d6ea5542d))
+
 ## [2.11.0](https://github.com/nla/nla-blacklight/compare/2.10.0...2.11.0) (2023-11-17)
 
 
