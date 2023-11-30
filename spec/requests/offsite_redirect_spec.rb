@@ -132,7 +132,7 @@ RSpec.describe "Offsite redirect", :request do
 
             before do
               allow(Blacklight::SearchService).to receive(:new).and_return(search_service_mock)
-              allow(search_service_mock).to receive(:fetch).with(anything).and_return([nil, SolrDocument.new(id: "0000", title_tsim: ["Test Title"])])
+              allow(search_service_mock).to receive(:fetch).with(anything).and_return(SolrDocument.new(id: "0000", title_tsim: ["Test Title"]))
             end
 
             context "when eResource title is 'ebsco'" do
