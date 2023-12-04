@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/blacklight_range_limit
-  revision: 37a1817abfe30d28c8cf0c8ec204c7bd7b8efed1
+  revision: 3de6a19b3ed3439694d6cc57cd28b0fa7f77201d
   branch: main
   specs:
     blacklight_range_limit (8.4.0)
@@ -249,9 +249,9 @@ GEM
     erubi (1.12.0)
     et-orbi (1.2.7)
       tzinfo
-    factory_bot (6.4.1)
+    factory_bot (6.4.2)
       activesupport (>= 5.0.0)
-    factory_bot_rails (6.4.0)
+    factory_bot_rails (6.4.2)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
     faker (3.2.2)
@@ -323,7 +323,7 @@ GEM
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
-    irb (1.9.0)
+    irb (1.10.0)
       rdoc
       reline (>= 0.3.8)
     jbuilder (2.11.5)
@@ -331,7 +331,7 @@ GEM
       activesupport (>= 5.0.0)
     jsbundling-rails (1.2.1)
       railties (>= 6.0.0)
-    json (2.6.3)
+    json (2.7.0)
     json-jwt (1.15.3)
       activesupport (>= 4.2)
       aes_key_wrap
@@ -498,8 +498,8 @@ GEM
       redis-client (>= 0.17.0)
     redis-client (0.18.0)
       connection_pool
-    regexp_parser (2.8.2)
-    reline (0.4.0)
+    regexp_parser (2.8.3)
+    reline (0.4.1)
       io-console (~> 0.5)
     request_store (1.5.1)
       rack (>= 1.4)
@@ -520,7 +520,7 @@ GEM
     rspec-mocks (3.12.6)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.12.0)
-    rspec-rails (6.0.3)
+    rspec-rails (6.1.0)
       actionpack (>= 6.1)
       activesupport (>= 6.1)
       railties (>= 6.1)
@@ -598,7 +598,7 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     stackprof (0.2.25)
-    standard (1.32.0)
+    standard (1.32.1)
       language_server-protocol (~> 3.17.0.2)
       lint_roller (~> 1.0)
       rubocop (~> 1.57.2)
@@ -612,7 +612,7 @@ GEM
       rubocop-performance (~> 1.19.1)
     stimulus-rails (1.3.0)
       railties (>= 6.0.0)
-    stringio (3.0.9)
+    stringio (3.1.0)
     strong_migrations (1.6.4)
       activerecord (>= 5.2)
     summon (2.0.5)
@@ -761,4 +761,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.21
+   2.4.22
