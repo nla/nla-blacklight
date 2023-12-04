@@ -16,6 +16,16 @@ GIT
       summon
 
 GIT
+  remote: https://github.com/nla/blacklight_range_limit
+  revision: 37a1817abfe30d28c8cf0c8ec204c7bd7b8efed1
+  branch: main
+  specs:
+    blacklight_range_limit (8.4.0)
+      blacklight (>= 7.25.2, < 9)
+      deprecation
+      view_component (>= 2.54, < 4)
+
+GIT
   remote: https://github.com/nla/nla-blacklight_common
   revision: 94d7a4f2eed7ae6773b235a06a4fc9c8debd1355
   branch: feat/upgrade
@@ -192,6 +202,8 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     debug_inspector (1.1.0)
+    deprecation (1.1.0)
+      activesupport
     derailed_benchmarks (2.1.2)
       benchmark-ips (~> 2)
       dead_end
@@ -382,7 +394,7 @@ GEM
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.6)
+    net-imap (0.4.7)
       date
       net-protocol
     net-pop (0.1.2)
@@ -391,7 +403,7 @@ GEM
       timeout
     net-smtp (0.4.0)
       net-protocol
-    nio4r (2.6.1)
+    nio4r (2.7.0)
     nokogiri (1.15.5-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.15.5-x86_64-darwin)
@@ -691,6 +703,7 @@ DEPENDENCIES
   blacklight (>= 8.0.0, < 9)
   blacklight-marc (~> 8.0)
   blacklight_advanced_search (= 8.0.0.alpha2)
+  blacklight_range_limit!
   bootsnap
   brakeman
   bundler-audit

@@ -4,6 +4,8 @@ require "blacklight/solr_cloud/repository"
 
 class CatalogController < ApplicationController
   include Blacklight::Catalog
+  include BlacklightRangeLimit::ControllerOverride
+
   include Blacklight::Marc::Catalog
   include BentoSessionResetConcern
 
@@ -145,7 +147,16 @@ class CatalogController < ApplicationController
 
     config.add_facet_field "format", label: "Format", limit: 20
     config.add_facet_field "access_ssim", label: "Access"
-    config.add_facet_field "decade_isim", label: "Year Range"
+    # config.add_facet_field "decade_isim", label: "Year Range"
+    config.add_facet_field "decade_isim",
+      label: "Year Range",
+      include_in_advanced_search: false,
+      range: {
+        num_segments: 6,
+        assumed_boundaries: nil,
+        segments: true,
+        maxlength: 4
+      }
     config.add_facet_field "author_ssim", label: "Author", limit: true, index_range: "A".."Z"
     config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
     config.add_facet_field "austlang_ssim", label: "Aboriginal and Torres Strait Islander Language", limit: 10

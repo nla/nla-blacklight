@@ -14,6 +14,7 @@
     </script>
     <%= opensearch_description_tag application_name, opensearch_catalog_url(format: 'xml') %>
     <%= favicon_link_tag %>
+    <%= stylesheet_link_tag "range_limit", media: "all", "data-turbo-track": "reload"  %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload"  %>
     <% if defined? Importmap %>
       <%= javascript_importmap_tags %>
@@ -24,6 +25,7 @@
       <%= javascript_include_tag "blacklight/blacklight", type: 'module' %>
       <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
       <%= javascript_include_tag "blacklight_custom", "data-turbo-track": "reload", defer: true %>
+      <%= javascript_include_tag "range_limit", "data-turbo-track": "reload", defer: true %>
       <script type="module">
         import githubAutoCompleteElement from 'https://cdn.skypack.dev/@github/auto-complete-element';
       </script>

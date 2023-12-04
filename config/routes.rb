@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => "/"
   mount BlacklightAdvancedSearch::Engine => "/"
   mount Yabeda::Prometheus::Exporter => "/metrics"
@@ -20,6 +21,8 @@ Rails.application.routes.draw do
 
   resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable
+    concerns :range_searchable
+
     concerns :offsite
   end
 
@@ -45,6 +48,7 @@ Rails.application.routes.draw do
 
   resource :thumbnail, only: [:thumbnail], path: "/thumbnail", controller: "thumbnail" do
     concerns :searchable
+    concerns :range_searchable
 
     get "/:id", to: "thumbnail#thumbnail", as: "show"
   end

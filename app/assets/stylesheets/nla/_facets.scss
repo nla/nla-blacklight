@@ -3,6 +3,10 @@
 @import "nla-custom-bootstrap";
 
 // Facets
+.facet-values li .selected {
+  color: $gray-medium !important;
+}
+
 .page-sidebar .facets,
 .page-sidebar .advanced-facet-limits {
   
@@ -53,7 +57,15 @@
   
   .facet-limit-active {
     border-color: rgba(0,0,0,0.125) !important;
-    
+
+    .card-header {
+      background: $white !important;
+
+      .btn {
+        color: $black;
+      }
+    }
+
     .card {
       .card-header {
         background: $white !important;
