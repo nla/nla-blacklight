@@ -144,7 +144,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
     context "when date is correct" do
       it "returns the correct date" do
         travel_to Time.zone.local(2012, 12, 12, 12, 12, 12)
-        expect(service.build_access_date).to eq(" | access-date=" + Time.zone.local(2012, 12, 12, 12, 12, 12).strftime("%d %B %Y")  + "\n")
+        expect(service.build_access_date).to eq(" | access-date=" + Time.zone.local(2012, 12, 12, 12, 12, 12).strftime("%d %B %Y") + "\n")
       end
     end
   end
