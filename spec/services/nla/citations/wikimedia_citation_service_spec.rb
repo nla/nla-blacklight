@@ -164,7 +164,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
       let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
 
       it "returns the correct date" do
-        expect(service.build_access_date).to eq(" | access-date=" + Date.today.strftime("%d %B %Y") + "\n")
+        expect(service.build_access_date).to eq(" | access-date=" + Time.zone.today.strftime("%d %B %Y") + "\n")
       end
     end
   end

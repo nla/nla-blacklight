@@ -129,7 +129,7 @@ module Nla
       # end
 
       def build_access_date
-        date = Date.today.strftime("%d %B %Y")
+        date = Time.zone.today.strftime("%d %B %Y")
         if date.present?
           " | access-date=#{date}\n"
         end
