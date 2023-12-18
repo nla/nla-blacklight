@@ -43,15 +43,9 @@ module Nla
           result += persistent_url
         end
 
-        date = build_access_date
-        if date.present?
-          result += date
-        end
+        result += build_access_date
 
-        via = build_via
-        if via.present?
-          result += via
-        end
+        result += build_via
 
         result + "}}"
       end
@@ -117,10 +111,7 @@ module Nla
       end
 
       def build_access_date
-        date = Time.zone.today.strftime("%d %B %Y")
-        if date.present?
-          " | access-date=#{date}\n"
-        end
+        " | access-date=" + Time.zone.today.strftime("%d %B %Y") + "\n"
       end
 
       def build_persistent_url
@@ -131,10 +122,7 @@ module Nla
       end
 
       def build_via
-        via = "National Library of Australia"
-        if via.present?
-          " | via=#{via}\n"
-        end
+        " | via=National Library of Australia\n"
       end
     end
   end
