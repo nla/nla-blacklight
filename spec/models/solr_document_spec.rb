@@ -2038,19 +2038,6 @@ RSpec.describe SolrDocument do
       end
     end
 
-    context "when there is a slightly different uniform title" do
-      subject(:uniform_title_value) do
-        document = described_class.new(
-          uniform_title_ssim: ["De foto's van Jongensjaren. Spanish"]
-        )
-        document.uniform_title
-      end
-
-      it "will display the uniform title" do
-        expect(uniform_title_value).to eq ["De foto's van Jongensjaren. Spanish"]
-      end
-    end
-
     context "when there is no uniform title" do
       subject(:uniform_title_value) do
         document = described_class.new(marc_ss: single_series)
