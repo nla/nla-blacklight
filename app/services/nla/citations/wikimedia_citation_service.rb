@@ -149,6 +149,5 @@ module Nla
         end
       end
     end
-
   end
 end
