@@ -38,9 +38,24 @@ module Nla
           result += language
         end
 
-        pi = build_pi
-        if pi.present?
-          result += pi
+        # pi = build_pi
+        # if pi.present?
+        #   result += pi
+        # end
+
+        purl = build_persistent_url
+        if purl.present?
+          result += purl
+        end
+
+        date = build_access_date
+        if date.present?
+          result += date
+        end
+
+        via = build_via
+        if via.present?
+          result += via
         end
 
         result + "}}"
@@ -106,12 +121,34 @@ module Nla
         end
       end
 
-      def build_pi
-        pi = @document.pi
-        if pi.present?
-          " | url=#{pi.first}\n"
+      # def build_pi
+      #   pi = @document.pi
+      #   if pi.present?
+      #     " | pi=#{pi}\n"
+      #   end
+      # end
+
+      def build_access_date
+        date = Date.today.strftime("%d %B %Y")
+        if date.present?
+          " | access-date=#{date}\n"
+        end
+      end
+
+      def build_persistent_url
+        purl = @document.id
+        if purl.present?
+          " | url=https://nla.gov.au/nla.cat-vn#{purl}\n"
+        end
+      end
+
+      def build_via
+        via = "National Library of Australia"
+        if via.present?
+          " | via=#{via}\n"
         end
       end
     end
+
   end
 end
