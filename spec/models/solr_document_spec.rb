@@ -2025,10 +2025,9 @@ RSpec.describe SolrDocument do
   end
 
   describe "#uniform_title" do
-    context "when there is a uniform title in subfield 130" do
+    context "when there is a uniform title" do
       subject(:uniform_title_value) do
         document = described_class.new(
-          marc_ss: uniform_title_130,
           uniform_title_ssim: ["Wort Hesed. English"]
         )
         document.uniform_title
@@ -2039,21 +2038,20 @@ RSpec.describe SolrDocument do
       end
     end
 
-    context "when there is a uniform title in subfield 240" do
+    context "when there is a slightly different uniform title" do
       subject(:uniform_title_value) do
         document = described_class.new(
-          marc_ss: uniform_title_240,
           uniform_title_ssim: ["De foto's van Jongensjaren. Spanish"]
         )
         document.uniform_title
       end
 
-      it "will look in subfield 240 and display the uniform title" do
+      it "will display the uniform title" do
         expect(uniform_title_value).to eq ["De foto's van Jongensjaren. Spanish"]
       end
     end
 
-    context "when there is no uniform title in subfield 130 or subfield 240" do
+    context "when there is no uniform title" do
       subject(:uniform_title_value) do
         document = described_class.new(marc_ss: single_series)
         document.uniform_title
