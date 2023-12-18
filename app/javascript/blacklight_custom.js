@@ -60,7 +60,6 @@ $(function() {
       container.height( height )
 
       $('.blrl-plot-config').each(function() {
-        console.log('setting plot config', $(this));
         $(this).data('plot-config', {
           selection: { color: '#46474A' },
           colors: ['#ffffff'],

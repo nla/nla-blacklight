@@ -7,7 +7,6 @@ export default class extends Controller {
   static values = { message: String, dependentMessage: String }
 
   connect() {
-    console.log("dependentMessage", this.dependentMessageValue)
   }
 
   initialize() {

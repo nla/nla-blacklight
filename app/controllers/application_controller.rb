@@ -14,6 +14,13 @@ class ApplicationController < ActionController::Base
   # view context is based on the executing controller.
   append_view_path "#{Rails.root}/app/components/"
 
+  # Rails 7 forces redirecting to external URLs to be opt-in.
+  # This is a good thing, but it means that we need to handle the error and redirect to the root URL.
+  # See https://api.rubyonrails.org/classes/ActionController/Redirecting.html#method-i-redirect_to
+  rescue_from ActionController::Redirecting::UnsafeRedirectError do
+    redirect_to root_url
+  end
+
   private
 
   def set_cache_headers
