@@ -3,6 +3,7 @@
 require "rails_helper"
 
 RSpec.describe Nla::Citations::WikimediaCitationService do
+  include ActiveSupport::Testing::TimeHelpers
   let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"]) }
   let(:service) { described_class.new(document) }
 
@@ -121,22 +122,39 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
     end
   end
 
-  describe "#build_pi" do
-    context "when there is a pi" do
+  describe "#build_persistent_url" do
+    context "when there is an id" do
       let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
 
-      it "returns the pi" do
-        allow(document).to receive(:pi).and_return(["https://nla.gov.au/nla.obj-234175885/flightdiagram"])
-
-        expect(service.build_pi).to eq(" | url=https://nla.gov.au/nla.obj-234175885/flightdiagram\n")
+      it "returns the id" do
+        expect(service.build_persistent_url).to eq(" | url=https://nla.gov.au/nla.cat-vn123\n")
       end
     end
 
-    context "when there is no pi" do
-      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
+    context "when there is no id" do
+      let(:document) { SolrDocument.new(marc_ss: book_marc, title_tsim: "Title", format: ["Book"]) }
 
       it "returns nil" do
-        expect(service.build_pi).to be_nil
+        expect(service.build_persistent_url).to be_nil
+      end
+    end
+  end
+
+  describe "#build_access_date" do
+    context "when date is correct" do
+      it "returns the correct date" do
+        travel_to Time.zone.local(2012, 12, 12, 12, 12, 12)
+        expect(service.build_access_date).to eq(" | access-date=" + Time.zone.local(2012, 12, 12, 12, 12, 12).strftime("%d %B %Y") + "\n")
+      end
+    end
+  end
+
+  describe "#build_via" do
+    context "when via is correct" do
+      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
+
+      it "returns the correct string" do
+        expect(service.build_via).to eq(" | via=National Library of Australia\n")
       end
     end
   end
