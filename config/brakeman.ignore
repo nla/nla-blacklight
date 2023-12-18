@@ -1,0 +1,154 @@
+{
+  "ignored_warnings": [
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "072180917d83a9d415d707c4e87d068bd1d2321280ee12421ad2af3ddce462e6",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/catalog_controller.rb",
+      "line": 452,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(EzproxyUrl.new(Eresources.new.known_url(params[:url])[:url]).url, :allow_other_host => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CatalogController",
+        "method": "offsite"
+      },
+      "user_input": "EzproxyUrl.new(Eresources.new.known_url(params[:url])[:url]).url",
+      "confidence": "Weak",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "3ded1439c903a7b11ae096afaeea0ea7de2fb4c82bb7f7d8745df912298dfcfc",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/catalog_controller.rb",
+      "line": 447,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(Eresources.new.known_url(params[:url])[:url], :allow_other_host => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CatalogController",
+        "method": "offsite"
+      },
+      "user_input": "Eresources.new.known_url(params[:url])[:url]",
+      "confidence": "Weak",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "66f0bc47e8c99b817284320a337a9e8802835a3e39107131653426e9ae22a88f",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/catalog_controller.rb",
+      "line": 438,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(params[:url], :allow_other_host => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CatalogController",
+        "method": "offsite"
+      },
+      "user_input": "params[:url]",
+      "confidence": "Weak",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
+      "fingerprint": "6c99e20d68b4e9e82fd5f91c7450379d90893d00d5a011ff0b304bbb24da6357",
+      "check_name": "Redirect",
+      "message": "Possible unprotected redirect",
+      "file": "app/controllers/catalog_controller.rb",
+      "line": 450,
+      "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
+      "code": "redirect_to(EzproxyUrl.new(\"http://yomiuri:1234/rekishikan/\").url, :allow_other_host => true)",
+      "render_path": null,
+      "location": {
+        "type": "method",
+        "class": "CatalogController",
+        "method": "offsite"
+      },
+      "user_input": "EzproxyUrl.new(\"http://yomiuri:1234/rekishikan/\").url",
+      "confidence": "Weak",
+      "cwe_id": [
+        601
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "d3313d945ade9d3f27bae196c779ce6a4ce5067e9343195caefed49bfc65686f",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/views/thumbnail/thumbnail.html.erb",
+      "line": 2,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => Blacklight::Document::ThumbnailComponent.new(:presenter => document_presenter(search_service.fetch(params[:id])), :counter => document_counter_with_offset((document_counter ||= 0))), {})",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "ThumbnailController",
+          "method": "thumbnail",
+          "line": 6,
+          "file": "app/controllers/thumbnail_controller.rb",
+          "rendered": {
+            "name": "thumbnail/thumbnail",
+            "file": "app/views/thumbnail/thumbnail.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "thumbnail/thumbnail"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "f3230f699d4ee9d224bef6fc4c5eea4dfb8911c3cd0b9608264ffad6fed4e85d",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/components/blacklight/document/show_tools_component.html.erb",
+      "line": 11,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => Blacklight::Document::ActionsComponent.new(:document => document, :tag => \"ul\", :classes => \"list-group list-group-flush\", :wrapping_tag => \"li\", :wrapping_classes => \"list-group-item list-group-item-action\", :actions => actions, :url_opts => Blacklight::Parameters.sanitize(params.to_unsafe_h)), {})",
+      "render_path": null,
+      "location": {
+        "type": "template",
+        "template": "app/components/blacklight/document/show_tools_component"
+      },
+      "user_input": "params.to_unsafe_h",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    }
+  ],
+  "updated": "2023-12-18 15:06:29 +1100",
+  "brakeman_version": "6.0.1"
+}
