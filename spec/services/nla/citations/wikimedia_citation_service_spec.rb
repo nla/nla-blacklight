@@ -121,26 +121,6 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
     end
   end
 
-  # describe "#build_pi" do
-  #   context "when there is a pi" do
-  #     let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
-  #
-  #     it "returns the pi" do
-  #       allow(document).to receive(:pi).and_return(["https://nla.gov.au/nla.obj-234175885/flightdiagram"])
-  #
-  #       expect(service.build_pi).to eq(" | url=https://nla.gov.au/nla.obj-234175885/flightdiagram\n")
-  #     end
-  #   end
-  #
-  #   context "when there is no pi" do
-  #     let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
-  #
-  #     it "returns nil" do
-  #       expect(service.build_pi).to be_nil
-  #     end
-  #   end
-  # end
-
   describe "#build_persistent_url" do
     context "when there is an id" do
       let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
@@ -173,7 +153,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
     context "when via is correct" do
       let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
 
-      it "returns the correct date" do
+      it "returns the correct string" do
         expect(service.build_via).to eq(" | via=National Library of Australia\n")
       end
     end

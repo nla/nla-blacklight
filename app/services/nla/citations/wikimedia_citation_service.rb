@@ -38,14 +38,9 @@ module Nla
           result += language
         end
 
-        # pi = build_pi
-        # if pi.present?
-        #   result += pi
-        # end
-
-        purl = build_persistent_url
-        if purl.present?
-          result += purl
+        persistent_url = build_persistent_url
+        if persistent_url.present?
+          result += persistent_url
         end
 
         date = build_access_date
@@ -121,13 +116,6 @@ module Nla
         end
       end
 
-      # def build_pi
-      #   pi = @document.pi
-      #   if pi.present?
-      #     " | pi=#{pi}\n"
-      #   end
-      # end
-
       def build_access_date
         date = Time.zone.today.strftime("%d %B %Y")
         if date.present?
@@ -136,9 +124,9 @@ module Nla
       end
 
       def build_persistent_url
-        purl = @document.id
-        if purl.present?
-          " | url=https://nla.gov.au/nla.cat-vn#{purl}\n"
+        persistent_url = @document.id
+        if persistent_url.present?
+          " | url=https://nla.gov.au/nla.cat-vn#{persistent_url}\n"
         end
       end
 
