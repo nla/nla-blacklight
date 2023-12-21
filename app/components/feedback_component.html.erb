@@ -4,7 +4,9 @@
     <ul class="list-unstyled">
       <li class="feedback-link">
         <%= link_to t("feedback.report_error"), helpers.error_feedback_url(@id) %>
-        <%= link_to t("feedback.culturally_sensitive"), helpers.culturally_sensitive_url(@id) %>
+        <%= link_to helpers.culturally_sensitive_url(@id) do %>
+          <%= image_tag "message-stick.svg", width: "16", height: "16", alt: "Message stick", aria: {hidden: true} %> <%= t("feedback.culturally_sensitive") %>
+        <% end %>
       </li>
     </ul>
   </div>
