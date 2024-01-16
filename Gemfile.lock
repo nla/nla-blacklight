@@ -27,10 +27,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 94d7a4f2eed7ae6773b235a06a4fc9c8debd1355
+  revision: 1d7fe29bdb08fb13b02ab33f69a87340ac79b277
   branch: feat/upgrade
   specs:
-    nla-blacklight_common (0.1.11)
+    nla-blacklight_common (0.1.12)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 9)
@@ -128,6 +128,7 @@ GEM
       ruby-next-core (>= 0.14.0)
     ast (2.4.2)
     awesome_print (1.9.2)
+    base64 (0.2.0)
     bcrypt (3.1.20)
     benchmark-ips (2.12.0)
     better_errors (2.10.1)
@@ -160,7 +161,8 @@ GEM
       parslet
     bootsnap (1.17.0)
       msgpack (~> 1.2)
-    brakeman (6.0.1)
+    brakeman (6.1.1)
+      racc
     builder (3.2.4)
     bundler-audit (0.9.1)
       bundler (>= 1.2.0, < 3)
@@ -174,7 +176,7 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
-    cgi (0.4.0)
+    cgi (0.4.1)
     citeproc (1.0.10)
       namae (~> 1.0)
     citeproc-ruby (1.1.13)
@@ -394,21 +396,21 @@ GEM
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.7)
+    net-imap (0.4.9.1)
       date
       net-protocol
     net-pop (0.1.2)
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0)
+    net-smtp (0.4.0.1)
       net-protocol
     nio4r (2.7.0)
-    nokogiri (1.15.5-arm64-darwin)
+    nokogiri (1.16.0-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.5-x86_64-darwin)
+    nokogiri (1.16.0-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.5-x86_64-linux)
+    nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -417,7 +419,7 @@ GEM
       rack (>= 1.2, < 4)
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
-    omniauth (2.1.1)
+    omniauth (2.1.2)
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
       rack-protection
@@ -454,7 +456,8 @@ GEM
     rack (2.2.8)
     rack-mini-profiler (3.1.1)
       rack (>= 1.2.0)
-    rack-protection (3.1.0)
+    rack-protection (3.2.0)
+      base64 (>= 0.1.0)
       rack (~> 2.2, >= 2.2.4)
     rack-test (2.1.0)
       rack (>= 1.3)
@@ -762,4 +765,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.22
+   2.5.4
