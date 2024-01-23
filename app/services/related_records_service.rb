@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 require "blacklight"
-require "blacklight/solr_cloud/repository"
+require "nla/solr_cloud/repository"
 
 class RelatedRecordsService
   def fetch_count(id, blacklight_config)
