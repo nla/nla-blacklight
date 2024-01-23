@@ -9,8 +9,8 @@ class RelatedRecords
   attr_reader :document, :collection_id
   attr_accessor :parent_id, :subfield
 
-  def initialize(marc_rec, collection_id, subfield, parent_id)
-    @marc_rec = marc_rec
+  def initialize(document, collection_id, subfield, parent_id)
+    @document = document
     @collection_id = collection_id
     @subfield = subfield
     @parent_id = parent_id
@@ -21,7 +21,7 @@ class RelatedRecords
   end
 
   def collection_name
-    @collection_name ||= derive_collection_name
+    @collection_name ||= derive_collection_name.presence
   end
 
   def has_parent?
@@ -53,26 +53,22 @@ class RelatedRecords
   private
 
   def derive_collection_name
-    title = []
-
-    if @subfield == "773"
-      title_773 = MarcDerivedField.instance.derive(@marc_rec, "773abdghkmnopqrstuxyz34678w")
-      title_773.each do |t|
-        if t.include?(@parent_id)
-          title << t.delete_suffix(" #{@parent_id}")
+    collection_name = if @subfield == "773"
+      title_773 = @document.fetch("title773_ssim", nil)
+      if title_773.present?
+        title_773.reduce([]) do |acc, title|
+          acc << (title.include?(@parent_id) ? title.delete_suffix(" #{@parent_id}") : title)
+        end
+      end
+    elsif @subfield == "973"
+      title_973 = @document.fetch("title973_ssim", nil)
+      if title_973.present?
+        title_973.reduce([]) do |acc, title|
+          acc << (title.include?(@parent_id) ? title.delete_suffix(" #{@parent_id}") : title)
         end
       end
     end
 
-    if @subfield == "973"
-      title_973 = MarcDerivedField.instance.derive(@marc_rec, "973abdghkmnopqrstuxyz34678w")
-      title_973.each do |t|
-        if t.include?(@parent_id)
-          title << t.delete_suffix(" #{@parent_id}")
-        end
-      end
-    end
-
-    title.compact_blank.join.presence
+    collection_name&.compact_blank&.join
   end
 end

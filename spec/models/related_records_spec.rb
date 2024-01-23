@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.describe RelatedRecords do
-  subject(:record) { described_class.new(document.marc_rec, collection_id, nil, nil) }
+  subject(:record) { described_class.new(document, collection_id, nil, nil) }
 
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "123") }
   let(:collection_id) { "" }
@@ -70,7 +70,7 @@ RSpec.describe RelatedRecords do
         record.parent_id = "(AKIN)23783872"
       end
 
-      let(:document) { SolrDocument.new(marc_ss: child_marc) }
+      let(:document) { SolrDocument.new(marc_ss: child_marc, title773_ssim: ["Land Rights camp at Heirisson Island, Western Australia, 1978 (AKIN)23783872"]) }
 
       it "returns the value as a single string" do
         expect(record.collection_name).to eq "Land Rights camp at Heirisson Island, Western Australia, 1978"

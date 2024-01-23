@@ -30,7 +30,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         .to_return(status: 200, body: no_parent_query_response, headers: {})
     end
 
-    let(:document) { SolrDocument.new(marc_ss: parent_record_marc) }
+    let(:document) { SolrDocument.new(marc_ss: parent_record_marc, title773_ssim: ["Land Rights camp at Heirisson Island, Western Australia, 1978 (AKIN)23783872"]) }
 
     it "states this is a collection" do
       render_inline(described_class.new(related_records: related_records.first))
@@ -82,7 +82,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         .to_return(status: 200, body: parent_query_response, headers: {})
     end
 
-    let(:document) { SolrDocument.new(marc_ss: child_record_marc) }
+    let(:document) { SolrDocument.new(marc_ss: child_record_marc, title773_ssim: ["Land Rights camp at Heirisson Island, Western Australia, 1978 (AKIN)23783872"]) }
 
     it "states this is a collection" do
       render_inline(described_class.new(related_records: related_records.first))
@@ -144,7 +144,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         .to_return(status: 200, body: parent_response.to_json, headers: {})
     end
 
-    let(:document) { SolrDocument.new(marc_ss: child_parent_record_marc) }
+    let(:document) { SolrDocument.new(marc_ss: child_parent_record_marc, title773_ssim: ["Dunlop family photograph albums (AKIN)24850123"]) }
 
     it "states this is a collection" do
       render_inline(described_class.new(related_records: related_records.first))
