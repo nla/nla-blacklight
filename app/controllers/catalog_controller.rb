@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "blacklight/solr_cloud/repository"
+require "nla/solr_cloud/repository"
 
 class CatalogController < ApplicationController
   include Blacklight::Catalog
@@ -40,7 +40,7 @@ class CatalogController < ApplicationController
     #
     ## Class for sending and receiving requests from a search index
     if ENV["ZK_HOST"].present? && ENV["SOLR_COLLECTION"].present?
-      config.repository_class = Blacklight::SolrCloud::Repository
+      config.repository_class = Nla::SolrCloud::Repository
     end
     #
     ## Class for converting Blacklight's url parameters to into request parameters for the search index
@@ -66,8 +66,15 @@ class CatalogController < ApplicationController
     }
 
     # solr path which will be added to solr base url before the other solr params.
-    # config.solr_path = 'select'
-    # config.document_solr_path = 'get'
+    config.solr_path = "select"
+    config.document_solr_path = "select"
+
+    # solr parameters to send on single-document requests to Solr.
+    # The "q" param is formatted in Blacklight::SolrCloud::Repository.find to search the "id" field.
+    config.document_unique_id_param = "q"
+    # These are sent by default to ensure all document fields are returned.
+    # Facets, spellcheck and response header are omitted, since they're not needed.
+    config.default_document_solr_params = {fl: "*", facet: "false", spellcheck: "false", omitHeader: "true"}
 
     # set to nil otherwise, advanced search will expect a Solr JSON DSL query handler at path "advanced" to exist
     config.json_solr_path = nil

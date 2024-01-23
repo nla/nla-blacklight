@@ -27,7 +27,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 3929310f1db09f0a3160e2ca523d57276866c450
+  revision: ed0d71bcdcccc599be3fc00a6970ca368c93e8d4
   branch: main
   specs:
     nla-blacklight_common (0.1.12)
@@ -182,7 +182,7 @@ GEM
     citeproc-ruby (1.1.13)
       citeproc (~> 1.0, >= 1.0.9)
       csl (~> 1.5)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
     connection_pool (2.4.1)
@@ -386,7 +386,7 @@ GEM
     mini_histogram (0.3.1)
     mini_mime (1.1.5)
     minitar (0.9)
-    minitest (5.21.1)
+    minitest (5.21.2)
     mock_redis (0.39.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
