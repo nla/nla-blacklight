@@ -189,7 +189,7 @@ class SolrDocument
   end
 
   def related_records
-    Collection.new(marc_rec).value.presence
+    Collection.new(self).value.presence
   end
 
   def rights_information
