@@ -8,7 +8,7 @@ module ThumbnailHelper
 
     service_options = {
       nlaObjId: document.first(NLA_OBJ_ID_FIELD),
-      isbnList: document.isbn_list&.join(","),
+      isbnList: document.valid_isbn&.join(","),
       lccnList: document.lccn&.join(","),
       width: thumbnail_image_width(document),
       id: document.first("id")
@@ -16,7 +16,7 @@ module ThumbnailHelper
 
     thumb_url = ThumbnailService.new.get_url(service_options)
     if thumb_url.present?
-      image_tag thumb_url, options
+      image_tag thumb_url, options.merge({width: thumbnail_image_width(document)})
     else
       Rails.logger.warn "Failed to retrieve thumbnail for #{document.first("id")}"
       nil

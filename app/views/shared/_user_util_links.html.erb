@@ -5,12 +5,12 @@
   <% if has_user_authentication_provider? %>
     <% if current_user %>
       <li class="nav-item dropdown">
-        <%= link_to current_user, "#", class: "nav-link dropdown-toggle #{active_link_class_controller(%w[account bookmarks])}", id: "navbarDropdown", role: "button", data: {toggle: "dropdown"}, aria: {haspopup: "true", expanded: "false"} %>
+        <%= link_to current_user, "#", class: "nav-link dropdown-toggle #{active_link_class_controller(%w[account bookmarks])}", id: "navbarDropdown", role: "button", data: {'bs-toggle': "dropdown"}, aria: {haspopup: "true", expanded: "false"} %>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <%= link_to t("account.requests.menu"), account_requests_path, class: "dropdown-item" %>
           <%= render partial: "blacklight/nav/bookmark" %>
           <%= link_to t("account.settings.menu"), account_profile_path, class: "dropdown-item" %>
-          <%= link_to t('blacklight.header_links.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete, data: { turbo_method: :delete } %>
+          <%= button_to t('blacklight.header_links.logout'), destroy_user_session_path, class: 'dropdown-item', method: :delete, data: { turbo: false } %>
         </div>
       </li>
     <% else %>

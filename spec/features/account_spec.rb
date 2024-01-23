@@ -1,4 +1,5 @@
 require "rails_helper"
+require "./app/services/catalogue_services_client"
 
 RSpec.describe "Account" do
   before do
@@ -33,5 +34,140 @@ RSpec.describe "Account" do
         expect(page).not_to have_css(".alert-danger", text: "Your request limit has been reached")
       end
     end
+  end
+
+  describe "GET /request_details/:id" do
+    context "when loan param is not provided" do
+      let(:request_id) { "1bec702d-2bf9-421e-953c-cd5188e8d9c6" }
+
+      it "displays an error" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: monograph_details_response, headers: {})
+
+        visit request_details_path(request_id)
+
+        expect(page).not_to have_text("[Hurstville Light Opera Company : programs and related material collected by the National Library of Australia]")
+      end
+    end
+
+    context "when item is a monograph" do
+      let(:request_id) { "1bec702d-2bf9-421e-953c-cd5188e8d9c6" }
+
+      it "renders the monograph request details" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: monograph_details_response, headers: {})
+
+        visit request_details_path(request_id, loan: false)
+
+        expect(page).to have_css(".document-title-heading", text: "[Hurstville Light Opera Company : programs and related material collected by the National Library of Australia]")
+        expect(page).to have_css(".col.col-md-8", text: "Special Collections Reading Room")
+        expect(page).to have_css(".col.col-md-8", text: "18 September 2023")
+        expect(page).to have_css(".text-muted", text: "04:34pm")
+        expect(page).to have_css(".col.col-md-8", text: "test")
+      end
+    end
+
+    context "when item is a serial" do
+      let(:request_id) { "d7746c53-7746-4b0e-8382-5261aa9bcecb" }
+
+      it "renders the monograph request details" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: serial_details_response, headers: {})
+
+        visit request_details_path(request_id, loan: false)
+
+        expect(page).to have_css(".document-title-heading", text: "National geographic.")
+        expect(page).to have_css(".col.col-md-8", text: "Special Collections Reading Room")
+        expect(page).to have_css(".col.col-md-8", text: "1960")
+        expect(page).to have_css(".col.col-md-8", text: "118")
+        expect(page).to have_css(".col.col-md-8", text: "August")
+        expect(page).to have_css(".col.col-md-8", text: "22 September 2023")
+        expect(page).to have_css(".text-muted", text: "09:52am")
+        expect(page).to have_css(".col.col-md-8", text: "test after running number reset")
+      end
+    end
+
+    context "when item is a manuscript" do
+      let(:request_id) { "84db922c-517c-4343-8cbd-0cda581f597f" }
+
+      it "renders the manuscript request details" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: manuscript_details_response, headers: {})
+
+        visit request_details_path(request_id, loan: false)
+
+        expect(page).to have_css(".document-title-heading", text: "Correspondence to Andrew Endrey from Hu Feng, Mei Zhi and Zhang Xiaofeng, 1979-2022.")
+        expect(page).to have_css(".col.col-md-8", text: "Special Collections Reading Room")
+        expect(page).to have_css(".col.col-md-8", text: "Shared")
+        expect(page).to have_css(".col.col-md-8", text: "2")
+        expect(page).to have_css(".col.col-md-8", text: "26 September 2023")
+        expect(page).to have_css(".text-muted", text: "01:21pm")
+        expect(page).to have_css(".col.col-md-8", text: "serial test")
+      end
+    end
+
+    context "when item is a map" do
+      let(:request_id) { "f97adbf5-2b70-4a12-b6d0-e92d21978f50" }
+
+      it "renders the map request details" do
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: map_details_response, headers: {})
+
+        visit request_details_path(request_id, loan: false)
+
+        expect(page).to have_css(".document-title-heading", text: "Fishing map series [cartographic material] : [Australia]")
+        expect(page).to have_css(".col.col-md-8", text: "Special Collections Reading Room")
+        expect(page).to have_css(".col.col-md-8", text: "1990")
+        expect(page).to have_css(".col.col-md-8", text: "26 September 2023")
+        expect(page).to have_css(".text-muted", text: "01:46pm")
+        expect(page).to have_css(".col.col-md-8", text: "map test")
+      end
+    end
+  end
+
+  def monograph_details_response
+    IO.read("spec/files/account/request_details/monograph.json")
+  end
+
+  def serial_details_response
+    IO.read("spec/files/account/request_details/serial.json")
+  end
+
+  def manuscript_details_response
+    IO.read("spec/files/account/request_details/manuscript.json")
+  end
+
+  def map_details_response
+    IO.read("spec/files/account/request_details/map.json")
   end
 end

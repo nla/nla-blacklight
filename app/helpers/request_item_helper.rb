@@ -1,16 +1,18 @@
 # frozen_string_literal: true
 
 module RequestItemHelper
+  ELECTRONIC_RESOURCE_CALL_NUMBERS = ["ELECTRONIC RESOURCE", "INTERNET"].freeze
+
   def render_request?(document)
     !is_ned_item?(document) && !has_no_physical_holdings?(document)
   end
 
   def has_online_copy?(document)
-    document.copy_access.present? && document.copy_access.first[:href].include?("nla.gov.au")
+    document.copy_access_urls.present? && document.copy_access_urls.first[:href].include?("nla.gov.au")
   end
 
   def has_online_access?(document)
-    document.online_access.present? && document.online_access.first[:href].include?("nla.gov.au")
+    document.online_access_urls.present? && document.online_access_urls.first[:href].include?("nla.gov.au")
   end
 
   def is_ned_item?(document)
@@ -19,15 +21,13 @@ module RequestItemHelper
   end
 
   def is_electronic_resource?(document)
-    callnumber = document.fetch("call_number_tsim")
-    callnumber.include?("ELECTRONIC RESOURCE") || callnumber.include?("INTERNET")
+    document.callnumber.any? { |n| ELECTRONIC_RESOURCE_CALL_NUMBERS.include? n }
   rescue
     false
   end
 
   def has_no_physical_holdings?(document)
-    callnumber = document.fetch("call_number_tsim")
-    (callnumber.include?("ELECTRONIC RESOURCE") || callnumber.include?("INTERNET")) && callnumber.length == 1
+    is_electronic_resource?(document) && document.callnumber.length == 1
   rescue
     false
   end

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "variables";
+@import "nla-custom-bootstrap";
 
 .btn {
   text-transform: uppercase;
@@ -11,7 +12,7 @@
     padding-right: 2rem;
     
     &::after {
-      color: color("orange");
+      color: $orange;
       content: "\F177";
       font: var(--fa-font-regular);
       position: absolute;
@@ -24,7 +25,7 @@
     &:hover::after,
     &:focus::after {
       left: 1.25rem;
-      color: color("white");
+      color: $white;
     }
   }
   
@@ -34,7 +35,7 @@
     padding-right: 3rem;
     
     &::after {
-      color: color("orange");
+      color: $orange;
       content: "\F178";
       font: var(--fa-font-regular);
       position: absolute;
@@ -47,7 +48,7 @@
     &:hover::after,
     &:focus::after {
       right: 1.25rem;
-      color: color("white");
+      color: $white;
     }
   }
   
@@ -57,7 +58,7 @@
     padding-right: 3rem;
     
     &::after {
-      color: color("orange");
+      color: $orange;
       content: "\f1f8";
       font: var(--fa-font-regular);
       position: absolute;
@@ -70,7 +71,7 @@
     &:hover::after,
     &:focus::after {
       font: var(--fa-font-solid);
-      color: color("white");
+      color: $white;
     }
   }
 }
@@ -78,14 +79,13 @@
 .btn-primary:focus,
 .btn-primary:hover,
 .btn-primary:active {
-  background: color("light-purple");
-  border-color: color("light-purple");
-  background: color("black");
+  background: $light-purple;
+  border-color: $light-purple;
+  background: $light-purple;
 }
 
 .btn-outline-primary,
 .btn-outline-secondary {
-  background: color("white");
-  background: color("black");
+  background: $white;
 }
 

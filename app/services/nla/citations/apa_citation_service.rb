@@ -42,9 +42,9 @@ module Nla
         if publisher.present?
           publication_place = @document.publication_place
           cited_publisher += if publication_place.present?
-            "#{publication_place} : #{publisher}"
+            "#{publication_place} : #{publisher.first}"
           else
-            publisher
+            publisher.first
           end
         end
 

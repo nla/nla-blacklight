@@ -17,8 +17,8 @@ class NlaJoin < Blacklight::Rendering::AbstractStep
   private
 
   # :nocov:
-  def html_escape(*)
-    ERB::Util.html_escape(*)
+  def html_escape(html_text)
+    HTMLEntities.new.decode(html_text)
   end
   # :nocov:
 end

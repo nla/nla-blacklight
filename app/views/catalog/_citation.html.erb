@@ -1,5 +1,10 @@
 <%= render Blacklight::System::ModalComponent.new do |component| %>
-  <% component.title { t('blacklight.tools.citation') } %>
+  <% component.with_title { t('blacklight.tools.citation') } %>
 
-  <%= render CitationComponent.with_collection(@documents) if @documents.present? %>
+  <%= render Blacklight::Document::CitationComponent.with_collection(@documents, formats: {
+    "blacklight.citation.apa": :export_as_apa_citation_txt,
+    "blacklight.citation.mla": :export_as_mla_citation_txt,
+    "citation.harvard": :export_as_harvard_citation_txt,
+    "citation.wikipedia": :export_as_wikipedia_citation_txt
+  }) if @documents.present? %>
 <% end %>

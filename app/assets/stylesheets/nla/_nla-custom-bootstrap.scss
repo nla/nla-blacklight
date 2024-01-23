@@ -1,3 +1,9 @@
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+
+$enable-negative-margins: true;
+$breadcrumb-divider: quote("»");
 
 // Colours to override in Bootstrap
 $white: #FFF;
@@ -32,21 +38,21 @@ $colors: (
 
 
 $theme-colors: (
-  "info": $cyan,
-  "primary": $orange,
-  "secondary": $purple,
-  "warning": $yellow,
-  "dark": $purple,
+    "primary":    $orange,
+    "secondary":  $purple,
+    "success":    $success,
+    "info":       $cyan,
+    "warning":    $yellow,
+    "danger":     $danger,
+    "light":      $light,
+    "dark":       $purple
 );
 
-$logo-image: image_url('nla_logo.svg');
-
-
+$logo-image: url('nla_logo.svg');
 
 // Body
 $body-bg: $gray-very-light;
 $body-color: $gray-medium;
-
 
 // Components
 
@@ -54,9 +60,9 @@ $border-radius: 0;
 $border-radius-lg: 0;
 $border-radius-sm: 0;
 
-
   // Typography
 $font-family-sans-serif: "Roboto condensed", sans-serif;
+$btn-font-family: "Roboto condensed", sans-serif;
 $text-muted: $gray-medium-light;
 
 $font-weight-semi-bold: 500;
@@ -73,27 +79,28 @@ $link-decoration: underline;
 $link-hover-color: $light-blue;
 $link-hover-decoration: none;
 
-
 // Buttons
 $btn-padding-x: 2rem;
 $btn-padding-x-sm: 1.5rem;
 $btn-padding-x-lg: 2rem;
 $btn-font-weight: 700;
 
-
-
 // Form inputs
 $input-border-color: $gray-light;
 $input-placeholder-color: $gray-medium-light;
 $component-active-bg: $purple;
 
+$input-bg: $white;
+$input-focus-bg: $white;
+$form-select-bg: $white;
+$input-group-addon-bg: #e9ecef;
+$component-active-bg: $purple;
 
 // Navbar
 $navbar-dark-color: $white;
 $navbar-dark-hover-color: $orange;
 $navbar-dark-active-color: $orange;
 $navbar-dark-toggler-border-color: $white;
-
 
 // Pagination
 $pagination-color:                  $purple;
@@ -108,10 +115,16 @@ $pagination-hover-border-color:     $purple;
 $pagination-disabled-bg:            transparent;
 $pagination-disabled-border-color:  transparent;
 
-// Cards
-$card-border-color: transparent;
-$card-border-radius: 0;
-
 // Tables
 $table-bg: $white;
 $table-caption-color: $purple;
+
+// Card
+$card-bg: $white;
+$card-border-color: transparent;
+$card-border-radius: 0;
+$card-cap-bg: rgba($white, .03);
+
+// Dropdowns
+$dropdown-bg: $white;
+$dropdown-border-color: $white;

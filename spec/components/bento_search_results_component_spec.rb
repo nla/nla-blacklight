@@ -17,6 +17,6 @@ RSpec.describe BentoSearchResultsComponent, type: :component do
   it "renders skeletons for result categories" do
     render_inline(described_class.new("catalogue", "/search/catalogue?q=hydrogen"))
 
-    expect(page).to have_css(".sr-only", text: I18n.t("loading"))
+    expect(page).to have_css(".visually-hidden", text: I18n.t("loading"))
   end
 end

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "variables";
+@import "nla-custom-bootstrap";
 
 .advanced-search-form {
   .input-criteria {
@@ -11,6 +12,14 @@
       margin-bottom: 1.5rem;
       
       .advanced-facet-limits {
+        .facet-field-heading {
+          background-color: var(--bs-white);
+
+          button::after {
+            float: none;
+          }
+        }
+
         .blacklight-advanced-facet-select {
           .facet-checkbox {
             width: 1rem;
@@ -26,7 +35,7 @@
             }
             
             .facet-count {
-              color: color("gray");
+              color: $gray-500;
               font-size: 0.875rem;
               width: auto;
               vertical-align: inherit;

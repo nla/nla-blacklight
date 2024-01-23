@@ -1,0 +1,33 @@
+// Blacklight Range Limit slider
+.facet-values {
+  .selected {
+    color: $gray-medium !important;
+  }
+}
+
+.slider_js {
+  .slider-handle {
+    background-image: none;
+    background-color: $white;
+    border: 2px solid $purple;
+    opacity: 1;
+
+    &:active,
+    &:hover {
+      background-color: $purple;
+    }
+  }
+
+  .slider-selection {
+    background-image: none;
+    background: $light-purple !important;
+  }
+}
+
+// Font Awesome's definition of .sr-only causes the button text not to be visible
+.range-limit-input-group {
+  .sr-only {
+    height: auto;
+    width: auto;
+  }
+}

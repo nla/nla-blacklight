@@ -1,21 +1,28 @@
 @charset "UTF-8";
 @import "variables";
+@import "nla-custom-bootstrap";
 
 // Facets
-.facets,
-.advanced-facet-limits {
+.facet-values li .selected {
+  color: $gray-medium !important;
+}
+
+.page-sidebar .facets,
+.page-sidebar .advanced-facet-limits {
   
   .facets-heading {
     font-family: "Roboto condensed", sans-serif;
     font-size: 1.375rem;
-    color: color("purple");
+    color: $purple;
     font-weight: bold;
-    text-shadow: 0 1px 0 color("white");
+    text-shadow: 0 1px 0 $white;
     text-transform: uppercase;
     margin-left: 0;
   }
-  .card-header {
-    background: color("white");
+  .card {
+    .card-header {
+      background: $white;
+    }
   }
   
   h3 {
@@ -43,20 +50,34 @@
     
     &:hover,
     &:focus {
-      color: color("blue");
+      color: $blue;
       text-decoration: underline;
     }
   }
   
   .facet-limit-active {
     border-color: rgba(0,0,0,0.125) !important;
-    
+
     .card-header {
-      background: color("white") !important;
+      background: $white !important;
+
+      .btn {
+        color: $black;
+      }
+    }
+
+    .card {
+      .card-header {
+        background: $white !important;
+
+        .btn {
+          color: $black;
+        }
+      }
     }
     
     .selected {
-      color: color("gray-medium") !important;
+      color: $gray-medium !important;
     }
     
     .remove {
@@ -65,56 +86,9 @@
         color: rgba(70,71,74,0.3);
         
         &:hover {
-          color: color("orange");
+          color: $orange;
         }
       }
-    }
-  }
-}
-
-.slider_js {
-  .slider-handle {
-    background-image: none;
-    background-color: color("white");
-    border: 2px solid color("purple");
-    opacity: 1;
-
-    &:active,
-    &:hover {
-      background-color: color("purple");
-    }
-  }
-
-  .slider-selection {
-    background-image: none;
-    background: color("light-purple") !important;
-  }
-}
-
-// Blacklight Range Limit slider in modal
-.modal-body {
-  .facet-values {
-    .selected {
-      color: color("gray-medium") !important;
-    }
-  }
-  
-  .slider_js {
-    .slider-handle {
-      background-image: none;
-      background-color: color("white");
-      border: 2px solid color("purple");
-      opacity: 1;
-
-      &:active,
-      &:hover {
-        background-color: color("purple");
-      }
-    }
-
-    .slider-selection {
-      background-image: none;
-      background: color("light-purple") !important;
     }
   }
 }

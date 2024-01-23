@@ -23,8 +23,11 @@ gem "activerecord-session_store", "~> 2.0"
 # in Rails scheduler
 gem "rufus-scheduler", "~> 3.8"
 
+# catch unsafe migrations
+gem "strong_migrations", "~> 1.6"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0.8"
+gem "rails", "~> 7.0"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -35,14 +38,17 @@ gem "mysql2", "~> 0.5"
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 6.4"
 
-# Use JavaScript with ESM import maps [https://github.com/rails/importmap-rails]
-gem "importmap-rails"
+# Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
+gem "jsbundling-rails"
 
 # Hotwire's SPA-like page accelerator [https://turbo.hotwired.dev]
 gem "turbo-rails"
 
 # Hotwire's modest JavaScript framework [https://stimulus.hotwired.dev]
 gem "stimulus-rails"
+
+# Bundle and process CSS [https://github.com/rails/cssbundling-rails]
+gem "cssbundling-rails"
 
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
@@ -72,44 +78,6 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
-# Blacklight dependencies
-gem "blacklight", "~> 7.35"
-gem "blacklight_advanced_search", "~> 7.0", "< 8"
-gem "blacklight-marc", ">= 7.0.0.rc1", "< 9"
-gem "bootstrap", "~> 4.0"
-gem "jquery-rails"
-gem "rsolr", ">= 1.0", "< 3"
-gem "twitter-typeahead-rails", "0.11.1"
-gem "blacklight_range_limit"
-
-gem "nokogiri", ">= 1.13.9"
-gem "addressable", "~> 2.8"
-gem "repost", "~> 0.4.1"
-gem "strong_migrations", "~> 1.6"
-gem "view_component", "~> 2.82"
-gem "zk", "~> 1.10"
-gem "down", "~> 5.0"
-gem "json-jwt", "~> 1.15"
-gem "oauth2", "~> 2.0"
-
-gem "ebsco-eds"
-gem "httpclient"
-gem "htmlentities"
-gem "openurl"
-gem "faraday-http-cache"
-
-# Fixes CVE-2023-28755
-gem "uri", "~> 0.12.1"
-
-# Before a release, point these gem at a tag, instead of the `main` branch.
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", tag: "0.1.12"
-gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
-
-# For local development, comment out above ⤴️ and uncomment below ⤵️. Assumes this directory and
-# the gems below are in the same directory. Adjust if needed to match your local dev environment.
-# gem "nla-blacklight_common", path: "../nla-blacklight_common"
-# gem "bento_search", path: "../bento_search"
-
 gem "yabeda-rails"
 gem "yabeda-puma-plugin"
 gem "yabeda-prometheus"
@@ -117,10 +85,21 @@ gem "yabeda-prometheus"
 gem "derailed_benchmarks", group: :development
 gem "stackprof", group: :development
 
-gem "memo_wise"
+gem "blacklight", ">= 8.0.0", "< 9"
+gem "blacklight-marc", "~> 8.0"
+gem "blacklight_advanced_search", "8.0.0.alpha2"
+gem "ebsco-eds", "~> 1.1", ">= 1.1.5"
 
 gem "email_validator", "~> 2.2"
 gem "phonelib", "~> 0.8.4"
+
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
+gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
+gem "blacklight_range_limit", git: "https://github.com/nla/blacklight_range_limit", branch: "main"
+# For local development, comment out above ⤴️ and uncomment below ⤵️
+# gem "nla-blacklight_common", path: "../nla-blacklight_common"
+# # gem "bento_search", path: "../bento_search"
+# gem "blacklight_range_limit", path: "../blacklight_range_limit"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -141,29 +120,30 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+
   gem "awesome_print"
 
   # improve the Rails error console in development
   gem "better_errors"
   gem "binding_of_caller"
 
-  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
-  # gem "spring"
-
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   gem "rack-mini-profiler"
   # append ?pp=flamegraph to URL for flamegraphs
   gem "flamegraph"
   # append ?pp=profile-memory to URL
-  # ?pp=profile-gc to report on GC statistics
-  # ?pp=analyze-memory to report on Object statistics
+  # append ?pp=profile-gc to report on GC statistics
+  # append ?pp=analyze-memory to report on Object statistics
   gem "memory_profiler"
+
+  # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
+  # gem "spring"
 end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.15"
+  gem "selenium-webdriver", "~> 4.13"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"

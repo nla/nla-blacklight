@@ -1,33 +1,33 @@
 <%= render Blacklight::System::ModalComponent.new do |component| %>
-  <% component.title { t('account.requests.details.heading') } %>
+  <% component.with_title { t('account.requests.details.heading') } %>
 
-    <h3 class="document-title-heading"><%= @details.title %></h3>
+  <h3 class="document-title-heading"><%= @details.title %></h3>
 
-    <div class="row mt-4">
-      <div class="col-12 col-lg-8">
-        <dl class="document-metadata dl-invert row">
-          <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.metadata.collect_from") %></dt>
-          <dd class="col col-md-8"><%= @details.pickupServicePoint %></dd>
-          <% if @details.partial_name != "monographs" %>
-            <%= render "account/request_details/#{@details.partial_name}", details: @details %>
-          <% end %>
-          <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.metadata.request_date") %></dt>
-          <dd class="col col-md-8"><%= @details.request_date %><br /><small class="text-muted"><%= @details.request_time %></small></dd>
-          <% if @details.patronComments.present? || @details.cancellationReason.present? || @details.cancellationComment.present? %>
-            <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.label.notes") %></dt>
-            <dd class="col col-md-8">
-              <% if @details.patronComments.present? %>
-                <p><%= @details.patronComments %></p>
-              <% end %>
-              <% if @details.cancellationReason.present? %>
-                <p><%= @details.cancellationReason %></p>
-              <% end %>
-              <% if @details.cancellationComment.present? %>
-                <p><%= @details.cancellationComment %></p>
-              <% end %>
-            </dd>
-          <% end %>
-        </dl>
-      </div>
+  <div class="row mt-4">
+    <div class="col-12 col-lg-8">
+      <dl class="document-metadata dl-invert row">
+        <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.metadata.collect_from") %></dt>
+        <dd class="col col-md-8"><%= @details.pickupServicePoint %></dd>
+        <% if @details.partial_name != "monographs" %>
+          <%= render "account/request_details/#{@details.partial_name}", details: @details %>
+        <% end %>
+        <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.metadata.request_date") %></dt>
+        <dd class="col col-md-8"><%= @details.request_date %><br /><small class="text-muted"><%= @details.request_time %></small></dd>
+        <% if @details.patronComments.present? || @details.cancellationReason.present? || @details.cancellationComment.present? %>
+          <dt class="col-12 col-md-4 text-md-right"><%= t("requesting.label.notes") %></dt>
+          <dd class="col col-md-8">
+            <% if @details.patronComments.present? %>
+              <p><%= @details.patronComments %></p>
+            <% end %>
+            <% if @details.cancellationReason.present? %>
+              <p><%= @details.cancellationReason %></p>
+            <% end %>
+            <% if @details.cancellationComment.present? %>
+              <p><%= @details.cancellationComment %></p>
+            <% end %>
+          </dd>
+        <% end %>
+      </dl>
     </div>
+  </div>
 <% end %>

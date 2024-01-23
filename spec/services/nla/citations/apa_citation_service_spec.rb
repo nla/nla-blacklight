@@ -3,12 +3,12 @@
 require "rails_helper"
 
 RSpec.describe Nla::Citations::ApaCitationService do
-  let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: "Book", date_lower_isi: "2019", publisher: "Publisher", publication_place: "Publication Place") }
+  let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: "Book", date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"]) }
   let(:service) { described_class.new(document) }
 
   describe "#cite_authors" do
     context "when there is only a single author" do
-      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: "Book", date_lower_isi: "2019", publisher: "Publisher", publication_place: "Publication Place", author_search_tsim: ["Author, A."]) }
+      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: "Book", date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"], author_search_tsim: ["Author, A."]) }
 
       it "returns the author" do
         expect(service.cite_authors).to eq("Author, A..")
@@ -16,7 +16,7 @@ RSpec.describe Nla::Citations::ApaCitationService do
     end
 
     context "when there are multiple authors" do
-      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: "Book", date_lower_isi: "2019", publisher: "Publisher", publication_place: "Publication Place", author_search_tsim: ["Author, A.", "Author, B."]) }
+      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: "Book", date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"], author_search_tsim: ["Author, A.", "Author, B."]) }
 
       it "returns the author" do
         expect(service.cite_authors).to eq("Author, A. & Author, B..")
@@ -26,7 +26,7 @@ RSpec.describe Nla::Citations::ApaCitationService do
 
   describe "#cite_publisher" do
     context "when there is only a publisher" do
-      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: "Book", date_lower_isi: "2019") }
+      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: "Book", date_lower_isi: "2019", publisher_tsim: ["Murdoch"]) }
 
       it "returns the publisher" do
         expect(service.cite_publisher).to include("Murdoch")
@@ -34,7 +34,7 @@ RSpec.describe Nla::Citations::ApaCitationService do
     end
 
     context "when there is both a publisher and a publication place" do
-      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: "Book", date_lower_isi: "2019") }
+      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: "Book", date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"]) }
 
       it "returns the publisher and the publication place" do
         expect(service.cite_publisher).to eq("Sydney : Murdoch")

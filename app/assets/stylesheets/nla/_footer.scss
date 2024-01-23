@@ -1,38 +1,39 @@
 @charset "UTF-8";
 @import "variables";
+@import "nla-custom-bootstrap";
 
 .footer {
-  color: color("white");
+  color: $white;
   
   a {
-    color: color("white");
+    color: $white;
     text-decoration: none;
     
     &:focus,
     &:hover {
-      color: color("white");
+      color: $white;
       text-decoration: underline;
     }
   }
   .connect .list-inline-item a {
     &:focus,
     &:hover {
-      color: color("orange");
+      color: $orange;
     }
   }
   
   h2 {
     &.h4 {
-      color: color("white");
+      color: $white;
     }
     
     &.h6 {
       font-family: $font-family-sans-serif;
-      color: color("white");
+      color: $white;
     }
   }
   
   hr {
-    border-top-color: color("white");
+    border-top-color: $white;
   }
 }

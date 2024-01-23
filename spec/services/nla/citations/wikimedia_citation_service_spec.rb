@@ -3,7 +3,8 @@
 require "rails_helper"
 
 RSpec.describe Nla::Citations::WikimediaCitationService do
-  let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher: "Publisher", publication_place: "Publication Place") }
+  include ActiveSupport::Testing::TimeHelpers
+  let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"]) }
   let(:service) { described_class.new(document) }
 
   describe "#build_title" do
@@ -20,7 +21,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
     end
 
     context "when there is no format" do
-      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", date_lower_isi: "2019", publisher: "Publisher", publication_place: "Publication Place", marc_ss: book_marc) }
+      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"], marc_ss: book_marc) }
 
       it "returns the title without additional fields" do
         expect(service.export).to include(" | title=Title\n")
@@ -30,7 +31,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
 
   describe "#build_authors" do
     context "when there is only a single author" do
-      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher: "Publisher", publication_place: "Publication Place", author_search_tsim: ["Author, A."]) }
+      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"], author_search_tsim: ["Author, A."]) }
 
       it "returns the author" do
         expect(service.build_authors).to eq(" | author1=Author, A.\n")
@@ -38,7 +39,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
     end
 
     context "when there are multiple authors" do
-      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher: "Publisher", publication_place: "Publication Place", author_search_tsim: ["Author, A.", "Author, B."]) }
+      let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"], author_search_tsim: ["Author, A.", "Author, B."]) }
 
       it "returns the author" do
         expect(service.build_authors).to eq(" | author1=Author, A.\n | author2=Author, B.\n")
@@ -66,7 +67,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
 
   describe "#build_publisher" do
     context "when there is a publisher" do
-      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
+      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"], publisher_tsim: ["Murdoch"]) }
 
       it "returns the publisher" do
         expect(service.build_publisher).to eq(" | publisher=Murdoch\n")
@@ -86,7 +87,7 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
 
   describe "#build_isbns" do
     context "when there is an isbn" do
-      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
+      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"], isbn_tsim: ["9781740457590 :", "1740457595", "9781740457590"]) }
 
       it "returns the isbn" do
         expect(service.build_isbns).to eq(" | isbn=9781740457590\n")
@@ -94,11 +95,10 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
     end
 
     context "when there is no isbn" do
-      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
+      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"], isbn: isbn) }
+      let(:isbn) { instance_double(Isbn, isbn_list: nil) }
 
       it "returns nil" do
-        allow(document).to receive(:isbn_list).and_return(nil)
-
         expect(service.build_isbns).to be_nil
       end
     end
@@ -122,22 +122,39 @@ RSpec.describe Nla::Citations::WikimediaCitationService do
     end
   end
 
-  describe "#build_pi" do
-    context "when there is a pi" do
+  describe "#build_persistent_url" do
+    context "when there is an id" do
       let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
 
-      it "returns the pi" do
-        allow(document).to receive(:pi).and_return(["https://nla.gov.au/nla.obj-234175885/flightdiagram"])
-
-        expect(service.build_pi).to eq(" | url=https://nla.gov.au/nla.obj-234175885/flightdiagram\n")
+      it "returns the id" do
+        expect(service.build_persistent_url).to eq(" | url=https://nla.gov.au/nla.cat-vn123\n")
       end
     end
 
-    context "when there is no pi" do
-      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
+    context "when there is no id" do
+      let(:document) { SolrDocument.new(marc_ss: book_marc, title_tsim: "Title", format: ["Book"]) }
 
       it "returns nil" do
-        expect(service.build_pi).to be_nil
+        expect(service.build_persistent_url).to be_nil
+      end
+    end
+  end
+
+  describe "#build_access_date" do
+    context "when date is correct" do
+      it "returns the correct date" do
+        travel_to Time.zone.local(2012, 12, 12, 12, 12, 12)
+        expect(service.build_access_date).to eq(" | access-date=" + Time.zone.local(2012, 12, 12, 12, 12, 12).strftime("%d %B %Y") + "\n")
+      end
+    end
+  end
+
+  describe "#build_via" do
+    context "when via is correct" do
+      let(:document) { SolrDocument.new(marc_ss: book_marc, id: "123", title_tsim: "Title", format: ["Book"]) }
+
+      it "returns the correct string" do
+        expect(service.build_via).to eq(" | via=National Library of Australia\n")
       end
     end
   end

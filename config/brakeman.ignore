@@ -7,7 +7,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/catalog_controller.rb",
-      "line": 392,
+      "line": 452,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(EzproxyUrl.new(Eresources.new.known_url(params[:url])[:url]).url, :allow_other_host => true)",
       "render_path": null,
@@ -30,7 +30,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/catalog_controller.rb",
-      "line": 387,
+      "line": 447,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(Eresources.new.known_url(params[:url])[:url], :allow_other_host => true)",
       "render_path": null,
@@ -53,7 +53,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/catalog_controller.rb",
-      "line": 383,
+      "line": 438,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(params[:url], :allow_other_host => true)",
       "render_path": null,
@@ -76,7 +76,7 @@
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
       "file": "app/controllers/catalog_controller.rb",
-      "line": 390,
+      "line": 450,
       "link": "https://brakemanscanner.org/docs/warning_types/redirect/",
       "code": "redirect_to(EzproxyUrl.new(\"http://yomiuri:1234/rekishikan/\").url, :allow_other_host => true)",
       "render_path": null,
@@ -91,8 +91,64 @@
         601
       ],
       "note": ""
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "d3313d945ade9d3f27bae196c779ce6a4ce5067e9343195caefed49bfc65686f",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/views/thumbnail/thumbnail.html.erb",
+      "line": 2,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => Blacklight::Document::ThumbnailComponent.new(:presenter => document_presenter(search_service.fetch(params[:id])), :counter => document_counter_with_offset((document_counter ||= 0))), {})",
+      "render_path": [
+        {
+          "type": "controller",
+          "class": "ThumbnailController",
+          "method": "thumbnail",
+          "line": 6,
+          "file": "app/controllers/thumbnail_controller.rb",
+          "rendered": {
+            "name": "thumbnail/thumbnail",
+            "file": "app/views/thumbnail/thumbnail.html.erb"
+          }
+        }
+      ],
+      "location": {
+        "type": "template",
+        "template": "thumbnail/thumbnail"
+      },
+      "user_input": "params[:id]",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
+    },
+    {
+      "warning_type": "Dynamic Render Path",
+      "warning_code": 15,
+      "fingerprint": "f3230f699d4ee9d224bef6fc4c5eea4dfb8911c3cd0b9608264ffad6fed4e85d",
+      "check_name": "Render",
+      "message": "Render path contains parameter value",
+      "file": "app/components/blacklight/document/show_tools_component.html.erb",
+      "line": 11,
+      "link": "https://brakemanscanner.org/docs/warning_types/dynamic_render_path/",
+      "code": "render(action => Blacklight::Document::ActionsComponent.new(:document => document, :tag => \"ul\", :classes => \"list-group list-group-flush\", :wrapping_tag => \"li\", :wrapping_classes => \"list-group-item list-group-item-action\", :actions => actions, :url_opts => Blacklight::Parameters.sanitize(params.to_unsafe_h)), {})",
+      "render_path": null,
+      "location": {
+        "type": "template",
+        "template": "app/components/blacklight/document/show_tools_component"
+      },
+      "user_input": "params.to_unsafe_h",
+      "confidence": "Weak",
+      "cwe_id": [
+        22
+      ],
+      "note": ""
     }
   ],
-  "updated": "2023-02-22 17:08:01 +1100",
-  "brakeman_version": "5.4.1"
+  "updated": "2023-12-18 15:06:29 +1100",
+  "brakeman_version": "6.0.1"
 }

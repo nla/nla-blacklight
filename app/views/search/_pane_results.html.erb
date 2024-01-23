@@ -1,5 +1,5 @@
 <section class="item" id="<%= key %>">
-  <div class="card">
+  <div class="card mb-3">
     <div class="card-body">
       <% if result %>
       <div class="card-title sticky-top mb-4 d-flex justify-content-between align-items-baseline px-3 py-2">
@@ -11,7 +11,7 @@
                 View <%= number_with_delimiter(result.total_items) %> results <i class="fa-solid fa-arrow-right-long" aria-hidden="true"></i>
               <% end %>
             </div>
-          <% end %>  
+          <% end %>
         <% end %>
       </div>
       <% else %>
@@ -26,7 +26,7 @@
             <% if key.start_with?("ebsco_eds_") && result.total_items > 1 %>
               <%= link_to bento_all_results_link(key), class: "btn btn-outline-secondary btn-sm arrow-after" do %>
                 View
-                <span id="<%= key %>_total"><%= number_with_delimiter(result.total_items) %></span> 
+                <span id="<%= key %>_total"><%= number_with_delimiter(result.total_items) %></span>
                 eResources results
               <% end %>
             <% else %>
@@ -56,3 +56,5 @@
     </div>
   </div>
 </section>
+<!-- Force next columns to break to new line -->
+<div class="w-100 clearfix"></div>

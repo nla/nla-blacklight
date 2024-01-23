@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => "/"
   mount BlacklightAdvancedSearch::Engine => "/"
   mount Yabeda::Prometheus::Exporter => "/metrics"
 
   concern :exportable, Blacklight::Routes::Exportable.new
-  concern :searchable, Blacklight::Routes::Searchable.new
   concern :marc_viewable, Blacklight::Marc::Routes::MarcViewable.new
-  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
+  concern :searchable, Blacklight::Routes::Searchable.new
 
   concern :offsite do
     get ":id/offsite", action: "offsite", as: "offsite"
@@ -22,11 +22,14 @@ Rails.application.routes.draw do
   resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable
     concerns :range_searchable
+
     concerns :offsite
   end
 
   resources :solr_documents, only: [:show], path: "/catalog", controller: "catalog" do
-    concerns [:exportable, :marc_viewable, :requestable]
+    concerns :exportable
+    concerns :marc_viewable
+    concerns :requestable
   end
 
   resources :bookmarks do
@@ -43,7 +46,12 @@ Rails.application.routes.draw do
   get "/account/profile/edit", to: "account#profile_edit"
   post "/account/profile/edit", to: "account#profile_update"
 
-  get "/thumbnail/:id", to: "thumbnail#thumbnail", as: "thumbnail"
+  resource :thumbnail, only: [:thumbnail], path: "/thumbnail", controller: "thumbnail" do
+    concerns :searchable
+    concerns :range_searchable
+
+    get "/:id", to: "thumbnail#thumbnail", as: "show"
+  end
 
   # bento search
   get "/search", to: "search#index", as: "bento_search_index"

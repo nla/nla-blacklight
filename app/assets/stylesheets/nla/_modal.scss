@@ -1,3 +1,7 @@
+@charset "UTF-8";
+@import "variables";
+@import "nla-custom-bootstrap";
+
 .modal {
   .modal-header {
     border-bottom: none;
@@ -10,7 +14,7 @@
 
     .close:hover,
     .close:focus {
-      color: color("orange");
+      color: $orange;
       opacity: 1;
     }
   }
@@ -24,11 +28,11 @@
     }
     
     [data-clipboard-target="button"] {
-      color: color("light-purple");
+      color: $light-purple;
       
       &:hover,
       &:focus {
-        color: color("purple");
+        color: $purple;
       }
     }
   }

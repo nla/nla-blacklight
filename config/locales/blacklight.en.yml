@@ -43,7 +43,7 @@ en:
     or: 'or'
     collection_search:
       title: 'Search our collections'
-      description: 
+      description:
         p1: 'The collections held in the National Library of Australia reflect all Australians from all walks of life. By collecting today what is important tomorrow, the Library’s collection aims to better tell the stories and history of all Australians.'
         p2: 'Aboriginal and Torres Strait Islander people should be aware that this catalogue may contain images, voices and names of deceased persons. Some words or descriptions in the catalogue may reflect the attitudes of the period in which the works were created, and may now be considered inaccurate, inappropriate or offensive.'
     catalogue:
@@ -71,7 +71,7 @@ en:
         address: 'Parkes Place<br>Canberra ACT 2600<br>Australia'
         opening_hours: 'Opening hours'
         more_contact_info: 'More contact information'
-      connect: 
+      connect:
         title: 'Connect'
         enews: 'Subscribe to our newsletter'
       quicklinks:
@@ -82,7 +82,7 @@ en:
         getting_started: 'Getting Started'
         feedback: 'User Feedback'
         media: 'Media Centre'
-      
+
     modal:
       close: "Close"
 
@@ -214,7 +214,7 @@ en:
           placeholder: 'Find books, maps, audio, databases & more...'
         bento_search:
           label: 'search for'
-          placeholder: 'Search our catalogue, eResources and finding aids'          
+          placeholder: 'Search our catalogue, eResources and finding aids'
         submit: 'Search'
       pagination:
         title: 'Results navigation'
@@ -296,14 +296,7 @@ en:
       aria:
         main_container: 'Main content'
 
-  blacklight_advanced_search:
-    all: all
-    any: any
-    form:
-      title: Advanced search
-      search_context: Within search
-      limit_criteria_heading_html: "<strong>AND</strong> have these attributes"
-      query_criteria_heading_html: "Find items that match %{select_menu} of"
-      sort_label: "Sort results by"
-      start_over: "Start over"
-      search_btn: 'Search'
+    advanced_search:
+      more_options: Advanced Search
+      form:
+        query_criteria_heading_html: "Find items that match %{select_menu} of"

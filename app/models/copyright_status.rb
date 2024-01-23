@@ -5,10 +5,6 @@ require "faraday/middleware"
 require "faraday/adapter/net_http"
 
 class CopyrightStatus
-  prepend MemoWise
-
-  include ActiveModel::Model
-
   attr_accessor :document, :info
 
   FORMAT_TO_CATEGORY = [

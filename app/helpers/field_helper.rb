@@ -26,7 +26,7 @@ module FieldHelper
           content_tag(:li) do
             list_content = []
             list_content += makelink(document: document, href: link[:href], text: link[:text], extended_info: true)
-            if document.has_broken_links? && document.broken_links[link[:href]]
+            if document.broken_links.present? && document.broken_links[link[:href]]
               list_content << content_tag(:p, class: "small") do
                 build_broken_link(document.broken_links[link[:href]])
               end
@@ -39,7 +39,7 @@ module FieldHelper
       link = value.first
       elements += makelink(document: document, href: link[:href], text: link[:text], extended_info: true)
 
-      if document.has_broken_links? && document.broken_links[link[:href]]
+      if document.broken_links.present? && document.broken_links[link[:href]]
         elements << content_tag(:p, class: "small") do
           build_broken_link(document.broken_links[link[:href]])
         end
@@ -85,6 +85,10 @@ module FieldHelper
     end
 
     safe_join(elements, "\n")
+  end
+
+  def split_unstyled_list(document:, field:, config:, value:, context:)
+    unstyled_list(document: document, field: field, config: config, value: value&.split!(" "), context: context)
   end
 
   def emphasized_list(document:, field:, config:, value:, context:)
@@ -168,10 +172,31 @@ module FieldHelper
     catalogue_search_list(value, "author", bulleted: false, search_values: document.fetch("author_addl_ssim"))
   end
 
+  def format_contents(document:, field:, config:, value:, context:)
+    contents = []
+
+    value&.each do |content|
+      content.split("--").map(&:strip).map do |c|
+        contents << c
+      end
+    end
+
+    contents.compact_blank.presence
+  end
+
+  def format_contents_list(document:, field:, config:, value:, context:)
+    contents = if value.present?
+      format_contents(document: document, field: field, config: config, value: value, context: context)
+    end
+    if contents.present?
+      list(document: document, field: field, config: config, value: contents, context: context)
+    end
+  end
+
   private
 
   # Original RegEx used by VuFind
-  URL_REGEX = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%\/.[A-Za-z0-9_]-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[\w\/.]*))?)/
+  # URL_REGEX = /((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=+$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=+$,\w]+@)[A-Za-z0-9.-]+)((?:\/[+~%\/.[A-Za-z0-9_]-_]*)?\??(?:[-+=&;%@.\w_]*)#?(?:[\w\/.]*))?)/
 
   def build_broken_link(broken_link)
     broken_el = []

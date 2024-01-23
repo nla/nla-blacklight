@@ -4,7 +4,7 @@ require "cgi"
 require "faraday"
 
 class ExploreComponent < ViewComponent::Base
-  attr_reader :document, :nla_shop, :map_search
+  attr_reader :document, :nla_shop
 
   def initialize(document)
     @document = document
@@ -20,9 +20,8 @@ class ExploreComponent < ViewComponent::Base
     Rails.cache.fetch("trove_query/#{document.id}", expires_in: 1.hour) do
       query = ""
       if document.isbn_list.present?
-        isbn_list = document.isbn_list
-        isbn_list.each do |isn|
-          query += "isbn:#{isn}#{(isn != isbn_list.last) ? " OR " : ""}"
+        document.isbn_list.each do |isn|
+          query += "isbn:#{isn}#{(isn != document.isbn_list.last) ? " OR " : ""}"
         end
       else
         query += document.id.to_s
@@ -39,15 +38,14 @@ class ExploreComponent < ViewComponent::Base
         trove_query += " AND (#{ERB::Util.u(query)})"
       end
       if document.title_start.present?
-        trove_query += " AND title:%22#{ERB::Util.u(document.title_start.tr('"', ""))}%22"
+        trove_query += " AND title:%22#{ERB::Util.u(document.title_start.first.tr('"', ""))}%22"
       end
       trove_query
     end
   end
 
   def google_books_script
-    isbn_list = document.isbn_list
-    "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list&.join(",")}#{isbn_list.present? ? "," : ""}#{google_isbn_list&.join(",")}&callback=showGoogleBooksPreview"
+    "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list&.join(",")}#{document.isbn_list.present? ? "," : ""}#{google_isbn_list&.join(",")}&callback=showGoogleBooksPreview"
   end
 
   def render_online_shop?

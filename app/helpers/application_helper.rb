@@ -40,13 +40,6 @@ module ApplicationHelper
       params[:controller] != "account"
   end
 
-  # This will exclude displaying the global message on the home page because the
-  # GlobalMessageComponent is displayed inside the _home_text.html.erb template and would cause
-  # the message to be displayed twice.
-  def show_global_message?
-    !current_page?(search_catalog_path) || (current_page?(search_catalog_path) && has_search_parameters?)
-  end
-
   def show_facets_sidebar?
     !current_page?(root_path)
   end

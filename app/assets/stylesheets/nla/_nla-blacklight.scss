@@ -5,6 +5,7 @@
 @import "advanced-search";
 @import "buttons";
 @import "facets";
+@import "main";
 @import "footer";
 @import "header";
 @import "search-results";
@@ -16,6 +17,7 @@
 @import "skeleton";
 @import "modal";
 @import "forms";
+@import "pagination";
 
 // Components
 @import "./components/copyright-info";
@@ -25,3 +27,7 @@
 @import "./components/catalogue-record-actions";
 @import "./components/request_details";
 @import "./components/bookmarks";
+@import "./components/citations";
+
+// Vendor + plugins
+@import "./plugins/blacklight_range_limit";

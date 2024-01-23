@@ -30,7 +30,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         .to_return(status: 200, body: no_parent_query_response, headers: {})
     end
 
-    let(:document) { SolrDocument.new(marc_ss: parent_record_marc) }
+    let(:document) { SolrDocument.new(marc_ss: parent_record_marc, title773_ssim: ["Land Rights camp at Heirisson Island, Western Australia, 1978 (AKIN)23783872"]) }
 
     it "states this is a collection" do
       render_inline(described_class.new(related_records: related_records.first))
@@ -72,7 +72,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         )
         .to_return(status: 200, body: sibling_count_response, headers: {})
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)23783872%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)23783872%22&rows=1&sort=score%20desc,%20pub_date_si%20desc&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -82,7 +82,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         .to_return(status: 200, body: parent_query_response, headers: {})
     end
 
-    let(:document) { SolrDocument.new(marc_ss: child_record_marc) }
+    let(:document) { SolrDocument.new(marc_ss: child_record_marc, title773_ssim: ["Land Rights camp at Heirisson Island, Western Australia, 1978 (AKIN)23783872"]) }
 
     it "states this is a collection" do
       render_inline(described_class.new(related_records: related_records.first))
@@ -134,7 +134,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
       parent_response = JSON.parse(parent_query_response)
       parent_response["response"]["docs"][0] = {id: "1586062", title_tsim: "Dunlop family photograph albums"}
 
-      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)24850123%22&rows=1&sort=score%20desc,%20pub_date_si%20desc,%20title_si%20asc&wt=json/)
+      WebMock.stub_request(:get, /solr:8983\/solr\/blacklight\/select\?fl=id,title_tsim&q=collection_id_ssim:%22\(AKIN\)24850123%22&rows=1&sort=score%20desc,%20pub_date_si%20desc&wt=json/)
         .with(
           headers: {
             "Accept" => "*/*",
@@ -144,7 +144,7 @@ RSpec.describe RelatedRecordsComponent, type: :component do
         .to_return(status: 200, body: parent_response.to_json, headers: {})
     end
 
-    let(:document) { SolrDocument.new(marc_ss: child_parent_record_marc) }
+    let(:document) { SolrDocument.new(marc_ss: child_parent_record_marc, title773_ssim: ["Dunlop family photograph albums (AKIN)24850123"]) }
 
     it "states this is a collection" do
       render_inline(described_class.new(related_records: related_records.first))

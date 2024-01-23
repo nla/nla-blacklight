@@ -38,10 +38,14 @@ module Nla
           result += language
         end
 
-        pi = build_pi
-        if pi.present?
-          result += pi
+        persistent_url = build_persistent_url
+        if persistent_url.present?
+          result += persistent_url
         end
+
+        result += build_access_date
+
+        result += build_via
 
         result + "}}"
       end
@@ -86,7 +90,7 @@ module Nla
       def build_publisher
         publisher = @document.publisher
         if publisher.present?
-          " | publisher=#{publisher}\n"
+          " | publisher=#{publisher.first}\n"
         end
       end
 
@@ -98,19 +102,27 @@ module Nla
       end
 
       def build_language
-        language = @document.first("language_ssim")
+        language = @document.language
         if language.present?
-          " | language=#{language}\n"
+          " | language=#{language.first}\n"
         else
           " | language=No linguistic content\n"
         end
       end
 
-      def build_pi
-        pi = @document.pi
-        if pi.present?
-          " | url=#{pi.first}\n"
+      def build_access_date
+        " | access-date=" + Time.zone.today.strftime("%d %B %Y") + "\n"
+      end
+
+      def build_persistent_url
+        persistent_url = @document.id
+        if persistent_url.present?
+          " | url=https://nla.gov.au/nla.cat-vn#{persistent_url}\n"
         end
+      end
+
+      def build_via
+        " | via=National Library of Australia\n"
       end
     end
   end

@@ -16,13 +16,13 @@
       <% end %>
 
       <% if params[:attribute].eql? "email" %>
-        <div class="form-group row">
+        <div class="mb-3 row">
           <label class="col-sm-3 col-form-label"><%= "Current #{t("account.settings.email.change_text")}:" %></label>
           <div class="col-sm-6 my-2">
             <%= @current_details.email %>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-3 row">
           <%= f.label :email, "New #{t("account.settings.email.change_text")}:", class: "col-sm-3 col-form-label" %>
           <div class="col-sm-6">
             <%= f.text_field :email, class: "form-control", maxlength: 255, autocomplete: "email" %>
@@ -31,13 +31,13 @@
       <% end %>
 
       <% if params[:attribute].eql? "mobile_phone" %>
-        <div class="form-group row">
+        <div class="mb-3 row">
           <label class="col-sm-3 col-form-label"><%= "Current #{t("account.settings.mobile_phone.change_text")}:" %></label>
           <div class="col-sm-6 my-2">
             <%= @current_details.mobile_phone %>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-3 row">
           <%= f.label :mobile_phone, "New #{t("account.settings.mobile_phone.change_text")}:", class: "col-sm-3 col-form-label" %>
           <div class="col-sm-6">
             <%= f.text_field :mobile_phone, class: "form-control", maxlength: 15, autocomplete: "mobile-phone" %>
@@ -46,13 +46,13 @@
       <% end %>
 
       <% if params[:attribute].eql? "phone" %>
-        <div class="form-group row">
+        <div class="mb-3 row">
           <label class="col-sm-3 col-form-label"><%= "Current #{t("account.settings.phone.change_text")}:" %></label>
           <div class="col-sm-6 my-2">
             <%= @current_details.phone %>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-3 row">
           <%= f.label :phone, "New #{t("account.settings.phone.change_text")}:", class: "col-sm-3 col-form-label" %>
           <div class="col-sm-6">
             <%= f.text_field :phone, class: "form-control", maxlength: 15, autocomplete: "phone" %>
@@ -61,13 +61,13 @@
       <% end %>
 
       <% if params[:attribute].eql? "postcode" %>
-        <div class="form-group row">
+        <div class="mb-3 row">
           <label class="col-sm-3 col-form-label"><%= "Current #{t("account.settings.postcode.change_text")}:" %></label>
           <div class="col-sm-6 my-2">
             <%= @current_details.postcode %>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="mb-3 row">
           <%= f.label :postcode, "New #{t("account.settings.postcode.label")}:", clasS: "col-sm-3 col-form-label" %>
           <div class="col-sm-6">
             <%= f.text_field :postcode, class: "form-control", maxlength: 10, autocomplete: "postcode" %>
@@ -75,7 +75,7 @@
         </div>
       <% end %>
 
-        <div class="row mt-3">
+        <div class="mb-3 row">
           <div class="col offset-sm-3">
             <%= f.submit t("account.settings.update.change_btn"), class: "btn btn-primary" %>
             <%= link_to t("account.settings.update.cancel_btn"), account_profile_path, class: "btn btn-link" %>

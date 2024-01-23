@@ -5,7 +5,7 @@
 <div class="col">
   <% if @editable %>
     <% if @attribute == "password" %>
-      <%= link_to edit_link_text, "#{session[:iss]}/account/password", data: {turbo: false}, target: "_top" %>
+      <%= link_to_keycloak_password_reset %>
     <% else %>
       <%= link_to edit_link_text, [:account_profile_edit, attribute: @attribute] %>
     <% end %>

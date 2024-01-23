@@ -10,24 +10,24 @@ Custom implementation of [Blacklight](http://projectblacklight.org/) for The Nat
 
 * [Requirements](#requirements)
 * [Configuration](#configuration)
-  + [Environment Variables](#environment-variables)
-    - [Blacklight database](#blacklight-database)
-    - [Solr](#solr)
-    - [Temp and caching directories](#temp-and-caching-directories)
-    - [External services](#external-services)
-    - [Rails settings](#rails-settings)
+    + [Environment Variables](#environment-variables)
+        - [Blacklight database](#blacklight-database)
+        - [Solr](#solr)
+        - [Temp and caching directories](#temp-and-caching-directories)
+        - [External services](#external-services)
+        - [Rails settings](#rails-settings)
 * [Setup](#setup)
 * [Running the app](#running-the-app)
 * [Tests](#tests)
 * [Continuous Integration](#continuous-integration)
-  + [Releases](#releases)
+    + [Releases](#releases)
 * [Deployment](#deployment)
 * [Linting, Static Analysis & Supply Chain Vulnerability Checking](#linting--static-analysis---supply-chain-vulnerability-checking)
 
 ## Requirements
 
-* Ruby: 3.1.3
-* Bundler: 2.3.26
+* Ruby: 3.2.2
+* Bundler: 2.4.22
 
 * System dependencies
     - Solr: 8
@@ -35,12 +35,13 @@ Custom implementation of [Blacklight](http://projectblacklight.org/) for The Nat
     - Redis: 7
 
 * Gems:
+  - [blacklight-common](https://github.com/nla/nla-blacklight_common) 
   - [blacklight-solrcloud-repository](https://github.com/nla/blacklight-solrcloud-repository)
-  - [catalogue-patrons](https://github.com/nla/catalogue-patrons)
-  
-The [GoRails guide](https://gorails.com/setup) has great instructions for setting up Ruby, Rails and MySQL for your operating system.
+  - [bento_search](https://github.com/nla/bento_search)
 
 ## Contributing
+
+The [GoRails guide](https://gorails.com/setup) has great instructions for setting up Ruby, Rails and MySQL for your operating system.
 
 ✏️ This repository uses [conventional commits](https://www.conventionalcommits.org)
 and commit messages are used to generate `CHANGELOG.md` and release body entries.
@@ -51,7 +52,7 @@ The most important prefixes you should have in mind are:
 * `feat:` which represents a new feature, and correlates to a SemVer minor.
 * `feat!:`, or `fix!:`, `refactor!:`, etc., which represent a breaking change (indicated by the !) and will result in a SemVer major.
 
-Releases are automated via GitHub workflows. See more in the ["Releases"](#releases) section below.
+Releases are automated via GitHub workflows. See more in the ["Releases"](#releases) section.
 
 ## Configuration
 
@@ -60,17 +61,19 @@ from the `.env*` config in development and test environments.
 
 Non-sensitive values for development and test environments should be defined in the `.env.development`/`.env.test` files.
 
-Sensitive values can be defined in `.env.development.local` or `.env.test.local` files for local development 
+Sensitive values can be defined in `.env.development.local` or `.env.test.local` files for local development
 and *SHOULD NOT* be committed to source control. Git is configured to ignore these files.
 
 ⚠️ If `dotenv` fails to load the configuration values into the environment, you can manually export these
 values in your terminal before running the application.
 
-### Environment Variables
+<details>
+<summary><b>List of Environment Variables</b></summary>
 
 #### Blacklight database
     DATABASE_URL - Application database for Blacklight
     PATRON_DB_URL - Shared user and sessions database
+    REDIS_URL - Redis cache
 
 #### Solr
     SOLR_URL - single node Solr
@@ -78,12 +81,18 @@ values in your terminal before running the application.
     ZK_HOST - Zookeeper connection string for the Solr Cloud cluster
     SOLR_COLLECTION - Solr Cloud collection for the catalogue index
 
+#### Rails settings
+These variables are mainly used in the `staging` or `production` environment.
+
+    SECRET_KEY_BASE - used by Devise for encrypting session values
+    RAILS_LOG_TO_STDOUT - makes Rails logs print to the console
+    RAILS_SERVE_STATIC_FILES - tells Rails to serve static assets from the /public directory
+
 #### Temp and caching directories
-These variables are mainly used in the `staging` or `production` environment. 
+These variables are mainly used in the `staging` or `production` environment.
 
     PIDFILE - relocates the server pid file outside of the application directory
     BLACKLIGHT_TMP_PATH - relocates the caching directory outside of the application directory
-    REDIS_URL - Redis cache
 
 #### External services
     GETALIBRARYCARD_BASE_URL - base URL for Get a Library Card
@@ -103,31 +112,60 @@ These variables are mainly used in the `staging` or `production` environment.
     KC_SPL_SECRET - Staff Personal Loan realm client secret
     KC_SPL_REALM - realm name for Staff Personal Loan
 
-    KC_SHARED_CLIENT - Staff Shared account realm client name
-    KC_SHARED_SECRET - Staff Shared account realm client secret
-    KC_SHARED_REALM - realm name for Staff Shared account realm
+    KC_SHARED_CLIENT - Team Official Loan account realm client name
+    KC_SHARED_SECRET - Team Official Loan account realm client secret
+    KC_SHARED_REALM - realm name for Team Official Loan account realm
 
-#### Rails settings
-These variables are mainly used in the `staging` or `production` environment.
+    COPYRIGHT_SERVICE_URL - URL of the Copyright service
+    COPYRIGHT_FAIR_DEALING_URL - URL to the page describing copyright fair dealing
+    COPYRIGHT_CONTACT_URL - URL to the page describing how to contact the Library about copyright
+    
+    COPIES_DIRECT_URL - URL to Copies Direct
 
-    SECRET_KEY_BASE - used by Devise for encrypting session values
-    RAILS_LOG_TO_STDOUT - makes Rails logs print to the console
-    RAILS_SERVE_STATIC_FILES - tells Rails to serve static assets from the /public directory
+    ERESOURCES_CONFIG_URL - URL to the eResources configuration JSON endpoint
+    EZPROXY_URL - URL to the EZProxy server
+    EZPROXY_USER - username for EZProxy
+    EZPROXY_PASSWORD - password for EZProxy
+
+    EDS_DEBUG - set to `y`/`n` to enable/disable debug logging for EDS API requests
+    EDS_PROFILE - EDS profile name
+    EDS_GUEST - set to `y`/`n` to enable/disable guest access for EDS API requests
+    EDS_USER - username for EDS API requests
+    EDS_PASSWORD - password for EDS API requests
+    EDS_AUTH - authentication method for EDS API requests
+    EDS_ORG - organisation ID for EDS API requests
+    EDS_CACHE_DIR - directory for EDS API request caching
+
+    EBSCO_SEARCH_URL - URL to the EBSCO EDS API
+    CATALOGUE_SEARCH_URL - URL to the Catalogue search JSON endpoint
+    FINDING_AIDS_SEARCH_URL - URL to the Finding Aids search JSON endpoint
+
+    GLOBAL_MESSAGE_URL - URL to the global alert message JSON endpoint
+
+    CATALOGUE_SERVICES_API_BASE_URL - URL to the Catalogue Services API base URL
+    CATALOGUE_SERVICES_CLIENT - Catalogue Services realm client name
+    CATALOGUE_SERVICES_SECRET - Catalogue Services realm client secret
+    CATALOGUE_SERVICES_REALM - Catalogue Services realm name
+    
+    THUMBNAIL_SERVICE_API_BASE_URL - URL to the thumbnail service API base URL
+
+    PATRON_UPGRADE_URL - URL to the Patron Upgrade service
+</details>
 
 ## Setup
 
 1. Clone the app from GitHub.
 2. Make sure you have MySQL running locally and configured in the `.env.development.local` config file.
 3. Make sure you have Redis running locally and configured in the `.env.development.local` config file.
-4. Make sure you have Solr running locally and configured in the `.env.development.local` config file.<br />⚠️  If you are not planning on modifying the Solr index, you can point this at the  devel or test environment Solr cluster.
-5. `bin/setup` installs gems and performs database migrations for the `development` environment.<br /> ⚠️ Gems are installed in `vendor/bundle`.
+4. Make sure you have Solr running locally and configured in the `.env.development.local` config file.<br />💡️  If you are not planning on modifying the Solr index, you can point this at the  devel or test environment Solr cluster.
+5. `bin/setup` installs gems and performs database migrations for the `development` environment.<br /> 💡️ Gems are installed in `vendor/bundle`.
 
 ## Running the app
 
 * `bin/run` runs the Rails server at http://localhost:3000.
-  * By default Rails will load the `development` environment.
-  * The runtime environment can be changed by defining `RAILS_ENV` before executing a command/script. e.g.
-  
+    * By default Rails will load the `development` environment.
+    * The runtime environment can be changed by defining `RAILS_ENV` before executing a command/script. e.g.
+
 ```bash
 RAILS_ENV=test bin/ci
 ```
@@ -149,12 +187,17 @@ RAILS_ENV=test bin/ci
 ### Releases
 
 Releases are automated via the `release.yml` GitHub workflow. This uses Google's
-[release-please action](https://github.com/google-github-actions/release-please-action) to create pull
-requests when changes are pushed to main. It will bump the version automatically and create a release
-when the pull request is merged. Read more about how
-[release-please](https://github.com/googleapis/release-please) works.
+[release-please action](https://github.com/google-github-actions/release-please-action) to create a 
+release pull request when changes are pushed to the `main` branch. 
+
+🚨 This release pull request will be updated with every merge to the `main` branch. 
+
+🚨 It will bump the version automatically and create a release when it is merged.
 
 🚨 `CHANGELOG.md` is automatically created/updated for each release based on the commit messages.
+
+Read more about how
+[release-please](https://github.com/googleapis/release-please) works.
 
 ## Deployment
 

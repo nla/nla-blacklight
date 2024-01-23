@@ -1,10 +1,6 @@
 # frozen_string_literal: true
 
 class Eresources
-  include ActiveModel::Model
-
-  attr_accessor :entries
-
   def initialize
     @entries = Rails.cache.fetch("eresources_config", expires_in: 4.hours) do
       EresourcesConfigService.new.fetch_config

@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "../variables";
+@import "../nla-custom-bootstrap";
 
 .bento-search-bar {
   position: relative;
@@ -11,38 +12,41 @@
 }
 
 .bento-search-results {
+  .placeholder {
+    border-radius: 0.25em;
+  }
+
   .card {
-    border-color: transparent;
+    border-color: $white;
+    break-inside: avoid-column;
     
     &:hover,
     &:focus {
-      border-color: color("purple");
+      border-color: $purple;
       box-shadow: 3px 3px 6px 0 rgba(112,57,150,0.1);
     }
   }
   
   .card-title {
-    background: color("purple");
-    color: color("white");
-    margin-left: calc(-1.25rem - 1px);
-    margin-right: calc(-1.25rem - 1px);
-    margin-top: calc(-1.25rem - 1px);
+    background: $purple;
+    color: $white;
+    margin: calc(-1rem - 1px) calc(-1rem - 1px) 0 calc(-1rem - 1px);
     
     .h5 {
       font-family: $font-family-sans-serif;
-      color: color("white");
+      color: $white;
     }
     
     .view-all-results {
       font-size: 0.875rem;
       
       a {
-        color: color("white");
+        color: $white;
         text-decoration: none;
         
         &:hover,
         &:focus {
-          color: color("white");
+          color: $white;
           text-decoration: underline;
         }
       }

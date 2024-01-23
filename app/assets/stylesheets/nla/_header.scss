@@ -1,5 +1,6 @@
 @charset "UTF-8";
 @import "variables";
+@import "nla-custom-bootstrap";
 
 .navbar-brand.navbar-logo {
   height: 80px;
@@ -23,19 +24,23 @@
       &:hover,
       &:focus,
       &.active {
-        border-bottom-color: color("orange");
+        border-bottom-color: $orange;
+      }
+
+      &:focus {
+        text-decoration: none;
       }
     }
     
     .dropdown-menu {
-      border-color: color("purple");
+      border-color: $purple;
 
       .dropdown-item {
         &:hover,
         &:focus,
         &.active {
-          color: color("white");
-          background-color: color("purple");
+          color: $white;
+          background-color: $purple;
         }
       }
     }
@@ -43,7 +48,7 @@
   
   &.bottombar {
     border-top: 1px solid #4c4c4c;
-    color: color("white");
+    color: $white;
     font-family: $font-family-serif;
     font-size: 2rem;
     font-weight: 700;
