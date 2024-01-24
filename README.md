@@ -162,12 +162,13 @@ These variables are mainly used in the `staging` or `production` environment.
 
 ## Running the app
 
-* `bin/run` runs the Rails server at http://localhost:3000.
+* `bin/dev` runs the Rails server at http://localhost:3000.
     * By default Rails will load the `development` environment.
     * The runtime environment can be changed by defining `RAILS_ENV` before executing a command/script. e.g.
+    * This will compile the SASS stylesheets and package up the JavaScript files for the asset pipeline.
 
 ```bash
-RAILS_ENV=test bin/ci
+RAILS_ENV=test bin/dev
 ```
 
 ## Tests
