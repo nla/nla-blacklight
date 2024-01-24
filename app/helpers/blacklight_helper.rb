@@ -22,7 +22,7 @@ module BlacklightHelper
     if prefix.present?
       prefix + ((content_for(:page_title) if content_for?(:page_title)) || @page_title || application_name)
     else
-      ((content_for(:page_title) if content_for?(:page_title)) || @page_title || application_name)
+      (content_for(:page_title) if content_for?(:page_title)) || @page_title || application_name
     end
     # rubocop:enable Rails/HelperInstanceVariable
   end
