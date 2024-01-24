@@ -83,7 +83,7 @@ class CatalogueServicesClient
       req.body = request_body
     end
     if res.status == 200
-      (res.body.presence || {})
+      res.body.presence || {}
     else
       message = "Failed to request item (#{request[:item_id]}) for requester (#{requester})"
       Rails.logger.error message

@@ -17,7 +17,7 @@ class RelatedRecords
   end
 
   def in_collection?
-    @in_collection ||= ((@collection_id.present? && has_children?) || @parent_id.present?)
+    @in_collection ||= (@collection_id.present? && has_children?) || @parent_id.present?
   end
 
   def collection_name
