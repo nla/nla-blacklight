@@ -158,6 +158,17 @@ RSpec.describe "Offsite redirect", :request do
                 expect(flash[:alert]).to eq "Login to access Test Title."
               end
             end
+
+            context "when document does not exist" do
+              before do
+                allow(search_service_mock).to receive(:fetch).with(anything).and_raise(Blacklight::Exceptions::RecordNotFound)
+              end
+
+              it "retrieves the title from the eResources configuration" do
+                get "/catalog/0000/offsite?url=https://haynesmanualsallaccess.com/en-au/"
+                expect(flash[:alert]).to eq "Login to access Haynes manuals allaccess."
+              end
+            end
           end
         end
       end

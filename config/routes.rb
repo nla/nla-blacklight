@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
   mount Blacklight::Engine => "/"
   mount BlacklightAdvancedSearch::Engine => "/"
   mount Yabeda::Prometheus::Exporter => "/metrics"
@@ -7,6 +6,7 @@ Rails.application.routes.draw do
   concern :exportable, Blacklight::Routes::Exportable.new
   concern :marc_viewable, Blacklight::Marc::Routes::MarcViewable.new
   concern :searchable, Blacklight::Routes::Searchable.new
+  concern :range_searchable, BlacklightRangeLimit::Routes::RangeSearchable.new
 
   concern :offsite do
     get ":id/offsite", action: "offsite", as: "offsite"
