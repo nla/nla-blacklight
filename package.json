@@ -12,7 +12,7 @@
     "esbuild": "^0.19.2",
     "jquery": "^3.7.1",
     "nodemon": "^3.0.1",
-    "postcss": "^8.4.31",
+    "postcss": "^8.4.33",
     "postcss-cli": "^10.1.0",
     "sass": "1.64.2",
     "stimulus-clipboard": "^4.0.1",
