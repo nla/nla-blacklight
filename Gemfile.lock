@@ -387,7 +387,7 @@ GEM
     mini_mime (1.1.5)
     minitar (0.9)
     minitest (5.21.2)
-    mock_redis (0.39.0)
+    mock_redis (0.44.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
     multi_xml (0.6.0)
@@ -729,7 +729,7 @@ DEPENDENCIES
   jsbundling-rails
   lograge
   memory_profiler
-  mock_redis (~> 0.39.0)
+  mock_redis (~> 0.44.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
   phonelib (~> 0.8.4)
