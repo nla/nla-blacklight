@@ -37,3 +37,12 @@
     }
   }
 }
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+dialog::backdrop {
+  background-color: $black;
+  opacity: 0.5;
+}
