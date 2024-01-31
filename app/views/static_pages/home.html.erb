@@ -9,7 +9,7 @@
 </section>
 <div class="row row-cols-1 row-cols-md-3 gy-3">
   <div class="col">
-    <section class="card catalogue-search">
+    <section class="card h-100 catalogue-search">
       <div class="image-container"><%= image_tag "catalogue.jpg", class: "card-img-top", alt: "Books" %></div>
       <div class="card-body">
         <h2 class="card-title h4"><%= link_to t("blacklight.catalogue.title"), "/catalog", class: "stretched-link" %></h2>
@@ -18,7 +18,7 @@
     </section>
   </div>
   <div class="col">
-    <section class="card eresources-search">
+    <section class="card h-100 eresources-search">
       <div class="image-container"><%= image_tag "eresources.jpg", class: "card-img-top", alt: "Lady using computer" %></div>
       <div class="card-body">
         <h2 class="card-title h4"><%= link_to t("blacklight.eresources.title"), "https://www.nla.gov.au/eresources", class: "stretched-link" %></h2>
@@ -27,7 +27,7 @@
     </section>
   </div>
   <div class="col">
-    <section class="card finding-aids-search">
+    <section class="card h-100 finding-aids-search">
       <div class="image-container"><%= image_tag "finding-aids.jpg", class: "card-img-top", alt: "Trolley with manuscript boxes" %></div>
       <div class="card-body">
         <h2 class="card-title h4"><%= link_to t("blacklight.finding_aids.title"), "/finding-aids", class: "stretched-link" %></h2>
