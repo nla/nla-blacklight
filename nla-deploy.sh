@@ -29,7 +29,7 @@ fi
 # update system gems
 gem update --system
 
-gem install bundler
+gem install bundler --no-document
 bundle config --local jobs $(nproc)
 bundle config --local path "vendor/bundle"
 bundle config --local build.nokogiri --use-system-libraries
