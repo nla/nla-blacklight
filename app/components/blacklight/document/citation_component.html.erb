@@ -2,7 +2,7 @@
   <h2 class="h5"><%= t("citation.persistent_id") %></h2>
   <div data-controller="clipboard" data-clipboard-success-content-value="<%= t("citation.copied") %>">
     <p><%= link_to "https://nla.gov.au/nla.cat-vn#{@document.id}", "https://nla.gov.au/nla.cat-vn#{@document.id}", { data: { "clipboard-target": "source" } } %>
-      <a href="#" data-action="clipboard#copy" data-clipboard-target="button" title="<%= t("citation.copy_to_clipboard") %>" class="text-decoration-none ml-1"><i class="fa-regular fa-copy" aria-hidden="true"></i></a></p>
+      <a href="#" data-action="clipboard#copy" data-clipboard-target="button" title="<%= t("citation.copy_to_clipboard") %>" class="text-decoration-none ms-1"><i class="fa-regular fa-copy" aria-hidden="true"></i></a></p>
   </div>
 
   <% @formats.each do |i18n_key, citation_method| %>
@@ -10,7 +10,7 @@
       <h2 class="h5"><%= t(i18n_key) %></h2>
       <div id="<%= "#{t(i18n_key).downcase.tr("/", '_')}_citation" %>" data-controller="clipboard" data-clipboard-success-content-value="<%= t("citation.copied") %>">
         <p><%= @document.send(citation_method).html_safe %>
-          <a href="#" data-action="clipboard#copy" data-clipboard-target="button" title="<%= t("citation.copy_to_clipboard") %>" class="text-decoration-none ml-1"><i class="fa-regular fa-copy" aria-hidden="true"></i></a></p>
+          <a href="#" data-action="clipboard#copy" data-clipboard-target="button" title="<%= t("citation.copy_to_clipboard") %>" class="text-decoration-none ms-1"><i class="fa-regular fa-copy" aria-hidden="true"></i></a></p>
       </div>
     <% end %>
   <% end %>

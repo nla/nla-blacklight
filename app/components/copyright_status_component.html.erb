@@ -5,7 +5,7 @@
   <%= render "copyright_info/message#{info["contextMsg"].tr(".","_")}" %>
   <% if info["copyrightStatusReason"].present? %>
     <dl class="d-flex flex-row justify-content-start">
-      <dt class="pr-2">Reason for copyright status:</dt>
+      <dt class="pe-2">Reason for copyright status:</dt>
       <dd><%= info["copyrightStatusReason"] %></dd>
     </dl>
   <% end %>
@@ -13,35 +13,35 @@
   <dl id="determination">
     <% if info["materialType"].present? %>
       <div class="d-flex flex-row justify-content-start">
-        <dt class="pr-2 mb-0">Material type:</dt>
+        <dt class="pe-2 mb-0">Material type:</dt>
         <dd><%= info["materialType"] %></dd>
       </div>
     <% end %>
 
     <% if info["creatorDateOfDeath"].present? %>
       <div class="d-flex flex-row justify-content-start">
-        <dt class="pr-2">Presumed date of death of creator (latest date):</dt>
+        <dt class="pe-2">Presumed date of death of creator (latest date):</dt>
         <dd><%= info["creatorDateOfDeath"] %></dd>
       </div>
     <% end %>
 
     <% if info["publishedStatus"].present? %>
       <div class="d-flex flex-row justify-content-start">
-        <dt class="pr-2">Published status:</dt>
+        <dt class="pe-2">Published status:</dt>
         <dd><%= info["publishedStatus"] %></dd>
       </div>
     <% end %>
 
     <% if info["creationDate"].present? %>
       <div class="d-flex flex-row justify-content-start">
-        <dt class="pr-2">Creation date:</dt>
+        <dt class="pe-2">Creation date:</dt>
         <dd><%= info["creationDate"] %></dd>
       </div>
     <% end %>
 
     <% if info["publicationDate"].present? %>
       <div class="d-flex flex-row justify-content-start">
-        <dt class="pr-2">Publication date:</dt>
+        <dt class="pe-2">Publication date:</dt>
         <dd><%= info["publicationDate"] %></dd>
       </div>
     <% end %>
