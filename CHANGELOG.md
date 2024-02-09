@@ -1,5 +1,14 @@
 # Changelog
 
+## [2.11.2](https://github.com/nla/nla-blacklight/compare/2.11.1...2.11.2) (2024-02-09)
+
+
+### Bug Fixes
+
+* change pub_date sort order field ([ae26512](https://github.com/nla/nla-blacklight/commit/ae26512cb84408e1146d49e0eea380d0e5adab5f))
+* cherry pick fix from main and upgrade dependencies ([8fce241](https://github.com/nla/nla-blacklight/commit/8fce24142e64a3685310e76e8e5324978ba6680b))
+* typo in Blacklight::Exceptions::RecordNotFound ([0f61ca3](https://github.com/nla/nla-blacklight/commit/0f61ca38612dc08293e3cc3cbc2df4a8451c05ee))
+
 ## [2.11.1](https://github.com/nla/nla-blacklight/compare/2.11.0...2.11.1) (2023-11-29)
 
 
