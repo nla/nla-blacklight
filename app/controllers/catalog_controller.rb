@@ -387,7 +387,7 @@ class CatalogController < ApplicationController
     # whether the sort is ascending or descending (it must be asc or desc
     # except in the relevancy case). Add the sort: option to configure a
     # custom Blacklight url parameter value separate from the Solr sort fields.
-    config.add_sort_field "score desc, pub_date_ssim desc, title_si asc", label: "Relevance"
+    config.add_sort_field "score desc, pub_date_si desc, title_si asc", label: "Relevance"
     config.add_sort_field "pub_date_ssim desc, title_si asc", label: "Date New to Old"
     config.add_sort_field "pub_date_ssim asc, title_si asc", label: "Date Old to New"
     config.add_sort_field "author_si asc, title_si asc", label: "Author A-Z"
