@@ -451,7 +451,7 @@ class CatalogController < ApplicationController
               _, @document = search_service.fetch(params[:id])
               # if for some reason we can't find the document title, just use the title from the eResource entry
               t("offsite.other", title: @document.fetch("title_tsim", [@eresource[:entry]["title"]])&.first&.strip)
-            rescue Blacklight::Exception::RecordNotFound
+            rescue Blacklight::Exceptions::RecordNotFound
               t("offsite.other", title: @eresource[:entry]["title"]&.strip)
             end
           end
