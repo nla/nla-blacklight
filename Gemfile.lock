@@ -182,7 +182,7 @@ GEM
     citeproc-ruby (1.1.13)
       citeproc (~> 1.0, >= 1.0.9)
       csl (~> 1.5)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
     connection_pool (2.4.1)
@@ -397,7 +397,7 @@ GEM
     mini_histogram (0.3.1)
     mini_mime (1.1.5)
     minitar (0.9)
-    minitest (5.20.0)
+    minitest (5.22.2)
     mock_redis (0.39.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
@@ -417,11 +417,11 @@ GEM
     net-smtp (0.4.0)
       net-protocol
     nio4r (2.6.1)
-    nokogiri (1.15.5-arm64-darwin)
+    nokogiri (1.16.2-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.5-x86_64-darwin)
+    nokogiri (1.16.2-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.15.5-x86_64-linux)
+    nokogiri (1.16.2-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -461,7 +461,7 @@ GEM
     psych (5.1.1)
       stringio
     public_suffix (4.0.7)
-    puma (6.4.0)
+    puma (6.4.2)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.7.3)
@@ -670,7 +670,7 @@ GEM
     unicode-display_width (2.5.0)
     uri (0.12.2)
     version_gem (1.1.3)
-    view_component (2.82.0)
+    view_component (2.83.0)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)
@@ -718,6 +718,7 @@ GEM
 PLATFORMS
   arm64-darwin-21
   arm64-darwin-22
+  arm64-darwin-23
   x86_64-darwin-20
   x86_64-darwin-21
   x86_64-darwin-22
