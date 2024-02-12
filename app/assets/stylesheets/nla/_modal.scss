@@ -46,3 +46,43 @@ dialog::backdrop {
   background-color: $black;
   opacity: 0.5;
 }
+
+@media print {
+  body:has(dialog[open]) {
+    overflow: visible;
+    
+    header,
+    #global-messages,
+    .navbar-search,
+    #main-container,
+    footer {
+      display: none;
+    }
+    
+    .modal {
+      --bs-modal-width: 100%;
+      --bs-modal-margin: 0;
+      position: relative;
+      visibility: visible;
+      overflow: visible !important;
+      height: auto;
+    }
+    
+    .modal-dialog {
+      visibility: visible;
+      overflow: visible !important;
+      height: auto;
+    }
+    
+    .modal-dialog-scrollable {      
+      .modal-content {
+        overflow: visible !important;
+        
+        .blacklight-modal-close {
+          display: none;
+        }
+      }
+    }
+    
+  }
+}
