@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe FieldHelper do
-  let(:document) { SolrDocument.new(marc_ss: sample_marc, title_start_tsim: ["Protocol amending 1949 Convention of Inter-American Tropical Tuna Commission"], cited_authors_tsim: ["United States."]) }
+  let(:document) { SolrDocument.new(id: 123, marc_ss: sample_marc, title_start_tsim: ["Protocol amending 1949 Convention of Inter-American Tropical Tuna Commission"], cited_authors_tsim: ["United States."]) }
   let(:view_context) { instance_double(ActionView::Base) }
   let(:config) { Blacklight::Configuration.new.view_config(:show) }
 

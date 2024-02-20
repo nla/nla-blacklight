@@ -6,6 +6,6 @@
     <% if render_request? %>
       <a href="#request-details" id="request-btn" class="btn btn-primary mb-2 me-2 me-lg-4 px-4">Request</a>
     <% end %>
-    <%= link_to "Order a copy", "javascript:;", class: "btn btn-primary mb-2 me-2 me-lg-4 px-4", onclick: "document.getElementById('copiesdirect_addcart').submit();".html_safe %>
+    <%= copies_direct_button(@document.id) %>
   </div>
 </div>

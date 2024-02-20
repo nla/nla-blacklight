@@ -134,7 +134,7 @@ module FieldHelper
 
   def render_copyright_component(document:, field:, config:, value:, context:)
     if value.present? && value.first.present? && value.first["contextMsg"].present?
-      render CopyrightStatusComponent.new(value.first)
+      render CopyrightStatusComponent.new(document, value.first)
     end
   end
 

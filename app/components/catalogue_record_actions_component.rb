@@ -2,6 +2,7 @@
 
 class CatalogueRecordActionsComponent < ViewComponent::Base
   include RequestItemHelper
+  include CopiesDirectHelper
 
   def initialize(document:)
     @document = document

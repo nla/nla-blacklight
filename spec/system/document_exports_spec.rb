@@ -1,7 +1,7 @@
 require "system_helper"
 
 RSpec.describe "Document exports" do
-  let(:document) { SolrDocument.new(marc_ss: marc_xml) }
+  let(:document) { SolrDocument.new(id: 123, marc_ss: marc_xml) }
   let(:copyright) { copyright_response_hash }
   let(:catalogue_services) { object_double(CatalogueServicesClient.new) }
   let(:request_item_component) { object_double(RequestItemComponent.new(document: document)) }
