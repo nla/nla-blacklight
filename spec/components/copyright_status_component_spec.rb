@@ -8,10 +8,7 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   let(:copyright) { service_response_hash }
 
   before do
-    stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
-    stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_CONTACT_URL" => "https://example.com/contact-us"))
-
-    WebMock.stub_request(:get, "https://example.com/copyright/")
+    WebMock.stub_request(:get, "https://test.nla.gov.au/copyright/")
       .with(
         headers: {
           "Accept" => "*/*",
@@ -22,15 +19,21 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   end
 
   it "renders the 'Contact us' link" do
-    render_inline(described_class.new(copyright))
+    render_inline(described_class.new(document, copyright))
 
     expect(page.text).to include "Contact us"
-    expect(page).to have_xpath("//a[@href='https://example.com/contact-us']")
+    expect(page).to have_xpath("//a[@href='https://test.nla.gov.au/contact-us']")
+  end
+
+  it "does not render the Copies Direct form" do
+    render_inline(described_class.new(document, copyright))
+
+    expect(page).not_to have_css "form[id='copiesdirect_addcart']"
   end
 
   context "when there is a copyright status" do
     it "renders the copyright status" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "In Copyright"
     end
@@ -40,7 +43,7 @@ RSpec.describe CopyrightStatusComponent, type: :component do
     let(:copyright) { no_copyright_status_response_hash }
 
     it "renders the copyright status" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).not_to include "In Copyright"
     end
@@ -53,21 +56,15 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       rights_response
     end
 
-    it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright))
-
-      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
-    end
-
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "Copies Direct"
-      expect(page).to have_xpath("//a[@href='javascript:;']")
+      expect(page).to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
 
     it "renders the 'fair dealing' as text" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "fair dealing"
       expect(page).not_to have_xpath("//a[text()='fair dealing']")
@@ -81,17 +78,11 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       rights_response
     end
 
-    it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright))
-
-      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
-    end
-
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "Copies Direct"
-      expect(page).to have_xpath("//a[@href='javascript:;']")
+      expect(page).to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
   end
 
@@ -102,21 +93,15 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       rights_response
     end
 
-    it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright))
-
-      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
-    end
-
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "Copies Direct"
-      expect(page).to have_xpath("//a[@href='javascript:;']")
+      expect(page).to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
 
     it "renders the 'fair dealing' as text" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "fair dealing"
       expect(page).not_to have_xpath("//a[text()='fair dealing']")
@@ -130,17 +115,11 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       rights_response
     end
 
-    it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright))
-
-      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
-    end
-
     it "render the Copies Direct link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "Copies Direct"
-      expect(page).to have_xpath("//a[@href='javascript:;']")
+      expect(page).to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
   end
 
@@ -151,17 +130,11 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       rights_response
     end
 
-    it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright))
-
-      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
-    end
-
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "Copies Direct"
-      expect(page).to have_xpath("//a[@href='javascript:;']")
+      expect(page).to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
   end
 
@@ -172,24 +145,18 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       rights_response
     end
 
-    it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright))
-
-      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
-    end
-
     it "does not render the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).not_to include "Copies Direct"
-      expect(page).not_to have_xpath("//a[@href='javascript:;']")
+      expect(page).not_to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
 
     it "renders a lowercase contact us link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "contact us"
-      expect(page).to have_xpath("//a[@href='https://example.com/contact-us']")
+      expect(page).to have_xpath("//a[@href='https://test.nla.gov.au/contact-us']")
     end
   end
 
@@ -200,24 +167,18 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       rights_response
     end
 
-    it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright))
-
-      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
-    end
-
     it "does not render the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).not_to include "Copies Direct"
-      expect(page).not_to have_xpath("//a[@href='javascript:;']")
+      expect(page).not_to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
 
     it "renders a lowercase contact us link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "contact us"
-      expect(page).to have_xpath("//a[@href='https://example.com/contact-us']")
+      expect(page).to have_xpath("//a[@href='https://test.nla.gov.au/contact-us']")
     end
   end
 
@@ -228,17 +189,11 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       rights_response
     end
 
-    it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright))
-
-      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
-    end
-
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "Copies Direct"
-      expect(page).to have_xpath("//a[@href='javascript:;']")
+      expect(page).to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
   end
 
@@ -249,17 +204,11 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       rights_response
     end
 
-    it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright))
-
-      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
-    end
-
     it "does not render the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).not_to include "Copies Direct"
-      expect(page).not_to have_xpath("//a[@href='javascript:;']")
+      expect(page).not_to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
   end
 
@@ -270,17 +219,11 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       rights_response
     end
 
-    it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright))
-
-      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
-    end
-
     it "does not render the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).not_to include "Copies Direct"
-      expect(page).not_to have_xpath("//a[@href='javascript:;']")
+      expect(page).not_to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
   end
 
@@ -291,17 +234,11 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       rights_response
     end
 
-    it "does not render the Copies Direct form" do
-      render_inline(described_class.new(copyright))
-
-      expect(page).not_to have_css "form[id='copiesdirect_addcart']"
-    end
-
     it "renders the 'Copies Direct' link" do
-      render_inline(described_class.new(copyright))
+      render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "Copies Direct"
-      expect(page).to have_xpath("//a[@href='javascript:;']")
+      expect(page).to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
   end
 

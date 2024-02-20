@@ -17,17 +17,7 @@ RSpec.describe CopyrightStatusHelper do
     subject(:link) { helper.rights_contact_us_link }
 
     it "generates a link using the environment variable value" do
-      stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_CONTACT_URL" => "https://example.com/contact-us"))
-
-      expect(link).to include '<a href="https://example.com/contact-us">Contact us</a>'
-    end
-  end
-
-  describe "#copies_direct_link" do
-    subject(:link) { helper.copies_direct_link }
-
-    it "generates a link to submit the Copies Direct form on-click" do
-      expect(link).to include '<a onclick="document.getElementById(\'copiesdirect_addcart\').submit();" href="javascript:;">Copies Direct</a>'
+      expect(link).to include '<a href="https://test.nla.gov.au/contact-us">Contact us</a>'
     end
   end
 

@@ -2,7 +2,7 @@
   <% if info["copyrightStatus"].present? %>
     <p><strong><%= info["copyrightStatus"] %></strong></p>
   <% end %>
-  <%= render "copyright_info/message#{info["contextMsg"].tr(".","_")}" %>
+  <%= render partial: "copyright_info/message#{info["contextMsg"].tr(".","_")}", locals: {id: @document.id}  %>
   <% if info["copyrightStatusReason"].present? %>
     <dl class="d-flex flex-row justify-content-start">
       <dt class="pe-2">Reason for copyright status:</dt>
