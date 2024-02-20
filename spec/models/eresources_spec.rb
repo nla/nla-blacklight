@@ -44,6 +44,18 @@ RSpec.describe Eresources do
   end
 
   describe "#known_url" do
+    context "when urlstem ends with a '/'" do
+      subject(:eresources_link) { described_class.new.known_url("http://m.worldbk.com") }
+
+      let(:entry) { {"remoteaccess" => "yes", "remoteurl" => "", "title" => "World Book Online", "urlstem" => %w[http://www.worldbookonline.com http://m.worldbk.com/]} }
+
+      it "generates an EZProxy link" do
+        stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com"))
+
+        expect(eresources_link).to eq({type: "ezproxy", url: "http://m.worldbk.com", entry: entry})
+      end
+    end
+
     context "when it is a known eResource with no remote URL" do
       subject(:eresources_link) { described_class.new.known_url("http://m.worldbk.com/") }
 
