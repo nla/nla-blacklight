@@ -158,7 +158,7 @@ GEM
     blacklight_advanced_search (8.0.0.alpha2)
       blacklight (>= 7.15, < 9)
       parslet
-    bootsnap (1.17.0)
+    bootsnap (1.18.3)
       msgpack (~> 1.2)
     brakeman (6.1.2)
       racc
