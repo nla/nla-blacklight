@@ -20,7 +20,7 @@ Bundler.require(*Rails.groups)
 
 # Load dotenv only in development or test environment
 if %w[development test].include? ENV["RAILS_ENV"]
-  Dotenv::Railtie.load
+  require "dotenv/load"
 end
 
 module NlaBlacklight

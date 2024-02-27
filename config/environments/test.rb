@@ -8,6 +8,10 @@ require "active_support/core_ext/integer/time"
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Prevent dotenv autorestore because it's somehow causing the ENV variable hash to be frozen
+  # See https://github.com/bkeepers/dotenv/issues/482#issuecomment-1956148520
+  config.dotenv.autorestore = false
+
   # Turn false under Spring and add config.action_view.cache_template_loading = true.
   config.cache_classes = true
 

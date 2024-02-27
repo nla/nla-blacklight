@@ -3,10 +3,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.2.2"
 
-# All runtime config comes from the UNIX environment
-# but we use dotenv to store that in files for development and testing
-gem "dotenv-rails", groups: [:development, :test]
-
 # Brakeman analyzes our code for security vulnerabilities
 gem "brakeman"
 
@@ -93,15 +89,19 @@ gem "ebsco-eds", "~> 1.1", ">= 1.1.5"
 gem "email_validator", "~> 2.2"
 gem "phonelib", "~> 0.8.4"
 
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
+# gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 gem "blacklight_range_limit", git: "https://github.com/nla/blacklight_range_limit", branch: "main"
 # For local development, comment out above ⤴️ and uncomment below ⤵️
-# gem "nla-blacklight_common", path: "../nla-blacklight_common"
+gem "nla-blacklight_common", path: "../nla-blacklight_common"
 # # gem "bento_search", path: "../bento_search"
 # gem "blacklight_range_limit", path: "../blacklight_range_limit"
 
 group :development, :test do
+  # All runtime config comes from the UNIX environment
+  # but we use dotenv to store that in files for development and testing
+  gem "dotenv"
+
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "debug", platforms: %i[mri mingw x64_mingw]
   gem "standard", require: false
