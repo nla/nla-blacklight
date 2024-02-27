@@ -25,8 +25,10 @@ GIT
       deprecation
       view_component (>= 2.54, < 4)
 
-PATH
-  remote: ../nla-blacklight_common
+GIT
+  remote: https://github.com/nla/nla-blacklight_common
+  revision: 95dedb347bd41132dc367d801d8ba7e8eeb71fba
+  branch: main
   specs:
     nla-blacklight_common (0.1.12)
       activerecord-session_store (~> 2.0)
