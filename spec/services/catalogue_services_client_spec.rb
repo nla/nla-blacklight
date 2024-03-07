@@ -78,7 +78,9 @@ RSpec.describe CatalogueServicesClient, type: :request do
   describe "#get_request_summary" do
     context "when 200 response" do
       it "returns request summary" do
-        expect(service.get_request_summary(folio_id: "1111")).not_to be_nil
+        request_summary = service.get_request_summary(folio_id: "1111")
+        expect(request_summary).not_to be_nil
+        expect(request_summary["checkedOutItems"]).to be_a Array
       end
     end
 

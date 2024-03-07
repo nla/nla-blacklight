@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "oj"
+
 class ServiceTokenError < StandardError; end
 
 class HoldingsRequestError < StandardError; end
@@ -207,8 +209,11 @@ class CatalogueServicesClient
   private
 
   def setup_connection
-    Faraday.new(url: ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.response :json
+    Faraday.new(ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
+      f.response :json, content_type: /\bjson$/, parser_options: {decoder: Oj}
+      f.response :logger
+
+      f.adapter Faraday.default_adapter
     end
   end
 end

@@ -84,18 +84,21 @@ gem "stackprof", group: :development
 gem "blacklight", ">= 8.0.0", "< 9"
 gem "blacklight-marc", "~> 8.0"
 gem "blacklight_advanced_search", "8.0.0.alpha2"
-gem "ebsco-eds", "~> 1.1", ">= 1.1.5"
+# gem "ebsco-eds", "~> 1.1", ">= 1.1.5"
+gem "ebsco-eds", git: "git@github.com:nla/edsapi-ruby.git", branch: "master"
 
 gem "email_validator", "~> 2.2"
 gem "phonelib", "~> 0.8.4"
 
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
+# gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
 gem "blacklight_range_limit", git: "https://github.com/nla/blacklight_range_limit", branch: "main"
 # For local development, comment out above ⤴️ and uncomment below ⤵️
-# gem "nla-blacklight_common", path: "../nla-blacklight_common"
+gem "nla-blacklight_common", path: "../nla-blacklight_common"
 # # gem "bento_search", path: "../bento_search"
 # gem "blacklight_range_limit", path: "../blacklight_range_limit"
+
+gem "omniauth-keycloak", git: "https://github.com/nla/omniauth-keycloak.git", branch: "master"
 
 group :development, :test do
   # All runtime config comes from the UNIX environment
@@ -153,3 +156,5 @@ group :test do
 
   gem "mock_redis", "~> 0.44.0"
 end
+
+gem "oj", "~> 3.16"
