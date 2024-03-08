@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
+require "oj"
+
 class ThumbnailService
   def get_url(options = {})
     Rails.cache.fetch("thumbnail_url/#{options[:id]}/#{options[:width]}", expires_in: 1.hour, skip_nil: true) do
       conn = Faraday.new(url: ENV["THUMBNAIL_SERVICE_API_BASE_URL"]) do |f|
-        f.response :json
+        f.response :json, content_type: /\b*\/*/, parser_options: {decoder: Oj}
       end
 
       url = "/thumbnail-service/thumbnail/url?#{options.to_query}"

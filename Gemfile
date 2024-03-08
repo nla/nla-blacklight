@@ -74,6 +74,9 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# fast JSON parser and Object marshaller
+gem "oj", "~> 3.16"
+
 gem "yabeda-rails"
 gem "yabeda-puma-plugin"
 gem "yabeda-prometheus"
@@ -86,6 +89,7 @@ gem "blacklight-marc", "~> 8.0"
 gem "blacklight_advanced_search", "8.0.0.alpha2"
 # gem "ebsco-eds", "~> 1.1", ">= 1.1.5"
 gem "ebsco-eds", git: "git@github.com:nla/edsapi-ruby.git", branch: "master"
+gem "omniauth-keycloak", git: "https://github.com/nla/omniauth-keycloak.git", branch: "master"
 
 gem "email_validator", "~> 2.2"
 gem "phonelib", "~> 0.8.4"
@@ -97,8 +101,6 @@ gem "blacklight_range_limit", git: "https://github.com/nla/blacklight_range_limi
 gem "nla-blacklight_common", path: "../nla-blacklight_common"
 # # gem "bento_search", path: "../bento_search"
 # gem "blacklight_range_limit", path: "../blacklight_range_limit"
-
-gem "omniauth-keycloak", git: "https://github.com/nla/omniauth-keycloak.git", branch: "master"
 
 group :development, :test do
   # All runtime config comes from the UNIX environment
@@ -156,5 +158,3 @@ group :test do
 
   gem "mock_redis", "~> 0.44.0"
 end
-
-gem "oj", "~> 3.16"

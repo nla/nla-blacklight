@@ -210,10 +210,7 @@ class CatalogueServicesClient
 
   def setup_connection
     Faraday.new(ENV["CATALOGUE_SERVICES_API_BASE_URL"]) do |f|
-      f.response :json, content_type: /\bjson$/, parser_options: {decoder: Oj}
-      f.response :logger
-
-      f.adapter Faraday.default_adapter
+      f.response :json, content_type: /\b*\/*/, parser_options: {decoder: Oj}
     end
   end
 end
