@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.1.0](https://github.com/nla/nla-blacklight/compare/3.0.0...3.1.0) (2024-03-14)
+
+
+### Features
+
+* add spacing to “New Catalogue search” button ([afd77d7](https://github.com/nla/nla-blacklight/commit/afd77d78283ebeea6d46318726d49638eef523d1))
+
 ## [3.0.0](https://github.com/nla/nla-blacklight/compare/2.11.1...3.0.0) (2024-03-13)
 
 
