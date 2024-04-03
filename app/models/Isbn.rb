@@ -18,6 +18,12 @@ class Isbn
 
   def isbn_list(*_args)
     @isbn_list ||= @document.fetch("isbn_tsim", nil)&.map { |isbn| clean_isn(isbn) }
+    @isbn_list.presence&.uniq
+  end
+
+  def issn_list(*_args)
+    @issn_list ||= @document.fetch("issn_display_ssim", nil)&.map { |issn| clean_isn(issn) }
+    @issn_list.presence&.uniq
   end
 
   private

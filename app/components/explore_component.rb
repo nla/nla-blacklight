@@ -19,15 +19,22 @@ class ExploreComponent < ViewComponent::Base
   def trove_query
     Rails.cache.fetch("trove_query/#{document.id}", expires_in: 1.hour) do
       query = ""
+      isn_terms = []
       if document.isbn_list.present?
-        document.isbn_list.each do |isn|
-          query += "isbn:#{isn}#{(isn != document.isbn_list.last) ? " OR " : ""}"
+        isn_terms = document.isbn_list.map { |i| "isbn:#{i}" }
+      end
+      if document.issn_list.present?
+        isn_terms += document.issn_list.map { |i| "issn:#{i}" }
+      end
+      if isn_terms.present?
+        isn_terms.each do |isn|
+          query += "#{isn}#{(isn != isn_terms.last) ? " OR " : ""}"
         end
       else
         query += document.id.to_s
         if document.callnumber.present?
           query += " OR "
-          document.callnumber.each do |callnumber|
+          document.callnumber.uniq.each do |callnumber|
             query += "\"#{callnumber}\"#{(callnumber != document.callnumber.last) ? " OR " : ""}"
           end
         end

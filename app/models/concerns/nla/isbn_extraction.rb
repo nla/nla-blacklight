@@ -13,7 +13,7 @@ module Nla
         elements_880 = get_marc_datafields_from_xml("//datafield[@tag='880' and subfield[@code='6' and starts-with(.,'#{tag}-')]]")
         isbn += [*extract_isbn(elements: elements_880, tag: tag, sfield: sfield, qfield: qfield)]
       end
-      isbn.compact_blank.presence
+      isbn.uniq.compact_blank.presence
     end
 
     # Extracts ISBNs from MARC. The MARCXML must be read sequentially, where a single 020 tag may contain subfields like:
