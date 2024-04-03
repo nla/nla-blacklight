@@ -5,12 +5,56 @@ require "rails_helper"
 RSpec.describe ExploreComponent, type: :component do
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: "4157485", format: "Map") }
 
-  it "renders a link to Trove" do
-    render_inline(described_class.new(document))
+  context "when there is no isbn or issn" do
+    it "renders a link to Trove" do
+      render_inline(described_class.new(document))
 
-    expect(page).to have_link(text: "Find in other libraries at Trove")
-    expect(page).to have_xpath("//a[contains(@href, '4157485')]")
-    expect(page).to have_xpath("//img[contains(@src, 'trove-icon')]")
+      expect(page).to have_link(text: "Find in other libraries at Trove")
+      expect(page).to have_xpath("//a[contains(@href, '4157485')]")
+      expect(page).to have_xpath("//img[contains(@src, 'trove-icon')]")
+    end
+  end
+
+  context "when there is isbn or issn" do
+    let(:document) do
+      SolrDocument.new(marc_ss: sample_marc_newspaper, id: "2837256", format: "Newspaper", call_number_tsim: ["NX 276"], isbn_tsim: %w[1839-8138 18398138], issn_display_ssim: ["1839-8138"])
+    end
+
+    it "renders a link to Trove" do
+      render_inline(described_class.new(document))
+
+      expect(page).to have_link(text: "Find in other libraries at Trove")
+      expect(page).to have_xpath("//a[contains(@href, 'isbn%3A18398138%20OR%20issn%3A18398138')]")
+      expect(page).to have_xpath("//img[contains(@src, 'trove-icon')]")
+    end
+  end
+
+  context "when there is only isbn" do
+    let(:document) do
+      SolrDocument.new(marc_ss: sample_marc_newspaper, id: "2837256", format: "Newspaper", call_number_tsim: ["NX 276"], isbn_tsim: %w[1839-8138 18398138])
+    end
+
+    it "renders a link to Trove" do
+      render_inline(described_class.new(document))
+
+      expect(page).to have_link(text: "Find in other libraries at Trove")
+      expect(page).to have_xpath("//a[contains(@href, 'isbn%3A18398138')]")
+      expect(page).to have_xpath("//img[contains(@src, 'trove-icon')]")
+    end
+  end
+
+  context "when there is only issn" do
+    let(:document) do
+      SolrDocument.new(marc_ss: sample_marc_newspaper, id: "2837256", format: "Newspaper", call_number_tsim: ["NX 276"], issn_display_ssim: ["1839-8138"])
+    end
+
+    it "renders a link to Trove" do
+      render_inline(described_class.new(document))
+
+      expect(page).to have_link(text: "Find in other libraries at Trove")
+      expect(page).to have_xpath("//a[contains(@href, 'issn%3A18398138')]")
+      expect(page).to have_xpath("//img[contains(@src, 'trove-icon')]")
+    end
   end
 
   context "when the online shop search has no results" do
@@ -170,6 +214,10 @@ RSpec.describe ExploreComponent, type: :component do
 
   def sample_marc
     load_marc_from_file 4157458
+  end
+
+  def sample_marc_newspaper
+    load_marc_from_file 2837256
   end
 
   def sample_marc_isbn
