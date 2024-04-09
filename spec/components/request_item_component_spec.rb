@@ -83,6 +83,26 @@ RSpec.describe RequestItemComponent, type: :component do
     end
   end
 
+  context "when the item is requestable" do
+    let(:item) { {"requestable" => true} }
+
+    it "displays the item's status as 'Available'" do
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_text("Available")
+    end
+  end
+
+  context "when the item is not requestable" do
+    let(:item) { {"requestable" => false} }
+
+    it "displays the item's status as 'Not for loan'" do
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_text("Not for loan")
+    end
+  end
+
   def sample_marc
     load_marc_from_file 4157458
   end
