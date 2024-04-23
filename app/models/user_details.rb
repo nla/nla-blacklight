@@ -12,17 +12,27 @@ class UserDetails
   validates :postcode, presence: true, if: -> { validation_context == :postcode }
 
   # order of attributes in ALL_ATTRIBUTES array determines order in view
-  ALL_ATTRIBUTES = %w[first_name last_name email mobile_phone phone password postcode]
+  ALL_ATTRIBUTES = %w[first_name last_name email mobile_phone phone password postcode email_2fa]
 
-  PATRON_ATTRIBUTES = %w[first_name last_name email phone mobile_phone password postcode]
-  PATRON_EDITABLE_ATTRIBUTES = %w[email phone mobile_phone password postcode]
+  PATRON_ATTRIBUTES = %w[first_name last_name email phone mobile_phone password postcode email_2fa]
+  PATRON_EDITABLE_ATTRIBUTES = %w[email phone mobile_phone password postcode email_2fa]
 
   STAFF_ATTRIBUTES = %w[first_name last_name email]
   STAFF_EDITABLE_ATTRIBUTES = []
 
   PATRON_PROVIDER = "catalogue_patron"
 
-  attr_accessor :last_name, :first_name, :email, :phone, :mobile_phone, :postcode
+  attr_accessor :last_name, :first_name, :email, :phone, :mobile_phone, :postcode, :email_2fa
+
+  def initialize(folio_details = {}, email_2fa = "false")
+    @last_name = folio_details[:last_name]
+    @first_name = folio_details[:first_name]
+    @email = folio_details[:email]
+    @phone = folio_details[:phone]
+    @mobile_phone = folio_details[:mobile_phone]
+    @postcode = folio_details[:postcode]
+    @email_2fa = ActiveModel::Type::Boolean.new.cast(email_2fa)
+  end
 
   def attributes
     {
@@ -31,7 +41,8 @@ class UserDetails
       "email" => email,
       "phone" => phone,
       "mobile_phone" => mobile_phone,
-      "postcode" => postcode
+      "postcode" => postcode,
+      "email_2fa" => email_2fa
     }
   end
 

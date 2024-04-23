@@ -8,10 +8,13 @@ class UserDetailsFieldComponent < ViewComponent::Base
     @attribute = attribute
     @details = details
     @label = I18n.t("account.settings.#{attribute}.label")
-    @value = if @attribute == "password"
+    @value = value || @details.instance_values[attribute]
+    @value_text = if @attribute == "password"
       PASSWORD_MASK # ensure we don't display anything for the password
+    elsif @attribute == "email_2fa"
+      @value ? I18n.t("account.settings.email_2fa.value_text_on") : I18n.t("account.settings.email_2fa.value_text_off")
     else
-      value || @details.instance_values[attribute]
+      @value
     end
     @editable = editable
   end
@@ -23,6 +26,16 @@ class UserDetailsFieldComponent < ViewComponent::Base
   def link_to_keycloak_password_reset
     if helpers.current_user.present?
       link_to edit_link_text, "#{session[:iss]}/account/password", data: {turbo: false}, target: "_top"
+    end
+  end
+
+  def link_to_email_2fa
+    if helpers.current_user.present?
+      if @value
+        link_to I18n.t("account.settings.email_2fa.change_text", status: "Off"), disable_email_2fa_url, data: {turbo: false}, target: "_top"
+      else
+        link_to I18n.t("account.settings.email_2fa.change_text", status: "On"), enable_email_2fa_url, data: {turbo: false}, target: "_top"
+      end
     end
   end
 end

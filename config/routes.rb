@@ -45,6 +45,8 @@ Rails.application.routes.draw do
   get "/account/profile", to: "account#profile"
   get "/account/profile/edit", to: "account#profile_edit"
   post "/account/profile/edit", to: "account#profile_update"
+  get "/account/enable_email_2fa", to: "account#enable_email_2fa", as: "enable_email_2fa"
+  get "/account/disable_email_2fa", to: "account#disable_email_2fa", as: "disable_email_2fa"
 
   resource :thumbnail, only: [:thumbnail], path: "/thumbnail", controller: "thumbnail" do
     concerns :searchable
