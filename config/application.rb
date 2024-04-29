@@ -64,14 +64,6 @@ module NlaBlacklight
       end
     end
 
-    # Allow SQL to be executed in migrations. Generates *structure.sql files instead of *schema.rb.
-    config.active_record.schema_format = :sql
-
-    # Raise an exception when strict loading violation occurs outside of development
-    if Rails.env.production?
-      config.active_record.action_on_strict_loading_violation = :log
-    end
-
     Prometheus::Client.config.data_store = Prometheus::Client::DataStores::DirectFileStore.new(dir: File.join(ENV.fetch("BLACKLIGHT_TMP_PATH", "./tmp"), "prometheus_direct_file_store"))
 
     config.version = VERSION

@@ -3,7 +3,7 @@
 class AccountController < ApplicationController
   before_action :authenticate_user!
 
-  before_action :set_user_details, only: [:profile, :profile_edit, :profile_update, :disable_email_2fa]
+  before_action :set_user_details, only: [:profile, :profile_edit, :profile_update]
 
   before_action :request_detail_params, only: [:request_details]
   before_action :profile_edit_params, only: [:profile_edit]
@@ -58,27 +58,6 @@ class AccountController < ApplicationController
     render :profile_edit, status: :unprocessable_entity
   end
 
-  def enable_email_2fa
-    url_hash = [
-      ENV["KEYCLOAK_URL"],
-      ENV["KC_PATRON_REALM"],
-      ENV["KC_PATRON_CLIENT"],
-      ENV["EMAIL_2FA_REGISTRATION_REDIRECT_URL"],
-      ENV["EMAIL_2FA_ACTION"]
-    ]
-    redirect_to ENV["EMAIL_2FA_REGISTRATION_URL"] % url_hash, allow_other_host: true
-  end
-
-  def disable_email_2fa
-    CatalogueServicesClient.new.disable_email_2fa(current_user.uid)
-    status = CatalogueServicesClient.new.email_2fa_status(current_user.uid)
-    if status
-    else
-      flash.now[:error] = I18n.t("account.settings.update.errors.2fa.failed")
-    end
-    redirect_to account_profile_url
-  end
-
   private
 
   def request_detail_params
@@ -87,7 +66,7 @@ class AccountController < ApplicationController
 
   def set_user_details
     folio_details = CatalogueServicesClient.new.user_folio_details(current_user.folio_id)
-    email_2fa = CatalogueServicesClient.new.email_2fa_status(current_user.uid)
+    email_2fa = Email2faService.new.email_2fa_status(current_user.uid)
     @current_details = UserDetails.new(folio_details, email_2fa)
   end
 

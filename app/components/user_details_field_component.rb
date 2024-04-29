@@ -32,9 +32,9 @@ class UserDetailsFieldComponent < ViewComponent::Base
   def link_to_email_2fa
     if helpers.current_user.present?
       if @value
-        link_to I18n.t("account.settings.email_2fa.change_text", status: "Off"), disable_email_2fa_url, data: {turbo: false}, target: "_top"
+        link_to I18n.t("account.settings.email_2fa.change_text", status: "Off"), email_2fa_disable_url, data: {turbo: false}, target: "_top"
       else
-        link_to I18n.t("account.settings.email_2fa.change_text", status: "On"), enable_email_2fa_url, data: {turbo: false}, target: "_top"
+        link_to I18n.t("account.settings.email_2fa.change_text", status: "On"), email_2fa_enable_url, data: {turbo: false}, target: "_top"
       end
     end
   end

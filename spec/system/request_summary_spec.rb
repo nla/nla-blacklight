@@ -21,7 +21,7 @@ RSpec.describe "Request summary" do
     end
 
     it "displays the request details" do
-      visit request_details_path("d7746c53-7746-4b0e-8382-5261aa9bcecb", loan: false)
+      visit account_request_details_path("d7746c53-7746-4b0e-8382-5261aa9bcecb", loan: false)
 
       Capybara.using_wait_time(30) do # seconds
         expect(page).to have_css("h1", text: "Request Details")

@@ -194,8 +194,6 @@ en:
             failed: "Sorry, we were unable to update your email address. Please try again later."
           any_phone: "Please provide at least one contact phone number."
           failed: "Sorry, we were unable to update your %{attribute}. Please try again later."
-          2fa:
-            failed: "Sorry, we were unable to update your Two-factor Authentication (2FA) setting. Please try again later."
       first_name:
         label: "First name"
         change_text: "first name"
@@ -225,10 +223,6 @@ en:
         change_text: "Turn %{status}"
         value_text_on: "On"
         value_text_off: "Off"
-        alert:
-          prompt_text: "Would you like to further secure your NLA user account with Two-factor Authentication (2FA)? ${enable_link} or ${doc_link}"
-          enable_link_text: "Turn on 2FA"
-          doc_link_text: "Learn more about 2FA"
   explore:
     title: "Explore"
     find_in_trove: "Find in other libraries at Trove"

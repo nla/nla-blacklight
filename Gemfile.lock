@@ -27,8 +27,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: dd713537715b2ffccc2e81cbbaf35fd1e16a5493
-  branch: feat/email-2fa
+  revision: 09310ddda34b7b5c0a8a20d1268233551bbfa67e
+  branch: main
   specs:
     nla-blacklight_common (0.2.0)
       activerecord-session_store (~> 2.0)
@@ -136,6 +136,7 @@ GEM
       rouge (>= 1.0.0)
     bibtex-ruby (6.0.0)
       latex-decode (~> 0.0)
+    bigdecimal (3.1.7)
     bindata (2.5.0)
     bindex (0.8.1)
     binding_of_caller (1.0.0)
@@ -324,7 +325,7 @@ GEM
     irb (1.10.0)
       rdoc
       reline (>= 0.3.8)
-    jbuilder (2.11.5)
+    jbuilder (2.12.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jsbundling-rails (1.2.1)
@@ -387,7 +388,8 @@ GEM
     mock_redis (0.44.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
-    multi_xml (0.6.0)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
     multipart-post (2.4.0)
     mysql2 (0.5.5)
     namae (1.1.1)
