@@ -1,6 +1,7 @@
 <%= top_bar %>
 <div class="<%= helpers.container_classes %>">
   <%= render GlobalMessageComponent.new %>
+  <%= render "shared/email_2fa_alert" %>
 </div>
 <%- if helpers.show_search_bar? %>
 <%= search_bar %>

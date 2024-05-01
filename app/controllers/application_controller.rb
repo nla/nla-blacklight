@@ -48,6 +48,7 @@ class ApplicationController < ActionController::Base
     !is_a?(ThumbnailController) && # ignore lazy loaded thumbnail requests
       !(is_a?(RequestController) && params[:action] == "index") && # ignore lazy loaded holdings listing requests
       !(is_a?(SearchController) && params[:action] == "single_search") && # ignore single search requests from bento
+      !is_a?(Email2faAlertController) && # ignore email 2fa alert requests
       !is_a?(Users::SessionsController) && # ignore login requests
       !is_a?(Users::OmniauthCallbacksController) # ignore login requests to Keycloak
   end

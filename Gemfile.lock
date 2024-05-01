@@ -27,8 +27,8 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 91916c3dda4306a9279759a1a23f043e311228a3
-  tag: 0.2.0
+  revision: 09310ddda34b7b5c0a8a20d1268233551bbfa67e
+  branch: main
   specs:
     nla-blacklight_common (0.2.0)
       activerecord-session_store (~> 2.0)
@@ -122,7 +122,7 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     aes_key_wrap (1.1.0)
-    annotaterb (4.6.0)
+    annotaterb (4.7.0)
     anyway_config (2.6.3)
       ruby-next-core (~> 1.0)
     ast (2.4.2)
@@ -136,6 +136,7 @@ GEM
       rouge (>= 1.0.0)
     bibtex-ruby (6.0.0)
       latex-decode (~> 0.0)
+    bigdecimal (3.1.7)
     bindata (2.5.0)
     bindex (0.8.1)
     binding_of_caller (1.0.0)
@@ -217,7 +218,7 @@ GEM
       rake (> 10, < 14)
       ruby-statistics (>= 2.1)
       thor (>= 0.19, < 2)
-    devise (4.9.3)
+    devise (4.9.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 4.1.0)
@@ -324,7 +325,7 @@ GEM
     irb (1.10.0)
       rdoc
       reline (>= 0.3.8)
-    jbuilder (2.11.5)
+    jbuilder (2.12.0)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jsbundling-rails (1.2.1)
@@ -379,15 +380,16 @@ GEM
     marcel (1.0.4)
     matrix (0.4.2)
     memory_profiler (1.0.1)
-    method_source (1.0.0)
+    method_source (1.1.0)
     mini_histogram (0.3.1)
     mini_mime (1.1.5)
     minitar (0.9)
-    minitest (5.22.2)
+    minitest (5.22.3)
     mock_redis (0.44.0)
     msgpack (1.7.2)
     multi_json (1.15.0)
-    multi_xml (0.6.0)
+    multi_xml (0.7.1)
+      bigdecimal (~> 3.1)
     multipart-post (2.4.0)
     mysql2 (0.5.5)
     namae (1.1.1)
@@ -400,14 +402,14 @@ GEM
       net-protocol
     net-protocol (0.2.2)
       timeout
-    net-smtp (0.4.0.1)
+    net-smtp (0.5.0)
       net-protocol
-    nio4r (2.7.0)
-    nokogiri (1.16.2-arm64-darwin)
+    nio4r (2.7.1)
+    nokogiri (1.16.4-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.2-x86_64-darwin)
+    nokogiri (1.16.4-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.2-x86_64-linux)
+    nokogiri (1.16.4-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -450,7 +452,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.7.3)
-    rack (2.2.8.1)
+    rack (2.2.9)
     rack-mini-profiler (3.1.1)
       rack (>= 1.2.0)
     rack-protection (3.2.0)
@@ -491,7 +493,7 @@ GEM
       thor (~> 1.0)
       zeitwerk (~> 2.5)
     rainbow (3.1.1)
-    rake (13.1.0)
+    rake (13.2.1)
     rdoc (6.6.0)
       psych (>= 4.0.0)
     redis (5.0.8)
@@ -509,7 +511,7 @@ GEM
     retriable (3.1.2)
     rexml (3.2.6)
     rouge (4.2.0)
-    rsolr (2.5.0)
+    rsolr (2.6.0)
       builder (>= 2.1.2)
       faraday (>= 0.9, < 3, != 2.0.0)
     rspec-core (3.12.2)
@@ -641,8 +643,8 @@ GEM
       unf_ext
     unf_ext (0.0.9.1)
     unicode-display_width (2.5.0)
-    version_gem (1.1.3)
-    view_component (3.11.0)
+    version_gem (1.1.4)
+    view_component (3.12.1)
       activesupport (>= 5.2.0, < 8.0)
       concurrent-ruby (~> 1.0)
       method_source (~> 1.0)

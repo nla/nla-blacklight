@@ -218,6 +218,11 @@ en:
       notifications:
         label: "Notifications"
         change_text: "Email me notifications when requested items are ready for collection"
+      email_2fa:
+        label: "Two-factor Authentication (2FA)"
+        change_text: "Turn %{status}"
+        value_text_on: "On"
+        value_text_off: "Off"
   explore:
     title: "Explore"
     find_in_trove: "Find in other libraries at Trove"

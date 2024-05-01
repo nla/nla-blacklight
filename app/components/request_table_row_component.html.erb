@@ -3,7 +3,7 @@
   <td><%= @request_details.pickupServicePoint %></td>
   <td><%= @request_details.request_date %> <small class="text-muted"><%= @request_details.request_time %></small></td>
   <td class="text-center align-middle">
-    <%= link_to request_details_path(request_id: @request_details.requestId, loan: @request_details.loan), data: {"blacklight-modal": "trigger", turbo: false} do %>
+    <%= link_to account_request_details_path(request_id: @request_details.requestId, loan: @request_details.loan), data: {"blacklight-modal": "trigger", turbo: false} do %>
       <i class="fa-solid fa-circle-info"></i>
     <% end %>
   </td>
