@@ -1,8 +1,6 @@
 # == Route Map
 #
 #                                   Prefix Verb     URI Pattern                                          Controller#Action
-#                      email2fa_alert_show GET      /email2fa_alert/show(.:format)                       email2fa_alert#show
-#                   email2fa_alert_dismiss GET      /email2fa_alert/dismiss(.:format)                    email2fa_alert#dismiss
 #                               blacklight          /                                                    Blacklight::Engine
 #        blacklight_advanced_search_engine          /                                                    BlacklightAdvancedSearch::Engine
 #               yabeda_prometheus_exporter          /metrics                                             Yabeda::Prometheus::Exporter
@@ -62,6 +60,10 @@
 #                           show_thumbnail GET      /thumbnail/:id(.:format)                             thumbnail#thumbnail
 #                       bento_search_index GET      /search(.:format)                                    search#index
 #                      bento_single_search GET      /search/:engine(.:format)                            search#single_search
+#                         email_2fa_enable GET      /email_2fa/enable(.:format)                          email2fa#enable
+#                        email_2fa_disable GET      /email_2fa/disable(.:format)                         email2fa#disable
+#                          email_2fa_alert GET      /email_2fa/alert(.:format)                           email2fa_alert#show
+#                  email_2fa_alert_dismiss GET      /email_2fa/alert/dismiss(.:format)                   email2fa_alert#dismiss
 #                          not_found_error GET      /404(.:format)                                       errors#not_found
 #                      unprocessable_error GET      /422(.:format)                                       errors#unprocessable
 #                    internal_server_error GET      /500(.:format)                                       errors#internal_server
@@ -82,10 +84,6 @@
 #                                   logout GET      /logout(.:format)                                    users/sessions#destroy
 #                  expired_keycloak_logout GET      /expired_keycloak_logout(.:format)                   users/sessions#expired_keycloak_logout
 #                       backchannel_logout POST     /backchannel_logout(.:format)                        users/sessions#backchannel_logout
-#                         email_2fa_enable GET      /email_2fa/enable(.:format)                          email2fa#enable_email_2fa
-#                        email_2fa_disable GET      /email_2fa/disable(.:format)                         email2fa#disable_email_2fa
-#                          email_2fa_alert GET      /email_2fa/alert(.:format)                           email_2fa_alert#show
-#                  email_2fa_alert_dismiss GET      /email_2fa/alert/dismiss(.:format)                   email_2fa_alert#dismiss
 #         turbo_recede_historical_location GET      /recede_historical_location(.:format)                turbo/native/navigation#recede
 #         turbo_resume_historical_location GET      /resume_historical_location(.:format)                turbo/native/navigation#resume
 #        turbo_refresh_historical_location GET      /refresh_historical_location(.:format)               turbo/native/navigation#refresh
