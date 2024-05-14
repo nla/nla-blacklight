@@ -1,5 +1,32 @@
 # Changelog
 
+## [3.1.0](https://github.com/nla/nla-blacklight/compare/3.0.0...3.1.0) (2024-05-14)
+
+
+### Features
+
+* add feature flag to disable requesting related features ([1c5b24e](https://github.com/nla/nla-blacklight/commit/1c5b24ed5319ac0c7a033575216f1fd8166b11a3))
+* add spacing to “New Catalogue search” button ([afd77d7](https://github.com/nla/nla-blacklight/commit/afd77d78283ebeea6d46318726d49638eef523d1))
+* disable email 2fa from appearing on profile page ([c22c98e](https://github.com/nla/nla-blacklight/commit/c22c98e53e336bc1a79b0ef63a29640d9f64cf8c))
+* disable login during FOLIO updates ([de7358a](https://github.com/nla/nla-blacklight/commit/de7358a17c13020818fb3d8fb3c91194a1f0e492))
+* implement email 2fa alert ([a4790de](https://github.com/nla/nla-blacklight/commit/a4790deef59068c1996e23e099eafadae5008ad0))
+* implement enabling/disabling of email 2fa from Account Settings ([8e74216](https://github.com/nla/nla-blacklight/commit/8e7421648e17bced73b1729dacac5708b6fa4f58))
+* update nla-blacklight_common dependency ([d2223a4](https://github.com/nla/nla-blacklight/commit/d2223a4e678331fb06c3b88b257248018af8e95a))
+* update routes annotation ([ff5a49d](https://github.com/nla/nla-blacklight/commit/ff5a49d2fb8b9b590e96846d86f00e7a5a80c350))
+
+
+### Bug Fixes
+
+* downgrade postcss-cli npm dependency ([acc1f7f](https://github.com/nla/nla-blacklight/commit/acc1f7fa7ba0070de93a78d7550d546512c78837))
+* include issn in Trove search query ([adff326](https://github.com/nla/nla-blacklight/commit/adff3264eef0573639b7264350881d0bad0b1b30))
+
+
+### Miscellaneous
+
+* update bundler version ([ae6f6ad](https://github.com/nla/nla-blacklight/commit/ae6f6ad670af949ea2976c05fea7553e23ac92b0))
+* update nla-blacklight_common dependency ([163cfe9](https://github.com/nla/nla-blacklight/commit/163cfe9eedc6d7e9dcea874d137d64d7ec2fb23c))
+* update nla-blacklight_common dependency and config examples ([ab62de2](https://github.com/nla/nla-blacklight/commit/ab62de2d915975bd8c1ad863c105f8a57d4a8722))
+
 ## [3.0.0](https://github.com/nla/nla-blacklight/compare/2.11.1...3.0.0) (2024-03-13)
 
 
