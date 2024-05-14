@@ -27,10 +27,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 09310ddda34b7b5c0a8a20d1268233551bbfa67e
+  revision: 90eea4c1e63bd82d324d80643efa4542dfdd2edc
   branch: main
   specs:
-    nla-blacklight_common (0.2.0)
+    nla-blacklight_common (0.2.1)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 9)
@@ -122,7 +122,7 @@ GEM
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
     aes_key_wrap (1.1.0)
-    annotaterb (4.7.0)
+    annotaterb (4.7.1)
     anyway_config (2.6.3)
       ruby-next-core (~> 1.0)
     ast (2.4.2)
@@ -136,7 +136,7 @@ GEM
       rouge (>= 1.0.0)
     bibtex-ruby (6.0.0)
       latex-decode (~> 0.0)
-    bigdecimal (3.1.7)
+    bigdecimal (3.1.8)
     bindata (2.5.0)
     bindex (0.8.1)
     binding_of_caller (1.0.0)
@@ -319,7 +319,7 @@ GEM
       domain_name (~> 0.5)
     http-form_data (2.3.0)
     httpclient (2.8.3)
-    i18n (1.14.4)
+    i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.6.0)
     irb (1.10.0)
@@ -390,12 +390,12 @@ GEM
     multi_json (1.15.0)
     multi_xml (0.7.1)
       bigdecimal (~> 3.1)
-    multipart-post (2.4.0)
+    multipart-post (2.4.1)
     mysql2 (0.5.5)
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.10)
+    net-imap (0.4.11)
       date
       net-protocol
     net-pop (0.1.2)
@@ -404,12 +404,12 @@ GEM
       timeout
     net-smtp (0.5.0)
       net-protocol
-    nio4r (2.7.1)
-    nokogiri (1.16.4-arm64-darwin)
+    nio4r (2.7.3)
+    nokogiri (1.16.5-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.4-x86_64-darwin)
+    nokogiri (1.16.5-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.4-x86_64-linux)
+    nokogiri (1.16.5-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -430,7 +430,7 @@ GEM
     omniauth-oauth2 (1.8.0)
       oauth2 (>= 1.4, < 3)
       omniauth (~> 2.0)
-    omniauth-rails_csrf_protection (1.0.1)
+    omniauth-rails_csrf_protection (1.0.2)
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     openurl (1.0.0)
@@ -765,4 +765,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.5.7
+   2.5.10
