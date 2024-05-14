@@ -18,10 +18,10 @@ RSpec.describe RequestItemComponent, type: :component do
     expect(page).to have_css("div.holding")
   end
 
-  context "when DISABLE_REQUESTING is `true`" do
+  context "when FOLIO_UPDATE_IN_PROGRESS is `true`" do
     it "does not render the request button" do
       allow(ENV).to receive(:[]).and_call_original
-      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return("true")
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return("true")
 
       render_inline(described_class.new(document: document))
 
@@ -29,10 +29,10 @@ RSpec.describe RequestItemComponent, type: :component do
     end
   end
 
-  context "when DISABLE_REQUESTING is `false`" do
+  context "when FOLIO_UPDATE_IN_PROGRESS is `false`" do
     it "renders the request button" do
       allow(ENV).to receive(:[]).and_call_original
-      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return("false")
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return("false")
 
       render_inline(described_class.new(document: document))
 
@@ -40,10 +40,10 @@ RSpec.describe RequestItemComponent, type: :component do
     end
   end
 
-  context "when DISABLE_REQUESTING is defined without a value" do
+  context "when FOLIO_UPDATE_IN_PROGRESS is defined without a value" do
     it "renders the request button" do
       allow(ENV).to receive(:[]).and_call_original
-      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return("")
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return("")
 
       render_inline(described_class.new(document: document))
 
@@ -51,7 +51,7 @@ RSpec.describe RequestItemComponent, type: :component do
     end
   end
 
-  context "when DISABLE_REQUESTING is not defined" do
+  context "when FOLIO_UPDATE_IN_PROGRESS is not defined" do
     it "renders the request button" do
       render_inline(described_class.new(document: document))
 
