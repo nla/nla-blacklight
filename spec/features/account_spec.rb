@@ -7,19 +7,10 @@ RSpec.describe "Account" do
     sign_in user
   end
 
-  context "when DISABLE_REQUESTING is `true`" do
+  context "when FOLIO_UPDATE_IN_PROGRESS is `true`" do
     it "does not render the request button" do
-      WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
-        .with(
-          headers: {
-            "Accept" => "*/*",
-            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-          }
-        )
-        .to_return(status: 200, body: monograph_details_response, headers: {})
-
       allow(ENV).to receive(:[]).and_call_original
-      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return("true")
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return("true")
 
       visit root_path
 
@@ -29,10 +20,10 @@ RSpec.describe "Account" do
     end
   end
 
-  context "when DISABLE_REQUESTING is `false`" do
+  context "when FOLIO_UPDATE_IN_PROGRESS is `false`" do
     it "renders the request button" do
       allow(ENV).to receive(:[]).and_call_original
-      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return("false")
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return("false")
 
       visit root_path
 
@@ -42,40 +33,21 @@ RSpec.describe "Account" do
     end
   end
 
-  context "when DISABLE_REQUESTING is defined without a value" do
+  context "when FOLIO_UPDATE_IN_PROGRESS is defined without a value" do
     it "renders the request button" do
-      WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
-        .with(
-          headers: {
-            "Accept" => "*/*",
-            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-          }
-        )
-        .to_return(status: 200, body: monograph_details_response, headers: {})
-
       allow(ENV).to receive(:[]).and_call_original
-      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return(nil)
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return(nil)
 
       visit root_path
 
       click_link("Test User")
 
-      expect(ENV["DISABLE_REQUESTING"]).to be_nil
       expect(page).to have_link I18n.t("account.requests.menu"), href: account_requests_path
     end
   end
 
-  context "when DISABLE_REQUESTING is not defined" do
+  context "when FOLIO_UPDATE_IN_PROGRESS is not defined" do
     it "renders the request button" do
-      WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
-        .with(
-          headers: {
-            "Accept" => "*/*",
-            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-          }
-        )
-        .to_return(status: 200, body: monograph_details_response, headers: {})
-
       visit root_path
 
       click_link("Test User")

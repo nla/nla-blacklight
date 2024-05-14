@@ -4,7 +4,7 @@ module RequestItemHelper
   ELECTRONIC_RESOURCE_CALL_NUMBERS = ["ELECTRONIC RESOURCE", "INTERNET"].freeze
 
   def render_request?(document)
-    return false if ENV["DISABLE_REQUESTING"] == "true"
+    return false if ENV["FOLIO_UPDATE_IN_PROGRESS"] == "true"
     !is_ned_item?(document) && !has_no_physical_holdings?(document)
   end
 

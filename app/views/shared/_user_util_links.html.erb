@@ -7,7 +7,7 @@
       <li class="nav-item dropdown">
         <%= link_to current_user, "#", class: "nav-link dropdown-toggle #{active_link_class_controller(%w[account bookmarks])}", id: "navbarDropdown", role: "button", data: {'bs-toggle': "dropdown"}, aria: {haspopup: "true", expanded: "false"} %>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <% unless ENV["DISABLE_REQUESTING"] == "true" %>
+          <% unless ENV["FOLIO_UPDATE_IN_PROGRESS"] == "true" %>
             <%= link_to t("account.requests.menu"), account_requests_path, class: "dropdown-item" %>
           <% end %>
           <%= render partial: "blacklight/nav/bookmark" %>
@@ -19,9 +19,11 @@
       <li class="nav-item">
         <%= link_to t("blacklight.header_links.register"), "https://www.nla.gov.au/getting-started/join-us", class: "nav-link" %>
       </li>
-      <li class="nav-item">
-        <%= link_to t('blacklight.header_links.login'), new_user_session_path, class: "nav-link" %>
-      </li>
+      <% unless ENV["FOLIO_UPDATE_IN_PROGRESS"] == "true" %>
+        <li class="nav-item">
+          <%= link_to t('blacklight.header_links.login'), new_user_session_path, class: "nav-link" %>
+        </li>
+      <% end %>
     <% end %>
   <% end %>
 </ul>
