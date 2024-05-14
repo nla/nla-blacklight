@@ -7,6 +7,55 @@ RSpec.describe "Account" do
     sign_in user
   end
 
+  context "when FOLIO_UPDATE_IN_PROGRESS is `true`" do
+    it "does not render the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return("true")
+
+      visit root_path
+
+      click_link("Test User")
+
+      expect(page).not_to have_link I18n.t("account.requests.menu"), href: account_requests_path
+    end
+  end
+
+  context "when FOLIO_UPDATE_IN_PROGRESS is `false`" do
+    it "renders the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return("false")
+
+      visit root_path
+
+      click_link("Test User")
+
+      expect(page).to have_link I18n.t("account.requests.menu"), href: account_requests_path
+    end
+  end
+
+  context "when FOLIO_UPDATE_IN_PROGRESS is defined without a value" do
+    it "renders the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return(nil)
+
+      visit root_path
+
+      click_link("Test User")
+
+      expect(page).to have_link I18n.t("account.requests.menu"), href: account_requests_path
+    end
+  end
+
+  context "when FOLIO_UPDATE_IN_PROGRESS is not defined" do
+    it "renders the request button" do
+      visit root_path
+
+      click_link("Test User")
+
+      expect(page).to have_link I18n.t("account.requests.menu"), href: account_requests_path
+    end
+  end
+
   describe "GET /requests" do
     context "when user has reached their request limit" do
       it "renders the request limit error" do
@@ -50,7 +99,7 @@ RSpec.describe "Account" do
           )
           .to_return(status: 200, body: monograph_details_response, headers: {})
 
-        visit request_details_path(request_id)
+        visit account_request_details_path(request_id)
 
         expect(page).not_to have_text("[Hurstville Light Opera Company : programs and related material collected by the National Library of Australia]")
       end
@@ -69,7 +118,7 @@ RSpec.describe "Account" do
           )
           .to_return(status: 200, body: monograph_details_response, headers: {})
 
-        visit request_details_path(request_id, loan: false)
+        visit account_request_details_path(request_id, loan: false)
 
         expect(page).to have_css(".document-title-heading", text: "[Hurstville Light Opera Company : programs and related material collected by the National Library of Australia]")
         expect(page).to have_css(".col.col-md-8", text: "Special Collections Reading Room")
@@ -92,7 +141,7 @@ RSpec.describe "Account" do
           )
           .to_return(status: 200, body: serial_details_response, headers: {})
 
-        visit request_details_path(request_id, loan: false)
+        visit account_request_details_path(request_id, loan: false)
 
         expect(page).to have_css(".document-title-heading", text: "National geographic.")
         expect(page).to have_css(".col.col-md-8", text: "Special Collections Reading Room")
@@ -118,7 +167,7 @@ RSpec.describe "Account" do
           )
           .to_return(status: 200, body: manuscript_details_response, headers: {})
 
-        visit request_details_path(request_id, loan: false)
+        visit account_request_details_path(request_id, loan: false)
 
         expect(page).to have_css(".document-title-heading", text: "Correspondence to Andrew Endrey from Hu Feng, Mei Zhi and Zhang Xiaofeng, 1979-2022.")
         expect(page).to have_css(".col.col-md-8", text: "Special Collections Reading Room")
@@ -143,7 +192,7 @@ RSpec.describe "Account" do
           )
           .to_return(status: 200, body: map_details_response, headers: {})
 
-        visit request_details_path(request_id, loan: false)
+        visit account_request_details_path(request_id, loan: false)
 
         expect(page).to have_css(".document-title-heading", text: "Fishing map series [cartographic material] : [Australia]")
         expect(page).to have_css(".col.col-md-8", text: "Special Collections Reading Room")

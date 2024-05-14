@@ -66,7 +66,8 @@ class AccountController < ApplicationController
 
   def set_user_details
     folio_details = CatalogueServicesClient.new.user_folio_details(current_user.folio_id)
-    @current_details = UserDetails.new(folio_details)
+    email_2fa = Email2faService.new.email_2fa_status(current_user.uid)
+    @current_details = UserDetails.new(folio_details, email_2fa)
   end
 
   def profile_edit_params

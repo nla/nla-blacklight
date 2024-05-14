@@ -931,7 +931,7 @@ RSpec.describe SolrDocument do
       end
 
       it "will return the ISBNs as numbers only" do
-        expect(isbn_value).to eq %w[9781740457590 1740457595 9781740457590]
+        expect(isbn_value).to eq %w[9781740457590 1740457595]
       end
     end
   end

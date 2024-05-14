@@ -24,7 +24,7 @@
               </dd>
 
               <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.status") %></dt>
-              <dd class="col-12 col-lg-8"><%= item["displayStatus"] %></dd>
+              <dd class="col-12 col-lg-8"><%= item["requestable"] ? item["displayStatus"] : "Not for loan" %></dd>
 
               <% if access_condition_notes(holding).present? %>
                 <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.access_conditions") %></dt>

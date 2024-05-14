@@ -18,6 +18,47 @@ RSpec.describe RequestItemComponent, type: :component do
     expect(page).to have_css("div.holding")
   end
 
+  context "when FOLIO_UPDATE_IN_PROGRESS is `true`" do
+    it "does not render the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return("true")
+
+      render_inline(described_class.new(document: document))
+
+      expect(page).not_to have_css("div.holding")
+    end
+  end
+
+  context "when FOLIO_UPDATE_IN_PROGRESS is `false`" do
+    it "renders the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return("false")
+
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_css("div.holding")
+    end
+  end
+
+  context "when FOLIO_UPDATE_IN_PROGRESS is defined without a value" do
+    it "renders the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("FOLIO_UPDATE_IN_PROGRESS").and_return("")
+
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_css("div.holding")
+    end
+  end
+
+  context "when FOLIO_UPDATE_IN_PROGRESS is not defined" do
+    it "renders the request button" do
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_css("div.holding")
+    end
+  end
+
   context "when the item is a monograph" do
     before do
       WebMock.stub_request(:get, "http://catservices.test/catalogue-services/folio/instance/93fe53ff-ffcf-5602-a9c1-be246cfadc5e")
@@ -80,6 +121,26 @@ RSpec.describe RequestItemComponent, type: :component do
       render_inline(described_class.new(document: document))
 
       expect(page).not_to have_css("div.holding")
+    end
+  end
+
+  context "when the item is requestable" do
+    let(:item) { {"requestable" => true} }
+
+    it "displays the item's status as 'Available'" do
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_text("Available")
+    end
+  end
+
+  context "when the item is not requestable" do
+    let(:item) { {"requestable" => false} }
+
+    it "displays the item's status as 'Not for loan'" do
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_text("Not for loan")
     end
   end
 

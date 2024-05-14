@@ -13,6 +13,12 @@ application.register("bento-search-totals", BentoSearchTotalsController)
 import ClipboardController from "./clipboard_controller"
 application.register("clipboard", ClipboardController)
 
+import Email2faAlertController from "./email_2fa_alert_controller"
+application.register("email-2fa-alert", Email2faAlertController)
+
+import FormValidationController from "./form_validation_controller"
+application.register("form-validation", FormValidationController)
+
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 

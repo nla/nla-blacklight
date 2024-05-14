@@ -1,21 +1,32 @@
 .settings-label {
   color: var(--gray-medium-light);
+  font-weight: 600;
+}
+
+@media (min-width: 576px) {
+  .settings-label {
+    text-align: right;
+    font-weight: 600;
+  }
 }
 
 @media (min-width: 768px) {
   .settings-label {
     text-align: right;
+    font-weight: 600;
   }
 }
 
 @media (min-width: 992px) {
   .settings-label {
     text-align: right;
+    font-weight: 600;
   }
 }
 
 @media (min-width: 1200px) {
   .settings-label {
     text-align: right;
+    font-weight: 600;
   }
 }

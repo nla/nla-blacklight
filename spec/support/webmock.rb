@@ -268,5 +268,16 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: request_details, headers: {})
+
+    email_2fa = IO.read("spec/files/email_2fa/on.json")
+
+    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/patron\/2fa\/email\/(.*)/)
+      .with(
+        headers: {
+          "Accept" => "*/*",
+          "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+        }
+      )
+      .to_return(status: 200, body: email_2fa, headers: {})
   end
 end

@@ -1,5 +1,87 @@
 # Changelog
 
+## [3.0.0](https://github.com/nla/nla-blacklight/compare/2.11.1...3.0.0) (2024-03-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to Blacklight 8
+* **solr:** Single document search no longer uses the Blacklight default of /get.
+
+### Features
+
+* remove unnecessary solr_wrapper rake tasks ([0d99739](https://github.com/nla/nla-blacklight/commit/0d99739d7e22d0cab1dbe234d4c0fe1fa810016f))
+* update README text ([5e31129](https://github.com/nla/nla-blacklight/commit/5e311290b53fa1091a6783d3a0687af6cbee845a))
+* upgrade to Blacklight 8 ([6ce93c1](https://github.com/nla/nla-blacklight/commit/6ce93c156793b589993ff1e50d8aad19cd4069f4))
+
+
+### Bug Fixes
+
+* bump dotenv and prevent frozen hash issue ([508740d](https://github.com/nla/nla-blacklight/commit/508740d971927926be14d8d1b98c957b1c115545))
+* change pub_date_ssim to pub_date_si ([80b5369](https://github.com/nla/nla-blacklight/commit/80b5369af9f2f6325777a025a703cfda5a594c00))
+* comment out active_storage from production env config ([ad0db78](https://github.com/nla/nla-blacklight/commit/ad0db7833192b842b988aa7ba744c8b866c69c17))
+* configure correct Solr search adapter in blacklight.yml ([e90e0f5](https://github.com/nla/nla-blacklight/commit/e90e0f5b165508a4467b768181ddb674845d58ec))
+* fix nla-blacklight_common dependency path ([93316c0](https://github.com/nla/nla-blacklight/commit/93316c006e0d94941ee620e169e6f13bc401ea65))
+* fix styling of blacklight range limit plugin ([d0c383b](https://github.com/nla/nla-blacklight/commit/d0c383b51a7e08b465d3f5c7a2557eec162e7012))
+* ignore Brakeman false positives and handle UnsafeRedirectError ([3c681ae](https://github.com/nla/nla-blacklight/commit/3c681ae9f26a14122decfeb1751d523fe0859077))
+* improve modal styles ([bb16481](https://github.com/nla/nla-blacklight/commit/bb16481f4cb93cc81d134ba3fd14f2f122476f35))
+* login page error for non-existent document ([446b1da](https://github.com/nla/nla-blacklight/commit/446b1da6764d080d6a905c2305e9137454fd007e))
+* Make image card tiles on homepage equal height ([4b72497](https://github.com/nla/nla-blacklight/commit/4b72497752e36fa7b669c6a0fae72260cd667e0f))
+* Print modal dialog over multiple pages ([3c9d381](https://github.com/nla/nla-blacklight/commit/3c9d3810b392ade918df207e3a174bf8defa8b30))
+* replace deprecated Bootstrap styles ([74ae599](https://github.com/nla/nla-blacklight/commit/74ae599875c27e3ad5f6664108d2d599ae84d6bb))
+* resolve Rubocop errors ([baa7934](https://github.com/nla/nla-blacklight/commit/baa79340853863f0e8dd5e12cf603aab6f150c7b))
+* **solr:** use /select for single document search ([31a45a7](https://github.com/nla/nla-blacklight/commit/31a45a759051503cff47e8abad1212cf68787670))
+* style blacklight range limit modal graph ([0213afd](https://github.com/nla/nla-blacklight/commit/0213afd8db4279757f0f97eca7a9e7addb469ba1))
+* uncomment call to catalogue services to make reqeust ([06c6837](https://github.com/nla/nla-blacklight/commit/06c6837d6512376f67aeb6a15fdf63630f2fe43a))
+* update spacing CSS classes for bootstrap 5 ([cf7c7ae](https://github.com/nla/nla-blacklight/commit/cf7c7aee96582919c41e90ab18dc8b73f060c964))
+* update vulnerable dependencies ([20b9c95](https://github.com/nla/nla-blacklight/commit/20b9c95f198339fca6e4b3211f3b657a9e296eb7))
+
+
+### Reverts
+
+* no need to customise DocumentComponent ([a87be61](https://github.com/nla/nla-blacklight/commit/a87be61ab4d8679c92042d5a35f7862869cab013))
+* reverse ip lookup change ([d50085d](https://github.com/nla/nla-blacklight/commit/d50085d8fe1a125bfcf5ea6099b0fc02ac1578d0))
+* revert removal of solr_wrapper rake task ([fa54c03](https://github.com/nla/nla-blacklight/commit/fa54c039343347f9a8a03eb042b6c28a24ff9a80))
+
+
+### Miscellaneous
+
+* bump nodejs dependencies ([2ef31f1](https://github.com/nla/nla-blacklight/commit/2ef31f138a919e2213e12605972c617b357e1b67))
+* clean up JS console logging ([692e8fb](https://github.com/nla/nla-blacklight/commit/692e8fb735f97f45b58519455875f4aaff051c95))
+* **deps-dev:** bump factory_bot_rails from 6.4.2 to 6.4.3 ([11dc586](https://github.com/nla/nla-blacklight/commit/11dc5863b512514f1f044a05fc82f9f44765533a))
+* **deps-dev:** bump faker from 3.2.2 to 3.2.3 ([be2d44f](https://github.com/nla/nla-blacklight/commit/be2d44fab97464d7b4452e0134f8fdeb82b0ab5c))
+* **deps-dev:** bump mock_redis from 0.39.0 to 0.44.0 ([4f7f61a](https://github.com/nla/nla-blacklight/commit/4f7f61a0ba78e518fe7f4aac0d054fa755d294a2))
+* **deps-dev:** bump selenium-webdriver from 4.15.0 to 4.17.0 ([29f4825](https://github.com/nla/nla-blacklight/commit/29f4825b47f9f41407037092d59b612c5d033dbe))
+* **deps-dev:** bump stackprof from 0.2.25 to 0.2.26 ([bd00f86](https://github.com/nla/nla-blacklight/commit/bd00f868ad0bb290b6c5bf274288b3f748aff502))
+* **deps-dev:** bump standard and rubocop-performance ([c492b84](https://github.com/nla/nla-blacklight/commit/c492b84f4b9489205a87f7372d3995aea7b43d12))
+* **deps:** bump bootsnap from 1.17.0 to 1.18.3 ([326eb41](https://github.com/nla/nla-blacklight/commit/326eb41da0210c043ec1e96ae40828f79049a04e))
+* **deps:** bump cssbundling-rails from 1.3.3 to 1.4.0 ([3862885](https://github.com/nla/nla-blacklight/commit/3862885d89d68cb7922797ff5ba585fc7143f281))
+* **deps:** bump esbuild from 0.19.2 to 0.20.0 ([9247f41](https://github.com/nla/nla-blacklight/commit/9247f41e188d619bc1f35960110097c1212153c2))
+* **deps:** bump nodemon from 3.0.1 to 3.0.3 ([8d55613](https://github.com/nla/nla-blacklight/commit/8d55613ee3cee6c61150fb547b627f3110e6b844))
+* **deps:** bump nokogiri from 1.16.0 to 1.16.2 ([ef393c4](https://github.com/nla/nla-blacklight/commit/ef393c47f1b8d6b6c7c07879ffe74d2d4f600eb6))
+* **deps:** bump postcss from 8.4.29 to 8.4.31 ([6ccbfe2](https://github.com/nla/nla-blacklight/commit/6ccbfe25fbf3cc9d9656753a63b07b638bae09e6))
+* **deps:** bump postcss from 8.4.29 to 8.4.33 ([301fac0](https://github.com/nla/nla-blacklight/commit/301fac0113a2c76d64da28e92fdeeeee4649e162))
+* **deps:** bump postcss-cli from 10.1.0 to 11.0.0 ([55100be](https://github.com/nla/nla-blacklight/commit/55100be96413a941501bb7e6c3d9885e0aca547a))
+* **deps:** bump strong_migrations from 1.6.4 to 1.7.0 ([e086f40](https://github.com/nla/nla-blacklight/commit/e086f401990abbb53238da609231cb2f6f1b4d16))
+* **deps:** bump yabeda-prometheus from 0.9.0 to 0.9.1 ([940bea1](https://github.com/nla/nla-blacklight/commit/940bea162d8784e22312909b7ca710b0638037a4))
+* prepare 3.0.0 release ([58a5c2f](https://github.com/nla/nla-blacklight/commit/58a5c2f230553581d0d871fd85db2317d3d840cf))
+* resolve merge conflicts ([0410baf](https://github.com/nla/nla-blacklight/commit/0410baf28bf64830973b9b5392e32712a0934395))
+* resolve merge conflicts ([e3e1416](https://github.com/nla/nla-blacklight/commit/e3e1416a5623cf228a19c271143cda73fc00ce64))
+* update nla-blacklight_common ([fbc6c20](https://github.com/nla/nla-blacklight/commit/fbc6c209f399c018cff76f7d4c1eba4f907c074f))
+* update nla-blacklight_common dependency ([fe223f6](https://github.com/nla/nla-blacklight/commit/fe223f65b4f42c97fdd3e33a878b5ecc5c5f6f38))
+
+
+### Code Refactoring
+
+* get collection names from Solr response instead of MARC ([9f05cf9](https://github.com/nla/nla-blacklight/commit/9f05cf9adbbcea707d0248e4b93d704e9e514ff7))
+* link directly to Copies Direct instead of submitting form ([794c505](https://github.com/nla/nla-blacklight/commit/794c505edf4e3b7c609b368995631a01215d0fea))
+
+
+### Build System
+
+* ignore CVE-2023-51774 until after release ([54488d4](https://github.com/nla/nla-blacklight/commit/54488d469811c2ee3bbc9203a0b723ffebf041e0))
+* point nla-blacklight_common to main branch ([91ca9a4](https://github.com/nla/nla-blacklight/commit/91ca9a4d3dba42464173d1f2cea7a9581126b47d))
+
 ## [2.11.1](https://github.com/nla/nla-blacklight/compare/2.11.0...2.11.1) (2023-11-29)
 
 
