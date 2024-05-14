@@ -42,6 +42,6 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def render_request?
-    !is_ned_item?(@document) && !has_no_physical_holdings?(@document)
+    helpers.render_request?(@document)
   end
 end

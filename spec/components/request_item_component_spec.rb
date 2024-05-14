@@ -18,6 +18,47 @@ RSpec.describe RequestItemComponent, type: :component do
     expect(page).to have_css("div.holding")
   end
 
+  context "when DISABLE_REQUESTING is `true`" do
+    it "does not render the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return("true")
+
+      render_inline(described_class.new(document: document))
+
+      expect(page).not_to have_css("div.holding")
+    end
+  end
+
+  context "when DISABLE_REQUESTING is `false`" do
+    it "renders the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return("false")
+
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_css("div.holding")
+    end
+  end
+
+  context "when DISABLE_REQUESTING is defined without a value" do
+    it "renders the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return("")
+
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_css("div.holding")
+    end
+  end
+
+  context "when DISABLE_REQUESTING is not defined" do
+    it "renders the request button" do
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_css("div.holding")
+    end
+  end
+
   context "when the item is a monograph" do
     before do
       WebMock.stub_request(:get, "http://catservices.test/catalogue-services/folio/instance/93fe53ff-ffcf-5602-a9c1-be246cfadc5e")

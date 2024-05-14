@@ -19,6 +19,47 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
     expect(page.text).to include("Request")
   end
 
+  context "when DISABLE_REQUESTING is `true`" do
+    it "does not render the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return("true")
+
+      render_inline(described_class.new(document: document))
+
+      expect(page.text).not_to include("Request")
+    end
+  end
+
+  context "when DISABLE_REQUESTING is `false`" do
+    it "renders the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return("false")
+
+      render_inline(described_class.new(document: document))
+
+      expect(page.text).to include("Request")
+    end
+  end
+
+  context "when DISABLE_REQUESTING is defined without a value" do
+    it "renders the request button" do
+      allow(ENV).to receive(:[]).and_call_original
+      allow(ENV).to receive(:[]).with("DISABLE_REQUESTING").and_return("")
+
+      render_inline(described_class.new(document: document))
+
+      expect(page.text).to include("Request")
+    end
+  end
+
+  context "when DISABLE_REQUESTING is not defined" do
+    it "renders the request button" do
+      render_inline(described_class.new(document: document))
+
+      expect(page.text).to include("Request")
+    end
+  end
+
   context "when item is a NED item" do
     it "does not render the 'Request' button" do
       allow(document).to receive_messages(copy_access_urls: [], system_control_number: ["(AU-CaNED)NED248338P743467"])
