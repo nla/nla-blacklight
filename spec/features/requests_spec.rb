@@ -61,6 +61,7 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
+        expect(page).to have_css("dd", text: I18n.t("requesting.request_held_text"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
       end
     end
@@ -94,6 +95,7 @@ RSpec.describe "Requests" do
         expect(page).to have_css("label", text: I18n.t("requesting.label.year"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.volume"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.enumeration"))
+        expect(page).to have_css("dd", text: I18n.t("requesting.request_held_text"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
       end
     end
@@ -180,6 +182,7 @@ RSpec.describe "Requests" do
         expect(page).to have_css("label", text: I18n.t("requesting.label.box_number"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.series_number"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.folder_item_number"))
+        expect(page).to have_css("dd", text: I18n.t("requesting.request_held_text"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
       end
     end
@@ -225,6 +228,7 @@ RSpec.describe "Requests" do
 
         expect(page).to have_css("label", text: "Map Sheet No. or Name*:")
         expect(page).to have_css("label", text: I18n.t("requesting.label.year"))
+        expect(page).to have_css("dd", text: I18n.t("requesting.request_held_text"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
       end
     end
