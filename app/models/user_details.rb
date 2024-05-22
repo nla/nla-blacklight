@@ -14,8 +14,8 @@ class UserDetails
   # order of attributes in ALL_ATTRIBUTES array determines order in view
   ALL_ATTRIBUTES = %w[first_name last_name email mobile_phone phone password postcode email_2fa]
 
-  PATRON_ATTRIBUTES = %w[first_name last_name email phone mobile_phone password postcode]
-  PATRON_EDITABLE_ATTRIBUTES = %w[email phone mobile_phone password postcode]
+  PATRON_ATTRIBUTES = %w[first_name last_name email phone mobile_phone password postcode email_2fa]
+  PATRON_EDITABLE_ATTRIBUTES = %w[email phone mobile_phone password postcode email_2fa]
 
   STAFF_ATTRIBUTES = %w[first_name last_name email]
   STAFF_EDITABLE_ATTRIBUTES = []
