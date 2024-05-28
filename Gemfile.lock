@@ -636,7 +636,7 @@ GEM
       nokogiri (~> 1.9)
       slop (~> 4.0)
       yell
-    turbo-rails (1.5.0)
+    turbo-rails (2.0.5)
       actionpack (>= 6.0.0)
       activejob (>= 6.0.0)
       railties (>= 6.0.0)
@@ -687,7 +687,7 @@ GEM
       railties
       yabeda (~> 0.8)
     yell (2.2.2)
-    zeitwerk (2.6.14)
+    zeitwerk (2.6.15)
     zk (1.10.0)
       zookeeper (~> 1.5.0)
     zookeeper (1.5.5)
