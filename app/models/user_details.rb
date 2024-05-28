@@ -36,13 +36,13 @@ class UserDetails
 
   def attributes
     {
-      "last_name" => last_name,
-      "first_name" => first_name,
-      "email" => email,
-      "phone" => phone,
-      "mobile_phone" => mobile_phone,
-      "postcode" => postcode,
-      "email_2fa" => email_2fa
+      last_name: last_name,
+      first_name: first_name,
+      email: email,
+      phone: phone,
+      mobile_phone: mobile_phone,
+      postcode: postcode,
+      email_2fa: email_2fa
     }
   end
 

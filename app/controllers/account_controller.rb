@@ -29,7 +29,7 @@ class AccountController < ApplicationController
   def profile_update
     # Since this is not a database backed model, we need to create a new instance using the
     # current details as a base and then assign the updated attributes to it.
-    @user_details = UserDetails.new(@current_details.attributes)
+    @user_details = UserDetails.new(@current_details.attributes, @current_details.attributes[:email_2fa])
     @user_details.assign_attributes(profile_update_params[:user_details])
 
     # Pass a validation context to target the specific attribute
