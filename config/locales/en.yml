@@ -119,7 +119,7 @@ en:
     btn_select: "Select"
     btn_in_use: "In use"
     btn_back_to_item: "Back to item"
-    request_held_text: "Requests are held for 7 days. Do not provide personal details."
+    request_held_text: "Do not provide personal details."
     label:
       year: "Year (YYYY):"
       volume: "Volume/No:"
