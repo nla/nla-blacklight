@@ -27,10 +27,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 52eaa922fc5c48965001ac4827f9705c7be6a371
+  revision: 423a4ff311a1d42ac0f2e5f0a710ef58dc9cd6ff
   branch: main
   specs:
-    nla-blacklight_common (0.2.1)
+    nla-blacklight_common (0.2.2)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 9)
@@ -122,7 +122,7 @@ GEM
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
     aes_key_wrap (1.1.0)
-    annotaterb (4.8.0)
+    annotaterb (4.9.0)
     anyway_config (2.6.3)
       ruby-next-core (~> 1.0)
     ast (2.4.2)
@@ -141,7 +141,7 @@ GEM
     bindex (0.8.1)
     binding_of_caller (1.0.0)
       debug_inspector (>= 0.0.1)
-    blacklight (8.1.0)
+    blacklight (8.2.0)
       globalid
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
@@ -396,7 +396,7 @@ GEM
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.11)
+    net-imap (0.4.12)
       date
       net-protocol
     net-pop (0.1.2)
