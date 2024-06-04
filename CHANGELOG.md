@@ -1,5 +1,40 @@
 # Changelog
 
+## [3.2.0](https://github.com/nla/nla-blacklight/compare/3.1.0...3.2.0) (2024-06-04)
+
+
+### Bug Fixes
+
+* setting user details during edit ([8cf8e4a](https://github.com/nla/nla-blacklight/commit/8cf8e4a4baccb9f0bd256bea98b345619c5edec3))
+
+
+### Reverts
+
+* revert disabling of email 2FA ([3ea8aae](https://github.com/nla/nla-blacklight/commit/3ea8aaeb8ad35b95ae280bdde7a3ec121a979656))
+
+
+### Miscellaneous
+
+* **deps-dev:** bump debug from 1.8.0 to 1.9.2 ([b898dac](https://github.com/nla/nla-blacklight/commit/b898daca05f458cab21e1adad7bf201fd1324e46))
+* **deps-dev:** bump rdoc from 6.6.0 to 6.7.0 ([6bbd5c5](https://github.com/nla/nla-blacklight/commit/6bbd5c59c6f9049be3822574e6f948ccc4e2a524))
+* **deps-dev:** bump shoulda-matchers from 5.3.0 to 6.2.0 ([f5313b4](https://github.com/nla/nla-blacklight/commit/f5313b46a50f4f9264e11a6ff5db2e9c624c17b9))
+* **deps-dev:** bump webmock from 3.19.1 to 3.23.0 ([9b1f44e](https://github.com/nla/nla-blacklight/commit/9b1f44e7439914ba27ac7d05f0aae64337657521))
+* **deps:** bump @hotwired/turbo-rails from 7.3.0 to 8.0.4 ([8482ab0](https://github.com/nla/nla-blacklight/commit/8482ab0ead24de503a919b2a32be869d6edb8c0d))
+* **deps:** bump autoprefixer from 10.4.17 to 10.4.19 ([b4fe092](https://github.com/nla/nla-blacklight/commit/b4fe0921bb5dc0d310c72b098f1bfee945ad0297))
+* **deps:** bump esbuild from 0.20.0 to 0.21.4 ([553d761](https://github.com/nla/nla-blacklight/commit/553d7616ac461a6e84889616a30a1bc6e28ff64c))
+* **deps:** bump hiredis-client from 0.18.0 to 0.22.2 ([aad37e4](https://github.com/nla/nla-blacklight/commit/aad37e415e45a080e7f09186b9cf89e29b457e6b))
+* **deps:** bump nodemon from 3.0.3 to 3.1.0 ([bc69950](https://github.com/nla/nla-blacklight/commit/bc69950f6ca57ee9ceab1cccb3764c56f7ae8308))
+* **deps:** bump nodemon from 3.1.0 to 3.1.2 ([863f38e](https://github.com/nla/nla-blacklight/commit/863f38e595d58d75b75f09a7b2b7e36623517a25))
+* **deps:** bump postcss from 8.4.33 to 8.4.38 ([fb58776](https://github.com/nla/nla-blacklight/commit/fb58776cb0063ee2aa9568453cc2186b82a31a81))
+* **deps:** bump rexml from 3.2.6 to 3.2.8 ([4ee2f9b](https://github.com/nla/nla-blacklight/commit/4ee2f9b834b33708297b2a405500f8a69d45c08b))
+* **deps:** bump sass from 1.71.1 to 1.77.4 ([4455ad0](https://github.com/nla/nla-blacklight/commit/4455ad0cfb6bec4bb133b400deb7878e5a1c86b2))
+* **deps:** bump stimulus-rails from 1.3.0 to 1.3.3 ([0720cbf](https://github.com/nla/nla-blacklight/commit/0720cbf914bdf8544e3b81926c5040457a15f789))
+* **deps:** bump turbo-rails from 1.5.0 to 2.0.5 ([be17caf](https://github.com/nla/nla-blacklight/commit/be17cafc0d7945fc6c65ca9101d3944cd16fa301))
+* prepare release ([a2f4ff3](https://github.com/nla/nla-blacklight/commit/a2f4ff3abd7876f0601d2880927eb8ba6cef0c93))
+* release 3.2.0 ([a38cd66](https://github.com/nla/nla-blacklight/commit/a38cd66c5d6a3e45b0121d2fbfe0c772ec973de9))
+* update nla-blacklight_common dependency ([22d3f32](https://github.com/nla/nla-blacklight/commit/22d3f326ff40ee3f815ef26c3c2f10f576e6759c))
+* update nla-blacklight_common dependency ([b4883bf](https://github.com/nla/nla-blacklight/commit/b4883bf656a7893b45843052b1f631f529a178bd))
+
 ## [3.1.0](https://github.com/nla/nla-blacklight/compare/3.0.0...3.1.0) (2024-05-14)
 
 
