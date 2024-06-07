@@ -245,6 +245,7 @@ class CatalogController < ApplicationController
     config.add_show_field "previous_frequency_tsim", label: "Previous Frequency", helper_method: :list
     config.add_show_field "index_finding_aid_note_tsim", label: "Index/Finding Aid Note", helper_method: :list
     config.add_show_field "awards_tsim", label: "Awards", helper_method: :unstyled_list
+    config.add_show_field "indigenous_subject_ssim", label: "First Nations (AIATSIS) Subject", helper_method: :subject_search_list
     config.add_show_field "subject_ssim", label: "Subject", helper_method: :subject_search_list
     config.add_show_field "time_coverage", label: "Time Coverage", accessor: :time_coverage
     config.add_show_field "occupation_ssim", label: "Occupation", helper_method: :occupation_search_list
