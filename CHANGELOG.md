@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.2.1](https://github.com/nla/nla-blacklight/compare/3.2.0...3.2.1) (2024-06-11)
+
+
+### Miscellaneous
+
+* **deps:** bump actionpack from 7.0.8.3 to 7.0.8.4 ([64a73ce](https://github.com/nla/nla-blacklight/commit/64a73ce8d6c9218be1660ba87ce4f5101d19b415))
+* **deps:** bump braces from 3.0.2 to 3.0.3 ([da06086](https://github.com/nla/nla-blacklight/commit/da060869b79f658a2bb2c613724a4f0a949ba4f2))
+
 ## [3.2.0](https://github.com/nla/nla-blacklight/compare/3.1.0...3.2.0) (2024-06-04)
 
 
