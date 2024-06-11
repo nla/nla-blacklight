@@ -407,6 +407,58 @@ RSpec.describe FieldHelper do
     end
   end
 
+  describe "#aiatsis_subject_search_list" do
+    subject(:aiatsis_subject_search_list_value) do
+      helper.aiatsis_subject_search_list(document: document, field: "indigenous_subject", config: config, value: value, context: "show")
+    end
+
+    let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 1111, subject: value, aiatsis_subject_ssim: value) }
+
+    context "when there is a single subject" do
+      let(:value) do
+        [
+          "Band music, Arranged -- Scores and parts"
+        ]
+      end
+
+      it "does not render a list" do
+        expect(aiatsis_subject_search_list_value).not_to include "ul"
+        expect(aiatsis_subject_search_list_value).not_to include "li"
+        expect(aiatsis_subject_search_list_value).to include "search_field=indigenous_subject"
+        expect(aiatsis_subject_search_list_value).to include "q=%22Band+music%2C+Arranged+--+Scores+and+parts%22"
+        expect(aiatsis_subject_search_list_value).to include "Band music, Arranged -- Scores and parts"
+      end
+    end
+
+    context "when there are multiple subjects" do
+      let(:value) do
+        [
+          "Band music, Arranged -- Scores and parts",
+          "Marches (Band), Arranged -- Scores and parts"
+        ]
+      end
+
+      it "renders an unstyled list" do
+        expect(aiatsis_subject_search_list_value).to include "ul"
+        expect(aiatsis_subject_search_list_value).to include "li"
+        expect(aiatsis_subject_search_list_value).to include "list-unstyled"
+        expect(aiatsis_subject_search_list_value).to include "search_field=indigenous_subject"
+        expect(aiatsis_subject_search_list_value).to include "q=%22Band+music%2C+Arranged+--+Scores+and+parts%22"
+        expect(aiatsis_subject_search_list_value).to include "Band music, Arranged -- Scores and parts"
+        expect(aiatsis_subject_search_list_value).to include "q=%22Marches+%28Band%29%2C+Arranged+--+Scores+and+parts%22"
+        expect(aiatsis_subject_search_list_value).to include "Marches (Band), Arranged -- Scores and parts"
+      end
+    end
+
+    context "when there are no subjects" do
+      let(:value) { [] }
+
+      it "returns an empty string" do
+        expect(aiatsis_subject_search_list_value).to be_nil
+      end
+    end
+  end
+
   describe "#author_search_list" do
     subject(:author_search_list_value) do
       helper.author_search_list(document: document, field: "author_with_relator_ssim", config: config, value: values, context: "show")
