@@ -146,9 +146,9 @@ module FieldHelper
     Rails.logger.info "Record #{document.id} has no '#{field}'"
   end
 
-  def aiatsis_subject_search_list(document:, field:, config:, value:, context:)
+  def indigenous_subject_search_list(document:, field:, config:, value:, context:)
     if value.present?
-      catalogue_search_list(value, "indigenous_subject", bulleted: false, search_values: document.fetch("aiatsis_subject_ssim"))
+      catalogue_search_list(value, "indigenous_subject", bulleted: false, search_values: document.fetch("indigenous_subject_ssim"))
     end
   rescue KeyError
     Rails.logger.info "Record #{document.id} has no '#{field}'"
