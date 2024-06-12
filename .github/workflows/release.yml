@@ -1,0 +1,20 @@
+# This workflow creates a release pull request whenever a change is pushed to 'main'.
+# When the release pull request is merged into 'main', it will automatically create and tag a new
+# release version.
+
+name: Release automation
+on:
+  push:
+    branches: ["dependabot/github_actions/google-github-actions/release-please-action-4"]
+jobs:
+  release-please:
+    permissions:
+      contents: write
+      pull-requests: write
+    name: Create a new release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: google-github-actions/release-please-action@v4
+        id: release
+        with:
+          target-branch: ${{ github.ref_name }}
