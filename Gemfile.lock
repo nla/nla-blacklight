@@ -16,19 +16,9 @@ GIT
       summon
 
 GIT
-  remote: https://github.com/nla/blacklight_range_limit
-  revision: 3de6a19b3ed3439694d6cc57cd28b0fa7f77201d
-  branch: main
-  specs:
-    blacklight_range_limit (8.4.0)
-      blacklight (>= 7.25.2, < 9)
-      deprecation
-      view_component (>= 2.54, < 4)
-
-GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 0e8347c3a835b5fe81793e9920120f751ed65d5d
-  tag: 0.2.4
+  revision: d4c507278c33cadb6a6b4868e5b3088ef293e751
+  branch: main
   specs:
     nla-blacklight_common (0.2.4)
       activerecord-session_store (~> 2.0)
@@ -159,6 +149,10 @@ GEM
     blacklight_advanced_search (8.0.0.alpha2)
       blacklight (>= 7.15, < 9)
       parslet
+    blacklight_range_limit (8.5.0)
+      blacklight (>= 7.25.2, < 9)
+      deprecation
+      view_component (>= 2.54, < 4)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     brakeman (6.1.2)
@@ -710,7 +704,7 @@ DEPENDENCIES
   blacklight (>= 8.0.0, < 9)
   blacklight-marc (~> 8.0)
   blacklight_advanced_search (= 8.0.0.alpha2)
-  blacklight_range_limit!
+  blacklight_range_limit (~> 8.0, < 9)
   bootsnap
   brakeman
   bundler-audit
@@ -768,4 +762,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.5.10
+   2.5.11
