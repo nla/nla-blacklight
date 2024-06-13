@@ -4,6 +4,7 @@
     ".": {
       "release-type": "ruby",
       "package-name": "nla-blacklight",
+      "bootstrap-sha": "f3ade93168185ad34ffbe2fb31b0ac00e5fa3660",
       "bump-minor-pre-major": false,
       "bump-patch-for-minor-pre-major": false,
       "include-v-in-tag": false,
