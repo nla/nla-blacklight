@@ -444,7 +444,7 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
-    phonelib (0.8.5)
+    phonelib (0.8.9)
     prometheus-client (4.2.2)
     psych (5.1.2)
       stringio
@@ -735,7 +735,7 @@ DEPENDENCIES
   mock_redis (~> 0.44.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
-  phonelib (~> 0.8.4)
+  phonelib (~> 0.8.9)
   puma (~> 6.4)
   rack-mini-profiler
   rails (~> 7.0)
