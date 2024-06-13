@@ -3,7 +3,7 @@
   "packages": {
     ".": {
       "release-type": "ruby",
-      "package-name": "shelfie",
+      "package-name": "nla-blacklight",
       "bump-minor-pre-major": false,
       "bump-patch-for-minor-pre-major": false,
       "include-v-in-tag": false,
