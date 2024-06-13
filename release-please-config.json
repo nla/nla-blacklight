@@ -4,7 +4,6 @@
     ".": {
       "release-type": "ruby",
       "package-name": "shelfie",
-      "bootstrap-sha": "aaab98e5d549714e5fa9fed5a48d293c63146025",
       "bump-minor-pre-major": false,
       "bump-patch-for-minor-pre-major": false,
       "include-v-in-tag": false,
