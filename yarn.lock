@@ -213,10 +213,10 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.2.0.tgz#75f502eeaf9ffde42fc98829645be4ea76bd9e2d"
   integrity sha512-jDctJ/IVQbZoJykoeHbhXpOlNBqGNcwXJKJog42E5HDPUwQTSdjCHdihjj0DlnheQ7blbT6dHOafNAiS8ooQKA==
 
-blacklight-frontend@^8.0.1:
-  version "8.0.1"
-  resolved "https://registry.yarnpkg.com/blacklight-frontend/-/blacklight-frontend-8.0.1.tgz#20c923ea45e0d9c774ad3d23ef0bed2e31a12c71"
-  integrity sha512-KVQ4txligEJb3RZx4LpGEx/YDWRWgSDP7xdJOzudFLFwZ8eJAwbwc7L5ErXvuNwdSz0o6v5vf6IIr66Hpbg5TA==
+blacklight-frontend@^8.3.0:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/blacklight-frontend/-/blacklight-frontend-8.3.0.tgz#e0b108835f2e21b54eef09afb581d0f2b6cc4288"
+  integrity sha512-V92LxXqe1QSdg18qVYQ5cIWfWPLJiU0D84ZNA4IICJBdzoZ3cAsVwnMXdOgV0zhQT8BQQtTG2+E5bcUUFg3oug==
   dependencies:
     bootstrap ">=4.3.1 <6.0.0"
 
@@ -225,12 +225,7 @@ bootstrap-icons@^1.11.3:
   resolved "https://registry.yarnpkg.com/bootstrap-icons/-/bootstrap-icons-1.11.3.tgz#03f9cb754ec005c52f9ee616e2e84a82cab3084b"
   integrity sha512-+3lpHrCw/it2/7lBL15VR0HEumaBss0+f/Lb6ZvHISn1mlK83jjFpooTLsMWbIjJMDjDjOExMsTxnXSIT4k4ww==
 
-"bootstrap@>=4.3.1 <6.0.0":
-  version "5.3.1"
-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.1.tgz#8ca07040ad15d7f75891d1504cf14c5dedfb1cfe"
-  integrity sha512-jzwza3Yagduci2x0rr9MeFSORjcHpt0lRZukZPZQJT1Dth5qzV7XcgGqYzi39KGAVYR8QEDVoO0ubFKOxzMG+g==
-
-bootstrap@^5.3.3:
+"bootstrap@>=4.3.1 <6.0.0", bootstrap@^5.3.3:
   version "5.3.3"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.3.tgz#de35e1a765c897ac940021900fcbb831602bac38"
   integrity sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==
