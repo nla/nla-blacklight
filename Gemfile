@@ -142,7 +142,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.17"
+  gem "selenium-webdriver", "~> 4.21"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"
