@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: d4c507278c33cadb6a6b4868e5b3088ef293e751
+  revision: e1be8e6d9c648655a103ad95d19eecfa4670016b
   branch: main
   specs:
     nla-blacklight_common (0.2.4)
@@ -240,7 +240,7 @@ GEM
       public_suffix (~> 4.0)
     email_validator (2.2.4)
       activemodel
-    erubi (1.12.0)
+    erubi (1.13.0)
     et-orbi (1.2.7)
       tzinfo
     factory_bot (6.4.6)
@@ -390,7 +390,7 @@ GEM
     namae (1.1.1)
     net-http-persistent (4.0.2)
       connection_pool (~> 2.2)
-    net-imap (0.4.12)
+    net-imap (0.4.13)
       date
       net-protocol
     net-pop (0.1.2)
@@ -400,11 +400,11 @@ GEM
     net-smtp (0.5.0)
       net-protocol
     nio4r (2.7.3)
-    nokogiri (1.16.5-arm64-darwin)
+    nokogiri (1.16.6-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.5-x86_64-darwin)
+    nokogiri (1.16.6-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.16.5-x86_64-linux)
+    nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -681,7 +681,7 @@ GEM
       railties
       yabeda (~> 0.8)
     yell (2.2.2)
-    zeitwerk (2.6.15)
+    zeitwerk (2.6.16)
     zk (1.10.0)
       zookeeper (~> 1.5.0)
     zookeeper (1.5.5)
@@ -762,4 +762,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.5.11
+   2.5.13
