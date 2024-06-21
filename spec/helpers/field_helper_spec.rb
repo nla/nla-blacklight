@@ -310,10 +310,6 @@ RSpec.describe FieldHelper do
   describe "#render_copyright_component" do
     subject(:copyright_component) { helper.render_copyright_component(document: document, field: "", config: config, value: value, context: "show") }
 
-    before do
-      view.lookup_context.view_paths.push "#{Rails.root}/app/components/"
-    end
-
     let(:value) { [copyright_response_hash] }
 
     it "renders the copyright component" do
