@@ -25,7 +25,7 @@ RSpec.describe "Profile" do
           .to_return(body: '{"status":"OK"}')
       end
 
-      it "deletes a single number without error" do
+      it "deletes a single phone number without error" do
         visit account_profile_url
 
         click_on "Change my phone number"

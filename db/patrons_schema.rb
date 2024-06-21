@@ -10,37 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_26_043927) do
+ActiveRecord::Schema[7.1].define(version: 2023_04_26_043927) do
   create_table "accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_accounts_on_user_id"
   end
 
   create_table "sessions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "session_id", null: false
-    t.text "data"
     t.datetime "created_at", null: false
+    t.text "data"
+    t.string "session_id", null: false
     t.datetime "updated_at", null: false
     t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
     t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.string "folio_id"
-    t.bigint "patron_id"
-    t.bigint "voyager_id"
-    t.string "name_given"
-    t.string "name_family"
+    t.boolean "active", default: true, null: false
+    t.datetime "created_at", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
+    t.string "folio_id"
+    t.string "name_family"
+    t.string "name_given"
+    t.bigint "patron_id"
     t.string "provider"
-    t.string "uid"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "active", default: true, null: false
     t.string "session_token"
+    t.string "uid"
+    t.datetime "updated_at", null: false
+    t.bigint "voyager_id"
     t.index ["folio_id"], name: "index_users_on_folio_id", unique: true
   end
 
