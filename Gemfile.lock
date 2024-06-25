@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/nla/bento_search.git
-  revision: 120503c4a960b12cd546d94fe817229fd9543592
+  revision: 5f20f919b716899a639271703eb048234356a6ba
   branch: feat/upgrade
   specs:
     bento_search (2.0.0.rc1)
@@ -527,7 +527,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     retriable (3.1.2)
-    rexml (3.3.0)
+    rexml (3.3.1)
       strscan
     rouge (4.3.0)
     rsolr (2.6.0)
