@@ -25,7 +25,7 @@ RSpec.describe RequestItemComponent, type: :component do
 
       render_inline(described_class.new(document: document))
 
-      expect(page).not_to have_css("div.holding")
+      expect(page).to have_no_css("div.holding")
     end
   end
 
@@ -74,7 +74,7 @@ RSpec.describe RequestItemComponent, type: :component do
     it "does not display 'Items/Issues Held:'" do
       render_inline(described_class.new(document: document))
 
-      expect(page).not_to have_content("Items/Issues Held:")
+      expect(page).to have_no_content("Items/Issues Held:")
     end
   end
 
@@ -101,7 +101,7 @@ RSpec.describe RequestItemComponent, type: :component do
     it "does not render the holdings" do
       render_inline(described_class.new(document: document))
 
-      expect(page).not_to have_css("div.holding")
+      expect(page).to have_no_css("div.holding")
     end
   end
 
@@ -120,7 +120,7 @@ RSpec.describe RequestItemComponent, type: :component do
     it "does not render the holdings" do
       render_inline(described_class.new(document: document))
 
-      expect(page).not_to have_css("div.holding")
+      expect(page).to have_no_css("div.holding")
     end
   end
 

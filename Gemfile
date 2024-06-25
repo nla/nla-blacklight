@@ -107,6 +107,8 @@ group :development, :test do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
   gem "rubocop-performance", require: false
+  gem "rubocop-capybara", require: false
+  gem "rubocop-factory_bot", require: false
   gem "solr_wrapper", ">= 0.3"
 
   gem "rspec-rails", "~> 6.1"

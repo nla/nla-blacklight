@@ -470,7 +470,7 @@ RSpec.describe FieldHelper do
       let(:values) { ["Joe Bloggs, author, illustrator"] }
       let(:search_values) { ["Joe Bloggs"] }
 
-      it "will render a linked search for the author" do
+      it "renders a linked search for the author" do
         expect(author_search_list_value).to include "Joe Bloggs, author, illustrator"
         expect(author_search_list_value).to include "search_field=author"
         expect(author_search_list_value).to include "q=%22Joe+Bloggs%22"
@@ -481,7 +481,7 @@ RSpec.describe FieldHelper do
       let(:values) { ["Joe Bloggs, author, illustrator", "Sally Seashell, author"] }
       let(:search_values) { ["Joe Bloggs", "Sally Seashell"] }
 
-      it "will render an unstyled list of linked searches for the authors" do
+      it "renders an unstyled list of linked searches for the authors" do
         expect(author_search_list_value).to include "ul"
         expect(author_search_list_value).to include "li"
         expect(author_search_list_value).to include "list-unstyled"

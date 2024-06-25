@@ -18,7 +18,7 @@ RSpec.describe RequestLimitMessageComponent, type: :component do
 
       render_inline(component)
 
-      expect(page).not_to have_css("div.alert-danger")
+      expect(page).to have_no_css("div.alert-danger")
     end
   end
 

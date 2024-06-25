@@ -50,11 +50,9 @@ class SolrDocument
       response = search_response["response"]
       if response.present?
         if response["numFound"] > 0
-          result = []
-          response["docs"].each do |doc|
-            result << {id: doc["id"], title: doc["title_tsim"].first}
+          response["docs"].map do |doc|
+            {id: doc["id"], title: doc["title_tsim"].first}
           end
-          result
         end
       end
     end
