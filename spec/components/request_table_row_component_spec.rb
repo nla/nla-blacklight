@@ -33,7 +33,7 @@ RSpec.describe RequestTableRowComponent, type: :component do
     it "renders the title" do
       render_inline(described_class.new(request_data_without_instance_id))
 
-      expect(page).not_to have_css(".record-title")
+      expect(page).to have_no_css(".record-title")
       expect(page).to have_text("National geographic.")
     end
   end

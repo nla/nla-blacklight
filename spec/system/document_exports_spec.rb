@@ -42,19 +42,19 @@ RSpec.describe "Document exports" do
   it "does not show the 'Export to Refworks' link" do
     visit solr_document_path(id: 1414519)
 
-    expect(page).not_to have_text("Export to Refworks")
+    expect(page).to have_no_text("Export to Refworks")
   end
 
   it "does not show 'Email' link" do
     visit solr_document_path(id: 1414519)
 
-    expect(page).not_to have_text("Email")
+    expect(page).to have_no_text("Email")
   end
 
   it "does not show the 'SMS This' link" do
     visit solr_document_path(id: 1414519)
 
-    expect(page).not_to have_text("SMS This")
+    expect(page).to have_no_text("SMS This")
   end
 
   private

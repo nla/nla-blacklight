@@ -9,7 +9,7 @@ RSpec.describe InvalidIsbn do
         described_class.new(document.marc_xml).value
       end
 
-      it "will return the invalid ISBN" do
+      it "returns the invalid ISBN" do
         expect(invalid_isbn_value).to eq ["0855504404", "085550448X (corrected) (soft)"]
       end
     end
@@ -19,7 +19,7 @@ RSpec.describe InvalidIsbn do
         described_class.new(document.marc_xml).value
       end
 
-      it "will return all the invalid ISBNs in a single string" do
+      it "returns all the invalid ISBNs in a single string" do
         expect(invalid_isbn_value).to eq ["0855504404", "085550448X (corrected) (soft)"]
       end
     end
@@ -29,7 +29,7 @@ RSpec.describe InvalidIsbn do
         described_class.new(document.marc_xml).value
       end
 
-      it "will append it after the invalid ISBN" do
+      it "appends it after the invalid ISBN" do
         expect(invalid_isbn_value[1]).to include " (corrected) (soft)"
       end
     end
@@ -41,7 +41,7 @@ RSpec.describe InvalidIsbn do
 
       let(:document) { SolrDocument.new(marc_ss: issn) }
 
-      it "will return nil" do
+      it "returns nil" do
         expect(invalid_isbn_value).to be_nil
       end
     end
@@ -53,7 +53,7 @@ RSpec.describe InvalidIsbn do
 
       let(:document) { SolrDocument.new(marc_ss: isbn_format) }
 
-      it "will strip extra punctuation around the ISBN" do
+      it "strips extra punctuation around the ISBN" do
         expect(isbn_value).to eq [
           "9781478005773 (hardcover) (alkaline paper)",
           "1478006676 (hardcover) (alkaline paper)",

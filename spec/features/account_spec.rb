@@ -14,9 +14,9 @@ RSpec.describe "Account" do
 
       visit root_path
 
-      click_link("Test User")
+      click_on("Test User")
 
-      expect(page).not_to have_link I18n.t("account.requests.menu"), href: account_requests_path
+      expect(page).to have_no_link I18n.t("account.requests.menu"), href: account_requests_path
     end
   end
 
@@ -27,7 +27,7 @@ RSpec.describe "Account" do
 
       visit root_path
 
-      click_link("Test User")
+      click_on("Test User")
 
       expect(page).to have_link I18n.t("account.requests.menu"), href: account_requests_path
     end
@@ -40,7 +40,7 @@ RSpec.describe "Account" do
 
       visit root_path
 
-      click_link("Test User")
+      click_on("Test User")
 
       expect(page).to have_link I18n.t("account.requests.menu"), href: account_requests_path
     end
@@ -50,7 +50,7 @@ RSpec.describe "Account" do
     it "renders the request button" do
       visit root_path
 
-      click_link("Test User")
+      click_on("Test User")
 
       expect(page).to have_link I18n.t("account.requests.menu"), href: account_requests_path
     end
@@ -71,7 +71,7 @@ RSpec.describe "Account" do
         visit account_requests_path
 
         expect(page).to have_css(".alert-danger", text: "Your request limit has been reached")
-        expect(page).not_to have_css("#request-details")
+        expect(page).to have_no_css("#request-details")
       end
     end
 
@@ -80,7 +80,7 @@ RSpec.describe "Account" do
         visit account_requests_path
 
         expect(page).to have_css(".alert-info", text: "You can request")
-        expect(page).not_to have_css(".alert-danger", text: "Your request limit has been reached")
+        expect(page).to have_no_css(".alert-danger", text: "Your request limit has been reached")
       end
     end
   end
@@ -101,7 +101,7 @@ RSpec.describe "Account" do
 
         visit account_request_details_path(request_id)
 
-        expect(page).not_to have_text("[Hurstville Light Opera Company : programs and related material collected by the National Library of Australia]")
+        expect(page).to have_no_text("[Hurstville Light Opera Company : programs and related material collected by the National Library of Australia]")
       end
     end
 
