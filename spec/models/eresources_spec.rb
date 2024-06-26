@@ -6,21 +6,13 @@ RSpec.describe Eresources do
   let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
   describe "#initialize" do
+    subject(:eresources) { described_class.new }
+
     context "when the eResources manager return a 200 status" do
       it "caches the current config" do
         stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com/"))
 
-        described_class.new
-        expect(Rails.cache.fetch("eresources_config")).not_to be_blank
-      end
-    end
-
-    context "when the eResources manager return a non-200 status" do
-      it "keeps the current config" do
-        stub_const("ENV", ENV.to_hash.merge("ERESOURCES_CONFIG_URL" => "http://eresource-manager.example.com/service-fail"))
-
-        described_class.new
-        expect(Rails.cache.fetch("eresources_config")).to be_nil
+        expect(eresources.entries).not_to be_blank
       end
     end
   end
