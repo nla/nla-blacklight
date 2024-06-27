@@ -28,7 +28,7 @@ RSpec.describe "Profile" do
       it "deletes a single number without error" do
         visit account_profile_url
 
-        click_link "Change my phone number"
+        click_on "Change my phone number"
 
         expect(page).to have_content("Update your phone number")
         expect(page).to have_content("Current phone number")
@@ -36,9 +36,9 @@ RSpec.describe "Profile" do
 
         fill_in "user_details_phone", with: ""
 
-        click_button "Update"
+        click_on "Update"
 
-        expect(page).not_to have_content(I18n.t("account.settings.update.errors.any_phone"))
+        expect(page).to have_no_content(I18n.t("account.settings.update.errors.any_phone"))
 
         # validate page has redirected back to profile page
         expect(page).to have_content("Your Profile")

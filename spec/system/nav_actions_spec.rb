@@ -8,7 +8,7 @@ RSpec.describe "Navigation actions" do
   it "does not show the History link" do
     visit root_path
 
-    expect(page).not_to have_text("History")
+    expect(page).to have_no_text("History")
   end
 
   context "when FOLIO_UPDATE_IN_PROGRESS is `true`" do
@@ -18,7 +18,7 @@ RSpec.describe "Navigation actions" do
 
       visit root_path
 
-      expect(page).not_to have_link I18n.t("blacklight.header_links.login"), href: new_user_session_path
+      expect(page).to have_no_link I18n.t("blacklight.header_links.login"), href: new_user_session_path
     end
   end
 

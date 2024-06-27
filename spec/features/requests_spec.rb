@@ -36,7 +36,7 @@ RSpec.describe "Requests" do
         )
 
         expect(page).to have_css(".alert-danger", text: "Your request limit has been reached")
-        expect(page).not_to have_css("#request-details")
+        expect(page).to have_no_css("#request-details")
       end
     end
 
@@ -50,7 +50,7 @@ RSpec.describe "Requests" do
         )
 
         expect(page.html).not_to include(I18n.t("requesting.multi_box_prompt"))
-        expect(page).not_to have_css("p", text: I18n.t("requesting.prompt"))
+        expect(page).to have_no_css("p", text: I18n.t("requesting.prompt"))
       end
 
       it "renders the monograph form" do
@@ -168,7 +168,7 @@ RSpec.describe "Requests" do
             holdings: holdings_id,
             item: item_id
           )
-          expect(page).not_to have_link(text: "collection finding aid")
+          expect(page).to have_no_link(text: "collection finding aid")
         end
       end
 
@@ -284,7 +284,7 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
-        expect(page).not_to have_link(I18n.t("blacklight.back_to_search"))
+        expect(page).to have_no_link(I18n.t("blacklight.back_to_search"))
       end
     end
 

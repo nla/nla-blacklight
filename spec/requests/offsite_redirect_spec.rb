@@ -14,14 +14,14 @@ RSpec.describe "Offsite redirect", :request do
   let(:catalogue_service_mock) { instance_double(CatalogueServicesClient, post_stats: {}) }
 
   context "when given a 'url' param that does not start with http or https" do
-    it "will raise a RuntimeError" do
+    it "raises a RuntimeError" do
       expect { get "/catalog/0000/offsite?url=htp://example.com" }.to raise_error(RuntimeError)
     end
   end
 
   context "when given a 'url' param that starts with http or https" do
     context "when the URL is not an eResource URL" do
-      it "will redirect to the catalogue record page" do
+      it "redirects to the catalogue record page" do
         get "/catalog/0000/offsite?url=https://example.com"
         expect(request).to redirect_to(solr_document_path(id: "0000"))
       end

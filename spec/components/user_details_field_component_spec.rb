@@ -35,7 +35,7 @@ RSpec.describe UserDetailsFieldComponent, type: :component do
 
       expect(page).to have_css("#last_name-label", text: I18n.t("account.settings.last_name.label"))
       expect(page).to have_css("div", text: "Smith")
-      expect(page).not_to have_css("a", text: I18n.t("account.settings.last_name.change_text"))
+      expect(page).to have_no_css("a", text: I18n.t("account.settings.last_name.change_text"))
     end
   end
 
@@ -44,7 +44,7 @@ RSpec.describe UserDetailsFieldComponent, type: :component do
       render_inline(described_class.new(attribute: "email", details: user_details, editable: UserDetails::STAFF_EDITABLE_ATTRIBUTES.include?("email")))
 
       expect(page).to have_css("#email-label", text: I18n.t("account.settings.email.label"))
-      expect(page).not_to have_css("a", text: I18n.t("account.settings.email.change_text"))
+      expect(page).to have_no_css("a", text: I18n.t("account.settings.email.change_text"))
     end
   end
 end

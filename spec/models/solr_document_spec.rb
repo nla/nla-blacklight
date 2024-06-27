@@ -11,7 +11,7 @@ RSpec.describe SolrDocument do
         document.access_conditions
       end
 
-      it "will return the access condition" do
+      it "returns the access condition" do
         expect(access_condition_value).to eq [<<~STRING.squish
           "This document has been distributed to a limited audience for a limited purpose. It is not published"--P. [2] of cover.
         STRING
@@ -28,7 +28,7 @@ RSpec.describe SolrDocument do
         document.access_conditions
       end
 
-      it "will not return an access condition" do
+      it "does not return an access condition" do
         expect(access_condition_value).to be_nil
       end
     end
@@ -44,7 +44,7 @@ RSpec.describe SolrDocument do
         document.acknowledgement
       end
 
-      it "will return all acknowledgements" do
+      it "returns all acknowledgements" do
         expect(acknowledgement_value).to eq ["Microfilmed with the generous support of Dr Diana Carroll."]
       end
     end
@@ -55,7 +55,7 @@ RSpec.describe SolrDocument do
         document.acknowledgement
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(acknowledgement_value).to eq []
       end
     end
@@ -71,7 +71,7 @@ RSpec.describe SolrDocument do
         document.also_titled
       end
 
-      it "will return all the titles" do
+      it "returns all the titles" do
         expect(title_value.size).to eq 2
       end
     end
@@ -82,7 +82,7 @@ RSpec.describe SolrDocument do
         document.also_titled
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(title_value).to eq []
       end
     end
@@ -99,7 +99,7 @@ RSpec.describe SolrDocument do
         document.available_from
       end
 
-      it "will return all sources" do
+      it "returns all sources" do
         expect(available_from_value.size).to eq 2
       end
     end
@@ -110,7 +110,7 @@ RSpec.describe SolrDocument do
         document.available_from
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(available_from_value).to eq []
       end
     end
@@ -127,7 +127,7 @@ RSpec.describe SolrDocument do
         document.awards
       end
 
-      it "will return all awards" do
+      it "returns all awards" do
         expect(awards_value.size).to eq 2
       end
     end
@@ -138,7 +138,7 @@ RSpec.describe SolrDocument do
         document.awards
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(awards_value).to eq []
       end
     end
@@ -154,7 +154,7 @@ RSpec.describe SolrDocument do
         document.binding_information
       end
 
-      it "will return all binding information" do
+      it "returns all binding information" do
         expect(binding_information_value.size).to eq 2
       end
     end
@@ -165,7 +165,7 @@ RSpec.describe SolrDocument do
         document.binding_information
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(binding_information_value).to eq []
       end
     end
@@ -179,7 +179,7 @@ RSpec.describe SolrDocument do
         document.binding_information
       end
 
-      it "will return the linked 880 value" do
+      it "returns the linked 880 value" do
         expect(binding_information_value[1]).to eq "平裝"
       end
     end
@@ -197,7 +197,7 @@ RSpec.describe SolrDocument do
         document.biography_history
       end
 
-      it "will return all biographies/histories" do
+      it "returns all biographies/histories" do
         expect(biography_history_value.size).to eq 3
       end
     end
@@ -208,7 +208,7 @@ RSpec.describe SolrDocument do
         document.biography_history
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(biography_history_value).to eq []
       end
     end
@@ -222,7 +222,7 @@ RSpec.describe SolrDocument do
         document.biography_history
       end
 
-      it "will return the url" do
+      it "returns the url" do
         expect(biography_history_value.size).to eq 1
         expect(biography_history_value.first).to include("http://trove.nla.gov.au/people/617455")
       end
@@ -240,11 +240,11 @@ RSpec.describe SolrDocument do
         document.cited_in
       end
 
-      it "will return all citations" do
+      it "returns all citations" do
         expect(cited_in_value.size).to eq 2
       end
 
-      it "will return linked 880" do
+      it "returns linked 880" do
         expect(cited_in_value).to include "For contents see \"中國叢書綜錄\", 1:307."
       end
     end
@@ -255,7 +255,7 @@ RSpec.describe SolrDocument do
         document.cited_in
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(cited_in_value).to eq []
       end
     end
@@ -307,7 +307,7 @@ RSpec.describe SolrDocument do
 
     let(:document) { described_class.new(marc_ss: form_of_work, id: 7291584) }
 
-    it "will return the copyright information for the work" do
+    it "returns the copyright information for the work" do
       stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
 
       WebMock.stub_request(:get, "https://example.com/copyright/")
@@ -324,7 +324,7 @@ RSpec.describe SolrDocument do
     end
 
     context "when no copyright info is returned by the SOA" do
-      it "will return nil" do
+      it "returns nil" do
         stub_const("ENV", ENV.to_hash.merge("COPYRIGHT_SERVICE_URL" => "https://example.com/copyright/"))
 
         WebMock.stub_request(:get, "https://example.com/copyright/")
@@ -352,7 +352,7 @@ RSpec.describe SolrDocument do
         document.credits
       end
 
-      it "will return all the credits" do
+      it "returns all the credits" do
         expect(credits_value.size).to eq 2
       end
     end
@@ -363,7 +363,7 @@ RSpec.describe SolrDocument do
         document.credits
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(credits_value).to eq []
       end
     end
@@ -379,7 +379,7 @@ RSpec.describe SolrDocument do
         document.data_quality
       end
 
-      it "will return all data quality information" do
+      it "returns all data quality information" do
         expect(data_quality_value).to eq ["Last copy of this item within Australia."]
       end
     end
@@ -390,7 +390,7 @@ RSpec.describe SolrDocument do
         document.data_quality
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(data_quality_value).to eq []
       end
     end
@@ -421,7 +421,7 @@ RSpec.describe SolrDocument do
         document.edition
       end
 
-      it "will return the edition" do
+      it "returns the edition" do
         expect(edition_value).to eq ["3d ed."]
       end
     end
@@ -435,11 +435,11 @@ RSpec.describe SolrDocument do
         document.edition
       end
 
-      it "will return both editions" do
+      it "returns both editions" do
         expect(edition_value).to eq ["Chu ban.", "初版."]
       end
 
-      it "will return the 880 value first" do
+      it "returns the 880 value first" do
         expect(edition_value.first).to eq "Chu ban."
       end
     end
@@ -457,7 +457,7 @@ RSpec.describe SolrDocument do
         document.exhibited
       end
 
-      it "will return all exibitions" do
+      it "returns all exibitions" do
         expect(exhibited_value.size).to eq 3
       end
     end
@@ -468,7 +468,7 @@ RSpec.describe SolrDocument do
         document.exhibited
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(exhibited_value).to eq []
       end
     end
@@ -485,7 +485,7 @@ RSpec.describe SolrDocument do
         document.full_contents
       end
 
-      it "will return the list of contents" do
+      it "returns the list of contents" do
         expect(full_contents_value.size).to(eq(2))
       end
     end
@@ -501,7 +501,7 @@ RSpec.describe SolrDocument do
         document.form_of_work
       end
 
-      it "will return the form of work" do
+      it "returns the form of work" do
         expect(form_of_work_value).not_to be_nil
       end
     end
@@ -512,7 +512,7 @@ RSpec.describe SolrDocument do
         document.form_of_work
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(form_of_work_value).to eq []
       end
     end
@@ -528,11 +528,11 @@ RSpec.describe SolrDocument do
         document.frequency
       end
 
-      it "will return all frequencies" do
+      it "returns all frequencies" do
         expect(frequency_value.size).to eq 2
       end
 
-      it "will return linked 880 subfields" do
+      it "returns linked 880 subfields" do
         expect(frequency_value).to include "月刊"
       end
     end
@@ -543,7 +543,7 @@ RSpec.describe SolrDocument do
         document.frequency
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(frequency_value).to eq []
       end
     end
@@ -559,7 +559,7 @@ RSpec.describe SolrDocument do
         document.genre
       end
 
-      it "will return all forms/genres" do
+      it "returns all forms/genres" do
         expect(genre_value.size).to eq 3
       end
     end
@@ -570,7 +570,7 @@ RSpec.describe SolrDocument do
         document.genre
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(genre_value).to eq []
       end
     end
@@ -586,7 +586,7 @@ RSpec.describe SolrDocument do
         document.govt_doc_number
       end
 
-      it "will return all the government document numbers" do
+      it "returns all the government document numbers" do
         expect(govt_doc_number_value.size).to eq 2
         expect(govt_doc_number_value).to include "C 55.287/50:"
       end
@@ -598,7 +598,7 @@ RSpec.describe SolrDocument do
         document.govt_doc_number
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(govt_doc_number_value).to eq []
       end
     end
@@ -619,7 +619,7 @@ RSpec.describe SolrDocument do
         document.has_subseries
       end
 
-      it "will return all subseries" do
+      it "returns all subseries" do
         expect(has_subseries_value.size).to eq 6
       end
     end
@@ -630,7 +630,7 @@ RSpec.describe SolrDocument do
         document.has_subseries
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(has_subseries_value).to eq []
       end
     end
@@ -649,7 +649,7 @@ RSpec.describe SolrDocument do
         document.has_supplement
       end
 
-      it "will return all supplements" do
+      it "returns all supplements" do
         expect(supplement_value.size).to eq 4
       end
     end
@@ -660,7 +660,7 @@ RSpec.describe SolrDocument do
         document.has_supplement
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(supplement_value).to eq []
       end
     end
@@ -676,7 +676,7 @@ RSpec.describe SolrDocument do
         document.incomplete_contents
       end
 
-      it "will return all the incomplete contents" do
+      it "returns all the incomplete contents" do
         expect(incomplete_contents_value.size).to eq 1
       end
     end
@@ -687,7 +687,7 @@ RSpec.describe SolrDocument do
         document.incomplete_contents
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(incomplete_contents_value).to eq []
       end
     end
@@ -707,7 +707,7 @@ RSpec.describe SolrDocument do
         document.index_finding_aid_note
       end
 
-      it "will return all index/finding aid notes" do
+      it "returns all index/finding aid notes" do
         expect(index_finding_aid_note_value.size).to eq 5
       end
     end
@@ -718,7 +718,7 @@ RSpec.describe SolrDocument do
         document.index_finding_aid_note
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(index_finding_aid_note_value).to eq []
       end
     end
@@ -731,7 +731,7 @@ RSpec.describe SolrDocument do
         document.invalid_isbn
       end
 
-      it "will return the invalid ISBN" do
+      it "returns the invalid ISBN" do
         expect(invalid_isbn_value).to eq ["0855504404", "085550448X (corrected) (soft)"]
       end
     end
@@ -742,7 +742,7 @@ RSpec.describe SolrDocument do
         document.invalid_isbn
       end
 
-      it "will return all the invalid ISBNs in a single string" do
+      it "returns all the invalid ISBNs in a single string" do
         expect(invalid_isbn_value).to eq ["0855504404", "085550448X (corrected) (soft)"]
       end
     end
@@ -753,7 +753,7 @@ RSpec.describe SolrDocument do
         document.invalid_isbn
       end
 
-      it "will append it after the invalid ISBN" do
+      it "appends it after the invalid ISBN" do
         expect(invalid_isbn_value[1]).to include " (corrected) (soft)"
       end
     end
@@ -764,7 +764,7 @@ RSpec.describe SolrDocument do
         document.invalid_isbn
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(invalid_isbn_value).to be_nil
       end
     end
@@ -775,7 +775,7 @@ RSpec.describe SolrDocument do
         document.invalid_isbn
       end
 
-      it "will strip extra punctuation around the ISBN" do
+      it "strips extra punctuation around the ISBN" do
         expect(isbn_value).to eq [
           "9781478005773 (hardcover) (alkaline paper)",
           "1478006676 (hardcover) (alkaline paper)",
@@ -797,7 +797,7 @@ RSpec.describe SolrDocument do
         document.invalid_ismn
       end
 
-      it "will return the invalid ISMN" do
+      it "returns the invalid ISMN" do
         expect(invalid_ismn_value).to eq %w[M720067568 M72005967568]
       end
     end
@@ -811,7 +811,7 @@ RSpec.describe SolrDocument do
         document.invalid_ismn
       end
 
-      it "will return all the invalid ISMNs" do
+      it "returns all the invalid ISMNs" do
         expect(invalid_ismn_value).to eq %w[M720067568 M72005967568]
       end
     end
@@ -822,7 +822,7 @@ RSpec.describe SolrDocument do
         document.invalid_ismn
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(invalid_ismn_value).to be_nil
       end
     end
@@ -838,7 +838,7 @@ RSpec.describe SolrDocument do
         document.invalid_issn
       end
 
-      it "will return the ISSN" do
+      it "returns the ISSN" do
         expect(invalid_issn_value).to eq %w[0318-2606 0844-837X]
       end
     end
@@ -849,7 +849,7 @@ RSpec.describe SolrDocument do
         document.invalid_issn
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(invalid_issn_value).to eq []
       end
     end
@@ -862,7 +862,7 @@ RSpec.describe SolrDocument do
         document.valid_isbn
       end
 
-      it "will return the ISBN" do
+      it "returns the ISBN" do
         expect(isbn_value).to eq ["0855507322 (corrected)", "0855507403", "1111 (dummy)"]
       end
     end
@@ -873,7 +873,7 @@ RSpec.describe SolrDocument do
         document.valid_isbn
       end
 
-      it "will return the ISBN" do
+      it "returns the ISBN" do
         expect(isbn_value).to include "1111 (dummy)"
       end
     end
@@ -884,7 +884,7 @@ RSpec.describe SolrDocument do
         document.valid_isbn
       end
 
-      it "will return all the ISBN" do
+      it "returns all the ISBN" do
         expect(isbn_value).to eq ["0855507322 (corrected)", "0855507403", "1111 (dummy)"]
       end
     end
@@ -895,7 +895,7 @@ RSpec.describe SolrDocument do
         document.valid_isbn
       end
 
-      it "will append it after the ISBN" do
+      it "appends it after the ISBN" do
         expect(isbn_value.first).to include " (corrected)"
       end
     end
@@ -906,7 +906,7 @@ RSpec.describe SolrDocument do
         document.valid_isbn
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(isbn_value).to be_nil
       end
     end
@@ -917,7 +917,7 @@ RSpec.describe SolrDocument do
         document.valid_isbn
       end
 
-      it "will strip extra punctuation around the ISBN" do
+      it "strips extra punctuation around the ISBN" do
         expect(isbn_value).to eq ["9781478007364 (electronic book)", "1478007362 (electronic book)"]
       end
     end
@@ -930,7 +930,7 @@ RSpec.describe SolrDocument do
         document.isbn_list
       end
 
-      it "will return the ISBNs as numbers only" do
+      it "returns the ISBNs as numbers only" do
         expect(isbn_value).to eq %w[9781740457590 1740457595]
       end
     end
@@ -946,7 +946,7 @@ RSpec.describe SolrDocument do
         document.ismn
       end
 
-      it "will return the ISMN" do
+      it "returns the ISMN" do
         expect(ismn_value).to eq ["9790720160313"]
       end
     end
@@ -957,7 +957,7 @@ RSpec.describe SolrDocument do
         document.ismn
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(ismn_value).to be_nil
       end
     end
@@ -973,7 +973,7 @@ RSpec.describe SolrDocument do
         document.issn
       end
 
-      it "will return the ISSN" do
+      it "returns the ISSN" do
         expect(issn_value).to eq %w[0000-0442]
       end
     end
@@ -984,7 +984,7 @@ RSpec.describe SolrDocument do
         document.invalid_issn
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(invalid_issn_value).to eq []
       end
     end
@@ -1001,7 +1001,7 @@ RSpec.describe SolrDocument do
         document.issued_with
       end
 
-      it "will return all related issues" do
+      it "returns all related issues" do
         expect(issued_with_value.size).to eq 2
       end
     end
@@ -1012,7 +1012,7 @@ RSpec.describe SolrDocument do
         document.issued_with
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(issued_with_value).to eq []
       end
     end
@@ -1044,7 +1044,7 @@ RSpec.describe SolrDocument do
         document.life_dates
       end
 
-      it "will return the life date" do
+      it "returns the life date" do
         expect(life_dates_value).to eq ["-84. Jagrg., Heft 6 (Dez. 1974)"]
       end
     end
@@ -1058,7 +1058,7 @@ RSpec.describe SolrDocument do
         document.life_dates
       end
 
-      it "will return the life dates" do
+      it "returns the life dates" do
         expect(life_dates_value.size).to eq 2
       end
     end
@@ -1151,7 +1151,7 @@ RSpec.describe SolrDocument do
         document.music_publisher_number
       end
 
-      it "will return all the music publisher numbers" do
+      it "returns all the music publisher numbers" do
         expect(music_publisher_number_value.size).to eq 3
       end
     end
@@ -1162,7 +1162,7 @@ RSpec.describe SolrDocument do
         document.music_publisher_number
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(music_publisher_number_value).to eq []
       end
     end
@@ -1179,7 +1179,7 @@ RSpec.describe SolrDocument do
         document.new_title
       end
 
-      it "will return all titles" do
+      it "returns all titles" do
         expect(title_value.size).to eq 2
       end
     end
@@ -1190,7 +1190,7 @@ RSpec.describe SolrDocument do
         document.new_title
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(title_value).to eq []
       end
     end
@@ -1241,7 +1241,7 @@ RSpec.describe SolrDocument do
         document.notes
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(notes_value).to eq []
       end
     end
@@ -1259,7 +1259,7 @@ RSpec.describe SolrDocument do
         document.numbering_note
       end
 
-      it "will return all numbering notes" do
+      it "returns all numbering notes" do
         expect(numbering_note_value.size).to eq 3
       end
     end
@@ -1270,7 +1270,7 @@ RSpec.describe SolrDocument do
         document.numbering_note
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(numbering_note_value).to eq []
       end
     end
@@ -1289,7 +1289,7 @@ RSpec.describe SolrDocument do
         document.old_title
       end
 
-      it "will return all titles" do
+      it "returns all titles" do
         expect(title_value.size).to eq 4
       end
     end
@@ -1300,7 +1300,7 @@ RSpec.describe SolrDocument do
         document.old_title
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(title_value).to eq []
       end
     end
@@ -1352,7 +1352,7 @@ RSpec.describe SolrDocument do
         document.other_authors
       end
 
-      it "will return other authors" do
+      it "returns other authors" do
         expect(other_authors_value.size).to eq 3
       end
     end
@@ -1376,7 +1376,7 @@ RSpec.describe SolrDocument do
         document.other_authors
       end
 
-      it "will return related other authors" do
+      it "returns related other authors" do
         expect(other_authors_value).to include("สุวิทย์ ทัดพิทักษ์กุล, 1928-2015, honouree")
       end
     end
@@ -1387,7 +1387,7 @@ RSpec.describe SolrDocument do
         document.other_authors
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(other_authors_value).to eq []
       end
     end
@@ -1403,7 +1403,7 @@ RSpec.describe SolrDocument do
         document.partial_contents
       end
 
-      it "will render the full list of contents" do
+      it "renders the full list of contents" do
         expect(partial_contents_value.size).to eq 1
       end
     end
@@ -1414,7 +1414,7 @@ RSpec.describe SolrDocument do
         document.partial_contents
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(partial_contents_value).to eq []
       end
     end
@@ -1430,7 +1430,7 @@ RSpec.describe SolrDocument do
         document.performers
       end
 
-      it "will return all performers" do
+      it "returns all performers" do
         expect(performers_value).to eq ["Keith Bowen.", "Jeremy Ashton.", "Carol Shelbourn."]
       end
     end
@@ -1441,7 +1441,7 @@ RSpec.describe SolrDocument do
         document.performers
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(performers_value).to eq []
       end
     end
@@ -1458,7 +1458,7 @@ RSpec.describe SolrDocument do
         document.place
       end
 
-      it "will return all places" do
+      it "returns all places" do
         expect(place_value.size).to eq 2
       end
     end
@@ -1469,7 +1469,7 @@ RSpec.describe SolrDocument do
         document.place
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(place_value).to eq []
       end
     end
@@ -1485,11 +1485,11 @@ RSpec.describe SolrDocument do
         document.previous_frequency
       end
 
-      it "will return all the previous frequencies" do
+      it "returns all the previous frequencies" do
         expect(previous_frequency_value.size).to eq 2
       end
 
-      it "will return linked 880 subfields" do
+      it "returns linked 880 subfields" do
         expect(previous_frequency_value).to include "旬刊"
       end
     end
@@ -1500,7 +1500,7 @@ RSpec.describe SolrDocument do
         document.previous_frequency
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(previous_frequency_value).to eq []
       end
     end
@@ -1516,7 +1516,7 @@ RSpec.describe SolrDocument do
         document.printer
       end
 
-      it "will return the printer text" do
+      it "returns the printer text" do
         expect(printer_value).to include "(Adelaide : Specialty Printers)"
       end
     end
@@ -1530,7 +1530,7 @@ RSpec.describe SolrDocument do
         document.printer
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(printer_value).to include "Melbourne : C. Troedel, approximately 1863."
       end
     end
@@ -1541,7 +1541,7 @@ RSpec.describe SolrDocument do
         document.printer
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(printer_value).to eq []
       end
     end
@@ -1557,7 +1557,7 @@ RSpec.describe SolrDocument do
         document.provenance
       end
 
-      it "will return all the provenance information" do
+      it "returns all the provenance information" do
         expect(provenance_value).to include "National Library of Australia's copy is from the Jack Greaves Collection."
       end
     end
@@ -1571,7 +1571,7 @@ RSpec.describe SolrDocument do
         document.provenance
       end
 
-      it "will return all the provenance information" do
+      it "returns all the provenance information" do
         expect(provenance_value).to include "Franklin Collection."
       end
     end
@@ -1582,7 +1582,7 @@ RSpec.describe SolrDocument do
         document.provenance
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(provenance_value).to eq []
       end
     end
@@ -1646,7 +1646,7 @@ RSpec.describe SolrDocument do
         document.related_material
       end
 
-      it "will return all the related material" do
+      it "returns all the related material" do
         expect(related_material_value.size).to eq 5
       end
     end
@@ -1657,7 +1657,7 @@ RSpec.describe SolrDocument do
         document.related_material
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(related_material_value).to eq []
       end
     end
@@ -1673,7 +1673,7 @@ RSpec.describe SolrDocument do
         document.related_title
       end
 
-      it "will return all related titles" do
+      it "returns all related titles" do
         expect(related_title_value.size).to eq 2
       end
     end
@@ -1684,7 +1684,7 @@ RSpec.describe SolrDocument do
         document.related_title
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(related_title_value).to eq []
       end
     end
@@ -1701,11 +1701,11 @@ RSpec.describe SolrDocument do
         document.reproduction
       end
 
-      it "will return all reproductions" do
+      it "returns all reproductions" do
         expect(reproduction_value.size).to eq 2
       end
 
-      it "will return linked 880" do
+      it "returns linked 880" do
         expect(reproduction_value).to include "Photo-offset. 香港?, 1970?. 19 cm."
       end
     end
@@ -1716,7 +1716,7 @@ RSpec.describe SolrDocument do
         document.reproduction
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(reproduction_value).to eq []
       end
     end
@@ -1732,7 +1732,7 @@ RSpec.describe SolrDocument do
         document.scale
       end
 
-      it "will return the scale" do
+      it "returns the scale" do
         expect(scale_value).to eq ["Scale [1:31,680]. Two inches to a mile (E 145°20'--E 145°45'/S 38°15'--S 38°30')"]
       end
     end
@@ -1743,7 +1743,7 @@ RSpec.describe SolrDocument do
         document.scale
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(scale_value).to eq []
       end
     end
@@ -1793,7 +1793,7 @@ RSpec.describe SolrDocument do
         document.subseries_of
       end
 
-      it "will return all series" do
+      it "returns all series" do
         expect(subseries_of_value.size).to eq 2
       end
     end
@@ -1804,7 +1804,7 @@ RSpec.describe SolrDocument do
         document.subseries_of
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(subseries_of_value).to eq []
       end
     end
@@ -1821,7 +1821,7 @@ RSpec.describe SolrDocument do
         document.summary
       end
 
-      it "will return an array of summaries" do
+      it "returns an array of summaries" do
         expect(summary_value.size).to eq 2
       end
     end
@@ -1836,7 +1836,7 @@ RSpec.describe SolrDocument do
         document.summary
       end
 
-      it "will return the summary in the 880 field" do
+      it "returns the summary in the 880 field" do
         expect(summary_value.size).to eq 2
       end
     end
@@ -1847,7 +1847,7 @@ RSpec.describe SolrDocument do
         document.summary
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(summary_value).to eq []
       end
     end
@@ -1863,7 +1863,7 @@ RSpec.describe SolrDocument do
         document.supplement_to
       end
 
-      it "will return all supplements" do
+      it "returns all supplements" do
         expect(supplement_value.size).to eq 2
       end
     end
@@ -1874,7 +1874,7 @@ RSpec.describe SolrDocument do
         document.supplement_to
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(supplement_value).to eq []
       end
     end
@@ -1890,7 +1890,7 @@ RSpec.describe SolrDocument do
         document.technical_details
       end
 
-      it "will return the technical details in a single string" do
+      it "returns the technical details in a single string" do
         expect(technical_details_value).to eq ["Mode of access: Available online. Address as at 25/08/14: http://www.coagreformcouncil.gov.au/reports/housing.html"]
       end
     end
@@ -1901,7 +1901,7 @@ RSpec.describe SolrDocument do
         document.technical_details
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(technical_details_value).to eq []
       end
     end
@@ -1917,7 +1917,7 @@ RSpec.describe SolrDocument do
         document.terms_of_use
       end
 
-      it "will return the terms of use" do
+      it "returns the terms of use" do
         expect(terms_value.size).to eq 3
       end
     end
@@ -1928,7 +1928,7 @@ RSpec.describe SolrDocument do
         document.terms_of_use
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(terms_value).to eq []
       end
     end
@@ -2002,7 +2002,7 @@ RSpec.describe SolrDocument do
         document.translated_title
       end
 
-      it "will return the concatenated title" do
+      it "returns the concatenated title" do
         expect(translated_title_value).to eq [<<~STRING.squish
           Promoting a Healthy Future [microform] : Training Manual for Health 
           Educators and Instructors Who Work with Young Health Promoters, Young Counselors or Educators and
@@ -2018,7 +2018,7 @@ RSpec.describe SolrDocument do
         document.translated_title
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(translated_title_value).to eq []
       end
     end
@@ -2033,7 +2033,7 @@ RSpec.describe SolrDocument do
         document.uniform_title
       end
 
-      it "will display the uniform title" do
+      it "displays the uniform title" do
         expect(uniform_title_value).to eq ["Wort Hesed. English"]
       end
     end
@@ -2044,7 +2044,7 @@ RSpec.describe SolrDocument do
         document.uniform_title
       end
 
-      it "will return nil" do
+      it "returns nil" do
         expect(uniform_title_value).to eq []
       end
     end

@@ -28,7 +28,7 @@ RSpec.describe CopyrightStatusComponent, type: :component do
   it "does not render the Copies Direct form" do
     render_inline(described_class.new(document, copyright))
 
-    expect(page).not_to have_css "form[id='copiesdirect_addcart']"
+    expect(page).to have_no_css "form[id='copiesdirect_addcart']"
   end
 
   context "when there is a copyright status" do
@@ -67,7 +67,7 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "fair dealing"
-      expect(page).not_to have_xpath("//a[text()='fair dealing']")
+      expect(page).to have_no_xpath("//a[text()='fair dealing']")
     end
   end
 
@@ -104,7 +104,7 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       render_inline(described_class.new(document, copyright))
 
       expect(page.text).to include "fair dealing"
-      expect(page).not_to have_xpath("//a[text()='fair dealing']")
+      expect(page).to have_no_xpath("//a[text()='fair dealing']")
     end
   end
 
@@ -149,7 +149,7 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       render_inline(described_class.new(document, copyright))
 
       expect(page.text).not_to include "Copies Direct"
-      expect(page).not_to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
+      expect(page).to have_no_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
 
     it "renders a lowercase contact us link" do
@@ -171,7 +171,7 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       render_inline(described_class.new(document, copyright))
 
       expect(page.text).not_to include "Copies Direct"
-      expect(page).not_to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
+      expect(page).to have_no_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
 
     it "renders a lowercase contact us link" do
@@ -208,7 +208,7 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       render_inline(described_class.new(document, copyright))
 
       expect(page.text).not_to include "Copies Direct"
-      expect(page).not_to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
+      expect(page).to have_no_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
   end
 
@@ -223,7 +223,7 @@ RSpec.describe CopyrightStatusComponent, type: :component do
       render_inline(described_class.new(document, copyright))
 
       expect(page.text).not_to include "Copies Direct"
-      expect(page).not_to have_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
+      expect(page).to have_no_xpath("//a[@href='https://test.nla.gov.au/copies-direct/items/import?source=cat&sourcevalue=4157485']")
     end
   end
 
