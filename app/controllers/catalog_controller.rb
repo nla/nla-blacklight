@@ -205,6 +205,7 @@ class CatalogController < ApplicationController
     config.add_show_field "scale_tsim", label: "Scale"
     config.add_show_field "printer_tsim", label: "Printer", helper_method: :unstyled_list
     config.add_show_field "description", label: "Description", accessor: :description, helper_method: :unstyled_list
+    config.add_show_field "file_characteristics_ssim", label: "File Characteristics", helper_method: :unstyled_list
     config.add_show_field "isbn_tsim", label: "ISBN", accessor: :valid_isbn, helper_method: :unstyled_list
     config.add_show_field "invalid_isbn", label: "Invalid ISBN", accessor: :invalid_isbn, helper_method: :unstyled_list
     config.add_show_field "issn_display_ssim", label: "ISSN"
@@ -247,9 +248,9 @@ class CatalogController < ApplicationController
     config.add_show_field "awards_tsim", label: "Awards", helper_method: :unstyled_list
     config.add_show_field "indigenous_subject_ssim", label: "First Nations (AIATSIS) Subject", helper_method: :indigenous_subject_search_list
     config.add_show_field "subject_ssim", label: "Subject", helper_method: :subject_search_list
+    config.add_show_field "genre_ssim", label: "Genre/Form", helper_method: :genre_search_list
     config.add_show_field "time_coverage", label: "Time Coverage", accessor: :time_coverage
     config.add_show_field "occupation_ssim", label: "Occupation", helper_method: :occupation_search_list
-    config.add_show_field "genre_tsim", label: "Form/genre", helper_method: :genre_search_list
     config.add_show_field "place_tsim", label: "Place", helper_method: :list
     config.add_show_field "additional_author_with_relator_ssim", label: "Other authors/contributors", helper_method: :other_author_search_list
     config.add_show_field "also_titled_tsim", label: "Also Titled", helper_method: :list
