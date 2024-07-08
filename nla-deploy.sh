@@ -40,7 +40,7 @@ fi
 
 bundle install
 RAILS_ENV=$RAILS_ENV bundle exec rails db:migrate
-RAILS_ENV=$RAILS_ENV bundle exec rails assets:precompile
+RAILS_ENV=$RAILS_ENV bundle --verbose exec rails assets:precompile
 if [[ "$RAILS_CACHE_DEV" == "y" ]]; then
   RAILS_ENV=$RAILS_ENV bundle exec rails dev:cache
 fi
