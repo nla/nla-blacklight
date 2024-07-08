@@ -41,6 +41,7 @@ fi
 bundle install
 RAILS_ENV=$RAILS_ENV bundle exec rails db:migrate
 RAILS_ENV=$RAILS_ENV bundle exec rails tmp:clear
+RAILS_ENV=$RAILS_ENV bundle exec rails assets:clobber
 RAILS_ENV=$RAILS_ENV bundle exec rails assets:precompile
 if [[ "$RAILS_CACHE_DEV" == "y" ]]; then
   RAILS_ENV=$RAILS_ENV bundle exec rails dev:cache
