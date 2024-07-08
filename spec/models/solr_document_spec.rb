@@ -1247,6 +1247,60 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#icip_note" do
+    context "when there is a single note" do
+      subject(:icip_note_value) do
+        document = described_class.new(
+          marc_ss: cultural_and_icip_notes,
+          icip_note_tsim: ["This material contains Indigenous Cultural and Intellectual Property (ICIP) of Australian First Nations peoples. Restrictions on access and use of this material may apply. Contact the National Library of Australia for further information."]
+        )
+        document.icip_note
+      end
+
+      it "retrieves the note" do
+        expect(icip_note_value).to eq(["This material contains Indigenous Cultural and Intellectual Property (ICIP) of Australian First Nations peoples. Restrictions on access and use of this material may apply. Contact the National Library of Australia for further information."])
+      end
+    end
+
+    context "when there are no notes" do
+      subject(:icip_note_value) do
+        document = described_class.new(marc_ss: no_notes)
+        document.icip_note
+      end
+
+      it "returns nil" do
+        expect(icip_note_value).to eq []
+      end
+    end
+  end
+
+  describe "#cultural_sensitivity_notes" do
+    context "when there is a single note" do
+      subject(:cultural_sensitivity_note_value) do
+        document = described_class.new(
+          marc_ss: cultural_and_icip_notes,
+          cultural_sensitivity_note_tsim: ["Cultural sensitivity warning:  Aboriginal and Torres Strait Islander people are advised that this item contains names of people who have passed away. This item also contains language, terms and descriptions that reflect those of the period in which the item was written but may not be considered appropriate today."]
+        )
+        document.cultural_sensitivity_note
+      end
+
+      it "retrieves the note" do
+        expect(cultural_sensitivity_note_value).to eq(["Cultural sensitivity warning:  Aboriginal and Torres Strait Islander people are advised that this item contains names of people who have passed away. This item also contains language, terms and descriptions that reflect those of the period in which the item was written but may not be considered appropriate today."])
+      end
+    end
+
+    context "when there are no notes" do
+      subject(:cultural_sensitivity_note_value) do
+        document = described_class.new(marc_ss: no_notes)
+        document.cultural_sensitivity_note
+      end
+
+      it "returns nil" do
+        expect(cultural_sensitivity_note_value).to eq []
+      end
+    end
+  end
+
   describe "#numbering_note" do
     context "when there are numbering notes" do
       subject(:numbering_note_value) do
@@ -2366,5 +2420,9 @@ RSpec.describe SolrDocument do
 
   def year_too_long_time_coverage
     load_marc_from_file 2015365
+  end
+
+  def cultural_and_icip_notes
+    load_marc_from_file 10009012
   end
 end
