@@ -65,6 +65,29 @@ RSpec.describe ExploreComponent, type: :component do
     end
   end
 
+  context "when the online shop search has results" do
+    before do
+      response = IO.read("spec/files/nla_shop/response.json")
+
+      WebMock.stub_request(:get, /https:\/\/bookshop.nla.gov.au\/api\/jsonDetails.do\?isbn13=9781922507372,9781922507377/)
+        .with(
+          headers: {
+            "Accept" => "*/*",
+            "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+          }
+        )
+        .to_return(status: 200, body: response, headers: {})
+    end
+
+    let(:document) { SolrDocument.new(marc_ss: bookshop_marc, id: "8680859", format: ["Book"], isbn_tsim: %w[9781922507372 1922507377]) }
+
+    it "renders the online shop link" do
+      render_inline(described_class.new(document))
+
+      expect(page).to have_link(I18n.t("explore.nla_shop"))
+    end
+  end
+
   context "when there is no document ID" do
     let(:document) { SolrDocument.new(marc_ss: sample_marc) }
 
