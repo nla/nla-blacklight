@@ -13,7 +13,7 @@ class ExploreComponent < ViewComponent::Base
     @nla_shop_url = config.nla_shop_url
     @google_books_url = config.google_books_url
 
-    @nla_shop ||= get_online_shop
+    @nla_shop = nil
   end
 
   def trove_query
