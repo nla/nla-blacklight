@@ -56,7 +56,7 @@ class ExploreComponent < ViewComponent::Base
   end
 
   def render_online_shop?
-    return false
+    false
   end
 
   def render_map_search?
