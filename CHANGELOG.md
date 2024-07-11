@@ -1,5 +1,58 @@
 # Changelog
 
+## [3.2.2](https://github.com/nla/nla-blacklight/compare/nla-blacklight/3.2.1...nla-blacklight/3.2.2) (2024-07-11)
+
+
+### Bug Fixes
+
+* add missing rubocop dependencies and fix deprecated syntax ([90b4c59](https://github.com/nla/nla-blacklight/commit/90b4c599aaf1db4e2d31f06101b1a20d4a93e6a9))
+* turn of caching in test ([2d93d72](https://github.com/nla/nla-blacklight/commit/2d93d729112d258ca1ce580e7739454c6c7d3ff8))
+
+
+### Miscellaneous
+
+* **deps-dev:** bump binding_of_caller from 1.0.0 to 1.0.1 ([ac7f9e4](https://github.com/nla/nla-blacklight/commit/ac7f9e44530ab9a78a6941b12238b06b3d5f41fc))
+* **deps-dev:** bump capybara from 3.39.2 to 3.40.0 ([2a019f2](https://github.com/nla/nla-blacklight/commit/2a019f2913f7e7f8b20d83028d1794a17a7c536a))
+* **deps-dev:** bump cuprite from 0.15 to 0.15.1 ([0432cc9](https://github.com/nla/nla-blacklight/commit/0432cc91a4b07f3c08f2e5d9b5e83d1658c3b5ec))
+* **deps-dev:** bump dotenv from 3.0.3 to 3.1.2 ([f6c6f86](https://github.com/nla/nla-blacklight/commit/f6c6f86ce0f7733fd662d0c59c6b9540bb2f5b51))
+* **deps-dev:** bump rack-mini-profiler from 3.1.1 to 3.3.1 ([1512174](https://github.com/nla/nla-blacklight/commit/1512174e0316840bab7ae1cf2c4e83a4c596a090))
+* **deps-dev:** bump rspec-rails from 6.1.0 to 6.1.2 ([cb3de71](https://github.com/nla/nla-blacklight/commit/cb3de71d28b985fd903ac4c5f1027e9ad7058027))
+* **deps-dev:** bump rubocop-rails from 2.23.1 to 2.25.0 ([008d556](https://github.com/nla/nla-blacklight/commit/008d55658952b0cf644b3ee071e7caf58e748779))
+* **deps-dev:** bump rubocop-rspec from 2.25.0 to 3.0.1 ([c78785b](https://github.com/nla/nla-blacklight/commit/c78785b3a644865aee5a2e067f5bb1a61540fc34))
+* **deps-dev:** bump rubocop-rspec from 2.25.0 to 3.0.1 ([71de305](https://github.com/nla/nla-blacklight/commit/71de30537c6737fb6e9b185c1569c8571a628e85))
+* **deps-dev:** bump selenium-webdriver from 4.17.0 to 4.21.1 ([93ba44c](https://github.com/nla/nla-blacklight/commit/93ba44c5483d16d366449ea8d0ed44072fb03eaf))
+* **deps-dev:** bump selenium-webdriver from 4.21.1 to 4.22.0 ([5dcbdd9](https://github.com/nla/nla-blacklight/commit/5dcbdd99323497f0479e449ff3019bf3858e264f))
+* **deps-dev:** bump standard from 1.33.0 to 1.39.0 ([1793c3d](https://github.com/nla/nla-blacklight/commit/1793c3d54b8e8ed10d63fa75b2f49c44dfc2587f))
+* **deps:** bump blacklight-frontend from 8.0.1 to 8.3.0 ([713344c](https://github.com/nla/nla-blacklight/commit/713344c3d7f0b052588347d96a60dcdf5219400a))
+* **deps:** bump mysql2 from 0.5.5 to 0.5.6 ([df73ca8](https://github.com/nla/nla-blacklight/commit/df73ca87a6af3e877ec7f76238616474922ee4f8))
+* **deps:** bump nodemon from 3.1.2 to 3.1.3 ([ea4ef76](https://github.com/nla/nla-blacklight/commit/ea4ef764edf56449d225d06c186cf67e995bf61e))
+* **deps:** bump nodemon from 3.1.3 to 3.1.4 ([2e0810a](https://github.com/nla/nla-blacklight/commit/2e0810a4d20af3ed9e3e92a877acd691073721b9))
+* **deps:** bump phonelib from 0.8.5 to 0.8.9 ([e2b872d](https://github.com/nla/nla-blacklight/commit/e2b872d3860d849df2bdb817072ffae3661d55dd))
+* **deps:** bump redis from 5.0.8 to 5.2.0 ([15d1e59](https://github.com/nla/nla-blacklight/commit/15d1e59cb87d7bfdf6b1dc76ce5275c133202743))
+* **deps:** bump sass from 1.77.4 to 1.77.6 ([782fe0c](https://github.com/nla/nla-blacklight/commit/782fe0cd88aa2d60cbff7c3468aadeb5b25d9c1d))
+* **deps:** bump strong_migrations from 1.7.0 to 1.8.0 ([79e3f74](https://github.com/nla/nla-blacklight/commit/79e3f740eae0edbbf5a69e475736cd6f12a773f4))
+* release 3.2.2 ([bfa5032](https://github.com/nla/nla-blacklight/commit/bfa503290a5d14a74caf18920437b243bc737f46))
+* release 3.3.0 ([a47df34](https://github.com/nla/nla-blacklight/commit/a47df3453c453f149f884c18427419e4d0d53e37))
+* resolve merge collission ([d493569](https://github.com/nla/nla-blacklight/commit/d493569e08d517cbb0c8cb5308476e5c0e01d53a))
+* update nla-blacklight_common dependency ([a283767](https://github.com/nla/nla-blacklight/commit/a283767e560ae0dee135f2065fc304c3099e75d4))
+* update version of nla-blacklight_common ([6841109](https://github.com/nla/nla-blacklight/commit/684110922609fdc67c5b647190cebf59fc55405a))
+
+
+### Tests
+
+* test that bookshop link does not display ([b8d6da9](https://github.com/nla/nla-blacklight/commit/b8d6da95373a5fc17debdeb8b16f3e880d61f58d))
+
+
+### Build System
+
+* update nla-blacklight_common and bundler config ([9a11ce2](https://github.com/nla/nla-blacklight/commit/9a11ce267843d0b3d7067de4587cfe937abe1a80))
+* upgrade blacklight ([5048570](https://github.com/nla/nla-blacklight/commit/504857089746272f9c6b69e90c183f421c23c085))
+
+
+### Continuous Integration
+
+* update release-please token ([a8ee5c7](https://github.com/nla/nla-blacklight/commit/a8ee5c766a8fe0686e23c02e4641c1759c2a11f6))
+
 ## [3.2.1](https://github.com/nla/nla-blacklight/compare/nla-blacklight-v3.2.0...nla-blacklight/3.2.1) (2024-06-13)
 
 
