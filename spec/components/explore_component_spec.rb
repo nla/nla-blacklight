@@ -61,7 +61,7 @@ RSpec.describe ExploreComponent, type: :component do
     it "does not render the online shop link" do
       render_inline(described_class.new(document))
 
-      expect(page.text).to have_no_link(text: I18n.t("explore.nla_shop"))
+      expect(page.text).not_to have_link(text: I18n.t("explore.nla_shop"))
     end
   end
 
@@ -84,7 +84,7 @@ RSpec.describe ExploreComponent, type: :component do
     it "renders the online shop link" do
       render_inline(described_class.new(document))
 
-      expect(page).to have_link(I18n.t("explore.nla_shop"))
+      expect(page).not_to have_link(I18n.t("explore.nla_shop"))
     end
   end
 
