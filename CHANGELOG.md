@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.2.2](https://github.com/nla/nla-blacklight/compare/3.2.0...3.2.2) (2024-07-11)
+
+
+### Miscellaneous
+
+* release 3.2.2 ([5763840](https://github.com/nla/nla-blacklight/commit/5763840c229da668db0bba5bbef3869471aeacff))
+
+
+### Continuous Integration
+
+* update hotfix workflow ([14b3a34](https://github.com/nla/nla-blacklight/commit/14b3a3484da743ca86a305c5a77b096e9b024eae))
+
 ## [3.2.0](https://github.com/nla/nla-blacklight/compare/3.1.0...3.2.0) (2024-06-04)
 
 
