@@ -1,5 +1,24 @@
 # Changelog
 
+## [3.3.1](https://github.com/nla/nla-blacklight/compare/nla-blacklight/3.3.0...nla-blacklight/3.3.1) (2024-07-31)
+
+
+### Miscellaneous
+
+* **deps-dev:** bump faker from 3.4.1 to 3.4.2 ([7ef058a](https://github.com/nla/nla-blacklight/commit/7ef058ac47138e4827d4a21d69f87504adba8900))
+* **deps-dev:** bump selenium-webdriver from 4.22.0 to 4.23.0 ([4ac2747](https://github.com/nla/nla-blacklight/commit/4ac274790b4769a9f730c4703ad7a7eab436d6e4))
+* **deps:** bump @hotwired/turbo-rails from 8.0.4 to 8.0.5 ([799dcb2](https://github.com/nla/nla-blacklight/commit/799dcb2c9f969a458481fbd169d5dcdebbfa0ce6))
+* **deps:** bump phonelib from 0.8.9 to 0.9.1 ([2ba1745](https://github.com/nla/nla-blacklight/commit/2ba174540e2801db210fd2ee664753a645a16516))
+* **deps:** bump postcss from 8.4.38 to 8.4.40 ([2fdfdcd](https://github.com/nla/nla-blacklight/commit/2fdfdcd9d47579e1e7f784e4f18ca5d4b5d1cc4d))
+* **deps:** bump sass from 1.77.6 to 1.77.8 ([4e0c6e2](https://github.com/nla/nla-blacklight/commit/4e0c6e22657beb868ef46b8816418dd29c0d82fb))
+* **deps:** bump strong_migrations from 1.8.0 to 2.0.0 ([c4fa7d3](https://github.com/nla/nla-blacklight/commit/c4fa7d3a2c71b0ad46bd22073d76bed6be57f306))
+* **deps:** bump turbo-rails from 2.0.5 to 2.0.6 ([02f1e41](https://github.com/nla/nla-blacklight/commit/02f1e4133565a86082d71ca45c0cca2b43ab4bcf))
+
+
+### Continuous Integration
+
+* Update release-please.yml ([1c4048e](https://github.com/nla/nla-blacklight/commit/1c4048ed55457779538d1042e99baf818fe88884))
+
 ## [3.3.0](https://github.com/nla/nla-blacklight/compare/nla-blacklight/3.2.1...nla-blacklight/3.3.0) (2024-07-09)
 
 
