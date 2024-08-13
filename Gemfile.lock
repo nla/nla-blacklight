@@ -189,7 +189,7 @@ GEM
       namae (~> 1.0)
     csl-styles (1.0.1.11)
       csl (~> 1.0)
-    cssbundling-rails (1.4.0)
+    cssbundling-rails (1.4.1)
       railties (>= 6.0.0)
     cuprite (0.15.1)
       capybara (~> 3.0)
