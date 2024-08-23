@@ -329,6 +329,19 @@ class CatalogController < ApplicationController
       }
     end
 
+    config.add_search_field("indigenous_subject") do |field|
+      field.label = "AIATSIS Subject"
+      field.solr_parameters = {
+        "spellcheck.dictionary": "subject",
+        qf: "indigenous_subject_tsimv",
+        pf: "indigenous_subject_tsimv"
+      }
+      field.clause_params = {
+        edismax: field.solr_parameters.dup
+      }
+      field.include_in_advanced_search = false
+    end
+
     config.add_search_field("call_number") do |field|
       field.label = "Call Number"
       field.solr_parameters = {
