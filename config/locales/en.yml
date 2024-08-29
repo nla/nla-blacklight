@@ -134,7 +134,7 @@ en:
       volume: "Volume/No:"
       enumeration: "Day or month:"
       notes: "Notes:"
-      call_number: "Call numbers:"
+      call_numbers: "Call numbers:"
       box_number: "Box number:"
       series_number: "Series number:"
       folder_item_number: "Folder/Item number:"
