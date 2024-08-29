@@ -232,6 +232,61 @@ RSpec.describe "Requests" do
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
       end
     end
+
+    context "when requesting a picture" do
+      let(:instance_id) { "d63dc349-8153-5ff6-a33c-f3ec13faa0f0" }
+      let(:holdings_id) { "13341598-814f-5407-893b-cc76f339f123" }
+      let(:item_id) { "3556c738-2a32-5b11-b86e-2e5db34bbe1e" }
+      let(:solr_document_id) { "2921885" }
+      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: map_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["Photographs for The Australian homestead [picture] / Wesley Stacey"], format: ["Picture"], finding_aid_url_ssim: ["https://nla.gov.au/nla.obj-144094084/findingaid"]) }
+
+      before do
+        holdings_response = IO.read("spec/files/catalogue_services/picture.json")
+
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
+      end
+
+      it "renders the requesting prompt" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page.html).to include(I18n.t("requesting.picture_prompt"))
+      end
+
+      it "renders the picture form" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_css("label", text: I18n.t("requesting.label.call_numbers"))
+      end
+
+      context "when there is a finding aid url" do
+        it "links to the finding aid" do
+          visit solr_document_request_new_path(
+            solr_document_id: solr_document_id,
+            instance: instance_id,
+            holdings: holdings_id,
+            item: item_id
+          )
+          expect(page).to have_link("collection finding aid", href: "https://nla.gov.au/nla.obj-144094084/findingaid")
+        end
+      end
+    end
   end
 
   describe "GET /success" do
