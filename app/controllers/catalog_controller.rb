@@ -167,7 +167,7 @@ class CatalogController < ApplicationController
     config.add_facet_field "author_ssim", label: "Author", limit: true, index_range: "A".."Z"
     config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
     config.add_facet_field "austlang_ssim", label: "Aboriginal and Torres Strait Islander Language", limit: 10
-    config.add_facet_field "language_ssim", label: "Language"
+    config.add_facet_field "language_ssim", label: "Language", limit: 10
     config.add_facet_field "geographic_name_ssim", label: "Geographic", limit: true, index_range: "A".."Z"
     config.add_facet_field "series_ssim", label: "Series", limit: true, index_range: "A".."Z", single: true
     config.add_facet_field "parent_id_ssim", label: "In Collection", limit: true, include_in_simple_select: false, include_in_advanced_search: false, show: false
