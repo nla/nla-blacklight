@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.4.1](https://github.com/nla/nla-blacklight/compare/nla-blacklight-v3.5.0...nla-blacklight/3.4.1) (2024-09-06)
+
+### Attempt to fix release-please...
+
 ## [3.3.1](https://github.com/nla/nla-blacklight/compare/nla-blacklight/3.3.0...nla-blacklight/3.3.1) (2024-09-05)
 
 
