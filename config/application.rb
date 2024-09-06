@@ -25,7 +25,7 @@ end
 
 module NlaBlacklight
   VERSION = "3.4.0"
-  
+
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
