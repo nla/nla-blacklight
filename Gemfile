@@ -111,7 +111,7 @@ group :development, :test do
   gem "rubocop-factory_bot", require: false
   gem "solr_wrapper", ">= 0.3"
 
-  gem "rspec-rails", "~> 6.1"
+  gem "rspec-rails", "~> 7.0"
   gem "fuubar"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
@@ -144,7 +144,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.23"
+  gem "selenium-webdriver", "~> 4.25"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"
