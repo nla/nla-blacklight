@@ -43,6 +43,11 @@
             <dd class="col col-md-9"><%= link_to @request.item["holdingAvailabilityUrl"], @request.item["holdingAvailabilityUrl"] %></dd>
           <% end %>
 
+          <% if @request.holding["shelvingTitle"].present? %>
+            <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.shelving_title") %></dt>
+            <dd class="col col-md-9"><%= @request.holding["shelvingTitle"] %></dd>
+          <% end %>
+
           <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.call_number") %></dt>
           <dd class="col col-md-9">
             <p class="mb-0"><%= @request.item["effectiveCallNumberComponents"]["callNumber"] %>
