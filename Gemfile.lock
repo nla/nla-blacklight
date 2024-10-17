@@ -655,9 +655,8 @@ GEM
       nokogiri (~> 1.9)
       slop (~> 4.0)
       yell
-    turbo-rails (2.0.6)
+    turbo-rails (2.0.11)
       actionpack (>= 6.0.0)
-      activejob (>= 6.0.0)
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
