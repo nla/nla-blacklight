@@ -274,6 +274,8 @@ GEM
     faraday-em_http (1.0.0)
     faraday-em_synchrony (1.0.0)
     faraday-excon (1.1.0)
+    faraday-follow_redirects (0.3.0)
+      faraday (>= 1, < 3)
     faraday-httpclient (1.0.1)
     faraday-multipart (1.0.4)
       multipart-post (~> 2)
@@ -397,7 +399,7 @@ GEM
     method_source (1.1.0)
     mini_histogram (0.3.1)
     mini_mime (1.1.5)
-    minitar (0.9)
+    minitar (1.0.2)
     minitest (5.25.1)
     mock_redis (0.44.0)
     msgpack (1.7.2)
@@ -609,9 +611,11 @@ GEM
     snaky_hash (2.0.1)
       hashie
       version_gem (~> 1.1, >= 1.1.1)
-    solr_wrapper (4.0.2)
-      http
+    solr_wrapper (4.1.0)
+      faraday
+      faraday-follow_redirects
       minitar
+      ostruct
       retriable
       ruby-progressbar
     sprockets (4.2.1)
