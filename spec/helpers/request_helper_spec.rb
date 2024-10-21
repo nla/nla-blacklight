@@ -163,6 +163,24 @@ RSpec.describe RequestHelper do
     end
   end
 
+  describe "#shelving_title" do
+    context "when there is a shelving title" do
+      let(:holding) { {"shelvingTitle" => "G.C. Bleeck/Misc #1"} }
+
+      it "returns the shelvingTitle" do
+        expect(helper.shelving_title(holding)).to eq "G.C. Bleeck/Misc #1"
+      end
+    end
+
+    context "when there is no shelvingTitle" do
+      let(:holding) { {"shelvingTitle" => nil} }
+
+      it "returns nil" do
+        expect(helper.shelving_title(holding)).to be_nil
+      end
+    end
+  end
+
   describe "#items_issues_in_use" do
     context "when there are notes" do
       let(:holding) { holdings_response["holdingsRecords"][4] }
