@@ -23,6 +23,11 @@
                   <% end %></p>
               </dd>
 
+              <% if shelving_title(holding).present? %>
+                <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.shelving_title") %></dt>
+                <dd class="col-12 col-lg-8"><%= shelving_title(holding) %></dd>
+              <% end %>
+
               <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.status") %></dt>
               <dd class="col-12 col-lg-8"><%= item["requestable"] ? item["displayStatus"] : "Not for loan" %></dd>
 

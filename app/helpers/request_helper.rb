@@ -75,6 +75,10 @@ module RequestHelper
     holding["notes"].select { |note| note["holdingsNoteType"] != "Restriction" }
   end
 
+  def shelving_title(holding)
+    holding["shelvingTitle"]
+  end
+
   def format_items_in_use(holding)
     holding["checkedOutItems"].map do |item|
       concatenated = "#{item["enumeration"]} #{item["chronology"]} #{item["yearCaption"]}"
