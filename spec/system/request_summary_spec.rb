@@ -46,7 +46,6 @@ RSpec.describe "Request summary" do
 
       expect(page).to have_css("h1", text: "Login")
       expect(page).to have_button("Login")
-      expect(page).to have_link("Upgrade Login", href: "https://test.nla.gov.au/patron/upgrade")
     end
   end
 end

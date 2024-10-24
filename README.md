@@ -148,8 +148,6 @@ These variables are mainly used in the `staging` or `production` environment.
     CATALOGUE_SERVICES_REALM - Catalogue Services realm name
     
     THUMBNAIL_SERVICE_API_BASE_URL - URL to the thumbnail service API base URL
-
-    PATRON_UPGRADE_URL - URL to the Patron Upgrade service
 </details>
 
 ## Setup
