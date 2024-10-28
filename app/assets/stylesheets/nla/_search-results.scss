@@ -6,41 +6,49 @@
   margin-top: 1rem;
   
   .applied-filter {
-    .constraint-value {
-      border-top-left-radius: 3rem;
-      border-bottom-left-radius: 3rem;
-      border-right-width: 0;
-      font-size: 0.75rem;
-      font-weight: normal;
-      text-transform: none;
-      letter-spacing: 0;
-      padding-left: 1rem;
-      padding-right: 1rem;
-      
-      &:hover,
-      &:focus {
-        background-color: $white;
-        color: $purple;
-        cursor: default;
+    color: $warm-grey;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: 0;
+    
+    &:focus,
+    &:hover {
+      .constraint-value,
+      .remove {
+        background: $grey-350;
+        color: $white;
       }
     }
     
+    .constraint-value,
     .remove {
-      border-top-right-radius: 3rem;
-      border-bottom-right-radius: 3rem;
-      border-left-width: 0;
+      background-color: $tags-surface;
+      border: none;
+      font-size: 0.875rem;
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      line-height: 1;
+      
+      &.btn {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0 !important;
+      }
+    }
+    
+    .constraint-value {
+      border-top-left-radius: 0.5rem;
+      border-bottom-left-radius: 0.5rem;
+    }
+    
+    .remove {
+      border-top-right-radius: 0.5rem;
+      border-bottom-right-radius: 0.5rem;
       padding-left: 0;
-      padding-right: 1rem;
-      font-size: 0.75rem;
-      font-weight: normal;
-      color: rgba(70,71,74, 0.3);
       
       &:not(:disabled):not(.disabled):hover,
       &:not(:disabled):not(.disabled):focus,
       &:not(:disabled):not(.disabled):active {
-        background: $white;
-        color: $orange;
-        border-color: $purple;
+        color: $muted-orange;
         cursor: pointer;
         text-decoration: none;
       }
@@ -49,12 +57,60 @@
 }
 
 .sort-pagination {
-  .btn-group {
+  border-top: 1px solid rgb(230,230,230);
+  
+  .btn {
+    font-weight: normal;
+    font-size: 0.875rem;
+    padding-left: 1em;
+    padding-right: 1em;
+    border: none;
+    color: $grey-700;
+    
+    &:focus,
+    &:hover,
+    &:active,
+    &.show {
+      background-color: transparent;
+      color: $black;
+    }
+  }
+  
+  .sort-dropdown {
     .btn {
-      font-weight: normal;
-      font-size: 0.875rem;
-      padding-left: 1em;
-      padding-right: 1em;
+      .d-sm-inline {
+        font-weight: 600;
+        color: $black;
+      }
+    }
+  }
+    
+  .per_page-dropdown {
+    .btn {
+      font-weight: 600;
+      color: $black;
+
+      .d-sm-inline {
+        font-weight: 400;
+        color: $grey-700;
+      }
+    }
+  } 
+  
+  .dropdown-menu.show {
+    background-color: $white;
+    box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
+    
+    .dropdown-item {
+      color: $grey-700;
+      
+      &:focus,
+      &:hover,
+      &:active,
+      &.active {
+        background-color: $light-grey;
+        color: $grey-700;
+      }
     }
   }
 }
@@ -63,11 +119,34 @@
   .document {
     margin-top: 0;
     padding: 1rem;
+    border-bottom: 1px dotted $light-grey;
     
     &:focus,
-    &:hover {
-      background: $white;
-      box-shadow: 3px 3px 6px 0 rgba(112,57,150,0.1);
+    &:hover,
+    &:has(.document-title-heading a:focus) {
+      background: $light-grey;
+    }
+    
+    .document-title-heading {
+      text-underline-offset: 2px;
+      text-underline-position: under;
+
+      a:focus,
+      a:hover {
+        &:after {
+          content: " \F061";
+          font: var(--fa-font-regular);
+        }
+      }
+      
+      .text-break {
+        &:focus,
+        &:hover,
+        &:active {
+          color: $grey-700;
+          background: transparent;
+        }
+      }
     }
     
     .document-thumbnail {
@@ -78,7 +157,7 @@
     }
     
     .toggle-bookmark {
-      color: $light-purple;
+      color: $mid-teal;
     }
   }
 }

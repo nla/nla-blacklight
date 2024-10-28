@@ -1,3 +1,50 @@
+.navbar-search {
+  .input-group {
+    gap: 1rem;
+    
+    .search-q,
+    .form-select {
+      border-radius: 4px !important;
+    }
+    
+    > .search-autocomplete-wrapper {
+      border: none;
+      
+      .search-q {
+        border: 1px solid $warm-grey;
+        border-radius: 4px !important;
+        
+        &:focus {
+          border-color: $black;
+          box-shadow: 0 0 0 1px $black;
+        }
+      }
+      
+      #autocomplete-popup {
+        background: $white;
+        box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
+      }
+    }
+    
+    .btn-primary {
+      border-top-left-radius: 5rem !important;
+      border-bottom-left-radius: 5rem !important;
+    }
+  }
+}
+
+
+.form-select,
+.form-control {
+  border-color: $warm-grey;
+  border-radius: 4px;
+  
+  &:focus {
+    border-color: $black;
+    box-shadow: 0 0 0 1px $black;
+  } 
+}
+
 .field_with_errors {
   margin: 0;
 

@@ -25,6 +25,9 @@ en:
       main_content: 'Skip to main content'
       search_field: 'Skip to search'
       first_result: 'Skip to first result'
+    header_top_links:
+      trove: 'Trove'
+      first_australians: 'First Australians'
     header_links:
       search: 'New search'
       catalogue: 'Catalogue'
@@ -62,18 +65,25 @@ en:
         p2: 'It’s easy to sign-up online, and it’s free for all Australian residents.'
       button: 'Join us'
     footer:
+      ask_a_librarian:
+        title: "Need help?"
+        description: "Our librarians are here to guide you."
+        button: "Ask a librarian"
       acknowledgement_of_country:
         title: 'Acknowledgement of Country'
         description: 'The National Library of Australia acknowledges Australia’s First Nations Peoples – the First Australians – as the Traditional Owners and Custodians of this land and gives respect to the Elders – past and present – and through them to all Australian Aboriginal and Torres Strait Islander people.'
       contact:
         title: 'Contact us'
         telephone: '+61 (0)2 6262 1111'
-        address: 'Parkes Place<br>Canberra ACT 2600<br>Australia'
+        address: 'Parkes Place Canberra<br>ACT 2600 Australia'
         opening_hours: 'Opening hours'
         more_contact_info: 'More contact information'
       connect:
         title: 'Connect'
-        enews: 'Subscribe to our newsletter'
+        enews: 'Subscribe to our newsletters'
+      opening_hours:
+        title: 'Opening hours'
+        more_opening_hours: 'All opening hours'
       quicklinks:
         title: 'Quicklinks'
         jobs: 'Jobs at the Library'

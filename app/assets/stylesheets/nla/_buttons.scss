@@ -3,8 +3,7 @@
 @import "nla-custom-bootstrap";
 
 .btn {
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
+  border-radius: 5rem;
   
   &.arrow-before {
     position: relative;
@@ -12,7 +11,7 @@
     padding-right: 2rem;
     
     &::after {
-      color: $orange;
+      color: $black;
       content: "\F177";
       font: var(--fa-font-regular);
       position: absolute;
@@ -25,7 +24,7 @@
     &:hover::after,
     &:focus::after {
       left: 1.25rem;
-      color: $white;
+      color: $black;
     }
   }
   
@@ -35,7 +34,7 @@
     padding-right: 3rem;
     
     &::after {
-      color: $orange;
+      color: $black;
       content: "\F178";
       font: var(--fa-font-regular);
       position: absolute;
@@ -48,7 +47,7 @@
     &:hover::after,
     &:focus::after {
       right: 1.25rem;
-      color: $white;
+      color: $black;
     }
   }
   
@@ -58,7 +57,7 @@
     padding-right: 3rem;
     
     &::after {
-      color: $orange;
+      color: $black;
       content: "\f1f8";
       font: var(--fa-font-regular);
       position: absolute;
@@ -71,7 +70,7 @@
     &:hover::after,
     &:focus::after {
       font: var(--fa-font-solid);
-      color: $white;
+      color: $black;
     }
   }
 }
@@ -87,5 +86,56 @@
 .btn-outline-primary,
 .btn-outline-secondary {
   background: $white;
+  
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: $lightest-teal;
+    color: $black;
+    text-decoration: none;
+  }
+}
+.btn-primary {
+  background: $black;
+  color: $white;
+  border: 1px solid $black;
+  
+  &:focus,
+  &:hover,
+  &:active {
+    background: $light-teal;
+    color: $black;
+    border-color: $light-teal;
+  }
+}
+
+
+.btn-secondary {
+  background-color: $white;
+  border: 1px solid $black;
+  color: $black;
+  
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: $light-teal;
+    color: $black;
+    border-color: $light-teal;
+    text-decoration: none;
+  }
+}
+
+.btn-tertiary {
+  background-color: $white;
+  border-color: $black;
+  color: $black;
+  
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: $black;
+    color: $white;
+    text-decoration: none;
+  }
 }
 

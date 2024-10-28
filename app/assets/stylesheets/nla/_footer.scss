@@ -3,37 +3,97 @@
 @import "nla-custom-bootstrap";
 
 .footer {
-  color: $white;
   
-  a {
-    color: $white;
-    text-decoration: none;
+  color: $black;
+  
+  a:not(.btn) {
+    color: $black;
+    text-decoration: underline;
     
     &:focus,
-    &:hover {
+    &:hover,
+    &:active {
       color: $white;
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
-  .connect .list-inline-item a {
-    &:focus,
-    &:hover {
-      color: $orange;
+  
+  .footer-ask-a-librarian {
+      color: $white;
+      padding-top: 6.125rem;
+      padding-bottom: 6.125rem;
+      position: relative;
+      
+      .arrow-tip {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        line-height: 0;
+        
+        svg {
+          height: 18px;
+        }
+      }
+      
+      .h2 {
+        font-family: $font-family-sans-serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: $white;
+        
+      }
     }
+  
+  
+  .footer-top {
+    background-color: $white;
+    padding-top: 6.125rem;
+    padding-bottom: 6.125rem;
+  }
+  
+  .connect .list-inline-item a {
+    display: inline-block;
+    transition: 0.2s;
+    
+    
+    &:focus,
+    &:hover,
+    &:active {
+      color: $grey-700;
+      background: transparent;
+      transform: translateY(-4px) scale(1.1);
+    }
+  }
+  
+  
+  h4 {
+    font-family: $font-family-sans-serif;
+    color: $black;
+    font-size: 1.25rem;
+    font-weight: 600;
   }
   
   h2 {
     &.h4 {
-      color: $white;
+      color: $black;
     }
     
     &.h6 {
       font-family: $font-family-sans-serif;
-      color: $white;
+      color: $black;
     }
   }
   
   hr {
-    border-top-color: $white;
+    border-top-color: $black;
+  }
+  
+  .footer-bottom {
+    a:focus,
+    a:hover,
+    a:active {
+          background-color: transparent;
+        }
   }
 }

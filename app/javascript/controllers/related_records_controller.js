@@ -7,7 +7,7 @@ export default class extends Controller {
     icon: String,
   }
 
-  HOVER_COLOUR = "#34075B"
+  HOVER_COLOUR = "#dc764c"
   BASE_COLOUR = "#FFFFFF"
 
   connect() {

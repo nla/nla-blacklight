@@ -11,7 +11,7 @@ $(function() {
     event.preventDefault();
     const section = $(this).attr("href");
     $("html, body").animate({
-      scrollTop: $(section).offset().top-20
+      scrollTop: $(section).offset().top-110
     }, 1200);
   });
 
@@ -61,9 +61,9 @@ $(function() {
 
       $('.blrl-plot-config').each(function() {
         $(this).data('plot-config', {
-          selection: { color: '#46474A' },
+          selection: { color: '#685E57' },
           colors: ['#ffffff'],
-          series: { lines: { fillColor: 'rgba(112,57,150, 0.8)' }},
+          series: { lines: { fillColor: '#a1d6ca' }},
           grid: { color: '#677078', tickColor: '#f4f5f6', borderWidth: 1 }
         });
       });

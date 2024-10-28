@@ -2,6 +2,11 @@
 @import "variables";
 @import "nla-custom-bootstrap";
 
+.pagination-search-widgets {
+  font-size: 0.875rem;
+  color: $warm-grey;
+}
+
 .document-thumbnail {
   &.col-12 a {
     position: relative;
@@ -29,9 +34,14 @@
       }
     }
     
-    &:hover:before {
-      background-color: rgba(0,0,0,0.4);
-    } 
+    &:focus,
+    &:hover {
+      outline: 2px solid $mid-teal;
+      
+      &:before {
+        background-color: rgba(0,0,0,0.4);
+      } 
+    }
   }
   
   .thumbnail {
@@ -43,6 +53,13 @@
 }
 
 .document {
+  
+  .h3 {
+    font-family: $font-family-serif;
+    font-size: 2.5rem;
+    font-weight: 400;
+  }
+  
   .dl-invert dt {
     color: $gray-medium-light;
   }
@@ -62,8 +79,21 @@
   }
 }
 
-.holding {
-  &:hover {
-    box-shadow: 3px 3px 6px 0 rgba(112,57,150,0.1);
+#request-details {
+  background-color: $light-grey;
+  padding: 1rem;
+  
+  .h3 {
+    font-family: $font-family-sans-serif;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+  
+  .holding {
+    background-color: $white;
+    
+    &:hover {
+      box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
+    }
   }
 }

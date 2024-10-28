@@ -11,7 +11,7 @@
         <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" x="240" y="32" width="96" height="96" rx="16"></rect>
         <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" x="32" y="320" width="96" height="96" rx="16"></rect>
         <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" x="240" y="320" width="96" height="96" rx="16"></rect>
-        <rect id="Rectangle" fill="#E03100" fill-rule="nonzero" x="448" y="320" width="96" height="96" rx="16"></rect>
+        <rect id="Rectangle" fill="#a1d6ca" fill-rule="nonzero" x="448" y="320" width="96" height="96" rx="16"></rect>
         <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" x="240" y="608" width="96" height="96" rx="16"></rect>
         <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" x="448" y="608" width="96" height="96" rx="16"></rect>
         <rect id="Rectangle" fill="#FFFFFF" fill-rule="nonzero" x="656" y="608" width="96" height="96" rx="16"></rect>

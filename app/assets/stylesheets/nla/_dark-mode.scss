@@ -1,0 +1,35 @@
+@charset "UTF-8";
+@import "variables";
+@import "nla-custom-bootstrap";
+
+
+@media screen and (prefers-color-scheme: dark) {
+
+  body {
+    background-color: $black;
+    color: $white;
+  }
+
+  .header {
+    .navbar-light.bg-white {
+      background: $black !important;
+      border-bottom-color: $white;
+      
+      .navbar-logo {
+        filter: invert(180);
+      }
+    }
+    
+    .nav-link {
+      color: $white;
+    }
+  }
+
+
+
+  .alert-info {
+      background: $info-dark;
+      border-color: $info-dark;
+      color: $white;
+    }
+}

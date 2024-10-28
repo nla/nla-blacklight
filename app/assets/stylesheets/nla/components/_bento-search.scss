@@ -17,57 +17,84 @@
   }
 
   .card {
-    border-color: $white;
+    border-color: $warm-grey;
     break-inside: avoid-column;
     
-    &:hover,
-    &:focus {
-      border-color: $purple;
-      box-shadow: 3px 3px 6px 0 rgba(112,57,150,0.1);
-    }
-  }
-  
-  .card-title {
-    background: $purple;
-    color: $white;
-    margin: calc(-1rem - 1px) calc(-1rem - 1px) 0 calc(-1rem - 1px);
-    
-    .h5 {
-      font-family: $font-family-sans-serif;
-      color: $white;
-    }
-    
-    .view-all-results {
-      font-size: 0.875rem;
+    &:hover {
+      border-color: $black;
+      box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
       
-      a {
+      .card-title {
+        background: $black;
+      }
+    }
+
+    .card-title {
+      background: $warm-grey;
+      color: $white;
+      margin: calc(-1rem - 1px) calc(-1rem - 1px) 0 calc(-1rem - 1px);
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+      
+      .h5 {
+        font-family: $font-family-sans-serif;
         color: $white;
-        text-decoration: none;
+      }
+      
+      .view-all-results {
+        font-size: 0.875rem;
         
-        &:hover,
-        &:focus {
+        a {
           color: $white;
-          text-decoration: underline;
+          text-decoration: none;
+          
+          &:hover,
+          &:focus {
+            color: $white;
+            background-color: transparent;
+            text-decoration: underline;
+          }
         }
       }
     }
-  }
-  
-  .bento-item-title {
-    font-size: 1.25rem;
-    a {
-      text-decoration: none;
-
-      &:hover {
-        text-decoration: underline;
+    
+    .bento-item {
+      border-bottom: 1px dotted $light-grey;
+      
+      &:hover,
+      &:has(.bento-item-title a:focus) {
+        background: $light-grey;
+      }
+    
+      .bento-item-title {
+        font-size: 1.25rem;
+        a {
+          text-decoration: none;
+          text-underline-offset: 2px;
+          text-underline-position: under;
+    
+          &:focus,
+          &:hover {
+            background: transparent;
+            color: $black;
+            text-decoration: underline;
+            
+            &:after {
+              content: " \F061";
+              font: var(--fa-font-regular);
+            }
+          }
+        }
+      }
+      
+      .document-thumbnail {
+        max-width: 123px;
       }
     }
-  }
-}
-
-.bento-item {
-  .document-thumbnail {
-    max-width: 123px;
+    
+    .bento_pane_advanced {
+      font-size: 0.875rem;  
+    }
   }
 }
 

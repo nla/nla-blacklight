@@ -2,7 +2,7 @@
   <% dbid = "" %>
   <% dbid = "data-bibid=#{item.unique_id}" if is_catalogued?(item.link) %>
 
-  <div class="bento-item clearfix mb-4 row" <%= dbid %> data-unique-id="<%= item.unique_id %>">
+  <div class="bento-item clearfix pt-2 pb-2 row" <%= dbid %> data-unique-id="<%= item.unique_id %>">
     <%= render :partial => "bento_search/item_title", :object => item, :as => 'item', :locals => {index: (item_counter + 1)} %>
     <div class="col">
       <dl class="document-metadata dl-invert row">

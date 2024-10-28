@@ -1,16 +1,56 @@
-@import "bootstrap/scss/functions";
-@import "bootstrap/scss/variables";
-@import "bootstrap/scss/variables-dark";
+
 
 $enable-negative-margins: true;
 $breadcrumb-divider: quote("»");
 
 // Colours to override in Bootstrap
+$black: #000;
+$warm-grey: #685E57;
+$light-grey: #F2F2F2;
 $white: #FFF;
+$dark-teal: #58a291;
+$mid-teal: #6bbbae;
+$light-teal: #a1d6ca;
+$lightest-teal: #def0ed;
+$dark-red: #9a3324;
+$muted-orange: #dc764c;
+$light-muted-orange: #f5a992;
+$lightest-orange: #fcd9c9;
+$dark-blue: #2e86ab;
+$mid-blue: #96c2d7;
+$light-blue: #c9e1ea;
+$lightest-blue: #d9eef4;
+$muted-yellow: #e4dc95;
+$parchment: #fff7d2;
+
+$success-light: #e5f6e6;
+$success-dark: #008a07;
+$error-light: #f7e7eb;
+$error-mid: #ffb8c1;
+$error-dark: #b81237;
+$warning-light: #fbeee5; 
+$warning-dark: #c95000;
+$info-light: #eaedf4;
+$info-dark: #2e5299;
+
+$grey-800: #121212;
+$grey-700: #1c1c1e;
+$grey-600: #2c2c2e;
+$grey-500: #3a3a3c;
+$grey-400: #48484a;
+$grey-350: #585a5a;
+$grey-300: #636366;
+$grey-200: #707075;
+$grey-100: #75757b;
+$grey-50: #828282;
+
+$disabled-text: #666666;
+$link-hover-bg-color: rgba(0,0,0,0.65);
+$tags-surface: #dcdcdc;
+
+$primary: #a1d6ca; 
 $orange: #E03100;
 $purple: #34075B;
-$blue: #1E4486;
-$light-blue: #018FE2;
 $light-purple: #703996;
 $light-yellow: #FFF3CD;
 $cyan: #00afc4;
@@ -20,15 +60,66 @@ $gray-light: #E1E3E5;
 $gray-medium-light: #677078;
 $gray-medium: #46474A;
 
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
 
-$colors: (
+$nla-colors: (
+  "black": $black,
+  "warm-grey": $warm-grey,
+  "light-grey": $light-grey,
+  "white": $white,
+  "dark-teal": $dark-teal,
+  "mid-teal": $mid-teal,
+  "light-teal": $light-teal,
+  "lightest-teal": $lightest-teal,
+  "dark-red": $dark-red,
+  "muted-orange": $muted-orange,
+  "light-muted-orange": $light-muted-orange,
+  "lightest-orange": $lightest-orange,
+  "dark-blue": $dark-blue,
+  "mid-blue": $mid-blue,
+  "light-blue": $light-blue,
+  "lightest-blue": $lightest-blue,
+  "muted-yellow": $muted-yellow,
+  "parchment": $parchment,
+
+  "success-light": $success-light,
+  "success-dark": $success-dark,
+  "error-light": $error-light,
+  "error-mid": $error-mid,
+  "error-dark": $error-dark,
+  "warning-light": $warning-light, 
+  "warning-dark": $warning-dark,
+  "info-light": $info-light,
+  "info-dark": $info-dark,
+
+  "grey-800": $grey-800,
+  "grey-700": $grey-700,
+  "grey-600": $grey-600,
+  "grey-500": $grey-500,
+  "grey-400": $grey-400,
+  "grey-350": $grey-350,
+  "grey-300": $grey-300,
+  "grey-200": $grey-200,
+  "grey-100": $grey-100,
+  "grey-50": $grey-50,
+  
+  "disabled-text": $disabled-text,
+  "link-hover-bg-color": $link-hover-bg-color,
+  "tags-surface": $tags-surface,
+  
+  "primary": $light-teal,
+  "secondary":  $black,
+  "tertiary":   $white,
+  "light": $white,
+  "dark": $lightest-teal,
+  
   "cyan": $cyan,
   "orange": $orange,
   "light-yellow": $light-yellow,
   "yellow": $yellow,
   "light-purple": $light-purple,
-  "blue": $blue,
-  "light-blue": $light-blue,
   "purple": $purple,
   "gray-very-light": $gray-very-light,
   "gray-light": $gray-light,
@@ -37,22 +128,27 @@ $colors: (
 );
 
 
+$theme-colors: map-merge($nla-colors, $theme-colors);
+
+/*
 $theme-colors: (
     "primary":    $orange,
-    "secondary":  $purple,
-    "success":    $success,
-    "info":       $cyan,
-    "warning":    $yellow,
+    "secondary":  $black,
+    "tertiary":   $white,
+    "success":    $success-light,
+    "info":       $info-light,
+    "warning":    $warning-light,
     "danger":     $danger,
-    "light":      $light,
-    "dark":       $purple
+    "light":      $white,
+    "dark":       $lightest-teal,
 );
+*/
 
 $logo-image: url('nla_logo.svg');
 
 // Body
-$body-bg: $gray-very-light;
-$body-color: $gray-medium;
+$body-bg: $white;
+$body-color: $grey-700;
 
 // Components
 
@@ -61,33 +157,45 @@ $border-radius-lg: 0;
 $border-radius-sm: 0;
 
   // Typography
-$font-family-sans-serif: "Roboto condensed", sans-serif;
-$btn-font-family: "Roboto condensed", sans-serif;
+$font-family-serif: "STIX Two Text", serif;
+$font-family-sans-serif: "Open Sans", sans-serif;
+$btn-font-family: $font-family-sans-serif;
 $text-muted: $gray-medium-light;
 
 $font-weight-semi-bold: 500;
 
 // Headings
-$headings-font-family: "Frank Rhule Libre", serif;
-$headings-font-weight: 900;
+$headings-font-family: $font-family-sans-serif;
+$headings-font-weight: 600;
 $headings-line-height: 1.2;
-$headings-color: $purple;
+$headings-color: $grey-700;
 
 // Links
-$link-color: $blue;
+$link-color: $black;
 $link-decoration: underline;
-$link-hover-color: $light-blue;
+$link-hover-color: $white;
 $link-hover-decoration: none;
+
+// Focus
+$focus-ring-color: $light-teal;
 
 // Buttons
 $btn-padding-x: 2rem;
+$btn-padding-y: 0.75rem;
 $btn-padding-x-sm: 1.5rem;
 $btn-padding-x-lg: 2rem;
-$btn-font-weight: 700;
+$btn-font-weight: 400;
+$btn-border-width: 1px;
+$btn-border-radius: 20rem;
+$btn-link-color: $black;
+$btn-link-hover-color: $black;
+
+
 
 // Form inputs
 $input-border-color: $gray-light;
-$input-placeholder-color: $gray-medium-light;
+$input-border-radius: 4px;
+$input-placeholder-color: $disabled-text;
 $component-active-bg: $purple;
 
 $input-bg: $white;
@@ -97,20 +205,35 @@ $input-group-addon-bg: #e9ecef;
 $component-active-bg: $purple;
 
 // Navbar
-$navbar-dark-color: $white;
-$navbar-dark-hover-color: $orange;
-$navbar-dark-active-color: $orange;
-$navbar-dark-toggler-border-color: $white;
+$navbar-light-color: $black;
+$navbar-light-hover-color: $black;
+$navbar-light-active-color: $black;
+$navbar-dark-color: $black;
+$navbar-dark-hover-color: $black;
+$navbar-dark-active-color: $black;
+$navbar-dark-toggler-border-color: $black;
+$navbar-padding-y: 0;
+$nav-link-padding-x: 0;
+
 
 // Pagination
-$pagination-color:                  $purple;
+$pagination-color:                  $grey-700;
 $pagination-bg:                     transparent;
 $pagination-border-width:           1px;
 $pagination-border-color:           transparent;
+$pagination-border-radius:          2px;
+
+$pagination-focus-color:            $white;
+$pagination-focus-bg:               $warm-grey;
+$pagination-focus-border-color:     $warm-grey;
 
 $pagination-hover-color:            $white;
-$pagination-hover-bg:               $purple;
-$pagination-hover-border-color:     $purple;
+$pagination-hover-bg:               $warm-grey;
+$pagination-hover-border-color:     $warm-grey;
+
+$pagination-active-color:            $white;
+$pagination-active-bg:               $warm-grey;
+$pagination-active-border-color:     $warm-grey;
 
 $pagination-disabled-bg:            transparent;
 $pagination-disabled-border-color:  transparent;
@@ -122,9 +245,18 @@ $table-caption-color: $purple;
 // Card
 $card-bg: $white;
 $card-border-color: transparent;
-$card-border-radius: 0;
+$card-border-radius: 4px;
 $card-cap-bg: rgba($white, .03);
 
 // Dropdowns
 $dropdown-bg: $white;
 $dropdown-border-color: $white;
+
+// Modal
+$modal-backdrop-bg: $black;
+$modal-backdrop-opacity: 0.7;
+$btn-close-color: $muted-orange;
+
+
+// Badge
+$badge-border-radius: 8px;

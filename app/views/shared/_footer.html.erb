@@ -1,71 +1,77 @@
-<footer class="footer mt-auto py-3 bg-dark d-print-none">
-  <div class="<%= container_classes %>">
-  <div class="row">
-    <section class="acknowledgement-of-country text-center col-md-8 mx-auto">
-      <h2 class="h6 font-family-sans text-uppercase font-weight-bold"><%= t('blacklight.footer.acknowledgement_of_country.title') %></h2>
-      <p><%= t('blacklight.footer.acknowledgement_of_country.description') %></p>
-    </section>
-  </div>
-    <hr>
+<footer class="footer mt-auto bg-lightest-teal d-print-none">
+  <section class="footer-ask-a-librarian bg-black text-center">
+    <div class="arrow-tip">
+      <svg xmlns="http://www.w3.org/2000/svg" width="55" height="18" viewBox="0 0 55 18" fill="none">
+        <path d="M54.5039 0.000494003L0.00132598 0.000494955C12.3289 0.000493877 21.7123 6.92791 27.2526 17.5313C32.7756 6.96093 42.2449 0.000495075 54.5039 0.000494003Z" fill="#fff"></path>
+      </svg>
+    </div>
+    <h2 class="h2 mb-3"><%= t('blacklight.footer.ask_a_librarian.title') %></h2>
+    <div class="mb-3"><%= t("blacklight.footer.ask_a_librarian.description") %></div>
+    <div>
+      <%= link_to t("blacklight.footer.ask_a_librarian.button"), "#", class: "btn btn-secondary mt-3" %>
+    </div>
+  </section>
+  <div class="footer-top padding-horizontal padding-v-98">
+    <div class="container footer-container">
       <div class="row">
-    <section class="col-sm-10 offset-sm-1 col-md-3 offset-md-1">
-      <h2 class="h4"><%= t('blacklight.footer.contact.title') %></h2>
-      <p>
-        <%= link_to t("blacklight.footer.contact.telephone"), "tel:+61262621111" %><br>
-        <%= t('blacklight.footer.contact.address').html_safe %>
-      </p>
-      <p>
-        <%= link_to t("blacklight.footer.contact.opening_hours"), "https://www.nla.gov.au/visit-us/opening-hours" %><br>
-        <%= link_to t("blacklight.footer.contact.more_contact_info"), "https://www.nla.gov.au/contact-us" %>
-      </p>
-    </section>
-    <section class="connect col-sm-10 offset-sm-1 col-md-4 offset-md-0 text-center">
-      <h2 class="h4"><%= t('blacklight.footer.connect.title') %></h2>
-      <ul class="list-inline">
-        <li class="list-inline-item px-2">
-            <a href="https://www.facebook.com/National.Library.of.Australia">
-                <i class="fa-brands fa-facebook fa-2x" aria-hidden="true"></i>
-                <span class="sr-only">Facebook</span>
-            </a>
-        </li>
-        <li class="list-inline-item px-2">
-            <a href="https://twitter.com/nlagovau">
-                <i class="fa-brands fa-x-twitter fa-2x" aria-hidden="true"></i>
-                <span class="sr-only">X (formerly Twitter)</span>
-            </a>
-        </li>
-        <li class="list-inline-item px-2">
-            <a href="https://www.instagram.com/nationallibraryaus/">
-                <i class="fa-brands fa-instagram fa-2x" aria-hidden="true"></i>
-                <span class="sr-only">Instagram</span>
-            </a>
-        </li>
-        <li class="list-inline-item px-2">
-            <a href="https://www.youtube.com/channel/UCv51AT4rmiwH1M9aLDE1AIA">
-                <i class="fa-brands fa-youtube fa-2x" aria-hidden="true"></i>
-                <span class="sr-only">YouTube</span>
-            </a>
-        </li>
-        <li class="list-inline-item px-2">
-            <a href="https://www.nla.gov.au/subscribe-our-newsletter">
-                <i class="fa-regular fa-envelope fa-2x" aria-hidden="true"></i>
-                <span class="sr-only">Newsletter</span>
-            </a>
-        </li>
-    </ul>
-      <p><%= link_to t("blacklight.footer.connect.enews"), "https://www.nla.gov.au/subscribe-our-newsletter" %></p>
-    </section>
-    <section class="col-sm-10 offset-sm-1 col-md-3 offset-md-1">
-      <h2 class="h4"><%= t('blacklight.footer.quicklinks.title') %></h2>
-      <ul class="list-unstyled">
-        <li><%= link_to t("blacklight.footer.quicklinks.jobs"), "https://www.nla.gov.au/jobs-at-the-library" %></li>
-        <li><%= link_to t("blacklight.footer.quicklinks.grants"), "https://www.nla.gov.au/about/fellowships-scholarships-and-grants" %></li>
-        <li><%= link_to t("blacklight.footer.quicklinks.copies_direct"), "https://copiesdirect.nla.gov.au/" %></li>
-        <li><%= link_to t("blacklight.footer.quicklinks.getting_started"), "https://www.nla.gov.au/getting-started" %></li>
-        <li><%= link_to t("blacklight.footer.quicklinks.feedback"), "https://www.nla.gov.au/about-us/about-site/user-feedback" %></li>
-        <li><%= link_to t("blacklight.footer.quicklinks.media"), "https://www.nla.gov.au/news-and-media" %></li>
-    </ul>
-    </section>
+        <div class="col-lg-4 mb-5"
+          <section class="opening-hours">
+            <h2 class="h4 mb-4"><%= t('blacklight.footer.opening_hours.title') %></h2>
+            <div><%= link_to t("blacklight.footer.opening_hours.more_opening_hours"), "https://www.nla.gov.au/visit-us/opening-hours", class: "btn btn-tertiary mt-4" %></div>
+          </section>
+        </div>
+        <div class="col-lg-4 mb-5">
+          <section class="contact">
+            <h2 class="h4 mb-4"><%= t('blacklight.footer.contact.title') %></h2>
+            <p>
+              <%= link_to t("blacklight.footer.contact.telephone"), "tel:+61262621111" %><br>
+              <%= t('blacklight.footer.contact.address').html_safe %>
+            </p>
+            <div><%= link_to t("blacklight.footer.contact.more_contact_info"), "https://www.nla.gov.au/contact-us", class: "btn btn-tertiary mt-2 mb-5" %></div>
+          </section>
+          <section class="connect">
+            <h2 class="h4 mb-4"><%= t('blacklight.footer.connect.title') %></h2>
+            <ul class="list-inline">
+              <li class="list-inline-item pe-4">
+                  <a href="https://www.facebook.com/National.Library.of.Australia">
+                      <i class="fa-brands fa-facebook fa-2x" aria-hidden="true"></i>
+                      <span class="sr-only">Facebook</span>
+                  </a>
+              </li>
+              <li class="list-inline-item pe-4">
+                  <a href="https://www.instagram.com/nationallibraryaus/">
+                      <i class="fa-brands fa-instagram fa-2x" aria-hidden="true"></i>
+                      <span class="sr-only">Instagram</span>
+                  </a>
+              </li>
+              <li class="list-inline-item pe-4">
+                  <a href="https://www.youtube.com/channel/UCv51AT4rmiwH1M9aLDE1AIA">
+                      <i class="fa-brands fa-youtube fa-2x" aria-hidden="true"></i>
+                      <span class="sr-only">YouTube</span>
+                  </a>
+              </li>
+            </ul>
+            <div>
+              <%= link_to t("blacklight.footer.connect.enews"), "https://www.nla.gov.au/subscribe-our-newsletter", class: "btn btn-tertiary mt-2" %>
+            </div>
+          </section>
+        </div>
+        <div class="col-lg-4">
+          <section class="about-us">
+            <h2 class="h4 mb-4">About us</h2>
+              <p>We collect, protect and provide access to millions of physical items and billions of digital records about Australia and Australians and will continue to do so into the future.</p>
+              <p>We work with libraries throughout Australia to give you access to library collections and services, and to Trove.</p>
+              <p>Visit us in Canberra or online and use our services, see an exhibition, or attend an event.</p>
+          </section>
+        </div>
       </div>
+    </div>
   </div>
+  <div class="<%= container_classes %> footer-bottom">
+    <div class="row">
+      <section class="py-4 text-center">
+        <%= link_to image_tag("nla-stacked-logo-black.svg", :alt => "National Library of Australia logo", :width => "134", :height => "111", class: "footer-logo"), "https://www.library.gov.au" %>
+      </section>
+    </div>
+    </div>
 </footer>

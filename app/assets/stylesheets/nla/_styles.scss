@@ -1,12 +1,14 @@
 @charset "UTF-8";
 @import "nla-custom-bootstrap";
 
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;700&display=swap');
 
 // Bootstrap overrides
+a:focus,
+a:hover,
 a:active {
-  color: $light-blue;
+  color: $white;
   text-decoration: underline;
+  background-color: $grey-350;
 }
 
 
