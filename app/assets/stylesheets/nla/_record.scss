@@ -37,6 +37,7 @@
     &:focus,
     &:hover {
       outline: 2px solid $mid-teal;
+      box-shadow: none;
       
       &:before {
         background-color: rgba(0,0,0,0.4);
@@ -60,8 +61,10 @@
     font-weight: 400;
   }
   
-  .dl-invert dt {
-    color: $gray-medium-light;
+  .dl-invert {
+    dt {
+      color: $grey-300;
+    }
   }
 }
 
@@ -92,7 +95,8 @@
   .holding {
     background-color: $white;
     
-    &:hover {
+    &:hover,
+    &:has(a.btn-primary:focus) {
       box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
     }
   }

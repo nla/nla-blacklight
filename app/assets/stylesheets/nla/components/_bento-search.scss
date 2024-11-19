@@ -19,6 +19,7 @@
   .card {
     border-color: $warm-grey;
     break-inside: avoid-column;
+    background-color: transparent;
     
     &:hover {
       border-color: $black;
@@ -49,10 +50,12 @@
           text-decoration: none;
           
           &:hover,
-          &:focus {
+          &:focus,
+          &:active {
             color: $white;
             background-color: transparent;
             text-decoration: underline;
+            box-shadow: none;
           }
         }
       }
@@ -87,8 +90,24 @@
         }
       }
       
+      .dl-invert {
+        dt {
+          color: $grey-300;
+        }
+      }
+
+      
       .document-thumbnail {
         max-width: 123px;
+        
+        a {
+          &:focus,
+          &:hover,
+          &:active {
+            box-shadow: none;
+          }
+          
+        }
       }
     }
     

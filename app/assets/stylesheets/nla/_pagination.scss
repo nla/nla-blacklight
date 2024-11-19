@@ -3,12 +3,8 @@
 @import "nla-custom-bootstrap";
 
 .page-link {
-  border: 1px solid transparent;
+  border: none;
   font-weight: 700;
-
-  &:focus {
-    text-decoration: none;
-  }
 }
 
 

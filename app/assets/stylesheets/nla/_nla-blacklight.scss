@@ -19,7 +19,6 @@
 @import "forms";
 @import "pagination";
 @import "alert";
-//@import "dark-mode";
 
 // Components
 @import "./components/copyright-info";
@@ -34,3 +33,6 @@
 
 // Vendor + plugins
 @import "./plugins/blacklight_range_limit";
+
+
+@import "dark-mode";

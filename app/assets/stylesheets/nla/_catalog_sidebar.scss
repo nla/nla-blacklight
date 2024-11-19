@@ -6,11 +6,10 @@
   .card {
     border: none;
     margin-bottom: 1rem;
-    background: $light-grey;
+    background: transparent;
     
     .card-header {
       border: none;
-      background-color: $white;
       border-bottom: 1px solid $black;
       
       .h4 {
@@ -39,10 +38,11 @@
       border-bottom: 1px solid $white;
       
       &:hover,
-      &:focus {
+      &:focus,
+      &:active {
         background: $light-teal;
         color: $black;
-        text-decoration: underline;
+        box-shadow: none;
       }
     }
   }
@@ -55,20 +55,6 @@
       
       a {
         padding: 0.75rem 1rem;
-      }
-    }
-    
-    label {
-      margin-bottom: 0;
-      padding: 0.75rem 1rem;
-      color: $black;
-      display: block;
-      border-bottom: 1px solid $white;
-      
-      &:hover {
-        background: $light-teal;
-        color: $black;
-        text-decoration: underline;
       }
     }
   }

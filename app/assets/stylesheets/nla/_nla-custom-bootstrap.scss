@@ -148,7 +148,9 @@ $logo-image: url('nla_logo.svg');
 
 // Body
 $body-bg: $white;
+$body-bg-dark: $black;
 $body-color: $grey-700;
+$body-color-dark: $light-grey;
 
 // Components
 
@@ -172,9 +174,13 @@ $headings-color: $grey-700;
 
 // Links
 $link-color: $black;
+$link-color-dark: $white;
 $link-decoration: underline;
 $link-hover-color: $white;
+$link-hover-color-dark: $black;
 $link-hover-decoration: none;
+$link-hover-bg-color: rgba(0,0,0,0.65);
+$link-hover-bg-color-dark: rgba(255,255,255,0.8);
 
 // Focus
 $focus-ring-color: $light-teal;
@@ -218,6 +224,7 @@ $nav-link-padding-x: 0;
 
 // Pagination
 $pagination-color:                  $grey-700;
+$pagination-color-dark:             $white;
 $pagination-bg:                     transparent;
 $pagination-border-width:           1px;
 $pagination-border-color:           transparent;
@@ -238,12 +245,15 @@ $pagination-active-border-color:     $warm-grey;
 $pagination-disabled-bg:            transparent;
 $pagination-disabled-border-color:  transparent;
 
+
+
 // Tables
 $table-bg: $white;
-$table-caption-color: $purple;
+$table-caption-color: $black;
 
 // Card
 $card-bg: $white;
+$card-bg-dark: $black;
 $card-border-color: transparent;
 $card-border-radius: 4px;
 $card-cap-bg: rgba($white, .03);

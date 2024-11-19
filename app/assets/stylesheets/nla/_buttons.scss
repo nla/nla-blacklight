@@ -11,7 +11,6 @@
     padding-right: 2rem;
     
     &::after {
-      color: $black;
       content: "\F177";
       font: var(--fa-font-regular);
       position: absolute;
@@ -24,7 +23,6 @@
     &:hover::after,
     &:focus::after {
       left: 1.25rem;
-      color: $black;
     }
   }
   
@@ -34,7 +32,6 @@
     padding-right: 3rem;
     
     &::after {
-      color: $black;
       content: "\F178";
       font: var(--fa-font-regular);
       position: absolute;
@@ -47,7 +44,6 @@
     &:hover::after,
     &:focus::after {
       right: 1.25rem;
-      color: $black;
     }
   }
   
@@ -57,7 +53,6 @@
     padding-right: 3rem;
     
     &::after {
-      color: $black;
       content: "\f1f8";
       font: var(--fa-font-regular);
       position: absolute;
@@ -70,18 +65,10 @@
     &:hover::after,
     &:focus::after {
       font: var(--fa-font-solid);
-      color: $black;
     }
   }
 }
 
-.btn-primary:focus,
-.btn-primary:hover,
-.btn-primary:active {
-  background: $light-purple;
-  border-color: $light-purple;
-  background: $light-purple;
-}
 
 .btn-outline-primary,
 .btn-outline-secondary {
@@ -106,6 +93,7 @@
     background: $light-teal;
     color: $black;
     border-color: $light-teal;
+    box-shadow: none;
   }
 }
 
@@ -122,6 +110,7 @@
     color: $black;
     border-color: $light-teal;
     text-decoration: none;
+    box-shadow: none;
   }
 }
 

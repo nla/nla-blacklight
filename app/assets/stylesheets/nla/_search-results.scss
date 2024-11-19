@@ -13,12 +13,20 @@
     
     &:focus,
     &:hover {
-      .constraint-value,
+      .constraint-value {
+        background: $grey-350;
+        color: $white;
+      }
+    }
+    
+    &:focus,
+    &:hover {
       .remove {
         background: $grey-350;
         color: $white;
       }
     }
+    
     
     .constraint-value,
     .remove {
@@ -44,6 +52,7 @@
       border-top-right-radius: 0.5rem;
       border-bottom-right-radius: 0.5rem;
       padding-left: 0;
+      z-index: 10;
       
       &:not(:disabled):not(.disabled):hover,
       &:not(:disabled):not(.disabled):focus,
@@ -51,6 +60,7 @@
         color: $muted-orange;
         cursor: pointer;
         text-decoration: none;
+        box-shadow: none;
       }
     }
   }
@@ -66,6 +76,7 @@
     padding-right: 1em;
     border: none;
     color: $grey-700;
+    background: transparent;
     
     &:focus,
     &:hover,
@@ -73,6 +84,7 @@
     &.show {
       background-color: transparent;
       color: $black;
+      box-shadow: none;
     }
   }
   
@@ -103,6 +115,7 @@
     
     .dropdown-item {
       color: $grey-700;
+      text-decoration: none;
       
       &:focus,
       &:hover,
@@ -110,6 +123,7 @@
       &.active {
         background-color: $light-grey;
         color: $grey-700;
+        box-shadow: none;
       }
     }
   }
@@ -130,14 +144,6 @@
     .document-title-heading {
       text-underline-offset: 2px;
       text-underline-position: under;
-
-      a:focus,
-      a:hover {
-        &:after {
-          content: " \F061";
-          font: var(--fa-font-regular);
-        }
-      }
       
       .text-break {
         &:focus,
@@ -145,7 +151,21 @@
         &:active {
           color: $grey-700;
           background: transparent;
+          text-decoration: underline;
+          box-shadow: none;
+          
+          &:after {
+            content: " \F061";
+            font: var(--fa-font-regular);
+          }
+  
         }
+      }
+    }
+    
+    .dl-invert {
+      dt {
+        color: $grey-300;
       }
     }
     
@@ -154,6 +174,12 @@
       margin-bottom: 0;
       padding-left: 0;
       text-align: right;
+      
+      .text-break:focus,
+      .text-break:hover,
+      .text-break:active {
+        box-shadow: none;
+      }
     }
     
     .toggle-bookmark {

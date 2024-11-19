@@ -3,9 +3,7 @@
 @import "nla-custom-bootstrap";
 
 .footer {
-  
-  color: $black;
-  
+  /*
   a:not(.btn) {
     color: $black;
     text-decoration: underline;
@@ -18,8 +16,18 @@
     }
   }
   
+  a.btn {
+    &:focus,
+    &:hover,
+    &:active {
+      //box-shadow: none;
+    }
+  }
+  */
+  
   .footer-ask-a-librarian {
       color: $white;
+      background-color: $black;
       padding-top: 6.125rem;
       padding-bottom: 6.125rem;
       position: relative;
@@ -47,7 +55,6 @@
   
   
   .footer-top {
-    background-color: $white;
     padding-top: 6.125rem;
     padding-bottom: 6.125rem;
   }
@@ -60,40 +67,62 @@
     &:focus,
     &:hover,
     &:active {
-      color: $grey-700;
+      color: $body-color;
       background: transparent;
       transform: translateY(-4px) scale(1.1);
+      box-shadow: none;
     }
-  }
-  
-  
-  h4 {
-    font-family: $font-family-sans-serif;
-    color: $black;
-    font-size: 1.25rem;
-    font-weight: 600;
   }
   
   h2 {
     &.h4 {
       color: $black;
+      font-size: 1.25rem;
     }
-    
-    &.h6 {
-      font-family: $font-family-sans-serif;
-      color: $black;
-    }
-  }
-  
-  hr {
-    border-top-color: $black;
   }
   
   .footer-bottom {
-    a:focus,
-    a:hover,
-    a:active {
-          background-color: transparent;
+    background-color: $lightest-teal;
+    
+    .primary-links,
+    .secondary-links {
+      display: flex;
+      column-gap: 2rem;
+      flex-direction: row;
+      justify-content: center;
+      list-style-type: none;
+      
+      a {
+        color: $black;
+        text-decoration: none;
+        
+        &:focus,
+        &:hover,
+        &:active {
+          color: $white;
+          background-color: $link-hover-bg-color;
+          box-shadow: 0 0 0 4px $link-hover-bg-color;
         }
+      }
+    }
+    
+    .primary-links {
+      a {
+        font-weight: 700;
+      }
+    }
+    
+    .secondary-links {
+      font-size: 0.875rem;
+    }
+    
+    .footer-logo a {
+      &:focus,
+      &:hover,
+      &:active {
+        background-color: transparent;
+        box-shadow: none;
+      }
+    }
   }
 }

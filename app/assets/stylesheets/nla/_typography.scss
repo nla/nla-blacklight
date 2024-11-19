@@ -2,13 +2,29 @@
 @import "variables";
 @import "nla-custom-bootstrap";
 
-//@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=STIX+Two+Text:ital,wght@0,400..700;1,400..700&display=swap');
+a:not(.btn, .page-link) {
+  color: $link-color;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-underline-position: under;
+  transition: all 0.25s;
 
+  &:focus,
+  &:hover,
+  &:active {
+    color: $white;
+    text-decoration: none;
+    background-color: $link-hover-bg-color;
+    outline: none;
+    box-shadow: 0 0 0 4px $link-hover-bg-color;
+  }
+}
 
-a:focus,
-a:hover,
-a:active {
-  color: $white;
-  text-decoration: none;
-  background-color: $link-hover-bg-color;
+a.btn,
+a.page-link {
+  &:focus,
+  &:hover,
+  &:active {
+    box-shadow: none;
+  }
 }

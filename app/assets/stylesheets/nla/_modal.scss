@@ -12,7 +12,11 @@
       font-weight: 600;
       color: $black;
     }
-
+    
+    .btn-close {
+      box-shadow: none;
+    }
+    
     .btn-close:hover,
     .btn-close:focus {
       color: $muted-orange;
@@ -36,6 +40,7 @@
       &:focus {
         color: $dark-teal;
         background-color: transparent;
+        box-shadow: none;
       }
     }
   }
@@ -46,8 +51,8 @@ body:has(dialog[open]) {
 }
 
 dialog::backdrop {
-  background-color: $black;
-  opacity: 0.7;
+  background-color: rgb(247,248,248);
+  opacity: 0.95;
 }
 
 @media print {

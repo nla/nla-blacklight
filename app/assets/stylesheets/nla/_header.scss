@@ -25,7 +25,10 @@
 }
 
 .header {
-  .navbar-dark {
+  border-bottom: 1px solid #e6e6e6;
+  
+  .top-bar {
+    background-color: $lightest-teal;
     font-weight: 400;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -35,6 +38,8 @@
       
       .nav-link {
         padding: 0;
+        text-decoration: none;
+        transition: all 0.25s;
         
         &:hover,
         &:focus,
@@ -45,98 +50,101 @@
     }
   }
   
-  .navbar-brand.navbar-logo {
-    height: 45px;
-    width: 178px;
-    background-size: contain;
-    margin-top: 0;
-    
-    &:hover,
-    &:focus,
-    &.active {
-      background-color: transparent;
-    }
-  }
-  
-  @media (min-width: 768px) {
-    .navbar-brand.navbar-logo {
-      height: 73px;
-      width: 294px;
-      background-size: contain;
-    }
-  }
-
-  
-  .navbar-light {
+  .bottom-bar {
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid $black;
-
     
-    .navbar-nav {
-      gap: 1.875rem;
+    .navbar-brand.navbar-logo {
+      height: 45px;
+      width: 178px;
+      background-size: contain;
+      margin-top: 0;
       
-      .nav-link {
-        padding: 0;
-        font-size: 1.25rem;
-        font-weight: 600;
-        line-height: 1.5rem;
-        text-underline-offset: 2px;
-        text-underline-position: under;
-        
-        &:hover,
-        &:focus,
-        &.active {
-          background-color: transparent;
-          text-decoration: underline;
-          text-underline-offset: 2px;
-        }
+      &:hover,
+      &:focus,
+      &.active {
+        background-color: transparent;
+        box-shadow: none;
       }
+    }
+    
+    @media (min-width: 768px) {
+      .navbar-brand.navbar-logo {
+        height: 73px;
+        width: 294px;
+        background-size: contain;
+      }
+    }
+  
+    .navbar-collapse {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
       
-      .dropdown-menu {
-        background-color: $white;
-        border-color: $white;
-        box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
-        color: $grey-700;
+      .navbar-nav {
+        gap: 1.875rem;
         
-        .dropdown-item {
+        .nav-link {
+          padding: 0;
+          color: $black;
+          font-size: 1.25rem;
+          font-weight: 600;
+          line-height: 1.2;
+          text-underline-offset: 2px;
+          text-underline-position: under;
+          text-decoration: none;
+          
           &:hover,
           &:focus,
+          &:active,
           &.active {
-            color: $grey-700;
-            background-color: $light-grey;
+            color: $black;
+            background-color: transparent;
+            text-decoration: underline;
+            box-shadow: none;
           }
         }
-      }
-      
-      @media (min-width: 768px) {
-        .navbar-nav {
-          gap: 1.5rem;
         
-          .nav-link {
-            font-size: 1rem;
+        .dropdown-menu {
+          background-color: $white;
+          border-color: $white;
+          box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
+          color: $grey-700;
+          
+          .dropdown-item {
+            &:hover,
+            &:focus,
+            &.active {
+              color: $grey-700;
+              background-color: $light-grey;
+            }
           }
         }
-      } 
-      
-      @media (min-width: 992px) {
-        .navbar-nav {
-          gap: 1.875rem;
         
-          .nav-link {
-            font-size: 1.25rem;
+        @media (min-width: 768px) {
+          .navbar-nav {
+            gap: 1.5rem;
+          
+            .nav-link {
+              font-size: 1rem;
+            }
           }
-        }
-      } 
-  
-    }
+        } 
+        
+        @media (min-width: 992px) {
+          .navbar-nav {
+            gap: 1.875rem;
+          
+            .nav-link {
+              font-size: 1.25rem;
+            }
+          }
+        } 
     
-    &.bottombar {
-      border-top: 1px solid #4c4c4c;
-      color: $white;
-      font-family: $font-family-serif;
-      font-size: 2rem;
-      font-weight: 700;
+      }
     }
+  
   }
+
+  
+  
 }

@@ -37,7 +37,7 @@
       
       
       &::placeholder {
-        color: $disabled-text;
+        color: $warm-grey;
       }
       
       &:focus {
@@ -91,6 +91,7 @@
       color: $grey-700;
       background-color: transparent;
       text-decoration: underline;
+      box-shadow: none;
     }
   }
   
@@ -101,8 +102,7 @@
   }
 }
 
-.library-card {
-  
+.library-card {  
   .h4 {
     color: $grey-700;
     font-family: $font-family-sans-serif;

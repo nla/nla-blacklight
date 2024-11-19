@@ -3,18 +3,14 @@
 @import "nla-custom-bootstrap";
 
 // Facets
-.facet-values li .selected {
-  color: $gray-medium !important;
-}
-
 .page-sidebar .facets.sidenav,
 .page-sidebar .advanced-facet-limits {
   
-  background: $light-grey;
+  //background: $light-grey;
+  background: transparent;
   
   .facets-header {
     border-bottom: 1px solid $grey-700;
-    background: $white;
   
     .facets-heading {
       font-family: $font-family-sans-serif;
@@ -30,6 +26,7 @@
   .facets-collapse {
     .card {
       border-radius: 0 !important;
+      margin-bottom: 1rem;
     }
     
     h3 {
@@ -41,21 +38,30 @@
         text-decoration: none;
         
         &:focus,
-        &:hover {
+        &:hover,
+        &:active {
           text-decoration: underline;
         }
       }
     }
     
+    .facet-limit:not(:first-child) {
+      margin-top: 1rem;
+    }
+    
     .facet-limit {
       border-bottom: 1px solid $white;
-      margin-bottom: 0;
+      
 
     
       .facet-field-heading {
         background: $light-grey !important;
         border-bottom: none;
-  
+        
+        &:has([aria-expanded="true"]) {
+          background-color: $light-teal !important;
+        }
+        
         .btn {
           border: none;
           color: $black;
@@ -80,14 +86,44 @@
       // Items within the facet
       .facet-content {
         .card-body {
-          padding-top: 0;
+          padding: 0;
         }
         
         .facet-values {
-          padding-left: 0.5rem;
+          li {
+            padding: 0.5rem 1rem;
+            background-color: $light-grey;
+            
+            &:has(.selected) {
+              border-left: 2px solid $dark-teal;
+            }
+          }
+          
+          .facet-select {
+            text-decoration: none;
+            color: $body-color;
+            
+            &:focus,
+            &:hover,
+            &:active {
+              color: $body-color;
+              background-color: transparent;
+              box-shadow: none;
+              text-decoration: underline;
+            }
+          }
+          
+          .facet-count {
+            color: $grey-300;
+            font-size: 0.875rem;
+            
+            &.selected {
+              color: $grey-300 !important;
+            }
+          }
           
           .selected {
-            color: $black !important;
+            color: $body-color !important;
           }
           
           .remove {
@@ -99,6 +135,7 @@
             &:active {
               color: $muted-orange;
               background-color: transparent !important;
+              box-shadow: none;
             }
           }
         }

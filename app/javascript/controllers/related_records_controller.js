@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   HOVER_COLOUR = "#dc764c"
-  BASE_COLOUR = "#FFFFFF"
+  BASE_COLOUR = "transparent"
 
   connect() {
     this.registerEventListeners()

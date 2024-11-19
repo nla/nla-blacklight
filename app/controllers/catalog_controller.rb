@@ -50,7 +50,7 @@ class CatalogController < ApplicationController
     # config.response_model = Blacklight::Solr::Response
     #
     ## The destination for the link around the logo in the header
-    config.logo_link = "https://www.nla.gov.au"
+    config.logo_link = "https://library.gov.au"
 
     ## Should the raw solr document endpoint (e.g. /catalog/:id/raw) be enabled
     config.raw_endpoint.enabled = false
