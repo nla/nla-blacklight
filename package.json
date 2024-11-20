@@ -3,7 +3,7 @@
   "private": "true",
   "dependencies": {
     "@hotwired/stimulus": "^3.2.2",
-    "@hotwired/turbo-rails": "^8.0.10",
+    "@hotwired/turbo-rails": "^8.0.12",
     "@popperjs/core": "^2.11.8",
     "autoprefixer": "^10.4.20",
     "blacklight-frontend": "^8.4.0",
@@ -15,7 +15,7 @@
     "nodemon": "^3.1.7",
     "postcss": "^8.4.47",
     "postcss-cli": "10.1.0",
-    "sass": "^1.79.4",
+    "sass": "^1.80.5",
     "stimulus-clipboard": "^4.0.1",
     "stimulus-scroll-reveal": "^3.2.0"
   },

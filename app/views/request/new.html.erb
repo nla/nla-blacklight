@@ -50,6 +50,16 @@
                 <br>Copy: <%= @request.item["enumeration"] %>
               <% end %></p>
           </dd>
+          
+          <% if @request.holding["shelvingTitle"].present? %>
+            <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.shelving_title") %></dt>
+            <dd class="col col-md-9"><%= @request.holding["shelvingTitle"] %></dd>
+          <% end %>
+
+          <% if @request.holding["shelvingTitle"].present? %>
+            <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.shelving_title") %></dt>
+            <dd class="col col-md-9"><%= @request.holding["shelvingTitle"] %></dd>
+          <% end %>
 
           <dt class="col-12 col-md-3 text-md-right"><%= t("requesting.metadata.status") %></dt>
           <dd class="col col-md-9"><%= @request.item["displayStatus"] %></dd>
