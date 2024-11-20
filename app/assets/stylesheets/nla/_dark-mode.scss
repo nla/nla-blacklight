@@ -20,8 +20,6 @@
       background-color: $link-hover-bg-color-dark;
       box-shadow: 0 0 0 4px $link-hover-bg-color-dark;
     }
-  
-    
   }
   
   h1 {
@@ -457,21 +455,16 @@
           div.toggle-bookmark {
             border-bottom-color: $body-bg-dark;
   
-            .toggle-bookmark {
-              label {
-                color: $body-color-dark;
-              }
+            label {
+              color: $body-color-dark;
             }
             
             &:focus,
             &:hover,
             &:active {
-              .toggle-bookmark {
-                label {
-                  color: $black;
-                }
+              label {
+                color: $black;
               }
-  
             }  
           }
         }
@@ -636,5 +629,36 @@
     opacity: 0.95;
   }
     
+  
+  .blacklight-account {
+    .table {
+      caption {
+        color: $body-color-dark;
+      }
+      
+      thead {
+        th {
+          color: $black !important;
+          background-color: $white !important;
+        }
+      }
+      
+      td {
+        color: $body-color-dark;
+        border-bottom-color: $grey-300;
+      }
+      
+      .text-center {
+        a {
+          &:focus,
+          &:hover,
+          &:active {
+            color: $body-color-dark;
+          }
+        }
+      }
+    }
+  }
+  
     
 }

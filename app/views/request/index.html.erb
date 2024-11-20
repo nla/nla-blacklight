@@ -1,4 +1,4 @@
-<h1 class="h3"><%= @document.first("title_tsim") %></h1>
+<h1><%= @document.first("title_tsim") %></h1>
 <p><%= t("requesting.message") %></p>
 <%= turbo_frame_tag "#{@document.id}_request" do %>
   <%= render RequestItemComponent.new(document: @document) %>

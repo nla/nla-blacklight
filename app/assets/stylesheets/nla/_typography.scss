@@ -34,3 +34,11 @@ h1 {
   color: $body-color;
   font-weight: 400;
 }
+
+.blacklight-account,
+.blacklight-bookmarks,
+.blacklight-request {
+  h1 {
+    margin-top: 3rem;
+  }
+}
