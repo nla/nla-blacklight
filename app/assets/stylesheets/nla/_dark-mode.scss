@@ -24,7 +24,9 @@
     
   }
   
-
+  h1 {
+    color: $body-color-dark;
+  }
 
   // Form inputs
   .form-select,
@@ -440,7 +442,7 @@
         
         a {
           color: $white;
-          border-bottom-color: $black;
+          border-bottom-color: $body-bg-dark;
           
           &:focus,
           &:hover,
@@ -450,6 +452,30 @@
         }
       }
       
+      .list-group-item.bookmark {      
+        .bookmark-toggle {
+          div.toggle-bookmark {
+            border-bottom-color: $body-bg-dark;
+  
+            .toggle-bookmark {
+              label {
+                color: $body-color-dark;
+              }
+            }
+            
+            &:focus,
+            &:hover,
+            &:active {
+              .toggle-bookmark {
+                label {
+                  color: $black;
+                }
+              }
+  
+            }  
+          }
+        }
+      }
     }
   }
 
@@ -489,11 +515,10 @@
 
 
   // Alerts
-  .alert-info {
-    background: $info-dark;
-    border-color: $info-light;
+  
+  .alert {
     color: $body-color-dark;
-    
+
     &:before {
       color: $body-color-dark;
     }
@@ -512,7 +537,26 @@
       }
     }
   }
-    
+  
+  .alert-success {
+    background: $success-dark;
+    border-left-color: $success-light;
+  }
+  
+  .alert-info {
+    background-color: $info-dark;
+    border-left-color: $info-light;
+  }
+  
+  .alert-warning {
+    background-color: $warning-dark;
+    border-left-color: $warning-light;
+  }
+  
+  .alert-error {
+    background: $error-dark;
+    border-left-color: $error-light;
+  }
   
   // Footer
   .footer {

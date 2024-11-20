@@ -106,16 +106,19 @@
         
         .dropdown-menu {
           background-color: $white;
-          border-color: $white;
           box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
-          color: $grey-700;
           
           .dropdown-item {
+            color: $grey-700;
+            text-decoration: none;
+      
             &:hover,
             &:focus,
+            &:active,
             &.active {
-              color: $grey-700;
               background-color: $light-grey;
+              color: $grey-700;
+              box-shadow: none;
             }
           }
         }

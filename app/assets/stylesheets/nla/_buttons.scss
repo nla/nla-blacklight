@@ -55,11 +55,8 @@
     &::after {
       content: "\f1f8";
       font: var(--fa-font-regular);
-      position: absolute;
       font-weight: 400;
-      right: 1.5rem;
-      top: 50%;
-      transform: translateY(-50%);
+      margin-left: 0.5rem;
     }
     
     &:hover::after,
@@ -126,5 +123,21 @@
     color: $white;
     text-decoration: none;
   }
+}
+
+.btn-danger {
+  background-color: $dark-red;
+  border-color: $dark-red;
+  color: $white;
+  
+  &:focus,
+  &:hover,
+  &:active {
+    background-color: $light-muted-orange;
+    border-color: $light-muted-orange;
+    color: $black;
+    text-decoration: none;
+  }
+
 }
 
