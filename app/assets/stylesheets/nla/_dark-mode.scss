@@ -29,6 +29,10 @@
   .h3 {
     color: $body-color-dark;
   }
+  
+  .text-muted {
+    color: $grey-50 !important;
+  }
 
   // Form inputs
   .form-select,
