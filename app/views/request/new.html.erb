@@ -6,7 +6,6 @@
 
 <%- unless @met_request_limit %>
   <div class="row mt-4 mb-4">
-    <% p "---" + @finding_aids_link %>
     <% if @request_form == "manuscripts" %>
       <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt").html_safe %></p>
       <p class="col-12 col-lg-8"><%= t("requesting.multi_box_prompt_2") %></p>
