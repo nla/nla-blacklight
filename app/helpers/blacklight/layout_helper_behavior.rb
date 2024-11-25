@@ -16,7 +16,7 @@ module Blacklight
     # Attributes to add to the <html> tag (e.g. lang and dir)
     # @return [Hash]
     def html_tag_attributes
-      { lang: I18n.locale }
+      {lang: I18n.locale}
     end
 
     ##
@@ -30,14 +30,14 @@ module Blacklight
     # Classes used for sizing the main content of a Blacklight page
     # @return [String]
     def main_content_classes
-      'col-lg-9'
+      "col-lg-9"
     end
 
     ##
     # Classes used for sizing the sidebar content of a Blacklight page
     # @return [String]
     def sidebar_classes
-      'page-sidebar col-lg-3'
+      "page-sidebar col-lg-3"
     end
 
     ##
@@ -45,7 +45,7 @@ module Blacklight
     # Set config.full_width_layout to true to use a fluid layout.
     # @return [String]
     def container_classes
-      blacklight_config.full_width_layout ? 'container-fluid' : 'container-xxl'
+      blacklight_config.full_width_layout ? "container-fluid" : "container-xxl"
     end
 
     ##
@@ -55,24 +55,26 @@ module Blacklight
     #
     # @param [Hash] options
     # @return [String]
-    def render_nav_actions(options = {}, &block)
-      render_filtered_partials(blacklight_config.navbar.partials, options, &block)
+    def render_nav_actions(options = {}, &)
+      render_filtered_partials(blacklight_config.navbar.partials, options, &)
     end
 
     ##
     # Open Search discovery tag for HTML <head> links
     # @return [String]
     def opensearch_description_tag title, href
-      tag :link, href: href, title: title, type: "application/opensearchdescription+xml", rel: "search"
+      tag.link(href: href, title: title, type: "application/opensearchdescription+xml", rel: "search")
     end
 
     ##
     # Get the page's HTML title
     #
     # @return [String]
+    # rubocop:disable Rails/HelperInstanceVariable
     def render_page_title
       (content_for(:page_title) if content_for?(:page_title)) || @page_title || application_name
     end
+    # rubocop:enable Rails/HelperInstanceVariable
 
     ##
     # Create <link rel="alternate"> links from a documents dynamically
@@ -86,11 +88,13 @@ module Blacklight
     #     content type, e.g. as required by atom
     # @option options [Array<String>] :exclude array of format shortnames to not include in the output
     # @return [String]
+    # rubocop:disable Rails/HelperInstanceVariable
     def render_link_rel_alternates(document = @document, options = {})
       return if document.nil?
 
       document_presenter(document).link_rel_alternates(options)
     end
+    # rubocop:enable Rails/HelperInstanceVariable
 
     ##
     # Render classes for the <body> element
@@ -104,7 +108,7 @@ module Blacklight
     # @see render_body_class
     # @return [Array<String>]
     def extra_body_classes
-      @extra_body_classes ||= ["blacklight-#{controller.controller_name}", "blacklight-#{[controller.controller_name, controller.action_name].join('-')}"]
+      @extra_body_classes ||= ["blacklight-#{controller.controller_name}", "blacklight-#{[controller.controller_name, controller.action_name].join("-")}"]
     end
   end
 end
