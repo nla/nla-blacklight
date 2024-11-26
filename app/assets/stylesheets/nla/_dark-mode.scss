@@ -1,0 +1,672 @@
+@charset "UTF-8";
+@import "variables";
+@import "nla-custom-bootstrap";
+
+
+@media screen and (prefers-color-scheme: dark) {
+
+  body {
+    background-color: $body-bg-dark;
+    color: $body-color-dark;
+  }
+
+  a:not(.btn, .page-link) {
+    color: $link-color-dark;
+    
+    &:focus,
+    &:hover,
+    &:active {
+      color: $link-hover-color-dark;
+      background-color: $link-hover-bg-color-dark;
+      box-shadow: 0 0 0 4px $link-hover-bg-color-dark;
+    }
+  }
+  
+  h1 {
+    color: $body-color-dark;
+  }
+  
+  .h3 {
+    color: $body-color-dark;
+  }
+  
+  .text-muted {
+    color: $grey-50 !important;
+  }
+
+  // Form inputs
+  .form-select,
+  .form-control,
+  .input-small,
+  .navbar-search .input-group > .search-autocomplete-wrapper .search-q {
+     background-color: $black !important;
+     border-color: $white;
+     color: $body-color-dark;
+     
+     &::placeholder {
+        color: $grey-100;
+       }
+
+     &:focus {
+       color: $body-color-dark;
+       background-color: $grey-200 !important;
+       border-color: $grey-200;
+       box-shadow: 0 0 0 1px $grey-200;
+       
+       &::placeholder {
+         color: $grey-700;
+        }
+     }
+     
+     #autocomplete-popup {
+       background: $white;
+       color: $black;
+       box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
+     }
+  }
+  
+
+  // Buttons
+  .btn-primary {
+    color: $black;
+    background-color: $white;
+    border-color: $white;
+  }
+  
+  .btn-secondary,
+  .btn-tertiary {
+    color: $white;
+    background-color: $black;
+    border-color: $white;
+  }
+  
+  .btn-tertiary {
+    &:focus,
+    &:hover,
+    &:active {
+      color: $black;
+      background-color: $white;
+    }
+  }
+  
+  .btn-link {
+    color: $body-color-dark;
+    
+    &:focus,
+    &:hover,
+    &:active {
+      color: $body-color-dark;
+    }
+  }
+  
+  
+  // Header
+  .header {
+    border-bottom-color: $grey-300;
+    
+    .top-bar {
+      background-color: $light-teal;
+    
+      .navbar-nav {
+        .nav-link {
+          color: $black;
+          
+          &:focus,
+          &:hover,
+          &:active {
+            color: $white;
+            background-color: $link-hover-bg-color;
+            box-shadow: 0 0 0 4px $link-hover-bg-color;
+        
+          }
+        }
+      }
+    }
+    
+    .bottom-bar {
+      background: $body-bg-dark !important;
+      
+      .navbar-brand.navbar-logo {
+        filter: invert(100%);
+      }
+      .navbar-collapse {
+        .navbar-nav {
+          .nav-link {
+            color: $body-color-dark;
+            
+            &:focus,
+            &:hover,
+            &:active,
+            &.active {
+              color: $body-color-dark;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  
+  // Homepage
+  .collection-search {
+    .h5 {
+      color: $body-color-dark;
+    }
+    
+    .collection-search-box {
+      background-color: $grey-600;
+      
+      h2 {
+        color: $body-color-dark;
+      }
+      
+      .search-q {
+        background-color: $grey-600 !important;
+        border-color: $white;
+        
+        
+        &::placeholder {
+          color: $grey-100;
+        }
+        
+        &:focus {
+          color: $body-color-dark;
+          background-color: $grey-200 !important;
+          border-color: $grey-200;
+          box-shadow: 0 0 0 1px $grey-200;
+          
+          &::placeholder {
+            color: $grey-700;
+          }
+  
+        }
+      }
+    }  
+  }
+  
+  .catalogue-search,
+  .eresources-search,
+  .finding-aids-search {
+    color: $body-color-dark;
+    background-color: $body-bg-dark;
+    
+    &:focus,
+    &:hover {
+      background-color: $grey-600;
+    }
+    
+    .card-title a {
+      color: $body-color-dark;
+      
+      &:hover,
+      &:focus {
+        color: $body-color-dark;
+      }
+    }
+  }
+  
+  .library-card {
+    .h4 {
+      color: $body-color-dark !important;
+    }
+  }
+  
+  
+  // Bento search results
+  .bento-search-results {  
+    .nav-link a {
+      color: $white;
+      
+      &:focus,
+      &:hover,
+      &:active {
+        color: $black;
+      }
+    }
+    
+    .card {
+      background-color: $body-bg-dark;
+      border-color: $grey-600;
+      color: $body-color-dark;
+      
+      &:hover {
+        border-color: $grey-400;
+        box-shadow: 1px 1px 12px 0px rgba(255,255,255,0.08);
+        
+        .card-title {
+          background: $grey-400;
+        }
+      }
+      
+      .card-title {
+        background: $grey-600;
+      }
+      
+      .bento-item {
+        border-bottom: 1px dotted $grey-600;
+        
+        &:hover,
+        &:has(.bento-item-title a:focus) {
+          background: $grey-600;
+        }
+        
+        .bento-item-title {
+          a {
+            color: $body-color-dark;
+            
+            &:focus,
+            &:hover {
+              background: transparent;
+              color: $body-color-dark;
+              box-shadow: none;
+            }
+          }
+        }
+        
+        .dl-invert {
+          dt {
+            color: $grey-50;
+          }
+        }
+      }
+    }
+  }
+  
+  
+  // Search results
+  .sort-pagination {
+    border-top-color: $grey-300;
+    .btn {
+      color: $body-color-dark;
+      
+      &:focus,
+      &:hover,
+      &:active,
+      &.show {        
+        color: $body-color-dark;
+      }
+    }
+    
+    .sort-dropdown,
+    .per_page-dropdown {
+      .btn {
+        color: $body-color-dark;
+        .d-sm-inline {
+          color: $body-color-dark;
+        }
+      }
+    }
+  }
+  
+  .documents-list {
+    .document {
+      border-bottom: 1px dotted $grey-600;
+      
+      &:focus,
+      &:hover,
+      &:has(.document-title-heading a:focus) {
+        background: $grey-600;
+      }
+      
+      .document-title-heading {
+        .text-break {
+          color: $body-color-dark;
+          
+          &:focus,
+          &:hover,
+          &:active {
+            color: $body-color-dark;
+            box-shadow: none;
+          }
+        }
+      }
+      
+      .dl-invert {
+        dt {
+          color: $grey-50;
+        }
+      }
+    } 
+  }
+  
+  
+  // Facets 
+  .page-sidebar .facets.sidenav,
+  .page-sidebar .advanced-facet-limits {
+    .facets-header {
+      border-bottom: 1px solid $white;
+      
+      .facets-heading {
+        color: $body-color-dark;
+      }
+    }
+    
+    .facets-collapse {
+      .facet-limit {
+        border-bottom-color: $body-bg-dark;
+        color: $body-color-dark;
+                
+        .facet-field-heading {
+          background-color: $grey-300 !important;
+          
+          &:has([aria-expanded="true"]) {
+            .btn {
+              color: $black;
+            }
+          }
+          
+          .btn {
+            color: $body-color-dark;
+          }
+        }
+        
+        .facet-content {
+          .facet-values {
+            li {
+              background-color: $grey-300;
+            }
+            .facet-select,
+            .selected {
+              color: $body-color-dark !important;
+            }
+            
+            .facet-count {
+              color: $white;
+              
+              &.selected {
+                color: $white !important;
+              }
+            }
+            
+            .remove {
+              color: $grey-500;
+            }
+          }
+        }
+      } 
+    }
+  }
+  
+  
+  // Pagination
+  .page-link {
+    color: $pagination-color-dark;
+  }
+
+
+  // Record page
+  #catalogue-record-actions {
+    background: $body-bg-dark;
+    border-bottom: 1px solid $grey-700;
+  }
+  
+  .document{ 
+    .h3 {
+    color: $body-color-dark;
+    }
+    
+    .dl-invert {
+      dt {
+        color: $grey-50;
+      }
+    }
+  }
+  
+  #request-details {
+    background-color: $grey-700;
+    
+    .holding {
+      background-color: $grey-600;
+      color: $body-color-dark;
+      
+      &:hover,
+      &:has(a.btn-primary:focus) {
+        background-color: $grey-300;
+        box-shadow: none;
+      }
+    }
+  }
+  
+  .page-sidebar {
+    .card {
+      .card-header {
+        border-bottom: 1px solid $white;
+        
+        .h4 {
+          color: $white;
+        }
+      }
+    }
+    
+    .show-tools,
+    .more-like-this,
+    .explore,
+    .feedback {
+      .card-body,
+      .list-group-item {
+        background: $grey-300;
+        
+        a {
+          color: $white;
+          border-bottom-color: $body-bg-dark;
+          
+          &:focus,
+          &:hover,
+          &:active {
+            color: $black;
+          }
+        }
+      }
+      
+      .list-group-item.bookmark {      
+        .bookmark-toggle {
+          div.toggle-bookmark {
+            border-bottom-color: $body-bg-dark;
+  
+            label {
+              color: $body-color-dark;
+            }
+            
+            &:focus,
+            &:hover,
+            &:active {
+              label {
+                color: $black;
+              }
+            }  
+          }
+        }
+      }
+    }
+  }
+
+
+  // Advanced search
+  .advanced-search-form {
+    .page-header,
+    .query-criteria-heading,
+    .limit-criteria-heading {
+      color: $body-color-dark;
+    }
+        
+    .limit-criteria {
+      .card {
+        background-color: transparent;
+      }
+      
+      .facet-field-heading {
+        .btn {
+          color: $body-color-dark;
+        }
+      }
+      
+      .facet-label,
+      .facet-count {
+        color: $body-color-dark;
+      }
+    }
+    
+    .card:has(.advanced-help) {
+      background: $grey-300;
+      color: $body-color-dark;
+    }
+  
+  }
+  
+
+
+  // Alerts
+  
+  .alert {
+    color: $body-color-dark;
+
+    &:before {
+      color: $body-color-dark;
+    }
+    
+    a {
+      color: $link-color-dark;
+      
+      &:focus,
+      &:hover,
+      &:active {
+        color: $body-color;
+        text-decoration: none;
+        background-color: $link-hover-bg-color-dark;
+        outline: none;
+        box-shadow: 0 0 0 4px $link-hover-bg-color-dark;
+      }
+    }
+  }
+  
+  .alert-success {
+    background: $success-dark;
+    border-left-color: $success-light;
+  }
+  
+  .alert-info {
+    background-color: $info-dark;
+    border-left-color: $info-light;
+  }
+  
+  .alert-warning {
+    background-color: $warning-dark;
+    border-left-color: $warning-light;
+  }
+  
+  .alert-error {
+    background: $error-dark;
+    border-left-color: $error-light;
+  }
+  
+  // Footer
+  .footer {
+    .footer-ask-a-librarian {
+      background-color: $grey-700;
+    }
+        
+    .connect .list-inline-item a {
+      &:focus,
+      &:hover,
+      &:active {
+        color: $body-color-dark;
+      }
+    }
+    
+    h2 {
+      &.h4 {
+        color: $body-color-dark;
+      }
+    }
+    
+    .footer-bottom {
+      background-color: $light-teal;
+    }
+  }
+    
+  
+  // Modal
+  .modal {
+    .modal-content {
+      color: $body-color-dark;
+      background-color: $body-bg-dark;
+    }
+    .modal-header {
+      .modal-title {
+        color: $white;
+      }
+      
+      .btn-close {
+        filter: invert(100%);
+      }
+      .btn-close:hover,
+      .btn-close:focus {
+        color: $muted-orange;
+        opacity: 1;
+      }
+    }
+  
+    .citation-details {
+      .h5 {
+        color: $white;
+      }
+      
+      [data-clipboard-target="button"] {
+        color: $mid-teal;
+        
+        &:hover,
+        &:focus {
+          color: $dark-teal;
+        }
+      }
+      
+      .card {
+        color: $body-color-dark;
+        background-color: $body-bg-dark;
+        border-color: $body-bg-dark;
+        
+        .card-body {
+          background-color: $body-bg-dark;
+        }
+      }
+    }
+  }
+    
+  dialog::backdrop {
+    background-color: $grey-100;
+    opacity: 0.95;
+  }
+    
+  
+  .blacklight-account {
+    .table {
+      caption {
+        color: $body-color-dark;
+      }
+      
+      thead {
+        th {
+          color: $black !important;
+          background-color: $white !important;
+        }
+      }
+      
+      td {
+        color: $body-color-dark;
+        border-bottom-color: $grey-300;
+      }
+      
+      .text-center {
+        a {
+          &:focus,
+          &:hover,
+          &:active {
+            color: $body-color-dark;
+          }
+        }
+      }
+    }
+  }
+  
+    
+}

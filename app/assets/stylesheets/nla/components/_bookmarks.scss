@@ -2,7 +2,7 @@
   label {
     cursor: pointer;
     min-width: auto;
-    color: $light-purple;
+    color: $mid-teal;
   }
 
   input[type=checkbox] {
@@ -25,6 +25,25 @@
   }
 }
 
-.list-group-item.bookmark {
-  background-color: transparent;
+.page-sidebar {
+  .show-tools {
+    .list-group-item.bookmark {      
+      .bookmark-toggle {
+        div.toggle-bookmark {
+          padding: 0.75rem 1rem;
+          border-bottom: 1px solid $body-bg;
+          
+          label {
+            color: $body-color;
+          }
+          
+          &:focus,
+          &:hover,
+          &:active {
+            background-color: $light-teal;
+          }  
+        }
+      }
+    }
+  }
 }

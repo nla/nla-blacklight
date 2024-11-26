@@ -3,7 +3,7 @@
 module Blacklight
   class StartOverButtonComponent < Blacklight::Component
     def call
-      link_to t("blacklight.search.start_over"), start_over_path, class: "catalog_startOverLink btn btn-outline-secondary btn-sm arrow-before me-5"
+      link_to t("blacklight.search.start_over"), start_over_path, class: "catalog_startOverLink btn btn-sm btn-secondary arrow-before me-5"
     end
 
     private

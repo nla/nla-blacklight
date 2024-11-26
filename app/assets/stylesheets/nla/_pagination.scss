@@ -3,21 +3,8 @@
 @import "nla-custom-bootstrap";
 
 .page-link {
-  border: 1px solid transparent;
-
-  &:hover {
-    background-color: $purple;
-    border: 1px solid transparent;
-    color: $white;
-  }
-
-  &:focus {
-    text-decoration: none;
-  }
+  border: none;
+  font-weight: 700;
 }
 
-.page-link.active,
-.active > .page-link {
-  background-color: $purple;
-  border: 1px solid transparent;
-}
+

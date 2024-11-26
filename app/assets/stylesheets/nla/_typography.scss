@@ -2,16 +2,43 @@
 @import "variables";
 @import "nla-custom-bootstrap";
 
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300;400;500;700&family=Roboto+Condensed:wght@300;400;700&display=swap');
+a:not(.btn, .page-link) {
+  color: $link-color;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-underline-position: under;
+  transition: all 0.25s;
 
-
-a:hover {
-  color: $blue;
-  text-decoration: none;
+  &:focus,
+  &:hover,
+  &:active {
+    color: $white;
+    text-decoration: none;
+    background-color: $link-hover-bg-color;
+    outline: none;
+    box-shadow: 0 0 0 4px $link-hover-bg-color;
+  }
 }
 
-a:active,
-a:focus {
-  color: $light-blue;
-  text-decoration: underline;
+a.btn,
+a.page-link {
+  &:focus,
+  &:hover,
+  &:active {
+    box-shadow: none;
+  }
+}
+
+h1 {
+  font-family: $font-family-serif;
+  color: $body-color;
+  font-weight: 400;
+}
+
+.blacklight-account,
+.blacklight-bookmarks,
+.blacklight-request {
+  h1 {
+    margin-top: 3rem;
+  }
 }

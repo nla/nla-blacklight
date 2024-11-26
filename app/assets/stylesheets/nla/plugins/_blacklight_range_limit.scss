@@ -9,18 +9,18 @@
   .slider-handle {
     background-image: none;
     background-color: $white;
-    border: 2px solid $purple;
+    border: 2px solid $dark-teal;
     opacity: 1;
 
     &:active,
     &:hover {
-      background-color: $purple;
+      background-color: $light-teal;
     }
   }
 
   .slider-selection {
     background-image: none;
-    background: $light-purple !important;
+    background: $light-teal !important;
   }
 }
 

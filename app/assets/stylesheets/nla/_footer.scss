@@ -3,37 +3,126 @@
 @import "nla-custom-bootstrap";
 
 .footer {
-  color: $white;
-  
-  a {
-    color: $white;
-    text-decoration: none;
+  /*
+  a:not(.btn) {
+    color: $black;
+    text-decoration: underline;
     
     &:focus,
-    &:hover {
+    &:hover,
+    &:active {
       color: $white;
-      text-decoration: underline;
+      text-decoration: none;
     }
   }
-  .connect .list-inline-item a {
+  
+  a.btn {
     &:focus,
-    &:hover {
-      color: $orange;
+    &:hover,
+    &:active {
+      //box-shadow: none;
+    }
+  }
+  */
+  
+  .footer-ask-a-librarian {
+      color: $white;
+      background-color: $black;
+      padding-top: 6.125rem;
+      padding-bottom: 6.125rem;
+      position: relative;
+      
+      .arrow-tip {
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        line-height: 0;
+        
+        svg {
+          height: 18px;
+        }
+      }
+      
+      .h2 {
+        font-family: $font-family-sans-serif;
+        font-size: 2rem;
+        font-weight: 600;
+        color: $white;
+        
+      }
+    }
+  
+  
+  .footer-top {
+    padding-top: 6.125rem;
+    padding-bottom: 6.125rem;
+  }
+  
+  .connect .list-inline-item a {
+    display: inline-block;
+    transition: 0.2s;
+    
+    
+    &:focus,
+    &:hover,
+    &:active {
+      color: $body-color;
+      background: transparent;
+      transform: translateY(-4px) scale(1.1);
+      box-shadow: none;
     }
   }
   
   h2 {
     &.h4 {
-      color: $white;
-    }
-    
-    &.h6 {
-      font-family: $font-family-sans-serif;
-      color: $white;
+      color: $black;
+      font-size: 1.25rem;
     }
   }
   
-  hr {
-    border-top-color: $white;
+  .footer-bottom {
+    background-color: $lightest-teal;
+    
+    .primary-links,
+    .secondary-links {
+      display: flex;
+      column-gap: 2rem;
+      flex-direction: row;
+      justify-content: center;
+      list-style-type: none;
+      
+      a {
+        color: $black;
+        text-decoration: none;
+        
+        &:focus,
+        &:hover,
+        &:active {
+          color: $white;
+          background-color: $link-hover-bg-color;
+          box-shadow: 0 0 0 4px $link-hover-bg-color;
+        }
+      }
+    }
+    
+    .primary-links {
+      a {
+        font-weight: 700;
+      }
+    }
+    
+    .secondary-links {
+      font-size: 0.875rem;
+    }
+    
+    .footer-logo a {
+      &:focus,
+      &:hover,
+      &:active {
+        background-color: transparent;
+        box-shadow: none;
+      }
+    }
   }
 }

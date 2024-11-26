@@ -3,3 +3,36 @@
     width: 100%;
   }
 }
+
+
+.blacklight-account {
+  .table {
+    caption {
+      color: $body-color;
+    }
+    
+    thead {
+      th {
+        color: $white !important;
+        background-color: $black !important;
+      }
+    }
+    
+    td {
+      color: $body-color;
+      background-color: transparent;
+    }
+    
+    .text-center {
+      a {
+        &:focus,
+        &:hover,
+        &:active {
+          color: $body-color;
+          background: transparent;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+}

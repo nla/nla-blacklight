@@ -18,6 +18,6 @@ module LayoutHelper
   # Classes used for sizing the sidebar content of a Blacklight page
   # @return [String]
   def sidebar_classes
-    "page-sidebar col-md-4 col-lg-3 d-print-none"
+    "page-sidebar col-md-4 col-lg-3 mt-5 d-print-none"
   end
 end

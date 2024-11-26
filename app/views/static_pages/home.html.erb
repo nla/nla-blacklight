@@ -1,7 +1,5 @@
 <% content_for(:page_header) {t("headings.search") } %>
 <section class="collection-search mb-5">
-  <p class="h5"><%= t('blacklight.collection_search.description.p1') %></p>
-  <p class="h5 mb-3"><%= t('blacklight.collection_search.description.p2') %></p>
   <div class="collection-search-box px-4 py-5">
     <h2><%= t('blacklight.collection_search.title') %></h2>
     <%= render "search/home_search_form" %>
@@ -47,7 +45,7 @@
 
   <p><%= t('blacklight.library_card.intro.p1') %></p>
   <p><%= t('blacklight.library_card.intro.p2') %></p>
-  <p><%= link_to t("blacklight.library_card.button"), "https://www.nla.gov.au/getting-started/join-us", class: "btn btn-outline-secondary arrow-after" %></p>
+  <p><%= link_to t("blacklight.library_card.button"), "https://library.gov.au/research/join-library", class: "btn btn-secondary arrow-after" %></p>
 </div>
 </section>
 
