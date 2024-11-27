@@ -122,7 +122,7 @@ en:
     picture_prompt_2: "You can use one request for up to five consecutive items. Use a separate request for non-consecutive items."
     picture_prompt_4_no_fa: "To determine the items you would like to request, use the linked item records in the Related Records section of the catalogue record to identify the call number of the item or items for example: PIC Drawer PM 7348 #PIC/P721/1 OR PIC Glass Plate #PIC/13562/99-103 OR Album 947."
     picture_prompt_4_fa: "To determine the items you would like to request, use the %{finding_aid} to identify the call number of the item or items, for example: PIC Drawer PM 7348 #PIC/P721/1 OR PIC Glass Plate #PIC/13562/99-103 OR Album 947."
-    picture_prompt_5: "If you need assistance with this please <a href=\"%{contact_us}\">contact us.</a>"
+    picture_prompt_5: "If you need assistance with this please <a href=\"{contact_us}\">contact us.</a>"
     collection_finding_aid: "collection finding aid"
     btn_request: "Request"
     btn_select: "Select"
