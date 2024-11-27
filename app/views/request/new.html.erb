@@ -23,7 +23,7 @@
       <% else %>
         <p class="col-12 col-lg-8"><%= t("requesting.picture_prompt_4_fa", finding_aid: @finding_aids_link).html_safe %></p>
       <% end %>
-      <p class="col-12 col-lg-8"><%= t("requesting.picture_prompt_5").html_safe %></p>
+      <p class="col-12 col-lg-8"><%= t("requesting.picture_prompt_5", contact_us: Rails.application.config_for(:catalogue).contact_us_url).html_safe %></p>
     <% end %>
   </div>
   <section id="request-details"
