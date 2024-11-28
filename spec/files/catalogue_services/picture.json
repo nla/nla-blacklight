@@ -1,0 +1,53 @@
+{
+  "instanceId": "d63dc349-8153-5ff6-a33c-f3ec13faa0f0",
+  "holdingsRecords": [
+    {
+      "id": "13341598-814f-5407-893b-cc76f339f123",
+      "instanceId": "d63dc349-8153-5ff6-a33c-f3ec13faa0f0",
+      "permanentLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "callNumber": "PIC Drawer PM 2766-3034 #PIC/8508/1-269",
+      "holdingsStatements": [],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "3556c738-2a32-5b11-b86e-2e5db34bbe1e",
+          "holdingsRecordId": "13341598-814f-5407-893b-cc76f339f123",
+          "barcode": "990004013219",
+          "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "PIC Drawer PM 2766-3034 #PIC/8508/1-269"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-06-28T03:31:57.329+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "yearCaption": [],
+          "enumeration": "FOR REQUESTS, USE THE REQUEST OPTION BELOW",
+          "itemCategory": "picture",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": []
+    }
+  ]
+}
