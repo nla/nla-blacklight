@@ -79,8 +79,8 @@ en:
     success:
       heading: "Request complete"
       message: "Thank you for your request. We will email you when it is being processed or if there are any issues with delivery. You can also track the status of your requests by visiting your <a href=\"%{request_summary_url}\">Request page</a>."
-      collection: 'Please bring your library card to collect this material. If you do not have a library card you will need to show proof of identity. Also check our collection <a href="https://library.gov.au/services/onsite-access/collection-delivery-service">delivery times</a> and <a href="https://library.gov.au/visit/opening-hours">opening hours</a>.'
-      scrr: 'To prepare for your visit, and find out more about use of and access to our special collections, view our Research Guide on <a href="https://library.gov.au/visit/reading-rooms/special-collections-reading-room">Using the Special Collections Reading Room</a>.'
+      collection: 'Please bring your library card to collect this material. If you do not have a library card you will need to show proof of identity. Also check our collection <a href="https://www.library.gov.au/services/onsite-access/collection-delivery-service">delivery times</a> and <a href="https://www.library.gov.au/visit/opening-hours">opening hours</a>.'
+      scrr: 'To prepare for your visit, and find out more about use of and access to our special collections, view our Research Guide on <a href="https://www.library.gov.au/visit/reading-rooms/special-collections-reading-room">Using the Special Collections Reading Room</a>.'
     errors:
       manuscripts:
         required: "Additional information is required to complete your request. Please provide information on either the Box Number, or Series Number or Folder/item Number that you are requesting."
@@ -94,6 +94,9 @@ en:
       serials:
         required: "Additional information is required to complete your request. Please provide information on either the Year, or Volume/No or Day or Month that you are requesting."
         dependent: "Additional information is required to complete your request. Please provide information on either the Year or Volume/No that you are requesting."
+      pictures:
+        required: ""
+        dependent: ""
     metadata:
       item_requested: "Item Requested:"
       collect_from: "Collect From:"
@@ -115,6 +118,11 @@ en:
     multi_box_prompt_2: "You can use one request for up to five consecutive boxes. Use a separate request for non-consecutive boxes/series/folders/items."
     multi_box_prompt_3: "If available, use the %{finding_aid} to select your box number, or a series/folder/item number and enter them below. If you need assistance with this please <a href=\"%{contact_us}\">contact us.</a>"
     map_prompt: "<strong>You have requested a map series containing many map sheets. Please use the fields below to tell our staff which map sheet or sheets you would like to request. If you do not know which sheet, enter a place name.</strong>"
+    picture_prompt: "<strong>You are requesting a multiple item collection. Please use the fields below to tell our staff which item or items you would like to request.</strong>"
+    picture_prompt_2: "You can use one request for up to five consecutive items. Use a separate request for non-consecutive items."
+    picture_prompt_4_no_fa: "To determine the items you would like to request, use the linked item records in the Related Records section of the catalogue record to identify the call number of the item or items for example: PIC Drawer PM 7348 #PIC/P721/1 OR PIC Glass Plate #PIC/13562/99-103 OR Album 947."
+    picture_prompt_4_fa: "To determine the items you would like to request, use the %{finding_aid} to identify the call number of the item or items, for example: PIC Drawer PM 7348 #PIC/P721/1 OR PIC Glass Plate #PIC/13562/99-103 OR Album 947."
+    picture_prompt_5: "If you need assistance with this please <a href=\"%{contact_us}\">contact us.</a>"
     collection_finding_aid: "collection finding aid"
     btn_request: "Request"
     btn_select: "Select"
@@ -126,6 +134,7 @@ en:
       volume: "Volume/No:"
       enumeration: "Day or month:"
       notes: "Notes:"
+      call_numbers: "Call numbers:"
       box_number: "Box number:"
       series_number: "Series number:"
       folder_item_number: "Folder/Item number:"
@@ -142,7 +151,7 @@ en:
       sol: '<p>Your request limit has been reached. You are unable to make any further Staff Official Loan requests until you have returned some items. Please read the borrowing conditions for <a href="%{staff_borrowing}">Staff Official Loans</a>.</p><p>For assistance, please contact Data Systems via the <a href="%{enquiry_form}">Data Systems Enquiry Form</a>.</p>'
       spl: '<p>Your request limit has been reached. You are unable to make any further Staff Personal Loan requests until you have returned some items. The borrowing limit for Staff Personal Loans is two (2) items only. Please read the borrowing conditions for <a href="%{staff_borrowing}">Staff Personal Loans</a>.</p><p>For assistance, please contact Reading Room Operations on <a href="mailto:readingroomissues@nla.gov.au">readingroomissues@nla.gov.au</a></p>'
       tol: '<p>Your request limit has been reached. You are unable to make any further Team Official Loan requests until you have returned some items. Please read the borrowing conditions for <a href="%{staff_borrowing}">Team Official Loans</a>.</p><p>For assistance, please contact Data Systems via the <a href="%{enquiry_form}">Data Systems Enquiry Form</a>.</p>'
-      patron: '<p>Your request limit has been reached and you are unable to make any further requests until you have returned some items.</p><p>For further assistance please see desk staff in our reading rooms or <a href="%{url}">Ask a Librarian</a>.</p><p><a href="https://nla.gov.au">National Library of Australia</a></p>'
+      patron: '<p>Your request limit has been reached and you are unable to make any further requests until you have returned some items.</p><p>For further assistance please see desk staff in our reading rooms or <a href="%{url}">Ask a Librarian</a>.</p><p><a href="https://www.library.gov.au">National Library of Australia</a></p>'
   bento_search:
     search_error: "Sorry! An error occurred and results could not be retrieved."
   citation:
@@ -232,8 +241,8 @@ en:
     nla_shop: "Buy at our online shop"
   home:
     p1: "Search the Catalogue to find books, pictures, maps, oral history interviews, manuscripts and more. Some items can be viewed online but most can be requested to view at the Library."
-    p2: "If you need help then try our <a href=\"https://www.nla.gov.au/research-guides\">research guides</a>. They cover a variety of topics, and are where you'll find research advice, key resources and featured collection items."
-    p3: "Have a question? Take a look at our <a href=\"https://www.nla.gov.au/faq\">frequently asked questions</a> page. You can also <a href=\"https://www.nla.gov.au/using-library/getting-started/ask-librarian\">Ask a Librarian</a>."
+    p2: "If you need help then try our <a href=\"https://www.library.gov.au/research/research-guides\">research guides</a>. They cover a variety of topics, and are where you'll find research advice, key resources and featured collection items."
+    p3: "Have a question? You can also <a href=\"https://www.library.gov.au/services/ask-librarian\">Ask a Librarian</a>."
   feedback:
     title: "Feedback"
     report_error: "Report an error"

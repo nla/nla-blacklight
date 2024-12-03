@@ -606,6 +606,16 @@
       }
     }
   
+    .document-title-heading {
+      color: $body-color-dark;
+    }
+    
+    .dl-invert {
+      dt {
+        color: $grey-50;
+      }
+    }
+    
     .citation-details {
       .h5 {
         color: $white;
