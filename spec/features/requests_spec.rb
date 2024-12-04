@@ -233,7 +233,7 @@ RSpec.describe "Requests" do
       end
     end
 
-    xcontext "when requesting a picture" do
+    context "when requesting a picture", skip: "waiting for planets to align" do
       let(:instance_id) { "d63dc349-8153-5ff6-a33c-f3ec13faa0f0" }
       let(:holdings_id) { "13341598-814f-5407-893b-cc76f339f123" }
       let(:item_id) { "3556c738-2a32-5b11-b86e-2e5db34bbe1e" }
