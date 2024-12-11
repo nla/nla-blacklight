@@ -25,7 +25,7 @@ class CatalogueServicesClient
 
   def get_request_summary(folio_id:)
     conn = setup_connection
-
+    # This is a change!
     res = conn.get("/catalogue-services/folio/user/#{folio_id}/myRequests")
     if res.status == 200
       res.body.presence || DEFAULT_REQUEST_SUMMARY
