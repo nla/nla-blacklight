@@ -279,5 +279,16 @@ RSpec.configure do |config|
         }
       )
       .to_return(status: 200, body: email_2fa, headers: {})
+
+    global_message = IO.read("spec/files/global_message.json")
+
+    WebMock.stub_request(:get, "https://www.library.gov.au/catalogue-message")
+           .with(
+             headers: {
+               "Accept" => "application/json",
+               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+             }
+           )
+           .to_return(status: 200, body: global_message, headers: {})
   end
 end
