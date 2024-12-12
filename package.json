@@ -6,7 +6,7 @@
     "@hotwired/turbo-rails": "^8.0.12",
     "@popperjs/core": "^2.11.8",
     "autoprefixer": "^10.4.20",
-    "blacklight-frontend": "^8.4.0",
+    "blacklight-frontend": "^8.7.0",
     "bootstrap": "^5.3.3",
     "bootstrap-icons": "^1.11.3",
     "esbuild": "^0.24.0",
