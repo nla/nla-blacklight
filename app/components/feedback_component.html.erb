@@ -4,7 +4,7 @@
     <ul class="list-unstyled">
       <li class="feedback-link">
         <%= link_to t("feedback.report_error"), helpers.error_feedback_url(@id) %>
-        <a href="https://reftracker.nla.gov.au/reft100.aspx?key=Cultural_Feedback&qnudftb17=https://catalogue.nla.gov.au/catalog/1698874">
+        <%= link_to helpers.culturally_sensitive_url(@id) do %>
           <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="16px" height="16px" viewBox="0 0 16 16" version="1.1">
             <title>message-stick-16px</title>
             <g id="message-stick-16px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -17,7 +17,7 @@
             </g>
           </svg>
           <%= t("feedback.culturally_sensitive") %>
-        </a>
+        <% end %>
       </li>
     </ul>
   </div>
