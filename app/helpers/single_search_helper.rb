@@ -39,7 +39,7 @@ module SingleSearchHelper
       ebsco_link = if bento_query.present?
         "#{ENV["EBSCO_PUB_FINDER_URL"]}&custid=#{ENV["EDS_ORG"]}&bquery=#{bento_query}"
       else
-        "#{ENV["EBSCO_SEARCH_URL"]}&custid=#{ENV["EDS_ORG"]}"
+        "#{ENV["EBSCO_PUB_FINDER_URL"]}&custid=#{ENV["EDS_ORG"]}"
       end
       ebsco_link
     elsif key == "finding_aids"
