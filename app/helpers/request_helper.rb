@@ -46,7 +46,7 @@ module RequestHelper
       t("requesting.collect_from.base", link: link, location: ", Ground Floor")
     elsif pickup_location_code(item).start_with? "SCRR"
       link = link_to "Special Collections Reading Room", "https://www.library.gov.au/visit/reading-rooms/special-collections-reading-room"
-      t("requesting.collect_from.base", link: link, location: ", First Floor")
+      t("requesting.collect_from.base", link: link)
     else
       link = link_to "Newspapers and Family History Zone", "https://www.library.gov.au/visit/reading-rooms/main-reading-room/newspapers-and-family-history-zone"
       t("requesting.collect_from.base", link: link, location: " in the Main Reading Room, Ground Floor")
