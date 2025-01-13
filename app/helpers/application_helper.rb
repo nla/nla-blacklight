@@ -65,6 +65,15 @@ module ApplicationHelper
     end
   end
 
+  def culturally_sensitive_url(id)
+    url = ENV.fetch("CULTURALLY_SENSITIVE_URL", "#")
+    if url != "#"
+      "#{url}&qnudftb17=#{request.original_url}&qnudftb11=#{id}"
+    else
+      url
+    end
+  end
+
   # Used to find users who have made too many requests to a resource
   def log_eresources_offsite_access(url)
     message = if current_user.present?
