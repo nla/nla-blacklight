@@ -37,9 +37,9 @@ module SingleSearchHelper
       ebsco_link
     elsif key == "ebsco_eds_title"
       ebsco_link = if bento_query.present?
-        "#{ENV["EBSCO_PUB_FINDER_URL"]}&custid=#{ENV["EDS_ORG"]}&bquery=#{bento_query}"
+        "#{ENV["EBSCO_PUB_FINDER_URL"]}?search=#{bento_query}&highlightTag=mark"
       else
-        "#{ENV["EBSCO_PUB_FINDER_URL"]}&custid=#{ENV["EDS_ORG"]}"
+        (ENV["EBSCO_PUB_FINDER_URL"]).to_s
       end
       ebsco_link
     elsif key == "finding_aids"
