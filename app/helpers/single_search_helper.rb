@@ -11,7 +11,7 @@ module SingleSearchHelper
   end
 
   def ss_uri_encode(link_url)
-    link_url = link_url.gsub("%", "%25") unless link_url.match?("%25")
+    link_url = link_url.gsub("%", "%25") unless link_url.match?("%25") || link_url.match?("%26")
     link_url = link_url.gsub("$", "%24")
     link_url = link_url.gsub(";", "%3B")
     link_url = link_url.gsub(" ", "%20")
@@ -46,7 +46,7 @@ module SingleSearchHelper
       fa_base_url = ENV["FINDING_AIDS_SEARCH_URL"].chomp("/catalog.json")
       "#{fa_base_url}?group=false&search_field=all_fields&q=#{bento_query}"
     else
-      "#{search_catalog_url}?search_field=all_fields&q=#{bento_query}"
+      "#{search_catalog_url}?search_field=all_fields&q=#{bento_query&.gsub("&", "%26")}"
     end
 
     ss_uri_encode(link)
