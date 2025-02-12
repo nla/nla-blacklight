@@ -22,7 +22,7 @@ class NlaThumbnailPresenter < Blacklight::ThumbnailPresenter
   private
 
   def thumbnail_value(image_options = nil)
-    image_options = image_options&.merge({alt: alt_title_from_document, onerror: "this.style.display='none'", class: "thumbnail", loading: "lazy"})
+    image_options = image_options&.merge({alt: "", onerror: "this.style.display='none'", class: "thumbnail", loading: "lazy"})
     if image_options.nil?
       default_thumbnail_value(image_options)
     elsif thumbnail_method
