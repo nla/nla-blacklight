@@ -27,7 +27,7 @@ module SingleSearchHelper
   end
 
   def bento_all_results_link(key)
-    bento_query = params[:q] || params[:query]
+    bento_query = (params[:q] || params[:query])&.gsub("&", "%26")
     link = if key.start_with?("ebsco_eds_keyword")
       ebsco_link = if bento_query.present?
         "#{ENV["EBSCO_SEARCH_URL"]}&custid=#{ENV["EDS_ORG"]}&bquery=#{bento_query}"
@@ -46,7 +46,7 @@ module SingleSearchHelper
       fa_base_url = ENV["FINDING_AIDS_SEARCH_URL"].chomp("/catalog.json")
       "#{fa_base_url}?group=false&search_field=all_fields&q=#{bento_query}"
     else
-      "#{search_catalog_url}?search_field=all_fields&q=#{bento_query&.gsub("&", "%26")}"
+      "#{search_catalog_url}?search_field=all_fields&q=#{bento_query}"
     end
 
     ss_uri_encode(link)
