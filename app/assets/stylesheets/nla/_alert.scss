@@ -18,7 +18,12 @@
     height: 1rem;
     font: var(--fa-font-regular);
   }
-
+  
+  @media screen and (prefers-color-scheme: dark) {
+    .btn-close {
+      filter: invert(100%);
+    }
+  }
 }
 
 
@@ -61,6 +66,9 @@
     color: $error-dark;
   }
 }
+
+
+
 
 
 .alert p {
