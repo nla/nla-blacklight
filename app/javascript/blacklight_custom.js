@@ -4,7 +4,7 @@ $(function() {
     const section = $(this).attr("href");
     $("html, body").animate({
       scrollTop: $(section).offset().top-20
-    }, 1200);
+    }, 1200, function($(section).focus()));
   });
 
   $("#catalogue-record-actions #request-btn").click(function(event) {
