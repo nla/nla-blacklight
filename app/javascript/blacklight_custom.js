@@ -14,7 +14,9 @@ $(function() {
     const section = $(this).attr("href");
     $("html, body").animate({
       scrollTop: $(section).offset().top-110
-    }, 1200);
+    }, 1200, function() {
+      $(section).focus()
+    });
   });
 
   // Override Blacklight modal link handler logic
