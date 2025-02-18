@@ -24,7 +24,7 @@ module ApplicationHelper
     # rubocop:disable Rails/OutputSafety
     if extended_info && caption.present?
       result << content_tag(:div, class: "linkCaption") do
-        content_tag(:small, "#{icon}#{caption}".html_safe)
+        content_tag(:small, "#{caption}".html_safe)
       end
     end
     # rubocop:enable Rails/OutputSafety
