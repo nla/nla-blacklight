@@ -5,12 +5,14 @@
     <div class="col">
       <% UserDetails::ALL_ATTRIBUTES.each do |attr| %>
         <div class="row">
-        <%# order of conditions matters here %>
-        <% if current_user.provider == "catalogue_patron" && UserDetails::PATRON_ATTRIBUTES.include?(attr)  %>
-          <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, details: @current_details, editable: UserDetails::PATRON_EDITABLE_ATTRIBUTES.include?(attr)) %>
-        <% elsif UserDetails::STAFF_ATTRIBUTES.include?(attr) %>
-          <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, details: @current_details, editable: UserDetails::STAFF_EDITABLE_ATTRIBUTES.include?(attr)) %>
-        <% end %>
+          <dl class="dl-invert row">
+          <%# order of conditions matters here %>
+          <% if current_user.provider == "catalogue_patron" && UserDetails::PATRON_ATTRIBUTES.include?(attr)  %>
+            <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, details: @current_details, editable: UserDetails::PATRON_EDITABLE_ATTRIBUTES.include?(attr)) %>
+          <% elsif UserDetails::STAFF_ATTRIBUTES.include?(attr) %>
+            <%= render UserDetailsFieldComponent.new(attribute: attr.to_s, details: @current_details, editable: UserDetails::STAFF_EDITABLE_ATTRIBUTES.include?(attr)) %>
+          <% end %>
+          </dl>
         </div>
       <% end %>
     </div>
