@@ -19,7 +19,7 @@ RSpec.describe UserDetailsFieldComponent, type: :component do
     render_inline(described_class.new(attribute: "last_name", details: user_details))
 
     expect(page).to have_css("#last_name-label", text: I18n.t("account.settings.last_name.label"))
-    expect(page).to have_css("dt", text: "Smith")
+    expect(page).to have_css("dd", text: "Smith")
   end
 
   context "when patron account" do
@@ -34,7 +34,7 @@ RSpec.describe UserDetailsFieldComponent, type: :component do
       render_inline(described_class.new(attribute: "last_name", details: user_details, editable: UserDetails::PATRON_EDITABLE_ATTRIBUTES.include?("last_name")))
 
       expect(page).to have_css("#last_name-label", text: I18n.t("account.settings.last_name.label"))
-      expect(page).to have_css("dt", text: "Smith")
+      expect(page).to have_css("dd", text: "Smith")
       expect(page).to have_no_css("a", text: I18n.t("account.settings.last_name.change_text"))
     end
   end
