@@ -66,6 +66,21 @@
       color: $grey-300;
     }
   }
+  
+  .blacklight-online_access {
+    .linkCaption {
+      small {      
+        &:before {
+          display: inline-block;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+          font: var(--fa-font-solid);
+          content: '\f084';
+          padding-right: 0.5rem;
+        }
+      }
+    }
+  }
 }
 
 .document-title-heading {
