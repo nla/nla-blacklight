@@ -693,5 +693,16 @@
     }
   }
   
+  // Bookmark
+  .toggle-bookmark {
+    label {
+      color: $light-teal;
+    }
+    
+    &:has(input[type=checkbox]:focus-visible) {
+      color: $black !important;
+      background-color: $light-teal;
+    }
+  }
     
 }

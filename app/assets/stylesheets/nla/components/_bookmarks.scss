@@ -2,11 +2,20 @@
   label {
     cursor: pointer;
     min-width: auto;
-    color: $mid-teal;
+    color: $warm-grey;
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+    border-radius: 0.5rem;
   }
-
+  
+  &:has(input[type=checkbox]:focus-visible) {
+    color: $white !important;
+    background-color: $warm-grey;
+  }
+  
   input[type=checkbox] {
-    display:none;
+    position: absolute;
+    opacity: 0;
   }
 
   input[type=checkbox] + span:before {
