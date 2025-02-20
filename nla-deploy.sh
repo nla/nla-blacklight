@@ -32,7 +32,6 @@ gem update --system
 gem install bundler
 bundle config --local jobs $(nproc)
 bundle config --local path "vendor/bundle"
-bundle config --local build.nokogiri --use-system-libraries
 
 if [[ "$RAILS_ENV" == "staging" || "$RAILS_ENV" == "production" ]]; then
  bundle config --local without "development:test"
