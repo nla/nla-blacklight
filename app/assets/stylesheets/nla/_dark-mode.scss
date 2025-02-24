@@ -348,6 +348,14 @@
       .facets-heading {
         color: $body-color-dark;
       }
+      
+      .navbar-toggler {        
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: $grey-600;
+        }
+      }
     }
     
     .facets-collapse {
@@ -366,6 +374,12 @@
           
           .btn {
             color: $body-color-dark;
+            
+            &:hover,
+            &:focus,
+            &:focus-visible {
+              color: $black;
+            }
           }
         }
         
@@ -373,6 +387,12 @@
           .facet-values {
             li {
               background-color: $grey-300;
+              
+              &:has(.facet-select:hover),
+              &:has(.facet-select:focus),
+              &:has(.facet-select:active) {
+                background-color: $grey-600;
+              }
             }
             .facet-select,
             .selected {
