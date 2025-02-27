@@ -656,8 +656,8 @@ GEM
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.1.3)
-    strong_migrations (2.0.2)
-      activerecord (>= 6.1)
+    strong_migrations (2.2.0)
+      activerecord (>= 7)
     summon (2.0.5)
       json
     thor (1.3.2)
@@ -798,7 +798,7 @@ DEPENDENCIES
   stackprof
   standard
   stimulus-rails
-  strong_migrations (~> 2.0)
+  strong_migrations (~> 2.2)
   turbo-rails
   tzinfo-data
   web-console
