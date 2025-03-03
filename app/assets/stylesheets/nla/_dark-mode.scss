@@ -41,7 +41,6 @@
   .navbar-search .input-group auto-complete,
   .navbar-search .input-group > .search-autocomplete-wrapper,
   .search-q {
-    //.search-q {
        background-color: $black !important;
        border-color: $white !important;
        color: $body-color-dark;
@@ -60,9 +59,6 @@
            color: $grey-700;
           }
        }
-     //}
-     
-     
      
      #autocomplete-popup {
        background: $grey-300;
