@@ -39,10 +39,11 @@
   .form-control,
   .input-small,
   .navbar-search .input-group auto-complete,
-  .navbar-search .input-group > .search-autocomplete-wrapper {
-    .search-q {
+  .navbar-search .input-group > .search-autocomplete-wrapper,
+  .search-q {
+    //.search-q {
        background-color: $black !important;
-       border-color: $white;
+       border-color: $white !important;
        color: $body-color-dark;
        
        &::placeholder {
@@ -52,14 +53,16 @@
        &:focus {
          color: $body-color-dark;
          background-color: $grey-200 !important;
-         border-color: $grey-200;
+         border-color: $grey-200 !important;
          box-shadow: 0 0 0 1px $grey-200;
          
          &::placeholder {
            color: $grey-700;
           }
        }
-     }
+     //}
+     
+     
      
      #autocomplete-popup {
        background: $grey-300;
