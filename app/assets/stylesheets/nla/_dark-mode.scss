@@ -527,6 +527,16 @@
         .btn {
           color: $body-color-dark;
         }
+        
+        button {
+          &:hover,
+          &:focus,
+          &:focus-visible,
+          &:active {
+            background: $mid-teal;
+            color: $black;
+          }
+        }
       }
       
       .facet-label,

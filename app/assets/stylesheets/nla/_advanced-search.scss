@@ -14,6 +14,8 @@
       .advanced-facet-limits {
         .facet-field-heading {
           button {
+            border-radius: 0;
+            
             &::after {
               float: none;
               display: inline-block;
@@ -25,8 +27,12 @@
               transition: transform 0.15s ease-in-out;
             }
             
+            &:hover,
+            &:focus,
+            &:focus-visible,
             &:active {
-              border-color: transparent;
+              background: $mid-teal;
+              box-shadow: none;
             }
           }
         }
