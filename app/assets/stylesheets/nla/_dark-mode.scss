@@ -38,30 +38,45 @@
   .form-select,
   .form-control,
   .input-small,
-  .navbar-search .input-group > .search-autocomplete-wrapper .search-q {
-     background-color: $black !important;
-     border-color: $white;
-     color: $body-color-dark;
-     
-     &::placeholder {
-        color: $grey-100;
-       }
-
-     &:focus {
+  .navbar-search .input-group auto-complete,
+  .navbar-search .input-group > .search-autocomplete-wrapper {
+    .search-q {
+       background-color: $black !important;
+       border-color: $white;
        color: $body-color-dark;
-       background-color: $grey-200 !important;
-       border-color: $grey-200;
-       box-shadow: 0 0 0 1px $grey-200;
        
        &::placeholder {
-         color: $grey-700;
-        }
+          color: $grey-100;
+         }
+  
+       &:focus {
+         color: $body-color-dark;
+         background-color: $grey-200 !important;
+         border-color: $grey-200;
+         box-shadow: 0 0 0 1px $grey-200;
+         
+         &::placeholder {
+           color: $grey-700;
+          }
+       }
      }
      
      #autocomplete-popup {
-       background: $white;
-       color: $black;
-       box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
+       background: $grey-300;
+       box-shadow: none;
+       border-color: $grey-300;
+       
+       .dropdown-item {
+         color: $white;
+         
+         &:focus,
+         &:hover,
+         &:active,
+         &.active,
+         &[aria-selected="true"] {
+           background-color: $grey-600;
+         }
+       }
      }
   }
   
@@ -724,5 +739,9 @@
       background-color: $light-teal;
     }
   }
+  
+  
+  // Drop downs
+  //.dropdown-item
     
 }

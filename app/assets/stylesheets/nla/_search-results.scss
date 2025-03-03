@@ -52,7 +52,6 @@
       border-top-right-radius: 0.5rem;
       border-bottom-right-radius: 0.5rem;
       padding-left: 0;
-      z-index: 10;
       
       &:not(:disabled):not(.disabled):hover,
       &:not(:disabled):not(.disabled):focus,
@@ -61,6 +60,7 @@
         cursor: pointer;
         text-decoration: none;
         box-shadow: none;
+        z-index: 0;
       }
     }
   }

@@ -7,9 +7,11 @@
       border-radius: 4px !important;
     }
     
+    auto-complete,
     > .search-autocomplete-wrapper {
       border: none;
       border-radius: 4px !important;
+      z-index: 10;
       
       .search-q {
         border: 1px solid $warm-grey;
@@ -22,8 +24,18 @@
       }
       
       #autocomplete-popup {
-        background: $white;
+        background: $light-grey;
         box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
+        
+        .dropdown-item {
+          &:focus,
+          &:hover,
+          &:active,
+          &.active,
+          &[aria-selected="true"] {
+            background-color: $tags-surface;
+          }
+        }
       }
     }
     
