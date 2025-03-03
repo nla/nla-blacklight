@@ -177,7 +177,7 @@ GEM
     citeproc-ruby (1.1.13)
       citeproc (~> 1.0, >= 1.0.9)
       csl (~> 1.5)
-    concurrent-ruby (1.3.5)
+    concurrent-ruby (1.3.4)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
     connection_pool (2.5.0)
