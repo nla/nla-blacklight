@@ -321,6 +321,20 @@
     }
   }
   
+  .constraints-container {
+    .applied-filter {
+      .constraint-value,
+      .remove {
+        color: $white;
+        background-color: $grey-200;
+      }
+      
+      .filter-name:after {
+        color: $white;
+      }
+    }
+  }
+  
   .documents-list {
     .document {
       border-bottom: 1px dotted $grey-600;
