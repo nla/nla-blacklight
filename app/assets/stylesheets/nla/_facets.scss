@@ -74,7 +74,9 @@
     .facet-limit {
       border-bottom: 1px solid $white;
       
-
+      &.card {
+        background-color: $light-grey;
+      }
     
       .facet-field-heading {
         background: $light-grey !important;
@@ -121,6 +123,22 @@
       .facet-content {
         .card-body {
           padding: 0;
+          
+          .range_limit {
+            .profile,
+            .range-limit-input-group {
+              padding: 0 1rem;
+            }
+            
+            .btn {
+              border-width: 1px;
+            }
+            
+            .more_facets {
+              padding: 0 1rem 0.5rem;
+            }
+          }
+
         }
         
         .facet-values {
