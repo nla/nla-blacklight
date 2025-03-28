@@ -45,6 +45,7 @@ export default class extends Controller {
     if (field.value !== "") {
       requiredFields.forEach(function(field) {
         field.classList.remove("is-invalid")
+        field.removeAttribute("aria-invalid")
       })
 
       if (dependentFieldsMissing) {
@@ -104,8 +105,10 @@ export default class extends Controller {
     requiredFields.forEach(function(field) {
       if (field.value === "") {
         field.classList.add("is-invalid")
+        field.setAttribute("aria-invalid","true")
       } else {
         field.classList.remove("is-invalid")
+        field.removeAttribute("aria-invalid")
       }
     })
   }
