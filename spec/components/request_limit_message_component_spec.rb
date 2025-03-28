@@ -18,7 +18,7 @@ RSpec.describe RequestLimitMessageComponent, type: :component do
 
       render_inline(component)
 
-      expect(page).to have_no_css("div.alert-danger")
+      expect(page).to have_no_css("div.alert-error")
     end
   end
 
@@ -36,7 +36,7 @@ RSpec.describe RequestLimitMessageComponent, type: :component do
     it "renders an error message" do
       render_inline(component)
 
-      expect(page).to have_css("div.alert-danger")
+      expect(page).to have_css("div.alert-error")
     end
 
     context "when the user is a public patron" do

@@ -4,7 +4,7 @@
       <% if user_details.errors.any? %>
         <div class="row">
           <div class="col-12">
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-error" role="alert">
               <ul class="mb-0 list-unstyled">
                 <% user_details.errors&.each do |error| %>
                   <li><%= error.full_message %></li>
