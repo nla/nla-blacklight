@@ -6,36 +6,49 @@
   margin-top: 1rem;
   
   .applied-filter {
-    color: $warm-grey;
     font-weight: normal;
     text-transform: none;
     letter-spacing: 0;
     
-    &:focus,
-    &:hover {
-      .constraint-value {
-        background: $grey-350;
-        color: $white;
-      }
+    .filter-name:after {
+      transition: all 0.25s;
     }
     
     &:focus,
     &:hover {
+      .constraint-value,
       .remove {
+        color: $white;
         background: $grey-350;
+      }
+      
+      .filter-name:after {
         color: $white;
       }
     }
     
+    &:has(.remove:focus) {
+      .constraint-value,
+      .remove { 
+        color: $white;
+        background-color: $grey-350;
+      }
+      
+      .filter-name:after { 
+        color: $white;
+      }
+    }
     
     .constraint-value,
     .remove {
+      color: $warm-grey;
       background-color: $tags-surface;
       border: none;
       font-size: 0.875rem;
       padding-left: 0.5rem;
       padding-right: 0.5rem;
       line-height: 1;
+      z-index: 0;
       
       &.btn {
         padding-top: 0.5rem !important;
@@ -56,11 +69,16 @@
       &:not(:disabled):not(.disabled):hover,
       &:not(:disabled):not(.disabled):focus,
       &:not(:disabled):not(.disabled):active {
-        color: $muted-orange;
+        color: $lightest-orange;
         cursor: pointer;
         text-decoration: none;
         box-shadow: none;
-        z-index: 0;
+      }
+    }
+    
+    .filter-name {
+      &:after {
+        color: $warm-grey;
       }
     }
   }
