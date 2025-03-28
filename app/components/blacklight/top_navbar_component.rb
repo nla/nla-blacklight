@@ -11,7 +11,7 @@ module Blacklight
     delegate :application_name, :container_classes, to: :helpers
 
     def logo_link(title: application_name)
-      link_to title, blacklight_config.logo_link, class: "py-0 my-2 navbar-brand navbar-logo"
+      link_to blacklight_config.logo_text, blacklight_config.logo_link, class: "py-0 my-2 navbar-brand navbar-logo"
     end
   end
 end

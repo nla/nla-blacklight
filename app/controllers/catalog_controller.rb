@@ -51,6 +51,7 @@ class CatalogController < ApplicationController
     #
     ## The destination for the link around the logo in the header
     config.logo_link = "https://www.library.gov.au"
+    config.logo_text = "National Library of Australia"
 
     ## Should the raw solr document endpoint (e.g. /catalog/:id/raw) be enabled
     config.raw_endpoint.enabled = false
