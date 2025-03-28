@@ -1,5 +1,5 @@
 <%- if limit_reached? && limit_reached.to_s.downcase == "true" %>
-  <div class="alert alert-danger" role="alert">
+  <div class="alert alert-error" role="alert">
     <%= limit_message.html_safe %>
   </div>
 <%- elsif remaining_requests? %>
