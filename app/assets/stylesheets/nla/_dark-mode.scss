@@ -22,10 +22,13 @@
     }
   }
   
-  h1 {
+  h1,
+  h2,
+  h3 {
     color: $body-color-dark;
   }
   
+  .h2,
   .h3 {
     color: $body-color-dark;
   }
@@ -317,6 +320,20 @@
         .d-sm-inline {
           color: $body-color-dark;
         }
+      }
+    }
+  }
+  
+  .constraints-container {
+    .applied-filter {
+      .constraint-value,
+      .remove {
+        color: $white;
+        background-color: $grey-200;
+      }
+      
+      .filter-name:after {
+        color: $white;
       }
     }
   }

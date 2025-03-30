@@ -70,7 +70,7 @@ RSpec.describe "Account" do
 
         visit account_requests_path
 
-        expect(page).to have_css(".alert-danger", text: "Your request limit has been reached")
+        expect(page).to have_css(".alert-error", text: "Your request limit has been reached")
         expect(page).to have_no_css("#request-details")
       end
     end
@@ -80,7 +80,7 @@ RSpec.describe "Account" do
         visit account_requests_path
 
         expect(page).to have_css(".alert-info", text: "You can request")
-        expect(page).to have_no_css(".alert-danger", text: "Your request limit has been reached")
+        expect(page).to have_no_css(".alert-error", text: "Your request limit has been reached")
       end
     end
   end
