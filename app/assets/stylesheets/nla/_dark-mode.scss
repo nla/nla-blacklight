@@ -393,7 +393,11 @@
       .facet-limit {
         border-bottom-color: $body-bg-dark;
         color: $body-color-dark;
-                
+        
+        &.card {
+          background-color: $grey-300;
+        }  
+        
         .facet-field-heading {
           background-color: $grey-300 !important;
           
@@ -680,6 +684,12 @@
       color: $body-color-dark;
     }
     
+    .facet-values {
+      .selected {
+        color: $body-color-dark !important;
+      }
+    }
+    
     .dl-invert {
       dt {
         color: $grey-50;
@@ -766,7 +776,12 @@
     }
   }
   
-  
+  // Date range chart
+  .xAxis {
+    .tickLabel {
+      fill: $body-color-dark;
+    }
+  }
   // Drop downs
   //.dropdown-item
     

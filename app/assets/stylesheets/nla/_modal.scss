@@ -23,6 +23,21 @@
       opacity: 1;
     }
   }
+  
+  .remove {
+    &:hover,
+    &:focus,
+    &:active {
+      background-color: transparent;
+      box-shadow: none;
+    }   
+  }
+  
+  .range_limit {
+    .btn {
+      border-width: 1px;
+    }
+  }
 
   .citation-details {
     .h5 {
