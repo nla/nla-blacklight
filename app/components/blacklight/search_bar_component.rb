@@ -12,9 +12,9 @@ module Blacklight
       url:, params:,
       advanced_search_url: nil,
       classes: %w[search-query-form col-md-12 col-lg-8], prefix: nil,
-      method: 'GET', q: nil, query_param: :q,
+      method: "GET", q: nil, query_param: :q,
       search_field: nil, autocomplete_path: nil,
-      autofocus: nil, i18n: { scope: 'blacklight.search.form' },
+      autofocus: nil, i18n: {scope: "blacklight.search.form"},
       form_options: {}
     )
       @url = url
@@ -52,8 +52,8 @@ module Blacklight
 
     def search_fields
       @search_fields ||= blacklight_config.search_fields.values
-                                          .select { |field_def| helpers.should_render_field?(field_def) }
-                                          .collect { |field_def| [helpers.label_for_search_field(field_def.key), field_def.key] }
+        .select { |field_def| helpers.should_render_field?(field_def) }
+        .collect { |field_def| [helpers.label_for_search_field(field_def.key), field_def.key] }
     end
 
     def advanced_search_enabled?
@@ -61,9 +61,9 @@ module Blacklight
     end
 
     def rounded_border_class
-      return 'rounded-0' if search_fields.length > 1
+      return "rounded-0" if search_fields.length > 1
 
-      'rounded-start'
+      "rounded-start"
     end
 
     private
@@ -73,7 +73,7 @@ module Blacklight
     end
 
     def scoped_t(key, **args)
-      t(key, default: t(key, scope: 'blacklight.search.form'), **@i18n, **args)
+      t(key, default: t(key, scope: "blacklight.search.form"), **@i18n, **args)
     end
   end
 end
