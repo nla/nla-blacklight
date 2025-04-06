@@ -23,7 +23,7 @@ gem "rufus-scheduler", "~> 3.9"
 gem "strong_migrations", "~> 2.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.1.5", ">= 7.1.5.1"
+gem "rails", "~> 7.2.0"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -89,8 +89,8 @@ gem "ebsco-eds", "~> 1.1", ">= 1.1.5"
 gem "email_validator", "~> 2.2"
 gem "phonelib", "~> 0.10.5"
 
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "feat/upgrade"
-gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "feat/upgrade"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "feat/upgradebak"
+gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "feat/upgradebak"
 gem "blacklight_range_limit", "~> 8.0", "< 9"
 # For local development, comment out above ⤴️ and uncomment below ⤵️
 # gem "nla-blacklight_common", path: "../nla-blacklight_common"
