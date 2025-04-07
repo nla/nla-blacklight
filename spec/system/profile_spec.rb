@@ -34,7 +34,7 @@ RSpec.describe "Profile" do
         expect(page).to have_content("Current phone number")
         expect(page).to have_content("0398765432")
 
-        fill_in "user_details_phone", with: ""
+        fill_in "user_details[phone]", with: ""
 
         click_on "Update"
 
