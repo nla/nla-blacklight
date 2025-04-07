@@ -5,7 +5,7 @@ require "rails"
 require "active_model/railtie"
 # require "active_job/railtie"
 require "active_record/railtie"
-# require "active_storage/engine"
+require "active_storage/engine"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 # require "action_mailbox/engine"
@@ -28,7 +28,7 @@ module NlaBlacklight
 
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.1
+    config.load_defaults 7.2
 
     # customise the error pages
     config.exceptions_app = routes
@@ -94,7 +94,7 @@ module NlaBlacklight
     # and you have no plans to rollback.
     # When you're ready to change format, add this to `config/application.rb` (NOT
     # this file):
-    #   config.active_support.cache_format_version = 7.1
+    # config.active_support.cache_format_version = 7.1
 
     Prometheus::Client.config.data_store = Prometheus::Client::DataStores::DirectFileStore.new(dir: File.join(ENV.fetch("BLACKLIGHT_TMP_PATH", "./tmp"), "prometheus_direct_file_store"))
 
