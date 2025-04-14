@@ -5,7 +5,7 @@ require "rails"
 require "active_model/railtie"
 # require "active_job/railtie"
 require "active_record/railtie"
-# require "active_storage/engine"
+require "active_storage/engine"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 # require "action_mailbox/engine"
@@ -28,10 +28,15 @@ module NlaBlacklight
 
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 7.0
+    config.load_defaults 7.2
 
     # customise the error pages
     config.exceptions_app = routes
+
+    # Please, add to the `ignore` list any other `lib` subdirectories that do
+    # not contain `.rb` files, or that should not be reloaded or eager loaded.
+    # Common ones are `templates`, `generators`, or `middleware`, for example.
+    config.autoload_lib(ignore: %w[assets tasks])
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -40,6 +45,8 @@ module NlaBlacklight
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.add_autoload_paths_to_load_path = false
 
     config.autoload_paths << "#{Rails.root}/app/components"
     config.time_zone = "Canberra"
@@ -50,6 +57,16 @@ module NlaBlacklight
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    # Try to support Internet Explorer
+    config.action_dispatch.default_headers = {
+      "X-Frame-Options" => "SAMEORIGIN",
+      "X-XSS-Protection" => "0",
+      "X-Content-Type-Options" => "nosniff",
+      "X-Permitted-Cross-Domain-Policies" => "none",
+      "X-Download-Options" => "noopen",
+      "Referrer-Policy" => "strict-origin-when-cross-origin"
+    }
 
     # Override default format of error messages per model
     config.active_model.i18n_customize_full_message = true
@@ -63,6 +80,21 @@ module NlaBlacklight
         html_tag
       end
     end
+
+    ###
+    # ** Please read carefully, this must be configured in config/application.rb **
+    #
+    # Change the format of the cache entry.
+    #
+    # Changing this default means that all new cache entries added to the cache
+    # will have a different format that is not supported by Rails 7.0
+    # applications.
+    #
+    # Only change this value after your application is fully deployed to Rails 7.1
+    # and you have no plans to rollback.
+    # When you're ready to change format, add this to `config/application.rb` (NOT
+    # this file):
+    # config.active_support.cache_format_version = 7.1
 
     Prometheus::Client.config.data_store = Prometheus::Client::DataStores::DirectFileStore.new(dir: File.join(ENV.fetch("BLACKLIGHT_TMP_PATH", "./tmp"), "prometheus_direct_file_store"))
 
