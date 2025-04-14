@@ -40,6 +40,7 @@ module BlacklightHelper
       account_profile_edit_path => "Edit Profile | ",
       :dynamic_edit => -> {
         I18n.t("account.settings.update.heading", attribute: t("account.settings.#{params[:attribute]}.change_text"))
+        pp "attribute: " + params[:attribute] + ", " + t("account.settings.#{params[:attribute]}.change_text")
       }
     }
 
