@@ -37,13 +37,18 @@ module BlacklightHelper
       destroy_user_session_path => "Logout | ",
       account_requests_path => "Requests | ",
       account_profile_path => "Profile | ",
-      account_profile_edit_path => "Edit Profile | "
+      account_profile_edit_path => "Edit Profile | ",
+      :dynamic_edit => -> {
+        I18n.t("account.settings.update.heading", attribute: t("account.settings.#{params[:attribute]}.change_text"))
+      }
     }
 
-    # account_request_details_path => "Request Details | "
-
     page_titles.each do |path, title|
-      return title if current_page?(path)
+      if path == :dynamic_edit && params[:attribute].present? && current_page?(account_profile_edit_path(attribute: params[:attribute]))
+        return title.call
+      elsif path != :dynamic_edit && current_page?(path)
+        return title
+      end
     end
 
     ""
