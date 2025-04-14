@@ -34,9 +34,9 @@ module BlacklightHelper
 
     page_titles = {
       root_path => "Home | ",
-      search_catalog_path => "Search | ",
+      search_catalog_path => "Catalogue Search | ",
       advanced_search_catalog_path => "Advanced Search | ",
-      bento_search_index_path => "Bento Search | ",
+      bento_search_index_path => "Search | ",
       new_user_session_path => "Login | ",
       destroy_user_session_path => "Logout | ",
       account_requests_path => "Requests | ",
