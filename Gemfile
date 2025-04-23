@@ -54,7 +54,7 @@ gem "hiredis", "~> 0.6.3"
 gem "hiredis-client", "~> 0.23.2"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 5.3"
+gem "redis", "~> 5.4"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -144,7 +144,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.28"
+  gem "selenium-webdriver", "~> 4.31"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"
