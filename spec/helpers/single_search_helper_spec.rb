@@ -108,7 +108,7 @@ RSpec.describe SingleSearchHelper do
       end
 
       it "returns a link to the finding aids search results page" do
-        expect(helper.bento_all_results_link("finding_aids")).to eq("http://test.host/finding-aids?group=false&search_field=all_fields&q=hello")
+        expect(helper.bento_all_results_link("finding_aids")).to eq("http://test.host/finding-aids/catalog?group=false&search_field=all_fields&q=hello")
       end
 
       it "returns a link to the EDS keyword search results page" do
@@ -126,7 +126,7 @@ RSpec.describe SingleSearchHelper do
       end
 
       it "returns a link to the finding aids search results page" do
-        expect(helper.bento_all_results_link("finding_aids")).to eq("http://test.host/finding-aids/catalog/?group=false&search_field=all_fields&q=")
+        expect(helper.bento_all_results_link("finding_aids")).to eq("http://test.host/finding-aids/catalog?group=false&search_field=all_fields&q=")
       end
 
       it "returns a link to the EDS keyword search results page" do
