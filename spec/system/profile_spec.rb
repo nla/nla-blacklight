@@ -25,7 +25,7 @@ RSpec.describe "Profile" do
           .to_return(body: '{"status":"OK"}')
       end
 
-      it "deletes a single number without error" do
+      it "deletes a single phone number without error" do
         visit account_profile_url
 
         click_on "Change my phone number"
@@ -34,7 +34,7 @@ RSpec.describe "Profile" do
         expect(page).to have_content("Current phone number")
         expect(page).to have_content("0398765432")
 
-        fill_in "user_details_phone", with: ""
+        fill_in "user_details[phone]", with: ""
 
         click_on "Update"
 
