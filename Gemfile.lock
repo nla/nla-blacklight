@@ -16,6 +16,16 @@ GIT
       summon
 
 GIT
+  remote: https://github.com/nla/blacklight_range_limit
+  revision: 7b537214168c3383b489cd118913075b92fb759d
+  branch: upstream_update
+  specs:
+    blacklight_range_limit (8.5.0)
+      blacklight (>= 7.25.2, < 9)
+      deprecation
+      view_component (>= 2.54, < 4)
+
+GIT
   remote: https://github.com/nla/nla-blacklight_common
   revision: c44083e7adb144455190c5ff857ee775c2858295
   branch: feat/upgradebak
@@ -157,10 +167,6 @@ GEM
     blacklight_advanced_search (8.0.0.alpha2)
       blacklight (>= 7.15, < 9)
       parslet
-    blacklight_range_limit (8.5.0)
-      blacklight (>= 7.25.2, < 9)
-      deprecation
-      view_component (>= 2.54, < 4)
     bootsnap (1.18.3)
       msgpack (~> 1.2)
     brakeman (6.1.2)
@@ -749,7 +755,7 @@ DEPENDENCIES
   blacklight (>= 8.0.0, < 9)
   blacklight-marc (~> 8.1)
   blacklight_advanced_search (= 8.0.0.alpha2)
-  blacklight_range_limit (~> 8.0, < 9)
+  blacklight_range_limit!
   bootsnap
   brakeman
   bundler-audit
