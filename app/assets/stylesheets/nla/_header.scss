@@ -66,6 +66,11 @@
         background-color: transparent;
         box-shadow: none;
       }
+      
+      &:focus {
+        outline: 2px solid $black;
+        outline-offset: 0.25rem;
+      }
     }
     
     @media (min-width: 768px) {
