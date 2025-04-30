@@ -17,8 +17,6 @@ module ThumbnailHelper
     thumb_url = ThumbnailService.new.get_url(service_options)
     if thumb_url.present?
       image_tag thumb_url, options.merge({width: thumbnail_image_width(document)})
-    else
-      nil
     end
   end
 
