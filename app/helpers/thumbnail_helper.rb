@@ -18,7 +18,6 @@ module ThumbnailHelper
     if thumb_url.present?
       image_tag thumb_url, options.merge({width: thumbnail_image_width(document)})
     else
-      Rails.logger.warn "Failed to retrieve thumbnail for #{document.first("id")}"
       nil
     end
   end
