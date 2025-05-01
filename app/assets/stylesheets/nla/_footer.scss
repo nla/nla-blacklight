@@ -122,6 +122,9 @@
       &:active {
         background-color: transparent;
         box-shadow: none;
+        outline: 2px solid $black;
+        outline-offset: 0.25rem;
+
       }
     }
   }
