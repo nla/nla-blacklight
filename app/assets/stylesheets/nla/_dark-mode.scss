@@ -164,6 +164,10 @@
       .navbar-toggler {
         border-color: $body-color-dark;
         
+        &:focus {
+          box-shadow: 0 0 0 0.25rem $body-color-dark;
+        }
+        
         .navbar-toggler-icon {
           filter: invert(1);
         }
@@ -321,6 +325,27 @@
           color: $body-color-dark;
         }
       }
+      
+      // Drop downs
+      .dropdown-menu.show {
+        background-color: $grey-300;
+        box-shadow: none;
+        border-color: $grey-300;
+         
+       .dropdown-item {
+         color: $white;
+         
+         &:focus,
+         &:hover,
+         &:active,
+         &.active,
+         &[aria-selected="true"] {
+           background-color: $grey-600;
+           color: $white;
+         }
+       }
+        
+      }
     }
   }
   
@@ -393,7 +418,11 @@
       .facet-limit {
         border-bottom-color: $body-bg-dark;
         color: $body-color-dark;
-                
+        
+        &.card {
+          background-color: $grey-300;
+        }  
+        
         .facet-field-heading {
           background-color: $grey-300 !important;
           
@@ -680,6 +709,12 @@
       color: $body-color-dark;
     }
     
+    .facet-values {
+      .selected {
+        color: $body-color-dark !important;
+      }
+    }
+    
     .dl-invert {
       dt {
         color: $grey-50;
@@ -766,7 +801,12 @@
     }
   }
   
-  
+  // Date range chart
+  .xAxis {
+    .tickLabel {
+      fill: $body-color-dark;
+    }
+  }
   // Drop downs
   //.dropdown-item
     
