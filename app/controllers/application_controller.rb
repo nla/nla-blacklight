@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   def storable_location?
     request.get? &&
       is_navigational_format? &&
-      (is_a_storable_controller_action? && !devise_controller?) &&
+      is_a_storable_controller_action? && !devise_controller? &&
       !request.xhr? &&
       !turbo_frame_request?
   end

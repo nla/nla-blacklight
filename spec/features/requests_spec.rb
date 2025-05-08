@@ -168,6 +168,7 @@ RSpec.describe "Requests" do
             holdings: holdings_id,
             item: item_id
           )
+          expect(page).to have_css("body")
           expect(page).to have_no_link(text: "collection finding aid")
         end
       end
@@ -339,6 +340,7 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
+        expect(page).to have_css("body")
         expect(page).to have_no_link(I18n.t("blacklight.back_to_search"))
       end
     end
