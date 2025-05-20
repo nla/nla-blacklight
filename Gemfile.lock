@@ -30,7 +30,7 @@ GIT
   revision: 00f7f978798d2fa9f58ec24a514b1b1bdfaa0ffc
   branch: feat/upgradebak
   specs:
-    nla-blacklight_common (0.2.8)
+    nla-blacklight_common (0.2.12)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 9)
@@ -425,11 +425,24 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
+    nokogiri (1.18.8)
+      mini_portile2 (~> 2.8.2)
+      racc (~> 1.4)
+    nokogiri (1.18.8-aarch64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.8-aarch64-linux-musl)
+      racc (~> 1.4)
+    nokogiri (1.18.8-arm-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.8-arm-linux-musl)
+      racc (~> 1.4)
     nokogiri (1.18.8-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.8-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.8-x86_64-linux-gnu)
+      racc (~> 1.4)
+    nokogiri (1.18.8-x86_64-linux-musl)
       racc (~> 1.4)
     oauth2 (2.0.9)
       faraday (>= 0.17.3, < 3.0)
@@ -790,7 +803,7 @@ DEPENDENCIES
   rack-mini-profiler
   rails (~> 8)
   rails-controller-testing (~> 1.0, >= 1.0.5)
-  redis (~> 5.3)
+  redis (~> 5.4)
   rspec-rails (~> 7.1)
   rubocop-capybara
   rubocop-factory_bot
@@ -798,7 +811,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   rufus-scheduler (~> 3.9)
-  selenium-webdriver (~> 4.28)
+  selenium-webdriver (~> 4.31)
   shoulda-matchers
   simplecov (~> 0.22.0)
   simplecov-json (~> 0.2.3)
