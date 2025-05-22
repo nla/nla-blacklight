@@ -9,7 +9,7 @@ RSpec.describe "Profile" do
     before do
       user_details = IO.read("spec/files/profile/user_details.json")
       WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user/)
-        .to_return(status: 200, body: user_details, headers: {"Content-Type" => "application/json"})
+        .to_return(status: 200, body: user_details.to_json, headers: {"Content-Type" => "application/json"})
     end
 
     it "displays both phone numbers" do
@@ -34,7 +34,7 @@ RSpec.describe "Profile" do
         expect(page).to have_content("Current phone number")
         expect(page).to have_content("0398765432")
 
-        fill_in "user_details[phone]", with: ""
+        fill_in "user_details_phone", with: ""
 
         click_on "Update"
 

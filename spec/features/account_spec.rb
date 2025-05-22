@@ -117,7 +117,7 @@ RSpec.describe "Account" do
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
-          .to_return(status: 200, body: monograph_details_response, headers: {})
+          .to_return(status: 200, body: monograph_details_response, headers: {"Content-Type" => "application/json"})
 
         visit account_request_details_path(request_id, loan: false)
 

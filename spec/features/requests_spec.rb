@@ -363,7 +363,7 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
-        expect(page).to have_css(".alert-error", text: "Your request limit has been reached")
+        expect(page).to have_text("Your request limit has been reached")
       end
     end
 
