@@ -9,9 +9,9 @@ class RequestDetail
 
   attr_reader :details, :record_id, :date
   %w[
-  requestId loan requestDate title patronComments instanceId
-  yearCaption enumeration chronology callNumber status
-  pickupServicePoint cancellationComment cancellationReason itemCategory
+    requestId loan requestDate title patronComments instanceId
+    yearCaption enumeration chronology callNumber status
+    pickupServicePoint cancellationComment cancellationReason itemCategory
   ].each do |method|
     define_method(method) { details[method] }
   end
