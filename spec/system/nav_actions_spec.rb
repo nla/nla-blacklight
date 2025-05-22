@@ -8,6 +8,7 @@ RSpec.describe "Navigation actions" do
   it "does not show the History link" do
     visit root_path
 
+    expect(page).to have_css("body")
     expect(page).to have_no_text("History")
   end
 
@@ -18,6 +19,7 @@ RSpec.describe "Navigation actions" do
 
       visit root_path
 
+      expect(page).to have_css("body")
       expect(page).to have_no_link I18n.t("blacklight.header_links.login"), href: new_user_session_path
     end
   end
