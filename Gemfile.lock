@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/blacklight_range_limit
-  revision: 7b537214168c3383b489cd118913075b92fb759d
-  branch: upstream_update
+  revision: 3de6a19b3ed3439694d6cc57cd28b0fa7f77201d
+  branch: main
   specs:
-    blacklight_range_limit (8.5.0)
+    blacklight_range_limit (8.4.0)
       blacklight (>= 7.25.2, < 9)
       deprecation
       view_component (>= 2.54, < 4)
