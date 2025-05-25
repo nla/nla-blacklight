@@ -10,7 +10,15 @@ class RequestItemComponent < ViewComponent::Base
   def initialize(document:)
     @document = document
     @error = nil
-    @holdings = []
+    instance_id = @document.first("folio_instance_id_ssim")
+    begin
+      result = CatalogueServicesClient.new.get_holdings(instance_id: instance_id)
+      @holdings = result.is_a?(Array) ? result : []
+    rescue ServiceTokenError, HoldingsRequestError, StandardError => e
+      @error = "Unable to retrieve holdings for #{@document.first("title_tsim")}"
+      Rails.logger.error "Unable to retrieve holdings for #{@document.id}: #{e}"
+      @holdings = []
+    end
   end
 
   def render?
