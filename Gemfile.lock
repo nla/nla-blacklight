@@ -30,7 +30,7 @@ GIT
   revision: 00f7f978798d2fa9f58ec24a514b1b1bdfaa0ffc
   branch: main
   specs:
-    nla-blacklight_common (0.2.8)
+    nla-blacklight_common (0.2.12)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 9)
