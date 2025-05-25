@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/nla/bento_search.git
   revision: f8b4b6bf38f1f996173ca6b6933f867f5df46db7
-  branch: feat/upgradebak
+  branch: main
   specs:
     bento_search (2.0.0.rc1)
       confstruct (~> 1.0)
@@ -28,7 +28,7 @@ GIT
 GIT
   remote: https://github.com/nla/nla-blacklight_common
   revision: 00f7f978798d2fa9f58ec24a514b1b1bdfaa0ffc
-  branch: feat/upgradebak
+  branch: main
   specs:
     nla-blacklight_common (0.2.8)
       activerecord-session_store (~> 2.0)
