@@ -615,7 +615,7 @@ GEM
       fugit (~> 1.1, >= 1.11.1)
     scrub_rb (1.0.1)
     securerandom (0.4.1)
-    selenium-webdriver (4.32.0)
+    selenium-webdriver (4.33.0)
       base64 (~> 0.2)
       logger (~> 1.4)
       rexml (~> 3.2, >= 3.2.5)
@@ -802,7 +802,7 @@ DEPENDENCIES
   rubocop-rails
   rubocop-rspec
   rufus-scheduler (~> 3.9)
-  selenium-webdriver (~> 4.31)
+  selenium-webdriver (~> 4.33)
   shoulda-matchers
   simplecov (~> 0.22.0)
   simplecov-json (~> 0.2.3)
