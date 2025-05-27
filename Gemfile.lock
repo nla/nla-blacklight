@@ -320,8 +320,8 @@ GEM
     heapy (0.2.0)
       thor
     hiredis (0.6.3)
-    hiredis-client (0.23.2)
-      redis-client (= 0.23.2)
+    hiredis-client (0.24.0)
+      redis-client (= 0.24.0)
     htmlentities (4.3.4)
     http (5.2.0)
       addressable (~> 2.8)
@@ -540,7 +540,7 @@ GEM
       psych (>= 4.0.0)
     redis (5.4.0)
       redis-client (>= 0.22.0)
-    redis-client (0.23.2)
+    redis-client (0.24.0)
       connection_pool
     regexp_parser (2.10.0)
     reline (0.6.1)
@@ -781,7 +781,7 @@ DEPENDENCIES
   flamegraph
   fuubar
   hiredis (~> 0.6.3)
-  hiredis-client (~> 0.23.2)
+  hiredis-client (~> 0.24.0)
   jbuilder
   jsbundling-rails
   lograge
