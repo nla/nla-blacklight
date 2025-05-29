@@ -159,7 +159,7 @@ class CatalogueServicesClient
 
     res = conn.get("/catalogue-services/folio/user?query=id==#{folio_id}")
     if res.status == 200
-      jbody = JSON.parse(res.body)
+      jbody = res.body
       if jbody.present? && jbody["totalRecords"].to_i == 1
         folio_details = jbody["users"]&.first
         {

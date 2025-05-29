@@ -11,7 +11,8 @@ class AccountController < ApplicationController
 
   def requests
     @met_request_limit = CatalogueServicesClient.new.request_limit_reached?(requester: current_user.folio_id)
-    @requests = CatalogueServicesClient.new.get_request_summary(folio_id: current_user.folio_id)
+    raw_response = CatalogueServicesClient.new.get_request_summary(folio_id: current_user.folio_id)
+    @requests = raw_response.is_a?(String) ? JSON.parse(raw_response) : raw_response
   end
 
   def request_details
