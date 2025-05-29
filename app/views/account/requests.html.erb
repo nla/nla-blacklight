@@ -2,11 +2,11 @@
 
 <%= render RequestLimitMessageComponent.new(current_user, CatalogueServicesClient.new) do |component| %>
   <% component.with_limit_reached.with_content(@met_request_limit) %>
-  <% component.with_remaining_requests.with_content(JSON.parse(@requests)["numRequestsRemaining"]) %>
+  <% component.with_remaining_requests.with_content(@requests["numRequestsRemaining"]) %>
 <% end %>
 
-<%= render RequestsTableComponent.new(JSON.parse(@requests)["checkedOutItems"], t("account.requests.table_headings.checked_out")) %>
-<%= render RequestsTableComponent.new(JSON.parse(@requests)["readyForCollection"], t("account.requests.table_headings.ready")) %>
-<%= render RequestsTableComponent.new(JSON.parse(@requests)["notAvailable"], t("account.requests.table_headings.not_available")) %>
-<%= render RequestsTableComponent.new(JSON.parse(@requests)["itemsRequested"], t("account.requests.table_headings.requested")) %>
-<%= render RequestsTableComponent.new(JSON.parse(@requests)["previousRequests"], t("account.requests.table_headings.previous")) %>
+<%= render RequestsTableComponent.new(@requests["checkedOutItems"], t("account.requests.table_headings.checked_out")) %>
+<%= render RequestsTableComponent.new(@requests["readyForCollection"], t("account.requests.table_headings.ready")) %>
+<%= render RequestsTableComponent.new(@requests["notAvailable"], t("account.requests.table_headings.not_available")) %>
+<%= render RequestsTableComponent.new(@requests["itemsRequested"], t("account.requests.table_headings.requested")) %>
+<%= render RequestsTableComponent.new(@requests["previousRequests"], t("account.requests.table_headings.previous")) %>
