@@ -46,7 +46,6 @@ RSpec.describe "Accounts" do
           }
         )
         .to_return(status: 200, body: folio_details.to_json, headers: {"Content-Type" => "application/json"})
-      pp folio_details.to_json
     end
 
     let(:folio_details) do
