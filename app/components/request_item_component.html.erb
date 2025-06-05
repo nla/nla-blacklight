@@ -6,9 +6,7 @@
   <div class="row">
     <div class="col-12">
       <% if holdings.present? %>
-        <% if !holdings.is_a?(String) %>
-          <%= render partial: "/request_item/holding", collection: holdings, locals: {document: @document}, cached: true %>
-        <% end %>
+        <%= render partial: "/request_item/holding", collection: holdings, locals: {document: @document}, cached: true %>
       <% end %>
     </div>
   </div>

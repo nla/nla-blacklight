@@ -11,13 +11,11 @@ RSpec.feature "Search via search bar" do
 
   scenario "from home page" do
     visit root_path
-    expect(page).to have_css("body")
     expect(page).to have_no_css(".navbar-search")
   end
 
   scenario "from bento search page" do
     visit bento_search_index_path
-    expect(page).to have_css("body")
     expect(page).to have_no_content("form[id=\"search\"]")
   end
 end

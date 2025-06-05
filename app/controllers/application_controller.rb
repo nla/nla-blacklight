@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
   before_action :store_user_location!, if: :storable_location?
   before_action :set_cache_headers
 

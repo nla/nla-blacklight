@@ -37,7 +37,7 @@ class AccountController < ApplicationController
     # postcode in their FOLIO accounts. As such, we don't want to validate the postcode field
     # when updating other fields and display an error message when the postcode is blank.
     if @user_details.valid?(profile_update_params[:attribute].to_sym)
-      response = JSON.parse(CatalogueServicesClient.new.update_user_folio_details(current_user.folio_id, profile_update_params))
+      response = CatalogueServicesClient.new.update_user_folio_details(current_user.folio_id, profile_update_params)
       if response["status"].present?
         if response["status"] == "OK"
           return redirect_to account_profile_path

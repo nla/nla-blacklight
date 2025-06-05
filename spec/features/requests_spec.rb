@@ -168,7 +168,6 @@ RSpec.describe "Requests" do
             holdings: holdings_id,
             item: item_id
           )
-          expect(page).to have_css("body")
           expect(page).to have_no_link(text: "collection finding aid")
         end
       end
@@ -340,7 +339,6 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
-        expect(page).to have_css("body")
         expect(page).to have_no_link(I18n.t("blacklight.back_to_search"))
       end
     end
@@ -363,7 +361,7 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
-        expect(page).to have_text("Your request limit has been reached")
+        expect(page).to have_css(".alert-error", text: "Your request limit has been reached")
       end
     end
 

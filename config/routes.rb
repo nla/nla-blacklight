@@ -117,7 +117,7 @@ Rails.application.routes.draw do
     get "request/success", controller: "request", action: "success"
   end
 
-  resource :catalog, as: "catalog", path: "/catalog", controller: "catalog" do
+  resource :catalog, only: [:index], as: "catalog", path: "/catalog", controller: "catalog" do
     concerns :searchable
     concerns :range_searchable
 
@@ -148,7 +148,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :thumbnail, path: "/thumbnail", controller: "thumbnail" do
+  resource :thumbnail, only: [:thumbnail], path: "/thumbnail", controller: "thumbnail" do
     concerns :searchable
     concerns :range_searchable
 
