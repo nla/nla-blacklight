@@ -159,6 +159,7 @@ class CatalogueServicesClient
     if res.status == 200
       if res.body.present? && res.body["totalRecords"].to_i == 1
         folio_details = res.body["users"]&.first
+
         {
           first_name: folio_details&.dig("personal", "firstName"),
           last_name: folio_details&.dig("personal", "lastName"),
