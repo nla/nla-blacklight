@@ -8,17 +8,11 @@ class RequestDetail
   include Blacklight::Configurable
 
   attr_reader :details, :record_id, :date
-  %w[
-    requestId loan requestDate title patronComments instanceId
-    yearCaption enumeration chronology callNumber status
-    pickupServicePoint cancellationComment cancellationReason itemCategory
-  ].each do |method|
-    define_method(method) { details[method] }
-  end
+
+  delegate :requestId, :loan, :requestDate, :title, :patronComments, :instanceId, :yearCaption, :enumeration, :chronology, :callNumber, :status, :pickupServicePoint, :cancellationComment, :cancellationReason, :itemCategory, to: :details
 
   def initialize(details)
-    parsed = details.is_a?(String) ? JSON.parse(details) : details
-    @details = parsed
+    @details = details
     @date ||= Time.zone.parse(requestDate)
     @record_id ||= fetch_record_id
   end
@@ -46,11 +40,11 @@ class RequestDetail
   private
 
   def fetch_record_id
-    if @details[:instanceId].present?
-      Rails.cache.fetch("request_record_id/#{@details[:instanceId]}", expires_in: 15.minutes) do
+    if @details.instanceId.present?
+      Rails.cache.fetch("request_record_id/#{@details.instanceId}", expires_in: 15.minutes) do
         search_service = Blacklight.repository_class.new(blacklight_config)
         response = search_service.search(
-          q: "folio_instance_id_ssim:\"#{@details[:instanceId]}\"",
+          q: "folio_instance_id_ssim:\"#{@details.instanceId}\"",
           fl: "id",
           sort: "score desc",
           rows: 1

@@ -101,7 +101,6 @@ RSpec.describe "Account" do
 
         visit account_request_details_path(request_id)
 
-        expect(page).to have_css("body")
         expect(page).to have_no_text("[Hurstville Light Opera Company : programs and related material collected by the National Library of Australia]")
       end
     end
@@ -117,7 +116,7 @@ RSpec.describe "Account" do
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
-          .to_return(status: 200, body: monograph_details_response, headers: {"Content-Type" => "application/json"})
+          .to_return(status: 200, body: monograph_details_response, headers: {})
 
         visit account_request_details_path(request_id, loan: false)
 

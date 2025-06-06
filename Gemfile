@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.3.2"
+ruby "3.2.2"
 
 # Brakeman analyzes our code for security vulnerabilities
 gem "brakeman"
@@ -23,7 +23,7 @@ gem "rufus-scheduler", "~> 3.9"
 gem "strong_migrations", "~> 2.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 8"
+gem "rails", "~> 7.0"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -51,7 +51,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.24.0"
+gem "hiredis-client", "~> 0.23.2"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.4"
@@ -90,9 +90,8 @@ gem "email_validator", "~> 2.2"
 gem "phonelib", "~> 0.10.5"
 
 gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
-gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "main"
-gem "blacklight_range_limit", git: "https://github.com/nla/blacklight_range_limit", branch: "main"
-# gem "blacklight_range_limit", "~> 8.0", "< 9"
+gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
+gem "blacklight_range_limit", "~> 8.0", "< 9"
 # For local development, comment out above ⤴️ and uncomment below ⤵️
 # gem "nla-blacklight_common", path: "../nla-blacklight_common"
 # gem "bento_search", path: "../bento_search"
@@ -145,7 +144,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.33"
+  gem "selenium-webdriver", "~> 4.31"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"
@@ -153,5 +152,5 @@ group :test do
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-json", "~> 0.2.3"
 
-  gem "mock_redis", "~> 0.50.0"
+  gem "mock_redis", "~> 0.49.0"
 end
