@@ -26,7 +26,7 @@ Custom implementation of [Blacklight](http://projectblacklight.org/) for The Nat
 
 ## Requirements
 
-* Ruby: 3.3.2
+* Ruby: 3.2.2
 * Bundler: 2.4.22
 
 * System dependencies
