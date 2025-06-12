@@ -9,6 +9,8 @@
     font-weight: normal;
     text-transform: none;
     letter-spacing: 0;
+    border-radius: 0.5rem;
+    border: 2px solid $body-bg;
     
     .filter-name:after {
       transition: all 0.25s;
@@ -28,6 +30,8 @@
     }
     
     &:has(.remove:focus) {
+      border-color: $grey-700;
+      
       .constraint-value,
       .remove { 
         color: $white;
@@ -57,13 +61,13 @@
     }
     
     .constraint-value {
-      border-top-left-radius: 0.5rem;
-      border-bottom-left-radius: 0.5rem;
+      border-top-left-radius: calc(0.5rem - 2px);
+      border-bottom-left-radius: calc(0.5rem - 2px);
     }
     
     .remove {
-      border-top-right-radius: 0.5rem;
-      border-bottom-right-radius: 0.5rem;
+      border-top-right-radius: calc(0.5rem - 2px);
+      border-bottom-right-radius: calc(0.5rem - 2px);
       padding-left: 0;
       
       &:not(:disabled):not(.disabled):hover,
