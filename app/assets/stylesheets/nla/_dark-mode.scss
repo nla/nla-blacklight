@@ -351,6 +351,8 @@
   
   .constraints-container {
     .applied-filter {
+      border-color: $body-bg-dark;
+      
       .constraint-value,
       .remove {
         color: $white;
@@ -359,6 +361,10 @@
       
       .filter-name:after {
         color: $white;
+      }
+      
+      &:has(.remove:focus) {
+        border-color: $body-color-dark;
       }
     }
   }
