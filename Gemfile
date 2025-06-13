@@ -84,7 +84,7 @@ gem "stackprof", group: :development
 gem "blacklight", ">= 8.0.0", "< 9"
 gem "blacklight-marc", "~> 8.1"
 gem "blacklight_advanced_search", "8.0.0.alpha2"
-gem "ebsco-eds", "~> 1.1", ">= 1.1.5"
+gem "ebsco-eds", "~> 1.1"
 
 gem "email_validator", "~> 2.2"
 gem "phonelib", "~> 0.10.5"
