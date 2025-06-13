@@ -12,7 +12,7 @@
     "esbuild": "^0.25.5",
     "jquery": "^3.7.1",
     "lodash.debounce": "^4.0.8",
-    "nodemon": "^3.1.9",
+    "nodemon": "^3.1.10",
     "postcss": "^8.5.3",
     "postcss-cli": "11.0.1",
     "sass": "^1.89.2",
