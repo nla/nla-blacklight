@@ -24,7 +24,7 @@ if %w[development test].include? ENV["RAILS_ENV"]
 end
 
 module NlaBlacklight
-  VERSION = "3.9.1"
+  VERSION = "3.10.0"
 
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
