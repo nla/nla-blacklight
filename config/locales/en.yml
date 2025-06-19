@@ -143,7 +143,7 @@ en:
       year: "20 character limit"
       volume: "80 character limit"
       enumeration: "80 character limit"
-      notes: "< 100 characters"
+      notes: "< 130 characters"
       need_help: "Need help? <a href=\"%{contact_us}\">Contact us</a>."
     collect_from:
       base: "%{link}%{location}"
