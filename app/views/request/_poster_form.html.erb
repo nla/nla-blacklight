@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-12 col-lg-8">
+    <%= form_with(url: solr_document_request_path,
+                  model: request,
+                  method: :post,
+                  data: {
+                    "form-validation-target": "form"
+                  }) do |f| %>
+      <%= hidden_field :request, :holdings_id %>
+      <%= hidden_field :request, :item_id %>
+
+      <div class="mb-3 row">
+        <%= f.label :notes, t("requesting.label.call_numbers"), class: "col-md-3 col-form-label text-md-right" %>
+        <div class="col-sm-6">
+          <%= f.text_area :notes, class: "form-control", maxlength: 130 %>
+        </div>
+        <span id="notes-help" class="form-text text-muted col-sm-3"> poster <%= t("requesting.help.notes") %></span>
+      </div>
+
+      <div class="mb-3 row">
+        <div class="offset-md-3 col-sm-6 pe-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary" %></div>
+        <div class="col-sm-3"></div>
+      </div>
+    <% end %>
+  </div>
+</div>
