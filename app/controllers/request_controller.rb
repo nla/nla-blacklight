@@ -29,9 +29,13 @@ class RequestController < ApplicationController
     elsif item["itemCategory"] == "map"
       "maps"
     elsif item["itemCategory"] == "picture"
-      "pictures"
-    # elsif item["itemCategory"] == "poster"
-    #   "posters"
+      "picture"
+    elsif item["itemCategory"] == "picture-series"
+      "pictureseries"
+    elsif item["itemCategory"] == "poster"
+      "poster"
+    elsif item["itemCategory"] == "poster-series"
+      "posterseries"
     else
       "monographs"
     end
