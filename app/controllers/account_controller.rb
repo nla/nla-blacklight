@@ -76,7 +76,6 @@ class AccountController < ApplicationController
   end
 
   def profile_update_params
-    params.permit(:attribute, :authenticity_token, :commit, user_details: {}, current_details: {})
-    # params.permit(:attribute, user_details: {}, current_details: {})
+    params.permit(:attribute, user_details: {}, current_details: {})
   end
 end
