@@ -18,6 +18,8 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+require_relative "../lib/middleware/exception_logger"
+
 # Load dotenv only in development or test environment
 if %w[development test].include? ENV["RAILS_ENV"]
   require "dotenv/load"
@@ -29,6 +31,8 @@ module NlaBlacklight
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
+
+    config.middleware.use Middleware::ExceptionLogger
 
     # customise the error pages
     config.exceptions_app = routes

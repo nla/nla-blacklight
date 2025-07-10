@@ -5,6 +5,10 @@ Rails.application.configure do
 
   config.log_level = :debug
 
+  # Enable more logging for ActionController
+  config.action_controller.logger = Logger.new(STDOUT)
+  config.action_controller.logger.level = Logger::DEBUG
+
   # Make code changes take effect immediately without server restart.
   config.enable_reloading = true
 
