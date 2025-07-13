@@ -9,16 +9,24 @@
       <%= hidden_field :request, :holdings_id %>
       <%= hidden_field :request, :item_id %>
 
+    <div class="mb-3 row">
+      <%= f.label :enumeration, t("requesting.label.call_numbers"), class: "col-md-3 col-form-label text-md-right" %>
+      <div class="col-sm-6">
+        <%= f.text_field :enumeration, class: "form-control", maxlength: 80, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
+      </div>
+      <span id="volume-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.volume") %></span>
+    </div>
+
       <div class="mb-3 row">
-        <%= f.label :notes, t("requesting.label.call_numbers"), class: "col-md-3 col-form-label text-md-right" %>
+        <%= f.label :notes, t("requesting.label.notes"), class: "col-md-3 col-form-label text-md-right" %>
         <div class="col-sm-6">
-          <%= f.text_area :notes, class: "form-control", maxlength: 130 %>
+          <%= f.text_area :notes, class: "form-control", maxlength: 130, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
         </div>
         <span id="notes-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.notes") %></span>
       </div>
 
       <div class="mb-3 row">
-        <div class="offset-md-3 col-sm-6 pe-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary" %></div>
+        <div class="offset-md-3 col-sm-6 pe-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary", data: {action: "form-validation#validateSubmit"} %></div>
         <div class="col-sm-3"></div>
       </div>
     <% end %>
