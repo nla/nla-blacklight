@@ -60,7 +60,7 @@ RAILS_ENV=$RAILS_ENV bundle exec rails log:clear tmp:clear
 redis-cli -n 0 KEYS "blacklight:*" | xargs redis-cli -n 0 DEL
 
 # Clear old Faraday EDS cache
-rm -f "$BLACKLIGHT_TMP_PATH"/faraday_eds_cache/*
+rm -rf "$BLACKLIGHT_TMP_PATH"/faraday_eds_cache/*
 
 # Remove a potentially pre-existing server.pid for Rails.
 rm -f "$PIDFILE"
