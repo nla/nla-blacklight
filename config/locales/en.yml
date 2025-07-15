@@ -94,13 +94,7 @@ en:
       serials:
         required: "Additional information is required to complete your request. Please provide information on either the Year, or Volume/No or Day or Month that you are requesting."
         dependent: "Additional information is required to complete your request. Please provide information on either the Year or Volume/No that you are requesting."
-      picture:
-        required: ""
-        dependent: ""
       pictureseries:
-        required: ""
-        dependent: ""
-      poster:
         required: ""
         dependent: ""
       posterseries:
