@@ -15,7 +15,7 @@ RSpec.describe ThumbnailHelper do
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
-          .to_return(status: 200, body: nla_obj_image.to_json, headers: {})
+          .to_return(status: 200, body: nla_obj_image.to_json, headers: {"content-type": "application/json"})
 
         expect(helper.render_thumbnail(document, {})).to match(/img/)
       end
@@ -32,7 +32,7 @@ RSpec.describe ThumbnailHelper do
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
-          .to_return(status: 200, body: isbn_image.to_json, headers: {"content-type": "image/jpeg"})
+          .to_return(status: 200, body: isbn_image.to_json, headers: {"content-type": "application/json"})
 
         allow(document).to receive(:valid_isbn).and_return(["8559378"])
 
@@ -51,7 +51,7 @@ RSpec.describe ThumbnailHelper do
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
-          .to_return(status: 200, body: lccn_image.to_json, headers: {"content-type": "image/jpeg"})
+          .to_return(status: 200, body: lccn_image.to_json, headers: {"content-type": "application/json"})
 
         allow(document).to receive(:lccn).and_return(["93002529"])
 
