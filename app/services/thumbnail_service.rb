@@ -10,8 +10,7 @@ class ThumbnailService
       url = "/thumbnail-service/thumbnail/url?#{options.to_query}"
       res = conn.get(url)
       if res.status == 200
-        jbody = JSON.parse(res.body)
-        jbody["url"]
+        res.body["url"]
       end
     end
   rescue => e
