@@ -234,10 +234,6 @@ RSpec.describe "Requests" do
       end
     end
 
-    # context "when requesting a picture series" do
-    # context "when requesting a poster series" do
-    # context "when requesting a poster" do
-
     context "when requesting a poster" do
       let(:instance_id) { "343f2dc2-8c23-58fc-abdb-6d08c7018f4c" }
       let(:holdings_id) { "8e838ff3-f948-52ae-95f9-933e8707b79b" }
