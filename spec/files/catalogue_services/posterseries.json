@@ -1,0 +1,79 @@
+{
+  "instanceId": "114440d2-a394-5608-9646-2be5847d2fff",
+  "holdingsRecords": [
+    {
+      "id": "820bfab1-08e5-5176-bfde-bc55689e3eea",
+      "holdingsTypeId": "fdb724d3-330e-4cfb-bde6-0ac656f35174",
+      "instanceId": "114440d2-a394-5608-9646-2be5847d2fff",
+      "permanentLocationId": "8051b739-e201-43e7-990d-b08dec93d8a6",
+      "effectiveLocationId": "8051b739-e201-43e7-990d-b08dec93d8a6",
+      "callNumber": "POSTERS FC 202, POSTER 2022-5840 - 5852",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Posters",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "a286bfeb-e48c-5155-acfb-862a15791ba3",
+          "holdingsRecordId": "820bfab1-08e5-5176-bfde-bc55689e3eea",
+          "barcode": "990001512445",
+          "effectiveLocationId": "8051b739-e201-43e7-990d-b08dec93d8a6",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "POSTERS FC 202, POSTER 2022-5840 - 5852"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2025-06-20T02:16:02.545+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "yearCaption": [],
+          "enumeration": "Posters",
+          "itemCategory": "poster-series",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": [
+        {
+          "enumeration": "5841 please"
+        },
+        {
+          "enumeration": "5842"
+        },
+        {
+          "enumeration": "all posters in 2022 if possible"
+        },
+        {
+          "enumeration": "posters from 2022"
+        },
+        {
+          "enumeration": "POSTERS FC 202, POSTER 2022-5840 - 5852"
+        },
+        {
+          "enumeration": "repeat request"
+        }
+      ]
+    }
+  ]
+}

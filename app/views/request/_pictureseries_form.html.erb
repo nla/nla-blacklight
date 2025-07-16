@@ -9,13 +9,13 @@
       <%= hidden_field :request, :holdings_id %>
       <%= hidden_field :request, :item_id %>
 
-    <div class="mb-3 row">
-      <%= f.label :enumeration, t("requesting.label.call_numbers"), class: "col-md-3 col-form-label text-md-right" %>
-      <div class="col-sm-6">
-        <%= f.text_field :enumeration, class: "form-control", maxlength: 80, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
+      <div class="mb-3 row">
+        <%= f.label :enumeration, t("requesting.label.call_numbers"), class: "col-md-3 col-form-label text-md-right" %>
+        <div class="col-sm-6">
+          <%= f.text_field :enumeration, class: "form-control", maxlength: 80, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
+        </div>
+        <span id="volume-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.volume") %></span>
       </div>
-      <span id="volume-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.volume") %></span>
-    </div>
 
       <div class="mb-3 row">
         <%= f.label :notes, t("requesting.label.notes"), class: "col-md-3 col-form-label text-md-right" %>

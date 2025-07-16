@@ -1,0 +1,447 @@
+{
+  "instanceId": "cb421bf8-e33c-5649-9b99-860593526b07",
+  "holdingsRecords": [
+    {
+      "id": "39df1375-87c6-5eeb-9e0d-0f80196e8788",
+      "holdingsTypeId": "fdb724d3-330e-4cfb-bde6-0ac656f35174",
+      "instanceId": "cb421bf8-e33c-5649-9b99-860593526b07",
+      "permanentLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "callNumber": "PIC Volume 1165 #PIC/18908",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Booklet (in French)",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "dfc0d5ee-d92b-576f-aeb7-04ddba616346",
+          "holdingsRecordId": "39df1375-87c6-5eeb-9e0d-0f80196e8788",
+          "barcode": "77000000701251",
+          "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "PIC Volume 1165 #PIC/18908"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-06-28T04:15:37.713+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "yearCaption": [],
+          "enumeration": "Booklet (in French)",
+          "itemCategory": "picture-series",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": [
+        {
+          "enumeration": "call number 1888"
+        }
+      ]
+    },
+    {
+      "id": "668513c7-4ff1-48a3-9d64-a0242ba6df3f",
+      "instanceId": "cb421bf8-e33c-5649-9b99-860593526b07",
+      "permanentLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "callNumber": "PIC Box PS; PIC Drawer PM; PIC Drawer PL",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Prints",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "93ab34dc-ba90-45c0-8d4a-4386d28f3613",
+          "holdingsRecordId": "668513c7-4ff1-48a3-9d64-a0242ba6df3f",
+          "barcode": "78000000330068",
+          "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "PIC Box PS; PIC Drawer PM; PIC Drawer PL"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2024-06-17T01:41:30.605+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "yearCaption": [],
+          "itemCategory": "picture",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [
+        {
+          "note": "Photographic prints",
+          "staffOnly": false,
+          "holdingsNoteTypeId": "b160f13a-ddba-4053-b9c4-60ec5ea45d56",
+          "holdingsNoteType": "Note"
+        },
+        {
+          "note": "For item location details, please refer to the Finding Aid linked in the Related Online Resources section in the catalogue record above.",
+          "staffOnly": false,
+          "holdingsNoteTypeId": "b160f13a-ddba-4053-b9c4-60ec5ea45d56",
+          "holdingsNoteType": "Note"
+        }
+      ],
+      "checkedOutItems": []
+    },
+    {
+      "id": "4bf442fc-0809-5220-9e0a-2fc90fcddbe8",
+      "instanceId": "cb421bf8-e33c-5649-9b99-860593526b07",
+      "permanentLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "callNumber": "PIC Box PIC/19025 #PIC/19025",
+      "holdingsStatements": [],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "0155c67d-8ce8-5403-bb33-10e64fd3821d",
+          "holdingsRecordId": "4bf442fc-0809-5220-9e0a-2fc90fcddbe8",
+          "barcode": "77000000674876",
+          "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "PIC Box PIC/19025 #PIC/19025"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-06-28T04:14:06.192+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "914a615b-c79c-46ad-a7f3-ab4c795240c3",
+          "yearCaption": [],
+          "itemCategory": "picture",
+          "discoverySuppress": false,
+          "requestable": false,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": []
+    },
+    {
+      "id": "89713773-1123-5c3c-945e-86eecd2c652e",
+      "instanceId": "cb421bf8-e33c-5649-9b99-860593526b07",
+      "permanentLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "callNumber": "PIC Volume 1165 #PIC/18907",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Notebook",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "c3f23c6e-6639-5de5-b9b8-6f49ca9dba5f",
+          "holdingsRecordId": "89713773-1123-5c3c-945e-86eecd2c652e",
+          "barcode": "77000000701242",
+          "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "PIC Volume 1165 #PIC/18907"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-06-28T04:15:37.679+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "yearCaption": [],
+          "enumeration": "Notebook",
+          "itemCategory": "picture",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": []
+    },
+    {
+      "id": "05a160f9-b2ba-529c-94b7-301c376e631b",
+      "instanceId": "cb421bf8-e33c-5649-9b99-860593526b07",
+      "permanentLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "callNumber": "PIC Volume 1165 #PIC/18906",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Booklet (in Danish)",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "6300f052-4414-5a90-8ee6-d1c73a2b5dd3",
+          "holdingsRecordId": "05a160f9-b2ba-529c-94b7-301c376e631b",
+          "barcode": "77000000701248",
+          "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "PIC Volume 1165 #PIC/18906"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-06-28T04:15:37.712+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "yearCaption": [],
+          "enumeration": "Booklet (in Danish)",
+          "itemCategory": "picture",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": []
+    },
+    {
+      "id": "16e7111d-71bd-519c-b00f-5f8ca40afbf8",
+      "holdingsTypeId": "fdb724d3-330e-4cfb-bde6-0ac656f35174",
+      "instanceId": "cb421bf8-e33c-5649-9b99-860593526b07",
+      "permanentLocationId": "c589eaf9-54be-458e-bf88-4560b4a6c904",
+      "effectiveLocationId": "c589eaf9-54be-458e-bf88-4560b4a6c904",
+      "callNumber": "PIC Cold Store Row A1/3/2 Folder 1 #PIC/8083/1-61",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Negative",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "73a0f540-ea0e-5dcd-b6ca-7c81429502e2",
+          "holdingsRecordId": "16e7111d-71bd-519c-b00f-5f8ca40afbf8",
+          "barcode": "77000000583122",
+          "effectiveLocationId": "c589eaf9-54be-458e-bf88-4560b4a6c904",
+          "effectiveLocationDisplayName": "Special Collections Reading Room - Prior notice required",
+          "effectiveCallNumberComponents": {
+            "callNumber": "PIC Cold Store Row A1/3/2 Folder 1 #PIC/8083/1-61"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-06-28T04:00:07.812+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "yearCaption": [],
+          "enumeration": "Negative",
+          "itemCategory": "picture-series",
+          "discoverySuppress": false,
+          "holdingAvailabilityUrl": "https://www.library.gov.au/research/access-collection/using-pictures-collection",
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": [
+        {
+          "enumeration": "PIC/8083/23"
+        }
+      ]
+    },
+    {
+      "id": "7b80b629-d23e-5975-a8d8-dc6dc467768e",
+      "instanceId": "cb421bf8-e33c-5649-9b99-860593526b07",
+      "permanentLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+      "callNumber": "PIC Drawer PIC/19071 #PIC/19071",
+      "holdingsStatements": [],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "14e84cb1-7a1a-56ce-a680-e743a227e9c3",
+          "holdingsRecordId": "7b80b629-d23e-5975-a8d8-dc6dc467768e",
+          "barcode": "77000000702569",
+          "effectiveLocationId": "2801984c-f9f1-452e-b267-ddf511a985a8",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "PIC Drawer PIC/19071 #PIC/19071"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-06-28T04:15:46.135+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "yearCaption": [],
+          "itemCategory": "picture",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": []
+    },
+    {
+      "id": "6d6c6de2-58aa-5e71-ac41-18b0c3eee320",
+      "instanceId": "cb421bf8-e33c-5649-9b99-860593526b07",
+      "permanentLocationId": "c589eaf9-54be-458e-bf88-4560b4a6c904",
+      "effectiveLocationId": "c589eaf9-54be-458e-bf88-4560b4a6c904",
+      "callNumber": "PIC Glass Plate #PIC/13562/99-103, 18866, 19017/1-2, 19072/1-4, 19073",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Lantern Slide",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "3231f42d-f67e-596d-b084-1ea7d8794c3c",
+          "holdingsRecordId": "6d6c6de2-58aa-5e71-ac41-18b0c3eee320",
+          "barcode": "78000000156898",
+          "effectiveLocationId": "c589eaf9-54be-458e-bf88-4560b4a6c904",
+          "effectiveLocationDisplayName": "Special Collections Reading Room - Prior notice required",
+          "effectiveCallNumberComponents": {
+            "callNumber": "PIC Glass Plate #PIC/13562/99-103, 18866, 19017/1-2, 19072/1-4, 19073"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-10-17T01:24:38.957+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "yearCaption": [],
+          "enumeration": "Lantern Slide",
+          "itemCategory": "picture",
+          "discoverySuppress": false,
+          "holdingAvailabilityUrl": "https://www.library.gov.au/research/access-collection/using-pictures-collection",
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": []
+    }
+  ]
+}

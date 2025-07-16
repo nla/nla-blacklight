@@ -16,12 +16,12 @@
     <% elsif @request_form == "maps" %>
       <p class="col-12 col-lg-8"><%= t("requesting.map_prompt").html_safe %></p>
     <% elsif @request_form == "pictureseries" %>
-      <p class="col-12 col-lg-8"><%= t("requesting.multi_picture_poster_prompt").html_safe %></p>
+      <p class="col-12 col-lg-8"><strong><%= t("requesting.multi_picture_poster_prompt").html_safe %></strong></p>
       <p class="col-12 col-lg-8"><%= t("requesting.multi_pictures_prompt").html_safe %></p>
       <p class="col-12 col-lg-8"><%= t("requesting.picture_poster_fa", finding_aid: @finding_aids_link).html_safe %></p>
       <p class="col-12 col-lg-8"><%= t("requesting.picture_poster_contact_us", contact_us: Rails.application.config_for(:catalogue).contact_us_url).html_safe %></p>
     <% elsif @request_form == "posterseries" %>
-      <p class="col-12 col-lg-8"><%= t("requesting.multi_picture_poster_prompt").html_safe %></p>
+      <p class="col-12 col-lg-8"><strong><%= t("requesting.multi_picture_poster_prompt").html_safe %></strong></p>
       <p class="col-12 col-lg-8"><%= t("requesting.picture_poster_fa", finding_aid: @finding_aids_link).html_safe %></p>
       <p class="col-12 col-lg-8"><%= t("requesting.picture_poster_contact_us", contact_us: Rails.application.config_for(:catalogue).contact_us_url).html_safe %></p>
   <% end %>
