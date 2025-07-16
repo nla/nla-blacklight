@@ -258,14 +258,13 @@ RSpec.describe "Requests" do
           .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
       end
 
-
       it "does not render a message" do
         visit solr_document_request_new_path(
           solr_document_id: solr_document_id,
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-              )
+        )
 
         expect(page.html).not_to include(I18n.t("requesting.multi_box_prompt"))
         expect(page).to have_no_css("p", text: I18n.t("requesting.prompt"))
@@ -277,7 +276,7 @@ RSpec.describe "Requests" do
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-              )
+        )
 
         expect(page).to have_css("dd", text: I18n.t("requesting.request_held_text"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
@@ -295,15 +294,14 @@ RSpec.describe "Requests" do
         holdings_response = IO.read("spec/files/catalogue_services/picture.json")
 
         WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
-               .with(
-                 headers: {
-                   "Accept" => "*/*",
-                   "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-                 }
-               )
-               .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
       end
-
 
       it "does not render a message" do
         visit solr_document_request_new_path(
@@ -311,7 +309,7 @@ RSpec.describe "Requests" do
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-              )
+        )
 
         expect(page.html).not_to include(I18n.t("requesting.multi_box_prompt"))
         expect(page).to have_no_css("p", text: I18n.t("requesting.prompt"))
@@ -323,7 +321,7 @@ RSpec.describe "Requests" do
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-              )
+        )
 
         expect(page).to have_css("dd", text: I18n.t("requesting.request_held_text"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
@@ -341,13 +339,13 @@ RSpec.describe "Requests" do
         holdings_response = IO.read("spec/files/catalogue_services/pictureseries.json")
 
         WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
-               .with(
-                 headers: {
-                   "Accept" => "*/*",
-                   "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-                 }
-               )
-               .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
       end
 
       it "renders the requesting prompt" do
@@ -356,7 +354,7 @@ RSpec.describe "Requests" do
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-              )
+        )
 
         expect(page.html).to have_text(I18n.t("requesting.multi_picture_poster_prompt"))
         expect(page.html).to have_text(I18n.t("requesting.multi_pictures_prompt"))
@@ -368,7 +366,7 @@ RSpec.describe "Requests" do
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-            )
+        )
 
         expect(page).to have_css("label", text: I18n.t("requesting.label.call_numbers"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
@@ -386,13 +384,13 @@ RSpec.describe "Requests" do
         holdings_response = IO.read("spec/files/catalogue_services/pictureseries_fa.json")
 
         WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
-               .with(
-                 headers: {
-                   "Accept" => "*/*",
-                   "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-                 }
-               )
-               .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
       end
 
       it "renders the requesting prompt" do
@@ -401,7 +399,7 @@ RSpec.describe "Requests" do
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-              )
+        )
 
         expect(page.html).to include(I18n.t("requesting.multi_picture_poster_prompt"))
         expect(page.html).to include(I18n.t("requesting.multi_pictures_prompt"))
@@ -413,7 +411,7 @@ RSpec.describe "Requests" do
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-              )
+        )
 
         expect(page).to have_css("label", text: I18n.t("requesting.label.call_numbers"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
@@ -426,7 +424,7 @@ RSpec.describe "Requests" do
             instance: instance_id,
             holdings: holdings_id,
             item: item_id
-                )
+          )
           expect(page).to have_link("collection finding aid", href: "https://nla.gov.au/nla.obj-144094084/findingaid")
         end
       end
@@ -443,13 +441,13 @@ RSpec.describe "Requests" do
         holdings_response = IO.read("spec/files/catalogue_services/posterseries.json")
 
         WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
-               .with(
-                 headers: {
-                   "Accept" => "*/*",
-                   "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-                 }
-               )
-               .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
       end
 
       it "renders the requesting prompt" do
@@ -458,7 +456,7 @@ RSpec.describe "Requests" do
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-              )
+        )
 
         expect(page.html).to include(I18n.t("requesting.multi_picture_poster_prompt"))
       end
@@ -469,7 +467,7 @@ RSpec.describe "Requests" do
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-              )
+        )
 
         expect(page).to have_css("label", text: I18n.t("requesting.label.call_numbers"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
@@ -487,13 +485,13 @@ RSpec.describe "Requests" do
         holdings_response = IO.read("spec/files/catalogue_services/posterseries_fa.json")
 
         WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
-               .with(
-                 headers: {
-                   "Accept" => "*/*",
-                   "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-                 }
-               )
-               .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
       end
 
       it "renders the requesting prompt" do
@@ -502,7 +500,7 @@ RSpec.describe "Requests" do
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-              )
+        )
 
         expect(page).to have_text(I18n.t("requesting.multi_picture_poster_prompt"))
       end
@@ -513,7 +511,7 @@ RSpec.describe "Requests" do
           instance: instance_id,
           holdings: holdings_id,
           item: item_id
-              )
+        )
 
         expect(page).to have_css("label", text: I18n.t("requesting.label.call_numbers"))
         expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
@@ -526,7 +524,7 @@ RSpec.describe "Requests" do
             instance: instance_id,
             holdings: holdings_id,
             item: item_id
-                )
+          )
           expect(page).to have_link("collection finding aid", href: "https://nla.gov.au/nla.obj-3134387644")
         end
       end
