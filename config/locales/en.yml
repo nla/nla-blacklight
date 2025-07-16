@@ -95,10 +95,10 @@ en:
         required: "Additional information is required to complete your request. Please provide information on either the Year, or Volume/No or Day or Month that you are requesting."
         dependent: "Additional information is required to complete your request. Please provide information on either the Year or Volume/No that you are requesting."
       pictureseries:
-        required: ""
+        required: "Additional information is required to complete your request. Please provide information on either the Box Number, or Series Number or Folder/item Number that you are requesting."
         dependent: ""
       posterseries:
-        required: ""
+        required: "Additional information is required to complete your request. Please provide information on either the Box Number, or Series Number or Folder/item Number that you are requesting."
         dependent: ""
     metadata:
       item_requested: "Item Requested:"
