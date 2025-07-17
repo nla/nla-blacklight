@@ -1,0 +1,59 @@
+{
+  "instanceId": "343f2dc2-8c23-58fc-abdb-6d08c7018f4c",
+  "holdingsRecords": [
+    {
+      "id": "8e838ff3-f948-52ae-95f9-933e8707b79b",
+      "instanceId": "343f2dc2-8c23-58fc-abdb-6d08c7018f4c",
+      "permanentLocationId": "8051b739-e201-43e7-990d-b08dec93d8a6",
+      "effectiveLocationId": "8051b739-e201-43e7-990d-b08dec93d8a6",
+      "callNumber": "POSTER 2022-5448",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Poster",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "4f9ba92b-a337-5611-9262-4cb2b2fa9fe0",
+          "holdingsRecordId": "8e838ff3-f948-52ae-95f9-933e8707b79b",
+          "barcode": "77000000825546",
+          "effectiveLocationId": "8051b739-e201-43e7-990d-b08dec93d8a6",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "POSTER 2022-5448"
+          },
+          "status": {
+            "name": "Paged",
+            "date": "2025-07-08T03:50:27.788+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "yearCaption": [],
+          "enumeration": "Poster",
+          "itemCategory": "poster",
+          "discoverySuppress": false,
+          "requestable": false,
+          "displayStatus": "In use"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": []
+    }
+  ]
+}

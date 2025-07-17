@@ -38,6 +38,8 @@ class RequestDetail
       "serials"
     elsif itemCategory == "map"
       "maps"
+    elsif itemCategory == "picture-series" || itemCategory == "poster-series"
+      "pictureposterseries"
     else
       "monographs"
     end

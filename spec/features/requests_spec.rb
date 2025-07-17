@@ -105,7 +105,7 @@ RSpec.describe "Requests" do
       let(:holdings_id) { "bbc3d88b-eb0d-5739-b37e-a736a265d4a2" }
       let(:item_id) { "fbf144fc-e8ac-5e7d-8da6-69dda3adc9e9" }
       let(:solr_document_id) { "2761" }
-      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_manuscript_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["Papers of Mem Fox, 1961-2006 [manuscript]"], format: ["Manuscript"], finding_aid_url_ssim: ["https://nla.gov.au/nla.obj-306101104/findingaid"]) }
+      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: serial_manuscript_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["Papers of Mem Fox, 1961-2006 [manuscript]"], format: ["Manuscript"], finding_aid_url_ssim: ["https://nla.gov.au/nla.obj-306101104"]) }
 
       before do
         holdings_response = IO.read("spec/files/catalogue_services/serial_manuscript.json")
@@ -152,7 +152,7 @@ RSpec.describe "Requests" do
             holdings: holdings_id,
             item: item_id
           )
-          expect(page).to have_link("collection finding aid", href: "https://nla.gov.au/nla.obj-306101104/findingaid")
+          expect(page).to have_link("collection finding aid", href: "https://nla.gov.au/nla.obj-306101104")
         end
       end
 
@@ -234,15 +234,105 @@ RSpec.describe "Requests" do
       end
     end
 
-    context "when requesting a picture", skip: "waiting for planets to align" do
-      let(:instance_id) { "d63dc349-8153-5ff6-a33c-f3ec13faa0f0" }
-      let(:holdings_id) { "13341598-814f-5407-893b-cc76f339f123" }
-      let(:item_id) { "3556c738-2a32-5b11-b86e-2e5db34bbe1e" }
-      let(:solr_document_id) { "2921885" }
-      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: map_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["Photographs for The Australian homestead [picture] / Wesley Stacey"], format: ["Picture"], finding_aid_url_ssim: ["https://nla.gov.au/nla.obj-144094084/findingaid"]) }
+    context "when requesting a poster" do
+      let(:instance_id) { "343f2dc2-8c23-58fc-abdb-6d08c7018f4c" }
+      let(:holdings_id) { "8e838ff3-f948-52ae-95f9-933e8707b79b" }
+      let(:item_id) { "4f9ba92b-a337-5611-9262-4cb2b2fa9fe0" }
+      let(:solr_document_id) { "6452132" }
+      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: map_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["The \"election\" handicap : the Nationalist financial crock will not go the distance! : for brighter times change the government! : vote Labor"], format: ["Poster"], finding_aid_url_ssim: ["https://nla.gov.au/nla.obj-144094084"]) }
+
+      before do
+        holdings_response = IO.read("spec/files/catalogue_services/poster.json")
+
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
+      end
+
+      it "does not render a message" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page.html).not_to include(I18n.t("requesting.multi_box_prompt"))
+        expect(page).to have_no_css("p", text: I18n.t("requesting.prompt"))
+      end
+
+      it "renders the monograph form as it is a single poster" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_css("dd", text: I18n.t("requesting.request_held_text"))
+        expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
+      end
+    end
+
+    context "when requesting a picture" do
+      let(:instance_id) { "e75f7a95-3977-50f8-9ac6-7de0d1374309" }
+      let(:holdings_id) { "68ec62c4-0c89-5cbb-9493-99379dd38742" }
+      let(:item_id) { "ad72eea6-e1c9-554f-836c-8293ebff3fe8" }
+      let(:solr_document_id) { "563781" }
+      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: map_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["Photographs for The Australian homestead [picture] / Wesley Stacey"], format: ["Picture"], finding_aid_url_ssim: ["https://nla.gov.au/nla.obj-144094084"]) }
 
       before do
         holdings_response = IO.read("spec/files/catalogue_services/picture.json")
+
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
+      end
+
+      it "does not render a message" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page.html).not_to include(I18n.t("requesting.multi_box_prompt"))
+        expect(page).to have_no_css("p", text: I18n.t("requesting.prompt"))
+      end
+
+      it "renders the monograph form as it is a single picture" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_css("dd", text: I18n.t("requesting.request_held_text"))
+        expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
+      end
+    end
+
+    context "when requesting a picture series without finding aids" do
+      let(:instance_id) { "cb421bf8-e33c-5649-9b99-860593526b07" }
+      let(:holdings_id) { "16e7111d-71bd-519c-b00f-5f8ca40afbf8" }
+      let(:item_id) { "73a0f540-ea0e-5dcd-b6ca-7c81429502e2" }
+      let(:solr_document_id) { "5170322" }
+      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: map_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["Keast Burke collection on the history of photography [picture]"], format: ["pictureseries"]) }
+
+      before do
+        holdings_response = IO.read("spec/files/catalogue_services/pictureseries.json")
 
         WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
           .with(
@@ -262,7 +352,8 @@ RSpec.describe "Requests" do
           item: item_id
         )
 
-        expect(page.html).to include(I18n.t("requesting.picture_prompt"))
+        expect(page.html).to have_text(I18n.t("requesting.multi_picture_poster_prompt"))
+        expect(page.html).to have_text(I18n.t("requesting.multi_pictures_prompt"))
       end
 
       it "renders the picture form" do
@@ -274,6 +365,52 @@ RSpec.describe "Requests" do
         )
 
         expect(page).to have_css("label", text: I18n.t("requesting.label.call_numbers"))
+        expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
+      end
+    end
+
+    context "when requesting a picture series with finding aids" do
+      let(:instance_id) { "d63dc349-8153-5ff6-a33c-f3ec13faa0f0" }
+      let(:holdings_id) { "13341598-814f-5407-893b-cc76f339f123" }
+      let(:item_id) { "3556c738-2a32-5b11-b86e-2e5db34bbe1e" }
+      let(:solr_document_id) { "2043747" }
+      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: map_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["Photographs for The Australian homestead [picture] / Wesley Stacey"], format: ["pictureseries"], finding_aid_url_ssim: ["https://nla.gov.au/nla.obj-144094084/findingaid"]) }
+
+      before do
+        holdings_response = IO.read("spec/files/catalogue_services/pictureseries_fa.json")
+
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
+      end
+
+      it "renders the requesting prompt" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page.html).to include(I18n.t("requesting.multi_picture_poster_prompt"))
+        expect(page.html).to include(I18n.t("requesting.multi_pictures_prompt"))
+      end
+
+      it "renders the pictures form" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_css("label", text: I18n.t("requesting.label.call_numbers"))
+        expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
       end
 
       context "when there is a finding aid url" do
@@ -285,6 +422,106 @@ RSpec.describe "Requests" do
             item: item_id
           )
           expect(page).to have_link("collection finding aid", href: "https://nla.gov.au/nla.obj-144094084/findingaid")
+        end
+      end
+    end
+
+    context "when requesting a poster series without finding aids" do
+      let(:instance_id) { "114440d2-a394-5608-9646-2be5847d2fff" }
+      let(:holdings_id) { "820bfab1-08e5-5176-bfde-bc55689e3eea" }
+      let(:item_id) { "a286bfeb-e48c-5155-acfb-862a15791ba3" }
+      let(:solr_document_id) { "761826" }
+      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: map_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["[Collection of machine shop and factory safety posters] [picture] / National Safety Council of Australia"], format: ["posterseries"]) }
+
+      before do
+        holdings_response = IO.read("spec/files/catalogue_services/posterseries.json")
+
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
+      end
+
+      it "renders the requesting prompt" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page.html).to include(I18n.t("requesting.multi_picture_poster_prompt"))
+      end
+
+      it "renders the posters form" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_css("label", text: I18n.t("requesting.label.call_numbers"))
+        expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
+      end
+    end
+
+    context "when requesting a poster series with finding aids" do
+      let(:instance_id) { "573be518-1f3a-5cff-aeff-df25470afe3f" }
+      let(:holdings_id) { "8d9cb677-3bde-5a41-96e8-d5d9dd953a80" }
+      let(:item_id) { "e07b317c-2d96-5be2-869c-0df0cff9abbe" }
+      let(:solr_document_id) { "9450086" }
+      let(:document) { SolrDocument.new(id: solr_document_id, marc_ss: map_marc, folio_instance_id_ssim: [instance_id], title_tsim: ["Collection of miscellaneous posters on various themes"], format: ["posterseries"], finding_aid_url_ssim: ["https://nla.gov.au/nla.obj-3134387644"]) }
+
+      before do
+        holdings_response = IO.read("spec/files/catalogue_services/posterseries_fa.json")
+
+        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+          .with(
+            headers: {
+              "Accept" => "*/*",
+              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
+            }
+          )
+          .to_return(status: 200, body: holdings_response, headers: {"Content-Type" => "application/json"})
+      end
+
+      it "renders the requesting prompt" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_text(I18n.t("requesting.multi_picture_poster_prompt"))
+      end
+
+      it "renders the posters form" do
+        visit solr_document_request_new_path(
+          solr_document_id: solr_document_id,
+          instance: instance_id,
+          holdings: holdings_id,
+          item: item_id
+        )
+
+        expect(page).to have_css("label", text: I18n.t("requesting.label.call_numbers"))
+        expect(page).to have_css("label", text: I18n.t("requesting.label.notes"))
+      end
+
+      context "when there is a finding aid url" do
+        it "links to the finding aid" do
+          visit solr_document_request_new_path(
+            solr_document_id: solr_document_id,
+            instance: instance_id,
+            holdings: holdings_id,
+            item: item_id
+          )
+          expect(page).to have_link("collection finding aid", href: "https://nla.gov.au/nla.obj-3134387644")
         end
       end
     end
