@@ -30,16 +30,16 @@ module SingleSearchHelper
     bento_query = (params[:q] || params[:query])&.gsub("&", "%26")
     link = if key.start_with?("ebsco_eds_keyword")
       ebsco_link = if bento_query.present?
-        "#{ENV["EBSCO_SEARCH_URL"]}&custid=#{ENV["EDS_ORG"]}&bquery=#{bento_query}"
+        "#{ENV["EBSCO_SEARCH_URL"]}?q=#{bento_query}&limiters=FT1%3AY&searchMode=all&searchSegment=all-results"
       else
-        "#{ENV["EBSCO_SEARCH_URL"]}&custid=#{ENV["EDS_ORG"]}"
+        "#{ENV["EBSCO_SEARCH_URL"]}"
       end
       ebsco_link
     elsif key == "ebsco_eds_title"
       ebsco_link = if bento_query.present?
-        "#{ENV["EBSCO_PUB_FINDER_URL"]}?search=#{bento_query}&highlightTag=mark"
+        "#{ENV["EBSCO_PUB_FINDER_URL"]}?searchField=titlename&searchtype=contains&highlightTag=mark&search=#{bento_query}"
       else
-        (ENV["EBSCO_PUB_FINDER_URL"]).to_s
+        ENV["EBSCO_PUB_FINDER_URL"].to_s
       end
       ebsco_link
     elsif key == "finding_aids"
