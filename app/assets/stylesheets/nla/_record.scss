@@ -36,20 +36,28 @@
     
     &:focus,
     &:hover {
-      outline: 2px solid $mid-teal;
       box-shadow: none;
+      background-color: transparent;
       
       &:before {
         background-color: rgba(0,0,0,0.4);
       } 
+      
+      .thumbnail {
+        outline: 2px solid $mid-teal;
+      }
     }
   }
   
   .thumbnail {
-    max-width: 100%;
+    width: auto !important;
     max-height: 500px;
     object-fit: contain;
     object-position: 0 0;
+    
+    @media screen and (max-width: breakpoint-max(md)) {
+      max-width: 100%;
+    }
   }
 }
 
@@ -64,6 +72,21 @@
   .dl-invert {
     dt {
       color: $grey-300;
+    }
+  }
+  
+  .blacklight-online_access {
+    .linkCaption {
+      small {      
+        &:before {
+          display: inline-block;
+          text-rendering: auto;
+          -webkit-font-smoothing: antialiased;
+          font: var(--fa-font-solid);
+          content: '\f084';
+          padding-right: 0.5rem;
+        }
+      }
     }
   }
 }

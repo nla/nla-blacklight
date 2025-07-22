@@ -20,10 +20,34 @@ module BlacklightHelper
     end
     # rubocop:disable Rails/HelperInstanceVariable
     if prefix.present?
-      prefix + ((content_for(:page_title) if content_for?(:page_title)) || @page_title || application_name)
+      prefix + get_unique_page_title + ((content_for(:page_title) if content_for?(:page_title)) || @page_title || application_name)
     else
-      (content_for(:page_title) if content_for?(:page_title)) || @page_title || application_name
+      get_unique_page_title + ((content_for(:page_title) if content_for?(:page_title)) || @page_title || application_name)
     end
     # rubocop:enable Rails/HelperInstanceVariable
+  end
+
+  def get_unique_page_title
+    if params[:attribute].present? && current_page?(account_profile_edit_path(attribute: params[:attribute]))
+      return "Edit Profile | " + I18n.t("account.settings.update.heading", attribute: t("account.settings.#{params[:attribute]}.label")) + " | "
+    end
+
+    page_titles = {
+      root_path => "Home | ",
+      search_catalog_path => "Catalogue Search | ",
+      advanced_search_catalog_path => "Advanced Search | ",
+      bento_search_index_path => "Search | ",
+      new_user_session_path => "Login | ",
+      destroy_user_session_path => "Logout | ",
+      account_requests_path => "Requests | ",
+      account_profile_path => "Profile | ",
+      account_profile_edit_path => "Edit Profile | "
+    }
+
+    page_titles.each do |path, title|
+      return title if current_page?(path)
+    end
+
+    ""
   end
 end

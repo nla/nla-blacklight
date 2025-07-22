@@ -1301,6 +1301,33 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#content_advisory_note" do
+    context "when there is a single note" do
+      subject(:content_advisory_note_value) do
+        document = described_class.new(
+          marc_ss: cultural_and_icip_notes,
+          content_advisory_note_tsim: ["Please be advised that this collection may contain content that is sensitive and/or distressing including images and discussions relating to enslaved persons, sex trafficking of persons, accounts of racial violence, massacres, mentions of genocide, mentions of child sexual abuse and other mentions of sexual violence. Please also be aware that you may see certain words or descriptions within this collection which reflect the period in which the works were created, and may now be considered inaccurate, inappropriate or offensive. Including terms and discussions relating to people of colour, eugenics and people with disabilities."]
+        )
+        document.content_advisory_note
+      end
+
+      it "retrieves the note" do
+        expect(content_advisory_note_value).to eq(["Please be advised that this collection may contain content that is sensitive and/or distressing including images and discussions relating to enslaved persons, sex trafficking of persons, accounts of racial violence, massacres, mentions of genocide, mentions of child sexual abuse and other mentions of sexual violence. Please also be aware that you may see certain words or descriptions within this collection which reflect the period in which the works were created, and may now be considered inaccurate, inappropriate or offensive. Including terms and discussions relating to people of colour, eugenics and people with disabilities."])
+      end
+    end
+
+    context "when there are no notes" do
+      subject(:advisory_note_value) do
+        document = described_class.new(marc_ss: no_notes)
+        document.content_advisory_note
+      end
+
+      it "returns nil" do
+        expect(advisory_note_value).to eq []
+      end
+    end
+  end
+
   describe "#numbering_note" do
     context "when there are numbering notes" do
       subject(:numbering_note_value) do

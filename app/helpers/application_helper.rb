@@ -4,10 +4,9 @@ module ApplicationHelper
   def makelink(document:, href:, text:, classes: "", extended_info: false, longtext: "")
     entry = nil
     caption = ""
-    icon = ""
 
     if document.has_eresources?
-      entry, caption, icon = makelink_eresource href
+      entry, caption, _ = makelink_eresource href
     end
 
     result = []
@@ -24,7 +23,7 @@ module ApplicationHelper
     # rubocop:disable Rails/OutputSafety
     if extended_info && caption.present?
       result << content_tag(:div, class: "linkCaption") do
-        content_tag(:small, "#{icon}#{caption}".html_safe)
+        content_tag(:small, caption.to_s.html_safe)
       end
     end
     # rubocop:enable Rails/OutputSafety

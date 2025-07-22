@@ -51,6 +51,7 @@ class CatalogController < ApplicationController
     #
     ## The destination for the link around the logo in the header
     config.logo_link = "https://www.library.gov.au"
+    config.logo_text = "National Library of Australia"
 
     ## Should the raw solr document endpoint (e.g. /catalog/:id/raw) be enabled
     config.raw_endpoint.enabled = false
@@ -217,6 +218,7 @@ class CatalogController < ApplicationController
     config.add_show_field "summary_tsim", label: "Summary", helper_method: :paragraphs
     config.add_show_field "cultural_sensitivity_note_tsim", label: "Cultural sensitivity advisory notice", helper_method: :notes
     config.add_show_field "icip_note_tsim", label: "ICIP notice", helper_method: :notes
+    config.add_show_field "content_advisory_note_tsim", label: "Content advisory notice", helper_method: :notes
     config.add_show_field "full_contents_tsim", label: "Full contents", helper_method: :format_contents_list
     config.add_show_field "partial_contents_tsim", label: "Partial contents", helper_method: :format_contents_list
     config.add_show_field "incomplete_contents_tsim", label: "Incomplete contents", helper_method: :format_contents_list

@@ -22,10 +22,13 @@
     }
   }
   
-  h1 {
+  h1,
+  h2,
+  h3 {
     color: $body-color-dark;
   }
   
+  .h2,
   .h3 {
     color: $body-color-dark;
   }
@@ -38,30 +41,44 @@
   .form-select,
   .form-control,
   .input-small,
-  .navbar-search .input-group > .search-autocomplete-wrapper .search-q {
-     background-color: $black !important;
-     border-color: $white;
-     color: $body-color-dark;
-     
-     &::placeholder {
-        color: $grey-100;
-       }
-
-     &:focus {
+  .navbar-search .input-group auto-complete,
+  .navbar-search .input-group > .search-autocomplete-wrapper,
+  .search-q {
+       background-color: $black !important;
+       border-color: $white !important;
        color: $body-color-dark;
-       background-color: $grey-200 !important;
-       border-color: $grey-200;
-       box-shadow: 0 0 0 1px $grey-200;
        
        &::placeholder {
-         color: $grey-700;
-        }
-     }
+          color: $grey-100;
+         }
+  
+       &:focus {
+         color: $body-color-dark;
+         background-color: $grey-200 !important;
+         border-color: $grey-200 !important;
+         box-shadow: 0 0 0 1px $grey-200;
+         
+         &::placeholder {
+           color: $grey-700;
+          }
+       }
      
      #autocomplete-popup {
-       background: $white;
-       color: $black;
-       box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
+       background: $grey-300;
+       box-shadow: none;
+       border-color: $grey-300;
+       
+       .dropdown-item {
+         color: $white;
+         
+         &:focus,
+         &:hover,
+         &:active,
+         &.active,
+         &[aria-selected="true"] {
+           background-color: $grey-600;
+         }
+       }
      }
   }
   
@@ -146,6 +163,10 @@
       
       .navbar-toggler {
         border-color: $body-color-dark;
+        
+        &:focus {
+          box-shadow: 0 0 0 0.25rem $body-color-dark;
+        }
         
         .navbar-toggler-icon {
           filter: invert(1);
@@ -304,6 +325,47 @@
           color: $body-color-dark;
         }
       }
+      
+      // Drop downs
+      .dropdown-menu.show {
+        background-color: $grey-300;
+        box-shadow: none;
+        border-color: $grey-300;
+         
+       .dropdown-item {
+         color: $white;
+         
+         &:focus,
+         &:hover,
+         &:active,
+         &.active,
+         &[aria-selected="true"] {
+           background-color: $grey-600;
+           color: $white;
+         }
+       }
+        
+      }
+    }
+  }
+  
+  .constraints-container {
+    .applied-filter {
+      border-color: $body-bg-dark;
+      
+      .constraint-value,
+      .remove {
+        color: $white;
+        background-color: $grey-200;
+      }
+      
+      .filter-name:after {
+        color: $white;
+      }
+      
+      &:has(.remove:focus) {
+        border-color: $body-color-dark;
+      }
     }
   }
   
@@ -348,13 +410,25 @@
       .facets-heading {
         color: $body-color-dark;
       }
+      
+      .navbar-toggler {        
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: $grey-600;
+        }
+      }
     }
     
     .facets-collapse {
       .facet-limit {
         border-bottom-color: $body-bg-dark;
         color: $body-color-dark;
-                
+        
+        &.card {
+          background-color: $grey-300;
+        }  
+        
         .facet-field-heading {
           background-color: $grey-300 !important;
           
@@ -366,6 +440,12 @@
           
           .btn {
             color: $body-color-dark;
+            
+            &:hover,
+            &:focus,
+            &:focus-visible {
+              color: $black;
+            }
           }
         }
         
@@ -373,6 +453,12 @@
           .facet-values {
             li {
               background-color: $grey-300;
+              
+              &:has(.facet-select:hover),
+              &:has(.facet-select:focus),
+              &:has(.facet-select:active) {
+                background-color: $grey-600;
+              }
             }
             .facet-select,
             .selected {
@@ -388,7 +474,7 @@
             }
             
             .remove {
-              color: $grey-500;
+              color: $body-color-dark;
             }
           }
         }
@@ -398,7 +484,8 @@
   
   
   // Pagination
-  .page-link {
+  .page-link,
+  .page-item.disabled .page-link:not(a) {
     color: $pagination-color-dark;
   }
 
@@ -507,6 +594,16 @@
         .btn {
           color: $body-color-dark;
         }
+        
+        button {
+          &:hover,
+          &:focus,
+          &:focus-visible,
+          &:active {
+            background: $mid-teal;
+            color: $black;
+          }
+        }
       }
       
       .facet-label,
@@ -527,10 +624,10 @@
   // Alerts
   
   .alert {
-    color: $body-color-dark;
+    color: $white;
 
     &:before {
-      color: $body-color-dark;
+      color: $white;
     }
     
     a {
@@ -619,6 +716,12 @@
       color: $body-color-dark;
     }
     
+    .facet-values {
+      .selected {
+        color: $body-color-dark !important;
+      }
+    }
+    
     .dl-invert {
       dt {
         color: $grey-50;
@@ -685,7 +788,33 @@
         }
       }
     }
+    
+    .dl-invert {
+      dt {
+        color: $grey-50;
+      }
+    }
   }
   
+  // Bookmark
+  .toggle-bookmark {
+    label {
+      color: $light-teal;
+    }
+    
+    &:has(input[type=checkbox]:focus-visible) {
+      color: $black !important;
+      background-color: $light-teal;
+    }
+  }
+  
+  // Date range chart
+  .xAxis {
+    .tickLabel {
+      fill: $body-color-dark;
+    }
+  }
+  // Drop downs
+  //.dropdown-item
     
 }

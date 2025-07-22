@@ -1,5 +1,5 @@
 <% if render_request?(@document) %>
-<div id="request-details" class="col mb-2">
+<div id="request-details" class="col mb-2" tabindex="-1">
   <h2 class="h3"><%= t("requesting.heading") %></h2>
   <p><%= t("requesting.message") %></p>
   <%= turbo_frame_tag "#{@document.id}_request", src: solr_document_request_path(solr_document_id: @document.id), loading: :lazy do %>

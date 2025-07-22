@@ -11,7 +11,7 @@ module SingleSearchHelper
   end
 
   def ss_uri_encode(link_url)
-    link_url = link_url.gsub("%", "%25") unless link_url.match?("%25")
+    link_url = link_url.gsub("%", "%25") unless link_url.match?("%25") || link_url.match?("%26")
     link_url = link_url.gsub("$", "%24")
     link_url = link_url.gsub(";", "%3B")
     link_url = link_url.gsub(" ", "%20")
@@ -27,7 +27,7 @@ module SingleSearchHelper
   end
 
   def bento_all_results_link(key)
-    bento_query = params[:q] || params[:query]
+    bento_query = (params[:q] || params[:query])&.gsub("&", "%26")
     link = if key.start_with?("ebsco_eds_keyword")
       ebsco_link = if bento_query.present?
         "#{ENV["EBSCO_SEARCH_URL"]}&custid=#{ENV["EDS_ORG"]}&bquery=#{bento_query}"
@@ -43,7 +43,7 @@ module SingleSearchHelper
       end
       ebsco_link
     elsif key == "finding_aids"
-      fa_base_url = ENV["FINDING_AIDS_SEARCH_URL"].chomp("/catalog.json")
+      fa_base_url = ENV["FINDING_AIDS_SEARCH_URL"].chomp(".json")
       "#{fa_base_url}?group=false&search_field=all_fields&q=#{bento_query}"
     else
       "#{search_catalog_url}?search_field=all_fields&q=#{bento_query}"

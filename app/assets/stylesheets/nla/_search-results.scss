@@ -6,61 +6,83 @@
   margin-top: 1rem;
   
   .applied-filter {
-    color: $warm-grey;
     font-weight: normal;
     text-transform: none;
     letter-spacing: 0;
+    border-radius: 0.5rem;
+    border: 2px solid $body-bg;
     
-    &:focus,
-    &:hover {
-      .constraint-value {
-        background: $grey-350;
-        color: $white;
-      }
+    .filter-name:after {
+      transition: all 0.25s;
     }
     
     &:focus,
     &:hover {
+      .constraint-value,
       .remove {
+        color: $white;
         background: $grey-350;
+      }
+      
+      .filter-name:after {
         color: $white;
       }
     }
     
+    &:has(.remove:focus) {
+      border-color: $grey-700;
+      
+      .constraint-value,
+      .remove { 
+        color: $white;
+        background-color: $grey-350;
+      }
+      
+      .filter-name:after { 
+        color: $white;
+      }
+    }
     
     .constraint-value,
     .remove {
+      color: $warm-grey;
       background-color: $tags-surface;
       border: none;
       font-size: 0.875rem;
       padding-left: 0.5rem;
       padding-right: 0.5rem;
       line-height: 1;
+      z-index: 0;
       
       &.btn {
         padding-top: 0.5rem !important;
-        padding-bottom: 0 !important;
+        padding-bottom: 0.5rem !important;
       }
     }
     
     .constraint-value {
-      border-top-left-radius: 0.5rem;
-      border-bottom-left-radius: 0.5rem;
+      border-top-left-radius: calc(0.5rem - 2px);
+      border-bottom-left-radius: calc(0.5rem - 2px);
     }
     
     .remove {
-      border-top-right-radius: 0.5rem;
-      border-bottom-right-radius: 0.5rem;
+      border-top-right-radius: calc(0.5rem - 2px);
+      border-bottom-right-radius: calc(0.5rem - 2px);
       padding-left: 0;
-      z-index: 10;
       
       &:not(:disabled):not(.disabled):hover,
       &:not(:disabled):not(.disabled):focus,
       &:not(:disabled):not(.disabled):active {
-        color: $muted-orange;
+        color: $lightest-orange;
         cursor: pointer;
         text-decoration: none;
         box-shadow: none;
+      }
+    }
+    
+    .filter-name {
+      &:after {
+        color: $warm-grey;
       }
     }
   }
@@ -85,6 +107,7 @@
       background-color: transparent;
       color: $black;
       box-shadow: none;
+      text-decoration: underline;
     }
   }
   

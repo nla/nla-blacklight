@@ -32,7 +32,7 @@ gem update --system
 gem install bundler
 bundle config --local jobs $(nproc)
 bundle config --local path "vendor/bundle"
-bundle config --local build.nokogiri --use-system-libraries
+bundle config set force_ruby_platform true
 
 if [[ "$RAILS_ENV" == "staging" || "$RAILS_ENV" == "production" ]]; then
  bundle config --local without "development:test"
@@ -58,6 +58,9 @@ mkdir -p "$BLACKLIGHT_TMP_PATH"/pids
 RAILS_ENV=$RAILS_ENV bundle exec rails log:clear tmp:clear
 # Clear the Redis cache
 redis-cli -n 0 KEYS "blacklight:*" | xargs redis-cli -n 0 DEL
+
+# Clear old Faraday EDS cache
+rm -rf "$BLACKLIGHT_TMP_PATH"/faraday_eds_cache/*
 
 # Remove a potentially pre-existing server.pid for Rails.
 rm -f "$PIDFILE"

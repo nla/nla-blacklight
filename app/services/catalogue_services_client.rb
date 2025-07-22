@@ -122,6 +122,8 @@ class CatalogueServicesClient
     res = conn.get("/catalogue-services/folio/user/#{requester}/requestLimitReached")
     if res.status == 200
       res.body["requestLimitReached"].to_s.casecmp("true").zero?
+      jbody = res.body.is_a?(String) ? JSON.parse(res.body) : res.body
+      jbody["requestLimitReached"].to_s.casecmp("true").zero?
     else
       message = "Failed to check request limit for requester (#{requester})"
       Rails.logger.error message
@@ -157,8 +159,9 @@ class CatalogueServicesClient
 
     res = conn.get("/catalogue-services/folio/user?query=id==#{folio_id}")
     if res.status == 200
-      if res.body.present? && res.body["totalRecords"].to_i == 1
-        folio_details = res.body["users"]&.first
+      jbody = res.body
+      if jbody.present? && jbody["totalRecords"].to_i == 1
+        folio_details = jbody["users"]&.first
         {
           first_name: folio_details&.dig("personal", "firstName"),
           last_name: folio_details&.dig("personal", "lastName"),

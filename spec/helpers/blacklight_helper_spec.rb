@@ -11,20 +11,20 @@ RSpec.describe BlacklightHelper do
 
   describe "#render_page_title" do
     it "defaults to the application name" do
-      expect(helper.render_page_title).to eq helper.application_name
+      expect(helper.render_page_title).to eq helper.get_unique_page_title + helper.application_name
     end
 
     context "when in development environment" do
       it "prepends '[DEV]' to the title" do
         allow(Rails.env).to receive(:development?).and_return(true)
-        expect(helper.render_page_title).to eq "[DEV] #{helper.application_name}"
+        expect(helper.render_page_title).to eq "[DEV] #{helper.get_unique_page_title}#{helper.application_name}"
       end
     end
 
     context "when in staging environment" do
       it "prepends '[TEST]' to the title" do
         allow(Rails.env).to receive(:staging?).and_return(true)
-        expect(helper.render_page_title).to eq "[TEST] #{helper.application_name}"
+        expect(helper.render_page_title).to eq "[TEST] #{helper.get_unique_page_title}#{helper.application_name}"
       end
     end
   end

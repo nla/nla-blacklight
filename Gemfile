@@ -1,7 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "3.2.2"
+ruby "3.3.2"
 
 # Brakeman analyzes our code for security vulnerabilities
 gem "brakeman"
@@ -20,10 +20,10 @@ gem "activerecord-session_store", "~> 2.0"
 gem "rufus-scheduler", "~> 3.9"
 
 # catch unsafe migrations
-gem "strong_migrations", "~> 2.0"
+gem "strong_migrations", "~> 2.2"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
-gem "rails", "~> 7.0"
+gem "rails", "~> 8"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -32,7 +32,7 @@ gem "sprockets-rails"
 gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 6.4"
+gem "puma", "~> 6.6"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
@@ -51,10 +51,10 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.22.2"
+gem "hiredis-client", "~> 0.25.1"
 
 # Use Redis adapter to run Action Cable in production
-gem "redis", "~> 5.3"
+gem "redis", "~> 5.4"
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
@@ -84,14 +84,15 @@ gem "stackprof", group: :development
 gem "blacklight", ">= 8.0.0", "< 9"
 gem "blacklight-marc", "~> 8.1"
 gem "blacklight_advanced_search", "8.0.0.alpha2"
-gem "ebsco-eds", "~> 1.1", ">= 1.1.5"
+gem "ebsco-eds", "~> 1.1"
 
 gem "email_validator", "~> 2.2"
-gem "phonelib", "~> 0.9.3"
+gem "phonelib", "~> 0.10.5"
 
 gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
-gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.1"
-gem "blacklight_range_limit", "~> 8.0", "< 9"
+gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "main"
+gem "blacklight_range_limit", git: "https://github.com/nla/blacklight_range_limit", branch: "main"
+# gem "blacklight_range_limit", "~> 8.0", "< 9"
 # For local development, comment out above ⤴️ and uncomment below ⤵️
 # gem "nla-blacklight_common", path: "../nla-blacklight_common"
 # gem "bento_search", path: "../bento_search"
@@ -111,7 +112,7 @@ group :development, :test do
   gem "rubocop-factory_bot", require: false
   gem "solr_wrapper", ">= 0.3"
 
-  gem "rspec-rails", "~> 7.0"
+  gem "rspec-rails", "~> 8.0"
   gem "fuubar"
   gem "shoulda-matchers"
   gem "factory_bot_rails"
@@ -144,7 +145,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.26"
+  gem "selenium-webdriver", "~> 4.33"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"
@@ -152,5 +153,5 @@ group :test do
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-json", "~> 0.2.3"
 
-  gem "mock_redis", "~> 0.45.0"
+  gem "mock_redis", "~> 0.50.0"
 end

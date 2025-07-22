@@ -1,0 +1,64 @@
+{
+  "instanceId": "573be518-1f3a-5cff-aeff-df25470afe3f",
+  "holdingsRecords": [
+    {
+      "id": "8d9cb677-3bde-5a41-96e8-d5d9dd953a80",
+      "holdingsTypeId": "fdb724d3-330e-4cfb-bde6-0ac656f35174",
+      "instanceId": "573be518-1f3a-5cff-aeff-df25470afe3f",
+      "permanentLocationId": "8051b739-e201-43e7-990d-b08dec93d8a6",
+      "effectiveLocationId": "8051b739-e201-43e7-990d-b08dec93d8a6",
+      "callNumber": "POSTERS FC 139, POSTER 2022-3851-3872",
+      "holdingsStatements": [
+        {
+          "statement": "",
+          "note": "Posters",
+          "staffNote": ""
+        }
+      ],
+      "holdingsStatementsForIndexes": [],
+      "holdingsStatementsForSupplements": [],
+      "discoverySuppress": false,
+      "itemRecords": [
+        {
+          "id": "e07b317c-2d96-5be2-869c-0df0cff9abbe",
+          "holdingsRecordId": "8d9cb677-3bde-5a41-96e8-d5d9dd953a80",
+          "barcode": "77000000821261",
+          "effectiveLocationId": "8051b739-e201-43e7-990d-b08dec93d8a6",
+          "effectiveLocationDisplayName": "Special Collections Reading Room",
+          "effectiveCallNumberComponents": {
+            "callNumber": "POSTERS FC 139, POSTER 2022-3851-3872"
+          },
+          "status": {
+            "name": "Available",
+            "date": "2023-06-28T04:17:38.037+00:00"
+          },
+          "pickupLocation": {
+            "id": "d1624450-96b9-48ac-9457-47d7d4924c66",
+            "name": "Special Collections Reading Room",
+            "code": "SCRR-SP",
+            "discoveryDisplayName": "Special Collections Reading Room",
+            "pickupLocation": true,
+            "holdShelfExpiryPeriod": {
+              "duration": 6,
+              "intervalId": "Days"
+            }
+          },
+          "materialTypeId": "237cc266-f677-4b8e-aaae-846ed7e66361",
+          "permanentLoanTypeId": "ec500417-ea68-484f-858d-e8f6166e6237",
+          "yearCaption": [],
+          "enumeration": "Posters",
+          "itemCategory": "poster-series",
+          "discoverySuppress": false,
+          "requestable": true,
+          "displayStatus": "Available"
+        }
+      ],
+      "notes": [],
+      "checkedOutItems": [
+        {
+          "enumeration": "12345"
+        }
+      ]
+    }
+  ]
+}

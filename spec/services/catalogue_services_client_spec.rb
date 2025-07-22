@@ -203,7 +203,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
               "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
             }
           )
-          .to_return(status: 200, body: folio_details, headers: {})
+          .to_return(status: 200, body: folio_details, headers: {"Content-Type" => "application/json"})
       end
 
       let(:folio_details) do

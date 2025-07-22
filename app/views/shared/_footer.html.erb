@@ -1,6 +1,6 @@
 <footer class="footer mt-auto d-print-none">
   <section class="footer-ask-a-librarian text-center">
-    <div class="arrow-tip">
+    <div class="arrow-tip" aria-hidden="true">
       <svg xmlns="http://www.w3.org/2000/svg" width="55" height="18" viewBox="0 0 55 18" fill="none">
         <style>
           #arrow-tip {
@@ -39,7 +39,7 @@
               <%= link_to t("blacklight.footer.contact.telephone"), "tel:+61262621111" %><br>
               <%= t('blacklight.footer.contact.address').html_safe %>
             </p>
-            <div><%= link_to t("blacklight.footer.contact.more_contact_info"), "https://www.library.gov.au/about-us/contact-us", class: "btn btn-tertiary mt-2 mb-5" %></div>
+            <div><%= link_to t("blacklight.footer.contact.more_contact_info"), "https://www.library.gov.au/services/contact-us", class: "btn btn-tertiary mt-2 mb-5" %></div>
           </section>
           <section class="connect">
             <h2 class="h4 mb-4"><%= t('blacklight.footer.connect.title') %></h2>
@@ -95,7 +95,7 @@
         </ul>
         <ul class="secondary-links mb-5">
             <li>
-              <%= link_to t("blacklight.footer.secondary_links.privacy"), "https://www.library.gov.au/visit/about-website/privacy" %>
+              <%= link_to t("blacklight.footer.secondary_links.privacy"), "https://www.library.gov.au/visit/about-us/corporate-information/library-services-policies-and-plans/privacy-policy" %>
             </li>
             <li><%= link_to t("blacklight.footer.secondary_links.disclaimer"), "https://www.library.gov.au/visit/about-website/disclaimer" %>
             </li>

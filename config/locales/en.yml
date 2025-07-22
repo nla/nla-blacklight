@@ -94,8 +94,11 @@ en:
       serials:
         required: "Additional information is required to complete your request. Please provide information on either the Year, or Volume/No or Day or Month that you are requesting."
         dependent: "Additional information is required to complete your request. Please provide information on either the Year or Volume/No that you are requesting."
-      pictures:
-        required: ""
+      pictureseries:
+        required: "Additional information is required to complete your request. Please provide call number or other specific information (year or similar) on the item that you are requesting."
+        dependent: ""
+      posterseries:
+        required: "Additional information is required to complete your request. Please provide call number or other specific information (year or similar) on the item that you are requesting."
         dependent: ""
     metadata:
       item_requested: "Item Requested:"
@@ -118,11 +121,12 @@ en:
     multi_box_prompt_2: "You can use one request for up to five consecutive boxes. Use a separate request for non-consecutive boxes/series/folders/items."
     multi_box_prompt_3: "If available, use the %{finding_aid} to select your box number, or a series/folder/item number and enter them below. If you need assistance with this please <a href=\"%{contact_us}\">contact us.</a>"
     map_prompt: "<strong>You have requested a map series containing many map sheets. Please use the fields below to tell our staff which map sheet or sheets you would like to request. If you do not know which sheet, enter a place name.</strong>"
-    picture_prompt: "<strong>You are requesting a multiple item collection. Please use the fields below to tell our staff which item or items you would like to request.</strong>"
-    picture_prompt_2: "You can use one request for up to five consecutive items. Use a separate request for non-consecutive items."
-    picture_prompt_4_no_fa: "To determine the items you would like to request, use the linked item records in the Related Records section of the catalogue record to identify the call number of the item or items for example: PIC Drawer PM 7348 #PIC/P721/1 OR PIC Glass Plate #PIC/13562/99-103 OR Album 947."
-    picture_prompt_4_fa: "To determine the items you would like to request, use the %{finding_aid} to identify the call number of the item or items, for example: PIC Drawer PM 7348 #PIC/P721/1 OR PIC Glass Plate #PIC/13562/99-103 OR Album 947."
-    picture_prompt_5: "If you need assistance with this please <a href=\"%{contact_us}\">contact us.</a>"
+
+    multi_picture_poster_prompt: "You are requesting a multiple item collection. Please use the fields below to tell our staff which item/s you would like to request."
+    multi_pictures_prompt: "Pictures collections can contain multiple formats, including prints, albums, paintings, drawings, etchings, glass plates, lantern slides, acetate, and nitrate negatives, and transparencies."
+    picture_poster_fa: "If available, use the %{finding_aid} to identify the call number of the item/s and enter them below."
+    picture_poster_contact_us: "If you need assistance with this please <a href=\"%{contact_us}\">contact us.</a>"
+
     collection_finding_aid: "collection finding aid"
     btn_request: "Request"
     btn_select: "Select"
@@ -143,7 +147,7 @@ en:
       year: "20 character limit"
       volume: "80 character limit"
       enumeration: "80 character limit"
-      notes: "< 100 characters"
+      notes: "< 130 characters"
       need_help: "Need help? <a href=\"%{contact_us}\">Contact us</a>."
     collect_from:
       base: "%{link}%{location}"

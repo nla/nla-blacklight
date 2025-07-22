@@ -100,6 +100,7 @@ class SolrDocument
   attribute :index_finding_aid_note, :array, "index_finding_aid_note_tsim"
   attribute :invalid_issn, :array, "invalid_issn_ssim"
   attribute :icip_note, :array, "icip_note_tsim"
+  attribute :content_advisory_note, :array, "content_advisory_note_tsim"
   attribute :issn, :array, "issn_display_ssim"
   attribute :issued_with, :array, "issued_with_tsim"
   attribute :language, :array, "language_ssim"

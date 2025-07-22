@@ -1,15 +1,15 @@
-<div class="col-sm-3 py-1 align-middle settings-label" id="<%= "#{@attribute}-label" %>"><%= @label %>:</div>
-<div class="col-sm-3 py-1 align-middle text-break">
-  <%= @value_text || "" %>
-</div>
-<div class="col">
-  <% if @editable %>
-    <% if @attribute == "password" %>
-      <%= link_to_keycloak_password_reset %>
-    <% elsif @attribute == "email_2fa" %>
-      <%= link_to_email_2fa %>
-    <% else %>
-      <%= link_to edit_link_text, [:account_profile_edit, attribute: @attribute] %>
+<dt class="col-md-3" id="<%= "#{@attribute}-label" %>"><%= @label %>:</dt>
+<dd class="col-md-9 d-flex">
+  <span class="flex-grow-1"><%= @value_text || "" %></span>
+  <span class="text-end">
+    <% if @editable %>
+      <% if @attribute == "password" %>
+        <%= link_to_keycloak_password_reset %>
+      <% elsif @attribute == "email_2fa" %>
+        <%= link_to_email_2fa %>
+      <% else %>
+        <%= link_to edit_link_text, [:account_profile_edit, attribute: @attribute] %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </span>
+</dd>

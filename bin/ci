@@ -17,9 +17,6 @@ bin/rails db:reset || bin/rails db:migrate
 echo "[ bin/ci ] Linting source"
 bundle exec rubocop -A
 
-echo "[ bin/ci ] Running RSpec tests"
-bundle exec rspec
-
 echo "[ bin/ci ] Analysing code for security vulnerabilities."
 echo "[ bin/ci ] Output will be in tmp/brakeman.html, which"
 echo "[ bin/ci ] can be opened in your browser."
@@ -28,6 +25,9 @@ bundle exec brakeman -q -o tmp/brakeman.html
 echo "[ bin/ci ] Analysing Ruby gems for"
 echo "[ bin/ci ] security vulnerabilities"
 bundle exec bundle audit check --update
+
+echo "[ bin/ci ] Running RSpec tests"
+bundle exec rspec
 
 echo "[ bin/ci ] Done"
 
