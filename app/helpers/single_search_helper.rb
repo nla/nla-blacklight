@@ -32,7 +32,7 @@ module SingleSearchHelper
       ebsco_link = if bento_query.present?
         "#{ENV["EBSCO_SEARCH_URL"]}?q=#{bento_query}&limiters=FT1%3AY&searchMode=all&searchSegment=all-results"
       else
-        "#{ENV["EBSCO_SEARCH_URL"]}"
+        ENV["EBSCO_SEARCH_URL"].to_s
       end
       ebsco_link
     elsif key == "ebsco_eds_title"
