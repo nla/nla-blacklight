@@ -13,7 +13,11 @@
       document.querySelector('html').classList.remove('no-js');
     </script>
     <%= opensearch_description_tag application_name, opensearch_catalog_url(format: 'xml') %>
-    <%= favicon_link_tag %>
+    <%= favicon_link_tag 'favicon.ico', type: 'image/x-icon', sizes: '32x32' %>
+    <%= favicon_link_tag 'favicon-32x32-light.png', type: 'image/png', sizes: '32x32', media: 'screen and (prefers-color-scheme: light)' %>
+    <%= favicon_link_tag 'favicon-32x32-dark.png', type: 'image/png', sizes: '32x32', media: 'screen and (prefers-color-scheme: dark)' %>
+    <%= favicon_link_tag 'favicon.svg', type: 'image/svg+xml', sizes: 'any' %>
+    
     <%= stylesheet_link_tag "range_limit", media: "all", "data-turbo-track": "reload"  %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload"  %>
     <% if defined? Importmap %>
