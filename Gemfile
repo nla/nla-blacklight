@@ -82,7 +82,7 @@ gem "derailed_benchmarks", group: :development
 gem "stackprof", group: :development
 
 gem "blacklight", ">= 8.0.0", "< 9"
-gem "blacklight-marc", "~> 8.1"
+gem "blacklight-marc", "~> 8.2"
 gem "blacklight_advanced_search", "8.0.0.alpha2"
 gem "ebsco-eds", "~> 1.1"
 
@@ -144,7 +144,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.33"
+  gem "selenium-webdriver", "~> 4.35"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"
@@ -152,5 +152,5 @@ group :test do
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-json", "~> 0.2.3"
 
-  gem "mock_redis", "~> 0.50.0"
+  gem "mock_redis", "~> 0.51.0"
 end
