@@ -82,7 +82,7 @@ gem "derailed_benchmarks", group: :development
 gem "stackprof", group: :development
 
 gem "blacklight", ">= 8.0.0", "< 9"
-gem "blacklight-marc", "~> 8.1"
+gem "blacklight-marc", "~> 8.2"
 gem "blacklight_advanced_search", "8.0.0.alpha2"
 gem "ebsco-eds", "~> 1.1"
 
