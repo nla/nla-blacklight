@@ -149,7 +149,7 @@ GEM
       rails (>= 6.1, < 9)
       view_component (>= 2.74, < 4)
       zeitwerk
-    blacklight-marc (8.1.4)
+    blacklight-marc (8.2.0)
       blacklight (>= 7.11, < 9)
       library_stdnums
       marc (>= 0.4.3, < 2.0)
@@ -324,9 +324,8 @@ GEM
     hiredis-client (0.25.1)
       redis-client (= 0.25.1)
     htmlentities (4.3.4)
-    http (5.2.0)
+    http (5.3.1)
       addressable (~> 2.8)
-      base64 (~> 0.1)
       http-cookie (~> 1.0)
       http-form_data (~> 2.2)
       llhttp-ffi (~> 0.5.0)
@@ -765,7 +764,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   blacklight (>= 8.0.0, < 9)
-  blacklight-marc (~> 8.1)
+  blacklight-marc (~> 8.2)
   blacklight_advanced_search (= 8.0.0.alpha2)
   blacklight_range_limit (~> 8.0, < 9)
   bootsnap
