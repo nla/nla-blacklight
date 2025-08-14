@@ -291,10 +291,10 @@ binary-extensions@^2.0.0:
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-2.3.0.tgz#f6e14a97858d327252200242d4ccfe522c445522"
   integrity sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==
 
-blacklight-frontend@^8.11.0:
-  version "8.11.0"
-  resolved "https://registry.yarnpkg.com/blacklight-frontend/-/blacklight-frontend-8.11.0.tgz#bf0da92b29472d640c88170e1e39179e48d5da07"
-  integrity sha512-ibtWYn9gUKJzcuQyBnUtGr1AASRl05iGwBmCibXdnZk13+96hzHLsOKbTOKq585eqN2QPc9axkO837TM5erDUA==
+blacklight-frontend@^8.12.1:
+  version "8.12.1"
+  resolved "https://registry.yarnpkg.com/blacklight-frontend/-/blacklight-frontend-8.12.1.tgz#efecdf4e7b965c8c79001edd5c910734d7544050"
+  integrity sha512-neS9rQXJEJ2v7n6y81h5OgdXY5apqq2A+1iVl7IAjRlmw+trbJrYrCZbSuHzWJeqNaloL7sQAigpJzlTbC0Prg==
   dependencies:
     bootstrap ">=4.3.1 <6.0.0"
 
