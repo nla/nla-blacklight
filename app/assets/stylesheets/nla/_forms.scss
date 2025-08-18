@@ -12,6 +12,7 @@
       border: none;
       border-radius: 4px !important;
       z-index: 10;
+      width: 100%;
       
       .search-q {
         border: 1px solid $warm-grey;
@@ -36,6 +37,13 @@
             background-color: $tags-surface;
           }
         }
+      }
+    }
+    
+    @media (min-width: 768px) {
+      auto-complete,
+      > .search-autocomplete-wrapper {
+        width: auto;
       }
     }
     
