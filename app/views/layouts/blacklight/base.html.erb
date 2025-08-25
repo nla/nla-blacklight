@@ -32,6 +32,51 @@
       <%= javascript_include_tag "range_limit", "data-turbo-track": "reload", defer: true %>
       <script type="module">
         import githubAutoCompleteElement from 'https://cdn.skypack.dev/@github/auto-complete-element';
+
+        customElements.whenDefined('auto-complete').then(() => {
+
+          document.addEventListener('mousedown', function(event) {
+
+            const autoComplete = document.querySelector('auto-complete[open]');
+            const searchInput = document.querySelector('.search-q');
+            const dropdown = document.querySelector('#autocomplete-popup');
+
+            if (autoComplete && dropdown) {
+
+              const clickedOutside = !autoComplete.contains(event.target);
+
+              if (clickedOutside) {
+                autoComplete.removeAttribute('open');
+                if (searchInput) {
+                  searchInput.setAttribute('aria-expanded', 'false');
+                }
+              }
+            }
+          });
+
+          document.addEventListener('focusout', function(event) {
+            if (event.target.classList.contains('search-q')) {
+
+              setTimeout(() => {
+                const autoComplete = document.querySelector('auto-complete[open]');
+                const searchInput = document.querySelector('.search-q');
+
+                if (autoComplete) {
+                  autoComplete.removeAttribute('open');
+                  if (searchInput) {
+                    searchInput.setAttribute('aria-expanded', 'false');
+                  }
+                }
+              }, 200);
+            }
+          });
+
+          observer.observe(document.body, {
+            subtree: true,
+            attributes: true,
+            attributeFilter: ['open', 'aria-expanded']
+          });
+        });
       </script>
     <% end %>
 
