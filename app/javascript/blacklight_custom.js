@@ -18,7 +18,15 @@ $(function() {
       $(section).focus()
     });
   });
-
+  
+  // Close search autocomplete dropdown 
+  // Working if using keyboard, fails if user clicks on suggestion
+  $("auto-complete").on("focusout", function() {
+    $(this).find(".q").attr("aria-expanded","false");
+    $(this).find("#autocomplete-popup").attr("hidden");
+    $(this).removeAttr("open");
+  });
+  
   // Override Blacklight modal link handler logic
   Blacklight.Modal.modalAjaxLinkClick = function(e) {
     e.preventDefault();
