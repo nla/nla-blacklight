@@ -39,12 +39,15 @@ class AutocompleteDropdown {
 
   handleFocusOut(event) {
     if (event.target.classList.contains('search-q')) {
-      const autoComplete = document.querySelector('auto-complete[open]');
-      const searchInput = document.querySelector('.search-q');
 
-      if (autoComplete) {
-        this.hideDropdown(autoComplete, searchInput);
-      }
+      setTimeout(() => {
+        const autoComplete = document.querySelector('auto-complete[open]');
+        const searchInput = document.querySelector('.search-q');
+
+        if (autoComplete) {
+          this.hideDropdown(autoComplete, searchInput);
+        }
+      }, 200);
     }
   }
 
