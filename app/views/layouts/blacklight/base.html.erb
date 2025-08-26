@@ -17,7 +17,7 @@
     <%= favicon_link_tag 'favicon-32x32-light.png', type: 'image/png', sizes: '32x32', media: 'screen and (prefers-color-scheme: light)' %>
     <%= favicon_link_tag 'favicon-32x32-dark.png', type: 'image/png', sizes: '32x32', media: 'screen and (prefers-color-scheme: dark)' %>
     <%= favicon_link_tag 'favicon.svg', type: 'image/svg+xml', sizes: 'any' %>
-    
+
     <%= stylesheet_link_tag "range_limit", media: "all", "data-turbo-track": "reload"  %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload"  %>
     <% if defined? Importmap %>
@@ -30,6 +30,7 @@
       <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
       <%= javascript_include_tag "blacklight_custom", "data-turbo-track": "reload", defer: true %>
       <%= javascript_include_tag "range_limit", "data-turbo-track": "reload", defer: true %>
+      <%= javascript_include_tag "hide_autocomplete_dropdown", type: 'module', "data-turbo-track": "reload" %>
       <script type="module">
         import githubAutoCompleteElement from 'https://cdn.skypack.dev/@github/auto-complete-element';
       </script>
