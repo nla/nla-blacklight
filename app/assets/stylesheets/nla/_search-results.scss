@@ -193,16 +193,31 @@
     }
     
     .document-thumbnail {
-      float: none;
       margin-bottom: 0;
+      margin-left: 0.5rem;
       padding-left: 0;
       text-align: right;
       
-      .text-break:focus,
-      .text-break:hover,
-      .text-break:active {
-        box-shadow: none;
-      }
+      .text-break {
+        &:focus,
+        &:hover,
+        &:active {
+          box-shadow: none;
+        }
+        
+        .thumbnail {
+          width: auto !important;
+          max-height: 123px;
+          object-fit: contain;
+          object-position: 0 0;
+          
+          
+          @media screen and (max-width: breakpoint-max(sm)) {
+            max-width: 100px;
+            max-height: 100px;
+          }
+        }
+      }      
     }
     
     .toggle-bookmark {
