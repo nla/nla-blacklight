@@ -47,16 +47,16 @@
         outline: 2px solid $mid-teal;
       }
     }
-  }
-  
-  .thumbnail {
-    width: auto !important;
-    max-height: 500px;
-    object-fit: contain;
-    object-position: 0 0;
     
-    @media screen and (max-width: breakpoint-max(md)) {
-      max-width: 100%;
+    .thumbnail {
+      width: auto !important;
+      max-height: 500px;
+      object-fit: contain;
+      object-position: 0 0;
+      
+      @media screen and (max-width: breakpoint-max(md)) {
+        max-width: 100%;
+      }
     }
   }
 }
