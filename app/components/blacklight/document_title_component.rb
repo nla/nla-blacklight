@@ -7,8 +7,8 @@ module Blacklight
     renders_many :actions
 
     # rubocop:disable Metrics/ParameterLists
-    def initialize(title = nil, document: nil, presenter: nil, as: :h3, counter: nil, classes: 'index_title document-title-heading col', link_to_document: true, document_component: nil, actions: true)
-      raise ArgumentError, 'missing keyword: :document or :presenter' if presenter.nil? && document.nil?
+    def initialize(title = nil, document: nil, presenter: nil, as: :h3, counter: nil, classes: "index_title document-title-heading col", link_to_document: true, document_component: nil, actions: true)
+      raise ArgumentError, "missing keyword: :document or :presenter" if presenter.nil? && document.nil?
 
       @title = title
       @document = document
@@ -25,9 +25,9 @@ module Blacklight
     # Content for the document title area; should be an inline element
     def title
       if @link_to_document
-        helpers.link_to_document presenter.document, @title.presence || content.presence, counter: @counter, itemprop: 'name'
+        helpers.link_to_document presenter.document, @title.presence || content.presence, counter: @counter, itemprop: "name"
       else
-        content_tag('span', @title.presence || content.presence || presenter.heading, itemprop: 'name')
+        content_tag("span", @title.presence || content.presence || presenter.heading, itemprop: "name")
       end
     end
 
@@ -42,14 +42,14 @@ module Blacklight
 
       (@has_actions_slot && get_slot(:actions)) ||
         ([@document_component&.actions] if @document_component&.actions.present?) ||
-        [helpers.render_index_doc_actions(presenter.document, wrapping_class: 'index-document-functions col-sm-5 col-lg-3 text-sm-end')]
+        [helpers.render_index_doc_actions(presenter.document, wrapping_class: "index-document-functions col-sm-5 col-lg-3 text-sm-end")]
     end
 
     def counter
       return unless @counter
 
-      content_tag :span, class: 'document-counter' do
-        t('blacklight.search.documents.counter', counter: @counter)
+      content_tag :span, class: "document-counter" do
+        t("blacklight.search.documents.counter", counter: @counter)
       end
     end
 
