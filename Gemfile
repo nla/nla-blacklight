@@ -20,7 +20,7 @@ gem "activerecord-session_store", "~> 2.0"
 gem "rufus-scheduler", "~> 3.9"
 
 # catch unsafe migrations
-gem "strong_migrations", "~> 2.2"
+gem "strong_migrations", "~> 2.5"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8"
@@ -51,7 +51,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.25.1"
+gem "hiredis-client", "~> 0.25.2"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.4"
@@ -152,5 +152,5 @@ group :test do
   gem "simplecov", "~> 0.22.0"
   gem "simplecov-json", "~> 0.2.3"
 
-  gem "mock_redis", "~> 0.51.0"
+  gem "mock_redis", "~> 0.52.0"
 end

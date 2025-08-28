@@ -321,8 +321,8 @@ GEM
     heapy (0.2.0)
       thor
     hiredis (0.6.3)
-    hiredis-client (0.25.1)
-      redis-client (= 0.25.1)
+    hiredis-client (0.25.2)
+      redis-client (= 0.25.2)
     htmlentities (4.3.4)
     http (5.3.1)
       addressable (~> 2.8)
@@ -403,7 +403,7 @@ GEM
     mini_mime (1.1.5)
     minitar (1.0.2)
     minitest (5.25.5)
-    mock_redis (0.51.0)
+    mock_redis (0.52.0)
       redis (~> 5)
     msgpack (1.8.0)
     multi_json (1.15.0)
@@ -540,7 +540,7 @@ GEM
       psych (>= 4.0.0)
     redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.25.1)
+    redis-client (0.25.2)
       connection_pool
     regexp_parser (2.10.0)
     reline (0.6.2)
@@ -638,7 +638,7 @@ GEM
     snaky_hash (2.0.3)
       hashie (>= 0.1.0, < 6)
       version_gem (>= 1.1.8, < 3)
-    solr_wrapper (4.1.3)
+    solr_wrapper (4.2.0)
       faraday (>= 1.0, < 3)
       faraday-follow_redirects
       minitar
@@ -669,8 +669,8 @@ GEM
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.1.7)
-    strong_migrations (2.3.0)
-      activerecord (>= 7)
+    strong_migrations (2.5.0)
+      activerecord (>= 7.1)
     summon (2.0.5)
       json
     thor (1.4.0)
@@ -783,12 +783,12 @@ DEPENDENCIES
   flamegraph
   fuubar
   hiredis (~> 0.6.3)
-  hiredis-client (~> 0.25.1)
+  hiredis-client (~> 0.25.2)
   jbuilder
   jsbundling-rails
   lograge
   memory_profiler
-  mock_redis (~> 0.51.0)
+  mock_redis (~> 0.52.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
   phonelib (~> 0.10.5)
@@ -813,7 +813,7 @@ DEPENDENCIES
   stackprof
   standard
   stimulus-rails
-  strong_migrations (~> 2.2)
+  strong_migrations (~> 2.5)
   turbo-rails
   tzinfo-data
   web-console
