@@ -763,7 +763,7 @@ DEPENDENCIES
   blacklight (>= 8.0.0, < 9)
   blacklight-marc (~> 8.2)
   blacklight_advanced_search (= 8.0.0.alpha2)
-  blacklight_range_limit (9.1.0)
+  blacklight_range_limit (~> 9.1)
   bootsnap
   brakeman
   bundler-audit
