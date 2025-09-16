@@ -2,9 +2,11 @@ $(function() {
   $("#jumpbar .nav-link a").click(function(event) {
     event.preventDefault();
     const section = $(this).attr("href");
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var scrollDuration = motionQuery.matches ? 0 : 100;
     $("html, body").animate({
       scrollTop: $(section).offset().top-20
-    }, 1200, function() {
+    }, scrollDuration, function() {
       $(section).focus()
     });
   });
@@ -12,9 +14,11 @@ $(function() {
   $("#catalogue-record-actions #request-btn").click(function(event) {
     event.preventDefault();
     const section = $(this).attr("href");
+    const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var scrollDuration = motionQuery.matches ? 0 : 100;
     $("html, body").animate({
       scrollTop: $(section).offset().top-110
-    }, 1200, function() {
+    }, scrollDuration, function() {
       $(section).focus()
     });
   });
