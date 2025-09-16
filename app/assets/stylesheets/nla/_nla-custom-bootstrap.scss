@@ -159,8 +159,8 @@ $border-radius-lg: 0;
 $border-radius-sm: 0;
 
   // Typography
-$font-family-serif: "STIX Two Text", serif;
-$font-family-sans-serif: "Open Sans", sans-serif;
+$font-family-serif: "STIX Two Text", "Times New Roman", system-ui, serif;
+$font-family-sans-serif: "Open Sans", system-ui, "Segoe UI", sans-serif;
 $btn-font-family: $font-family-sans-serif;
 $text-muted: $gray-medium-light;
 
