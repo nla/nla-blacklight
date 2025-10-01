@@ -2,7 +2,7 @@ source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.3.2"
-
+gem 'nokogiri', '~> 1.13.0'
 # Brakeman analyzes our code for security vulnerabilities
 gem "brakeman"
 
