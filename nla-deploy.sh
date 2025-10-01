@@ -39,7 +39,7 @@ if [[ "$RAILS_ENV" == "staging" || "$RAILS_ENV" == "production" ]]; then
 fi
 
 gem install pyroscope
-bundle add opentelemetry-sdk opentelemetry-instrumentation-all pyroscope 
+bundle add opentelemetry-sdk opentelemetry-instrumentation-all 
 bundle install
 RAILS_ENV=$RAILS_ENV bundle exec rails db:migrate
 
