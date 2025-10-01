@@ -38,6 +38,7 @@ if [[ "$RAILS_ENV" == "staging" || "$RAILS_ENV" == "production" ]]; then
  bundle config --local without "development:test"
 fi
 
+bundle add ffikit --git 'git@github.com:ORG/ffikit.git'
 bundle add opentelemetry-sdk opentelemetry-instrumentation-all ffikit pyroscope 
 bundle install
 RAILS_ENV=$RAILS_ENV bundle exec rails db:migrate
