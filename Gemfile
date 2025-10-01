@@ -154,3 +154,5 @@ group :test do
 
   gem "mock_redis", "~> 0.52.0"
 end
+
+gem "pyroscope", "~> 0.6.7"
