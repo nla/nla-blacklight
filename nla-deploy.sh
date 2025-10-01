@@ -39,6 +39,7 @@ if [[ "$RAILS_ENV" == "staging" || "$RAILS_ENV" == "production" ]]; then
 fi
 
 bundle add opentelemetry-sdk opentelemetry-instrumentation-all
+bundle add pyroscope
 bundle install
 RAILS_ENV=$RAILS_ENV bundle exec rails db:migrate
 
