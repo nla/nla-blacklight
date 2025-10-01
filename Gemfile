@@ -156,3 +156,7 @@ group :test do
 end
 
 gem "pyroscope", "~> 0.6.7"
+
+gem "opentelemetry-sdk", "~> 1.9"
+gem "opentelemetry-instrumentation-all", "~> 0.84.0"
+gem "ffi", "~> 1.17.2"
