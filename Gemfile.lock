@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 91ad7247d058c474f68422acafa1e994c462e547
+  revision: efb00d3b24aa462852370acd8aea0967db0eb586
   branch: main
   specs:
     nla-blacklight_common (0.3.2)
@@ -698,7 +698,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
-    uri (1.0.3)
+    uri (1.0.4)
     useragent (0.16.11)
     version_gem (1.1.8)
     view_component (3.23.2)
