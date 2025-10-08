@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 91ad7247d058c474f68422acafa1e994c462e547
+  revision: efb00d3b24aa462852370acd8aea0967db0eb586
   branch: main
   specs:
     nla-blacklight_common (0.3.2)
@@ -427,11 +427,11 @@ GEM
     net-smtp (0.5.1)
       net-protocol
     nio4r (2.7.4)
-    nokogiri (1.18.9-arm64-darwin)
+    nokogiri (1.18.10-arm64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.9-x86_64-darwin)
+    nokogiri (1.18.10-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.18.9-x86_64-linux-gnu)
+    nokogiri (1.18.10-x86_64-linux-gnu)
       racc (~> 1.4)
     oauth2 (2.0.12)
       faraday (>= 0.17.3, < 4.0)
@@ -471,7 +471,7 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
-    phonelib (0.10.11)
+    phonelib (0.10.12)
     pp (0.6.2)
       prettyprint
     prettyprint (0.2.0)
@@ -486,7 +486,7 @@ GEM
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
-    rack (3.2.1)
+    rack (3.2.2)
     rack-mini-profiler (4.0.1)
       rack (>= 1.2.0)
     rack-protection (4.1.1)
@@ -551,7 +551,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     retriable (3.1.2)
-    rexml (3.4.1)
+    rexml (3.4.2)
     rouge (4.5.2)
     rsolr (2.6.0)
       builder (>= 2.1.2)
@@ -564,7 +564,7 @@ GEM
     rspec-mocks (3.13.5)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-rails (8.0.1)
+    rspec-rails (8.0.2)
       actionpack (>= 7.2)
       activesupport (>= 7.2)
       railties (>= 7.2)
@@ -572,7 +572,7 @@ GEM
       rspec-expectations (~> 3.13)
       rspec-mocks (~> 3.13)
       rspec-support (~> 3.13)
-    rspec-support (3.13.4)
+    rspec-support (3.13.6)
     rubocop (1.75.8)
       json (~> 2.3)
       language_server-protocol (~> 3.17.0.2)
@@ -698,7 +698,7 @@ GEM
     unicode-display_width (3.2.0)
       unicode-emoji (~> 4.1)
     unicode-emoji (4.1.0)
-    uri (1.0.3)
+    uri (1.0.4)
     useragent (0.16.11)
     version_gem (1.1.8)
     view_component (3.23.2)
@@ -791,7 +791,7 @@ DEPENDENCIES
   mock_redis (~> 0.52.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
-  phonelib (~> 0.10.5)
+  phonelib (~> 0.10.12)
   puma (~> 7.0)
   rack-mini-profiler
   rails (~> 8)
