@@ -134,7 +134,6 @@ module ApplicationHelper
   private
 
   def routing_error?
-    params[:controller] == 'application' && params[:action] == 'routing_error'
+    params[:controller] == "application" && params[:action] == "routing_error"
   end
-
 end
