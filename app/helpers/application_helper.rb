@@ -126,4 +126,9 @@ module ApplicationHelper
 
     [entry, caption, icon]
   end
+
+  def show_analytics?
+    response.status != 404
+  end
+
 end
