@@ -126,4 +126,14 @@ module ApplicationHelper
 
     [entry, caption, icon]
   end
+
+  def show_analytics?
+    response.status != 404 || !routing_error?
+  end
+
+  private
+
+  def routing_error?
+    params[:controller] == "application" && params[:action] == "routing_error"
+  end
 end

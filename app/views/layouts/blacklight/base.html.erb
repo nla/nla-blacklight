@@ -44,6 +44,7 @@
     <%= csrf_meta_tags %>
     <%= content_for(:head) %>
 
+    <% if show_analytics? %>
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
           new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -51,11 +52,14 @@
         'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-K8KL6FF');</script>
     <!-- End Google Tag Manager -->
+    <% end %>
   </head>
   <body class="<%= render_body_class %> d-flex flex-column h-100" data-login-url="<%= new_user_session_url %>">
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8KL6FF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <% if show_analytics? %>
+      <!-- Google Tag Manager (noscript) -->
+      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-K8KL6FF" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+      <!-- End Google Tag Manager (noscript) -->
+    <% end %>
 
     <% if Rails.env.development? || Rails.env.staging? %>
     <div class="bg-warning text-dark text-center p-2">
