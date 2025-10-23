@@ -90,7 +90,7 @@ gem "email_validator", "~> 2.2"
 gem "phonelib", "~> 0.10.12"
 
 gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
-gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "main"
+gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "master"
 gem "blacklight_range_limit", "~> 8.0", "< 9"
 # For local development, comment out above ⤴️ and uncomment below ⤵️
 # gem "nla-blacklight_common", path: "../nla-blacklight_common"
