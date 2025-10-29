@@ -36,7 +36,8 @@ RSpec.describe "Offsite redirect", :request do
         it "redirects to the 'url'" do
           get "/catalog/0000/offsite?url=http://opac.newsbank.com/select/shaw/35846"
 
-          expect(request).to redirect_to("http://opac.newsbank.com/select/shaw/35846")
+          expect(response.location).to include("https://ezproxy.example.com/login?user=user")
+          expect(response.location).to include("&url=http://opac.newsbank.com/select/shaw/35846")
         end
 
         it "posts stats" do
@@ -62,7 +63,8 @@ RSpec.describe "Offsite redirect", :request do
         it "redirects to the 'url'" do
           get "/catalog/0000/offsite?url=http://opac.newsbank.com/select/shaw/35846"
 
-          expect(request).to redirect_to("http://opac.newsbank.com/select/shaw/35846")
+          expect(response.location).to include("https://ezproxy.example.com/login?user=user")
+          expect(response.location).to include("&url=http://opac.newsbank.com/select/shaw/35846")
         end
 
         it "posts stats" do
