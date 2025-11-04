@@ -460,8 +460,9 @@ class CatalogController < ApplicationController
         # This is used to find users who have made too many requests to a resource
         helpers.log_eresources_offsite_access(url)
 
-        # let them straight through
-        return redirect_to url, allow_other_host: true
+        # send to EzyProxy
+        return redirect_to EzproxyUrl.new(@eresource[:url]).url, allow_other_host: true
+
       elsif @eresource[:entry]["remoteaccess"] == "yes"
         # already logged in
         if current_user.present?
@@ -471,9 +472,6 @@ class CatalogController < ApplicationController
           helpers.log_eresources_offsite_access(url)
 
           return redirect_to @eresource[:url], allow_other_host: true if @eresource[:type] == "remoteurl"
-
-          # sorry for this.  EZProxy really needs a URL rewrite function.
-          return redirect_to EzproxyUrl.new("http://yomiuri:1234/rekishikan/").url, allow_other_host: true if url == "https://database.yomiuri.co.jp/rekishikan/"
 
           return redirect_to EzproxyUrl.new(@eresource[:url]).url, allow_other_host: true
         else
