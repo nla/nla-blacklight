@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/nla/bento_search.git
   revision: feb4767ba9ba8cf20cc19bd0461618c101b3bf14
-  branch: master
+  tag: 0.0.2
   specs:
     bento_search (2.0.0.rc1)
       confstruct (~> 1.0)
@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 749dc79c6c58c5d9c1eaf618e5bcad91d0fc6fdd
-  branch: main
+  revision: efb00d3b24aa462852370acd8aea0967db0eb586
+  tag: 0.3.2
   specs:
-    nla-blacklight_common (0.3.3)
+    nla-blacklight_common (0.3.2)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 9)
