@@ -459,10 +459,12 @@ class CatalogController < ApplicationController
 
         # This is used to find users who have made too many requests to a resource
         helpers.log_eresources_offsite_access(url)
-
-        # send to EzyProxy
-        return redirect_to EzproxyUrl.new(@eresource[:url]).url, allow_other_host: true
-
+        if @eresource[:entry]["remoteaccess"] == "no"
+          return redirect_to url, allow_other_host: true
+        else
+          # send to EzyProxy
+          return redirect_to EzproxyUrl.new(@eresource[:url]).url, allow_other_host: true
+        end
       elsif @eresource[:entry]["remoteaccess"] == "yes"
         # already logged in
         if current_user.present?
