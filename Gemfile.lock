@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 922c4ba3de103ab6ab718331717f0d4d38c4c738
+  revision: 2d46f37e004317aa717ae176699c82c13c9ef746
   branch: main
   specs:
-    nla-blacklight_common (0.3.3)
+    nla-blacklight_common (0.3.4)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 9)
