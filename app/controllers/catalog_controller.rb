@@ -461,7 +461,7 @@ class CatalogController < ApplicationController
         helpers.log_eresources_offsite_access(url)
 
         # send to EzyProxy
-        return redirect_to EzproxyUrl.new(@eresource[:url]).url, allow_other_host: true
+        return redirect_to EzproxyUrl.new(@eresource[:url], folio_id: current_user&.folio_id).url, allow_other_host: true
 
       elsif @eresource[:entry]["remoteaccess"] == "yes"
         # already logged in
@@ -473,7 +473,7 @@ class CatalogController < ApplicationController
 
           return redirect_to @eresource[:url], allow_other_host: true if @eresource[:type] == "remoteurl"
 
-          return redirect_to EzproxyUrl.new(@eresource[:url]).url, allow_other_host: true
+          return redirect_to EzproxyUrl.new(@eresource[:url], folio_id: current_user&.folio_id).url, allow_other_host: true
         else
           info_msg = if @eresource[:entry]["title"].strip.casecmp? "ebsco"
             t("offsite.ebsco")
