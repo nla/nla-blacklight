@@ -112,7 +112,9 @@ RSpec.describe "Offsite redirect", :request do
                   travel_to Time.zone.local(2022, 11, 28, 0, 0, 0) do
                     get "/catalog/0000/offsite?url=http://www.macquariedictionary.com.au/login"
 
-                    expect(request).to redirect_to("https://ezproxy.example.com/login?user=user&ticket=60d52eca002749aef4d50486c91c2a6d%24u1669554000&url=http://www.macquariedictionary.com.au/login")
+                    uuid_pattern = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}"
+                    expected_url = %r{\Ahttps://ezproxy\.example\.com/folio/#{uuid_pattern}/login\?user=user&ticket=60d52eca002749aef4d50486c91c2a6d%24u1669554000&url=http://www\.macquariedictionary\.com\.au/login\z}
+                    expect(response.location).to match(expected_url)
                   end
                 end
               end
