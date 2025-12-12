@@ -30,7 +30,7 @@ GIT
       devise
       omniauth-keycloak (~> 1.4)
       omniauth-rails_csrf_protection (~> 1.0)
-      rails (>= 7.2, < 8.1)
+      rails (>= 7.2, < 8.2)
       rsolr (>= 1.0, < 3)
       zk (~> 1.10)
 
@@ -473,7 +473,7 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
-    phonelib (0.10.13)
+    phonelib (0.10.14)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -797,7 +797,7 @@ DEPENDENCIES
   mock_redis (~> 0.52.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
-  phonelib (~> 0.10.13)
+  phonelib (~> 0.10.14)
   puma (~> 7.0)
   rack-mini-profiler
   rails (~> 8)
