@@ -457,27 +457,27 @@ class CatalogController < ApplicationController
       if helpers.user_type == :local || helpers.user_type == :staff
         CatalogueServicesClient.new.post_stats EresourcesStats.new(@eresource, helpers.user_type)
 
-        ezProxyUrl = EzproxyUrl.new(@eresource[:url], folio_id: current_user&.folio_id).url
+        ez_proxy_url = EzproxyUrl.new(@eresource[:url], folio_id: current_user&.folio_id).url
 
         # This is used to find users who have made too many requests to a resource
-        helpers.log_eresources_offsite_access(ezProxyUrl)
+        helpers.log_eresources_offsite_access(ez_proxy_url)
 
         # send to EzyProxy
-        return redirect_to ezProxyUrl, allow_other_host: true
+        return redirect_to ez_proxy_url, allow_other_host: true
 
       elsif @eresource[:entry]["remoteaccess"] == "yes"
         # already logged in
         if current_user.present?
           CatalogueServicesClient.new.post_stats EresourcesStats.new(@eresource, helpers.user_type)
 
-          ezProxyUrl = EzproxyUrl.new(@eresource[:url], folio_id: current_user&.folio_id).url
+          ez_proxy_url = EzproxyUrl.new(@eresource[:url], folio_id: current_user&.folio_id).url
 
           # This is used to find users who have made too many requests to a resource
-          helpers.log_eresources_offsite_access(ezProxyUrl)
+          helpers.log_eresources_offsite_access(ez_proxy_url)
 
           return redirect_to @eresource[:url], allow_other_host: true if @eresource[:type] == "remoteurl"
 
-          return redirect_to ezProxyUrl, allow_other_host: true
+          return redirect_to ez_proxy_url, allow_other_host: true
         else
           info_msg = if @eresource[:entry]["title"].strip.casecmp? "ebsco"
             t("offsite.ebsco")
