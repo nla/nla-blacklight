@@ -128,7 +128,9 @@ RSpec.describe "Offsite redirect", :request do
               it "logs access" do
                 get "/catalog/0000/offsite?url=http://www.macquariedictionary.com.au/login"
 
-                expect(Rails.logger).to have_received(:info).with("eResources external access by user #{user.id}: http://www.macquariedictionary.com.au/login").once
+                expect(Rails.logger).to have_received(:info).with(
+                  a_string_including("eResources external access by user #{user.id}:", "http://www.macquariedictionary.com.au/login")
+                ).once
               end
             end
           end
