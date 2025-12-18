@@ -51,7 +51,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.25.2"
+gem "hiredis-client", "~> 0.26.2"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.4"
@@ -87,7 +87,7 @@ gem "blacklight_advanced_search", "8.0.0.alpha2"
 gem "ebsco-eds", "~> 1.1"
 
 gem "email_validator", "~> 2.2"
-gem "phonelib", "~> 0.10.13"
+gem "phonelib", "~> 0.10.14"
 
 gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "master"

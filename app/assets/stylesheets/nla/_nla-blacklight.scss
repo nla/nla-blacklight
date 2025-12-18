@@ -2,6 +2,11 @@
 
 @import "variables";
 
+// Override Blacklight CSS custom properties
+:root {
+  --bl-logo-image: url('nla_logo.svg');
+}
+
 @import "advanced-search";
 @import "buttons";
 @import "facets";

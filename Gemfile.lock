@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 2d46f37e004317aa717ae176699c82c13c9ef746
+  revision: 0e34786186c76b952c4008be3d6ad55ad5ef8da7
   branch: main
   specs:
     nla-blacklight_common (0.3.4)
@@ -30,7 +30,7 @@ GIT
       devise
       omniauth-keycloak (~> 1.4)
       omniauth-rails_csrf_protection (~> 1.0)
-      rails (>= 7.2, < 8.1)
+      rails (>= 7.2, < 8.2)
       rsolr (>= 1.0, < 3)
       zk (~> 1.10)
 
@@ -114,8 +114,8 @@ GEM
       securerandom (>= 0.3)
       tzinfo (~> 2.0, >= 2.0.5)
       uri (>= 0.13.1)
-    addressable (2.8.7)
-      public_suffix (>= 2.0.2, < 7.0)
+    addressable (2.8.8)
+      public_suffix (>= 2.0.2, < 8.0)
     aes_key_wrap (1.1.0)
     annotaterb (4.17.0)
       activerecord (>= 6.0.0)
@@ -140,14 +140,14 @@ GEM
     bindex (0.8.1)
     binding_of_caller (1.0.1)
       debug_inspector (>= 1.2.0)
-    blacklight (8.11.0)
+    blacklight (8.12.3)
       globalid
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
       rails (>= 6.1, < 9)
-      view_component (>= 2.74, < 4)
+      view_component (>= 2.74, < 5)
       zeitwerk
     blacklight-marc (8.2.0)
       blacklight (>= 7.11, < 9)
@@ -195,7 +195,7 @@ GEM
     concurrent-ruby (1.3.5)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
-    connection_pool (2.5.4)
+    connection_pool (2.5.5)
     crack (1.0.0)
       bigdecimal
       rexml
@@ -216,7 +216,7 @@ GEM
     cuprite (0.17)
       capybara (~> 3.0)
       ferrum (~> 0.17.0)
-    date (3.4.1)
+    date (3.5.1)
     debug (1.11.0)
       irb (~> 1.10)
       reline (>= 0.3.8)
@@ -267,7 +267,7 @@ GEM
       public_suffix (~> 4.0)
     email_validator (2.2.4)
       activemodel
-    erb (5.1.1)
+    erb (6.0.0)
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
@@ -316,13 +316,13 @@ GEM
       ffi (~> 1.0)
     globalid (1.3.0)
       activesupport (>= 6.1)
-    hashdiff (1.1.2)
+    hashdiff (1.2.1)
     hashie (4.1.0)
     heapy (0.2.0)
       thor
     hiredis (0.6.3)
-    hiredis-client (0.25.2)
-      redis-client (= 0.25.2)
+    hiredis-client (0.26.2)
+      redis-client (= 0.26.2)
     htmlentities (4.3.4)
     http (5.3.1)
       addressable (~> 2.8)
@@ -337,7 +337,7 @@ GEM
     i18n (1.14.7)
       concurrent-ruby (~> 1.0)
     io-console (0.8.1)
-    irb (1.15.2)
+    irb (1.15.3)
       pp (>= 0.6.0)
       rdoc (>= 4.0.0)
       reline (>= 0.4.2)
@@ -403,7 +403,7 @@ GEM
     mini_histogram (0.3.1)
     mini_mime (1.1.5)
     minitar (1.0.2)
-    minitest (5.26.1)
+    minitest (5.27.0)
     mock_redis (0.52.0)
       redis (~> 5)
     msgpack (1.8.0)
@@ -428,7 +428,7 @@ GEM
       timeout
     net-smtp (0.5.1)
       net-protocol
-    nio4r (2.7.4)
+    nio4r (2.7.5)
     nokogiri (1.18.10-arm64-darwin)
       racc (~> 1.4)
     nokogiri (1.18.10-x86_64-darwin)
@@ -473,14 +473,14 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
-    phonelib (0.10.13)
+    phonelib (0.10.14)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
     prism (1.6.0)
     prometheus-client (4.2.5)
       base64
-    psych (5.2.6)
+    psych (5.3.0)
       date
       stringio
     public_suffix (4.0.7)
@@ -500,7 +500,7 @@ GEM
       rack (>= 3.0.0)
     rack-test (2.2.0)
       rack (>= 1.3)
-    rackup (2.2.1)
+    rackup (2.3.1)
       rack (>= 3)
     rails (8.0.3)
       actioncable (= 8.0.3)
@@ -537,17 +537,17 @@ GEM
       tsort (>= 0.2)
       zeitwerk (~> 2.6)
     rainbow (3.1.1)
-    rake (13.3.0)
-    rdoc (6.15.0)
+    rake (13.3.1)
+    rdoc (6.17.0)
       erb
       psych (>= 4.0.0)
       tsort
     redis (5.4.1)
       redis-client (>= 0.22.0)
-    redis-client (0.25.2)
+    redis-client (0.26.2)
       connection_pool
     regexp_parser (2.11.3)
-    reline (0.6.2)
+    reline (0.6.3)
       io-console (~> 0.5)
     request_store (1.7.0)
       rack (>= 1.4)
@@ -555,7 +555,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     retriable (3.1.2)
-    rexml (3.4.2)
+    rexml (3.4.4)
     rouge (4.5.2)
     rsolr (2.6.0)
       builder (>= 2.1.2)
@@ -672,7 +672,7 @@ GEM
       rubocop-performance (~> 1.25.0)
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
-    stringio (3.1.7)
+    stringio (3.1.9)
     strong_migrations (2.5.0)
       activerecord (>= 7.1)
     summon (2.0.5)
@@ -680,7 +680,7 @@ GEM
     thor (1.4.0)
     time (0.4.1)
       date
-    timeout (0.4.3)
+    timeout (0.5.0)
     traject (3.8.3)
       concurrent-ruby (>= 0.8.0)
       csv
@@ -706,8 +706,8 @@ GEM
     uri (1.1.1)
     useragent (0.16.11)
     version_gem (1.1.8)
-    view_component (3.23.2)
-      activesupport (>= 5.2.0, < 8.1)
+    view_component (3.24.0)
+      activesupport (>= 5.2.0, < 8.2)
       concurrent-ruby (~> 1)
       method_source (~> 1.0)
     warden (1.2.9)
@@ -717,7 +717,7 @@ GEM
       activemodel (>= 6.0.0)
       bindex (>= 0.4.0)
       railties (>= 6.0.0)
-    webmock (3.25.1)
+    webmock (3.26.1)
       addressable (>= 2.8.0)
       crack (>= 0.3.2)
       hashdiff (>= 0.4.0, < 2.0.0)
@@ -789,7 +789,7 @@ DEPENDENCIES
   flamegraph
   fuubar
   hiredis (~> 0.6.3)
-  hiredis-client (~> 0.25.2)
+  hiredis-client (~> 0.26.2)
   jbuilder
   jsbundling-rails
   lograge
@@ -797,7 +797,7 @@ DEPENDENCIES
   mock_redis (~> 0.52.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
-  phonelib (~> 0.10.13)
+  phonelib (~> 0.10.14)
   puma (~> 7.0)
   rack-mini-profiler
   rails (~> 8)
