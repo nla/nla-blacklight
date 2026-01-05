@@ -204,6 +204,7 @@ class CatalogController < ApplicationController
       !document.has_eresources?
     end
     config.add_show_field "terms_of_use_tsim", label: "Terms of Use and Reproduction", helper_method: :emphasized_list
+    config.add_show_field "related_terms_urls", label: "Terms of Use Licence", accessor: :related_terms_urls, helper_method: :url_list
     config.add_show_field "scale_tsim", label: "Scale"
     config.add_show_field "printer_tsim", label: "Printer", helper_method: :unstyled_list
     config.add_show_field "description", label: "Description", accessor: :description, helper_method: :unstyled_list
@@ -269,7 +270,7 @@ class CatalogController < ApplicationController
     config.add_show_field "rights_information", label: "Rights information", accessor: :rights_information, helper_method: :url_list, component: StaffOnlyComponent
     config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_status, helper_method: :render_copyright_component, if: ->(_controller, _config, document) do
       # if there is no contextMsg, there is no rights information from the copyright service
-      document.copyright_status.present? && document.copyright_status["contextMsg"].present?
+      document.copyright_status.is_a?(Hash) && document.copyright_status["contextMsg"].present?
     end
 
     # "fielded" search configuration. Used by pulldown among other places.

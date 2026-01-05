@@ -66,7 +66,7 @@ class SolrDocument
     @marc_xml ||= Nokogiri::XML.parse(fetch("marc_ss")).remove_namespaces!
   end
 
-  delegate :related_access_urls, :copy_access_urls, :online_access_urls, :map_search_urls, :has_eresources?, to: :access
+  delegate :related_access_urls, :related_terms_urls, :copy_access_urls, :online_access_urls, :map_search_urls, :has_eresources?, to: :access
   delegate :valid_isbn, :invalid_isbn, :isbn_list, :issn_list, to: :isbn
 
   attribute :acknowledgement, :array, "acknowledgement_tsim"

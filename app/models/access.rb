@@ -21,6 +21,10 @@ class Access
     @related_access_urls ||= get_related_access_urls
   end
 
+  def related_terms_urls(*_args)
+    @related_terms_urls ||= get_related_terms_urls
+  end
+
   def has_eresources?(*_args)
     @has_eresources ||= determine_has_eresources
   end
@@ -47,6 +51,14 @@ class Access
 
   def get_related_access_urls
     elements = get_marc_datafields_from_xml("//datafield[@tag='856' and @ind2='2']")
+    make_url(elements)
+  end
+
+  def get_related_terms_urls
+    # To use the @ind field, you need to match against ind1 or ind2 attributes.
+    # Current implementation extracts all 540 fields.
+    # Example for specific indicator: //datafield[@tag='540' and @ind1='3']
+    elements = get_marc_datafields_from_xml("//datafield[@tag='540']")
     make_url(elements)
   end
 
