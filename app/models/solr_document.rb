@@ -197,6 +197,21 @@ class SolrDocument
     [{text: "View in Sprightly", href: "https://sprightly.nla.gov.au/works/#{id}?source=catalogue"}]
   end
 
+  def terms_of_use_with_licence
+    return nil if terms_of_use.blank?
+
+    # Get the URL from related_terms_urls if available
+    licence_url = related_terms_urls&.first&.dig(:href)
+
+    terms_of_use.map do |term|
+      if licence_url.present?
+        {text: term, href: licence_url}
+      else
+        {text: term}
+      end
+    end
+  end
+
   def time_coverage
     if time_coverage_single.present?
       clean_time_coverage(time_coverage_single)

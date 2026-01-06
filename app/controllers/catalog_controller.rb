@@ -203,8 +203,7 @@ class CatalogController < ApplicationController
     config.add_show_field "access_conditions_ssim", label: "Access Conditions", helper_method: :emphasized_list, if: ->(_controller, _config, document) do
       !document.has_eresources?
     end
-    config.add_show_field "terms_of_use_tsim", label: "Terms of Use and Reproduction", helper_method: :emphasized_list
-    config.add_show_field "related_terms_urls", label: "Terms of Use Licence", accessor: :related_terms_urls, helper_method: :url_list
+    config.add_show_field "terms_of_use_tsim", label: "Terms of Use and Reproduction", accessor: :terms_of_use_with_licence, helper_method: :linked_terms_of_use
     config.add_show_field "scale_tsim", label: "Scale"
     config.add_show_field "printer_tsim", label: "Printer", helper_method: :unstyled_list
     config.add_show_field "description", label: "Description", accessor: :description, helper_method: :unstyled_list

@@ -55,9 +55,6 @@ class Access
   end
 
   def get_related_terms_urls
-    # To use the @ind field, you need to match against ind1 or ind2 attributes.
-    # Current implementation extracts all 540 fields.
-    # Example for specific indicator: //datafield[@tag='540' and @ind1='3']
     elements = get_marc_datafields_from_xml("//datafield[@tag='540']")
     make_url(elements)
   end
