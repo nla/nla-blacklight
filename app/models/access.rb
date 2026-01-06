@@ -56,7 +56,7 @@ class Access
 
   def get_related_terms_urls
     elements = get_marc_datafields_from_xml("//datafield[@tag='540']")
-    make_url(elements)
+    make_terms_url(elements)
   end
 
   private
@@ -95,6 +95,28 @@ class Access
         el.children.each do |subfield|
           subfield_code = subfield.attribute("code").value
           if subfield_code == "3" || subfield_code == "z"
+            url_hash[:text] = subfield.text.gsub(/:$/, "") if url_hash[:text].nil?
+          elsif subfield_code == "u"
+            url_hash[:href] = subfield.text
+          end
+        end
+        if url_hash[:text].nil?
+          url_hash[:text] = url_hash[:href]
+        end
+        urls << url_hash unless url_hash[:href].nil?
+      end
+      urls.compact_blank.presence
+    end
+  end
+
+  def make_terms_url(elements)
+    if elements.present?
+      urls = []
+      elements.each do |el|
+        url_hash = {}
+        el.children.each do |subfield|
+          subfield_code = subfield.attribute("code").value
+          if subfield_code == "a"
             url_hash[:text] = subfield.text.gsub(/:$/, "") if url_hash[:text].nil?
           elsif subfield_code == "u"
             url_hash[:href] = subfield.text
