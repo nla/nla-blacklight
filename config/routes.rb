@@ -2,7 +2,6 @@
 #
 #                                   Prefix Verb     URI Pattern                                          Controller#Action
 #                               blacklight          /                                                    Blacklight::Engine
-#        blacklight_advanced_search_engine          /                                                    BlacklightAdvancedSearch::Engine
 #               yabeda_prometheus_exporter          /metrics                                             Yabeda::Prometheus::Exporter
 #                           search_catalog GET|POST /catalog(.:format)                                   catalog#index
 #                  advanced_search_catalog GET      /catalog/advanced(.:format)                          catalog#advanced_search
@@ -92,12 +91,8 @@
 #       search_history GET    /search_history(.:format)       search_history#index
 # clear_search_history DELETE /search_history/clear(.:format) search_history#clear
 #
-# Routes for BlacklightAdvancedSearch::Engine:
-# advanced_search GET  /advanced(.:format) catalog#advanced_search
-
 Rails.application.routes.draw do
   mount Blacklight::Engine => "/"
-  mount BlacklightAdvancedSearch::Engine => "/"
   mount Yabeda::Prometheus::Exporter => "/metrics"
 
   concern :exportable, Blacklight::Routes::Exportable.new

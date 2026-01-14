@@ -4,7 +4,6 @@ class UserDetailsFieldComponent < ViewComponent::Base
   PASSWORD_MASK = ""
 
   def initialize(attribute:, details:, value: nil, editable: true)
-    super
     @attribute = attribute
     @details = details
     @label = I18n.t("account.settings.#{attribute}.label")
