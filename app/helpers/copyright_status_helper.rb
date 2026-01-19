@@ -17,13 +17,13 @@ module CopyrightStatusHelper
     "#{base_url}?#{params.to_query}"
   end
 
-  def rights_enquiry_link(document:, user: nil, lower: false)
+  def rights_enquiry_link(document:, lower: false)
     link_text = lower ? "contact us" : "Contact us"
     url = rights_enquiry_url(
       item_title: document.first("title_tsim").to_s,
       item_primary_contributor: document.first("author_ssm").to_s,
-      user_first_name: user&.first_name.to_s,
-      user_last_name: user&.last_name.to_s
+      user_first_name: current_user&.first_name.to_s,
+      user_last_name: current_user&.last_name.to_s
     )
     link_to link_text, url
   end
