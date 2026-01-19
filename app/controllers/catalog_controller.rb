@@ -269,7 +269,7 @@ class CatalogController < ApplicationController
     config.add_show_field "rights_information", label: "Rights information", accessor: :rights_information, helper_method: :url_list, component: StaffOnlyComponent
     config.add_show_field "copyright_info", label: "Copyright", accessor: :copyright_status, helper_method: :render_copyright_component, if: ->(_controller, _config, document) do
       # if there is no contextMsg, there is no rights information from the copyright service
-      document.copyright_status.present? && document.copyright_status["contextMsg"].present?
+      document.copyright_status.is_a?(Hash) && document.copyright_status["contextMsg"].present?
     end
 
     # "fielded" search configuration. Used by pulldown among other places.
