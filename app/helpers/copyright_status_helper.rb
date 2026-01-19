@@ -19,6 +19,7 @@ module CopyrightStatusHelper
 
   def rights_enquiry_link(document:, lower: false)
     link_text = lower ? "contact us" : "Contact us"
+    pp current_user&
     url = rights_enquiry_url(
       item_title: document.first("title_tsim").to_s,
       item_primary_contributor: document.first("author_ssm").to_s,
