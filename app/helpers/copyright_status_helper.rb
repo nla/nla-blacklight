@@ -11,8 +11,8 @@ module CopyrightStatusHelper
       key: "Rights_Enquiry",
       bbttl: item_title,
       bbaut: item_primary_contributor,
-      clname: user_first_name,
-      clsname: user_last_name
+      clname: user_first_name + user_last_name
+
     }
     "#{base_url}?#{params.to_query}"
   end
