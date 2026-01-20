@@ -12,7 +12,7 @@ module CopyrightStatusHelper
       bbttl: item_title,
       bbaut: item_primary_contributor,
       clname: user_name,
-      bburl: last_accessed_url
+      qnudftb17: last_accessed_url
     }
     "#{base_url}?#{params.to_query}"
   end
