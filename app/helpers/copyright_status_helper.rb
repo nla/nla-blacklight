@@ -6,7 +6,7 @@ module CopyrightStatusHelper
   end
 
   def rights_enquiry_url(item_title:, item_primary_contributor:, user_name:, last_accessed_url:)
-    base_url = "https://reftracker.nla.gov.au/reft100.aspx"
+    base_url = ENV["COPYRIGHT_CONTACT_URL"]
     params = {
       key: "Rights_Enquiry",
       bbttl: item_title,
@@ -27,14 +27,5 @@ module CopyrightStatusHelper
       last_accessed_url: request.original_url
     )
     link_to link_text, url
-  end
-
-  def error_feedback_url2(id)
-    url = ENV.fetch("COPYRIGHT_CONTACT_URL", "#")
-    if url != "#"
-      "#{url}&qnudftb17=#{request.original_url}&qnudftb11=#{id}"
-    else
-      url
-    end
   end
 end
