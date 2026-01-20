@@ -5,14 +5,13 @@ module CopyrightStatusHelper
     link_to link_text, ENV["COPYRIGHT_CONTACT_URL"]
   end
 
-  def rights_enquiry_url(item_title:, item_primary_contributor:, user_first_name:, user_last_name:)
+  def rights_enquiry_url(item_title:, item_primary_contributor:, user_name:)
     base_url = "https://reftracker.nla.gov.au/reft100.aspx"
     params = {
       key: "Rights_Enquiry",
       bbttl: item_title,
       bbaut: item_primary_contributor,
-      clname: user_first_name + user_last_name
-
+      clname: user_name
     }
     "#{base_url}?#{params.to_query}"
   end
@@ -23,8 +22,7 @@ module CopyrightStatusHelper
     url = rights_enquiry_url(
       item_title: document.first("title_tsim").to_s,
       item_primary_contributor: document.first("author_ssm").to_s,
-      user_first_name: current_user&.name_given.to_s,
-      user_last_name: current_user&.name_family.to_s
+      user_name: "#{current_user&.name_given} #{current_user&.name_family}".strip
     )
     link_to link_text, url
   end
