@@ -37,7 +37,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   # @return [Boolean] true if advanced search with all empty clauses
   def advanced_search_with_empty_clauses?
     clause_params = blacklight_params[:clause]
-    return false unless clause_params.present?
+    return false if clause_params.blank?
 
     clause_params.values.all? { |clause| clause[:query].blank? }
   end
