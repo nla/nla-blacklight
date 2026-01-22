@@ -2015,6 +2015,71 @@ RSpec.describe SolrDocument do
     end
   end
 
+  describe "#related_terms_urls" do
+    context "when there is a licence URL in MARC 540" do
+      subject(:related_terms_value) do
+        document = described_class.new(marc_ss: terms_of_use_with_licence)
+        document.related_terms_urls
+      end
+
+      it "returns the licence URL" do
+        expect(related_terms_value).to eq [{href: "https://creativecommons.org/licenses/by/4.0", text: "Licensed under Creative Commons. Attribution 4.0 International (CC BY 4.0)"}]
+      end
+    end
+
+    context "when there is no licence URL in MARC 540" do
+      subject(:related_terms_value) do
+        document = described_class.new(marc_ss: terms_of_service)
+        document.related_terms_urls
+      end
+
+      it "returns nil" do
+        expect(related_terms_value).to be_nil
+      end
+    end
+  end
+
+  describe "#terms_of_use_with_licence" do
+    context "when there are terms of use and a licence URL" do
+      subject(:terms_with_licence_value) do
+        document = described_class.new(
+          marc_ss: terms_of_use_with_licence,
+          terms_of_use_tsim: ["Licensed under Creative Commons. Attribution 4.0 International (CC BY 4.0)"]
+        )
+        document.terms_of_use_with_licence
+      end
+
+      it "returns the terms with the licence URL" do
+        expect(terms_with_licence_value).to eq [{text: "Licensed under Creative Commons. Attribution 4.0 International (CC BY 4.0)", href: "https://creativecommons.org/licenses/by/4.0"}]
+      end
+    end
+
+    context "when there are terms of use but no licence URL" do
+      subject(:terms_with_licence_value) do
+        document = described_class.new(
+          marc_ss: terms_of_service,
+          terms_of_use_tsim: ["Copyright A.P.R.A. 1999.", "Copyright A.P.R.A. 1997."]
+        )
+        document.terms_of_use_with_licence
+      end
+
+      it "returns terms without href" do
+        expect(terms_with_licence_value).to eq [{text: "Copyright A.P.R.A. 1999."}, {text: "Copyright A.P.R.A. 1997."}]
+      end
+    end
+
+    context "when there are no terms of use" do
+      subject(:terms_with_licence_value) do
+        document = described_class.new(marc_ss: place)
+        document.terms_of_use_with_licence
+      end
+
+      it "returns nil" do
+        expect(terms_with_licence_value).to be_nil
+      end
+    end
+  end
+
   describe "#time_coverage" do
     context "when single time coverage" do
       subject(:time_coverage_value) do
@@ -2431,6 +2496,10 @@ RSpec.describe SolrDocument do
 
   def terms_of_service
     load_marc_from_file 3701679
+  end
+
+  def terms_of_use_with_licence
+    load_marc_from_file 8854531
   end
 
   def translated_title
