@@ -113,6 +113,42 @@ module FieldHelper
     safe_join(elements, "\n")
   end
 
+  # Display terms of use with licence URL as hyperlink.
+  # If a URL is present, the text becomes a link to that URL.
+  # If no URL is present, just display the text with emphasis.
+  def linked_terms_of_use(document:, field:, config:, value:, context:)
+    return nil if value.blank?
+
+    elements = []
+
+    elements << if value.size > 1
+      content_tag(:ul) do
+        safe_join(value.map do |item|
+          content_tag(:li) do
+            content_tag(:strong) do
+              if item[:href].present?
+                link_to(item[:text], item[:href], class: "text-break", target: "_blank", rel: "noopener noreferrer")
+              else
+                link_urls item[:text]
+              end
+            end
+          end
+        end, "\n")
+      end
+    else
+      item = value.first
+      content_tag(:strong) do
+        if item[:href].present?
+          link_to(item[:text], item[:href], class: "text-break", target: "_blank", rel: "noopener noreferrer")
+        else
+          link_urls item[:text]
+        end
+      end
+    end
+
+    safe_join(elements, "\n")
+  end
+
   # Display combined notes (i.e. notes and linked 880 notes). Shown as
   # an unordered list if there are multiple notes. URLs in notes will
   # be turned into links.
@@ -133,7 +169,7 @@ module FieldHelper
   end
 
   def render_copyright_component(document:, field:, config:, value:, context:)
-    if value.present? && value.first.present? && value.first["contextMsg"].present?
+    if value.present? && value.first.is_a?(Hash) && value.first["contextMsg"].present?
       render CopyrightStatusComponent.new(document, value.first)
     end
   end
