@@ -66,7 +66,7 @@ class SolrDocument
     @marc_xml ||= Nokogiri::XML.parse(fetch("marc_ss")).remove_namespaces!
   end
 
-  delegate :related_access_urls, :copy_access_urls, :online_access_urls, :map_search_urls, :has_eresources?, to: :access
+  delegate :related_access_urls, :related_terms_urls, :copy_access_urls, :online_access_urls, :map_search_urls, :has_eresources?, to: :access
   delegate :valid_isbn, :invalid_isbn, :isbn_list, :issn_list, to: :isbn
 
   attribute :acknowledgement, :array, "acknowledgement_tsim"
@@ -195,6 +195,21 @@ class SolrDocument
 
   def rights_information
     [{text: "View in Sprightly", href: "https://sprightly.nla.gov.au/works/#{id}?source=catalogue"}]
+  end
+
+  def terms_of_use_with_licence
+    return nil if terms_of_use.blank?
+
+    # Get the URL from related_terms_urls if available
+    licence_url = related_terms_urls&.first&.dig(:href)
+
+    terms_of_use.map do |term|
+      if licence_url.present?
+        {text: term, href: licence_url}
+      else
+        {text: term}
+      end
+    end
   end
 
   def time_coverage
