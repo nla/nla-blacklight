@@ -288,7 +288,10 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field "all_fields", label: "All Fields"
+    config.add_search_field("all_fields") do |field|
+      field.label = "All Fields"
+      field.clause_params = {edismax: {}}
+    end
 
     # Now we see how to over-ride Solr request handler defaults, in this
     # case for a BL "search field", which is really a dismax aggregate
@@ -301,6 +304,12 @@ class CatalogController < ApplicationController
         qf: "title_stim^20 title_tsim^20 title_addl_tsim",
         pf: "title_stim^30 title_tsim^30 title_addl_tsim title_only_tsim^40"
       }
+      field.clause_params = {
+        edismax: {
+          qf: "title_stim^20 title_tsim^20 title_addl_tsim",
+          pf: "title_stim^30 title_tsim^30 title_addl_tsim title_only_tsim^40"
+        }
+      }
     end
 
     config.add_search_field("author") do |field|
@@ -308,6 +317,12 @@ class CatalogController < ApplicationController
         "spellcheck.dictionary": "author",
         qf: "author_search_tesim",
         pf: "author_search_tesim"
+      }
+      field.clause_params = {
+        edismax: {
+          qf: "author_search_tesim",
+          pf: "author_search_tesim"
+        }
       }
     end
 
@@ -317,6 +332,12 @@ class CatalogController < ApplicationController
         "spellcheck.dictionary": "subject",
         qf: "subject_tsimv",
         pf: "subject_tsimv"
+      }
+      field.clause_params = {
+        edismax: {
+          qf: "subject_tsimv",
+          pf: "subject_tsimv"
+        }
       }
     end
 
@@ -336,6 +357,12 @@ class CatalogController < ApplicationController
         qf: "call_number_tsim",
         pf: "call_number_tsim"
       }
+      field.clause_params = {
+        edismax: {
+          qf: "call_number_tsim",
+          pf: "call_number_tsim"
+        }
+      }
     end
 
     config.add_search_field("isbn") do |field|
@@ -343,6 +370,12 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         qf: "isbn_tsim",
         pf: "isbn_tsim"
+      }
+      field.clause_params = {
+        edismax: {
+          qf: "isbn_tsim",
+          pf: "isbn_tsim"
+        }
       }
     end
 
@@ -352,6 +385,12 @@ class CatalogController < ApplicationController
         qf: "id",
         pf: "id"
       }
+      field.clause_params = {
+        edismax: {
+          qf: "id",
+          pf: "id"
+        }
+      }
     end
 
     config.add_search_field("occupation") do |field|
@@ -360,6 +399,12 @@ class CatalogController < ApplicationController
         qf: "occupation_tesim",
         pf: "occupation_tesim"
       }
+      field.clause_params = {
+        edismax: {
+          qf: "occupation_tesim",
+          pf: "occupation_tesim"
+        }
+      }
     end
 
     config.add_search_field("genre") do |field|
@@ -367,6 +412,12 @@ class CatalogController < ApplicationController
       field.solr_parameters = {
         qf: "genre_tesim",
         pf: "genre_tesim"
+      }
+      field.clause_params = {
+        edismax: {
+          qf: "genre_tesim",
+          pf: "genre_tesim"
+        }
       }
     end
 
