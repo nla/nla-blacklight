@@ -90,6 +90,12 @@
 
 .sort-pagination {
   border-top: 1px solid rgb(230,230,230);
+  border-bottom: 1px solid rgb(230,230,230);
+  margin-bottom: 1rem;
+  
+  .pagination {
+    align-items: center;
+  }
   
   .btn {
     font-weight: normal;
@@ -165,6 +171,7 @@
     }
     
     .document-title-heading {
+      font-size: 1.25rem;
       text-underline-offset: 2px;
       text-underline-position: under;
       
