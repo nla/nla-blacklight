@@ -173,6 +173,63 @@ RSpec.describe FieldHelper do
     end
   end
 
+  describe "#linked_terms_of_use" do
+    subject(:value_list) { helper.linked_terms_of_use(document: document, field: "terms_of_use", config: config, value: value, context: "show") }
+
+    context "when value is nil" do
+      let(:value) { nil }
+
+      it "returns nil" do
+        expect(value_list).to be_nil
+      end
+    end
+
+    context "when value is empty" do
+      let(:value) { [] }
+
+      it "returns nil" do
+        expect(value_list).to be_nil
+      end
+    end
+
+    context "when there is a single item with a URL" do
+      let(:value) { [{text: "Licensed under Creative Commons", href: "https://creativecommons.org/licenses/by/4.0"}] }
+
+      it "generates a hyperlink with emphasized text" do
+        expect(value_list).to eq '<strong><a class="text-break" target="_blank" rel="noopener noreferrer" href="https://creativecommons.org/licenses/by/4.0">Licensed under Creative Commons</a></strong>'
+      end
+    end
+
+    context "when there is a single item without a URL" do
+      let(:value) { [{text: "Copyright restricted"}] }
+
+      it "generates emphasized plain text" do
+        expect(value_list).to eq "<strong>Copyright restricted</strong>"
+      end
+    end
+
+    context "when there are multiple items without URLs" do
+      let(:value) do
+        [
+          {text: "Copyright A.P.R.A. 1999."},
+          {text: "Copyright A.P.R.A. 1998."}
+        ]
+      end
+
+      it "generates a list of emphasized text" do
+        expect(value_list).to eq "<ul><li><strong>Copyright A.P.R.A. 1999.</strong></li>\n<li><strong>Copyright A.P.R.A. 1998.</strong></li></ul>"
+      end
+    end
+
+    context "when item text contains a URL but no href is provided" do
+      let(:value) { [{text: "See: https://example.com/terms.pdf"}] }
+
+      it "generates a link around the URL in the text" do
+        expect(value_list).to eq '<strong>See: <a href="https://example.com/terms.pdf" class="text-break">https://example.com/terms.pdf</a></strong>'
+      end
+    end
+  end
+
   # rubocop:disable RSpec/NestedGroups
   describe "#notes" do
     subject(:notes_values) { helper.notes(document: document, field: "notes", config: config, value: value, context: "show") }
