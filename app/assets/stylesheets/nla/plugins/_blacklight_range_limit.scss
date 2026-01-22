@@ -5,6 +5,7 @@
   }
 }
 
+// Legacy slider styles (kept for compatibility)
 .slider_js {
   .slider-handle {
     background-image: none;
@@ -29,5 +30,135 @@
   .sr-only {
     height: auto;
     width: auto;
+  }
+}
+
+// Dual-handle range slider styles
+$thumb-size: 20px;
+$track-height: 6px;
+
+.range-slider-container {
+  position: relative;
+  width: 100%;
+  height: $thumb-size;
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.range-slider-track {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: $track-height;
+  background-color: $gray-light;
+  border-radius: $track-height / 2;
+  pointer-events: none;
+}
+
+.range-slider-range {
+  position: absolute;
+  height: 100%;
+  background-color: $light-teal;
+  border-radius: $track-height / 2;
+}
+
+.range-slider-input {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: $thumb-size;
+  background: transparent;
+  pointer-events: none;
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+  padding: 0;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: $thumb-size;
+    height: $thumb-size;
+    background-color: $white;
+    border: 2px solid $dark-teal;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
+
+    &:hover {
+      background-color: $light-teal;
+      transform: scale(1.1);
+    }
+
+    &:active {
+      background-color: $mid-teal;
+      transform: scale(1.15);
+    }
+  }
+
+  &::-moz-range-thumb {
+    width: $thumb-size;
+    height: $thumb-size;
+    background-color: $white;
+    border: 2px solid $dark-teal;
+    border-radius: 50%;
+    cursor: pointer;
+    pointer-events: auto;
+    transition: background-color 0.15s ease-in-out, transform 0.15s ease-in-out;
+
+    &:hover {
+      background-color: $light-teal;
+      transform: scale(1.1);
+    }
+
+    &:active {
+      background-color: $mid-teal;
+      transform: scale(1.15);
+    }
+  }
+
+  // Hide the track for the input (we use our custom track)
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: $thumb-size;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  &::-moz-range-track {
+    width: 100%;
+    height: $thumb-size;
+    background: transparent;
+    cursor: pointer;
+  }
+}
+
+// Ensure the min slider thumb can overlap properly
+.range-slider-min {
+  z-index: 2;
+}
+
+.range-slider-max {
+  z-index: 1;
+}
+
+// When min value equals max value, ensure one thumb is on top
+.range-slider-min::-webkit-slider-thumb {
+  z-index: 3;
+}
+
+// Focus styles for accessibility
+.range-slider-input:focus {
+  outline: none;
+
+  &::-webkit-slider-thumb {
+    box-shadow: 0 0 0 3px rgba($dark-teal, 0.3);
+  }
+
+  &::-moz-range-thumb {
+    box-shadow: 0 0 0 3px rgba($dark-teal, 0.3);
   }
 }

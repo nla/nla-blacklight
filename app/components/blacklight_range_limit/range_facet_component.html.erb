@@ -8,31 +8,21 @@
         data-chart-enabled="<%= !! range_config[:chart_js] %>"
         data-chart-segment-border-color="<%= range_config[:chart_segment_border_color] || '#685E57' %>"
         data-chart-segment-bg-color="<%= range_config[:chart_segment_bg_color] || '#a1d6ca' %>"
-        data-textual-facets="<%= !! range_config[:textual_facets] %>"
-        data-textual-facets-collapsible="<%= !! range_config[:textual_facets_collapsible] %>"
+        data-textual-facets="false"
+        data-textual-facets-collapsible="false"
         data-range-list-heading-localized="<%= t('blacklight.range_limit.range_list_heading') %>"
     >
       <% if @facet_field.selected_range_facet_item %>
         <%= render BlacklightRangeLimit::RangeSegmentsComponent.new(facet_field: @facet_field, facet_items: [@facet_field.selected_range_facet_item], classes: ['current', 'mb-3']) %>
       <% end %>
 
-      <!-- no results profile if missing is selected -->
       <% unless @facet_field.missing_selected? %>
-        <%# this has to be on page if you want calculated facets to show up, JS sniffs it.
-          it was very hard to get chart.js to be successfully responsive, required this wrapper!
-          https://github.com/chartjs/Chart.js/issues/11005 -%>
+        <%# Chart wrapper for Chart.js histogram %>
         <div class="chart-wrapper mb-3" data-chart-wrapper="true" style="display: none; position: relative; width: 100%; aspect-ratio: <%= range_config[:chart_aspect_ratio] %>;">
         </div>
 
-        <%= render BlacklightRangeLimit::RangeFormComponent.new(facet_field: @facet_field, classes: @classes) %>
-
-        <% if uses_distribution? &&
-              (min = @facet_field.min) &&
-              (max = @facet_field.max) %>
-          <div class="distribution <%= 'chart_js' unless range_config[:chart_js] == false %>">
-            <!-- if we already fetched segments from solr, display them
-                 here. Otherwise, display a link to fetch them, which JS
-                 will AJAX fetch.  -->
+        <% if (min = @facet_field.min) && (max = @facet_field.max) %>
+          <div class="distribution chart_js">
             <% if @facet_field.range_queries.any? %>
               <%= render BlacklightRangeLimit::RangeSegmentsComponent.new(facet_field: @facet_field) %>
             <% else %>
@@ -41,7 +31,9 @@
           </div>
         <% end %>
 
-        <% if range_config[:show_missing_link] && @facet_field.missing_facet_item && !request.xhr? && uses_distribution? %>
+        <%= render BlacklightRangeLimit::RangeFormComponent.new(facet_field: @facet_field, classes: @classes) %>
+
+        <% if range_config[:show_missing_link] && @facet_field.missing_facet_item && !request.xhr? %>
           <%= render BlacklightRangeLimit::RangeSegmentsComponent.new(facet_field: @facet_field, facet_items: [@facet_field.missing_facet_item], classes: ['missing', 'mt-3']) %>
         <% end %>
       <% end %>
