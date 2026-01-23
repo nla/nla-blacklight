@@ -350,6 +350,10 @@
   }
   
   .constraints-container {
+    .constraints-label {
+      color: $body-color-dark;
+    }
+    
     .applied-filter {
       border-color: $body-bg-dark;
       
@@ -420,17 +424,16 @@
       }
     }
     
+    .accordian,
     .facets-collapse {
+      
+      .accordian-item,
       .facet-limit {
         border-bottom-color: $body-bg-dark;
         color: $body-color-dark;
         
-        &.card {
-          background-color: $grey-300;
-        }  
-        
         .facet-field-heading {
-          background-color: $grey-300 !important;
+          background-color: $grey-300;
           
           &:has([aria-expanded="true"]) {
             .btn {
@@ -450,36 +453,61 @@
         }
         
         .facet-content {
-          .facet-values {
-            li {
+          .accordion-body {
+            .facet-values {
+              li {
+                background-color: $grey-300;
+                
+                &:has(.facet-select:hover),
+                &:has(.facet-select:focus),
+                &:has(.facet-select:active) {
+                  background-color: $grey-600;
+                }
+              
+                .facet-select,
+                .selected {
+                  color: $body-color-dark !important;
+                }
+                
+                .facet-count {
+                  color: $white;
+                  
+                  &.selected {
+                    color: $white !important;
+                  }
+                }
+                
+                .remove {
+                  color: $body-color-dark;
+                }
+              }
+            }
+            
+            .more_facets {
               background-color: $grey-300;
-              
-              &:has(.facet-select:hover),
-              &:has(.facet-select:focus),
-              &:has(.facet-select:active) {
-                background-color: $grey-600;
-              }
-            }
-            .facet-select,
-            .selected {
-              color: $body-color-dark !important;
-            }
-            
-            .facet-count {
-              color: $white;
-              
-              &.selected {
-                color: $white !important;
-              }
-            }
-            
-            .remove {
-              color: $body-color-dark;
             }
           }
         }
       } 
     }
+  }
+  
+  .facet-limit {
+    // Accordion icon stroke color can't be set without overriding the whole SVG
+    --bs-accordion-btn-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
+  }
+  
+  .facet-limit .accordion-button:hover,
+  .facet-limit .accordion-button:focus,
+  .facet-limit .accordion-button:active, {
+    // Accordion icon stroke color can't be set without overriding the whole SVG
+    --bs-accordion-btn-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
+  }
+  
+  .facet-limit-active,
+  .facet-limit [aria-expanded="true"] {
+    // Accordion icon stroke color can't be set without overriding the whole SVG
+    --bs-accordion-btn-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
   }
   
   
