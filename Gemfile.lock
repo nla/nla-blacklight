@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/nla/bento_search.git
   revision: feb4767ba9ba8cf20cc19bd0461618c101b3bf14
-  branch: main
+  tag: 0.0.2
   specs:
     bento_search (2.0.0.rc1)
       confstruct (~> 1.0)
