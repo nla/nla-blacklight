@@ -17,10 +17,10 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: e22ac31ebde7bd28d9d271c6f55f07ec39ccddd0
+  revision: 1f13e8f87cad405f56042589f4756d4bc0fca9cc
   branch: main
   specs:
-    nla-blacklight_common (0.3.4)
+    nla-blacklight_common (0.3.5)
       activerecord-session_store (~> 2.0)
       annotaterb
       blacklight (>= 8.0.0, < 10)
@@ -195,7 +195,7 @@ GEM
     concurrent-ruby (1.3.5)
     confstruct (1.1.0)
       hashie (>= 3.3, < 5)
-    connection_pool (3.0.2)
+    connection_pool (2.5.4)
     crack (1.0.0)
       bigdecimal
       rexml
