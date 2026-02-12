@@ -252,7 +252,7 @@ GEM
     domain_name (0.6.20240107)
     dot-properties (0.1.4)
       bundler (>= 2.2.33)
-    dotenv (3.1.8)
+    dotenv (3.2.0)
     drb (2.2.3)
     dry-initializer (3.2.0)
     ebsco-eds (1.1.7)
