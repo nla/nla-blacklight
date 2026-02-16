@@ -53,6 +53,10 @@ gem "jbuilder"
 gem "hiredis", "~> 0.6.3"
 gem "hiredis-client", "~> 0.26.2"
 
+# Pin connection_pool to 2.x for compatibility with Rails 8 RedisCacheStore
+# connection_pool 3.0+ changed the API and breaks Rails 8's pool initialization
+gem "connection_pool", "~> 2.4"
+
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.4"
 
