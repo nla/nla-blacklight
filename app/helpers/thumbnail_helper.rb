@@ -7,9 +7,9 @@ module ThumbnailHelper
     return if document.first("id").blank?
 
     service_options = {
-      nlaObjId: document.first(NLA_OBJ_ID_FIELD),
-      isbnList: document.valid_isbn&.join(","),
-      lccnList: document.lccn&.join(","),
+      nlaObjId: document.first(NLA_OBJ_ID_FIELD).to_s,
+      isbnList: document.valid_isbn&.join(",").to_s,
+      lccnList: document.lccn&.join(",").to_s,
       width: thumbnail_image_width(document),
       id: document.first("id")
     }
