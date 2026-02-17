@@ -18,7 +18,6 @@
     <%= favicon_link_tag 'favicon-32x32-dark.png', type: 'image/png', sizes: '32x32', media: 'screen and (prefers-color-scheme: dark)' %>
     <%= favicon_link_tag 'favicon.svg', type: 'image/svg+xml', sizes: 'any' %>
 
-    <%= stylesheet_link_tag "range_limit", media: "all", "data-turbo-track": "reload"  %>
     <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload"  %>
     <% if defined? Importmap %>
       <%= javascript_importmap_tags %>

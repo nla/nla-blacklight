@@ -814,6 +814,44 @@
       fill: $body-color-dark;
     }
   }
+  
+  // Range slider dark mode
+  .range-slider-track {
+    background-color: $gray-700;
+  }
+  
+  .range-slider-input {
+    &::-webkit-slider-thumb {
+      background-color: $gray-900;
+      border-color: $light-teal;
+      
+      &:hover,
+      &:active {
+        background-color: $dark-teal;
+      }
+    }
+    
+    &::-moz-range-thumb {
+      background-color: $gray-900;
+      border-color: $light-teal;
+      
+      &:hover,
+      &:active {
+        background-color: $dark-teal;
+      }
+    }
+    
+    &:focus {
+      &::-webkit-slider-thumb {
+        box-shadow: 0 0 0 3px rgba($light-teal, 0.35);
+      }
+      
+      &::-moz-range-thumb {
+        box-shadow: 0 0 0 3px rgba($light-teal, 0.35);
+      }
+    }
+  }
+  
   // Drop downs
   //.dropdown-item
     
