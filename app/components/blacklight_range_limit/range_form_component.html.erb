@@ -1,0 +1,52 @@
+<%= form_tag search_action_path, method: :get, class: [@classes[:form], "range_#{@facet_field.key} d-flex justify-content-center"].join(' ') do %>
+  <%= render hidden_search_state %>
+
+  <div class="range-limit-input-group">
+    <%# Dual-handle range slider %>
+    <div class="range-slider-container mb-3"
+         data-range-slider="true"
+         data-min="<%= @facet_field.min || range_config[:min_value] || 0 %>"
+         data-max="<%= @facet_field.max || range_config[:max_value] || 9999 %>">
+      <div class="range-slider-track">
+        <div class="range-slider-selected"></div>
+      </div>
+      <input type="range"
+             class="range-slider-input range-slider-min"
+             min="<%= @facet_field.min || range_config[:min_value] || 0 %>"
+             max="<%= @facet_field.max || range_config[:max_value] || 9999 %>"
+             value="<%= begin_value_default || @facet_field.min || range_config[:min_value] || 0 %>"
+             aria-label="<%= t('blacklight.range_limit.range_begin_short') %>">
+      <input type="range"
+             class="range-slider-input range-slider-max"
+             min="<%= @facet_field.min || range_config[:min_value] || 0 %>"
+             max="<%= @facet_field.max || range_config[:max_value] || 9999 %>"
+             value="<%= end_value_default || @facet_field.max || range_config[:max_value] || 9999 %>"
+             aria-label="<%= t('blacklight.range_limit.range_end_short') %>">
+    </div>
+
+    <%# Input group matching old v8 styling %>
+    <div class="input-group input-group-sm mb-3 flex-nowrap">
+      <input type="number"
+             name="<%= begin_input_name %>"
+             id="range_<%= @facet_field.key %>_begin"
+             value="<%= begin_value_default %>"
+             maxlength="4"
+             class="form-control text-center range_begin">
+      <label class="sr-only visually-hidden" for="range_<%= @facet_field.key %>_begin">
+        <%= @facet_field.label %> <%= t('blacklight.range_limit.range_begin') %>
+      </label>
+
+      <input type="number"
+             name="<%= end_input_name %>"
+             id="range_<%= @facet_field.key %>_end"
+             value="<%= end_value_default %>"
+             maxlength="4"
+             class="form-control text-center range_end">
+      <label class="sr-only visually-hidden" for="range_<%= @facet_field.key %>_end">
+        <%= @facet_field.label %> <%= t('blacklight.range_limit.range_end') %>
+      </label>
+
+      <%= submit_tag "Apply", class: "btn btn-secondary", name: nil %>
+    </div>
+  </div>
+<% end %>

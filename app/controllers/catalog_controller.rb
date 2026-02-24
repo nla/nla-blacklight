@@ -162,7 +162,8 @@ class CatalogController < ApplicationController
       range: {
         num_segments: 6,
         chart_segment_border_color: "rgba(104, 94, 87, 0.5)",
-        chart_segment_bg_color: "#a1d6ca"
+        chart_segment_bg_color: "#a1d6ca",
+        textual_facets: false
       }
     config.add_facet_field "author_ssim", label: "Author", limit: true, index_range: "A".."Z"
     config.add_facet_field "subject_ssim", label: "Subject", limit: 20, index_range: "A".."Z"
