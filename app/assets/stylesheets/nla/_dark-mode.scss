@@ -6,19 +6,19 @@
 @media screen and (prefers-color-scheme: dark) {
 
   body {
-    background-color: $body-bg-dark;
-    color: $body-color-dark;
+    //background-color: $body-bg-dark;
+    //color: $body-color-dark;
   }
 
-  a:not(.btn, .page-link) {
-    color: $link-color-dark;
+  a:not(.btn, .page-link, .facet-select, .remove) {
+    //color: $link-color-dark;
     
     &:focus,
     &:hover,
     &:active {
-      color: $link-hover-color-dark;
-      background-color: $link-hover-bg-color-dark;
-      box-shadow: 0 0 0 4px $link-hover-bg-color-dark;
+      //color: $link-hover-color-dark;
+      //background-color: $link-hover-bg-color-dark;
+      //box-shadow: 0 0 0 4px $link-hover-bg-color-dark;
     }
   }
   
@@ -433,27 +433,31 @@
         color: $body-color-dark;
         
         .facet-field-heading {
-          background-color: $grey-300;
+          //background-color: $grey-300;
           
           &:has([aria-expanded="true"]) {
             .btn {
-              color: $black;
+              //color: $black;
             }
           }
           
           .btn {
-            color: $body-color-dark;
+            //color: $body-color-dark;
             
             &:hover,
             &:focus,
             &:focus-visible {
-              color: $black;
+              //color: $black;
             }
           }
         }
         
         .facet-content {
           .accordion-body {
+            .range_limit {
+              //background-color: $grey-300;
+            }
+            
             .facet-values {
               li {
                 background-color: $grey-300;
@@ -478,7 +482,7 @@
                 }
                 
                 .remove {
-                  color: $body-color-dark;
+                  //color: $body-color-dark;
                 }
               }
             }
@@ -494,33 +498,33 @@
   
   .facet-limit {
     // Accordion icon stroke color can't be set without overriding the whole SVG
-    --bs-accordion-btn-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
+    //--bs-accordion-btn-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
   }
   
   .facet-limit .accordion-button:hover,
   .facet-limit .accordion-button:focus,
   .facet-limit .accordion-button:active, {
     // Accordion icon stroke color can't be set without overriding the whole SVG
-    --bs-accordion-btn-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
+    //--bs-accordion-btn-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
   }
   
   .facet-limit-active,
   .facet-limit [aria-expanded="true"] {
     // Accordion icon stroke color can't be set without overriding the whole SVG
-    --bs-accordion-btn-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
+    //--bs-accordion-btn-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
   }
   
   
   // Pagination
   .page-link,
   .page-item.disabled .page-link:not(a) {
-    color: $pagination-color-dark;
+    //color: $pagination-color-dark;
   }
 
 
   // Record page
   #catalogue-record-actions {
-    background: $body-bg-dark;
+    //background: $body-bg-dark;
     border-bottom: 1px solid $grey-700;
   }
   
@@ -621,6 +625,7 @@
       .facet-field-heading {
         .btn {
           color: $body-color-dark;
+          //background-color: transparent;
         }
         
         button {
@@ -780,11 +785,6 @@
         }
       }
     }
-  }
-    
-  dialog::backdrop {
-    background-color: $grey-100;
-    opacity: 0.95;
   }
     
   

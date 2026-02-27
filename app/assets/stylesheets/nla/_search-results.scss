@@ -1,93 +1,5 @@
 @charset "UTF-8";
-@import "variables";
-@import "nla-custom-bootstrap";
 
-.constraints-container {
-  margin-top: 1rem;
-  align-items: center;
-  
-  .applied-filter {
-    font-weight: normal;
-    text-transform: none;
-    letter-spacing: 0;
-    border-radius: 0.5rem;
-    border: 2px solid $body-bg;
-    
-    .filter-name:after {
-      transition: all 0.25s;
-    }
-    
-    &:focus,
-    &:hover {
-      .constraint-value,
-      .remove {
-        color: $white;
-        background: $grey-350;
-      }
-      
-      .filter-name:after {
-        color: $white;
-      }
-    }
-    
-    &:has(.remove:focus) {
-      border-color: $grey-700;
-      
-      .constraint-value,
-      .remove { 
-        color: $white;
-        background-color: $grey-350;
-      }
-      
-      .filter-name:after { 
-        color: $white;
-      }
-    }
-    
-    .constraint-value,
-    .remove {
-      color: $warm-grey;
-      background-color: $tags-surface;
-      border: none;
-      font-size: 0.875rem;
-      padding-left: 0.5rem;
-      padding-right: 0.5rem;
-      line-height: 1;
-      z-index: 0;
-      
-      &.btn {
-        padding-top: 0.5rem !important;
-        padding-bottom: 0.5rem !important;
-      }
-    }
-    
-    .constraint-value {
-      border-top-left-radius: calc(0.5rem - 2px);
-      border-bottom-left-radius: calc(0.5rem - 2px);
-    }
-    
-    .remove {
-      border-top-right-radius: calc(0.5rem - 2px);
-      border-bottom-right-radius: calc(0.5rem - 2px);
-      padding-left: 0;
-      
-      &:not(:disabled):not(.disabled):hover,
-      &:not(:disabled):not(.disabled):focus,
-      &:not(:disabled):not(.disabled):active {
-        color: $lightest-orange;
-        cursor: pointer;
-        text-decoration: none;
-        box-shadow: none;
-      }
-    }
-    
-    .filter-name {
-      &:after {
-        color: $warm-grey;
-      }
-    }
-  }
-}
 
 .sort-pagination {
   border-top: 1px solid rgb(230,230,230);
@@ -104,15 +16,14 @@
     padding-left: 1em;
     padding-right: 1em;
     border: none;
-    color: $grey-700;
     background: transparent;
     
     &:focus,
     &:hover,
     &:active,
     &.show {
+      color: var(--nla-body-color);
       background-color: transparent;
-      color: $black;
       box-shadow: none;
       text-decoration: underline;
     }
@@ -122,7 +33,6 @@
     .btn {
       .d-sm-inline {
         font-weight: 600;
-        color: $black;
       }
     }
   }
@@ -130,45 +40,24 @@
   .per_page-dropdown {
     .btn {
       font-weight: 600;
-      color: $black;
 
       .d-sm-inline {
         font-weight: 400;
-        color: $grey-700;
       }
     }
   } 
-  
-  .dropdown-menu.show {
-    background-color: $white;
-    box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
-    
-    .dropdown-item {
-      color: $grey-700;
-      text-decoration: none;
-      
-      &:focus,
-      &:hover,
-      &:active,
-      &.active {
-        background-color: $light-grey;
-        color: $grey-700;
-        box-shadow: none;
-      }
-    }
-  }
 }
 
 .documents-list {
   .document {
     margin-top: 0;
     padding: 1rem;
-    border-bottom: 1px dotted $light-grey;
+    border-bottom: 1px dotted var(--nla-result-item-border-color);
     
     &:focus,
     &:hover,
     &:has(.document-title-heading a:focus) {
-      background: $light-grey;
+      background: var(--nla-result-item-hover-bg);
     }
     
     .document-title-heading {
@@ -180,7 +69,7 @@
         &:focus,
         &:hover,
         &:active {
-          color: $grey-700;
+          color: var(--nla-body-color);
           background: transparent;
           text-decoration: underline;
           box-shadow: none;
@@ -196,7 +85,7 @@
     
     .dl-invert {
       dt {
-        color: $grey-300;
+        color: var(--nla-result-item-dt-color);
       }
     }
     
@@ -220,7 +109,7 @@
           object-position: 0 0;
           
           
-          @media screen and (max-width: breakpoint-max(sm)) {
+          @media screen and (max-width: 575.98px) {
             max-width: 100px;
             max-height: 100px;
           }
@@ -229,7 +118,7 @@
     }
     
     .toggle-bookmark {
-      color: $mid-teal;
+      color: var(--nla-bookmark-icon-color);
     }
   }
 }

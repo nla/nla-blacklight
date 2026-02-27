@@ -1,22 +1,18 @@
 @charset "UTF-8";
-@import "variables";
-@import "nla-custom-bootstrap";
 
 .page-sidebar {
   .card {
     border: none;
     margin-bottom: 1rem;
-    background: transparent;
     
     .card-header {
       border: none;
-      border-bottom: 1px solid $black;
+      border-bottom: 1px solid var(--nla-body-color);
+      background: var(--nla-body-bg);
       
       .h4 {
-        font-family: $font-family-sans-serif;
         font-size: 1.25rem;
-        color: $black;
-        font-weight: 600;
+        color: var(--nla-body-color);
         margin-left: -1rem;
       }
     }
@@ -29,19 +25,18 @@
     .card-body {
       padding: 0;
       border: none;
-      background-color: $light-grey;
     }
     
     a {
-      color: $black;
+      color: var(--nla-link-color);
       text-decoration: none;
-      border-bottom: 1px solid $white;
+      border-bottom: 1px solid var(--nla-body-bg);
       
       &:hover,
       &:focus,
       &:active {
-        background-color: $light-teal;
-        color: $black;
+        background-color: var(--nla-light-teal);
+        color: var(--nla-black);
         box-shadow: none;
       }
     }
@@ -51,7 +46,7 @@
     .list-group-item {
       border: none;
       padding: 0;
-      background-color: $light-grey;
+      background-color: var(--bs-card-bg);
       
       a {
         padding: 0.75rem 1rem;
@@ -89,7 +84,7 @@
           }
           
           .text-muted {
-            color: $white !important;
+            color: var(--nla-white) !important;
           }
         }
       }

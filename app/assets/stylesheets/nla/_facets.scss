@@ -1,194 +1,60 @@
 @charset "UTF-8";
-@import "variables";
-@import "nla-custom-bootstrap";
-
-// Facets
-.page-sidebar .facets.sidenav,
-.page-sidebar .advanced-facet-limits {
-    
-  .facets-header {
-    border-bottom: 1px solid $grey-700;
-  
-    .facets-heading {
-      font-size: 1.25rem;
-      margin-bottom: 0;
-    }
-    
-    .navbar-toggler {
-      padding-left: 0.25rem;
-      padding-right: 0.25rem;
-      
-      &:hover,
-      &:focus,
-      &:active {
-        background-color: $light-grey;
-        text-decoration: underline;
-      }
-    }
-    
-    .navbar-toggler[aria-expanded="false"] {
-      span[data-hide-label] {
-        display: none;
-      }
-    }
-    
-    .navbar-toggler[aria-expanded="true"] {
-      span[data-show-label] {
-        display: none;
-      }
-    }
-  }
-  
-  // Facet body
-  .accordian,
-  .facets-collapse {
-
-    .accordian-item,
-    .facet-limit {
-      border-bottom: 1px solid $white;
-      
-      &:not(:first-child) {
-        margin-top: 1rem;
-      }
-      
-      .accordian-header,
-      .facet-field-heading {
-        
-        .accordian-button,
-        .btn {
-          color: $black;
-          font-weight: 600;
-          border-radius: 0;
-          background-color: transparent;
-          text-underline-offset: 2px;
-          text-underline-position: under;
-          //text-decoration: none;
-          align-items: center;
-          
-          &::after {
-            margin-left: 0.5rem;
-            transform: rotate(-90deg);
-          }
-          
-          
-          &:hover,
-          &:focus,
-          &:focus-visible {
-            outline: none;
-            box-shadow: none;
-            background-color: $mid-teal;
-            text-decoration: underline;
-            text-underline-offset: 2px;
-            text-underline-position: under;
-          }
-          
-          &[aria-expanded="true"] {
-            background-color: $light-teal;
-          }
-          
-          &::after {
-            &:hover,
-            &:focus,
-            &:focus-visible {
-              text-decoration: none !important;
-            }
-          }
-          
-          &:not(.collapsed):after {
-            transform: rotate(0deg);
-            transition: transform 0.15s ease-in-out;
-          }
-        }
-      }
-      
-      // Items within the facet
-      .facet-content {
-        .accordion-body {
-          
-          .range_limit {
-            .profile,
-            .range-limit-input-group {
-              padding: 0 1rem;
-            }
-            
-            .btn {
-              border-width: 1px;
-            }
-            
-            .more_facets {
-              padding: 0 1rem 0.5rem;
-            }
-          }
-        
-          .facet-values {
-            li {
-              padding: 0.5rem 1rem;
-            
-              &:has(.facet-select:hover),
-              &:has(.facet-select:focus),
-              &:has(.facet-select:active) {
-                background-color: $tags-surface;
-              }
-            
-              &:has(.selected) {
-                border-left: 2px solid $dark-teal;
-              }
-            
-              .facet-select {
-                text-decoration: none;
-                color: $body-color;
-              
-                &:focus,
-                &:hover,
-                &:active {
-                  color: $body-color;
-                  background-color: transparent;
-                  box-shadow: none;
-                  text-decoration: underline;
-                }
-              }
-            
-              .facet-count {
-                color: $grey-300;
-                font-size: 0.875rem;
-                
-                &.selected {
-                  color: $grey-300 !important;
-                }
-              }
-          
-              .selected {
-                color: $body-color !important;
-              }
-            
-              .remove {
-                font-weight: normal;
-                color: $grey-300;
-                
-                &:focus,
-                &:hover,
-                &:active {
-                  color: $muted-orange;
-                  background-color: transparent !important;
-                  box-shadow: none;
-                }
-              }
-            }
-          }
-          
-          .more_facets {
-            padding: 0.5rem 1rem;
-          }
-        }
-      }
-    }
-  }
+// Override default blacklight variables
+.facets {
+  --bl-facet-active-bg: var(--nla-light-teal);
+  --bl-facet-active-color: var(--nla-black);
+  --bl-facet-active-item-color: var(--nla-body-color);
+  --bl-facet-remove-color: var(--nla-grey-300);
+  --bl-facet-remove-hover-color: var(--nla-muted-orange);
+  --bl-facet-label-indent: 0;
+  --bl-facet-label-padding-left: 0;
+  --bl-facet-header-padding-y: 0.5rem;
+  --bl-facet-value-padding-y: 0.2rem;
+  --nla-facet-label-color: var(--nla-body-color);
+  --nla-facet-count-color: var(--nla-grey-300);
 }
 
-.facet-limit,
+.facet-limit{
+  --bs-btn-hover-bg: var(--nla-mid-teal);
+  --bs-accordion-active-bg: var(--nla-light-teal);
+}
+
 .facet-limit-active {
   // Accordion icon stroke color can't be set without overriding the whole SVG
   --bs-accordion-btn-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='black' stroke-linecap='round' stroke-linejoin='round'><path d='m2 5 6 6 6-6'/></svg>");
   --bs-accordion-btn-active-icon: var(--bs-accordion-btn-icon);
 }
 
+@media screen and (prefers-color-scheme: dark) {
+  .facets {
+    --bl-facet-remove-color: var(--nla-body-color);
+  }
+  
+  .facet-limit {
+    --bs-accordion-btn-bg: var(--nla-grey-300);
+  }
+  
+  .range_limit .text-muted {
+    --bs-secondary-color: var(--nla-light-grey);
+  }
+}
+
+
+
+// See _accordion.scss for additional associated overrides
+
+.facets-header {
+  border-bottom: 1px solid var(--nla-body-color);
+}
+
+
+.range_limit {
+  .blacklight-range-limit-chart {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    
+    @media screen and (prefers-color-scheme: dark) {
+      background-color: var(--nla-facet-value-hover-bg);
+    }  
+  }
+}

@@ -1,18 +1,19 @@
 @charset "UTF-8";
-@import "variables";
-@import "nla-custom-bootstrap";
-@import "bootstrap/scss/mixins";
+
+.blacklight-static_pages-home {
+  --nla-card-homepage-bg: var(--nla-light-grey);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .blacklight-static_pages-home {
+    --nla-card-homepage-bg: var(--nla-grey-600);
+  }
+}
 
 .collection-search {
-  .h5 {
-    color: $gray-medium;
-    font-weight: 500;
-    font-size: 1.25rem;
-    line-height: 1.4;
-  }
   
   .collection-search-box {
-    background-color: $light-grey;
+    background-color: var(--nla-card-homepage-bg);
     .input-group {
       gap: 1rem;
       
@@ -22,49 +23,41 @@
     }
     
     h2 {
-      color: $grey-700;
-      font-family: $font-family-serif;
+      font-family: var(--nla-font-family-serif);
       font-size: 2.5rem;
       font-weight: 400;
     }
     
     .search-q {
-      background-color: $white !important;
       border-top-left-radius: 4px !important;
       border-bottom-left-radius: 4px !important;
-      border-color: $warm-grey;
-      border-width: 1px;
-      
-      
-      &::placeholder {
-        color: $warm-grey;
-      }
-      
-      &:focus {
-        border-color: $black;
-      }
     }
   }
-  
-  .submit-search-text {
-    // hide 'search' label at very small screens
-    @media screen and (max-width: breakpoint-max(md)) {
-      @if mixin-exists(visually-hidden) {
-        @include visually-hidden();
-      }
-    }
-  }
+}
 
+// hide 'search' label at very small screens (BS .visually-hidden equivalent)
+@media screen and (max-width: 767.98px) {
+  .submit-search-text {
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
 }
 
 .catalogue-search,
 .eresources-search,
 .finding-aids-search {
   border: none;
+  background: transparent;
   
   &:focus,
   &:hover {
-    background-color: $light-grey;
+    background-color: var(--nla-card-homepage-bg);
   }
   
   .image-container {
@@ -78,17 +71,15 @@
   }
   
   .card-title a {
-    color: $grey-700;
+    color: var(--nla-body-color);
     text-decoration: none;
-    font-family: $font-family-sans-serif;
     font-size: 1.25rem;
-    font-weight: 600;
     text-underline-offset: 2px;
     text-underline-position: under;
     
     &:hover,
     &:focus {
-      color: $grey-700;
+      color: var(--nla-body-color);
       background-color: transparent;
       text-decoration: underline;
       box-shadow: none;
@@ -110,9 +101,6 @@
 
 .library-card {  
   .h4 {
-    color: $grey-700;
-    font-family: $font-family-sans-serif;
     font-size: 1.25rem;
-    font-weight: 600;
   }
 }

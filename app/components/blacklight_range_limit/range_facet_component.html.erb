@@ -6,8 +6,8 @@
   <% component.with_body do %>
     <div class="limit_content range_limit <%= @facet_field.key %>-config blrl-plot-config"
         data-chart-enabled="<%= !! range_config[:chart_js] %>"
-        data-chart-segment-border-color="<%= range_config[:chart_segment_border_color] || '#685E57' %>"
-        data-chart-segment-bg-color="<%= range_config[:chart_segment_bg_color] || '#a1d6ca' %>"
+        data-chart-segment-border-color="#6bbbae"
+        data-chart-segment-bg-color="#a1d6ca"
         data-textual-facets="false"
         data-textual-facets-collapsible="false"
         data-range-list-heading-localized="<%= t('blacklight.range_limit.range_list_heading') %>"

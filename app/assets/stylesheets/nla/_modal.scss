@@ -1,26 +1,31 @@
 @charset "UTF-8";
-@import "variables";
-@import "nla-custom-bootstrap";
+
+.modal {
+  --nla-modal-backdrop-bg: var(--nla-black);
+  --nla-modal-backdrop-opacity: 0.8;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .modal {
+    --nla-modal-backdrop-bg: var(--nla-grey-600);
+    --nla-modal-backdrop-opacity: 0.9;
+  }
+}
+
 
 .modal {
   .modal-header {
     border-bottom: none;
   
     .modal-title {
-      font-family: $font-family-sans-serif;
+      font-family: var(--nla-font-family-sans-serif);
       font-size: 1.25rem;
       font-weight: 600;
-      color: $black;
+      color: var(--nla-body-color);
     }
     
     .btn-close {
       box-shadow: none;
-    }
-    
-    .btn-close:hover,
-    .btn-close:focus {
-      color: $muted-orange;
-      opacity: 1;
     }
   }
   
@@ -42,18 +47,18 @@
   .citation-details {
     .h5 {
       margin-bottom: 0;
-      font-family: $font-family-sans-serif;
+      font-family: var(--nla-font-family-sans-serif);
       font-size: 1.125rem;
       font-weight: 600;
       color: $black;
     }
     
     [data-clipboard-target="button"] {
-      color: $mid-teal;
+      color: var(--nla-mid-teal);
       
       &:hover,
       &:focus {
-        color: $dark-teal;
+        color: var(--nla-dark-teal);
         background-color: transparent;
         box-shadow: none;
       }
@@ -65,9 +70,9 @@ body:has(dialog[open]) {
   overflow: hidden;
 }
 
-dialog::backdrop {
-  background-color: rgb(247,248,248);
-  opacity: 0.95;
+dialog.modal[open]::backdrop {
+  background-color: var(--nla-modal-backdrop-bg);
+  opacity: var(--nla-modal-backdrop-opacity);
 }
 
 @media print {
@@ -97,7 +102,7 @@ dialog::backdrop {
       height: auto;
     }
     
-    .modal-dialog-scrollable {      
+    .modal-dialog-scrollable {
       .modal-content {
         overflow: visible !important;
         

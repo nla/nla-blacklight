@@ -4,11 +4,16 @@
 
 // Override Blacklight CSS custom properties
 :root {
-  --bl-logo-image: url('nla_logo.svg');
+  //--bl-logo-image: url('nla_logo.svg');
 }
 
 @import "advanced-search";
+@import "accordion";
+@import "badge";
 @import "buttons";
+@import "card";
+@import "constraints";
+@import "dropdown";
 @import "facets";
 @import "main";
 @import "footer";
@@ -41,4 +46,4 @@
 @import "./plugins/blacklight_range_limit";
 
 
-@import "dark-mode";
+//@import "dark-mode";
