@@ -10,6 +10,7 @@
     "blacklight-range-limit": "^9.2.0",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
+    "chartjs-plugin-annotation": "^3.1.0",
     "esbuild": "^0.27.1",
     "jquery": "^3.7.1",
     "lodash.debounce": "^4.0.8",

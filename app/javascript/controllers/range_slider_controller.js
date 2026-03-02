@@ -19,12 +19,23 @@ export default class extends Controller {
 
     if (!this.minInput || !this.maxInput) return
 
+    // Find the range_limit container for later chart lookups
+    this.rangeLimitContainer = this.element.closest(".range_limit")
+
     // Initialize slider positions from input values or defaults
     this.initializeSliders()
 
     // Listen for changes to text inputs
     this.minInput.addEventListener("change", () => this.syncFromInputs())
     this.maxInput.addEventListener("change", () => this.syncFromInputs())
+  }
+
+  getChartCanvas() {
+    // Lazily find the chart canvas - it may not exist on initial connect
+    if (!this._chartCanvas && this.rangeLimitContainer) {
+      this._chartCanvas = this.rangeLimitContainer.querySelector(".blacklight-range-limit-chart")
+    }
+    return this._chartCanvas
   }
 
   initializeSliders() {
@@ -93,8 +104,19 @@ export default class extends Controller {
     const minPercent = ((minVal - min) / (max - min)) * 100
     const maxPercent = ((maxVal - min) / (max - min)) * 100
 
-    // Update the range highlight
+    // Update the range highlight on the slider
     this.rangeTarget.style.left = `${minPercent}%`
     this.rangeTarget.style.width = `${maxPercent - minPercent}%`
+
+    // Update the chart selection annotation if chart exists
+    this.updateChartSelection(minVal, maxVal)
+  }
+
+  updateChartSelection(minVal, maxVal) {
+    const canvas = this.getChartCanvas()
+    // Use the global function exposed by range_limit.js
+    if (canvas && typeof window.updateRangeLimitChartSelection === 'function') {
+      window.updateRangeLimitChartSelection(canvas, minVal, maxVal)
+    }
   }
 }

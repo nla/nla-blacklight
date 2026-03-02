@@ -2,10 +2,13 @@
 // In BL9 / range_limit 9, this is now an ES module loaded via esbuild
 
 import BlacklightRangeLimit from "blacklight-range-limit";
-import Chart from "chart.js/auto";
+// Import Chart from chart.js directly (not chart.js/auto) to match blacklight-range-limit's import
+// This ensures we're registering plugins on the same Chart instance
+import { Chart } from "chart.js";
+import annotationPlugin from "chartjs-plugin-annotation";
 
-// Track all chart instances for dynamic updates
-const chartInstances = [];
+// Register the annotation plugin globally
+Chart.register(annotationPlugin);
 
 // Get tick color based on current color scheme
 const getTickColor = () => {
@@ -39,6 +42,65 @@ const updateChartsColorScheme = () => {
     }
   });
 };
+
+// Update the selection annotation on a chart
+// This is called from the range slider controller when slider values change
+// Grey out the UNSELECTED areas (left and right of the selection)
+const updateChartSelection = (canvas, minValue, maxValue) => {
+  const chart = Chart.getChart(canvas);
+  if (!chart) {
+    return;
+  }
+  
+  // Get the chart's actual min/max from its scale
+  const chartMin = chart.scales.x.min;
+  const chartMax = chart.scales.x.max;
+  
+  // Only show grey-out if selection is different from the full range
+  const isFullRange = (minValue <= chartMin && maxValue >= chartMax);
+  
+  if (!chart.options.plugins.annotation) {
+    chart.options.plugins.annotation = { annotations: {} };
+  }
+  
+  if (isFullRange) {
+    // Remove annotations if full range is selected
+    chart.options.plugins.annotation.annotations = {};
+  } else {
+    const annotations = {};
+    const greyOutStyle = {
+      type: 'box',
+      backgroundColor: 'rgba(128, 128, 128, 0.4)',
+      borderColor: 'rgba(104, 94, 87, 0.9)',
+      borderWidth: 2
+    };
+    
+    // Left grey-out box (from chart min to selection min)
+    if (minValue > chartMin) {
+      annotations.leftGreyOut = {
+        ...greyOutStyle,
+        xMin: chartMin,
+        xMax: minValue
+      };
+    }
+    
+    // Right grey-out box (from selection max to chart max)
+    if (maxValue < chartMax) {
+      annotations.rightGreyOut = {
+        ...greyOutStyle,
+        xMin: maxValue,
+        xMax: chartMax
+      };
+    }
+    
+    chart.options.plugins.annotation.annotations = annotations;
+  }
+  
+  chart.update('none');
+};
+
+// Expose updateChartSelection globally so the Stimulus controller can call it
+window.updateRangeLimitChartSelection = updateChartSelection;
 
 // Initialize chart defaults
 setChartDefaults();
