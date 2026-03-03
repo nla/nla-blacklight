@@ -28,14 +28,76 @@ export default class extends Controller {
     // Listen for changes to text inputs
     this.minInput.addEventListener("change", () => this.syncFromInputs())
     this.maxInput.addEventListener("change", () => this.syncFromInputs())
+
+    // Watch for chart creation and update selection when ready
+    this.waitForChartAndUpdateSelection()
+  }
+
+  disconnect() {
+    // Clean up observer when controller disconnects
+    if (this._chartObserver) {
+      this._chartObserver.disconnect()
+      this._chartObserver = null
+    }
   }
 
   getChartCanvas() {
-    // Lazily find the chart canvas - it may not exist on initial connect
-    if (!this._chartCanvas && this.rangeLimitContainer) {
+    // Always re-query for the canvas as it may be created dynamically
+    if (this.rangeLimitContainer) {
       this._chartCanvas = this.rangeLimitContainer.querySelector(".blacklight-range-limit-chart")
     }
     return this._chartCanvas
+  }
+
+  // Wait for the Chart.js chart to be created and then update the selection overlay
+  waitForChartAndUpdateSelection() {
+    const canvas = this.getChartCanvas()
+    
+    // If canvas exists and has a chart, update immediately
+    if (canvas && typeof Chart !== 'undefined' && Chart.getChart(canvas)) {
+      this.updateChartSelectionFromCurrentValues()
+      return
+    }
+
+    // Otherwise, watch for the canvas to be added to the DOM
+    if (this.rangeLimitContainer) {
+      this._chartObserver = new MutationObserver((mutations) => {
+        const canvas = this.getChartCanvas()
+        if (canvas) {
+          // Canvas found, now wait for Chart.js to initialize it
+          this.pollForChartReady(canvas)
+          this._chartObserver.disconnect()
+          this._chartObserver = null
+        }
+      })
+
+      this._chartObserver.observe(this.rangeLimitContainer, {
+        childList: true,
+        subtree: true
+      })
+    }
+  }
+
+  // Poll for the Chart.js instance to be ready on the canvas
+  pollForChartReady(canvas, attempts = 0) {
+    const maxAttempts = 20 // Try for up to 2 seconds
+    const interval = 100 // Check every 100ms
+
+    if (typeof Chart !== 'undefined' && Chart.getChart(canvas)) {
+      this.updateChartSelectionFromCurrentValues()
+      return
+    }
+
+    if (attempts < maxAttempts) {
+      setTimeout(() => this.pollForChartReady(canvas, attempts + 1), interval)
+    }
+  }
+
+  // Update chart selection based on current slider/input values
+  updateChartSelectionFromCurrentValues() {
+    const minVal = parseInt(this.minSliderTarget.value)
+    const maxVal = parseInt(this.maxSliderTarget.value)
+    this.updateChartSelection(minVal, maxVal)
   }
 
   initializeSliders() {

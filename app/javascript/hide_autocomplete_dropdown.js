@@ -59,6 +59,10 @@ class AutocompleteDropdown {
   }
 
   setupMutationObserver() {
+    const observer = new MutationObserver((mutations) => {
+      // Handle mutations if needed
+    });
+    
     observer.observe(document.body, {
       subtree: true,
       attributes: true,
