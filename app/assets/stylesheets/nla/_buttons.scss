@@ -62,11 +62,12 @@
 .btn-outline-primary,
 .btn-outline-secondary {
   background: var(--nla-white);
+  --bs-btn-color: var(--nla-black);
   
   &:focus,
   &:hover,
   &:active {
-    background-color: var(--nla-lightest-teal);
+    background-color: var(--nla-light-teal);
     color: var(--nla-black);
     text-decoration: none;
   }
