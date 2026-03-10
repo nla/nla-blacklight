@@ -4,26 +4,28 @@
   <div class="range-limit-input-group">
     <%# Dual-handle range slider %>
     <% if @facet_field.min && @facet_field.max %>
+      <% slider_min = begin_value_default %>
+      <% slider_max = end_value_default %>
       <div class="range-slider-container mb-3"
            data-controller="range-slider"
-           data-range-slider-min-value="<%= @facet_field.min %>"
-           data-range-slider-max-value="<%= @facet_field.max %>">
+           data-range-slider-min-value="<%= slider_min %>"
+           data-range-slider-max-value="<%= slider_max %>">
         <div class="range-slider-track" data-range-slider-target="track">
           <div class="range-slider-range" data-range-slider-target="range"></div>
         </div>
         <input type="range"
                class="range-slider-input range-slider-min"
-               min="<%= @facet_field.min %>"
-               max="<%= @facet_field.max %>"
-               value="<%= begin_value_default %>"
+               min="<%= slider_min %>"
+               max="<%= slider_max %>"
+               value="<%= slider_min %>"
                data-range-slider-target="minSlider"
                data-action="input->range-slider#updateMin"
                aria-label="<%= t('blacklight.range_limit.range_begin_short') %>">
         <input type="range"
                class="range-slider-input range-slider-max"
-               min="<%= @facet_field.min %>"
-               max="<%= @facet_field.max %>"
-               value="<%= end_value_default %>"
+               min="<%= slider_min %>"
+               max="<%= slider_max %>"
+               value="<%= slider_max %>"
                data-range-slider-target="maxSlider"
                data-action="input->range-slider#updateMax"
                aria-label="<%= t('blacklight.range_limit.range_end_short') %>">
