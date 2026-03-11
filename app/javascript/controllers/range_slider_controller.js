@@ -166,7 +166,12 @@ export default class extends Controller {
     const canvas = this.getChartCanvas()
     if (canvas) {
       canvas.dispatchEvent(new CustomEvent('range-slider:update', {
-        detail: { minValue: minVal, maxValue: maxVal },
+        detail: {
+          minValue: minVal,
+          maxValue: maxVal,
+          sliderMin: this.minValue,
+          sliderMax: this.maxValue
+        },
         bubbles: true
       }))
     }

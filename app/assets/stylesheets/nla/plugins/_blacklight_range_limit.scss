@@ -47,7 +47,7 @@ $track-height: 6px;
   right: 0;
   height: $track-height;
   background-color: var(--nla-light-teal);
-  border-radius: $track-height / 2;
+  border-radius: calc($track-height / 2);
   pointer-events: none;
 }
 
@@ -55,7 +55,7 @@ $track-height: 6px;
   position: absolute;
   height: 100%;
   background-color: var(--nla-dark-teal);
-  border-radius: $track-height / 2;
+  border-radius: calc($track-height / 2);
 }
 
 .range-slider-input {
@@ -110,7 +110,7 @@ $track-height: 6px;
     }
 
     &:active {
-      background-color: ar(--nla-mid-teal);
+      background-color: var(--nla-mid-teal);
       transform: scale(1.15);
     }
   }

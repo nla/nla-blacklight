@@ -46,7 +46,8 @@ const updateChartsColorScheme = () => {
 // Update the selection annotation on a chart
 // This is called from the range slider controller when slider values change
 // Grey out the UNSELECTED areas (left and right of the selection)
-const updateChartSelection = (canvas, minValue, maxValue) => {
+// sliderMin/sliderMax are the slider's bounds (i.e. the full selectable range)
+const updateChartSelection = (canvas, minValue, maxValue, sliderMin, sliderMax) => {
   const chart = Chart.getChart(canvas);
   if (!chart) {
     return;
@@ -56,14 +57,18 @@ const updateChartSelection = (canvas, minValue, maxValue) => {
   const chartMin = chart.scales.x.min;
   const chartMax = chart.scales.x.max;
   
-  // Only show grey-out if selection is different from the full range
-  const isFullRange = (minValue <= chartMin && maxValue >= chartMax);
+  // Check if slider handles are at both extremes of the slider range.
+  // This avoids showing overlay borders when the user hasn't narrowed the range,
+  // even if the chart scale extends slightly beyond the slider bounds due to padding.
+  const isSliderAtFullRange = (sliderMin !== undefined && sliderMax !== undefined)
+    ? (minValue <= sliderMin && maxValue >= sliderMax)
+    : (minValue <= chartMin && maxValue >= chartMax);
   
   if (!chart.options.plugins.annotation) {
     chart.options.plugins.annotation = { annotations: {} };
   }
   
-  if (isFullRange) {
+  if (isSliderAtFullRange) {
     // Remove annotations if full range is selected
     chart.options.plugins.annotation.annotations = {};
   } else {
@@ -104,8 +109,8 @@ const updateChartSelection = (canvas, minValue, maxValue) => {
 // the document to handle dynamically created canvases.
 document.addEventListener('range-slider:update', (event) => {
   const canvas = event.target;
-  const { minValue, maxValue } = event.detail;
-  updateChartSelection(canvas, minValue, maxValue);
+  const { minValue, maxValue, sliderMin, sliderMax } = event.detail;
+  updateChartSelection(canvas, minValue, maxValue, sliderMin, sliderMax);
 });
 
 // Initialize chart defaults
