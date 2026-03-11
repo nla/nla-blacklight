@@ -18,7 +18,7 @@ class SearchBuilder < Blacklight::SearchBuilder
   # the expected behavior where empty advanced search returns all results.
   def handle_empty_advanced_search(solr_parameters)
     # Only apply when advanced search clause params are present
-    return unless search_state.clause_params.present?
+    return if search_state.clause_params.blank?
 
     # Check if all clause queries are empty
     all_clauses_empty = search_state.clause_params.values.all? do |clause|
