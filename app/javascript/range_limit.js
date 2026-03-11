@@ -99,8 +99,14 @@ const updateChartSelection = (canvas, minValue, maxValue) => {
   chart.update('none');
 };
 
-// Expose updateChartSelection globally so the Stimulus controller can call it
-window.updateRangeLimitChartSelection = updateChartSelection;
+// Listen for custom events from the range slider Stimulus controller on chart
+// canvas elements. Events bubble up from the canvas, so we use delegation on
+// the document to handle dynamically created canvases.
+document.addEventListener('range-slider:update', (event) => {
+  const canvas = event.target;
+  const { minValue, maxValue } = event.detail;
+  updateChartSelection(canvas, minValue, maxValue);
+});
 
 // Initialize chart defaults
 setChartDefaults();

@@ -49,25 +49,28 @@ export default class extends Controller {
     return this._chartCanvas
   }
 
-  // Wait for the Chart.js chart to be created and then update the selection overlay
+  // Wait for the Chart.js chart canvas to be inserted into the DOM, then
+  // update the selection overlay. The blacklight-range-limit library creates
+  // the canvas and draws the chart synchronously, so by the time the
+  // MutationObserver fires the Chart.js instance is already ready.
   waitForChartAndUpdateSelection() {
     const canvas = this.getChartCanvas()
-    
-    // If canvas exists and has a chart, update immediately
-    if (canvas && typeof Chart !== 'undefined' && Chart.getChart(canvas)) {
+
+    // If canvas already exists, update immediately
+    if (canvas) {
       this.updateChartSelectionFromCurrentValues()
       return
     }
 
     // Otherwise, watch for the canvas to be added to the DOM
     if (this.rangeLimitContainer) {
-      this._chartObserver = new MutationObserver((mutations) => {
+      this._chartObserver = new MutationObserver(() => {
         const canvas = this.getChartCanvas()
         if (canvas) {
-          // Canvas found, now wait for Chart.js to initialize it
-          this.pollForChartReady(canvas)
           this._chartObserver.disconnect()
           this._chartObserver = null
+          // Use requestAnimationFrame to ensure layout is settled
+          requestAnimationFrame(() => this.updateChartSelectionFromCurrentValues())
         }
       })
 
@@ -75,21 +78,6 @@ export default class extends Controller {
         childList: true,
         subtree: true
       })
-    }
-  }
-
-  // Poll for the Chart.js instance to be ready on the canvas
-  pollForChartReady(canvas, attempts = 0) {
-    const maxAttempts = 20 // Try for up to 2 seconds
-    const interval = 100 // Check every 100ms
-
-    if (typeof Chart !== 'undefined' && Chart.getChart(canvas)) {
-      this.updateChartSelectionFromCurrentValues()
-      return
-    }
-
-    if (attempts < maxAttempts) {
-      setTimeout(() => this.pollForChartReady(canvas, attempts + 1), interval)
     }
   }
 
@@ -176,9 +164,11 @@ export default class extends Controller {
 
   updateChartSelection(minVal, maxVal) {
     const canvas = this.getChartCanvas()
-    // Use the global function exposed by range_limit.js
-    if (canvas && typeof window.updateRangeLimitChartSelection === 'function') {
-      window.updateRangeLimitChartSelection(canvas, minVal, maxVal)
+    if (canvas) {
+      canvas.dispatchEvent(new CustomEvent('range-slider:update', {
+        detail: { minValue: minVal, maxValue: maxVal },
+        bubbles: true
+      }))
     }
   }
 }

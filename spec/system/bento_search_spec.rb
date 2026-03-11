@@ -4,7 +4,7 @@ RSpec.describe "Bento Search" do
   context "when no query is provided" do
     it "shows the bento search form" do
       visit bento_search_index_path
-      expect(page).to have_css(".navbar-search")
+      expect(page).to have_css(".bento-search")
     end
   end
 

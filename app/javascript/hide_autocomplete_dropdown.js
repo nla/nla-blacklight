@@ -8,7 +8,6 @@ class AutocompleteDropdown {
 
     customElements.whenDefined('auto-complete').then(() => {
       this.attachEventListeners();
-      this.setupMutationObserver();
       this.initialized = true;
     });
   }
@@ -58,17 +57,6 @@ class AutocompleteDropdown {
     }
   }
 
-  setupMutationObserver() {
-    const observer = new MutationObserver((mutations) => {
-      // Handle mutations if needed
-    });
-    
-    observer.observe(document.body, {
-      subtree: true,
-      attributes: true,
-      attributeFilter: ['open', 'aria-expanded']
-    });
-  }
 }
 
 if (document.readyState === 'loading') {

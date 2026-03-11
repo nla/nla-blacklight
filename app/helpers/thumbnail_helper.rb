@@ -6,10 +6,12 @@ module ThumbnailHelper
   def render_thumbnail(document, options = {})
     return if document.first("id").blank?
 
+    # Ensure nil values are serialised as empty strings (key=) rather than bare
+    # keys (key) in the query string, for thumbnail service compatibility.
     service_options = {
-      nlaObjId: document.first(NLA_OBJ_ID_FIELD),
-      isbnList: document.valid_isbn&.join(","),
-      lccnList: document.lccn&.join(","),
+      nlaObjId: document.first(NLA_OBJ_ID_FIELD).to_s,
+      isbnList: document.valid_isbn&.join(",").to_s,
+      lccnList: document.lccn&.join(",").to_s,
       width: thumbnail_image_width(document),
       id: document.first("id")
     }
