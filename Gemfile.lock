@@ -219,7 +219,7 @@ GEM
       capybara (~> 3.0)
       ferrum (~> 0.17.0)
     date (3.5.1)
-    debug (1.11.0)
+    debug (1.11.1)
       irb (~> 1.10)
       reline (>= 0.3.8)
     debug_inspector (1.2.0)
@@ -269,7 +269,7 @@ GEM
       public_suffix (~> 4.0)
     email_validator (2.2.4)
       activemodel
-    erb (6.0.1)
+    erb (6.0.2)
     erubi (1.13.1)
     et-orbi (1.2.11)
       tzinfo
