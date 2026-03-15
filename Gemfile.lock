@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: f97106afd4717c9f7ee9f2cd56320db8a50b027e
+  revision: 03bcd1a0581268c780a770ab0f5f2b6621e4314e
   branch: main
   specs:
     nla-blacklight_common (0.3.5)
