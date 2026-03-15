@@ -9,6 +9,7 @@ module BentoSearch
     include BentoSearch::SearchEngine
 
     extend HTTPClientPatch::IncludeClient
+
     include_http_client do |client|
       client.ssl_config.clear_cert_store
       client.ssl_config.cert_store.set_default_paths

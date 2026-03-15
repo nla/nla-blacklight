@@ -28,14 +28,14 @@ class ExploreComponent < ViewComponent::Base
       end
       if isn_terms.present?
         isn_terms.each do |isn|
-          query += "#{isn}#{(isn != isn_terms.last) ? " OR " : ""}"
+          query += "#{isn}#{" OR " if isn != isn_terms.last}"
         end
       else
         query += document.id.to_s
         if document.callnumber.present?
           query += " OR "
           document.callnumber.uniq.each do |callnumber|
-            query += "\"#{callnumber}\"#{(callnumber != document.callnumber.last) ? " OR " : ""}"
+            query += "\"#{callnumber}\"#{" OR " if callnumber != document.callnumber.last}"
           end
         end
       end
@@ -52,7 +52,7 @@ class ExploreComponent < ViewComponent::Base
   end
 
   def google_books_script
-    "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list&.join(",")}#{document.isbn_list.present? ? "," : ""}#{google_isbn_list&.join(",")}&callback=showGoogleBooksPreview"
+    "https://books.google.com/books?jscmd=viewapi&bibkeys=#{google_lccn_list&.join(",")}#{"," if document.isbn_list.present?}#{google_isbn_list&.join(",")}&callback=showGoogleBooksPreview"
   end
 
   def render_online_shop?

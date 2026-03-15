@@ -95,6 +95,7 @@ class BentoSearch::EdsPublicationEngine < BentoSearch::EdsEngine
   end
 
   extend HTTPClientPatch::IncludeClient
+
   include_http_client do |client|
     client.connect_timeout = client.send_timeout = client.receive_timeout = http_timeout
   end
