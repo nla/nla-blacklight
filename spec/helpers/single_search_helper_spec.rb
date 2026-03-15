@@ -112,17 +112,17 @@ RSpec.describe SingleSearchHelper do
       end
 
       it "returns a link to the EDS keyword search results page" do
-        expect(helper.bento_all_results_link("ebsco_eds_keyword")).to eq("https://search.ebscohost.com/login.aspx?authtype=ip,guest&groupid=main&profile=eds&direct=true&custid=test&bquery=hello")
+        expect(helper.bento_all_results_link("ebsco_eds_keyword")).to eq("https://research.ebsco.com/c/ciw6tp/search/results?q=hello&limiters=FT1%253AY&searchMode=all&searchSegment=all-results")
       end
 
       it "returns a link to the EDS title search results page" do
-        expect(helper.bento_all_results_link("ebsco_eds_title")).to eq("https://search.ebscohost.com/login.aspx?authtype=ip,guest&groupid=main&profile=eds&direct=true&custid=test&bquery=TI+hello")
+        expect(helper.bento_all_results_link("ebsco_eds_title")).to eq("https://publications.ebsco.com/c/elukgh?searchField=titlename&searchtype=contains&highlightTag=mark&search=hello")
       end
     end
 
     context "when a query is not present" do
       it "returns a link to the catalogue search results page" do
-        expect(helper.bento_all_results_link("catalogue")).to eq("http://test.host/catalog?search_field=all_fields&q=")
+        expect(helper.bento_all_results_link("catalogue")).to eq("http://test.host/catalog?search_field=all_fields&q=") # eq("https://search.ebscohost.com/login.aspx?authtype=ip,guest&groupid=main&profile=eds&direct=true&custid=test?q=hello&limiters=FT1%253AY&searchMode=all&searchSegment=all-results")
       end
 
       it "returns a link to the finding aids search results page" do
@@ -130,11 +130,11 @@ RSpec.describe SingleSearchHelper do
       end
 
       it "returns a link to the EDS keyword search results page" do
-        expect(helper.bento_all_results_link("ebsco_eds_keyword")).to eq("https://search.ebscohost.com/login.aspx?authtype=ip,guest&groupid=main&profile=eds&direct=true&custid=test")
+        expect(helper.bento_all_results_link("ebsco_eds_keyword")).to eq("https://research.ebsco.com/c/ciw6tp/search/results")
       end
 
       it "returns a link to the EDS title search results page" do
-        expect(helper.bento_all_results_link("ebsco_eds_title")).to eq("https://search.ebscohost.com/login.aspx?authtype=ip,guest&groupid=main&profile=eds&direct=true&custid=test")
+        expect(helper.bento_all_results_link("ebsco_eds_title")).to eq("https://publications.ebsco.com/c/elukgh")
       end
     end
   end
