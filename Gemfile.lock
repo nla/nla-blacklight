@@ -478,7 +478,7 @@ GEM
       ast (~> 2.4.1)
       racc
     parslet (2.0.0)
-    phonelib (0.10.16)
+    phonelib (0.10.17)
     pp (0.6.3)
       prettyprint
     prettyprint (0.2.0)
@@ -801,7 +801,7 @@ DEPENDENCIES
   mock_redis (~> 0.53.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
-  phonelib (~> 0.10.16)
+  phonelib (~> 0.10.17)
   puma (~> 7.2)
   rack-mini-profiler
   rails (~> 8)
