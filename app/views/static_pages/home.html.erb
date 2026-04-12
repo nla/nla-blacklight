@@ -19,7 +19,7 @@
     <section class="card h-100 eresources-search">
       <div class="image-container"><%= image_tag "eresources.jpg", class: "card-img-top", alt: "" %></div>
       <div class="card-body">
-        <h2 class="card-title h4"><%= link_to t("blacklight.eresources.title"), "https://www.nla.gov.au/eresources", class: "stretched-link" %></h2>
+        <h2 class="card-title h4"><%= link_to t("blacklight.eresources.title"), eresources_link_url, class: "stretched-link" %></h2>
         <p class="card-text"><%= t('blacklight.eresources.description') %></p>
       </div>
     </section>
