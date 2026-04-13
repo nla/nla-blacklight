@@ -31,10 +31,6 @@ module ApplicationHelper
     result
   end
 
-  # Returns the appropriate eResources URL based on the user's authentication status.
-  # Logged-in users are routed through the offsite handler so their session is applied
-  # and they don't see the "Welcome Guest" banner on EBSCO.
-  # Guests are sent to the standard guest URL.
   def eresources_link_url
     ebsco_eresources_url = ENV["EBSCO_ERESOURCES_URL"]
     if current_user.present? && ebsco_eresources_url.present?
