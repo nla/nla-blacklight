@@ -38,7 +38,7 @@ module ApplicationHelper
   def eresources_link_url
     ebsco_eresources_url = ENV["EBSCO_ERESOURCES_URL"]
     if current_user.present? && ebsco_eresources_url.present?
-      (id: "000000", url: ebsco_eresources_url)
+      offsite_catalog_path(id: "000000", url: ebsco_eresources_url)
     else
       ENV.fetch("ERESOURCES_GUEST_URL", "https://www.nla.gov.au/eresources")
     end
