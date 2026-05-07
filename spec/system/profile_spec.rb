@@ -15,8 +15,8 @@ RSpec.describe "Profile" do
     it "displays both phone numbers" do
       visit account_profile_url
 
-      expect(page).to have_content("0412345678")
-      expect(page).to have_content("0398765432")
+      expect(page).to have_text("0412345678")
+      expect(page).to have_text("0398765432")
     end
 
     describe "deleting a phone number" do
@@ -30,18 +30,18 @@ RSpec.describe "Profile" do
 
         click_on "Change my phone number"
 
-        expect(page).to have_content("Update your phone number")
-        expect(page).to have_content("Current phone number")
-        expect(page).to have_content("0398765432")
+        expect(page).to have_text("Update your phone number")
+        expect(page).to have_text("Current phone number")
+        expect(page).to have_text("0398765432")
 
         fill_in "user_details_phone", with: ""
 
         click_on "Update"
 
-        expect(page).to have_no_content(I18n.t("account.settings.update.errors.any_phone"))
+        expect(page).to have_no_text(I18n.t("account.settings.update.errors.any_phone"))
 
         # validate page has redirected back to profile page
-        expect(page).to have_content("Your Profile")
+        expect(page).to have_text("Your Profile")
       end
     end
   end

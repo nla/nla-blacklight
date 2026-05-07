@@ -74,7 +74,7 @@ module Nla::Marc::DocumentExport
       export_text << "&amp;rft.format=" + (format.nil? ? "" : CGI.escape(format))
     end
     # rubocop:disable Rails/OutputSafety
-    export_text.html_safe if export_text.present?
+    export_text.presence&.html_safe
     # rubocop:enable Rails/OutputSafety
   end
   # :nocov:
