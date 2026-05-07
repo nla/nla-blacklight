@@ -57,7 +57,7 @@ class AccountController < ApplicationController
       end
     end
 
-    render :profile_edit, status: :unprocessable_entity
+    render :profile_edit, status: :unprocessable_content
   end
 
   private
