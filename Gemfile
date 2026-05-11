@@ -51,7 +51,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.26.2"
+gem "hiredis-client", "~> 0.29.0"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.4"
