@@ -83,7 +83,7 @@ gem "stackprof", group: :development
 
 gem "blacklight", ">= 8.0.0", "< 9"
 gem "blacklight-marc", "~> 9.0"
-gem "blacklight_advanced_search", "8.0.0.alpha2"
+gem "blacklight_advanced_search", "8.0.0"
 gem "ebsco-eds", "~> 1.1"
 
 gem "email_validator", "~> 2.2"
