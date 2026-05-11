@@ -4,6 +4,7 @@ require "rails_helper"
 
 RSpec.describe Nla::Citations::WikimediaCitationService do
   include ActiveSupport::Testing::TimeHelpers
+
   let(:document) { SolrDocument.new(id: "123", title_tsim: "Title", format: ["Book"], date_lower_isi: "2019", publisher_tsim: ["Murdoch"], display_publication_place_ssim: ["Sydney :"]) }
   let(:service) { described_class.new(document) }
 

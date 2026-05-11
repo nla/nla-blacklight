@@ -1417,13 +1417,6 @@ RSpec.describe SolrDocument do
 
   describe "#other_authors" do
     context "when there are other authors" do
-      additional_author_with_relator_ssim = [
-        "New South Wales. Board of Surveying and Spatial Information. Annual report",
-        "New South Wales. Board of Surveying and Spatial Information",
-        "Land and Property Management Authority (N.S.W.)"
-      ]
-      author_ssim = ["New South Wales. Department of Lands"]
-
       subject(:other_authors_value) do
         document = described_class.new(
           marc_ss: other_authors,
@@ -1433,21 +1426,21 @@ RSpec.describe SolrDocument do
         document.other_authors
       end
 
+      let(:additional_author_with_relator_ssim) do
+        [
+          "New South Wales. Board of Surveying and Spatial Information. Annual report",
+          "New South Wales. Board of Surveying and Spatial Information",
+          "Land and Property Management Authority (N.S.W.)"
+        ]
+      end
+      let(:author_ssim) { ["New South Wales. Department of Lands"] }
+
       it "returns other authors" do
         expect(other_authors_value.size).to eq 3
       end
     end
 
     context "when there are related 880 other authors" do
-      additional_author_with_relator_ssim = [
-        "Suwit Thatphithakkun, 1928-2015, honouree",
-        "สุวิทย์ ทัดพิทักษ์กุล, 1928-2015, honouree"
-      ]
-      author_addl_ssim = [
-        "Suwit Thatphithakkun, 1928-2015",
-        "สุวิทย์ ทัดพิทักษ์กุล, 1928-2015"
-      ]
-
       subject(:other_authors_value) do
         document = described_class.new(
           marc_ss: terms_of_service,
@@ -1455,6 +1448,19 @@ RSpec.describe SolrDocument do
           additional_author_with_relator_ssim: additional_author_with_relator_ssim
         )
         document.other_authors
+      end
+
+      let(:additional_author_with_relator_ssim) do
+        [
+          "Suwit Thatphithakkun, 1928-2015, honouree",
+          "สุวิทย์ ทัดพิทักษ์กุล, 1928-2015, honouree"
+        ]
+      end
+      let(:author_addl_ssim) do
+        [
+          "Suwit Thatphithakkun, 1928-2015",
+          "สุวิทย์ ทัดพิทักษ์กุล, 1928-2015"
+        ]
       end
 
       it "returns related other authors" do

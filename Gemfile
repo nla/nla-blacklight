@@ -32,7 +32,7 @@ gem "sprockets-rails"
 gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 7.0"
+gem "puma", "~> 7.2"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
@@ -51,7 +51,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.26.2"
+gem "hiredis-client", "~> 0.29.0"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.4"
@@ -87,7 +87,7 @@ gem "blacklight-marc", "~> 9.0"
 gem "ebsco-eds", "~> 1.1"
 
 gem "email_validator", "~> 2.2"
-gem "phonelib", "~> 0.10.14"
+gem "phonelib", "~> 0.10.16"
 
 gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "master"

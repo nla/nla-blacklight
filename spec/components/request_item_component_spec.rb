@@ -74,7 +74,7 @@ RSpec.describe RequestItemComponent, type: :component do
     it "does not display 'Items/Issues Held:'" do
       render_inline(described_class.new(document: document))
 
-      expect(page).to have_no_content("Items/Issues Held:")
+      expect(page).to have_no_text("Items/Issues Held:")
     end
   end
 
@@ -82,7 +82,7 @@ RSpec.describe RequestItemComponent, type: :component do
     it "does display 'Items/Issues Held:'" do
       render_inline(described_class.new(document: document))
 
-      expect(page).to have_content("Items/Issues Held:")
+      expect(page).to have_text("Items/Issues Held:")
     end
   end
 
