@@ -1,36 +1,48 @@
 .toggle-bookmark {
-  label {
-    cursor: pointer;
-    min-width: auto;
-    color: $warm-grey;
-    padding-left: 0.25rem;
-    padding-right: 0.25rem;
-    border-radius: 0.5rem;
-  }
+  --nla-bookmark-icon-color: var(--nla-mid-teal);
+}
+
+.bookmark-toggle {
+  .toggle-bookmark {
+    
+    .toggle-bookmark-label {
+      cursor: pointer;
+      min-width: auto;
+      color: var(--nla-bookmark-icon-color);
+      padding-left: 0.5rem;
+      padding-right: 0.5rem;
+      border-radius: 0.5rem;
+      min-width: auto;
+      
+      &:hover,
+      &:focus,
+      &:focus-visible {
+        color: var(--nla-black);
+        background-color: var(--nla-bookmark-icon-color);
+        outline: none;
+      }
+    }
+      
+    .toggle-bookmark-input {
+      position: absolute;
+      opacity: 0;
+    }
   
-  &:has(input[type=checkbox]:focus-visible) {
-    color: $white !important;
-    background-color: $warm-grey;
-  }
+    .toggle-bookmark-input:not(:checked) + .blacklight-icons + [data-checkboxsubmit-target="span"]::before {
+      font: var(--fa-font-light);
+      content: "\e100";
+      margin-right: 0.5rem;
+    }
   
-  input[type=checkbox] {
-    position: absolute;
-    opacity: 0;
-  }
-
-  input[type=checkbox] + span:before {
-    font: var(--fa-font-light);
-    content: "\e100";
-    margin-right: 0.5rem;
-  }
-
-  input[type=checkbox]:checked + span:before {
-    font: var(--fa-font-solid);
-    content: "\e100";
-  }
-
-  .blacklight-icons {
-    display: none;
+    .toggle-bookmark-input:checked + .blacklight-icons + [data-checkboxsubmit-target="span"]::before {
+      font: var(--fa-font-solid);
+      content: "\e100";
+      margin-right: 0.5rem;
+    }
+  
+    .blacklight-icons-bookmark {
+      display: none;
+    }
   }
 }
 
@@ -38,18 +50,31 @@
   .show-tools {
     .list-group-item.bookmark {      
       .bookmark-toggle {
-        div.toggle-bookmark {
+        .toggle-bookmark {
           padding: 0.75rem 1rem;
-          border-bottom: 1px solid $body-bg;
+          border-bottom: 1px solid var(--nla-body-bg);
           
-          label {
-            color: $body-color;
+          .toggle-bookmark-label {
+            color: var(--nla-body-color);
+            padding-left: 0;
+            padding-right: 0;
           }
           
           &:focus,
           &:hover,
-          &:active {
-            background-color: $light-teal;
+          &:active,
+          &:has(.toggle-bookmark-label:focus) {
+            background-color: var(--nla-light-teal);
+            
+            .toggle-bookmark-label {
+              color: var(--nla-black);
+              
+              &:hover,
+              &:focus {
+                background-color: transparent;
+                outline: none;
+              }
+            }
           }  
         }
       }

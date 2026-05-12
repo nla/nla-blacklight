@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+// See _search-results.scss for additional associated overrides
+
+
+.dropdown-menu {
+  --bs-dropdown-bg: var(--nla-body-bg);
+  --bs-dropdown-link-color: var(--nla-body-color);
+  --bs-dropdown-link-hover-color: var(--nla-grey-700);
+  --bs-dropdown-link-hover-bg: var(--nla-light-grey);
+  --bs-dropdown-link-active-color: var(--nla-grey-700);
+  --bs-dropdown-link-active-bg: var(--nla-light-grey);
+  --bs-dropdown-border-color: var(--nla-body-bg);
+  --bs-dropdown-border-width: 0;
+  --bs-dropdown-box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .dropdown-menu {
+    --bs-dropdown-bg: var(--nla-grey-300);
+    --bs-dropdown-link-color: var(--nla-body-color);
+    --bs-dropdown-link-hover-color: var(--nla-body-color);
+    --bs-dropdown-link-hover-bg: var(--nla-grey-600);
+    --bs-dropdown-link-active-color: var(--nla-body-color);
+    --bs-dropdown-link-active-bg: var(--nla-grey-600);  
+  }
+}
+
+
+.dropdown-menu {
+  box-shadow: var(--bs-dropdown-box-shadow);
+}

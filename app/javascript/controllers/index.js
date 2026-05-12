@@ -24,3 +24,6 @@ application.register("hello", HelloController)
 
 import RelatedRecordsController from "./related_records_controller"
 application.register("related-records", RelatedRecordsController)
+
+import RangeSliderController from "./range_slider_controller"
+application.register("range-slider", RangeSliderController)

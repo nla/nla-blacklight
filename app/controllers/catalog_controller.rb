@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "nla/solr_cloud/repository"
-
 class CatalogController < ApplicationController
   include Blacklight::Catalog
   include BlacklightRangeLimit::ControllerOverride
@@ -77,8 +75,8 @@ class CatalogController < ApplicationController
     # Facets, spellcheck and response header are omitted, since they're not needed.
     config.default_document_solr_params = {fl: "*", facet: "false", spellcheck: "false", omitHeader: "true"}
 
-    # set to nil otherwise, advanced search will expect a Solr JSON DSL query handler at path "advanced" to exist
-    config.json_solr_path = nil
+    # BL9 native advanced search uses the JSON Solr API
+    config.json_solr_path = "select"
 
     # items to show per page, each number in the array represent another option to choose from.
     # config.per_page = [10,20,50,100]
@@ -290,7 +288,10 @@ class CatalogController < ApplicationController
     # solr request handler? The one set in config[:default_solr_parameters][:qt],
     # since we aren't specifying it otherwise.
 
-    config.add_search_field "all_fields", label: "All Fields"
+    config.add_search_field("all_fields") do |field|
+      field.label = "All Fields"
+      field.clause_params = {edismax: {}}
+    end
 
     # Now we see how to over-ride Solr request handler defaults, in this
     # case for a BL "search field", which is really a dismax aggregate
@@ -304,7 +305,10 @@ class CatalogController < ApplicationController
         pf: "title_stim^30 title_tsim^30 title_addl_tsim title_only_tsim^40"
       }
       field.clause_params = {
-        edismax: field.solr_parameters.dup
+        edismax: {
+          qf: "title_stim^20 title_tsim^20 title_addl_tsim",
+          pf: "title_stim^30 title_tsim^30 title_addl_tsim title_only_tsim^40"
+        }
       }
     end
 
@@ -315,7 +319,10 @@ class CatalogController < ApplicationController
         pf: "author_search_tesim"
       }
       field.clause_params = {
-        edismax: field.solr_parameters.dup
+        edismax: {
+          qf: "author_search_tesim",
+          pf: "author_search_tesim"
+        }
       }
     end
 
@@ -327,7 +334,10 @@ class CatalogController < ApplicationController
         pf: "subject_tsimv"
       }
       field.clause_params = {
-        edismax: field.solr_parameters.dup
+        edismax: {
+          qf: "subject_tsimv",
+          pf: "subject_tsimv"
+        }
       }
     end
 
@@ -337,9 +347,6 @@ class CatalogController < ApplicationController
         "spellcheck.dictionary": "subject",
         qf: "indigenous_subject_tsimv",
         pf: "indigenous_subject_tsimv"
-      }
-      field.clause_params = {
-        edismax: field.solr_parameters.dup
       }
       field.include_in_advanced_search = false
     end
@@ -351,7 +358,10 @@ class CatalogController < ApplicationController
         pf: "call_number_tsim"
       }
       field.clause_params = {
-        edismax: field.solr_parameters.dup
+        edismax: {
+          qf: "call_number_tsim",
+          pf: "call_number_tsim"
+        }
       }
     end
 
@@ -362,7 +372,10 @@ class CatalogController < ApplicationController
         pf: "isbn_tsim"
       }
       field.clause_params = {
-        edismax: field.solr_parameters.dup
+        edismax: {
+          qf: "isbn_tsim",
+          pf: "isbn_tsim"
+        }
       }
     end
 
@@ -373,7 +386,10 @@ class CatalogController < ApplicationController
         pf: "id"
       }
       field.clause_params = {
-        edismax: field.solr_parameters.dup
+        edismax: {
+          qf: "id",
+          pf: "id"
+        }
       }
     end
 
@@ -384,7 +400,10 @@ class CatalogController < ApplicationController
         pf: "occupation_tesim"
       }
       field.clause_params = {
-        edismax: field.solr_parameters.dup
+        edismax: {
+          qf: "occupation_tesim",
+          pf: "occupation_tesim"
+        }
       }
     end
 
@@ -395,7 +414,10 @@ class CatalogController < ApplicationController
         pf: "genre_tesim"
       }
       field.clause_params = {
-        edismax: field.solr_parameters.dup
+        edismax: {
+          qf: "genre_tesim",
+          pf: "genre_tesim"
+        }
       }
     end
 

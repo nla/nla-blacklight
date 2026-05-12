@@ -4,41 +4,35 @@ class SearchBuilder < Blacklight::SearchBuilder
   include Blacklight::Solr::SearchBuilderBehavior
   include BlacklightRangeLimit::RangeLimitBuilder
 
-  include BlacklightAdvancedSearch::AdvancedSearchBuilder
-
-  self.default_processor_chain += [:add_advanced_parse_q_to_solr, :add_advanced_search_to_solr, :handle_empty_advanced_search]
+  self.default_processor_chain += [:handle_empty_advanced_search]
 
   ##
-  # @example Adding a new step to the processor chain
-  #   self.default_processor_chain += [:add_custom_data_to_query]
+  # Handle empty advanced searches to return all results (match BL8 behavior).
   #
-  #   def add_custom_data_to_query(solr_parameters)
-  #     solr_parameters[:custom] = blacklight_params[:user_value]
-  #   end
-
-  ##
-  # Handles the case where all advanced search clause queries are empty.
-  # When the user submits an advanced search form with all empty fields,
-  # this adds a match-all query to return results instead of no results.
+  # In BL9's native advanced search, when all clause fields are empty:
+  # - add_adv_search_clauses sets defType='lucene' because clause_params is present
+  # - But no actual query is added because all clause[:query] values are blank
+  # - This results in zero results from Solr
   #
-  # @param [Hash] solr_parameters the Solr query parameters being built
+  # This method detects that condition and adds a match-all query (*:*) to restore
+  # the expected behavior where empty advanced search returns all results.
   def handle_empty_advanced_search(solr_parameters)
-    return unless advanced_search_with_empty_clauses?
+    # Only apply when advanced search clause params are present
+    return if search_state.clause_params.blank?
 
-    solr_parameters[:q] = "*:*"
-    solr_parameters[:defType] = "lucene"
-  end
+    # Check if all clause queries are empty
+    all_clauses_empty = search_state.clause_params.values.all? do |clause|
+      clause[:query].blank?
+    end
 
-  private
+    return unless all_clauses_empty
 
-  ##
-  # Determines if this is an advanced search where all clause queries are empty.
-  #
-  # @return [Boolean] true if advanced search with all empty clauses
-  def advanced_search_with_empty_clauses?
-    clause_params = blacklight_params[:clause]
-    return false if clause_params.blank?
-
-    clause_params.values.all? { |clause| clause[:query].blank? }
+    # If defType is lucene (set by add_adv_search_clauses) but no query was added,
+    # add a match-all query to get results
+    if solr_parameters[:defType] == "lucene" &&
+        solr_parameters[:q].blank? &&
+        solr_parameters.dig(:json, :query).blank?
+      solr_parameters[:q] = "*:*"
+    end
   end
 end

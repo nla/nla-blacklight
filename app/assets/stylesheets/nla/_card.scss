@@ -1,0 +1,10 @@
+.card {
+  --bs-card-bg: var(--nla-light-grey);
+  --bs-card-border-width: 0;
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .card {
+    --bs-card-bg: var(--nla-grey-300);
+  }
+}

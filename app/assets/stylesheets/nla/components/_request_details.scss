@@ -8,18 +8,18 @@
 .blacklight-account {
   .table {
     caption {
-      color: $body-color;
+      color: var(--nla-body-color);
     }
     
     thead {
       th {
-        color: $white !important;
-        background-color: $black !important;
+        color: var(--nla-body-bg) !important;
+        background-color: var(--nla-body-color) !important;
       }
     }
     
     td {
-      color: $body-color;
+      color: var(--nla-body-color);
       background-color: transparent;
     }
     
@@ -28,7 +28,7 @@
         &:focus,
         &:hover,
         &:active {
-          color: $body-color;
+          color: var(--nla-body-color);
           background: transparent;
           box-shadow: none;
         }

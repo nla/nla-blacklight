@@ -1,4 +1,16 @@
 .request-summary {
+  --nla-request-muted-text: var(--nla-grey-300);
+}
+
+
+@media screen and (prefers-color-scheme: dark) {
+  .request-summary {
+    --nla-request-muted-text: var(--nla-grey-50);
+  }
+}
+
+
+.request-summary {
   caption {
     caption-side: top;
     font-size: 1.2rem;
@@ -8,5 +20,6 @@
     display: block;
     font-size: 0.75rem;
     transform: translateY(-4px); 
+    color: var(--nla-request-muted-text) !important;
   }
 }

@@ -1,10 +1,21 @@
 @charset "UTF-8";
-@import "variables";
-@import "nla-custom-bootstrap";
 
-.page-link {
-  border: none;
-  font-weight: 700;
+.pagination {
+  --bs-pagination-color: var(--nla-body-color);
+  --bs-pagination-active-color: var(--nla-white);
+  --bs-pagination-hover-color: var(--nla-white);
+  --bs-pagination-hover-bg: var(--nla-warm-grey);
+  --bs-pagination-focus-color: var(--nla-white);
+  --bs-pagination-focus-bg: var(--nla-warm-grey);
+  --bs-pagination-active-bg: var(--nla-warm-grey);
+  --bs-pagination-border-width: 0;
+  --bs-pagination-border-radius: 0.125rem;
+  --bs-pagination-disabled-color: var(--nla-body-color);
+  --bs-pagination-disabled-bg: transparent;
 }
 
-
+.page-link,
+.page-item.disabled .page-link:not(a) {
+  font-weight: 700;
+  border-radius: 0.125rem;
+}

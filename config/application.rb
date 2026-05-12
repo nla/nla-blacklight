@@ -18,6 +18,11 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Load the custom Solr Cloud repository class before Blacklight initializes.
+# This is needed because Blacklight 9 reads blacklight.yml and tries to constantize
+# the adapter class during engine initialization.
+require "nla/solr_cloud/repository"
+
 # Load dotenv only in development or test environment
 if %w[development test].include? ENV["RAILS_ENV"]
   require "dotenv/load"

@@ -1,66 +1,10 @@
 @charset "UTF-8";
-@import "variables";
-@import "nla-custom-bootstrap";
 
 .advanced-search-form {
   .input-criteria {
-    .query-criteria {
-      margin-bottom: 3rem;
-    }
     
     .limit-criteria {
-      margin-bottom: 1.5rem;
-      
-      .advanced-facet-limits {
-        .facet-field-heading {
-          button {
-            border-radius: 0;
-            
-            &::after {
-              float: none;
-              display: inline-block;
-              margin-left: 0.25rem;
-            }
-            
-            &.btn:not(.collapsed)::after {
-              transform: rotate(90deg);
-              transition: transform 0.15s ease-in-out;
-            }
-            
-            &:hover,
-            &:focus,
-            &:focus-visible,
-            &:active {
-              background: $mid-teal;
-              box-shadow: none;
-            }
-          }
-        }
-
-        .blacklight-advanced-facet-select {
-          .facet-checkbox {
-            width: 1rem;
-          }
-          
-          .label-and-count {
-            padding-left: 0.5rem;
-            
-            .facet-label {
-              padding-left: 0;
-              padding-bottom: 0;
-              text-indent: 0;
-            }
-            
-            .facet-count {
-              color: $gray-500;
-              font-size: 0.875rem;
-              width: auto;
-              vertical-align: inherit;
-              text-align: left;
-            }
-          }
-        }
-      }
+      margin-bottom: 1.5rem;   
     }
   }
 }

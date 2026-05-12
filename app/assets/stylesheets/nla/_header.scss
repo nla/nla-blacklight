@@ -1,6 +1,23 @@
 @charset "UTF-8";
-@import "variables";
-@import "nla-custom-bootstrap";
+
+
+.navbar-logo {
+  --bl-logo-image: url('nla_logo.svg');
+  --bl-logo-width: 294px;
+  --bl-logo-height: 73px;
+  --nla-logo-width-mobile: 178px;
+  --nla-logo-height-mobile: 45px;
+}
+
+.navbar-toggler {
+  --nla-navbar-toggler-filter: invert(0);
+}
+@media screen and (prefers-color-scheme: dark) {
+  .navbar-toggler {
+    --nla-navbar-toggler-filter: invert(1);
+  }
+}
+
 
 #skip-link {
   position: absolute;
@@ -28,7 +45,7 @@
   border-bottom: 1px solid #e6e6e6;
   
   .top-bar {
-    background-color: $lightest-teal;
+    background-color: var(--nla-lightest-teal);
     font-weight: 400;
     padding-top: 0.5rem;
     padding-bottom: 0.5rem;
@@ -44,7 +61,7 @@
         &:hover,
         &:focus,
         &.active {
-          color: $white;
+          color: var(--nla-white);
         }
       }
     }
@@ -55,8 +72,8 @@
     padding-bottom: 1.5rem;
     
     .navbar-brand.navbar-logo {
-      height: 45px;
-      width: 178px;
+      height: var(--nla-logo-height-mobile);
+      width: var(--nla-logo-width-mobile);
       background-size: contain;
       margin-top: 0;
       
@@ -68,15 +85,19 @@
       }
       
       &:focus {
-        outline: 2px solid $black;
+        outline: 2px solid var(--nla-body-color);
         outline-offset: 0.25rem;
       }
     }
     
+    .navbar-toggler {
+      filter: var(--nla-navbar-toggler-filter);
+    }
+    
     @media (min-width: 768px) {
       .navbar-brand.navbar-logo {
-        height: 73px;
-        width: 294px;
+        height: var(--bl-logo-height);
+        width: var(--bl-logo-width);
         background-size: contain;
       }
     }
@@ -90,7 +111,7 @@
         
         .nav-link {
           padding: 0;
-          color: $black;
+          color: var(--nla-body-color);
           font-size: 1.25rem;
           font-weight: 600;
           line-height: 1.2;
@@ -102,29 +123,10 @@
           &:focus,
           &:active,
           &.active {
-            color: $black;
+            color: var(--nla-body-color);
             background-color: transparent;
             text-decoration: underline;
             box-shadow: none;
-          }
-        }
-        
-        .dropdown-menu {
-          background-color: $white;
-          box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
-          
-          .dropdown-item {
-            color: $grey-700;
-            text-decoration: none;
-      
-            &:hover,
-            &:focus,
-            &:active,
-            &.active {
-              background-color: $light-grey;
-              color: $grey-700;
-              box-shadow: none;
-            }
           }
         }
         

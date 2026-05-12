@@ -143,14 +143,14 @@ GEM
     bindex (0.8.1)
     binding_of_caller (2.0.0)
       debug_inspector (>= 1.2.0)
-    blacklight (8.12.3)
+    blacklight (9.0.0)
       globalid
       i18n (>= 1.7.0)
       jbuilder (~> 2.7)
       kaminari (>= 0.15)
       ostruct (>= 0.3.2)
-      rails (>= 6.1, < 9)
-      view_component (>= 2.74, < 5)
+      rails (>= 7.0, < 9)
+      view_component (>= 3.0, < 5.0)
       zeitwerk
     blacklight-marc (9.0.0)
       blacklight (>= 7.11, < 10)
@@ -159,16 +159,12 @@ GEM
       marc-fastxmlwriter
       rails
       traject (~> 3.0)
-    blacklight_advanced_search (8.0.0.alpha2)
-      blacklight (>= 7.15, < 9)
-      parslet
-    blacklight_range_limit (8.5.0)
-      blacklight (>= 7.25.2, < 9)
-      deprecation
-      view_component (>= 2.54, < 4)
-    bootsnap (1.24.3)
+    blacklight_range_limit (9.2.0)
+      blacklight (>= 7.25.2, < 10)
+      view_component (>= 2.54, < 5)
+    bootsnap (1.18.6)
       msgpack (~> 1.2)
-    brakeman (8.0.4)
+    brakeman (7.1.2)
       racc
     builder (3.3.0)
     bundler-audit (0.9.3)
@@ -224,8 +220,6 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     debug_inspector (1.2.0)
-    deprecation (1.1.0)
-      activesupport
     derailed_benchmarks (2.2.1)
       base64
       benchmark-ips (~> 2)
@@ -403,7 +397,6 @@ GEM
     marcel (1.1.0)
     matrix (0.4.3)
     memory_profiler (1.1.0)
-    method_source (1.1.0)
     mini_histogram (0.3.1)
     mini_mime (1.1.5)
     minitar (1.1.0)
@@ -713,10 +706,10 @@ GEM
     uri (1.1.1)
     useragent (0.16.11)
     version_gem (1.1.9)
-    view_component (3.24.0)
-      activesupport (>= 5.2.0, < 8.2)
+    view_component (4.2.0)
+      actionview (>= 7.1.0)
+      activesupport (>= 7.1.0)
       concurrent-ruby (~> 1)
-      method_source (~> 1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
     web-console (4.3.0)
@@ -775,10 +768,9 @@ DEPENDENCIES
   bento_search!
   better_errors
   binding_of_caller
-  blacklight (>= 8.0.0, < 9)
+  blacklight (~> 9.0)
   blacklight-marc (~> 9.0)
-  blacklight_advanced_search (= 8.0.0.alpha2)
-  blacklight_range_limit (~> 8.0, < 9)
+  blacklight_range_limit (~> 9.0)
   bootsnap
   brakeman
   bundler-audit
