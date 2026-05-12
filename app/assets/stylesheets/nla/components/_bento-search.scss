@@ -47,10 +47,15 @@
 
   .card {
     border-color: var(--nla-card-bento-border-color);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-radius: 0.25rem;
     break-inside: avoid-column;
     background-color: transparent;
     
-    &:hover {
+    &:hover,
+    &:focus-within {
       border-color: var(--nla-card-bento-hover-border-color);
       box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
       
@@ -63,6 +68,8 @@
       background: var(--nla-card-bento-border-color);
       color: var(--nla-white);
       margin: calc(-1rem - 1px) calc(-1rem - 1px) 0 calc(-1rem - 1px);
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
       
       .h5 {
         font-family: var(--nla-font-family-sans-serif);
