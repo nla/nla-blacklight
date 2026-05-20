@@ -20,7 +20,7 @@ gem "activerecord-session_store", "~> 2.0"
 gem "rufus-scheduler", "~> 3.9"
 
 # catch unsafe migrations
-gem "strong_migrations", "~> 2.5"
+gem "strong_migrations", "~> 2.8"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8"
@@ -32,7 +32,7 @@ gem "sprockets-rails"
 gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 7.2"
+gem "puma", "~> 8.0"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
