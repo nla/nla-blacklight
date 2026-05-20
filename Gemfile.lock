@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: eb7c0a6b56f83e0e393362b42ce393c2f91c8241
+  revision: 3ed9f3076d58ee0c0aafab2418ddbd3cddfca6a9
   branch: main
   specs:
     nla-blacklight_common (0.3.5)
@@ -238,7 +238,7 @@ GEM
       ruby-statistics (>= 4.0.1)
       ruby2_keywords
       thor (>= 0.19, < 2)
-    devise (5.0.3)
+    devise (5.0.4)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
       railties (>= 7.0)
@@ -275,7 +275,7 @@ GEM
       railties (>= 6.1.0)
     faker (3.8.0)
       i18n (>= 1.8.11, < 2)
-    faraday (2.14.1)
+    faraday (2.14.2)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -352,7 +352,7 @@ GEM
       bindata
       faraday (~> 2.0)
       faraday-follow_redirects
-    jwt (3.1.2)
+    jwt (3.2.0)
       base64
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
@@ -472,7 +472,6 @@ GEM
     parser (3.3.11.1)
       ast (~> 2.4.1)
       racc
-    parslet (2.0.0)
     phonelib (0.10.18)
     pp (0.6.3)
       prettyprint
@@ -484,7 +483,7 @@ GEM
       date
       stringio
     public_suffix (4.0.7)
-    puma (7.2.0)
+    puma (8.0.1)
       nio4r (~> 2.0)
     raabro (1.4.0)
     racc (1.8.1)
@@ -601,7 +600,7 @@ GEM
       lint_roller (~> 1.1)
       rubocop (>= 1.75.0, < 2.0)
       rubocop-ast (>= 1.47.1, < 2.0)
-    rubocop-rails (2.34.3)
+    rubocop-rails (2.35.1)
       activesupport (>= 4.2.0)
       lint_roller (~> 1.1)
       rack (>= 1.1)
@@ -673,7 +672,7 @@ GEM
     stimulus-rails (1.3.4)
       railties (>= 6.0.0)
     stringio (3.2.0)
-    strong_migrations (2.7.0)
+    strong_migrations (2.8.0)
       activerecord (>= 7.2)
     summon (2.0.5)
       json
@@ -706,7 +705,7 @@ GEM
     uri (1.1.1)
     useragent (0.16.11)
     version_gem (1.1.9)
-    view_component (4.2.0)
+    view_component (4.9.0)
       actionview (>= 7.1.0)
       activesupport (>= 7.1.0)
       concurrent-ruby (~> 1)
@@ -796,7 +795,7 @@ DEPENDENCIES
   mysql2 (~> 0.5)
   nla-blacklight_common!
   phonelib (~> 0.10.16)
-  puma (~> 7.2)
+  puma (~> 8.0)
   rack-mini-profiler
   rails (~> 8)
   rails-controller-testing (~> 1.0, >= 1.0.5)
@@ -817,7 +816,7 @@ DEPENDENCIES
   stackprof
   standard
   stimulus-rails
-  strong_migrations (~> 2.5)
+  strong_migrations (~> 2.8)
   turbo-rails
   tzinfo-data
   web-console
