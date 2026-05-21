@@ -441,6 +441,22 @@ class CatalogController < ApplicationController
       field.include_in_advanced_search = false
     end
 
+    config.add_search_field("marc008date1") do |field|
+      field.label = "Publication Year"
+      field.solr_parameters = {
+        qf: "date_lower_isi",
+        pf: "date_lower_isi"
+      }
+      field.clause_params = {
+        edismax: {
+          qf: "date_lower_isi",
+          pf: "date_lower_isi"
+        }
+      }
+      field.include_in_simple_select = false
+      field.include_in_advanced_search = true
+    end
+
     # "sort results by" select (pulldown)
     # label in pulldown is followed by the name of the Solr field to sort by and
     # whether the sort is ascending or descending (it must be asc or desc
