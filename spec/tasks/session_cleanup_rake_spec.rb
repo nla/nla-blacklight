@@ -3,16 +3,13 @@
 require "rails_helper"
 require "rake"
 
-RSpec.describe "db:sessions:trim_in_batches" do
-  before(:all) do
-    Rails.application.load_tasks
-  end
-
+RSpec.describe Rake do
   let(:task) { Rake::Task["db:sessions:trim_in_batches"] }
   let(:session_class) { ActionDispatch::Session::ActiveRecordStore.session_class }
   let(:relation) { instance_double(ActiveRecord::Relation) }
 
   before do
+    Rails.application.load_tasks
     task.reenable
     allow(Rails.logger).to receive(:info)
   end
@@ -52,8 +49,7 @@ RSpec.describe "db:sessions:trim_in_batches" do
       expect(conditions[:updated_at].end).to be_within(1.minute).of(7.days.ago)
       relation
     }
-    allow(relation).to receive(:limit).and_return(relation)
-    allow(relation).to receive(:delete_all).and_return(0)
+    allow(relation).to receive_messages(limit: relation, delete_all: 0)
 
     task.invoke
   end
