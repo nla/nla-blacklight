@@ -17,16 +17,19 @@ namespace "db:sessions" do
     session_class = ActionDispatch::Session::ActiveRecordStore.session_class
     total_deleted = 0
 
+    puts "Session cleanup: deleting sessions older than #{cutoff_days} days (before #{cutoff}) in batches of #{batch_size}"
     Rails.logger.info "Session cleanup: deleting sessions older than #{cutoff_days} days (before #{cutoff}) in batches of #{batch_size}"
 
     loop do
       deleted = session_class.where(updated_at: ...cutoff).limit(batch_size).delete_all
       total_deleted += deleted
+      puts "Session cleanup: deleted #{deleted} rows (#{total_deleted} total so far)"
       Rails.logger.info "Session cleanup: deleted #{deleted} rows (#{total_deleted} total so far)"
       break if deleted < batch_size
       sleep(sleep_interval)
     end
 
+    puts "Session cleanup complete: #{total_deleted} rows deleted"
     Rails.logger.info "Session cleanup complete: #{total_deleted} rows deleted"
   end
 end
