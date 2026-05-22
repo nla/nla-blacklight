@@ -2,13 +2,13 @@
 
 @import "variables";
 
-// Override Blacklight CSS custom properties
-:root {
-  --bl-logo-image: url('nla_logo.svg');
-}
-
 @import "advanced-search";
+@import "accordion";
+@import "badge";
 @import "buttons";
+@import "card";
+@import "constraints";
+@import "dropdown";
 @import "facets";
 @import "main";
 @import "footer";
@@ -33,12 +33,10 @@
 @import "./components/bento-search";
 @import "./components/catalogue-record-actions";
 @import "./components/request_details";
+@import "./components/request_summary";
 @import "./components/bookmarks";
 @import "./components/citations";
 @import "./components/user-details-field-component";
 
 // Vendor + plugins
 @import "./plugins/blacklight_range_limit";
-
-
-@import "dark-mode";

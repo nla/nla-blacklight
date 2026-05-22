@@ -20,7 +20,7 @@ gem "activerecord-session_store", "~> 2.0"
 gem "rufus-scheduler", "~> 3.9"
 
 # catch unsafe migrations
-gem "strong_migrations", "~> 2.5"
+gem "strong_migrations", "~> 2.8"
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8"
@@ -32,7 +32,7 @@ gem "sprockets-rails"
 gem "mysql2", "~> 0.5"
 
 # Use the Puma web server [https://github.com/puma/puma]
-gem "puma", "~> 7.2"
+gem "puma", "~> 8.0"
 
 # Bundle and transpile JavaScript [https://github.com/rails/jsbundling-rails]
 gem "jsbundling-rails"
@@ -51,7 +51,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.26.2"
+gem "hiredis-client", "~> 0.29.0"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.4"
@@ -81,9 +81,9 @@ gem "yabeda-prometheus"
 gem "derailed_benchmarks", group: :development
 gem "stackprof", group: :development
 
-gem "blacklight", ">= 8.0.0", "< 9"
+gem "blacklight", "~> 9.0"
 gem "blacklight-marc", "~> 9.0"
-gem "blacklight_advanced_search", "8.0.0.alpha2"
+# blacklight_advanced_search is no longer needed - Blacklight 9 has native advanced search
 gem "ebsco-eds", "~> 1.1"
 
 gem "email_validator", "~> 2.2"
@@ -91,7 +91,7 @@ gem "phonelib", "~> 0.10.16"
 
 gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "master"
-gem "blacklight_range_limit", "~> 8.0", "< 9"
+gem "blacklight_range_limit", "~> 9.0"
 # For local development, comment out above ⤴️ and uncomment below ⤵️
 # gem "nla-blacklight_common", path: "../nla-blacklight_common"
 # gem "bento_search", path: "../bento_search"

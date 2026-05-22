@@ -1,10 +1,10 @@
 @charset "UTF-8";
-@import "variables";
-@import "nla-custom-bootstrap";
+//@import "variables";
+//@import "nla-custom-bootstrap";
 
 .pagination-search-widgets {
   font-size: 0.875rem;
-  color: $warm-grey;
+  color: var(--nla-warm-grey);
 }
 
 .document-thumbnail {
@@ -18,7 +18,7 @@
         -webkit-font-smoothing: antialiased;
         font: var(--fa-font-regular);
         content: '\f00e';
-        color: $white;
+        color: var(--nla-white);
         position: absolute;
         top: 0.5em;
         left: 0.5em;
@@ -44,7 +44,7 @@
       } 
       
       .thumbnail {
-        outline: 2px solid $mid-teal;
+        outline: 2px solid var(--nla-mid-teal);
       }
     }
     
@@ -54,7 +54,7 @@
       object-fit: contain;
       object-position: 0 0;
       
-      @media screen and (max-width: breakpoint-max(md)) {
+      @media screen and (max-width: 767.98px) {
         max-width: 100%;
       }
     }
@@ -64,15 +64,9 @@
 .document {
   
   .h3 {
-    font-family: $font-family-serif;
+    font-family: var(--nla-font-family-serif);
     font-size: 2.5rem;
     font-weight: 400;
-  }
-  
-  .dl-invert {
-    dt {
-      color: $grey-300;
-    }
   }
   
   .blacklight-online_access {
@@ -106,20 +100,21 @@
 }
 
 #request-details {
-  background-color: $light-grey;
+  background-color: var(--nla-request-details-bg);
   padding: 1rem;
   
   .h3 {
-    font-family: $font-family-sans-serif;
+    font-family: var(--nla-font-family-sans-serif);
     font-size: 2rem;
     font-weight: 600;
   }
   
   .holding {
-    background-color: $white;
+    background-color: var(--nla-request-holdings-bg);
     
     &:hover,
     &:has(a.btn-primary:focus) {
+      background-color: var(--nla-request-holdings-hover-bg);
       box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
     }
   }

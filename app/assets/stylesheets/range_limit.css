@@ -11,7 +11,7 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_self
- * Used by blacklight_range_limit
- *= require  'blacklight_range_limit'
+ *
+ * Note: In blacklight_range_limit 9+, CSS is now handled via npm/esbuild, not Sprockets
  *
 */

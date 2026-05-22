@@ -1,9 +1,8 @@
 @charset "UTF-8";
-@import "variables";
-@import "nla-custom-bootstrap";
 
-a:not(.btn, .page-link) {
-  color: $link-color;
+
+a:not(.btn, .dropdown-item, .page-link, .facet-select, .remove) {
+  color: var(--nla-link-color);
   text-decoration: underline;
   text-underline-offset: 2px;
   text-underline-position: under;
@@ -12,11 +11,11 @@ a:not(.btn, .page-link) {
   &:focus,
   &:hover,
   &:active {
-    color: $white;
+    color: var(--nla-link-hover-color);
     text-decoration: none;
-    background-color: $link-hover-bg-color;
+    background-color: var(--nla-link-hover-bg);
     outline: none;
-    box-shadow: 0 0 0 4px $link-hover-bg-color;
+    box-shadow: 0 0 0 4px var(--nla-link-hover-bg);
   }
 }
 
@@ -30,8 +29,8 @@ a.page-link {
 }
 
 h1 {
-  font-family: $font-family-serif;
-  color: $body-color;
+  font-family: var(--nla-font-family-serif);
+  color: var(--nla-body-color);
   font-weight: 400;
 }
 

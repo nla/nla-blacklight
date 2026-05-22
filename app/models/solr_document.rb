@@ -45,7 +45,7 @@ class SolrDocument
         rows: 5
       }
       search_repository = Blacklight.repository_class.new(blacklight_config)
-      search_response = search_repository.search(params)
+      search_response = search_repository.search(params: params)
 
       response = search_response["response"]
       if response.present?

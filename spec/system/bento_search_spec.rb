@@ -4,7 +4,7 @@ RSpec.describe "Bento Search" do
   context "when no query is provided" do
     it "shows the bento search form" do
       visit bento_search_index_path
-      expect(page).to have_css(".navbar-search")
+      expect(page).to have_css(".bento-search")
     end
   end
 
@@ -22,7 +22,7 @@ RSpec.describe "Bento Search" do
     it "displays an error message" do
       visit bento_search_index_path(q: "hydrogen")
       expect(page).to have_css("#catalogue")
-      expect(page).to have_content("Sorry! An error occurred and results could not be retrieved.")
+      expect(page).to have_text("Sorry! An error occurred and results could not be retrieved.")
     end
   end
 
@@ -40,7 +40,7 @@ RSpec.describe "Bento Search" do
     it "displays an error message" do
       visit bento_search_index_path(q: "hydrogen")
       expect(page).to have_css("#catalogue")
-      expect(page).to have_content("Sorry! An error occurred and results could not be retrieved.")
+      expect(page).to have_text("Sorry! An error occurred and results could not be retrieved.")
     end
   end
 
@@ -59,7 +59,7 @@ RSpec.describe "Bento Search" do
 
     it "displays an error message" do
       visit bento_single_search_path(q: "hydrogen", engine: "ebsco_eds_keyword")
-      expect(page).to have_content("Sorry! An error occurred and results could not be retrieved.")
+      expect(page).to have_text("Sorry! An error occurred and results could not be retrieved.")
     end
   end
 

@@ -64,9 +64,9 @@
     <% if Rails.env.development? || Rails.env.staging? %>
     <div class="bg-warning text-dark text-center p-2">
       [ <% if Rails.env.development? %>
-        DEVELOPMENT (BL 8)
+        DEVELOPMENT (BL 9)
       <% elsif Rails.env.staging? %>
-        TEST (BL 8)
+        TEST (BL 9)
       <% end %> ]
     </div>
     <% end %>
@@ -75,7 +75,7 @@
       <%= link_to t('blacklight.skip_links.main_content'), '#main-container', class: 'element-invisible element-focusable rounded-bottom py-2 px-3', data: { turbolinks: 'false' } %>
       <%= content_for(:skip_links) %>
     </nav>
-    <%= render partial: 'shared/header_navbar' %>
+    <%= render blacklight_config.header_component.new(blacklight_config: blacklight_config) %>
 
     <main id="main-container" class="<%= container_classes %>" role="main" aria-label="<%= t('blacklight.main.aria.main_container') %>" tabindex="-1">
       <%= content_for(:container_header) %>

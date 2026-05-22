@@ -44,13 +44,13 @@ module Blacklight
     #
     # @return [String]
     def heading
-      return field_value(view_config.title_field) if view_config.title_field.is_a? Blacklight::Configuration::Field
+      return field_value(view_config.title_field, join: true).first if view_config.title_field.is_a? Blacklight::Configuration::Field
 
       fields = Array.wrap(view_config.title_field) + [configuration.document_model.unique_key]
       f = fields.lazy.map { |field| field_config(field) }.detect { |field_config| field_presenter(field_config).any? }
-      heading = f ? field_value(f, except_operations: [Rendering::HelperMethod]) : ""
+      heading = f ? field_value(f, except_operations: [Rendering::HelperMethod], join: true).first : ""
       # rubocop:disable Rails/OutputSafety
-      heading.split("<br>").map { |t| (view_context.action_name == "show") ? t : t.truncate(175, separator: " ") }.join("<br>").html_safe
+      heading.to_s.split("<br>").map { |t| (view_context.action_name == "show") ? t : t.truncate(175, separator: " ") }.join("<br>").html_safe
       # rubocop:enable Rails/OutputSafety
     end
 
@@ -61,12 +61,12 @@ module Blacklight
     # @see #document_heading
     # @return [String]
     def html_title
-      return field_value(view_config.html_title_field) if view_config.html_title_field.is_a? Blacklight::Configuration::Field
+      return field_value(view_config.html_title_field, join: true).first if view_config.html_title_field.is_a? Blacklight::Configuration::Field
 
       if view_config.html_title_field
         fields = Array.wrap(view_config.html_title_field) + [configuration.document_model.unique_key]
         f = fields.lazy.map { |field| field_config(field) }.detect { |field_config| field_presenter(field_config).any? }
-        field_value(f)
+        field_value(f, join: true).first
       else
         titles = heading.split("<br>")
         titles.first.to_s.truncate(105, separator: " ")
@@ -97,8 +97,9 @@ module Blacklight
     # @param [Configuration::Field] field_config
     # @param [Hash] options
     # @option options [String] :value
+    # @return [Array]
     def field_value field_config, options = {}
-      field_presenter(field_config, options).render
+      Array.wrap(field_presenter(field_config, options).render)
     end
 
     def thumbnail_presenter_class

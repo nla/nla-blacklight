@@ -1,6 +1,22 @@
 @charset "UTF-8";
-@import "../variables";
-@import "../nla-custom-bootstrap";
+
+
+.bento-search-results {
+  --nla-card-bento-border-color: var(--nla-warm-grey);
+  --nla-card-bento-title-bg: var(--nla-warm-grey);
+  --nla-card-bento-hover-border-color: var(--nla-black);
+  --nla-card-bento-hover-title-bg: var(--nla-black);
+}
+
+@media screen and (prefers-color-scheme: dark) {
+  .bento-search-results {
+    --nla-card-bento-border-color: var(--nla-grey-600);
+    --nla-card-bento-title-bg: var(--nla-grey-600);
+    --nla-card-bento-hover-border-color: var(--nla-grey-400);
+    --nla-card-bento-hover-title-bg: var(--nla-grey-400);
+  }
+}  
+
 
 .bento-search-bar {
   position: relative;
@@ -11,48 +27,66 @@
   padding: 0.5rem 0;
 }
 
+.bento-search {
+  .input-group {
+    gap: 1rem;
+  }
+}
+
+@media screen and (min-width: 576px){
+  .bento-search {
+    width: 75%;
+  }
+}
+
+
 .bento-search-results {
   .placeholder {
     border-radius: 0.25em;
   }
 
   .card {
-    border-color: $warm-grey;
+    border-color: var(--nla-card-bento-border-color);
+    border-left-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-radius: 0.25rem;
     break-inside: avoid-column;
     background-color: transparent;
     
-    &:hover {
-      border-color: $black;
+    &:hover,
+    &:focus-within {
+      border-color: var(--nla-card-bento-hover-border-color);
       box-shadow: 1px 1px 12px 0px rgba(0,0,0,0.08);
       
       .card-title {
-        background: $black;
+        background: var(--nla-card-bento-hover-title-bg);
       }
     }
 
     .card-title {
-      background: $warm-grey;
-      color: $white;
+      background: var(--nla-card-bento-border-color);
+      color: var(--nla-white);
       margin: calc(-1rem - 1px) calc(-1rem - 1px) 0 calc(-1rem - 1px);
-      border-top-left-radius: 4px;
-      border-top-right-radius: 4px;
+      border-top-left-radius: 0.25rem;
+      border-top-right-radius: 0.25rem;
       
       .h5 {
-        font-family: $font-family-sans-serif;
-        color: $white;
+        font-family: var(--nla-font-family-sans-serif);
+        color: var(--nla-white);
       }
       
       .view-all-results {
         font-size: 0.875rem;
         
         a {
-          color: $white;
+          color: var(--nla-white);
           text-decoration: none;
           
           &:hover,
           &:focus,
           &:active {
-            color: $white;
+            color: var(--nla-white);
             background-color: transparent;
             text-decoration: underline;
             box-shadow: none;
@@ -62,11 +96,11 @@
     }
     
     .bento-item {
-      border-bottom: 1px dotted $light-grey;
+      border-bottom: 1px dotted var(--nla-result-item-border-color);
       
       &:hover,
       &:has(.bento-item-title a:focus) {
-        background: $light-grey;
+        background: var(--nla-result-item-hover-bg);
       }
     
       .bento-item-title {
@@ -79,8 +113,9 @@
           &:focus,
           &:hover {
             background: transparent;
-            color: $black;
+            color: var(--nla-link-color);
             text-decoration: underline;
+            box-shadow: none;
             
             &:after {
               content: " \F061";
@@ -92,7 +127,7 @@
       
       .dl-invert {
         dt {
-          color: $grey-300;
+          color: var(--nla-result-item-dt-color);
         }
       }
 
