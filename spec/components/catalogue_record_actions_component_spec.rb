@@ -26,7 +26,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
 
       render_inline(described_class.new(document: document))
 
-      expect(page.text).not_to include("Request")
+      expect(page.text).not_to include("Use in the Library")
     end
   end
 
@@ -37,7 +37,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
 
       render_inline(described_class.new(document: document))
 
-      expect(page.text).to include("Request")
+      expect(page.text).to include("Use in the Library")
     end
   end
 
@@ -48,7 +48,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
 
       render_inline(described_class.new(document: document))
 
-      expect(page.text).to include("Request")
+      expect(page.text).to include("Use in the Library")
     end
   end
 
@@ -56,7 +56,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
     it "renders the request button" do
       render_inline(described_class.new(document: document))
 
-      expect(page.text).to include("Request")
+      expect(page.text).to include("Use in the Library")
     end
   end
 
@@ -66,7 +66,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
 
       render_inline(described_class.new(document: document))
 
-      expect(page.text).not_to include("Request")
+      expect(page.text).not_to include("Use in the Library")
     end
   end
 
