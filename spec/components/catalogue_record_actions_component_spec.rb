@@ -8,7 +8,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
   it "renders the 'Order a copy' button" do
     render_inline(described_class.new(document: document))
 
-    expect(page.text).to include("Order a copy")
+    expect(page.text).to include("Order a scan")
   end
 
   it "renders the 'Request' button" do
@@ -16,7 +16,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
 
     render_inline(described_class.new(document: document))
 
-    expect(page.text).to include("Request")
+    expect(page.text).to include("Use in the Library")
   end
 
   context "when FOLIO_UPDATE_IN_PROGRESS is `true`" do
@@ -132,7 +132,7 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
       it "renders the 'Request' button and holdings" do
         render_inline(described_class.new(document: document))
 
-        expect(page.text).to include("Request")
+        expect(page.text).to include("Use in the Library")
       end
     end
   end
