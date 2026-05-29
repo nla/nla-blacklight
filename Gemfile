@@ -87,7 +87,7 @@ gem "blacklight-marc", "~> 9.0"
 gem "ebsco-eds", "~> 1.1"
 
 gem "email_validator", "~> 2.2"
-gem "phonelib", "~> 0.10.16"
+gem "phonelib", "~> 0.10.20"
 
 gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "master"
@@ -144,7 +144,7 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.35"
+  gem "selenium-webdriver", "~> 4.44"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"
