@@ -403,7 +403,7 @@ GEM
     minitest (6.0.6)
       drb (~> 2.0)
       prism (~> 1.5)
-    mock_redis (0.53.0)
+    mock_redis (0.54.0)
       redis (~> 5)
     msgpack (1.8.0)
     multi_json (1.21.1)
@@ -791,7 +791,7 @@ DEPENDENCIES
   jsbundling-rails
   lograge
   memory_profiler
-  mock_redis (~> 0.53.0)
+  mock_redis (~> 0.54.0)
   mysql2 (~> 0.5)
   nla-blacklight_common!
   phonelib (~> 0.10.20)
