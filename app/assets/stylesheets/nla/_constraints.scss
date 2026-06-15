@@ -22,6 +22,25 @@
     --nla-constraint-remove-color: var(--nla-body-color);
     --nla-constraint-remove-hover-color: var(--nla-lightest-orange);
   }
+
+  .inclusive_or,
+  .inclusive_or.bg-light {
+    background-color: var(--bs-accordion-bg) !important;
+    color: var(--nla-body-color);
+
+    h5,
+    h5.h5 {
+      color: var(--nla-body-color);
+    }
+
+    .facet-values li a {
+      color: var(--nla-body-color);
+
+      &:hover {
+        color: var(--nla-lightest-orange);
+      }
+    }
+  }
 }
 
 .constraints-container {
@@ -107,6 +126,28 @@
     
     .filter-name::after {
       filter: var(--nla-constraint-divider-filter);
+    }
+  }
+}
+
+.inclusive_or {
+  background-color: var(--bs-accordion-bg) !important;
+  color: var(--nla-body-color);
+
+  h5 {
+    margin-bottom: 0.5rem;
+    color: var(--nla-body-color);
+  }
+
+  .facet-values {
+    margin-bottom: 0;
+
+    li a {
+      color: var(--nla-body-color);
+
+      &:hover {
+        color: var(--nla-constraint-hover-color);
+      }
     }
   }
 }
