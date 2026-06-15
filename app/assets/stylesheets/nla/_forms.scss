@@ -20,7 +20,7 @@
   .form-select,
   .advanced-search-form .input-small {
     --nla-input-color: var(--nla-body-color);
-    --nla-input-bg: transparent;
+    --nla-input-bg: var(--nla-grey-700);
     --nla-input-placeholder-color: var(--nla-grey-100);
     --nla-input-border-color: var(--nla-white);
     --nla-input-focus-color: var(--nla-grey-700);
@@ -28,6 +28,11 @@
     --nla-input-focus-border-color: var(--nla-grey-200);
     --nla-input-focus-box-shadow: none;
     --nla-input-focus-placeholder-color: var(--nla-grey-700);
+  }
+
+  .form-text.text-muted,
+  .form-text.text-muted {
+    color: var(--nla-grey-100) !important;
   }
 }
 
