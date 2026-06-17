@@ -9,25 +9,6 @@
   .modal {
     --nla-modal-backdrop-bg: var(--nla-grey-600);
     --nla-modal-backdrop-opacity: 0.9;
-    
-    .modal-content {
-      background-color: var(--nla-body-bg);
-      color: var(--nla-body-color);
-    }
-    
-    .modal-header {
-      background-color: var(--nla-body-bg);
-    }
-    
-    .modal-body {
-      background-color: var(--nla-body-bg);
-    }
-    
-    .input-group-text {
-      background-color: var(--nla-grey-700);
-      color: var(--nla-body-color);
-      border-color: var(--nla-grey-600);
-    }
   }
 }
 
@@ -69,7 +50,7 @@
       font-family: var(--nla-font-family-sans-serif);
       font-size: 1.125rem;
       font-weight: 600;
-      color: $black;
+      color: var(--nla-body-color);
     }
     
     [data-clipboard-target="button"] {
