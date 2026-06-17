@@ -54,3 +54,22 @@
     padding-right: 1rem;
   }
 }
+
+// For facets within a modal
+.modal {
+  .facet-filters {
+    .input-group-text {
+      background-color: transparent;
+      border: none;
+    }
+  }
+  
+  li .facet-select {
+    color: var(--nla-body-color);
+    
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+  }
+}
