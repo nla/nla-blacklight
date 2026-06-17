@@ -50,7 +50,7 @@
       font-family: var(--nla-font-family-sans-serif);
       font-size: 1.125rem;
       font-weight: 600;
-      color: $black;
+      color: var(--nla-body-color);
     }
     
     [data-clipboard-target="button"] {
