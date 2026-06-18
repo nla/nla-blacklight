@@ -42,7 +42,7 @@ bundle install
 RAILS_ENV=$RAILS_ENV bundle exec rails db:migrate
 
 # Trim old sessions in batches to prevent unbounded table growth
-RAILS_ENV=$RAILS_ENV bundle exec rails db:sessions:trim_in_batches
+#RAILS_ENV=$RAILS_ENV bundle exec rails db:sessions:trim_in_batches
 
 # clear the external asset cache
 RAILS_ENV=$RAILS_ENV bundle exec rails assets:clobber
