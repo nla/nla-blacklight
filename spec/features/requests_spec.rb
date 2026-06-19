@@ -19,7 +19,7 @@ RSpec.describe "Requests" do
 
     context "when user has reached their request limit" do
       it "renders the request limit error" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -110,7 +110,7 @@ RSpec.describe "Requests" do
       before do
         holdings_response = IO.read("spec/files/catalogue_services/serial_manuscript.json")
 
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/instance\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -198,7 +198,7 @@ RSpec.describe "Requests" do
       before do
         holdings_response = IO.read("spec/files/catalogue_services/map.json")
 
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/instance\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -244,7 +244,7 @@ RSpec.describe "Requests" do
       before do
         holdings_response = IO.read("spec/files/catalogue_services/poster.json")
 
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/instance\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -289,7 +289,7 @@ RSpec.describe "Requests" do
       before do
         holdings_response = IO.read("spec/files/catalogue_services/picture.json")
 
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/instance\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -334,7 +334,7 @@ RSpec.describe "Requests" do
       before do
         holdings_response = IO.read("spec/files/catalogue_services/pictureseries.json")
 
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/instance\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -379,7 +379,7 @@ RSpec.describe "Requests" do
       before do
         holdings_response = IO.read("spec/files/catalogue_services/pictureseries_fa.json")
 
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/instance\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -436,7 +436,7 @@ RSpec.describe "Requests" do
       before do
         holdings_response = IO.read("spec/files/catalogue_services/posterseries.json")
 
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/instance\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -480,7 +480,7 @@ RSpec.describe "Requests" do
       before do
         holdings_response = IO.read("spec/files/catalogue_services/posterseries_fa.json")
 
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/instance\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -584,7 +584,7 @@ RSpec.describe "Requests" do
 
     context "when user has reached their request limit" do
       it "renders the request limit error" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
           .with(
             headers: {
               "Accept" => "*/*",

@@ -8,7 +8,7 @@ RSpec.describe "Profile" do
   context "when patron has mobile and landline phone numbers" do
     before do
       user_details = IO.read("spec/files/profile/user_details.json")
-      WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user/)
+      WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user/)
         .to_return(status: 200, body: user_details, headers: {"Content-Type" => "application/json"})
     end
 
@@ -21,7 +21,7 @@ RSpec.describe "Profile" do
 
     describe "deleting a phone number" do
       before do
-        WebMock.stub_request(:post, /catservices.test\/catalogue-services\/folio\/user\/updateDetails/)
+        WebMock.stub_request(:post, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\/updateDetails/)
           .to_return(body: '{"status":"OK"}')
       end
 
