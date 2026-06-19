@@ -3,6 +3,7 @@
 require "rails_helper"
 require "rake"
 
+# rubocop:disable RSpec/SpecFilePathFormat
 RSpec.describe Rake do
   let(:task) { Rake::Task["db:sessions:trim_in_batches"] }
   let(:session_class) { ActionDispatch::Session::ActiveRecordStore.session_class }
@@ -77,3 +78,4 @@ RSpec.describe Rake do
     expect(Rails.logger).to have_received(:info).with(/Session cleanup complete: 10000 rows deleted/).at_least(:once)
   end
 end
+# rubocop:enable RSpec/SpecFilePathFormat
