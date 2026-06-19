@@ -6,7 +6,7 @@ require "rufus/scheduler"
 
 scheduler = Rufus::Scheduler.new
 
-cron_schedule = ENV.fetch("SESSION_CLEANUP_CRON", "0 * * * *")
+cron_schedule = ENV.fetch("SESSION_CLEANUP_CRON", "*/30 * * * *")
 
 scheduler.cron(cron_schedule) do
   begin
