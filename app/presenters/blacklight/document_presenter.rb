@@ -85,7 +85,7 @@ module Blacklight
 
       fields += ["format"] if fields.empty? # backwards compatibility with the old default value for display_type_field
 
-      display_type = fields.lazy.map { |field| field_presenter(display_fields[field] || Configuration::NullDisplayField.new(field)) }.detect(&:any?)&.values
+      display_type = fields.lazy.map { |field| field_presenter(display_fields[field] || Configuration::NullDisplayField.new(field)) }.detect(&:any?)&.values&.first
       display_type || Array(default)
     end
 
