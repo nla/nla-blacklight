@@ -17,7 +17,7 @@ RSpec.describe ThumbnailHelper do
           )
           .to_return(status: 200, body: nla_obj_image.to_json, headers: {"content-type": "application/json"})
 
-        expect(helper.render_thumbnail(document, {})).to match(/img/)
+        expect(helper.render_thumbnail(document, {})).to include("img")
       end
     end
 
@@ -36,7 +36,7 @@ RSpec.describe ThumbnailHelper do
 
         allow(document).to receive(:valid_isbn).and_return(["8559378"])
 
-        expect(helper.render_thumbnail(document, {})).to match(/img/)
+        expect(helper.render_thumbnail(document, {})).to include("img")
       end
     end
 
@@ -55,7 +55,7 @@ RSpec.describe ThumbnailHelper do
 
         allow(document).to receive(:lccn).and_return(["93002529"])
 
-        expect(helper.render_thumbnail(document, {})).to match(/img/)
+        expect(helper.render_thumbnail(document, {})).to include("img")
       end
     end
   end
