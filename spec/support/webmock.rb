@@ -199,7 +199,7 @@ RSpec.configure do |config|
 
     holdings_response = IO.read("spec/files/catalogue_services/serial.json")
 
-    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/instance\/(.*)/)
+    WebMock.stub_request(:get, /catalogue-services\.test\.nla\.gov\.au\/catalogue-services\/folio\/instance\/(.*)/)
       .with(
         headers: {
           "Accept" => "*/*",
@@ -210,7 +210,7 @@ RSpec.configure do |config|
 
     create_request_response = IO.read("spec/files/catalogue_services/create_request_response.json")
 
-    WebMock.stub_request(:post, /catservices.test\/catalogue-services\/folio\/request\/new/)
+    WebMock.stub_request(:post, /catalogue-services\.test\.nla\.gov\.au\/catalogue-services\/folio\/request\/new/)
       .with(
         headers: {
           "Accept" => "*/*",
@@ -230,7 +230,7 @@ RSpec.configure do |config|
 
     request_summary = IO.read("spec/files/account/request_summary.json")
 
-    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/.*\/myRequests/)
+    WebMock.stub_request(:get, /catalogue-services\.test\.nla\.gov\.au\/catalogue-services\/folio\/user\/.*\/myRequests/)
       .with(
         headers: {
           "Accept" => "*/*",
@@ -239,7 +239,7 @@ RSpec.configure do |config|
       )
       .to_return(status: 200, body: request_summary, headers: {})
 
-    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+    WebMock.stub_request(:get, /catalogue-services\.test\.nla\.gov\.au\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
       .with(
         headers: {
           "Accept" => "*/*",
@@ -248,7 +248,7 @@ RSpec.configure do |config|
       )
       .to_return(status: 200, body: "{\"requestLimitReached\": \"false\"}", headers: {})
 
-    WebMock.stub_request(:post, /catservices.test\/catalogue-services\/log\/message/)
+    WebMock.stub_request(:post, /catalogue-services\.test\.nla\.gov\.au\/catalogue-services\/log\/message/)
       .with(
         headers: {
           "Accept" => "*/*",
@@ -260,7 +260,7 @@ RSpec.configure do |config|
 
     request_details = IO.read("spec/files/account/single_request.json")
 
-    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)\?loan=(.*)/)
+    WebMock.stub_request(:get, /catalogue-services\.test\.nla\.gov\.au\/catalogue-services\/folio\/request\/(.*)\?loan=(.*)/)
       .with(
         headers: {
           "Accept" => "*/*",
@@ -271,7 +271,7 @@ RSpec.configure do |config|
 
     email_2fa = IO.read("spec/files/email_2fa/on.json")
 
-    WebMock.stub_request(:get, /catservices.test\/catalogue-services\/patron\/2fa\/email\/(.*)/)
+    WebMock.stub_request(:get, /catalogue-services\.test\.nla\.gov\.au\/catalogue-services\/patron\/2fa\/email\/(.*)/)
       .with(
         headers: {
           "Accept" => "*/*",
