@@ -21,7 +21,7 @@ RSpec.describe "UrlHelper" do
 
   describe "#link_to_document" do
     it "has the text-break class" do
-      expect(helper.link_to_document(document, counter: 1)).to include("text-break")
+      expect(helper.link_to_document(document, counter: 1)).to match(/text-break/)
     end
   end
 

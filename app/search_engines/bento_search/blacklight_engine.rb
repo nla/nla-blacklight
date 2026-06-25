@@ -56,7 +56,7 @@ module BentoSearch
               label = attr[1]["attributes"]["label"]
 
               if value.is_a?(Array)
-                value = value.join(", ")
+                value = value.map(&:to_s).join(", ")
               end
 
               item.custom_data[label] = value
