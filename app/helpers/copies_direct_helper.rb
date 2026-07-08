@@ -4,7 +4,7 @@ module CopiesDirectHelper
   end
 
   def copies_direct_link(id)
-    link_to "Copies Direct", copies_direct_url(id)
+    link_to "Copies Direct", copies_direct_url(id), rel: "nofollow"
   end
 
   def copies_direct_button(id)
