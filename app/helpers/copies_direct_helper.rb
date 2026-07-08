@@ -8,6 +8,6 @@ module CopiesDirectHelper
   end
 
   def copies_direct_button(id)
-    link_to 'Order a scan <i class="fa-solid fa-circle-dollar"></i>'.html_safe, copies_direct_url(id), class: "btn btn-primary mb-2 me-2 me-lg-4 px-4"
+    link_to 'Order a scan <i class="fa-solid fa-circle-dollar"></i>'.html_safe, copies_direct_url(id), class: "btn btn-primary mb-2 me-2 me-lg-4 px-4", rel: "nofollow"
   end
 end
