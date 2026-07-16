@@ -149,7 +149,7 @@ group :test do
   gem "webmock"
   gem "cuprite"
 
-  gem "simplecov", "~> 0.22.0"
+  gem "simplecov", "~> 1.0.1"
   gem "simplecov-json", "~> 0.2.3"
 
   gem "mock_redis", "~> 0.55.0"
