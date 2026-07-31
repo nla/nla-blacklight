@@ -1,5 +1,5 @@
 <div class="row">
-<div class="col-12 col-lg-8">
+<div class="col-12 col-lg-12">
     <%= form_with(url: solr_document_request_path,
                   model: request,
                   method: :post,
@@ -10,7 +10,7 @@
       <%= hidden_field :request, :item_id %>
 
       <div class="mb-3 row">
-        <%= f.label :enumeration, t("requesting.label.call_numbers"), class: "col-md-3 col-form-label text-md-right" %>
+        <%= f.label :enumeration, t("requesting.label.call_numbers"), class: "col-md-2 col-form-label text-md-right" %>
         <div class="col-sm-6">
           <%= f.text_field :enumeration, class: "form-control", maxlength: 80, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
         </div>
@@ -18,17 +18,24 @@
       </div>
 
       <div class="mb-3 row">
-        <%= f.label :notes, t("requesting.label.notes"), class: "col-md-3 col-form-label text-md-right" %>
+        <%= f.label :notes, t("requesting.label.notes"), class: "col-md-2 col-form-label text-md-right" %>
         <div class="col-sm-6">
           <%= f.text_area :notes, class: "form-control", maxlength: 130 %>
         </div>
         <span id="notes-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.notes") %></span>
       </div>
-
+      
+      <%= render "requesting_information", f: f %>
+      
       <div class="mb-3 row">
-        <div class="offset-md-3 col-sm-6 pe-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary", data: {action: "form-validation#validateSubmit"} %></div>
+        <div class="offset-md-2 col-sm-6 pe-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary", data: {action: "form-validation#validateSubmit"} %></div>
         <div class="col-sm-3"></div>
       </div>
     <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-8">
+    <%= pickup_location_img(@request.item) %>
   </div>
 </div>

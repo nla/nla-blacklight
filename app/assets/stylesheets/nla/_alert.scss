@@ -1,6 +1,7 @@
 @charset "UTF-8";
 
-.alert {
+.alert,
+.request-information {
   --nla-alert-color: var(--nla-grey-700);
   --nla-alert-success-border-color: var(--nla-success-dark);
   --nla-alert-success-bg: var(--nla-success-light);
@@ -14,7 +15,8 @@
 }
 
 @media screen and (prefers-color-scheme: dark) {
-  .alert {
+  .alert,
+  .request-information {
     --nla-alert-color: var(--nla-white);
     --nla-alert-success-border-color: var(--nla-success-light);
     --nla-alert-success-bg: var(--nla-success-dark);

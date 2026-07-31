@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-12 col-lg-8">
+  <div class="col-12 col-lg-12">
     <%= form_with(url: solr_document_request_path,
                   model: request,
                   method: :post,
@@ -10,7 +10,7 @@
       <%= hidden_field :request, :item_id %>
 
       <div class="mb-3 row">
-        <%= f.label :year, t("requesting.label.box_number"), class: "col-md-3 col-form-label text-md-right" %>
+        <%= f.label :year, t("requesting.label.box_number"), class: "col-md-2 col-form-label text-md-right" %>
         <div class="col-sm-6">
           <%= f.text_field :year, class: "form-control", maxlength: 20, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
         </div>
@@ -24,25 +24,28 @@
         <div class="col-sm-6">
           <%= f.text_field :enumeration, class: "form-control", maxlength: 80, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
         </div>
-        <span id="volume-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.volume") %></span>
+        <span id="volume-help" class="form-text text-muted col-sm-2"><%= t("requesting.help.volume") %></span>
       </div>
       <div class="mb-3 row">
         <%= f.label :chronology, t("requesting.label.folder_item_number"), class: "col-md-3 col-form-label text-md-right" %>
         <div class="col-sm-6">
           <%= f.text_field :chronology, class: "form-control", maxlength: 80, data: {"form-validation-target": "required", action: "form-validation#validate"} %>
         </div>
-        <span id="enumeration-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.enumeration") %></span>
+        <span id="enumeration-help" class="form-text text-muted col-sm-2"><%= t("requesting.help.enumeration") %></span>
       </div>
       <div class="mb-3 row">
-        <%= f.label :notes, t("requesting.label.notes"), class: "col-md-3 col-form-label text-md-right" %>
+        <%= f.label :notes, t("requesting.label.notes"), class: "col-md-2 col-form-label text-md-right" %>
         <div class="col-sm-6">
           <%= f.text_area :notes, class: "form-control", maxlength: 130 %>
         </div>
         <span id="notes-help" class="form-text text-muted col-sm-3"><%= t("requesting.help.notes") %></span>
       </div>
-
+      
+      <%= render "requesting_information", f: f %>
+      
+      
       <div class="mb-3 row">
-        <div class="offset-md-3 col-sm-6 pe-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary", data: {action: "form-validation#validateSubmit"} %></div>
+        <div class="offset-md-2 col-sm-5 pe-0"><%= f.submit t("requesting.btn_request"), class: "btn btn-primary", data: {action: "form-validation#validateSubmit"} %></div>
         <div class="col-sm-3"></div>
       </div>
     <% end %>

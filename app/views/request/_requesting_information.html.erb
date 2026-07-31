@@ -1,0 +1,15 @@
+<div class="mt-3 mb-3 ms-n1 row">
+  <div class="offset-md-2 col-sm-6 pe-0">
+    <div class="request-information ms-n3 px-3 py-3">
+      <h3 class="h4"><%= t("requesting.request_information.heading") %></h3>
+      <p><%= t("requesting.request_information.message").html_safe %></p>    
+      <%= f.check_box :agree_to_terms, required: true, class: "form-check-input", data: { "form-validation-target": "checkbox", action: "change->form-validation#validateCheckbox" } %>
+      <%= f.label :agree_to_terms, "I agree", class: "form-check-label mandatory-pre" %>
+    </div>
+  </div>
+  <div class="col-sm-4 mt-3">
+    <% if @request.item["pickupLocation"].present? %>
+      <%= pickup_location_img(@request.item) %>
+    <% end %>
+  </div>
+</div>
