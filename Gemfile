@@ -89,7 +89,7 @@ gem "ebsco-eds", "~> 1.1"
 gem "email_validator", "~> 2.2"
 gem "phonelib", "~> 0.10.20"
 
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", ref: "b1e8796fb369a2be28b5c5b6d0f423a3bbd09156"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", tag: "0.3.6"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.2"
 gem "blacklight_range_limit", "~> 9.0"
 # For local development, comment out above ⤴️ and uncomment below ⤵️
