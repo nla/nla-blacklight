@@ -29,3 +29,22 @@
     }
   }
 }
+
+
+  .request-information {
+    &:has(#request_agree_to_terms:required:user-invalid),
+    &:has(.is-invalid) {
+      background: var(--nla-alert-error-bg);
+      box-shadow: -0.25rem 0 0 0 var(--nla-alert-error-border-color);
+    }
+    
+    .form-check-input.is-invalid ~ .form-check-label {
+      color: var(--nla-body-color);
+    }
+  }
+
+.mandatory-pre:before {
+  padding-right: 0.25rem;
+  content: "*";
+  color: var(--nla-dark-red);
+}

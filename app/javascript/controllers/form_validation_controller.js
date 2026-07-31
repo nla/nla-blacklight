@@ -3,7 +3,7 @@ import debounce from "lodash.debounce"
 
 // Connects to data-controller="form-validator"
 export default class extends Controller {
-  static targets = [ "form", "required", "alert", "message" ]
+  static targets = [ "form", "required", "checkbox", "alert", "message" ]
   static values = { message: String, dependentMessage: String }
 
   connect() {
@@ -20,9 +20,15 @@ export default class extends Controller {
 
     let allRequiredFieldsMissing = this.isAllRequiredFieldsMissing()
     let dependentFieldsMissing = this.isDependentFieldsMissing()
+    let checkboxUnchecked = this.hasCheckboxTarget && !this.checkboxTarget.checked
 
     if (allRequiredFieldsMissing || dependentFieldsMissing) {
       this.toggleAllRequiredFieldsInvalid()
+    }
+
+    if (checkboxUnchecked) {
+      this.checkboxTarget.classList.add("is-invalid")
+      this.checkboxTarget.setAttribute("aria-invalid", "true")
     }
 
     // If required fields are empty, show the alert and prevent submit
@@ -30,6 +36,8 @@ export default class extends Controller {
       this.showMessage(this.messageValue)
     } else if (dependentFieldsMissing) {
       this.showMessage(this.dependentMessageValue)
+    } else if (checkboxUnchecked) {
+      this.showMessage(this.messageValue)
     } else {
       this.hideMessage()
       form.submit()
@@ -65,10 +73,25 @@ export default class extends Controller {
     }
   }
 
+  validateCheckbox(event) {
+    let checkbox = event.target
+    if (checkbox.checked) {
+      checkbox.classList.remove("is-invalid")
+      checkbox.removeAttribute("aria-invalid")
+      if (this.isAllRequiredFieldsMissing() === false && !this.isDependentFieldsMissing()) {
+        this.hideMessage()
+      }
+    } else {
+      checkbox.classList.add("is-invalid")
+      checkbox.setAttribute("aria-invalid", "true")
+      this.showMessage(this.messageValue)
+    }
+  }
+
   isAllRequiredFieldsMissing() {
     let requiredFields = this.requiredTargets
 
-    return requiredFields.every(field => field.value === "")
+    return requiredFields.length > 0 && requiredFields.every(field => field.value === "")
   }
 
   isDependentFieldsMissing() {

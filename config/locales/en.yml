@@ -89,7 +89,7 @@ en:
         required: "Additional information is required to complete your request. Please provide the Map Sheet No. or Name."
         dependent: "Additional information is required to complete your request. Please provide the Map Sheet No. or Name."
       monographs:
-        required: ""
+        required: "Please read and agree to the details regarding requesting information."
         dependent: ""
       serials:
         required: "Additional information is required to complete your request. Please provide information on either the Year, or Volume/No or Day or Month that you are requesting."
@@ -151,6 +151,9 @@ en:
       need_help: "Need help? <a href=\"%{contact_us}\">Contact us</a>."
     collect_from:
       base: "%{link}%{location}"
+    request_information:
+      heading: "Requesting information"
+      message: 'Collection material is held in Canberra at the National Library of Australia. Requested items are available for use onsite in our <a href="https://www.library.gov.au/visit/reading-rooms">reading rooms</a> and will be held for seven days from the date of your request. Our collection <a href="https://www.library.gov.au/services/onsite-access/collection-delivery-service">delivery times</a> vary as do our <a href="https://www.library.gov.au/visit/opening-hours">opening hours</a>. Please ensure you are able to visit before placing a request.'
     request_limit_error:
       sol: '<p>Your request limit has been reached. You are unable to make any further Staff Official Loan requests until you have returned some items. Please read the borrowing conditions for <a href="%{staff_borrowing}">Staff Official Loans</a>.</p><p>For assistance, please contact Data Systems via the <a href="%{enquiry_form}">Data Systems Enquiry Form</a>.</p>'
       spl: '<p>Your request limit has been reached. You are unable to make any further Staff Personal Loan requests until you have returned some items. The borrowing limit for Staff Personal Loans is two (2) items only. Please read the borrowing conditions for <a href="%{staff_borrowing}">Staff Personal Loans</a>.</p><p>For assistance, please contact Reading Room Operations on <a href="mailto:readingroomissues@nla.gov.au">readingroomissues@nla.gov.au</a></p>'
