@@ -29,7 +29,7 @@ module Nla::Marc::DocumentExport
   end
 
   # Modified to fix format check, since Blacklight will set an empty array if the "format" field is not found.
-  # :nocov:
+  # simplecov:disable
   def export_as_openurl_ctx_kev(format = nil)
     title = to_marc.find { |field| field.tag == "245" }
     author = to_marc.find { |field| field.tag == "100" }
@@ -77,5 +77,5 @@ module Nla::Marc::DocumentExport
     export_text.presence&.html_safe
     # rubocop:enable Rails/OutputSafety
   end
-  # :nocov:
+  # simplecov:enable
 end
