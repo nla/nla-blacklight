@@ -20,9 +20,9 @@ class RequestTableRowComponent < ViewComponent::Base
       helpers.link_to record_link_text, helpers.solr_document_path(record_id), class: "record-title"
     else
       # this should never happen, but in case a record is deleted from the index
-      # :nocov:
+      # simplecov:disable
       record_link_text
-      # :nocov:
+      # simplecov:enable
     end
   end
 

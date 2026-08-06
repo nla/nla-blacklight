@@ -14,7 +14,7 @@ gem "bundler-audit"
 gem "lograge"
 
 # stores user session in the database rather than the browser cookie
-gem "activerecord-session_store", "~> 2.0"
+gem "activerecord-session_store", "~> 2.3"
 
 # in Rails scheduler
 gem "rufus-scheduler", "~> 3.9"
@@ -144,12 +144,12 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.44"
+  gem "selenium-webdriver", "~> 4.46"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"
 
-  gem "simplecov", "~> 0.22.0"
+  gem "simplecov", "~> 1.0.1"
   gem "simplecov-json", "~> 0.2.3"
 
   gem "mock_redis", "~> 0.55.0"
