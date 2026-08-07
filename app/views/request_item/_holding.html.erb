@@ -29,7 +29,15 @@
               <% end %>
 
               <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.status") %></dt>
-              <dd class="col-12 col-lg-8"><%= item["requestable"] ? item["displayStatus"] : "Not for loan" %></dd>
+              <dd class="col-12 col-lg-8">
+                <% if is_dfl_item?(item) %>
+                  Available
+                <% elsif item["requestable"] %>
+                  <%= item["displayStatus"] %>
+                <% else %>
+                  Not for loan
+                <% end %>
+              </dd>
 
               <% if access_condition_notes(holding).present? %>
                 <dt class="col-12 col-lg-4 text-lg-right"><%= t("requesting.metadata.access_conditions") %></dt>

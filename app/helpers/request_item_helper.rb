@@ -3,6 +3,9 @@
 module RequestItemHelper
   ELECTRONIC_RESOURCE_CALL_NUMBERS = ["ELECTRONIC RESOURCE", "INTERNET"].freeze
 
+  DFL_ENABLED = ENV["DFL_ENABLED"] == "true"
+  DFL_LOAN_TYPE_ID = "f6736b0d-0fa5-444f-b6f3-524f5f860437"
+
   def render_request?(document)
     return false if ENV["FOLIO_UPDATE_IN_PROGRESS"] == "true"
     !is_ned_item?(document) && !has_no_physical_holdings?(document)
@@ -31,5 +34,32 @@ module RequestItemHelper
     is_electronic_resource?(document) && document.callnumber.length == 1
   rescue
     false
+  end
+
+  def is_dfl_item?(item)
+    return false unless DFL_ENABLED
+    result = item["permanentLoanTypeId"] == DFL_LOAN_TYPE_ID
+    Rails.logger.info "DFL item: id=#{item["id"]}, loanTypeId=#{item["permanentLoanTypeId"].inspect}, result=#{result}"
+    result
+  end
+
+  def is_dfl_for_document?(document)
+    return false unless DFL_ENABLED
+
+    instance_id = document.first("folio_instance_id_ssim")
+    return false unless instance_id
+
+    @dfl_cache ||= {}
+    @dfl_cache[instance_id] ||= begin
+      all_holdings = CatalogueServicesClient.new.get_holdings(instance_id: instance_id)
+      result = all_holdings.any? do |holding|
+        holding["itemRecords"].any? { |i| i["permanentLoanTypeId"] == DFL_LOAN_TYPE_ID }
+      end
+      Rails.logger.info "DFL document: instance_id=#{instance_id}, result=#{result}"
+      result
+    rescue HoldingsRequestError, ServiceTokenError, StandardError => e
+      Rails.logger.error "DFL document check error: #{e.message}"
+      false
+    end
   end
 end

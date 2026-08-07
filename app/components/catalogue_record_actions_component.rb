@@ -2,6 +2,7 @@
 
 class CatalogueRecordActionsComponent < ViewComponent::Base
   include RequestItemHelper
+  include RequestHelper
   include CopiesDirectHelper
 
   def initialize(document:)
@@ -43,5 +44,27 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
 
   def render_request?
     helpers.render_request?(@document)
+  end
+
+  def request_button_href
+    if is_dfl_for_document?(@document)
+      url = dfl_request_url(@document)
+      Rails.logger.info "DFL button href: #{url}"
+      url
+    else
+      "#request-details"
+    end
+  end
+
+  def request_button_label
+    if is_dfl_for_document?(@document)
+      t("requesting.btn_dfl_top")
+    else
+      t("requesting.btn_use_library")
+    end
+  end
+
+  def request_button_is_dfl
+    is_dfl_for_document?(@document)
   end
 end
