@@ -6,7 +6,7 @@ module UrlHelper
   include Blacklight::UrlHelperBehavior
 
   def link_to_document(doc, field_or_opts = nil, opts = {counter: nil})
-    # :nocov:
+    # simplecov:disable
     label = case field_or_opts
     when NilClass
       document_presenter(doc).heading
@@ -16,7 +16,7 @@ module UrlHelper
     else # String
       field_or_opts
     end
-    # :nocov:
+    # simplecov:enable
 
     # rubocop:disable Rails/OutputSafety
     link_to label.html_safe, search_state.url_for_document(doc), document_link_params(doc, opts.merge({class: "text-break"}))

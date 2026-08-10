@@ -59,7 +59,7 @@ RSpec.describe "Account" do
   describe "GET /requests" do
     context "when user has reached their request limit" do
       it "renders the request limit error" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -90,7 +90,7 @@ RSpec.describe "Account" do
       let(:request_id) { "1bec702d-2bf9-421e-953c-cd5188e8d9c6" }
 
       it "displays an error" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/request\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -110,7 +110,7 @@ RSpec.describe "Account" do
       let(:request_id) { "1bec702d-2bf9-421e-953c-cd5188e8d9c6" }
 
       it "renders the monograph request details" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/request\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -133,7 +133,7 @@ RSpec.describe "Account" do
       let(:request_id) { "d7746c53-7746-4b0e-8382-5261aa9bcecb" }
 
       it "renders the monograph request details" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/request\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -159,7 +159,7 @@ RSpec.describe "Account" do
       let(:request_id) { "84db922c-517c-4343-8cbd-0cda581f597f" }
 
       it "renders the manuscript request details" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/request\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -184,7 +184,7 @@ RSpec.describe "Account" do
       let(:request_id) { "f97adbf5-2b70-4a12-b6d0-e92d21978f50" }
 
       it "renders the map request details" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/request\/(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",

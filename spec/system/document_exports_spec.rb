@@ -25,7 +25,7 @@ RSpec.describe "Document exports" do
         }
       )
       .to_return(status: 200, body: solr_response, headers: {})
-    WebMock.stub_request(:get, "http://catservices.test/catalogue-services/folio/instance/6bf69425-293d-5e3f-a050-16124aca9a4e")
+    WebMock.stub_request(:get, "https://catalogue-services.test.nla.gov.au/catalogue-services/folio/instance/6bf69425-293d-5e3f-a050-16124aca9a4e")
       .with(
         headers: {
           "Accept" => "*/*",

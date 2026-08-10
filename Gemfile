@@ -14,7 +14,7 @@ gem "bundler-audit"
 gem "lograge"
 
 # stores user session in the database rather than the browser cookie
-gem "activerecord-session_store", "~> 2.0"
+gem "activerecord-session_store", "~> 2.3"
 
 # in Rails scheduler
 gem "rufus-scheduler", "~> 3.9"
@@ -51,7 +51,7 @@ gem "jbuilder"
 
 # Use hiredis adapter for better performance than the "redis" gem
 gem "hiredis", "~> 0.6.3"
-gem "hiredis-client", "~> 0.29.0"
+gem "hiredis-client", "~> 0.30.0"
 
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 5.4"
@@ -89,8 +89,8 @@ gem "ebsco-eds", "~> 1.1"
 gem "email_validator", "~> 2.2"
 gem "phonelib", "~> 0.10.20"
 
-gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", tag: "0.3.5"
-gem "bento_search", git: "https://github.com/nla/bento_search.git", tag: "0.0.2"
+gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
+gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "master"
 gem "blacklight_range_limit", "~> 9.0"
 # For local development, comment out above ⤴️ and uncomment below ⤵️
 # gem "nla-blacklight_common", path: "../nla-blacklight_common"
@@ -144,13 +144,13 @@ end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"
-  gem "selenium-webdriver", "~> 4.44"
+  gem "selenium-webdriver", "~> 4.46"
   gem "rails-controller-testing", "~> 1.0", ">= 1.0.5"
   gem "webmock"
   gem "cuprite"
 
-  gem "simplecov", "~> 0.22.0"
+  gem "simplecov", "~> 1.0.1"
   gem "simplecov-json", "~> 0.2.3"
 
-  gem "mock_redis", "~> 0.53.0"
+  gem "mock_redis", "~> 0.55.0"
 end

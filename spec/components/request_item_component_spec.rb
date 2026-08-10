@@ -9,7 +9,7 @@ RSpec.describe RequestItemComponent, type: :component do
     stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_CLIENT" => "catalogue-services"))
     stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_SECRET" => "254241c8-1e99-4855-a0ae-52b04702c3e5"))
     stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_REALM" => "example-realm"))
-    stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_API_BASE_URL" => "http://catservices.test/catalogue-services"))
+    stub_const("ENV", ENV.to_hash.merge("CATALOGUE_SERVICES_API_BASE_URL" => "https://catalogue-services.test.nla.gov.au"))
   end
 
   it "renders the holdings" do
@@ -61,7 +61,7 @@ RSpec.describe RequestItemComponent, type: :component do
 
   context "when the item is a monograph" do
     before do
-      WebMock.stub_request(:get, "http://catservices.test/catalogue-services/folio/instance/93fe53ff-ffcf-5602-a9c1-be246cfadc5e")
+      WebMock.stub_request(:get, "https://catalogue-services.test.nla.gov.au/catalogue-services/folio/instance/93fe53ff-ffcf-5602-a9c1-be246cfadc5e")
         .with(
           headers: {
             "Accept" => "*/*",
@@ -88,7 +88,7 @@ RSpec.describe RequestItemComponent, type: :component do
 
   context "when there are no holdings for instance" do
     before do
-      WebMock.stub_request(:get, "http://catservices.test/catalogue-services/folio/instance/93fe53ff-ffcf-5602-a9c1-be246cfadc5e")
+      WebMock.stub_request(:get, "https://catalogue-services.test.nla.gov.au/catalogue-services/folio/instance/93fe53ff-ffcf-5602-a9c1-be246cfadc5e")
         .with(
           headers: {
             "Accept" => "*/*",
@@ -107,7 +107,7 @@ RSpec.describe RequestItemComponent, type: :component do
 
   context "when the catalogue service returns an error" do
     before do
-      WebMock.stub_request(:get, "http://catservices.test/catalogue-services/folio/instance/93fe53ff-ffcf-5602-a9c1-be246cfadc5e")
+      WebMock.stub_request(:get, "https://catalogue-services.test.nla.gov.au/catalogue-services/folio/instance/93fe53ff-ffcf-5602-a9c1-be246cfadc5e")
         .with(
           headers: {
             "Accept" => "*/*",

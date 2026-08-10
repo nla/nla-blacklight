@@ -14,7 +14,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
   describe "#create_request" do
     context "when unable to request holdings" do
       it "raises a ItemRequestError" do
-        WebMock.stub_request(:post, /catservices.test\/catalogue-services\/folio\/request\/new/)
+        WebMock.stub_request(:post, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/request\/new/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -31,7 +31,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
   describe "#request_limit_reached?" do
     context "when unable to check request limit" do
       it "raises an ItemRequestError" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -46,7 +46,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
 
     context "when user has met request limit" do
       it "returns true" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -61,7 +61,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
 
     context "when user has not met request limit" do
       it "returns false" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\/(.*)\/requestLimitReached/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -84,7 +84,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
 
     context "when non-200 response" do
       it "returns a default summary" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/.*\/myRequests/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\/.*\/myRequests/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -99,7 +99,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
 
     context "when unable to connect to service" do
       it "returns a default summary" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\/.*\/myRequests/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\/.*\/myRequests/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -122,7 +122,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
 
     context "when non-200 response" do
       it "raises a RequestDetailsError" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)\?loan=(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/request\/(.*)\?loan=(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -137,7 +137,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
 
     context "when unable to connect to service" do
       it "raises a RequestDetailsError" do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/request\/(.*)\?loan=(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/request\/(.*)\?loan=(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -154,7 +154,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
   describe "#post_stats" do
     context "when unable to post stats" do
       before do
-        WebMock.stub_request(:post, /catservices.test\/catalogue-services\/log\/message/)
+        WebMock.stub_request(:post, /catalogue-services.test.nla.gov.au\/catalogue-services\/log\/message/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -174,7 +174,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
 
     context "when non-200 response" do
       before do
-        WebMock.stub_request(:post, /catservices.test\/catalogue-services\/log\/message/)
+        WebMock.stub_request(:post, /catalogue-services.test.nla.gov.au\/catalogue-services\/log\/message/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -196,7 +196,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
   describe "#user_folio_details" do
     context "when able to get user details" do
       before do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\?query=id==(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\?query=id==(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -224,7 +224,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
 
     context "when response is not 200" do
       before do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\?query=id==(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\?query=id==(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",
@@ -241,7 +241,7 @@ RSpec.describe CatalogueServicesClient, type: :request do
 
     context "when unable to get user details" do
       before do
-        WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\?query=id==(.*)/)
+        WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\?query=id==(.*)/)
           .with(
             headers: {
               "Accept" => "*/*",

@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   # - The request is handled by a Devise controller such as Devise::SessionsController as that could cause an
   #    infinite redirect loop.
   # - The request is an Ajax request as this can lead to very unexpected behaviour.
-  # :nocov:
+  # simplecov:disable
   def storable_location?
     request.get? &&
       is_navigational_format? &&
@@ -61,5 +61,5 @@ class ApplicationController < ActionController::Base
   rescue
     Rails.logger.debug { "Unable to store location for user: #{request.fullpath}" }
   end
-  # :nocov:
+  # simplecov:enable
 end

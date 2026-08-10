@@ -38,7 +38,7 @@ RSpec.describe "Accounts" do
 
   describe "GET /settings" do
     before do
-      WebMock.stub_request(:get, /catservices.test\/catalogue-services\/folio\/user\?query=id==(.*)/)
+      WebMock.stub_request(:get, /catalogue-services.test.nla.gov.au\/catalogue-services\/folio\/user\?query=id==(.*)/)
         .with(
           headers: {
             "Accept" => "*/*",
