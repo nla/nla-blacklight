@@ -541,4 +541,17 @@ class CatalogController < ApplicationController
     # if all else fails, redirect back to the same catalogue record page
     redirect_to solr_document_path(id: params[:id])
   end
+
+  # activerecord-session_store 2.3 does not persist mutations made through the
+  # nested search hash, so assign it back before Blacklight redirects.
+  def track
+    session[:search] = search_session.merge(
+      "counter" => params[:counter],
+      "id" => params[:search_id],
+      "per_page" => params[:per_page],
+      "document_id" => params[:document_id]
+    )
+
+    super
+  end
 end
