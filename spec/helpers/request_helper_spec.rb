@@ -1,6 +1,33 @@
 require "rails_helper"
 
 RSpec.describe RequestHelper do
+  describe "#is_dfl_item?" do
+    before do
+      stub_const("RequestItemHelper::DFL_ENABLED", true)
+    end
+
+    it "identifies DFL from the catalogue service loan type" do
+      expect(helper.is_dfl_item?({"loanType" => "DFL"})).to be true
+    end
+
+    it "does not identify another named loan type as DFL" do
+      item = {
+        "loanType" => "Reading room",
+        "permanentLoanTypeId" => RequestItemHelper::DFL_LEGACY_LOAN_TYPE_IDS.first
+      }
+
+      expect(helper.is_dfl_item?(item)).to be false
+    end
+
+    it "supports development and test UUIDs until catalogue-services supplies the loan type" do
+      results = RequestItemHelper::DFL_LEGACY_LOAN_TYPE_IDS.map do |loan_type_id|
+        helper.is_dfl_item?({"permanentLoanTypeId" => loan_type_id})
+      end
+
+      expect(results).to all(be true)
+    end
+  end
+
   describe "#merge_statements" do
     subject(:statements) do
       statement = {"statement" => "Vol. 1", "note" => "This is a note"}

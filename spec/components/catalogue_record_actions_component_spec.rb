@@ -5,6 +5,17 @@ require "rails_helper"
 RSpec.describe CatalogueRecordActionsComponent, type: :component do
   let(:document) { SolrDocument.new(marc_ss: sample_marc, id: 4157485, format: ["Picture"]) }
 
+  describe "#dfl_document?" do
+    it "memoizes a false result" do
+      component = described_class.new(document: document)
+      allow(component).to receive(:is_dfl_for_document?).with(document).and_return(false)
+
+      2.times { component.dfl_document? }
+
+      expect(component).to have_received(:is_dfl_for_document?).once
+    end
+  end
+
   it "renders the 'Order a copy' button" do
     render_inline(described_class.new(document: document))
 

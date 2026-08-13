@@ -47,7 +47,7 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def request_button_href
-    if is_dfl_for_document?(@document)
+    if dfl_document?
       url = dfl_request_url(@document)
       Rails.logger.info "DFL button href: #{url}"
       url
@@ -57,7 +57,7 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def request_button_label
-    if is_dfl_for_document?(@document)
+    if dfl_document?
       t("requesting.btn_dfl_top")
     else
       t("requesting.btn_use_library")
@@ -65,6 +65,12 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def request_button_is_dfl
-    is_dfl_for_document?(@document)
+    dfl_document?
+  end
+
+  def dfl_document?
+    return @dfl_document if defined?(@dfl_document)
+
+    @dfl_document = is_dfl_for_document?(@document)
   end
 end
