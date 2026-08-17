@@ -16,6 +16,32 @@ RSpec.describe CatalogueRecordActionsComponent, type: :component do
     end
   end
 
+  context "when the document contains a DFL item" do
+    let(:document) do
+      SolrDocument.new(marc_ss: sample_marc, id: 4157485, format: ["Picture"], folio_instance_id_ssim: ["folio-instance-id"])
+    end
+    let(:catalogue_services_client) { instance_double(CatalogueServicesClient) }
+    let(:component) { described_class.new(document: document) }
+
+    before do
+      stub_const("RequestItemHelper::DFL_ENABLED", true)
+      allow(CatalogueServicesClient).to receive(:new).and_return(catalogue_services_client)
+      allow(component).to receive(:user_name_display).and_return("")
+      allow(catalogue_services_client).to receive(:get_holdings).with(instance_id: "folio-instance-id").and_return([
+        {"itemRecords" => [{"loanType" => "DFL"}]}
+      ])
+    end
+
+    it "renders an external RefTracker request link" do
+      render_inline(component)
+
+      link = page.find_by_id("request-btn")
+      expect(link.text).to eq "Request to Use in the Library"
+      expect(link["target"]).to eq "_top"
+      expect(URI.parse(link["href"]).host).to eq "reftrackertest.nla.gov.au"
+    end
+  end
+
   it "renders the 'Order a copy' button" do
     render_inline(described_class.new(document: document))
 

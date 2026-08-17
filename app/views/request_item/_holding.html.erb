@@ -32,7 +32,7 @@
               <dd class="col-12 col-lg-8">
                 <% if is_dfl_item?(item) %>
                   Available
-                <% elsif item["requestable"] %>
+                <% elsif item["displayStatus"] == "In use" || item["requestable"] %>
                   <%= item["displayStatus"] %>
                 <% else %>
                   Not for loan

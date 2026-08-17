@@ -48,9 +48,7 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
 
   def request_button_href
     if dfl_document?
-      url = dfl_request_url(@document)
-      Rails.logger.info "DFL button href: #{url}"
-      url
+      dfl_request_url(@document)
     else
       "#request-details"
     end

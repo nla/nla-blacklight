@@ -39,9 +39,8 @@ module RequestItemHelper
 
   def is_dfl_item?(item)
     return false unless DFL_ENABLED
-    result = dfl_item_metadata?(item)
-    Rails.logger.info "DFL item: id=#{item["id"]}, loanTypeId=#{item["permanentLoanTypeId"].inspect}, result=#{result}"
-    result
+
+    dfl_item_metadata?(item)
   end
 
   def is_dfl_for_document?(document)

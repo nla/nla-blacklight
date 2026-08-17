@@ -28,6 +28,51 @@ RSpec.describe RequestHelper do
     end
   end
 
+  describe "#dfl_request_url" do
+    let(:document) do
+      SolrDocument.new(
+        id: "8068789",
+        title_tsim: ["Minefields & Miniskirts"],
+        author_with_relator_ssim: ["McHugh, Siobhan"],
+        display_publication_date_ssim: ["2026"]
+      )
+    end
+
+    before do
+      allow(helper).to receive(:solr_document_url).with(document).and_return("https://catalogue.example/catalog/8068789")
+      allow(helper).to receive(:current_user).and_return(User.new(name_given: "Renata", name_family: "Dyer"))
+    end
+
+    it "uses catalogue metadata and the signed-in user's name" do
+      query = Rack::Utils.parse_query(URI.parse(helper.dfl_request_url(document)).query)
+
+      expect(query).to include(
+        "key" => "Access_Request",
+        "qnudftb17" => "https://catalogue.example/catalog/8068789",
+        "qnudftb11" => "8068789",
+        "bbttl" => "Minefields & Miniskirts",
+        "bbaut" => "McHugh, Siobhan",
+        "bbpd" => "2026",
+        "clname" => "Renata Dyer"
+      )
+    end
+  end
+
+  describe "#request_item_link" do
+    before do
+      stub_const("RequestItemHelper::DFL_ENABLED", true)
+      allow(helper).to receive(:current_user).and_return(nil)
+    end
+
+    it "keeps an in-use DFL item requestable" do
+      item = {"loanType" => "DFL", "displayStatus" => "In use"}
+
+      link = helper.request_item_link(item, SolrDocument.new(id: "8068789"))
+      expect(link).to include("Request to Use in the Library")
+      expect(link).not_to include("disabled")
+    end
+  end
+
   describe "#merge_statements" do
     subject(:statements) do
       statement = {"statement" => "Vol. 1", "note" => "This is a note"}
