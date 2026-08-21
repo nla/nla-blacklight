@@ -2,7 +2,7 @@
   <div class="offset-md-2 col-sm-6 pe-0">
     <div class="request-information ms-n3 px-3 py-3">
       <h3 class="h4"><%= t("requesting.request_information.heading") %></h3>
-      <p><%= t("requesting.request_information.message").html_safe %></p>    
+      <%= t("requesting.request_information.message").html_safe %>
       <%= f.check_box :agree_to_terms, required: true, class: "form-check-input", data: { "form-validation-target": "checkbox", action: "change->form-validation#validateCheckbox" } %>
       <%= f.label :agree_to_terms, "I agree", class: "form-check-label mandatory-pre" %>
     </div>
