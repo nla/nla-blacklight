@@ -29,6 +29,7 @@ RSpec.describe RequestHelper do
   end
 
   describe "#dfl_request_url" do
+    let(:item) { {"barcode" => "77000000789105"} }
     let(:document) do
       SolrDocument.new(
         id: "8068789",
@@ -44,17 +45,19 @@ RSpec.describe RequestHelper do
     end
 
     it "uses catalogue metadata and the signed-in user's name" do
-      query = Rack::Utils.parse_query(URI.parse(helper.dfl_request_url(document)).query)
+      query = Rack::Utils.parse_query(URI.parse(helper.dfl_request_url(document, item)).query)
 
       expect(query).to include(
         "key" => "Access_Request",
         "qnudftb17" => "https://catalogue.example/catalog/8068789",
-        "qnudftb11" => "8068789",
+        "bbudftb01" => "8068789",
+        "bbudftb03" => "77000000789105",
         "bbttl" => "Minefields & Miniskirts",
         "bbaut" => "McHugh, Siobhan",
         "bbpd" => "2026",
         "clname" => "Renata Dyer"
       )
+      expect(query).not_to have_key("qnudftb11")
     end
   end
 
@@ -65,10 +68,11 @@ RSpec.describe RequestHelper do
     end
 
     it "keeps an in-use DFL item requestable" do
-      item = {"loanType" => "DFL", "displayStatus" => "In use"}
+      item = {"loanType" => "DFL", "displayStatus" => "In use", "barcode" => "77000000789105"}
 
       link = helper.request_item_link(item, SolrDocument.new(id: "8068789"))
       expect(link).to include("Request to Use in the Library")
+      expect(link).to include("bbudftb03=77000000789105")
       expect(link).not_to include("disabled")
     end
   end

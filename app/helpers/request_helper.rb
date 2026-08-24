@@ -88,7 +88,7 @@ module RequestHelper
 
   def request_item_link(item, document)
     if is_dfl_item?(item)
-      link_to I18n.t("requesting.btn_dfl_request"), dfl_request_url(document), class: "btn btn-primary", target: "_top"
+      link_to I18n.t("requesting.btn_dfl_request"), dfl_request_url(document, item), class: "btn btn-primary", target: "_top"
     elsif item["displayStatus"] == "In use"
       button_to I18n.t("requesting.btn_in_use"), "#", target: "_top", class: "btn btn-primary", disabled: true
     elsif item["requestable"]
@@ -98,19 +98,20 @@ module RequestHelper
     end
   end
 
-  def dfl_request_url(document)
+  def dfl_request_url(document, item)
     config = Rails.application.config_for(:catalogue)
     base = config&.[](:reftracker_base_url)
     return "#" unless base
 
-    "#{base}?#{URI.encode_www_form(dfl_request_params(document))}"
+    "#{base}?#{URI.encode_www_form(dfl_request_params(document, item))}"
   end
 
-  def dfl_request_params(document)
+  def dfl_request_params(document, item)
     {
       key: "Access_Request",
       qnudftb17: solr_document_url(document),
-      qnudftb11: document.id,
+      bbudftb01: document.id,
+      bbudftb03: item["barcode"] || "",
       bbttl: document.first("title_tsim") || "",
       bbaut: document.first("author_with_relator_ssim") || "",
       bbpd: document.first("display_publication_date_ssim") || "",

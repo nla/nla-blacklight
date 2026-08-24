@@ -48,7 +48,7 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
 
   def request_button_href
     if dfl_document?
-      dfl_request_url(@document)
+      dfl_request_url(@document, dfl_item)
     else
       "#request-details"
     end
@@ -67,8 +67,12 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
   end
 
   def dfl_document?
-    return @dfl_document if defined?(@dfl_document)
+    dfl_item.present?
+  end
 
-    @dfl_document = is_dfl_for_document?(@document)
+  def dfl_item
+    return @dfl_item if defined?(@dfl_item)
+
+    @dfl_item = dfl_item_for_document(@document)
   end
 end

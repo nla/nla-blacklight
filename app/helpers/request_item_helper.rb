@@ -44,20 +44,24 @@ module RequestItemHelper
   end
 
   def is_dfl_for_document?(document)
-    return false unless DFL_ENABLED
+    dfl_item_for_document(document).present?
+  end
+
+  def dfl_item_for_document(document)
+    return unless DFL_ENABLED
 
     instance_id = document.first("folio_instance_id_ssim")
-    return false unless instance_id
+    return unless instance_id
 
     all_holdings = CatalogueServicesClient.new.get_holdings(instance_id: instance_id)
-    result = all_holdings.any? do |holding|
-      holding["itemRecords"].any? { |item| dfl_item_metadata?(item) }
-    end
-    Rails.logger.info "DFL document: instance_id=#{instance_id}, result=#{result}"
+    result = all_holdings.lazy.filter_map do |holding|
+      holding["itemRecords"].find { |item| dfl_item_metadata?(item) }
+    end.first
+    Rails.logger.info "DFL document: instance_id=#{instance_id}, result=#{result.present?}"
     result
   rescue HoldingsRequestError, ServiceTokenError, StandardError => e
     Rails.logger.error "DFL document check error: #{e.message}"
-    false
+    nil
   end
 
   def dfl_item_metadata?(item)
