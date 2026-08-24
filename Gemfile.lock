@@ -765,6 +765,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord-session_store (~> 2.3)
+  addressable (~> 2.9)
   awesome_print
   bento_search!
   better_errors
