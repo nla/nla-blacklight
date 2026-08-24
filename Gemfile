@@ -88,7 +88,7 @@ gem "addressable", "~> 2.9"
 gem "ebsco-eds", "~> 1.1"
 
 gem "email_validator", "~> 2.2"
-gem "phonelib", "~> 0.10.24"
+gem "phonelib", "~> 0.10.25"
 
 gem "nla-blacklight_common", git: "https://github.com/nla/nla-blacklight_common", branch: "main"
 gem "bento_search", git: "https://github.com/nla/bento_search.git", branch: "master"
