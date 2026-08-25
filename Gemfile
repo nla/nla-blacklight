@@ -83,6 +83,7 @@ gem "stackprof", group: :development
 
 gem "blacklight", "~> 9.0"
 gem "blacklight-marc", "~> 9.0"
+gem "addressable", "~> 2.9"
 # blacklight_advanced_search is no longer needed - Blacklight 9 has native advanced search
 gem "ebsco-eds", "~> 1.1"
 
