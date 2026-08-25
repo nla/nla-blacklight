@@ -7,6 +7,7 @@ development:
   contact_us_url: https://www.library.gov.au/services/ask-librarian
   staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
   data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97
+  reftracker_base_url: https://reftrackertest.nla.gov.au/reft100.aspx
 
 test:
   mapsearch:
@@ -17,6 +18,7 @@ test:
   contact_us_url: https://www.library.gov.au/services/ask-librarian
   staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
   data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97
+  reftracker_base_url: https://reftrackertest.nla.gov.au/reft100.aspx
 
 staging:
   mapsearch:
@@ -27,6 +29,7 @@ staging:
   contact_us_url: https://www.library.gov.au/services/ask-librarian
   staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
   data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97
+  reftracker_base_url: https://reftracker.nla.gov.au/reft100.aspx
 
 production:
   mapsearch:
@@ -37,3 +40,4 @@ production:
   contact_us_url: https://www.library.gov.au/services/ask-librarian
   staff_borrowing_url: https://my.nla.gov.au/our-people/staff-benefits/access-to-collections/staff-borrowing
   data_services_enquiry_form: https://ourweb.nla.gov.au/apps/jira/servicedesk/customer/portal/1/create/97
+  reftracker_base_url: https://reftracker.nla.gov.au/reft100.aspx

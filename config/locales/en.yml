@@ -132,6 +132,9 @@ en:
     btn_select: "Select"
     btn_in_use: "In use"
     btn_back_to_item: "Back to item"
+    btn_dfl_request: "Request to Use in the Library"
+    btn_dfl_top: "Request to Use in <span class=\"d-md-none d-lg-inline\">the</span> Library"
+    btn_use_library: "Use in <span class=\"d-md-none d-lg-inline\">the</span> Library"
     request_held_text: "Do not provide personal details."
     label:
       year: "Year (YYYY):"

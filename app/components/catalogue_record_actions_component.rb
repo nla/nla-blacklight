@@ -2,6 +2,7 @@
 
 class CatalogueRecordActionsComponent < ViewComponent::Base
   include RequestItemHelper
+  include RequestHelper
   include CopiesDirectHelper
 
   def initialize(document:)
@@ -43,5 +44,35 @@ class CatalogueRecordActionsComponent < ViewComponent::Base
 
   def render_request?
     helpers.render_request?(@document)
+  end
+
+  def request_button_href
+    if dfl_document?
+      dfl_request_url(@document, dfl_item)
+    else
+      "#request-details"
+    end
+  end
+
+  def request_button_label
+    if dfl_document?
+      t("requesting.btn_dfl_top")
+    else
+      t("requesting.btn_use_library")
+    end
+  end
+
+  def request_button_is_dfl
+    dfl_document?
+  end
+
+  def dfl_document?
+    dfl_item.present?
+  end
+
+  def dfl_item
+    return @dfl_item if defined?(@dfl_item)
+
+    @dfl_item = dfl_item_for_document(@document)
   end
 end
