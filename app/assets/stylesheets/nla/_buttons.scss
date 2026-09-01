@@ -10,8 +10,7 @@
   --bs-btn-border-radius: 20rem;
 }
 
-.btn:disabled,
-.btn.disabled {
+.btn:disabled {
   --bs-btn-disabled-color: var(--nla-black);
   --bs-btn-disabled-bg: #958E89;
   --bs-btn-disabled-border-color: #958E89;
@@ -93,20 +92,6 @@
     background-color: var(--nla-black);
     color: var(--nla-white);
     text-decoration: none;
-  }
-}
-
-.btn:disabled,
-.btn.disabled {
-  cursor: not-allowed;
-  pointer-events: auto;
-  &:hover,
-  &:focus,
-  &:active {
-    color: var(--bs-btn-disabled-color);
-    background-color: var(--bs-btn-disabled-bg);
-    border-color: var(--bs-btn-disabled-border-color);
-    opacity: var(--bs-btn-disabled-opacity);
   }
 }
 
