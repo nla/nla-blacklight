@@ -4,7 +4,7 @@
       <h3 class="h4"><%= t("requesting.request_information.heading") %></h3>
       <%= t("requesting.request_information.message").html_safe %>
       <%= f.check_box :agree_to_terms, required: true, class: "form-check-input", data: { "form-validation-target": "checkbox", action: "change->form-validation#validateCheckbox" } %>
-      <%= f.label :agree_to_terms, "I agree", class: "form-check-label mandatory-pre" %>
+      <%= f.label :agree_to_terms, t("requesting.request_information.confirm_label"), class: "form-check-label mandatory-pre" %>
     </div>
   </div>
   <div class="col-sm-4 mt-3">
