@@ -3,10 +3,13 @@
 return unless Rails.env.production? || Rails.env.staging?
 
 require "rufus/scheduler"
+require "rake"
+
+Rails.application.load_tasks
 
 scheduler = Rufus::Scheduler.new
 
-cron_schedule = ENV.fetch("SESSION_CLEANUP_CRON", "*/30 * * * *")
+cron_schedule = ENV.fetch("SESSION_CLEANUP_CRON", "*/30 * * * *").gsub(/\A["']|["']\z/, "")
 
 scheduler.cron(cron_schedule) do
   Rails.logger.info "Starting scheduled session cleanup"

@@ -2,8 +2,6 @@
   <div class="justify-content-start">
     <% if render_online? %>
       <a href="<%= online_url %>" class="btn btn-primary mb-2 me-2 me-lg-4 px-4"><%= online_label %></a>
-      <% else %>
-      <span class="btn disabled mb-2 me-2 me-lg-4 px-4">Not online</span>
     <% end %>
     <% if render_request? %>
       <a href="#request-details" id="request-btn" class="btn btn-primary mb-2 me-2 me-lg-4 px-4">Use in <span class="d-md-none d-lg-inline">the</span> Library</a>

@@ -83,22 +83,22 @@ en:
       scrr: 'To prepare for your visit, and find out more about use of and access to our special collections, view our Research Guide on <a href="https://www.library.gov.au/visit/reading-rooms/special-collections-reading-room">Using the Special Collections Reading Room</a>.'
     errors:
       manuscripts:
-        required: "Additional information is required to complete your request. Please provide information on either the Box Number, or Series Number or Folder/item Number that you are requesting."
+        required: "Please fill in all the required fields."
         dependent: ""
       maps:
-        required: "Additional information is required to complete your request. Please provide the Map Sheet No. or Name."
-        dependent: "Additional information is required to complete your request. Please provide the Map Sheet No. or Name."
+        required: "Please fill in all the required fields."
+        dependent: "Please fill in all the required fields."
       monographs:
-        required: "Please read and agree to the details regarding requesting information."
+        required: "Please fill in all the required fields."
         dependent: ""
       serials:
-        required: "Additional information is required to complete your request. Please provide information on either the Year, or Volume/No or Day or Month that you are requesting."
-        dependent: "Additional information is required to complete your request. Please provide information on either the Year or Volume/No that you are requesting."
+        required: "Please fill in all the required fields."
+        dependent: "Please fill in all the required fields."
       pictureseries:
-        required: "Additional information is required to complete your request. Please provide call number or other specific information (year or similar) on the item that you are requesting."
+        required: "Please fill in all the required fields."
         dependent: ""
       posterseries:
-        required: "Additional information is required to complete your request. Please provide call number or other specific information (year or similar) on the item that you are requesting."
+        required: "Please fill in all the required fields."
         dependent: ""
     metadata:
       item_requested: "Item Requested:"
@@ -154,6 +154,7 @@ en:
     request_information:
       heading: "Requesting information"
       message: '<p>Collection material can only be used onsite in our <a href="https://www.library.gov.au/visit/reading-rooms">reading rooms</a> in Canberra.</p><p>Material is held for <strong>7 days</strong> from the date of your request.</p><p>Before submitting a request, check our <a href="https://www.library.gov.au/services/onsite-access/collection-delivery-service">collection delivery times</a> and <a href="https://www.library.gov.au/visit/opening-hours">opening hours</a> to ensure you can visit the Library in Canberra within the holding period.</p>'
+      confirm_label: "I confirm the item details are complete and I can collect this item."
     request_limit_error:
       sol: '<p>Your request limit has been reached. You are unable to make any further Staff Official Loan requests until you have returned some items. Please read the borrowing conditions for <a href="%{staff_borrowing}">Staff Official Loans</a>.</p><p>For assistance, please contact Data Systems via the <a href="%{enquiry_form}">Data Systems Enquiry Form</a>.</p>'
       spl: '<p>Your request limit has been reached. You are unable to make any further Staff Personal Loan requests until you have returned some items. The borrowing limit for Staff Personal Loans is two (2) items only. Please read the borrowing conditions for <a href="%{staff_borrowing}">Staff Personal Loans</a>.</p><p>For assistance, please contact Reading Room Operations on <a href="mailto:readingroomissues@nla.gov.au">readingroomissues@nla.gov.au</a></p>'
