@@ -23,15 +23,6 @@
       <% end %>
 
       <li id="google-preview" class="explore-link d-none">&nbsp;</li>
-
-      <% if render_map_search? %>
-        <li id="map-search" class="explore-link">
-          <%= link_to 'https://mapsearch.nla.gov.au/' do %>
-            <%= image_tag "nla-stacked-logo-black.svg", width: "16", height: "16", alt: "National Library of Australia icon", aria: {hidden: true}, class: "explore-nla-shop-icon" %>
-            <%= t("explore.map_search") %>
-          <% end %>
-        </li>
-      <% end %>
     </ul>
   </div>
 </div>

@@ -194,7 +194,6 @@ class CatalogController < ApplicationController
     config.add_show_field "translated_title_ssim", label: "Translated Title"
     config.add_show_field "uniform_title_ssim", label: "Uniform Title"
     config.add_show_field "online_access", label: "Online Access", accessor: :online_access_urls, helper_method: :url_list
-    config.add_show_field "map_search", label: "Online Version", accessor: :map_search_urls, helper_method: :map_search
     config.add_show_field "copy_access", label: "Online Version", accessor: :copy_access_urls, helper_method: :url_list
     config.add_show_field "related_access", label: "Related Online Resources", accessor: :related_access_urls, helper_method: :url_list
     config.add_show_field "edition_tsim", label: "Edition", helper_method: :list
