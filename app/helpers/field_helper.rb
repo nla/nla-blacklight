@@ -159,15 +159,6 @@ module FieldHelper
     end
   end
 
-  # Create a link to Map Search
-  def map_search(document:, field:, config:, value:, context:)
-    if value.present?
-      # rubocop:disable Rails/OutputSafety
-      link_to("View this map in Map Search", value.first.html_safe, class: "text-break")
-      # rubocop:enable Rails/OutputSafety
-    end
-  end
-
   def render_copyright_component(document:, field:, config:, value:, context:)
     if value.present? && value.first.is_a?(Hash) && value.first["contextMsg"].present?
       render CopyrightStatusComponent.new(document, value.first)

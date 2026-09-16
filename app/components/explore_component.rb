@@ -59,11 +59,6 @@ class ExploreComponent < ViewComponent::Base
     false
   end
 
-  def render_map_search?
-    format = document.first("format")
-    format.present? && format.include?("Map")
-  end
-
   def render?
     document.present? && document.id.present?
   end
