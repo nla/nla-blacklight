@@ -87,13 +87,42 @@ module RequestHelper
   end
 
   def request_item_link(item, document)
-    holdings_id = item["holdingsRecordId"]
-    item_id = item["id"]
-
-    if item["displayStatus"] == "In use"
+    if is_dfl_item?(item)
+      link_to I18n.t("requesting.btn_dfl_request"), dfl_request_url(document, item), class: "btn btn-primary", target: "_top"
+    elsif item["displayStatus"] == "In use"
       button_to I18n.t("requesting.btn_in_use"), "#", target: "_top", class: "btn btn-primary", disabled: true
     elsif item["requestable"]
+      holdings_id = item["holdingsRecordId"]
+      item_id = item["id"]
       link_to I18n.t("requesting.btn_select"), solr_document_request_new_path(solr_document_id: document.id, holdings: holdings_id, item: item_id), class: "btn btn-primary", target: "_top"
     end
+  end
+
+  def dfl_request_url(document, item)
+    config = Rails.application.config_for(:catalogue)
+    base = config&.[](:reftracker_base_url)
+    return "#" unless base
+
+    "#{base}?#{URI.encode_www_form(dfl_request_params(document, item))}"
+  end
+
+  def dfl_request_params(document, item)
+    {
+      key: "Access_Request",
+      qnudftb17: solr_document_url(document),
+      bbudftb01: document.id,
+      bbudftb03: item["barcode"] || "",
+      bbttl: document.first("title_tsim") || "",
+      bbaut: document.first("author_with_relator_ssim") || "",
+      bbpd: document.first("display_publication_date_ssim") || "",
+      clname: user_name_display
+    }
+  end
+
+  def user_name_display
+    user = respond_to?(:current_user) ? current_user : helpers.current_user
+    return "" unless user
+
+    [user.name_given, user.name_family].compact_blank.join(" ")
   end
 end
