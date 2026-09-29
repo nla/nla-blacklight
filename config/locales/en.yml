@@ -166,6 +166,7 @@ en:
     persistent_id: "Catalogue persistent identifier"
     copied: "Copied"
     copy_to_clipboard: "Copy to clipboard"
+    copy_all: "Copy all"
     harvard: "Australian/Harvard"
     wikipedia:
       title: "Wikipedia"

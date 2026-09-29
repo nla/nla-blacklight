@@ -1,10 +1,21 @@
 <%= render Blacklight::System::ModalComponent.new do |component| %>
   <% component.with_title { t('blacklight.tools.citation') } %>
 
-  <%= render Blacklight::Document::CitationComponent.with_collection(@documents, formats: {
-    "blacklight.citation.apa": :export_as_apa_citation_txt,
-    "blacklight.citation.mla": :export_as_mla_citation_txt,
-    "citation.harvard": :export_as_harvard_citation_txt,
-    "citation.wikipedia": :export_as_wikipedia_citation_txt
-  }) if @documents.present? %>
+  <% citation_formats = CitationHelper::CITATION_FORMATS %>
+
+  <% if @documents.present? && @documents.size > 1 %>
+    <div class="citation-copy-all">
+      <h2 class="h5"><%= t("citation.copy_all") %></h2>
+      <% citation_formats.each do |i18n_key, citation_method| %>
+        <div class="citation-copy-all__item" data-controller="clipboard" data-clipboard-success-content-value="<%= t("citation.copied") %>">
+          <textarea class="d-none" data-clipboard-target="source"><%= citation_copy_all_text(citation_method, @documents) %></textarea>
+          <a href="#" data-action="clipboard#copy" data-clipboard-target="button" title="<%= t("citation.copy_all") %>" class="btn btn-outline-primary btn-sm text-decoration-none">
+            <i class="fa-regular fa-copy" aria-hidden="true"></i> <%= t(i18n_key) %>
+          </a>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+
+  <%= render Blacklight::Document::CitationComponent.with_collection(@documents, formats: citation_formats) if @documents.present? %>
 <% end %>

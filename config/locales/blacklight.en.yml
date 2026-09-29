@@ -108,8 +108,11 @@ en:
       close: "Close"
 
     bookmarks:
-      title: 'Bookmarks'
-      page_title: 'Bookmarks | %{application_name}'
+      title: 'Bookmarks - Catalogue'
+      page_title: 'Bookmarks - Catalogue | %{application_name}'
+      export_all: 'Export all'
+      export_csv: 'CSV (.csv)'
+      export_ris: 'RIS (.ris)'
       no_bookmarks: 'You have no bookmarks'
       add:
         button: 'Bookmark'

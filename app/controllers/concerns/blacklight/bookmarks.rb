@@ -59,6 +59,23 @@ module Blacklight::Bookmarks
     end
   end
 
+  # Export all bookmarked documents (regardless of pagination) as a
+  # downloadable CSV or RIS file.
+  def export
+    @documents = action_documents
+
+    respond_to do |format|
+      format.csv do
+        send_data Nla::Exports::CsvExport.new(@documents, export_fields).render,
+          filename: "bookmarks.csv", type: "text/csv", disposition: "attachment"
+      end
+      format.ris do
+        send_data Nla::Exports::RISExport.new(@documents).render,
+          filename: "bookmarks.ris", type: "application/x-research-info-systems", disposition: "attachment"
+      end
+    end
+  end
+
   def update
     create
   end
@@ -136,6 +153,11 @@ module Blacklight::Bookmarks
   end
 
   private
+
+  # Fields displayed on the catalogue record show view, in display order
+  def export_fields
+    CatalogController.blacklight_config.show_fields.to_h.values
+  end
 
   def verify_user
     unless is_logged_in_user?

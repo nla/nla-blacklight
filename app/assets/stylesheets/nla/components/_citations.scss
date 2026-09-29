@@ -1,3 +1,14 @@
+.citation-copy-all {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+
+  .h5 {
+    margin: 0;
+  }
+}
+
 .citation-details {
   .card {
     border: var(--bs-card-border-width) solid var(--nla-body-bg);
