@@ -29,7 +29,7 @@ fi
 # update system gems
 gem update --system
 
-gem install bundler -v 2.7.2
+gem install bundler
 bundle config --local jobs $(nproc)
 bundle config --local path "vendor/bundle"
 bundle config set force_ruby_platform true
