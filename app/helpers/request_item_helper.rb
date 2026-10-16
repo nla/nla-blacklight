@@ -3,6 +3,10 @@
 module RequestItemHelper
   ELECTRONIC_RESOURCE_CALL_NUMBERS = ["ELECTRONIC RESOURCE", "INTERNET"].freeze
 
+  DFL_ENABLED = ENV["DFL_ENABLED"] == "true"
+  DFL_LOAN_TYPE = "DFL"
+  DFL_LEGACY_LOAN_TYPE_IDS = %w[ee559791-b8c8-40fa-be8b-ab2ae6c2fe82 f6736b0d-0fa5-444f-b6f3-524f5f860437].freeze
+
   def render_request?(document)
     return false if ENV["FOLIO_UPDATE_IN_PROGRESS"] == "true"
     !is_ned_item?(document) && !has_no_physical_holdings?(document)
@@ -31,5 +35,38 @@ module RequestItemHelper
     is_electronic_resource?(document) && document.callnumber.length == 1
   rescue
     false
+  end
+
+  def is_dfl_item?(item)
+    return false unless DFL_ENABLED
+
+    dfl_item_metadata?(item)
+  end
+
+  def is_dfl_for_document?(document)
+    dfl_item_for_document(document).present?
+  end
+
+  def dfl_item_for_document(document)
+    return unless DFL_ENABLED
+
+    instance_id = document.first("folio_instance_id_ssim")
+    return unless instance_id
+
+    all_holdings = CatalogueServicesClient.new.get_holdings(instance_id: instance_id)
+    result = all_holdings.lazy.filter_map do |holding|
+      holding["itemRecords"].find { |item| dfl_item_metadata?(item) }
+    end.first
+    Rails.logger.info "DFL document: instance_id=#{instance_id}, result=#{result.present?}"
+    result
+  rescue HoldingsRequestError, ServiceTokenError, StandardError => e
+    Rails.logger.error "DFL document check error: #{e.message}"
+    nil
+  end
+
+  def dfl_item_metadata?(item)
+    return item["loanType"] == DFL_LOAN_TYPE if item["loanType"].present?
+
+    DFL_LEGACY_LOAN_TYPE_IDS.include?(item["permanentLoanTypeId"])
   end
 end

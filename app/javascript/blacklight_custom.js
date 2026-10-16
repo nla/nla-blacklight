@@ -12,8 +12,10 @@ $(function() {
   });
 
   $("#catalogue-record-actions #request-btn").click(function(event) {
-    event.preventDefault();
     const section = $(this).attr("href");
+    if (!section.startsWith("#")) return;
+
+    event.preventDefault();
     const motionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     var scrollDuration = motionQuery.matches ? 0 : 100;
     $("html, body").animate({
