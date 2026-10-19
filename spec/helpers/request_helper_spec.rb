@@ -1,6 +1,82 @@
 require "rails_helper"
 
 RSpec.describe RequestHelper do
+  describe "#is_dfl_item?" do
+    before do
+      stub_const("RequestItemHelper::DFL_ENABLED", true)
+    end
+
+    it "identifies DFL from the catalogue service loan type" do
+      expect(helper.is_dfl_item?({"loanType" => "DFL"})).to be true
+    end
+
+    it "does not identify another named loan type as DFL" do
+      item = {
+        "loanType" => "Reading room",
+        "permanentLoanTypeId" => RequestItemHelper::DFL_LEGACY_LOAN_TYPE_IDS.first
+      }
+
+      expect(helper.is_dfl_item?(item)).to be false
+    end
+
+    it "supports development and test UUIDs until catalogue-services supplies the loan type" do
+      results = RequestItemHelper::DFL_LEGACY_LOAN_TYPE_IDS.map do |loan_type_id|
+        helper.is_dfl_item?({"permanentLoanTypeId" => loan_type_id})
+      end
+
+      expect(results).to all(be true)
+    end
+  end
+
+  describe "#dfl_request_url" do
+    let(:item) { {"barcode" => "77000000789105"} }
+    let(:document) do
+      SolrDocument.new(
+        id: "8068789",
+        title_tsim: ["Minefields & Miniskirts"],
+        author_with_relator_ssim: ["McHugh, Siobhan"],
+        display_publication_date_ssim: ["2026"]
+      )
+    end
+
+    before do
+      allow(helper).to receive(:solr_document_url).with(document).and_return("https://catalogue.example/catalog/8068789")
+      allow(helper).to receive(:current_user).and_return(User.new(name_given: "Renata", name_family: "Dyer"))
+    end
+
+    it "uses catalogue metadata and the signed-in user's name" do
+      query = Rack::Utils.parse_query(URI.parse(helper.dfl_request_url(document, item)).query)
+
+      expect(query).to include(
+        "key" => "Access_Request",
+        "qnudftb17" => "https://catalogue.example/catalog/8068789",
+        "bbudftb01" => "8068789",
+        "bbudftb03" => "77000000789105",
+        "bbttl" => "Minefields & Miniskirts",
+        "bbaut" => "McHugh, Siobhan",
+        "bbpd" => "2026",
+        "clname" => "Renata Dyer"
+      )
+      expect(query).not_to have_key("qnudftb11")
+    end
+  end
+
+  describe "#request_item_link" do
+    before do
+      stub_const("RequestItemHelper::DFL_ENABLED", true)
+      allow(helper).to receive(:current_user).and_return(nil)
+    end
+
+    it "keeps an in-use DFL item requestable" do
+      item = {"loanType" => "DFL", "displayStatus" => "In use", "barcode" => "77000000789105"}
+
+      link = helper.request_item_link(item, SolrDocument.new(id: "8068789"))
+      expect(link).to include("Request to Use in the Library")
+      expect(link).to include("bbudftb03=77000000789105")
+      expect(link).not_to include("disabled")
+    end
+  end
+
   describe "#merge_statements" do
     subject(:statements) do
       statement = {"statement" => "Vol. 1", "note" => "This is a note"}

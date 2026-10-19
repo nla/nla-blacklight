@@ -4,7 +4,7 @@
       <a href="<%= online_url %>" class="btn btn-primary mb-2 me-2 me-lg-4 px-4"><%= online_label %></a>
     <% end %>
     <% if render_request? %>
-      <a href="#request-details" id="request-btn" class="btn btn-primary mb-2 me-2 me-lg-4 px-4">Use in <span class="d-md-none d-lg-inline">the</span> Library</a>
+      <%= link_to raw(request_button_label), request_button_href, id: "request-btn", class: "btn btn-primary mb-2 me-2 me-lg-4 px-4", target: request_button_is_dfl ? "_top" : nil %>
     <% end %>
     <%= copies_direct_button(@document.id) %>
   </div>
