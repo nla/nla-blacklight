@@ -131,6 +131,7 @@ Rails.application.routes.draw do
     collection do
       delete "clear"
       get "export"
+      get "cite_all"
     end
   end
 

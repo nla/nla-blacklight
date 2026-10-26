@@ -8,11 +8,11 @@ module Nla
     class RISExport
       RECORD_TYPES = {
         "book" => "BOOK",
-        "journal" => "JOURNAL",
-        "magazine" => "MAGAZINE",
+        "journal" => "JOUR",
+        "magazine" => "MGZN",
         "map" => "MAP",
-        "manuscript" => "MANUSCRIPT",
-        "score" => "SCORE",
+        "manuscript" => "MANSCPT",
+        "score" => "MUSIC",
         "sound recording" => "AUDIO",
         "video recording" => "VIDEO",
         "website" => "WEB"
@@ -23,24 +23,24 @@ module Nla
       end
 
       def render
-        @documents.map { |document| record(document) }.join("\n")
+        @documents.map { |document| "#{record(document)}\n\n" }.join
       end
 
       private
 
       def record(document)
         lines = []
-        lines << "TY - #{record_type(document)}"
-        authors(document).each { |author| lines << "AU - #{author}" }
-        lines << "TI - #{title(document)}" if title(document).present?
-        lines << "T2 - #{uniform_title(document)}" if uniform_title(document).present?
-        lines << "PY - #{pubdate(document)}" if pubdate(document).present?
-        lines << "CY - #{place(document)}" if place(document).present?
-        lines << "PB - #{publisher(document)}" if publisher(document).present?
-        lines << "AB - #{summary(document)}" if summary(document).present?
-        urls(document).each { |url| lines << "UR - #{url}" }
-        lines << "ER - "
-        lines.join("\n")
+        lines << "TY  - #{record_type(document)}"
+        authors(document).each { |author| lines << "AU  - #{author}" }
+        lines << "TI  - #{title(document)}" if title(document).present?
+        lines << "T2  - #{uniform_title(document)}" if uniform_title(document).present?
+        lines << "PY  - #{pubdate(document)}" if pubdate(document).present?
+        lines << "CY  - #{place(document)}" if place(document).present?
+        lines << "PB  - #{publisher(document)}" if publisher(document).present?
+        lines << "AB  - #{summary(document)}" if summary(document).present?
+        urls(document).each { |url| lines << "UR  - #{url}" }
+        lines << "ER  - "
+        lines.map { |line| line.gsub(/[\r\n]+/, " ") }.join("\n")
       end
 
       def record_type(document)
@@ -84,7 +84,7 @@ module Nla
             # documents without a MARC source have no access URLs
             []
           end
-        (access_urls.to_a + ["https://nla.gov.au/nla.cat-vn#{document.id}"]).uniq
+        (access_urls.to_a + [document.catalogue_persistent_url]).uniq
       end
     end
   end

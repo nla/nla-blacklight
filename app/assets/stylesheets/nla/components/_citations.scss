@@ -1,12 +1,5 @@
-.citation-copy-all {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem;
-
-  .h5 {
-    margin: 0;
-  }
+.citation-bibliography {
+  white-space: pre-wrap;
 }
 
 .citation-details {

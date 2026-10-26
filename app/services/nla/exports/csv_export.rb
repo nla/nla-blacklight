@@ -7,21 +7,22 @@ module Nla
     ##
     # Renders catalogue bookmark documents as a CSV string.
     #
-    # One column per field displayed on the record show view, in display order,
+    # The main title and public fields displayed on the record show view,
     # with the Catalogue persistent identifier URL as the final column.
     class CsvExport
       PERSISTENT_ID_LABEL = "Catalogue persistent identifier"
 
-      def initialize(documents, fields)
+      def initialize(documents, fields, title_field: "title_tsim")
         @documents = documents
-        @fields = fields
+        @fields = fields.reject { |field| field.component == StaffOnlyComponent }
+        @title_field = title_field
       end
 
       def render
         CSV.generate do |csv|
           csv << header
           @documents.each do |document|
-            csv << row(document)
+            csv << row(document).map { |value| spreadsheet_safe(value) }
           end
         end
       end
@@ -29,36 +30,39 @@ module Nla
       private
 
       def header
-        @fields.map { |field| field.display_label } + [PERSISTENT_ID_LABEL]
+        ["Title"] + @fields.map { |field| field.display_label } + [PERSISTENT_ID_LABEL]
       end
 
       def row(document)
-        @fields.map { |field| cell(document, field) } + [persistent_id_url(document)]
+        [flatten(document.fetch(@title_field, nil)).join("; ")] +
+          @fields.map { |field| cell(document, field) } + [document.catalogue_persistent_url]
       end
 
-      def persistent_id_url(document)
-        "https://nla.gov.au/nla.cat-vn#{document.id}"
+      def spreadsheet_safe(value)
+        value.match?(/\A(?:\s*[=+@-]|[\t\r\n])/) ? "'#{value}" : value
       end
 
       def cell(document, field)
         return "" unless visible?(document, field)
 
-        flatten(retrieve(document, field)).join(separator(field))
+        value = retrieve(document, field)
+        return copyright_text(document, value) if field.key.to_s == "copyright_info" && value.present?
+
+        flatten(value).join(separator(field))
       end
 
-      # Staff-only, or backed by an external service rather than the
-      # document's indexed fields, so excluded from the export
-      EXCLUDED_FIELDS = %w[rights_information copyright_info].freeze
+      def copyright_text(document, value)
+        html = ApplicationController.render(CopyrightStatusComponent.new(document, value), layout: false)
+        Nokogiri::HTML.fragment(html).text.squish
+      end
 
       def visible?(document, field)
-        return false if EXCLUDED_FIELDS.include?(field.key.to_s)
-        return false if field.component == StaffOnlyComponent
-
         conditional = field.if
         return true unless conditional.is_a?(Proc)
 
         conditional.call(nil, field, document)
-      rescue
+      rescue KeyError => error
+        Rails.logger.warn("Bookmark CSV field #{field.key} skipped: #{error.class}")
         false
       end
 
@@ -100,13 +104,9 @@ module Nla
       end
 
       def flatten_hash(hash)
-        if hash["contextMsg"]
-          [hash["contextMsg"]]
-        else
-          text = hash[:text] || hash["text"]
-          href = hash[:href] || hash["href"]
-          [text, href].compact
-        end
+        text = hash[:text] || hash["text"]
+        href = hash[:href] || hash["href"]
+        [text, href].compact
       end
     end
   end

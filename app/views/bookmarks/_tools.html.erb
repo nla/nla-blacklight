@@ -6,7 +6,17 @@
                                                       options: { document_list: @response.documents },
                                                       url_opts: Blacklight::Parameters.sanitize(params.to_unsafe_h)) %>
 
-<% if @response.documents.present? %>
+<% if @bookmarks.present? %>
+  <div class="cite-all-dropdown dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <%= t("blacklight.bookmarks.cite_all") %>
+    </button>
+    <ul class="dropdown-menu">
+      <% CitationHelper::CITATION_FORMATS.each_key do |i18n_key| %>
+        <li><%= link_to t(i18n_key), cite_all_bookmarks_path(style: i18n_key.to_s.split('.').last), class: "dropdown-item", data: { blacklight_modal: "trigger", turbo: false } %></li>
+      <% end %>
+    </ul>
+  </div>
   <div class="export-all-dropdown dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       <%= t("blacklight.bookmarks.export_all") %>

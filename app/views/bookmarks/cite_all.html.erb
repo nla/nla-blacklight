@@ -1,0 +1,14 @@
+<%= render Blacklight::System::ModalComponent.new do |component| %>
+  <% component.with_title { "#{t('blacklight.bookmarks.cite_all')} – #{t(@citation_format.first)}" } %>
+
+  <% if @documents.present? %>
+    <div data-controller="clipboard" data-clipboard-success-content-value="<%= t('citation.copied') %>">
+      <button type="button" class="btn btn-primary mb-3" data-action="clipboard#copy" data-clipboard-target="button">
+        <%= t('citation.copy_all') %>
+      </button>
+      <div class="citation-bibliography" data-clipboard-target="source"><%= citation_copy_all_text(@citation_format.last, @documents) %></div>
+    </div>
+  <% else %>
+    <p><%= t('blacklight.bookmarks.no_bookmarks') %></p>
+  <% end %>
+<% end %>
