@@ -1,29 +1,31 @@
-<%= render Blacklight::Document::ActionsComponent.new(document: nil,
+<div class="bookmarks-toolbar d-flex flex-wrap align-items-center gap-2 mb-3">
+  <%= render Blacklight::Document::ActionsComponent.new(document: nil,
                                                       tag: 'div',
-                                                      classes: "#{controller_name}Tools",
+                                                      classes: "#{controller_name}Tools d-flex flex-wrap gap-2",
                                                       link_classes: 'btn btn-primary',
                                                       actions: document_actions(document_list, options: { document: nil }),
                                                       options: { document_list: @response.documents },
                                                       url_opts: Blacklight::Parameters.sanitize(params.to_unsafe_h)) %>
 
-<% if @bookmarks.present? %>
-  <div class="cite-all-dropdown dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <%= t("blacklight.bookmarks.cite_all") %>
-    </button>
-    <ul class="dropdown-menu">
-      <% CitationHelper::CITATION_FORMATS.each_key do |i18n_key| %>
-        <li><%= link_to t(i18n_key), cite_all_bookmarks_path(style: i18n_key.to_s.split('.').last), class: "dropdown-item", data: { blacklight_modal: "trigger", turbo: false } %></li>
-      <% end %>
-    </ul>
-  </div>
-  <div class="export-all-dropdown dropdown">
-    <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      <%= t("blacklight.bookmarks.export_all") %>
-    </button>
-    <ul class="dropdown-menu">
-      <li><%= link_to t("blacklight.bookmarks.export_csv"), export_bookmarks_path(format: "csv"), class: "dropdown-item" %></li>
-      <li><%= link_to t("blacklight.bookmarks.export_ris"), export_bookmarks_path(format: "ris"), class: "dropdown-item" %></li>
-    </ul>
-  </div>
-<% end %>
+  <% if @bookmarks.present? %>
+    <div class="cite-all-dropdown dropdown flex-shrink-0">
+      <button class="btn btn-primary dropdown-toggle text-nowrap" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= t("blacklight.bookmarks.cite_all") %>
+      </button>
+      <ul class="dropdown-menu">
+        <% CitationHelper::CITATION_FORMATS.each_key do |i18n_key| %>
+          <li><%= link_to t(i18n_key), cite_all_bookmarks_path(style: i18n_key.to_s.split('.').last), class: "dropdown-item", data: { blacklight_modal: "trigger", turbo: false } %></li>
+        <% end %>
+      </ul>
+    </div>
+    <div class="export-all-dropdown dropdown flex-shrink-0">
+      <button class="btn btn-primary dropdown-toggle text-nowrap" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+        <%= t("blacklight.bookmarks.export_all") %>
+      </button>
+      <ul class="dropdown-menu">
+        <li><%= link_to t("blacklight.bookmarks.export_csv"), export_bookmarks_path(format: "csv"), class: "dropdown-item" %></li>
+        <li><%= link_to t("blacklight.bookmarks.export_ris"), export_bookmarks_path(format: "ris"), class: "dropdown-item" %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>
