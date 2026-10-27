@@ -78,7 +78,10 @@ module Nla
       end
 
       def urls(document)
-        document.copy_access_urls.to_a.filter_map { |url| url[:href] }.uniq
+        # Export all 856 $u values, regardless of indicators, rather than only
+        # the "Online Version" subset used by the record display.
+        document.marc_xml.xpath("//datafield[@tag='856']/subfield[@code='u']")
+          .map { |subfield| subfield.text.strip }.compact_blank.uniq
       rescue KeyError
         # Documents without a MARC source have no access URLs, but still have AN.
         []

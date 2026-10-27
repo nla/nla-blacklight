@@ -83,6 +83,62 @@ RSpec.describe Nla::Exports::RISExport do
     end
   end
 
+  context "with the Duxiu record's 856 40 URL" do
+    let(:document) do
+      SolrDocument.new(id: "4967852", title_tsim: ["Duxiu [electronic resource] = duxiu.com"], marc_ss: <<~XML)
+        <record xmlns="http://www.loc.gov/MARC21/slim">
+          <datafield tag="856" ind1="4" ind2="0"><subfield code="x">ISD5:ANL</subfield><subfield code="u">https://www.duxiu.com</subfield><subfield code="z">Available to National Library registered users</subfield></datafield>
+        </record>
+      XML
+    end
+
+    it "includes the URL in UR while preserving the catalogue link in AN" do
+      expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://www.duxiu.com\n"])
+      expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn4967852\n")
+    end
+  end
+
+  [["4", "0"], ["4", "1"], ["4", "2"], [" ", " "], ["7", "8"]].each do |ind1, ind2|
+    context "with 856 indicators #{ind1.inspect}, #{ind2.inspect}" do
+      let(:document) do
+        SolrDocument.new(id: "1", marc_ss: <<~XML)
+          <record xmlns="http://www.loc.gov/MARC21/slim">
+            <datafield tag="856" ind1="#{ind1}" ind2="#{ind2}"><subfield code="u">https://example.org/resource</subfield></datafield>
+          </record>
+        XML
+      end
+
+      it "exports the URL regardless of indicators" do
+        expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://example.org/resource\n"])
+      end
+    end
+  end
+
+  context "with repeated, blank, and non-856 URL subfields" do
+    let(:document) do
+      SolrDocument.new(id: "1", marc_ss: <<~XML)
+        <record xmlns="http://www.loc.gov/MARC21/slim">
+          <datafield tag="856" ind1="4" ind2="0">
+            <subfield code="u"> https://example.org/first </subfield>
+            <subfield code="u">https://example.org/second</subfield>
+            <subfield code="u"> </subfield>
+            <subfield code="u"/>
+            <subfield code="z">https://example.org/label-only</subfield>
+          </datafield>
+          <datafield tag="856" ind1="4" ind2="2"><subfield code="u">https://example.org/first</subfield></datafield>
+          <datafield tag="540" ind1=" " ind2=" "><subfield code="u">https://example.org/terms-only</subfield></datafield>
+        </record>
+      XML
+    end
+
+    it "exports every distinct nonblank 856 $u, including repeated $u in the same field" do
+      expect(ris.lines.grep(/^UR  - /)).to eq([
+        "UR  - https://example.org/first\n",
+        "UR  - https://example.org/second\n"
+      ])
+    end
+  end
+
   it "ends the record with ER" do
     expect(ris).to end_with("ER  - \n\n")
   end
