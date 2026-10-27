@@ -38,6 +38,7 @@ module Nla
         lines << "CY  - #{place(document)}" if place(document).present?
         lines << "PB  - #{publisher(document)}" if publisher(document).present?
         lines << "AB  - #{summary(document)}" if summary(document).present?
+        lines << "AN  - #{document.catalogue_persistent_url}"
         urls(document).each { |url| lines << "UR  - #{url}" }
         lines << "ER  - "
         lines.map { |line| line.gsub(/[\r\n]+/, " ") }.join("\n")
@@ -77,14 +78,10 @@ module Nla
       end
 
       def urls(document)
-        access_urls =
-          begin
-            document.copy_access_urls&.filter_map { |url| url[:href] }
-          rescue KeyError
-            # documents without a MARC source have no access URLs
-            []
-          end
-        (access_urls.to_a + [document.catalogue_persistent_url]).uniq
+        document.copy_access_urls.to_a.filter_map { |url| url[:href] }.uniq
+      rescue KeyError
+        # Documents without a MARC source have no access URLs, but still have AN.
+        []
       end
     end
   end

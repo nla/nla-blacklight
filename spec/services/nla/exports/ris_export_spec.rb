@@ -44,8 +44,43 @@ RSpec.describe Nla::Exports::RISExport do
     expect(ris).to include("AB  - A summary of the work.")
   end
 
-  it "includes the catalogue persistent identifier URL" do
-    expect(ris).to include("UR  - https://nla.gov.au/nla.cat-vn8425632")
+  it "exports the catalogue persistent identifier as AN, not UR" do
+    expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn8425632\n")
+    expect(ris).not_to include("UR  - https://nla.gov.au/nla.cat-vn8425632")
+  end
+
+  it "preserves the catalogue identifier when there is no MARC source" do
+    expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn8425632\n")
+    expect(ris.lines.grep(/^UR  - /)).to be_empty
+  end
+
+  context "with MARC 856 online-resource URLs" do
+    let(:document) do
+      SolrDocument.new(id: "8425632", marc_ss: <<~XML)
+        <record xmlns="http://www.loc.gov/MARC21/slim">
+          <datafield tag="856" ind1="4" ind2="1"><subfield code="u">https://example.org/resource</subfield></datafield>
+          <datafield tag="856" ind1="4" ind2="1"><subfield code="u">https://example.org/resource</subfield></datafield>
+          <datafield tag="856" ind1="4" ind2="1"><subfield code="u">https://example.org/another-resource</subfield></datafield>
+        </record>
+      XML
+    end
+
+    it "keeps resource URLs in UR and the catalogue identifier separately in AN" do
+      expect(ris.lines.grep(/^AN  - /)).to eq(["AN  - https://nla.gov.au/nla.cat-vn8425632\n"])
+      expect(ris.lines.grep(/^UR  - /)).to eq([
+        "UR  - https://example.org/resource\n",
+        "UR  - https://example.org/another-resource\n"
+      ])
+    end
+  end
+
+  context "with a MARC record containing no online-resource URLs" do
+    let(:document) { SolrDocument.new(id: "8425632", marc_ss: "<record/>") }
+
+    it "exports AN without adding a catalogue UR fallback" do
+      expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn8425632\n")
+      expect(ris.lines.grep(/^UR  - /)).to be_empty
+    end
   end
 
   it "ends the record with ER" do
@@ -80,6 +115,10 @@ RSpec.describe Nla::Exports::RISExport do
     it "renders one record per document" do
       expect(ris.scan("ER  - ").count).to eq(2)
       expect(ris).to include("ER  - \n\nTY  - ")
+      expect(ris.lines.grep(/^AN  - /)).to eq([
+        "AN  - https://nla.gov.au/nla.cat-vn8425632\n",
+        "AN  - https://nla.gov.au/nla.cat-vn2\n"
+      ])
     end
   end
 end
