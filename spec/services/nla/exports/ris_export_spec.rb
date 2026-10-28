@@ -52,6 +52,7 @@ RSpec.describe Nla::Exports::RISExport do
   it "preserves the catalogue identifier when there is no MARC source" do
     expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn8425632\n")
     expect(ris.lines.grep(/^UR  - /)).to be_empty
+    expect(ris.lines.grep(/^N1  - /)).to be_empty
   end
 
   context "with MARC 856 online-resource URLs" do
@@ -72,6 +73,32 @@ RSpec.describe Nla::Exports::RISExport do
         "UR  - https://example.org/another-resource\n"
       ])
     end
+
+    it "also preserves every distinct resource URL in notes for Zotero" do
+      expect(ris.lines.grep(/^N1  - /)).to eq([
+        "N1  - Online resource: https://example.org/resource\n",
+        "N1  - Online resource: https://example.org/another-resource\n"
+      ])
+    end
+
+    context "when repeated URLs leave only one distinct resource" do
+      let(:document) do
+        SolrDocument.new(id: "1", marc_ss: <<~XML)
+          <record>
+            <datafield tag="856" ind1="4" ind2="0">
+              <subfield code="u"> https://example.org/resource </subfield>
+              <subfield code="u">https://example.org/resource</subfield>
+              <subfield code="u"> </subfield>
+            </datafield>
+          </record>
+        XML
+      end
+
+      it "does not add unnecessary fallback notes" do
+        expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://example.org/resource\n"])
+        expect(ris.lines.grep(/^N1  - /)).to be_empty
+      end
+    end
   end
 
   context "with a MARC record containing no online-resource URLs" do
@@ -80,6 +107,7 @@ RSpec.describe Nla::Exports::RISExport do
     it "exports AN without adding a catalogue UR fallback" do
       expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn8425632\n")
       expect(ris.lines.grep(/^UR  - /)).to be_empty
+      expect(ris.lines.grep(/^N1  - /)).to be_empty
     end
   end
 
@@ -95,6 +123,7 @@ RSpec.describe Nla::Exports::RISExport do
     it "includes the URL in UR while preserving the catalogue link in AN" do
       expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://www.duxiu.com\n"])
       expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn4967852\n")
+      expect(ris.lines.grep(/^N1  - /)).to be_empty
     end
   end
 
@@ -135,6 +164,10 @@ RSpec.describe Nla::Exports::RISExport do
       expect(ris.lines.grep(/^UR  - /)).to eq([
         "UR  - https://example.org/first\n",
         "UR  - https://example.org/second\n"
+      ])
+      expect(ris.lines.grep(/^N1  - /)).to eq([
+        "N1  - Online resource: https://example.org/first\n",
+        "N1  - Online resource: https://example.org/second\n"
       ])
     end
   end

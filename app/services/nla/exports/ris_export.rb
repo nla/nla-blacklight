@@ -39,7 +39,12 @@ module Nla
         lines << "PB  - #{publisher(document)}" if publisher(document).present?
         lines << "AB  - #{summary(document)}" if summary(document).present?
         lines << "AN  - #{document.catalogue_persistent_url}"
-        urls(document).each { |url| lines << "UR  - #{url}" }
+        resource_urls = urls(document)
+        resource_urls.each { |url| lines << "UR  - #{url}" }
+        # Zotero keeps only the first UR; notes preserve the complete resource list.
+        if resource_urls.many?
+          resource_urls.each { |url| lines << "N1  - Online resource: #{url}" }
+        end
         lines << "ER  - "
         lines.map { |line| line.gsub(/[\r\n]+/, " ") }.join("\n")
       end
