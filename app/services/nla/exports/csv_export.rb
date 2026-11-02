@@ -7,7 +7,8 @@ module Nla
     ##
     # Renders catalogue bookmark documents as a CSV string.
     #
-    # The main title and public fields displayed on the record show view,
+    # Public fields displayed on the record show view, with the main title
+    # grouped before the translated and uniform titles,
     # with the Catalogue persistent identifier URL as the final column.
     class CsvExport
       PERSISTENT_ID_LABEL = "Catalogue persistent identifier"
@@ -30,12 +31,16 @@ module Nla
       private
 
       def header
-        ["Title"] + @fields.map { |field| field.display_label } + [PERSISTENT_ID_LABEL]
+        @fields.map { |field| field.display_label }.insert(title_column_index, "Title") + [PERSISTENT_ID_LABEL]
       end
 
       def row(document)
-        [flatten(document.fetch(@title_field, nil)).join("; ")] +
-          @fields.map { |field| cell(document, field) } + [document.catalogue_persistent_url]
+        title = flatten(document.fetch(@title_field, nil)).join("; ")
+        @fields.map { |field| cell(document, field) }.insert(title_column_index, title) + [document.catalogue_persistent_url]
+      end
+
+      def title_column_index
+        @fields.index { |field| %w[translated_title_ssim uniform_title_ssim].include?(field.key.to_s) } || 0
       end
 
       def spreadsheet_safe(value)

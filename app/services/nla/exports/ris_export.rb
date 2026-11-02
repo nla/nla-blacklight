@@ -41,10 +41,8 @@ module Nla
         lines << "AN  - #{document.catalogue_persistent_url}"
         resource_urls = urls(document)
         resource_urls.each { |url| lines << "UR  - #{url}" }
-        # Zotero keeps only the first UR; notes preserve the complete resource list.
-        if resource_urls.many?
-          resource_urls.each { |url| lines << "N1  - Online resource: #{url}" }
-        end
+        # Zotero keeps the first UR in its URL field; preserve additional URLs in notes.
+        resource_urls.drop(1).each { |url| lines << "N1  - Online resource: #{url}" }
         lines << "ER  - "
         lines.map { |line| line.gsub(/[\r\n]+/, " ") }.join("\n")
       end

@@ -74,9 +74,8 @@ RSpec.describe Nla::Exports::RISExport do
       ])
     end
 
-    it "also preserves every distinct resource URL in notes for Zotero" do
+    it "preserves only additional resource URLs in notes for Zotero" do
       expect(ris.lines.grep(/^N1  - /)).to eq([
-        "N1  - Online resource: https://example.org/resource\n",
         "N1  - Online resource: https://example.org/another-resource\n"
       ])
     end
@@ -166,7 +165,6 @@ RSpec.describe Nla::Exports::RISExport do
         "UR  - https://example.org/second\n"
       ])
       expect(ris.lines.grep(/^N1  - /)).to eq([
-        "N1  - Online resource: https://example.org/first\n",
         "N1  - Online resource: https://example.org/second\n"
       ])
     end

@@ -30,22 +30,31 @@ RSpec.describe Nla::Exports::CsvExport do
 
   it "renders the title and public show fields, plus the persistent identifier last" do
     header = parsed.first
-    expect(header.first).to eq("Title")
-    expect(header.second).to eq("Bib ID")
+    expect(header.first(7)).to eq(["Bib ID", "Format", "Form of work", "Author", "Title", "Translated Title", "Uniform Title"])
     expect(header).to include("Subject")
     expect(header).to include("Life Dates")
+    expect(header).to include("Online Access", "Online Version", "Related Online Resources")
+    expect(header).not_to include("Key", "Url")
     expect(header.last).to eq("Catalogue persistent identifier")
     expect(header).not_to include("Rights information")
   end
 
   it "includes the main title displayed above the record metadata" do
-    expect(parsed.last.first).to eq("The main title / A. Writer")
+    expect(parsed.last[parsed.first.index("Title")]).to eq("The main title / A. Writer")
   end
 
   it "uses the configured main title field" do
     custom_document = SolrDocument.new(id: "1", heading_ssim: ["Configured title"])
     rows = CSV.parse(described_class.new([custom_document], [], title_field: "heading_ssim").render)
     expect(rows.last.first).to eq("Configured title")
+  end
+
+  it "keeps the existing metadata order and values when grouping the titles" do
+    translated_title = fields.find { |field| field.key.to_s == "translated_title_ssim" }
+    uniform_title = fields.find { |field| field.key.to_s == "uniform_title_ssim" }
+    rows = CSV.parse(described_class.new(documents, [uniform_title, translated_title]).render)
+    expect(rows.first).to eq(["Title", "Uniform Title", "Translated Title", "Catalogue persistent identifier"])
+    expect(rows.last).to eq(["The main title / A. Writer", "Uniform title", "", "https://nla.gov.au/nla.cat-vn8425632"])
   end
 
   it "neutralizes spreadsheet formulas in the main title" do
@@ -75,7 +84,7 @@ RSpec.describe Nla::Exports::CsvExport do
   context "when the copyright service returns no information" do
     it "keeps the copyright cell empty without losing the other metadata" do
       expect(parsed.last[parsed.first.index("Copyright")]).to eq("")
-      expect(parsed.last.first).to eq("The main title / A. Writer")
+      expect(parsed.last[parsed.first.index("Title")]).to eq("The main title / A. Writer")
     end
   end
 
@@ -83,7 +92,7 @@ RSpec.describe Nla::Exports::CsvExport do
     before { stub_request(:get, /copyright\.test/).to_raise(Faraday::ConnectionFailed) }
 
     it "still exports the title and MARC metadata" do
-      expect(parsed.last.first).to eq("The main title / A. Writer")
+      expect(parsed.last[parsed.first.index("Title")]).to eq("The main title / A. Writer")
       expect(parsed.last[parsed.first.index("Subject")]).to eq("One subject; Two subjects")
       expect(parsed.last[parsed.first.index("Copyright")]).to eq("")
     end
@@ -110,6 +119,29 @@ RSpec.describe Nla::Exports::CsvExport do
     header = parsed.first
     row = parsed.last
     expect(row[header.index("Subject")]).to eq("One subject; Two subjects")
+  end
+
+  context "with multiple MARC 856 resource URLs" do
+    let(:document) do
+      SolrDocument.new(id: "8425632", marc_ss: <<~XML)
+        <record xmlns="http://www.loc.gov/MARC21/slim">
+          <datafield tag="856" ind1="4" ind2="0"><subfield code="u">https://example.org/access-first</subfield><subfield code="z">Access first</subfield></datafield>
+          <datafield tag="856" ind1="4" ind2="0"><subfield code="u">https://example.org/access-second</subfield><subfield code="z">Access second</subfield></datafield>
+          <datafield tag="856" ind1="4" ind2="1"><subfield code="u">https://example.org/version-first</subfield><subfield code="z">Version first</subfield></datafield>
+          <datafield tag="856" ind1="4" ind2="1"><subfield code="u">https://example.org/version-second</subfield><subfield code="z">Version second</subfield></datafield>
+          <datafield tag="856" ind1="4" ind2="2"><subfield code="u">https://example.org/related-first</subfield><subfield code="z">Related first</subfield></datafield>
+          <datafield tag="856" ind1="4" ind2="2"><subfield code="u">https://example.org/related-second</subfield><subfield code="z">Related second</subfield></datafield>
+        </record>
+      XML
+    end
+
+    it "preserves every URL and label in the original columns, separated by semicolons" do
+      header, row = parsed
+      expect(row[header.index("Online Access")]).to eq("Access first; https://example.org/access-first; Access second; https://example.org/access-second")
+      expect(row[header.index("Online Version")]).to eq("Version first; https://example.org/version-first; Version second; https://example.org/version-second")
+      expect(row[header.index("Related Online Resources")]).to eq("Related first; https://example.org/related-first; Related second; https://example.org/related-second")
+      expect(row[header.index("Bib ID")]).to eq("8425632")
+    end
   end
 
   it "uses the field's separator options when present" do
