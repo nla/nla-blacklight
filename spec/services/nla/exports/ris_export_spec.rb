@@ -23,7 +23,8 @@ RSpec.describe Nla::Exports::RISExport do
     expect(ris).to include("TY  - JOUR\n")
   end
 
-  {"Magazine" => "MGZN", "Manuscript" => "MANSCPT", "Score" => "MUSIC"}.each do |format, type|
+  {"Magazine" => "MGZN", "Manuscript" => "MANSCPT", "Score" => "MUSIC", "Audio" => "SOUND",
+   "Sound recording" => "SOUND", "Picture" => "ART", "Video" => "VIDEO"}.each do |format, type|
     it "uses the standard RIS type for #{format}" do
       output = described_class.new([SolrDocument.new(id: "1", format: format)]).render
       expect(output).to start_with("TY  - #{type}\n")
@@ -44,15 +45,32 @@ RSpec.describe Nla::Exports::RISExport do
     expect(ris).to include("AB  - A summary of the work.")
   end
 
-  it "exports the catalogue persistent identifier as AN, not UR" do
+  it "uses the catalogue persistent identifier as the URL when no resource URL exists" do
     expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn8425632\n")
-    expect(ris).not_to include("UR  - https://nla.gov.au/nla.cat-vn8425632")
+    expect(ris).to include("UR  - https://nla.gov.au/nla.cat-vn8425632\n")
   end
 
   it "preserves the catalogue identifier when there is no MARC source" do
     expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn8425632\n")
-    expect(ris.lines.grep(/^UR  - /)).to be_empty
+    expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://nla.gov.au/nla.cat-vn8425632\n"])
     expect(ris.lines.grep(/^N1  - /)).to be_empty
+  end
+
+  it "exports distinct nonblank ISBNs and ISSNs, preferring ISSNs for journals" do
+    document = SolrDocument.new(id: "1", format: "Journal", isbn_tsim: ["9781234567890", "9781234567890", " "],
+      issn_display_ssim: ["1234-5678"])
+    output = described_class.new([document]).render
+
+    expect(output.lines.grep(/^SN  - /)).to eq(["SN  - 1234-5678\n", "SN  - 9781234567890\n"])
+    expect(output.lines.grep(/^N1  - ISBN:/)).to eq(["N1  - ISBN: 9781234567890\n"])
+  end
+
+  it "prefers ISBNs for books" do
+    document = SolrDocument.new(id: "1", format: "Book", isbn_tsim: ["9781234567890"], issn_display_ssim: ["1234-5678"])
+    output = described_class.new([document]).render
+
+    expect(output.lines.grep(/^SN  - /)).to eq(["SN  - 9781234567890\n", "SN  - 1234-5678\n"])
+    expect(output.lines.grep(/^N1  - ISSN:/)).to eq(["N1  - ISSN: 1234-5678\n"])
   end
 
   context "with MARC 856 online-resource URLs" do
@@ -74,8 +92,9 @@ RSpec.describe Nla::Exports::RISExport do
       ])
     end
 
-    it "preserves only additional resource URLs in notes for Zotero" do
+    it "preserves the record URL and additional resource URLs in notes for Zotero" do
       expect(ris.lines.grep(/^N1  - /)).to eq([
+        "N1  - Record URL: https://nla.gov.au/nla.cat-vn8425632\n",
         "N1  - Online resource: https://example.org/another-resource\n"
       ])
     end
@@ -93,9 +112,9 @@ RSpec.describe Nla::Exports::RISExport do
         XML
       end
 
-      it "does not add unnecessary fallback notes" do
+      it "keeps the record URL in a note" do
         expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://example.org/resource\n"])
-        expect(ris.lines.grep(/^N1  - /)).to be_empty
+        expect(ris.lines.grep(/^N1  - /)).to eq(["N1  - Record URL: https://nla.gov.au/nla.cat-vn1\n"])
       end
     end
   end
@@ -103,9 +122,9 @@ RSpec.describe Nla::Exports::RISExport do
   context "with a MARC record containing no online-resource URLs" do
     let(:document) { SolrDocument.new(id: "8425632", marc_ss: "<record/>") }
 
-    it "exports AN without adding a catalogue UR fallback" do
+    it "uses the catalogue URL as the UR fallback" do
       expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn8425632\n")
-      expect(ris.lines.grep(/^UR  - /)).to be_empty
+      expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://nla.gov.au/nla.cat-vn8425632\n"])
       expect(ris.lines.grep(/^N1  - /)).to be_empty
     end
   end
@@ -122,7 +141,7 @@ RSpec.describe Nla::Exports::RISExport do
     it "includes the URL in UR while preserving the catalogue link in AN" do
       expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://www.duxiu.com\n"])
       expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn4967852\n")
-      expect(ris.lines.grep(/^N1  - /)).to be_empty
+      expect(ris.lines.grep(/^N1  - /)).to eq(["N1  - Record URL: https://nla.gov.au/nla.cat-vn4967852\n"])
     end
   end
 
@@ -165,6 +184,7 @@ RSpec.describe Nla::Exports::RISExport do
         "UR  - https://example.org/second\n"
       ])
       expect(ris.lines.grep(/^N1  - /)).to eq([
+        "N1  - Record URL: https://nla.gov.au/nla.cat-vn1\n",
         "N1  - Online resource: https://example.org/second\n"
       ])
     end

@@ -12,8 +12,11 @@ module Nla
         "magazine" => "MGZN",
         "map" => "MAP",
         "manuscript" => "MANSCPT",
+        "picture" => "ART",
+        "audio" => "SOUND",
         "score" => "MUSIC",
-        "sound recording" => "AUDIO",
+        "sound recording" => "SOUND",
+        "video" => "VIDEO",
         "video recording" => "VIDEO",
         "website" => "WEB"
       }.freeze
@@ -38,11 +41,21 @@ module Nla
         lines << "CY  - #{place(document)}" if place(document).present?
         lines << "PB  - #{publisher(document)}" if publisher(document).present?
         lines << "AB  - #{summary(document)}" if summary(document).present?
-        lines << "AN  - #{document.catalogue_persistent_url}"
+        serial_numbers = identifiers(document)
+        serial_numbers.each { |_, value| lines << "SN  - #{value}" }
+        record_url = document.catalogue_persistent_url
+        lines << "AN  - #{record_url}"
         resource_urls = urls(document)
-        resource_urls.each { |url| lines << "UR  - #{url}" }
+        if resource_urls.empty?
+          lines << "UR  - #{record_url}"
+        else
+          resource_urls.each { |url| lines << "UR  - #{url}" }
+          lines << "N1  - Record URL: #{record_url}"
+        end
         # Zotero keeps the first UR in its URL field; preserve additional URLs in notes.
         resource_urls.drop(1).each { |url| lines << "N1  - Online resource: #{url}" }
+        # Zotero also keeps only the first SN value.
+        serial_numbers.drop(1).each { |label, value| lines << "N1  - #{label}: #{value}" }
         lines << "ER  - "
         lines.map { |line| line.gsub(/[\r\n]+/, " ") }.join("\n")
       end
@@ -78,6 +91,17 @@ module Nla
 
       def summary(document)
         Array(document.summary).join(" ")
+      end
+
+      def identifiers(document)
+        fields = [["ISBN", "isbn_tsim"], ["ISSN", "issn_display_ssim"]]
+        fields.reverse! if %w[JOUR MGZN].include?(record_type(document))
+        fields.flat_map do |label, field|
+          Array(document.fetch(field, nil)).filter_map do |value|
+            number = value.to_s.strip
+            [label, number] if number.present?
+          end
+        end.uniq { |_, value| value }
       end
 
       def urls(document)

@@ -30,7 +30,7 @@ module Blacklight::Bookmarks
     bookmark_ids = bookmarks.collect { |b| b.document_id.to_s }
     return [] if bookmark_ids.empty?
 
-    search_service.fetch(bookmark_ids, rows: bookmark_ids.count)
+    search_service.fetch(bookmark_ids, rows: bookmark_ids.count, start: 0)
   end
 
   def action_success_redirect_path

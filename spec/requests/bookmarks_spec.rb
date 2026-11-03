@@ -126,7 +126,8 @@ RSpec.describe "Bookmarks" do
       expect(response.body).to include("TY  - BOOK")
       expect(response.body).to include("AN  - https://nla.gov.au/nla.cat-vn1414519")
       expect(response.body).to include("AN  - https://nla.gov.au/nla.cat-vn8425632")
-      expect(response.body).not_to include("UR  - https://nla.gov.au/nla.cat-vn")
+      expect(response.body).to include("UR  - https://nla.gov.au/nla.cat-vn1414519")
+      expect(response.body).to include("SN  - 0731143213")
       expect(response.body.scan("ER  - ").count).to eq(2)
     end
 
@@ -154,7 +155,7 @@ RSpec.describe "Bookmarks" do
           "UR  - https://example.org/second",
           "UR  - https://example.org/third"
         ])
-        expect(record.lines.grep(/^N1  - /).map(&:chomp)).to eq([
+        expect(record.lines.grep(/^N1  - Online resource:/).map(&:chomp)).to eq([
           "N1  - Online resource: https://example.org/second",
           "N1  - Online resource: https://example.org/third"
         ])
@@ -190,31 +191,37 @@ RSpec.describe "Bookmarks" do
     end
 
     it "requests every bookmark when generating citations" do
-      get cite_all_bookmarks_path(style: "apa", per_page: 10)
+      get cite_all_bookmarks_path(style: "apa", per_page: 10, page: 2)
 
       expect(response.body).to include("https://nla.gov.au/nla.cat-vnextra-20")
       expect(WebMock).to have_requested(:any, /solr:8983/).with { |request|
-        Rack::Utils.parse_nested_query([request.uri.query, request.body].compact.join("&"))["rows"] == "22"
+        params = Rack::Utils.parse_nested_query([request.uri.query, request.body].compact.join("&"))
+        params["rows"] == "22" && params["start"].to_i.zero?
       }
     end
 
     it "exports every bookmark rather than just the current page" do
-      get export_bookmarks_path(format: "csv", per_page: 10)
+      get export_bookmarks_path(format: "csv", per_page: 10, page: 2)
 
       expect(CSV.parse(response.body).length).to eq(23)
       expect(WebMock).to have_requested(:any, /solr:8983/).with { |request|
-        Rack::Utils.parse_nested_query([request.uri.query, request.body].compact.join("&"))["rows"] == "22"
+        params = Rack::Utils.parse_nested_query([request.uri.query, request.body].compact.join("&"))
+        params["rows"] == "22" && params["start"].to_i.zero?
       }
     end
 
     it "includes every bookmark in RIS rather than just the current page" do
-      get export_bookmarks_path(format: "ris", per_page: 10)
+      get export_bookmarks_path(format: "ris", per_page: 10, page: 2)
 
       expect(response).to have_http_status(:success)
       expect(response.body.scan(/^TY  - /).length).to eq(22)
       expect(response.body.lines.grep(/^AN  - /).map(&:chomp)).to match_array(
         bookmark_ids.map { |id| "AN  - https://nla.gov.au/nla.cat-vn#{id}" }
       )
+      expect(WebMock).to have_requested(:any, /solr:8983/).with { |request|
+        params = Rack::Utils.parse_nested_query([request.uri.query, request.body].compact.join("&"))
+        params["rows"] == "22" && params["start"].to_i.zero?
+      }
     end
   end
 
