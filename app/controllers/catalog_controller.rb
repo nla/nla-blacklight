@@ -484,7 +484,7 @@ class CatalogController < ApplicationController
   def offsite
     url = params[:url]
 
-    unless url.match?(/^https?:\/\/.*/)
+    unless url.is_a?(String) && url.match?(/\Ahttps?:\/\/[^\s]+\z/)
       raise t("offsite.invalid_url", url: url)
     end
 
