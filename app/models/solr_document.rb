@@ -33,6 +33,10 @@ class SolrDocument
   # Recommendation: Use field names from Dublin Core
   use_extension(Blacklight::Document::DublinCore)
 
+  def catalogue_persistent_url
+    "https://nla.gov.au/nla.cat-vn#{id}"
+  end
+
   # Overrides Blacklight::Document#more_like_this. Uses the MLT query parser because the request
   # handler doesn't search across shards in Solr 8.7.
   # TODO: In Solr 8.8 the request handler searches across shards and this logic should be updated when Solr is upgraded.

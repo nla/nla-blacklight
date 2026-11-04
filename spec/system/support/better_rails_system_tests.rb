@@ -14,10 +14,12 @@ RSpec.configure do |config|
   # Make urls in mailers contain the correct server host.
   # This is required for testing links in emails (e.g., via capybara-email).
   config.around(:each, type: :system) do |ex|
-    was_host = Rails.application.default_url_options[:host]
+    original_url_options = Rails.application.default_url_options.dup
     Rails.application.default_url_options[:host] = Capybara.server_host
     ex.run
-    Rails.application.default_url_options[:host] = was_host
+  ensure
+    # An absent host must stay absent, rather than overriding the renderer with nil.
+    Rails.application.default_url_options.replace(original_url_options)
   end
 
   # Make sure this hook runs before others

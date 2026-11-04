@@ -21,13 +21,16 @@ module Blacklight::Bookmarks
 
     blacklight_config.show.document_actions[:bookmark].if = false if blacklight_config.show.document_actions[:bookmark]
     blacklight_config.show.document_actions[:sms].if = false if blacklight_config.show.document_actions[:sms]
+    blacklight_config.show.document_actions[:citation].if = false if blacklight_config.show.document_actions[:citation]
     blacklight_config.search_builder_class = Blacklight::BookmarksSearchBuilder
   end
 
   def action_documents
     bookmarks = token_or_current_or_guest_user.bookmarks
     bookmark_ids = bookmarks.collect { |b| b.document_id.to_s }
-    search_service.fetch(bookmark_ids, rows: bookmark_ids.count)
+    return [] if bookmark_ids.empty?
+
+    search_service.fetch(bookmark_ids, rows: bookmark_ids.count, start: 0)
   end
 
   def action_success_redirect_path
@@ -56,6 +59,33 @@ module Blacklight::Bookmarks
 
       additional_response_formats(format)
       document_export_formats(format)
+    end
+  end
+
+  def cite_all
+    @citation_format = CitationHelper::CITATION_FORMATS.find do |key, _method|
+      key.to_s.split(".").last == params[:style].to_s
+    end
+    return head :bad_request unless @citation_format
+
+    @documents = action_documents
+    render layout: !request.xhr?
+  end
+
+  # Export all bookmarked documents (regardless of pagination) as a
+  # downloadable CSV or RIS file.
+  def export
+    @documents = action_documents
+
+    respond_to do |format|
+      format.csv do
+        send_data Nla::Exports::CsvExport.new(@documents, export_fields, title_field: blacklight_config.show.title_field).render,
+          filename: "bookmarks.csv", type: "text/csv", disposition: "attachment"
+      end
+      format.ris do
+        send_data Nla::Exports::RISExport.new(@documents).render,
+          filename: "bookmarks.ris", type: "application/x-research-info-systems", disposition: "attachment"
+      end
     end
   end
 
@@ -136,6 +166,11 @@ module Blacklight::Bookmarks
   end
 
   private
+
+  # Fields displayed on the catalogue record show view, in display order
+  def export_fields
+    CatalogController.blacklight_config.show_fields.to_h.values
+  end
 
   def verify_user
     unless is_logged_in_user?
