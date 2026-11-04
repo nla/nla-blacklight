@@ -3,12 +3,14 @@
 .modal {
   --nla-modal-backdrop-bg: var(--nla-black);
   --nla-modal-backdrop-opacity: 0.8;
+  --nla-request-muted-text: var(--nla-grey-300);
 }
 
 @media screen and (prefers-color-scheme: dark) {
   .modal {
     --nla-modal-backdrop-bg: var(--nla-grey-600);
     --nla-modal-backdrop-opacity: 0.9;
+    --nla-request-muted-text: var(--nla-grey-50);
   }
 }
 
@@ -37,7 +39,11 @@
       box-shadow: none;
     }   
   }
-  
+
+  .text-muted {
+    color: var(--nla-request-muted-text) !important;
+  }
+
   .range_limit {
     .btn {
       border-width: 1px;

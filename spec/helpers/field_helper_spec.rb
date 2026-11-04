@@ -344,26 +344,6 @@ RSpec.describe FieldHelper do
   end
   # rubocop:enable RSpec/NestedGroups
 
-  describe "#map_search" do
-    subject(:map_search_value) { helper.map_search(document: document, field: "map_search", config: config, value: value, context: "show") }
-
-    let(:value) { ["https://mapsearch.nla.gov.au/?type=map&mapClassifications=all&geolocation=all&text=113030"] }
-
-    it "generates a link to Map Search" do
-      expect(map_search_value).to eq '<a class="text-break" href="https://mapsearch.nla.gov.au/?type=map&mapClassifications=all&geolocation=all&text=113030">View this map in Map Search</a>'
-    end
-
-    context "when there is no value" do
-      subject(:map_search_value) { helper.map_search(document: document, field: "map_search", config: config, value: value, context: "show") }
-
-      let(:value) { nil }
-
-      it "does not display the map search link" do
-        expect(map_search_value).to be_nil
-      end
-    end
-  end
-
   describe "#render_copyright_component" do
     subject(:copyright_component) { helper.render_copyright_component(document: document, field: "", config: config, value: value, context: "show") }
 

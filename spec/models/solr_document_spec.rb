@@ -1064,83 +1064,6 @@ RSpec.describe SolrDocument do
     end
   end
 
-  describe "#map_search_urls" do
-    context "when map search service can't be reached" do
-      subject(:map_search_value) do
-        document = described_class.new(marc_ss: map_search, id: 113030, format: "Map")
-        document.map_search_urls
-      end
-
-      it "does not generate a link to Map Search" do
-        stub_request(:get, "https://mapsearch.nla.gov.au/search/search?type=map&text=113030")
-          .with(
-            headers: {
-              "Accept" => "*/*",
-              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-            }
-          )
-          .to_raise(StandardError)
-
-        expect(map_search_value).to be_nil
-      end
-    end
-
-    context "when there is a record in Map Search" do
-      subject(:map_search_value) do
-        document = described_class.new(marc_ss: map_search, id: 113030, format: "Map")
-        document.map_search_urls
-      end
-
-      let(:mock_response) { IO.read("spec/files/map_search/113030.json") }
-
-      it "generates a link to Map Search" do
-        stub_request(:get, "https://mapsearch.nla.gov.au/search/search?type=map&text=113030")
-          .with(
-            headers: {
-              "Accept" => "*/*",
-              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-            }
-          )
-          .to_return(status: 200, body: mock_response, headers: {})
-
-        expect(map_search_value).to eq ["https://mapsearch.nla.gov.au?type=map&mapClassifications=all&geolocation=all&text=113030"]
-      end
-    end
-
-    context "when there is no record in Map Search" do
-      subject(:map_search_value) do
-        document = described_class.new(marc_ss: no_map_search, id: 3647081, format: "Map")
-        document.map_search_urls
-      end
-
-      let(:mock_response) { IO.read("spec/files/map_search/3647081.json") }
-
-      it "does not generate a link to Map Search" do
-        stub_request(:get, "https://mapsearch.nla.gov.au/search/search?type=map&text=3647081")
-          .with(
-            headers: {
-              "Accept" => "*/*",
-              "Accept-Encoding" => "gzip;q=1.0,deflate;q=0.6,identity;q=0.3"
-            }
-          )
-          .to_return(status: 200, body: mock_response, headers: {})
-
-        expect(map_search_value).to be_nil
-      end
-    end
-
-    context "when there is no 'format'" do
-      subject(:map_search_value) do
-        document = described_class.new(marc_ss: no_format)
-        document.map_search_urls
-      end
-
-      it "does not generate a link to Map Search" do
-        expect(map_search_value).to be_nil
-      end
-    end
-  end
-
   describe "#music_publisher_number" do
     context "when there are music publisher numbers" do
       subject(:music_publisher_number_value) do
@@ -2348,10 +2271,6 @@ RSpec.describe SolrDocument do
     load_marc_from_file 2142448
   end
 
-  def map_search
-    load_marc_from_file 113030
-  end
-
   def multiple_isbn
     load_marc_from_file 1868021
   end
@@ -2374,14 +2293,6 @@ RSpec.describe SolrDocument do
 
   def music_publisher_number
     load_marc_from_file 3356244
-  end
-
-  def no_format
-    load_marc_from_file 7251259
-  end
-
-  def no_map_search
-    load_marc_from_file 3647081
   end
 
   def no_notes

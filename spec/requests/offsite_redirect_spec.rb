@@ -19,6 +19,12 @@ RSpec.describe "Offsite redirect", :request do
     end
   end
 
+  [nil, "", "javascript:alert(1)\nhttp://opac.newsbank.com/", "https://example.com\n"].each do |invalid_url|
+    it "rejects the invalid URL #{invalid_url.inspect}" do
+      expect { get "/catalog/0000/offsite", params: {url: invalid_url} }.to raise_error(RuntimeError)
+    end
+  end
+
   context "when given a 'url' param that starts with http or https" do
     context "when the URL is not an eResource URL" do
       it "redirects to the catalogue record page" do

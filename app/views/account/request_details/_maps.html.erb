@@ -1,5 +1,5 @@
 <% if details.enumeration.present? %>
-<dt class="col-12 col-md-4 text-md-right"><%= t("requesting.label.map_name") %></dt>
+<dt class="col-12 col-md-4 text-md-right"><%= t("requesting.label.map_name").html_safe %></dt>
 <dd class="col col-md-8"><%= details.enumeration %></dd>
 <% end %>
 
