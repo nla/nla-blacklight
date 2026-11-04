@@ -1,7 +1,7 @@
 <h2><%= t("offsite.onsite_only.header") %></h2>
 
 <%
-  original_url = link_to(@eresource[:entry]["title"], @requested_url)
+  original_url = sanitize(link_to(@eresource[:entry]["title"], @requested_url))
   return_link = link_to("return to the record display", @record_url)
   click_link = link_to("click here", @record_url)
 %>
