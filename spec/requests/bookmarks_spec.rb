@@ -245,7 +245,7 @@ RSpec.describe "Bookmarks" do
     fixture = JSON.parse(IO.read("spec/files/document_export/search_response.json"))
     doc = fixture["response"]["docs"].first
     doc["marc_ss"] = marc_xml if marc_xml
-    second = doc.merge(id: "8425632", title_tsim: ["The hydrogen record / A. Smith"])
+    second = doc.merge("id" => "8425632", "title_tsim" => ["The hydrogen record / A. Smith"])
     documents = single ? [doc] : [doc, second]
     documents = ids.map { |id| doc.merge("id" => id) } if ids
     body = {response: {numFound: documents.length, start: 0, docs: documents}}.to_json
