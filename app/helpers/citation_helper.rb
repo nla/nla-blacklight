@@ -14,4 +14,13 @@ module CitationHelper
       [citation, persistent_id].compact_blank.join("\n")
     end.join("\n\n")
   end
+
+  def citation_copy_all_html(citation_method, documents)
+    safe_join(documents.map do |document|
+      citation = sanitize(document.public_send(citation_method).to_s,
+        tags: %w[i em b strong u sub sup br a], attributes: %w[href])
+      persistent_id = "#{t("citation.persistent_id")}: #{document.catalogue_persistent_url}"
+      tag.p(safe_join([citation, persistent_id], tag.br))
+    end)
+  end
 end
