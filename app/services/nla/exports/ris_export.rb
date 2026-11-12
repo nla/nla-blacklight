@@ -54,8 +54,6 @@ module Nla
         end
         # Zotero keeps the first UR in its URL field; preserve additional URLs in notes.
         resource_urls.drop(1).each { |url| lines << "N1  - Online resource: #{url}" }
-        # Zotero also keeps only the first SN value.
-        serial_numbers.drop(1).each { |label, value| lines << "N1  - #{label}: #{value}" }
         lines << "ER  - "
         lines.map { |line| line.gsub(/[\r\n]+/, " ") }.join("\n")
       end
