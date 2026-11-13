@@ -62,7 +62,7 @@ RSpec.describe Nla::Exports::RISExport do
     output = described_class.new([document]).render
 
     expect(output.lines.grep(/^SN  - /)).to eq(["SN  - 1234-5678\n", "SN  - 9781234567890\n"])
-    expect(output.lines.grep(/^N1  - ISBN:/)).to eq(["N1  - ISBN: 9781234567890\n"])
+    expect(output.lines.grep(/^N1  - /)).to be_empty
   end
 
   it "prefers ISBNs for books" do
@@ -70,7 +70,35 @@ RSpec.describe Nla::Exports::RISExport do
     output = described_class.new([document]).render
 
     expect(output.lines.grep(/^SN  - /)).to eq(["SN  - 9781234567890\n", "SN  - 1234-5678\n"])
-    expect(output.lines.grep(/^N1  - ISSN:/)).to eq(["N1  - ISSN: 1234-5678\n"])
+    expect(output.lines.grep(/^N1  - /)).to be_empty
+  end
+
+  it "keeps every distinct ISBN in SN without creating notes" do
+    document = SolrDocument.new(id: "1", format: "Book",
+      isbn_tsim: [" ", "9780140328721", " 9780140328721 ", "9780142410387", "9780141301068"])
+    output = described_class.new([document]).render
+
+    expect(output.lines.grep(/^SN  - /)).to eq([
+      "SN  - 9780140328721\n", "SN  - 9780142410387\n", "SN  - 9780141301068\n"
+    ])
+    expect(output.lines.grep(/^N1  - /)).to be_empty
+  end
+
+  it "keeps every distinct ISSN in SN without creating notes" do
+    document = SolrDocument.new(id: "1", format: "Journal",
+      issn_display_ssim: ["1234-5678", " ", "1234-5678", "8765-4321"])
+    output = described_class.new([document]).render
+
+    expect(output.lines.grep(/^SN  - /)).to eq(["SN  - 1234-5678\n", "SN  - 8765-4321\n"])
+    expect(output.lines.grep(/^N1  - /)).to be_empty
+  end
+
+  it "does not add identifier notes when only one distinct identifier remains" do
+    document = SolrDocument.new(id: "1", format: "Book", isbn_tsim: ["9780140328721", "9780140328721", " "])
+    output = described_class.new([document]).render
+
+    expect(output.lines.grep(/^SN  - /)).to eq(["SN  - 9780140328721\n"])
+    expect(output.lines.grep(/^N1  - /)).to be_empty
   end
 
   context "with MARC 856 online-resource URLs" do
