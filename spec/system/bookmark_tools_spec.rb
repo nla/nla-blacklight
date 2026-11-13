@@ -36,6 +36,34 @@ RSpec.describe "Bookmark tools" do
       click_button "Export all"
       expect(page).to have_link("CSV (.csv)", visible: :visible)
       expect(page).to have_link("RIS (.ris)", visible: :visible)
+
+      click_button "Cite all"
+      click_link "APA"
+      expect(page).to have_css(".citation-bibliography i, .citation-bibliography em")
+      citation = find('[data-clipboard-target="source"]').text
+      page.execute_script(<<~JS)
+        window.ClipboardItem = class { constructor(data) {this.data = data;} };
+        Object.defineProperty(navigator, 'clipboard', {configurable: true, value: {
+          write: async items => {
+            window.copiedHTML = await items[0].data['text/html'].text();
+            window.copiedCitation = await items[0].data['text/plain'].text();
+          },
+          writeText: async text => {window.plainTextFallback = text;}
+        }});
+      JS
+      click_button "Copy all"
+      expect(page).to have_button("Copied")
+      expect(page.evaluate_script("window.copiedCitation")).to eq(citation)
+      expect(page.evaluate_script("window.copiedHTML")).to match(/<(i|em)>/)
+      expect(page.evaluate_script("window.copiedCitation")).not_to include("<i>", "<em>")
+
+      page.execute_script("navigator.clipboard.write = () => Promise.reject(new Error('Not supported'))")
+      click_button "Copied"
+      expect(page.evaluate_script("window.plainTextFallback")).to eq(citation)
+
+      page.execute_script("navigator.clipboard.write = undefined; window.plainTextFallback = null")
+      click_button "Copied"
+      expect(page.evaluate_script("window.plainTextFallback")).to eq(citation)
     end
   end
 end
