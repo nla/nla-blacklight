@@ -46,12 +46,7 @@ module Nla
         record_url = document.catalogue_persistent_url
         lines << "AN  - #{record_url}"
         resource_urls = urls(document)
-        if resource_urls.empty?
-          lines << "UR  - #{record_url}"
-        else
-          resource_urls.each { |url| lines << "UR  - #{url}" }
-          lines << "N1  - Record URL: #{record_url}"
-        end
+        resource_urls.each { |url| lines << "UR  - #{url}" }
         # Zotero keeps the first UR in its URL field; preserve additional URLs in notes.
         resource_urls.drop(1).each { |url| lines << "N1  - Online resource: #{url}" }
         lines << "ER  - "

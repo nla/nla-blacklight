@@ -45,14 +45,14 @@ RSpec.describe Nla::Exports::RISExport do
     expect(ris).to include("AB  - A summary of the work.")
   end
 
-  it "uses the catalogue persistent identifier as the URL when no resource URL exists" do
+  it "keeps the catalogue persistent identifier only in AN when no resource URL exists" do
     expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn8425632\n")
-    expect(ris).to include("UR  - https://nla.gov.au/nla.cat-vn8425632\n")
+    expect(ris.lines.grep(/^UR  - /)).to be_empty
   end
 
   it "preserves the catalogue identifier when there is no MARC source" do
     expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn8425632\n")
-    expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://nla.gov.au/nla.cat-vn8425632\n"])
+    expect(ris.lines.grep(/^UR  - /)).to be_empty
     expect(ris.lines.grep(/^N1  - /)).to be_empty
   end
 
@@ -120,9 +120,8 @@ RSpec.describe Nla::Exports::RISExport do
       ])
     end
 
-    it "preserves the record URL and additional resource URLs in notes for Zotero" do
+    it "preserves only additional resource URLs in notes for Zotero" do
       expect(ris.lines.grep(/^N1  - /)).to eq([
-        "N1  - Record URL: https://nla.gov.au/nla.cat-vn8425632\n",
         "N1  - Online resource: https://example.org/another-resource\n"
       ])
     end
@@ -140,9 +139,9 @@ RSpec.describe Nla::Exports::RISExport do
         XML
       end
 
-      it "keeps the record URL in a note" do
+      it "does not create notes for a single distinct resource" do
         expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://example.org/resource\n"])
-        expect(ris.lines.grep(/^N1  - /)).to eq(["N1  - Record URL: https://nla.gov.au/nla.cat-vn1\n"])
+        expect(ris.lines.grep(/^N1  - /)).to be_empty
       end
     end
   end
@@ -150,9 +149,9 @@ RSpec.describe Nla::Exports::RISExport do
   context "with a MARC record containing no online-resource URLs" do
     let(:document) { SolrDocument.new(id: "8425632", marc_ss: "<record/>") }
 
-    it "uses the catalogue URL as the UR fallback" do
+    it "does not use the catalogue URL as a UR fallback" do
       expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn8425632\n")
-      expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://nla.gov.au/nla.cat-vn8425632\n"])
+      expect(ris.lines.grep(/^UR  - /)).to be_empty
       expect(ris.lines.grep(/^N1  - /)).to be_empty
     end
   end
@@ -169,7 +168,7 @@ RSpec.describe Nla::Exports::RISExport do
     it "includes the URL in UR while preserving the catalogue link in AN" do
       expect(ris.lines.grep(/^UR  - /)).to eq(["UR  - https://www.duxiu.com\n"])
       expect(ris).to include("AN  - https://nla.gov.au/nla.cat-vn4967852\n")
-      expect(ris.lines.grep(/^N1  - /)).to eq(["N1  - Record URL: https://nla.gov.au/nla.cat-vn4967852\n"])
+      expect(ris.lines.grep(/^N1  - /)).to be_empty
     end
   end
 
@@ -212,7 +211,6 @@ RSpec.describe Nla::Exports::RISExport do
         "UR  - https://example.org/second\n"
       ])
       expect(ris.lines.grep(/^N1  - /)).to eq([
-        "N1  - Record URL: https://nla.gov.au/nla.cat-vn1\n",
         "N1  - Online resource: https://example.org/second\n"
       ])
     end

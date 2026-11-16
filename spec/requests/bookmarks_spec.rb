@@ -126,7 +126,7 @@ RSpec.describe "Bookmarks" do
       expect(response.body).to include("TY  - BOOK")
       expect(response.body).to include("AN  - https://nla.gov.au/nla.cat-vn1414519")
       expect(response.body).to include("AN  - https://nla.gov.au/nla.cat-vn8425632")
-      expect(response.body).to include("UR  - https://nla.gov.au/nla.cat-vn1414519")
+      expect(response.body).not_to include("UR  - https://nla.gov.au/nla.cat-vn", "N1  - Record URL:")
       expect(response.body).to include("SN  - 0731143213")
       expect(response.body.scan("ER  - ").count).to eq(2)
     end
