@@ -47,8 +47,6 @@ module Nla
         lines << "N1  - Record URL: #{record_url}"
         resource_urls = urls(document)
         resource_urls.each { |url| lines << "UR  - #{url}" }
-        # Zotero keeps the first UR in its URL field; preserve additional URLs in notes.
-        resource_urls.drop(1).each { |url| lines << "N1  - Online resource: #{url}" }
         lines << "ER  - "
         lines.map { |line| line.gsub(/[\r\n]+/, " ") }.join("\n")
       end

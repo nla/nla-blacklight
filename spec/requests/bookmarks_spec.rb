@@ -131,7 +131,7 @@ RSpec.describe "Bookmarks" do
       expect(response.body.scan("ER  - ").count).to eq(2)
     end
 
-    it "downloads every distinct 856 URL as UR and only additional URLs as notes" do
+    it "downloads every distinct 856 URL as UR without duplicating URLs in notes" do
       stub_bookmark_documents(marc_xml: <<~XML)
         <record xmlns="http://www.loc.gov/MARC21/slim">
           <datafield tag="856" ind1="4" ind2="0">
@@ -155,10 +155,7 @@ RSpec.describe "Bookmarks" do
           "UR  - https://example.org/second",
           "UR  - https://example.org/third"
         ])
-        expect(record.lines.grep(/^N1  - Online resource:/).map(&:chomp)).to eq([
-          "N1  - Online resource: https://example.org/second",
-          "N1  - Online resource: https://example.org/third"
-        ])
+        expect(record.lines.grep(/^N1  - Online resource:/)).to be_empty
       end
     end
 

@@ -122,10 +122,9 @@ RSpec.describe Nla::Exports::RISExport do
       ])
     end
 
-    it "preserves the record link and additional resource URLs in notes" do
+    it "keeps only the record link in notes without duplicating resource URLs" do
       expect(ris.lines.grep(/^N1  - /)).to eq([
-        "N1  - Record URL: https://nla.gov.au/nla.cat-vn8425632\n",
-        "N1  - Online resource: https://example.org/another-resource\n"
+        "N1  - Record URL: https://nla.gov.au/nla.cat-vn8425632\n"
       ])
     end
 
@@ -214,8 +213,7 @@ RSpec.describe Nla::Exports::RISExport do
         "UR  - https://example.org/second\n"
       ])
       expect(ris.lines.grep(/^N1  - /)).to eq([
-        "N1  - Record URL: https://nla.gov.au/nla.cat-vn1\n",
-        "N1  - Online resource: https://example.org/second\n"
+        "N1  - Record URL: https://nla.gov.au/nla.cat-vn1\n"
       ])
     end
   end
