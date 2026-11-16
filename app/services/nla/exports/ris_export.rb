@@ -44,7 +44,7 @@ module Nla
         serial_numbers = identifiers(document)
         serial_numbers.each { |_, value| lines << "SN  - #{value}" }
         record_url = document.catalogue_persistent_url
-        lines << "AN  - #{record_url}"
+        lines << "N1  - Record URL: #{record_url}"
         resource_urls = urls(document)
         resource_urls.each { |url| lines << "UR  - #{url}" }
         # Zotero keeps the first UR in its URL field; preserve additional URLs in notes.
@@ -103,7 +103,7 @@ module Nla
         document.marc_xml.xpath("//datafield[@tag='856']/subfield[@code='u']")
           .map { |subfield| subfield.text.strip }.compact_blank.uniq
       rescue KeyError
-        # Documents without a MARC source have no access URLs, but still have AN.
+        # Documents without a MARC source have no access URLs.
         []
       end
     end
