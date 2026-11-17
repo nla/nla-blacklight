@@ -85,14 +85,21 @@ module Nla
       end
 
       def identifiers(document)
-        fields = [["ISBN", "isbn_tsim"], ["ISSN", "issn_display_ssim"]]
+        fields = [["ISBN", "020", "isbn_tsim"], ["ISSN", "022", "issn_display_ssim"]]
         fields.reverse! if %w[JOUR MGZN].include?(record_type(document))
-        fields.flat_map do |label, field|
-          Array(document.fetch(field, nil)).filter_map do |value|
-            number = value.to_s.strip
+        fields.flat_map do |label, tag, field|
+          identifier_values(document, tag, field).filter_map do |value|
+            number = value.to_s[/\A\s*([0-9Xx][0-9Xx -]*)/, 1]&.delete(" -")&.upcase
+            number = number.dup.insert(4, "-") if label == "ISSN" && number&.length == 8
             [label, number] if number.present?
           end
         end.uniq { |_, value| value }
+      end
+
+      def identifier_values(document, tag, field)
+        document.marc_xml.xpath("//datafield[@tag='#{tag}']/subfield[@code='a']").map(&:text)
+      rescue KeyError
+        Array(document.fetch(field, nil))
       end
 
       def urls(document)

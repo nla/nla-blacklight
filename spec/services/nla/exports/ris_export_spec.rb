@@ -102,6 +102,48 @@ RSpec.describe Nla::Exports::RISExport do
     expect(output.lines.grep(/^N1  - /)).to eq(["N1  - Record URL: https://nla.gov.au/nla.cat-vn1\n"])
   end
 
+  context "with MARC ISBNs and ISSNs" do
+    let(:document) do
+      SolrDocument.new(id: "4397397", format: "Book",
+        isbn_tsim: ["9781557429377 (hbk.)", "1557429375 (hbk.)", "9781557429377", "1557429375", "9999999999"],
+        issn_display_ssim: ["9999-9999"], marc_ss: <<~XML)
+          <record xmlns="http://www.loc.gov/MARC21/slim">
+            <datafield tag="020"><subfield code="a">9781557429377 (hbk.)</subfield><subfield code="q">hardback</subfield><subfield code="z">9999999999</subfield></datafield>
+            <datafield tag="020"><subfield code="a">1557429375 (hbk.)</subfield></datafield>
+            <datafield tag="020"><subfield code="a">978-1-55742-937-7</subfield><subfield code="a"> </subfield></datafield>
+            <datafield tag="022"><subfield code="a">1234-567x (print)</subfield><subfield code="a">1234567X</subfield><subfield code="y">8888-8888</subfield><subfield code="z">9999-9999</subfield></datafield>
+          </record>
+        XML
+    end
+
+    it "exports only distinct cleaned $a numbers, excluding qualifiers and invalid or cancelled numbers" do
+      expect(ris.lines.grep(/^SN  - /)).to eq([
+        "SN  - 9781557429377\n", "SN  - 1557429375\n", "SN  - 1234-567X\n"
+      ])
+      expect(ris.lines.grep(/^N1  - /)).to eq(["N1  - Record URL: https://nla.gov.au/nla.cat-vn4397397\n"])
+    end
+  end
+
+  it "does not fall back to indexed identifiers when MARC contains only invalid numbers" do
+    document = SolrDocument.new(id: "1", isbn_tsim: ["9999999999"], issn_display_ssim: ["9999-9999"], marc_ss: <<~XML)
+      <record>
+        <datafield tag="020"><subfield code="z">9999999999</subfield></datafield>
+        <datafield tag="022"><subfield code="y">8888-8888</subfield><subfield code="z">9999-9999</subfield></datafield>
+      </record>
+    XML
+
+    expect(described_class.new([document]).render.lines.grep(/^SN  - /)).to be_empty
+  end
+
+  it "cleans and deduplicates indexed identifiers when no MARC source exists" do
+    document = SolrDocument.new(id: "1", isbn_tsim: ["9781557429377 (hbk.)", "9781557429377", "1557429375 (hbk.)", "1557429375"],
+      issn_display_ssim: ["1234-567X (online)", "1234567x"])
+
+    expect(described_class.new([document]).render.lines.grep(/^SN  - /)).to eq([
+      "SN  - 9781557429377\n", "SN  - 1557429375\n", "SN  - 1234-567X\n"
+    ])
+  end
+
   context "with MARC 856 online-resource URLs" do
     let(:document) do
       SolrDocument.new(id: "8425632", marc_ss: <<~XML)
