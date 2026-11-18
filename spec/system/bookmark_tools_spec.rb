@@ -14,6 +14,59 @@ RSpec.describe "Bookmark tools" do
     sign_in user
   end
 
+  it "refreshes pagination after removal, returns from an emptied page, and shows the empty state" do
+    ids = %w[1414519 8425632 4397397]
+    ids.drop(1).each { |id| user.bookmarks.create!(document_id: id, document_type: "SolrDocument") }
+    fixture = JSON.parse(File.read("spec/files/document_export/search_response.json"))
+    document = fixture["response"]["docs"].first
+    [:get, :post].each do |method|
+      stub_request(method, /solr:8983/).to_return do |request|
+        params = Rack::Utils.parse_nested_query([request.uri.query, request.body].compact.join("&"))
+        saved_ids = Array(params["fq"]).find { |filter| filter.start_with?("{!terms f=id}") }.to_s.delete_prefix("{!terms f=id}").split(",")
+        start = params["start"].to_i
+        rows = params["rows"].to_i
+        documents = ids.select { |id| saved_ids.include?(id) }.map { |id| document.merge("id" => id) }
+        body = fixture.deep_merge("response" => {"numFound" => documents.length, "start" => start, "docs" => documents.slice(start, rows) || []})
+        {body: body.to_json, headers: {"Content-Type" => "application/json"}}
+      end
+    end
+
+    visit bookmarks_path(per_page: 2, page: 2)
+    expect(page).to have_css("#documents .document", count: 1)
+    find('#documents .bookmark-toggle [data-checkboxsubmit-target="label"]').click
+
+    expect(page).to have_current_path(bookmarks_path(per_page: 2, page: 1))
+    expect(page).to have_css("#documents .document", count: 2)
+    expect(page).to have_no_link("Next »")
+    expect(user.bookmarks.reload.count).to eq(2)
+
+    first('#documents .bookmark-toggle [data-checkboxsubmit-target="label"]').click
+    expect(page).to have_css("#documents .document", count: 1)
+    expect(page).to have_current_path(bookmarks_path(per_page: 2, page: 1))
+
+    find('#documents .bookmark-toggle [data-checkboxsubmit-target="label"]').click
+    expect(page).to have_text(I18n.t("blacklight.bookmarks.no_bookmarks"))
+    expect(page).to have_no_css("#documents .document")
+    expect(page).to have_no_button("Cite all")
+    expect(user.bookmarks.reload).to be_empty
+  end
+
+  it "does not refresh or remove the result when bookmark removal fails" do
+    visit bookmarks_path
+    page.execute_script(<<~JS)
+      window.bookmarkPageUnchanged = true;
+      window.fetch = () => Promise.resolve(new Response('', {status: 500}));
+    JS
+
+    accept_alert("Unable to save the bookmark at this time.") do
+      find('#documents .bookmark-toggle [data-checkboxsubmit-target="label"]').click
+    end
+
+    expect(page.evaluate_script("window.bookmarkPageUnchanged")).to be(true)
+    expect(page).to have_css("#documents .document", count: 1)
+    expect(user.bookmarks.reload.count).to eq(1)
+  end
+
   [1200, 375].each do |width|
     it "keeps the citation and export buttons separated at #{width}px" do
       page.current_window.resize_to(width, 800)
