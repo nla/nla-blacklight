@@ -44,16 +44,9 @@ module Nla
         serial_numbers = identifiers(document)
         serial_numbers.each { |_, value| lines << "SN  - #{value}" }
         record_url = document.catalogue_persistent_url
-        lines << "AN  - #{record_url}"
+        lines << "N1  - Record URL: #{record_url}"
         resource_urls = urls(document)
-        if resource_urls.empty?
-          lines << "UR  - #{record_url}"
-        else
-          resource_urls.each { |url| lines << "UR  - #{url}" }
-          lines << "N1  - Record URL: #{record_url}"
-        end
-        # Zotero keeps the first UR in its URL field; preserve additional URLs in notes.
-        resource_urls.drop(1).each { |url| lines << "N1  - Online resource: #{url}" }
+        resource_urls.each { |url| lines << "UR  - #{url}" }
         lines << "ER  - "
         lines.map { |line| line.gsub(/[\r\n]+/, " ") }.join("\n")
       end
@@ -92,14 +85,21 @@ module Nla
       end
 
       def identifiers(document)
-        fields = [["ISBN", "isbn_tsim"], ["ISSN", "issn_display_ssim"]]
+        fields = [["ISBN", "020", "isbn_tsim"], ["ISSN", "022", "issn_display_ssim"]]
         fields.reverse! if %w[JOUR MGZN].include?(record_type(document))
-        fields.flat_map do |label, field|
-          Array(document.fetch(field, nil)).filter_map do |value|
-            number = value.to_s.strip
+        fields.flat_map do |label, tag, field|
+          identifier_values(document, tag, field).filter_map do |value|
+            number = value.to_s[/\A\s*([0-9Xx][0-9Xx -]*)/, 1]&.delete(" -")&.upcase
+            number = number.dup.insert(4, "-") if label == "ISSN" && number&.length == 8
             [label, number] if number.present?
           end
         end.uniq { |_, value| value }
+      end
+
+      def identifier_values(document, tag, field)
+        document.marc_xml.xpath("//datafield[@tag='#{tag}']/subfield[@code='a']").map(&:text)
+      rescue KeyError
+        Array(document.fetch(field, nil))
       end
 
       def urls(document)
@@ -108,7 +108,7 @@ module Nla
         document.marc_xml.xpath("//datafield[@tag='856']/subfield[@code='u']")
           .map { |subfield| subfield.text.strip }.compact_blank.uniq
       rescue KeyError
-        # Documents without a MARC source have no access URLs, but still have AN.
+        # Documents without a MARC source have no access URLs.
         []
       end
     end

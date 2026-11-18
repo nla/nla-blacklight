@@ -124,14 +124,14 @@ RSpec.describe "Bookmarks" do
       expect(response.headers["Content-Disposition"]).to include('filename="bookmarks.ris"')
 
       expect(response.body).to include("TY  - BOOK")
-      expect(response.body).to include("AN  - https://nla.gov.au/nla.cat-vn1414519")
-      expect(response.body).to include("AN  - https://nla.gov.au/nla.cat-vn8425632")
-      expect(response.body).to include("UR  - https://nla.gov.au/nla.cat-vn1414519")
+      expect(response.body).to include("N1  - Record URL: https://nla.gov.au/nla.cat-vn1414519")
+      expect(response.body).to include("N1  - Record URL: https://nla.gov.au/nla.cat-vn8425632")
+      expect(response.body).not_to include("UR  - https://nla.gov.au/nla.cat-vn", "AN  - ")
       expect(response.body).to include("SN  - 0731143213")
       expect(response.body.scan("ER  - ").count).to eq(2)
     end
 
-    it "downloads every distinct 856 URL as UR and only additional URLs as notes" do
+    it "downloads every distinct 856 URL as UR without duplicating URLs in notes" do
       stub_bookmark_documents(marc_xml: <<~XML)
         <record xmlns="http://www.loc.gov/MARC21/slim">
           <datafield tag="856" ind1="4" ind2="0">
@@ -155,10 +155,7 @@ RSpec.describe "Bookmarks" do
           "UR  - https://example.org/second",
           "UR  - https://example.org/third"
         ])
-        expect(record.lines.grep(/^N1  - Online resource:/).map(&:chomp)).to eq([
-          "N1  - Online resource: https://example.org/second",
-          "N1  - Online resource: https://example.org/third"
-        ])
+        expect(record.lines.grep(/^N1  - Online resource:/)).to be_empty
       end
     end
 
@@ -215,8 +212,8 @@ RSpec.describe "Bookmarks" do
 
       expect(response).to have_http_status(:success)
       expect(response.body.scan(/^TY  - /).length).to eq(22)
-      expect(response.body.lines.grep(/^AN  - /).map(&:chomp)).to match_array(
-        bookmark_ids.map { |id| "AN  - https://nla.gov.au/nla.cat-vn#{id}" }
+      expect(response.body.lines.grep(/^N1  - Record URL:/).map(&:chomp)).to match_array(
+        bookmark_ids.map { |id| "N1  - Record URL: https://nla.gov.au/nla.cat-vn#{id}" }
       )
       expect(WebMock).to have_requested(:any, /solr:8983/).with { |request|
         params = Rack::Utils.parse_nested_query([request.uri.query, request.body].compact.join("&"))

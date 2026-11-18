@@ -1,7 +1,7 @@
 # This workflow runs the unit and system tests, as well as static code analysis
 # and dependecy vulnerability checks.
 #
-# It uses the default MySQL database included in the runner (usually ubuntu-latest).
+# Pin Ubuntu 24.04 for Ruby 3.3.2 compatibility and its bundled MySQL database.
 name: "Tests and code quality"
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}-lint
       cancel-in-progress: true
     name: Linters
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -47,7 +47,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}-test
       cancel-in-progress: true
     name: Tests
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       CI: true
       DB_DATABASE: blacklight_test
