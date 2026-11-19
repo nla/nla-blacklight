@@ -26,6 +26,9 @@ jobs:
 
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
+        env:
+          # zookeeper 1.5.5 bundles a C client that does not build in GCC 15's default C23 mode.
+          CFLAGS: -std=gnu17
         with:
           bundler-cache: true
 
@@ -69,6 +72,9 @@ jobs:
 
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
+        env:
+          # Keep the bundled ZooKeeper C client in GNU C17 mode during bundle install.
+          CFLAGS: -std=gnu17
         with:
           bundler-cache: true
 
