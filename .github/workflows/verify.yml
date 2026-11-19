@@ -1,7 +1,7 @@
 # This workflow runs the unit and system tests, as well as static code analysis
 # and dependecy vulnerability checks.
 #
-# Pin Ubuntu 24.04 for Ruby 3.3.2 compatibility and its bundled MySQL database.
+# Pin Ubuntu 24.04 for its bundled MySQL database.
 name: "Tests and code quality"
 on:
   push:
