@@ -1,7 +1,6 @@
 # This workflow runs the unit and system tests, as well as static code analysis
 # and dependecy vulnerability checks.
 #
-# Pin Ubuntu 24.04 for its bundled MySQL database.
 name: "Tests and code quality"
 on:
   push:
@@ -20,7 +19,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}-lint
       cancel-in-progress: true
     name: Linters
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
@@ -47,7 +46,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}-test
       cancel-in-progress: true
     name: Tests
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     env:
       CI: true
       DB_DATABASE: blacklight_test
