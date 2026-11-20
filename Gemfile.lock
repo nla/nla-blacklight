@@ -17,7 +17,7 @@ GIT
 
 GIT
   remote: https://github.com/nla/nla-blacklight_common
-  revision: 87b22ef4e1aad9f08b54b43a0bbd70340918a88f
+  revision: 1b7a35a5237e8d0444a42d325b3306e0bd87b7e1
   branch: main
   specs:
     nla-blacklight_common (0.3.8)
@@ -759,6 +759,7 @@ PLATFORMS
   arm64-darwin-23
   arm64-darwin-24
   arm64-darwin-25
+  arm64-darwin-27
   x86_64-darwin-20
   x86_64-darwin-21
   x86_64-darwin-22
@@ -830,7 +831,7 @@ DEPENDENCIES
   yabeda-rails
 
 RUBY VERSION
-   ruby 3.3.2p78
+   ruby 3.3.14p208
 
 BUNDLED WITH
    2.7.2

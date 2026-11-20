@@ -1,7 +1,6 @@
 # This workflow runs the unit and system tests, as well as static code analysis
 # and dependecy vulnerability checks.
 #
-# Pin Ubuntu 24.04 for Ruby 3.3.2 compatibility and its bundled MySQL database.
 name: "Tests and code quality"
 on:
   push:
@@ -20,13 +19,16 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}-lint
       cancel-in-progress: true
     name: Linters
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v7
 
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
+        env:
+          # zookeeper 1.5.5 bundles a C client that does not build in GCC 15's default C23 mode.
+          CFLAGS: -std=gnu17
         with:
           bundler-cache: true
 
@@ -47,7 +49,7 @@ jobs:
       group: ${{ github.workflow }}-${{ github.ref }}-test
       cancel-in-progress: true
     name: Tests
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     env:
       CI: true
       DB_DATABASE: blacklight_test
@@ -70,13 +72,16 @@ jobs:
 
       - name: Install Ruby
         uses: ruby/setup-ruby@v1
+        env:
+          # Keep the bundled ZooKeeper C client in GNU C17 mode during bundle install.
+          CFLAGS: -std=gnu17
         with:
           bundler-cache: true
 
       - name: Set up MySQL
         run: |
           pwd
-          sudo /etc/init.d/mysql start
+          sudo systemctl start mysql.service
           mysql -e 'CREATE DATABASE ${{ env.DB_DATABASE }};' -u${{ env.DB_USER }} -p${{ env.DB_PASSWORD }}
 
       - name: RSpec tests
