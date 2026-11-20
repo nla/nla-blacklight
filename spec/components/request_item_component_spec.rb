@@ -18,6 +18,15 @@ RSpec.describe RequestItemComponent, type: :component do
     expect(page).to have_css("div.holding")
   end
 
+  it "retrieves holdings once per render" do
+    catalogue_services_client = instance_double(CatalogueServicesClient, get_holdings: JSON.parse(holdings_response)["holdingsRecords"])
+    allow(CatalogueServicesClient).to receive(:new).and_return(catalogue_services_client)
+
+    render_inline(described_class.new(document: document))
+
+    expect(catalogue_services_client).to have_received(:get_holdings).once
+  end
+
   context "when FOLIO_UPDATE_IN_PROGRESS is `true`" do
     it "does not render the request button" do
       allow(ENV).to receive(:[]).and_call_original
@@ -141,6 +150,29 @@ RSpec.describe RequestItemComponent, type: :component do
       render_inline(described_class.new(document: document))
 
       expect(page).to have_text("Not for loan")
+    end
+  end
+
+  context "when a DFL item is in use" do
+    let(:dfl_holding) do
+      holding = JSON.parse(holdings_response)["holdingsRecords"].first
+      item = holding["itemRecords"].first.merge("loanType" => "DFL", "displayStatus" => "In use", "requestable" => false)
+      holding.merge("itemRecords" => [item])
+    end
+
+    before do
+      stub_const("RequestItemHelper::DFL_ENABLED", true)
+      allow(vc_test_controller).to receive(:current_user).and_return(nil)
+      catalogue_services_client = instance_double(CatalogueServicesClient, get_holdings: [dfl_holding])
+      allow(CatalogueServicesClient).to receive(:new).and_return(catalogue_services_client)
+    end
+
+    it "displays the item as available with a RefTracker request link" do
+      render_inline(described_class.new(document: document))
+
+      expect(page).to have_text("Available")
+      expect(page).to have_link("Request to Use in the Library")
+      expect(page).to have_no_text("In use")
     end
   end
 
