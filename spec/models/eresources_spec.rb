@@ -46,6 +46,10 @@ RSpec.describe Eresources do
 
         expect(eresources_link).to eq({type: "ezproxy", url: "http://m.worldbk.com/", entry: entry})
       end
+
+      it "does not match another host with the same prefix" do
+        expect(described_class.new.known_url("http://www.worldbookonline.com.example.com/resource")).to eq({})
+      end
     end
 
     # There currently aren't any entries with a "remoteurl"

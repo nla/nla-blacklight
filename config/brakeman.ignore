@@ -3,6 +3,15 @@
     {
       "warning_type": "Redirect",
       "warning_code": 18,
+      "fingerprint": "4a53a8583fd59d3eba2b1942f2e3bf82ee0c83a75085571ad62a5073910b2f99",
+      "check_name": "Redirect",
+      "file": "app/controllers/catalog_controller.rb",
+      "location": { "type": "method", "class": "CatalogController", "method": "offsite" },
+      "note": "Both EZProxy redirects use the configured EZPROXY_URL as the destination. The request URL is only a target parameter, checked against the configured eResource scheme, host, port and URL prefix."
+    },
+    {
+      "warning_type": "Redirect",
+      "warning_code": 18,
       "fingerprint": "072180917d83a9d415d707c4e87d068bd1d2321280ee12421ad2af3ddce462e6",
       "check_name": "Redirect",
       "message": "Possible unprotected redirect",
@@ -44,7 +53,7 @@
       "cwe_id": [
         601
       ],
-      "note": ""
+      "note": "The remote redirect destination is supplied by the eResources configuration, not the request URL."
     },
     {
       "warning_type": "Redirect",

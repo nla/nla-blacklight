@@ -1,8 +1,13 @@
 <h2><%= t("offsite.onsite_only.header") %></h2>
 
 <%
-  original_url = sanitize(link_to(@eresource[:entry]["title"], @requested_url))
+  title = @eresource[:entry]["title"]
+  original_url = if Eresources.http_uri(@requested_url)
+    tag.a(title, href: @requested_url)
+  else
+    ERB::Util.html_escape(title)
+  end
   return_link = link_to("return to the record display", @record_url)
   click_link = link_to("click here", @record_url)
 %>
-<%= t("offsite.onsite_only.message", original_url: original_url, return_link: return_link, click_link: click_link).html_safe %>
+<%= t("offsite.onsite_only.message_html", original_url: original_url, return_link: return_link, click_link: click_link) %>
